@@ -3,69 +3,101 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
+
 #include "debug.hh"
 #include "collision.hh"
 #include "note-column.hh"
-#include "note-head.hh"
+#include "rhythmic-head.hh"
 #include "paper-def.hh"
-#include "ly-symbols.hh"
-#include "tuple.hh"
+#include "axis-group-interface.hh"
+#include "item.hh"
 
-Collision::Collision()
-{
-  set_axes (X_AXIS, Y_AXIS);
-}
 
-void
-Collision::add_column (Note_column* ncol_l)
-{
-  clash_l_arr_.push (ncol_l);
-  add_element (ncol_l);
-  add_dependency (ncol_l);
-}
+MAKE_SCHEME_CALLBACK (Collision,force_shift_callback,2);
 
-void
-Collision::do_pre_processing()
+SCM
+Collision::force_shift_callback (SCM element_smob, SCM axis)
 {
-  Array<Shift_tup> autos (automatic_shift ());
-  Array<Shift_tup> hand (forced_shift ());
-  Link_array<Note_column> done;
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
+  assert (a == X_AXIS);
   
-  Real wid = paper_l ()->note_width ();
-  for (int i=0; i < hand.size (); i++)
+   me = me->parent_l (a);
+  /*
+    ugh. the way DONE is done is not clean
+   */
+  if (!unsmob_grob (me->get_grob_property ("done")))
     {
-      hand[i].e1_->translate_axis (hand[i].e2_ *wid, X_AXIS);
-      done.push (hand[i].e1_);
+      me->set_grob_property ("done", me->self_scm ());
+      do_shifts (me);
     }
+  
+  return gh_double2scm (0.0);
+}
 
-  for (int i=0; i < autos.size (); i++)
+/*
+  TODO: make callback of this.
+
+  TODO:
+
+  note-width is hardcoded, making it difficult to handle all note
+  heads sanely. We should really look at the widths of the colliding
+  columns, and have a separate setting for "align stems".
+
+  
+ */
+void
+Collision::do_shifts (Grob* me)
+{
+  SCM autos (automatic_shift (me));
+  SCM hand (forced_shift (me));
+  
+  Link_array<Grob> done;
+
+
+  Real wid
+    = gh_scm2double (me->get_grob_property ("note-width"));
+  
+  for (; gh_pair_p (hand); hand =gh_cdr (hand))
     {
-      if (!done.find_l (autos[i].e1_))
-	autos[i].e1_->translate_axis (autos[i].e2_ * wid, X_AXIS);
+      Grob * s = unsmob_grob (gh_caar (hand));
+      Real amount = gh_scm2double (gh_cdar (hand));
+      
+      s->translate_axis (amount *wid, X_AXIS);
+      done.push (s);
+    }
+  for (; gh_pair_p (autos); autos =gh_cdr (autos))
+    {
+      Grob * s = unsmob_grob (gh_caar (autos));
+      Real amount = gh_scm2double (gh_cdar (autos));
+      
+      if (!done.find_l (s))
+	s->translate_axis (amount * wid, X_AXIS);
     }
 }
 
 /** This complicated routine moves note columns around horizontally to
   ensure that notes don't clash.
 
-  This should be done better, probably.
-
-  TODO: forced hshift
-  
+  This should be put into Scheme.  
   */
-Array< Shift_tup >
-Collision::automatic_shift ()
+SCM
+Collision::automatic_shift (Grob *me)
 {
-  Drul_array<Link_array<Note_column> > clash_groups;
+  Drul_array<Link_array<Grob> > clash_groups;
   Drul_array<Array<int> > shifts;
-  Array<Shift_tup>  tups;
+  SCM  tups = SCM_EOL;
 
-  
-  for (int i=0; i < clash_l_arr_.size(); i++)
+  SCM s = me->get_grob_property ("elements");
+  for (; gh_pair_p (s); s = gh_cdr (s))
     {
-      clash_groups[clash_l_arr_[i]->dir ()].push (clash_l_arr_[i]);
+      SCM car = gh_car (s);
+
+      Grob * se = unsmob_grob (car);
+      if (Note_column::has_interface (se))
+	clash_groups[Note_column::dir (se)].push (se);
     }
 
   
@@ -73,26 +105,26 @@ Collision::automatic_shift ()
   do
     {
       Array<int> & shift (shifts[d]);
-      Link_array<Note_column> & clashes (clash_groups[d]);
+      Link_array<Grob> & clashes (clash_groups[d]);
 
       clashes.sort (Note_column::shift_compare);
 
       for (int i=0; i < clashes.size (); i++)
 	{
 	  SCM sh
-	    = clashes[i]->remove_elt_property (horizontal_shift_scm_sym);
+	    = clashes[i]->get_grob_property ("horizontal-shift");
 
-	  if (sh == SCM_BOOL_F)
-	    shift.push (0);
+	  if (gh_number_p (sh))
+	    shift.push (gh_scm2int (sh));
 	  else
-	    shift.push (gh_scm2int (SCM_CDR (sh)));
+	    shift.push (0);
 	}
       
       for (int i=1; i < shift.size (); i++)
 	{
 	  if (shift[i-1] == shift[i])
 	    {
-	      warning (_ ("Too many clashing notecolumns. Ignoring them."));
+	      warning (_ ("Too many clashing notecolumns.  Ignoring them."));
 	      return tups;
 	    }
 	}
@@ -106,7 +138,7 @@ Collision::automatic_shift ()
     {
       for (int i=0; i < clash_groups[d].size (); i++)
 	{
-	  Slice s(clash_groups[d][i]->head_positions_interval ());
+	  Slice s (Note_column::head_positions_interval (clash_groups[d][i]));
 	  s[LEFT] --;
 	  s[RIGHT]++;
 	  extents[d].push (s);
@@ -122,7 +154,7 @@ Collision::automatic_shift ()
 	  Slice prev =extents[d][i-1];
 	  prev.intersect (extents[d][i]);
 	  if (prev.length ()> 0 ||
-	      (extents[-d].size () && d * (extents[d][i][-d] - extents[-d][0][d]) < 0))
+ (extents[-d].size () && d * (extents[d][i][-d] - extents[-d][0][d]) < 0))
 	    for (int j = i; j <  clash_groups[d].size (); j++)
 	      offsets[d][j] += d * 0.5;
 	}
@@ -134,69 +166,79 @@ Collision::automatic_shift ()
     all of them again. */
   if (extents[UP].size () && extents[DOWN].size ())
     {
-      Note_column *cu_l =clash_groups[UP][0];
-      Note_column *cd_l =clash_groups[DOWN][0];
-      Note_head * nu_l= cu_l->head_l_arr_[0];
-      Note_head * nd_l = cd_l->head_l_arr_.top();
-      int downpos = 	cd_l->head_positions_interval ()[BIGGER];
-      int uppos = 	cu_l->head_positions_interval ()[SMALLER];      
+      Grob *cu_l =clash_groups[UP][0];
+      Grob *cd_l =clash_groups[DOWN][0];
+
+
+      /*
+	TODO.
+       */
+      Grob * nu_l= Note_column::first_head (cu_l);
+      Grob * nd_l = Note_column::first_head (cd_l);
+      
+      int downpos = Note_column::head_positions_interval (cd_l)[BIGGER];
+      int uppos = Note_column::head_positions_interval (cu_l)[SMALLER];      
       
       bool merge  =
 	downpos == uppos
-	&& nu_l->balltype_i_ == nd_l->balltype_i_
-	&& nu_l->dots_i () == nd_l->dots_i ();
+	&& Rhythmic_head::balltype_i (nu_l) == Rhythmic_head::balltype_i (nd_l);
+
+
+      if (!to_boolean (me->get_grob_property ("merge-differently-dotted")))
+	merge = merge && Rhythmic_head::dot_count (nu_l) == Rhythmic_head::dot_count (nd_l);
 
       /*
 	notes are close, but can not be merged.  Shift
        */
-      if (abs(uppos - downpos) < 2 && !merge)
+      if (abs (uppos - downpos) < 2 && !merge)
 	  do
 	  {
 	    for (int i=0; i < clash_groups[d].size (); i++)
 	      {
-		offsets[d][i] -= d * 0.5;
+		if(Rhythmic_head::dot_count (nu_l) > Rhythmic_head::dot_count (nd_l))
+		  offsets[d][i] += d * 0.5;
+		else 
+		  offsets[d][i] -= d * 0.5;
 	      }
 	  }
 	  while ((flip (&d))!= UP);
     }
 
-
   do
     {
       for (int i=0; i < clash_groups[d].size (); i++)
-	tups.push (Shift_tup (clash_groups[d][i], offsets[d][i]));
+	tups = gh_cons (gh_cons (clash_groups[d][i]->self_scm (), gh_double2scm (offsets[d][i])),
+				 tups);
     }
   while (flip (&d) != UP);
   return tups;
 }
 
 
-Array <Shift_tup>
-Collision::forced_shift ()
+SCM
+Collision::forced_shift (Grob *me)
 {
-  Array<Shift_tup> tups;
+  SCM tups = SCM_EOL;
   
-  for (int i=0; i < clash_l_arr_.size (); i++)
+  SCM s = me->get_grob_property ("elements");
+  for (; gh_pair_p (s); s = gh_cdr (s))
     {
-      SCM force =  clash_l_arr_[i]->remove_elt_property (force_hshift_scm_sym);
-      if (force != SCM_BOOL_F)
+      Grob * se = unsmob_grob (gh_car (s));
+
+      SCM force =  se->remove_grob_property ("force-hshift");
+      if (gh_number_p (force))
 	{
-	  force = SCM_CDR (force);
-	  tups. push (Shift_tup (clash_l_arr_[i],
-						 gh_scm2double (force)));
+	  tups = gh_cons (gh_cons (se->self_scm (), force),
+			  tups);
 	}
     }
   return tups;
 }
 
-
 void
-Collision::do_substitute_element_pointer (Score_element*o_l,Score_element*n_l)
+Collision::add_column (Grob*me,Grob* ncol_l)
 {
-  if (o_l)
-    {
-      clash_l_arr_.substitute (dynamic_cast<Note_column *> (o_l),
-			       dynamic_cast <Note_column *> (n_l));
-
-    }
+  ncol_l->add_offset_callback (Collision::force_shift_callback_proc, X_AXIS);
+  Axis_group_interface::add_element (me, ncol_l);
+  me->add_dependency (ncol_l);
 }
