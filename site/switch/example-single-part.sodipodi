@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
-[
- <!ATTLIST svg
-  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
-]>
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
 <svg
    id="svg682"
    sodipodi:version="0.32"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    width="210mm"
    height="297mm"
-   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
-   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-single-part.sodipodi">
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-single-part.sodipodi"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs
      id="defs684" />
   <sodipodi:namedview
@@ -29,37 +25,37 @@
        x="38.8550110"
        y="361.213776"
        sodipodi:role="line"
-       id="tspan693">
+       id="tspan1029">
 \score {</tspan>
     <tspan
        x="38.8550110"
        y="389.213776"
        sodipodi:role="line"
-       id="tspan695">
+       id="tspan1031">
 		\notes {</tspan>
     <tspan
        x="38.8550110"
        y="417.213776"
        sodipodi:role="line"
-       id="tspan697">
+       id="tspan1033">
 				\property Score.skipBars = ##t</tspan>
     <tspan
        x="38.8550110"
        y="445.213776"
        sodipodi:role="line"
-       id="tspan699">
+       id="tspan1035">
 				\transpose f c'  \hornNotes</tspan>
     <tspan
        x="38.8550110"
        y="473.213776"
        sodipodi:role="line"
-       id="tspan701">
+       id="tspan1037">
 		}</tspan>
     <tspan
        x="38.8550110"
        y="501.213776"
        sodipodi:role="line"
-       id="tspan703">
+       id="tspan1039">
 }</tspan>
   </text>
   <rect
