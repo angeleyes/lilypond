@@ -7,6 +7,15 @@
     padding-right: 5%;
 }
 
+dt {
+		font-weight: bold;
+}
+	
+dd {
+	margin: 0 0 1em 1em;
+}
+
+
 // ugh, this is not what we want
 p {
     padding-left: 5%;
