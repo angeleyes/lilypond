@@ -7,10 +7,11 @@
    sodipodi:version="0.32"
    width="210mm"
    height="297mm"
-   sodipodi:docname="example-score.sodipodi"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-score.sodipodi"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink">
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/">
   <defs
      id="defs730" />
   <sodipodi:namedview
@@ -18,43 +19,43 @@
   <text
      style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:26;text-anchor:start;writing-mode:lr;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
      x="24.7259216"
-     y="125.728775"
+     y="125.728409"
      id="text731">
     <tspan
        x="24.7259216"
-       y="125.728775"
+       y="125.728409"
        sodipodi:role="line"
-       id="tspan746">
+       id="tspan915">
 \score {</tspan>
     <tspan
        x="24.7259216"
-       y="151.728775"
+       y="151.728409"
        sodipodi:role="line"
-       id="tspan748">
+       id="tspan917">
 		&lt;&lt;</tspan>
     <tspan
        x="24.7259216"
-       y="177.728775"
+       y="177.728409"
        sodipodi:role="line"
-       id="tspan750">
+       id="tspan919">
 				\new Staff \hornNotes</tspan>
     <tspan
        x="24.7259216"
-       y="203.728775"
+       y="203.728409"
        sodipodi:role="line"
-       id="tspan752">
+       id="tspan921">
 				\new Staff \bassoonNotes</tspan>
     <tspan
        x="24.7259216"
-       y="229.728775"
+       y="229.728409"
        sodipodi:role="line"
-       id="tspan754">
+       id="tspan923">
 		&gt;&gt;</tspan>
     <tspan
        x="24.7259216"
-       y="255.728775"
+       y="255.728409"
        sodipodi:role="line"
-       id="tspan756">
+       id="tspan925">
 }</tspan>
   </text>
   <rect
@@ -74,10 +75,10 @@
   <rect
      style="font-size:12;fill:#23ca22;fill-opacity:0.588415;fill-rule:evenodd;stroke-width:1pt;"
      id="rect760"
-     width="40.795697"
+     width="38.440847"
      height="101.572952"
-     x="49.537627"
-     y="130.296188" />
+     x="49.537630"
+     y="130.296158" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#00b000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
      d="M 64.9401 233.951 C 63.275 288.9 113.229 292.23 159.853 292.23 "

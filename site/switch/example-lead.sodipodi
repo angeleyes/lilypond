@@ -25,112 +25,112 @@
        x="41.2098694"
        y="376.520386"
        sodipodi:role="line"
-       id="tspan754">
+       id="tspan854">
 \score  {</tspan>
     <tspan
        x="41.2098694"
        y="396.520386"
        sodipodi:role="line"
-       id="tspan756">
+       id="tspan856">
 		&lt;&lt;</tspan>
     <tspan
        x="41.2098694"
        y="416.520386"
        sodipodi:role="line"
-       id="tspan758">
+       id="tspan858">
 				\new ChordNames \chords {</tspan>
     <tspan
        x="41.2098694"
        y="436.520386"
        sodipodi:role="line"
-       id="tspan760">
+       id="tspan860">
 						c1:m7 f2:7 c2</tspan>
     <tspan
        x="41.2098694"
        y="456.520386"
        sodipodi:role="line"
-       id="tspan762">
+       id="tspan862">
 				}</tspan>
     <tspan
        x="41.2098694"
        y="476.520386"
        sodipodi:role="line"
-       id="tspan764">
+       id="tspan864">
 				\addlyrics</tspan>
     <tspan
        x="41.2098694"
        y="496.520386"
        sodipodi:role="line"
-       id="tspan766">
+       id="tspan866">
 						\notes \relative c'' {</tspan>
     <tspan
        x="41.2098694"
        y="516.520386"
        sodipodi:role="line"
-       id="tspan768">
+       id="tspan868">
 								g2 es8( c4.)</tspan>
     <tspan
        x="41.2098694"
        y="536.520386"
        sodipodi:role="line"
-       id="tspan770">
+       id="tspan870">
 								e8 e d c c2</tspan>
     <tspan
        x="41.2098694"
        y="556.520386"
        sodipodi:role="line"
-       id="tspan772">
+       id="tspan872">
 						}</tspan>
     <tspan
        x="41.2098694"
        y="576.520386"
        sodipodi:role="line"
-       id="tspan774">
+       id="tspan874">
 						\new Lyrics  \lyrics {</tspan>
     <tspan
        x="41.2098694"
        y="596.520386"
        sodipodi:role="line"
-       id="tspan776">
+       id="tspan876">
 								Li ly,</tspan>
     <tspan
        x="41.2098694"
        y="616.520386"
        sodipodi:role="line"
-       id="tspan778">
+       id="tspan878">
 								got me on my knees</tspan>
     <tspan
        x="41.2098694"
        y="636.520386"
        sodipodi:role="line"
-       id="tspan780">
+       id="tspan880">
 						}</tspan>
     <tspan
        x="41.2098694"
        y="656.520386"
        sodipodi:role="line"
-       id="tspan782">
+       id="tspan882">
 		&gt;&gt;</tspan>
     <tspan
        x="41.2098694"
        y="676.520386"
        sodipodi:role="line"
-       id="tspan784">
+       id="tspan884">
 }</tspan>
     <tspan
        x="41.2098694"
        y="696.520386"
        sodipodi:role="line"
-       id="tspan786">
+       id="tspan886">
 </tspan>
   </text>
   <rect
      style="font-size:12;fill:#0900ad;fill-opacity:0.547445;fill-rule:evenodd;stroke:none;stroke-width:0.983239pt;"
      id="rect663"
-     width="198.603525"
+     width="222.152040"
      height="43.293415"
-     x="134.422487"
-     y="579.465179" />
+     x="134.422486"
+     y="579.465057" />
   <rect
      style="font-size:12;fill:#b00000;fill-opacity:0.408759;fill-rule:evenodd;stroke:none;stroke-width:0.973025pt;"
      id="rect664"
@@ -147,7 +147,7 @@
      y="500.371460" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#0000b0;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
-     d="M 335.94 597.781 C 368.827 596.116 346.764 624.008 402.545 624.008 "
+     d="M 357.134 596.604 C 384.134 594.939 376.2 622.831 402.545 624.008 "
      id="path666"
      sodipodi:nodetypes="cc"
      transform="translate(0.000000,-3.051758e-5)" />

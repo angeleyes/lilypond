@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
-[
- <!ATTLIST svg
-  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
-]>
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
 <svg
    id="svg548"
    sodipodi:version="0.32"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    width="210mm"
    height="297mm"
-   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
-   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-parts.sodipodi">
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-parts.sodipodi"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs
      id="defs550" />
   <sodipodi:namedview
@@ -29,85 +25,85 @@
        x="63.5809479"
        y="283.503632"
        sodipodi:role="line"
-       id="tspan634">
-hornNotes = </tspan>
+       id="tspan970">
+hornNotes =</tspan>
     <tspan
        x="63.5809479"
        y="311.503632"
        sodipodi:role="line"
-       id="tspan636">
-\notes \relative c {</tspan>
+       id="tspan972">
+		\notes \relative c {</tspan>
     <tspan
        x="63.5809479"
        y="339.503632"
        sodipodi:role="line"
-       id="tspan638">
+       id="tspan974">
 		\time 2/4</tspan>
     <tspan
        x="63.5809479"
        y="367.503632"
        sodipodi:role="line"
-       id="tspan640">
+       id="tspan976">
 		R2*3</tspan>
     <tspan
        x="63.5809479"
        y="395.503632"
        sodipodi:role="line"
-       id="tspan642">
+       id="tspan978">
 		r4 f8 a cis4 f e d</tspan>
     <tspan
        x="63.5809479"
        y="423.503632"
        sodipodi:role="line"
-       id="tspan644">
+       id="tspan980">
 }</tspan>
     <tspan
        x="63.5809479"
        y="451.503632"
        sodipodi:role="line"
-       id="tspan646">
+       id="tspan982">
 </tspan>
     <tspan
        x="63.5809479"
        y="479.503632"
        sodipodi:role="line"
-       id="tspan648">
+       id="tspan984">
 bassoonNotes =</tspan>
     <tspan
        x="63.5809479"
        y="507.503632"
        sodipodi:role="line"
-       id="tspan650">
+       id="tspan986">
 \notes \relative c {</tspan>
     <tspan
        x="63.5809479"
        y="535.503632"
        sodipodi:role="line"
-       id="tspan652">
+       id="tspan988">
 		\clef bass</tspan>
     <tspan
        x="63.5809479"
        y="563.503632"
        sodipodi:role="line"
-       id="tspan654">
-		r4 d,8 f  gis4 c   b bes </tspan>
+       id="tspan990">
+		r4 d,8 f  gis4 c   b bes</tspan>
     <tspan
        x="63.5809479"
        y="591.503632"
        sodipodi:role="line"
-       id="tspan656">
+       id="tspan992">
 		a8 e f4   g d  gis f</tspan>
     <tspan
        x="63.5809479"
        y="619.503632"
        sodipodi:role="line"
-       id="tspan658">
+       id="tspan994">
 }</tspan>
     <tspan
        x="63.5809479"
        y="647.503632"
        sodipodi:role="line"
-       id="tspan660">
+       id="tspan996">
 </tspan>
   </text>
   <rect
