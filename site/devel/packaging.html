@@ -150,13 +150,16 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
    mkdir -p /netrel/src && cd /netrel/src
    mkdir -p old
    wget -P/tmp ftp://lilypond.org/pub/LilyPond/v1.9/lilypond-1.9.9.tar.gz
-   PATH=/netrel/bin:$PATH pimport lilypond
-   </pre></li>
-    <li>Build the package:
-      <pre>
-	cp lilypond-1.9.9-1/cygwin/mknetrel /netrel/extra/lilypond
-	/netrel/bin/mknetrel -xX lilypond
-    </pre></li>
+   PATH=/netrel/bin:$PATH pimport lilypond</pre>
+    You can also pull from CVS, but the important thing is to
+    have lilypond 1.9.9 or newer, and just one directory named
+    `lilypond-x.y.z-r'.
+  </li>
+  <li>Build the package:
+    <pre>
+      cp lilypond-1.9.9-1/cygwin/mknetrel /netrel/extra/lilypond
+      /netrel/bin/mknetrel -xX lilypond
+  </pre></li>
 </ul>
 
 <h4>Cross compiling</h4>
