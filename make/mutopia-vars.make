@@ -3,14 +3,14 @@
 include $(make-dir)/lilypond-vars.make
 
 LY_FILES = $(wildcard *.ly)
+SCORE_LY_FILES = $(shell fgrep -l score *.ly)
+
 FLY_FILES = $(wildcard *.fly)
 SLY_FILES = $(wildcard *.sly)
 
 M4_FILES = $(wildcard *.m4)
 LYM4_FILES = $(wildcard *.lym4)
 EXTRA_DIST_FILES += $(FLY_FILES) $(SLY_FILES) $(LY_FILES) $(M4_FILES) $(LYM4_FILES)
-
-# WWW.make
 
 ly_examples=$(addprefix $(outdir)/, $(addsuffix .ly.txt, $(examples)))
 fly_examples=$(addprefix $(outdir)/, $(addsuffix .fly.txt, $(flexamples)))
@@ -29,3 +29,5 @@ name-stem= $(notdir $(basename $<))
 
 OUT_FILES = $(addprefix $(outdir)/,$(M4_FILES:%.m4=%)) \
  $(addprefix $(outdir)/,$(LYM4_FILES:%.lym4=%.ly))
+
+score_ps = $(addprefix $(outdir)/, $(addsuffix .ps.gz, $($SCORE_LY_FILES)))
