@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -20,42 +20,41 @@ class Score_engraver :
   public Engraver_group_engraver, public Global_translator 
 {
   Line_of_score * scoreline_l_;
-  int break_penalty_i_;
   int breaks_i_;
 
-  Link_array<Score_element> elem_p_arr_;
+  Link_array<Grob> elem_p_arr_;
     
-  Score_column* command_column_l_;
-  Score_column* musical_column_l_;
-    
-  void set_columns (Score_column*,Score_column*);
-  void typeset_all();
+  Paper_column* command_column_l_;
+  Paper_column* musical_column_l_;
+  void make_columns (Moment);
+  void set_columns (Paper_column*,Paper_column*);
+  void typeset_all ();
     
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
   Paper_score * pscore_p_;
   
   void forbid_breaks ();
-  Score_engraver();
+  Score_engraver ();
   virtual Music_output *get_output_p ();  
 protected:   
   virtual void prepare (Moment);
-  virtual void finish();
-  virtual void process();
-  virtual int depth_i() const { return Global_translator::depth_i ();}
+  virtual void finish ();
+  virtual void one_time_step ();
+  virtual int depth_i () const { return Global_translator::depth_i ();}
 
 protected:
   /* Engraver_group_engraver interface */
-  virtual Staff_info get_staff_info() const;
-  virtual bool do_try_music (Music*);
-  virtual void do_creation_processing();
-  virtual void do_removal_processing();
-  virtual void announce_element (Score_element_info);
-  virtual void do_announces();
-  virtual void typeset_element (Score_element*elem_p);
 
-  virtual void do_pre_move_processing();
-  virtual void do_add_processing ();
+  virtual bool try_music (Music*);
+  virtual void initialize ();
+  virtual void finalize ();
+  virtual void announce_grob (Grob_info);
+  virtual void do_announces ();
+  virtual void typeset_grob (Grob*elem_p);
+
+  virtual void stop_translation_timestep ();
+
 };
 
 #endif // SCORE_GRAV_HH

@@ -3,35 +3,27 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef RHYTHMIC_HEAD_HH
 #define RHYTHMIC_HEAD_HH
 
-#include "item.hh"
-#include "staff-symbol-referencer.hh"
+#include "lily-guile.hh"
+#include "lily-proto.hh"
 
-class Rhythmic_head : public Item, public Staff_symbol_referencer
+class Rhythmic_head
 {
 public:
-  Stem * stem_l_;
-  int balltype_i_;
-  int position_i_;
-
-  Dots * dots_l_;
-
-  void add_dots (Dots *);
-  Rhythmic_head ();
-
-  int dots_i ()const;
-  virtual int position_i () const;
-protected:
-  virtual void do_post_processing ();
-  virtual void do_pre_processing ();
-  virtual void do_print () const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static int balltype_i (Grob*) ;
+  static void set_dots (Grob*,Item *);
+  static Item * stem_l (Grob*) ;
+  static Item * dots_l (Grob*) ;
+  static int dot_count (Grob*) ;
+  DECLARE_SCHEME_CALLBACK (after_line_breaking, (SCM ));
+  static bool has_interface (Grob*);
+  static void set_interface (Grob*);
 };
 
 #endif // RHYTHMIC_HEAD_HH

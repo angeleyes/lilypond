@@ -3,56 +3,70 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "dots.hh"
+#include "item.hh"
 #include "molecule.hh"
 #include "paper-def.hh"
+#include "font-interface.hh"
 #include "lookup.hh"
+#include "staff-symbol-referencer.hh"
+#include "directional-element-interface.hh"
 
-Dots::Dots ()
+
+MAKE_SCHEME_CALLBACK (Dots,quantised_position_callback,2);
+SCM
+Dots::quantised_position_callback (SCM element_smob, SCM axis)
 {
-  dots_i_ =0;
-  position_i_ =0;
-  resolve_dir_ =CENTER;
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
+  assert (a == Y_AXIS);
+    
+  SCM d= me->get_grob_property ("dot-count");
+  if (gh_number_p (d) && gh_scm2int (d))
+    {
+      if (!Directional_element_interface::get (me))
+	Directional_element_interface::set (me, UP);
+
+      if (Staff_symbol_referencer::on_staffline (me))
+	return gh_double2scm (Staff_symbol_referencer::staff_space (me) / 2.0 * Directional_element_interface::get (me));
+    }
+
+  return gh_double2scm (0.0);
 }
 
-void
-Dots::do_post_processing ()
+
+MAKE_SCHEME_CALLBACK (Dots,brew_molecule,1);
+SCM  
+Dots::brew_molecule (SCM d)
 {
-  if (!resolve_dir_)
-    resolve_dir_ = UP;
+  Grob *sc = unsmob_grob (d);
+  Molecule mol;
   
-  if (!(position_i_ % 2))
-    position_i_ += resolve_dir_;
+  SCM c = sc->get_grob_property ("dot-count");
 
-  if (!dots_i_)
+  if (gh_number_p (c))
     {
-      set_elt_property (transparent_scm_sym, SCM_BOOL_T);
-      set_empty (true, X_AXIS, Y_AXIS);
+      Molecule d = Font_interface::get_default_font (sc)->find_by_name (String ("dots-dot"));
+      Real dw = d.extent (X_AXIS).length ();
+      
+
+      /*
+	we need to add a real blank box, to assure that
+	side-positioning doth not cancel the left-most padding.  */
+      mol = Lookup::blank (Box (Interval (0,0),
+				Interval (0,0)));
+  
+      for (int i = gh_scm2int (c); i--;)
+	{
+	  d.translate_axis (2*dw,X_AXIS);
+	  mol.add_at_edge (X_AXIS, RIGHT, d, dw);
+	}
     }
+  return mol.smobbed_copy ();
 }
 
-Molecule* 
-Dots::do_brew_molecule_p () const
-{
-  Molecule *out = new Molecule;
-  Molecule fill = lookup_l ()->fill (Box (Interval (0,0),
-					       Interval (0,0)));
-  out->add_molecule (fill);
-
-  Molecule d = lookup_l ()->dots ();
-
-  Real dw = d.dim_[X_AXIS].length ();
-  d.translate_axis (-dw, X_AXIS);
-  for (int i=dots_i_; i--; )
-    {
-      d.translate_axis (2*dw,X_AXIS);
-      out->add_molecule (d);
-    }
-  out->translate_axis (staff_line_leading_f () * position_i_ /2., Y_AXIS);
-  return out;
-}
 
 

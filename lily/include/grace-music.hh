@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -15,8 +15,9 @@
 class Grace_music : public Music_wrapper
 {
 public:
-  VIRTUAL_COPY_CONS(Music);
-  Grace_music (Music*);
+  VIRTUAL_COPY_CONS (Music);
+  Grace_music (SCM);
+  Grace_music ();
 protected:
   virtual void compress (Moment);
   virtual Moment length_mom () const;

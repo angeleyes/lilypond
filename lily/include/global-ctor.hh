@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -21,7 +21,7 @@ public:	\
 }  _ ## y ## _ctor_init;	\
 
 
-#define ADD_GLOBAL_CTOR(x) ADD_GLOBAL_CTOR_WITHNAME(x,x);
+#define ADD_GLOBAL_CTOR(x) ADD_GLOBAL_CTOR_WITHNAME (x,x);
 
 
 typedef void (* Global_ctor ) ();

@@ -1,32 +1,31 @@
 /*   
   text-item.hh -- declare Text_item
-  
+
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
-  
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
-#ifndef Text_ITEM_HH
-#define Text_ITEM_HH
+#ifndef TEXT_ITEM
+#define TEXT_ITEM
 
-#include "item.hh"
 
-/**
-   Print a text in specified style.
- */
-class Text_item : public Item
+#include "lily-proto.hh"
+#include "lily-guile.hh"
+#include "molecule.hh"
+
+class Text_item
 {
 public:
-  String text_str_;
-  String style_str_;
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM));
+  static Molecule text2molecule (Grob *me, SCM text, SCM properties);
+  static Molecule string2molecule (Grob *me, SCM text, SCM properties);
+  static Molecule markup_text2molecule (Grob *me, SCM markup_text, SCM properties);
 
-  Text_item ();
-  VIRTUAL_COPY_CONS (Score_element);
-protected:
-  virtual void do_print () const;
-  virtual Molecule *do_brew_molecule_p () const;
+private:
+  static Molecule lookup_character (Grob *me, Font_metric*, SCM char_name);
+  static Molecule lookup_text (Grob *me, Font_metric*, SCM text);
 };
 
-#endif /* Text_ITEM_HH */
-
+#endif /* TEXT_ITEM */

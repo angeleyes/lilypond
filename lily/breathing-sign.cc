@@ -5,10 +5,12 @@
 
   written for the GNU LilyPond music typesetter
 
-TODO: --> see breathing-sign-engraver.cc
+  TODO: --> see breathing-sign-engraver.cc
 
 */
 
+#include "staff-symbol-referencer.hh"
+#include "directional-element-interface.hh"
 #include "breathing-sign.hh"
 #include "string.hh"
 #include "molecule.hh"
@@ -18,42 +20,41 @@ TODO: --> see breathing-sign-engraver.cc
 #include "dimensions.hh"
 #include "direction.hh"
 
-#include <iostream.h>
-
-Breathing_sign::Breathing_sign ()
+MAKE_SCHEME_CALLBACK (Breathing_sign,brew_molecule,1);
+SCM 
+Breathing_sign::brew_molecule (SCM smob)
 {
-  dir_ = UP;
-  set_elt_property (breakable_scm_sym, SCM_BOOL_T);
-  set_elt_property (break_priority_scm_sym, gh_int2scm (-4));
-  set_elt_property (visibility_lambda_scm_sym,
-		    ly_ch_C_eval_scm ("non_postbreak_visibility"));
+  Grob * me = unsmob_grob (smob);
+  Real space = Staff_symbol_referencer::staff_space (me);
+
+  // todo: cfg'able.
+  Interval i1 (0, space / 6), i2 (-space / 2, space / 2);
+  Box b (i1, i2);
+
+  return Lookup::filledbox (b).smobbed_copy ();
+}
+
+MAKE_SCHEME_CALLBACK (Breathing_sign,offset_callback,2);
+SCM
+Breathing_sign::offset_callback (SCM element_smob, SCM)
+{
+  Grob *me = unsmob_grob (element_smob);
+  
+  Direction d = Directional_element_interface::get (me);
+  if (!d)
+    {
+      d = UP;
+      Directional_element_interface::set (me, d);
+    }
+
+  Real inter_f = Staff_symbol_referencer::staff_space (me)/2;
+  int sz = Staff_symbol_referencer::line_count (me)-1;
+  return gh_double2scm (inter_f * sz * d);
 }
 
 void
-Breathing_sign::set_vertical_position (Direction updown)
+Breathing_sign::set_interface (Grob *b)
 {
-  assert(updown >= -1 && updown <= +1);
+  Staff_symbol_referencer::set_interface (b);
 
-  if(updown != 0)
-    dir_ = updown;
-}
-
-Molecule*
-Breathing_sign::do_brew_molecule_p () const
-{
-  Real dl = staff_line_leading_f();
-  Interval i1(0, dl / 6), i2(-dl / 2, dl / 2);
-  Box b(i1, i2);
-
-  Molecule *output = new Molecule (lookup_l()->filledbox(b));
-
-  return output;
-}
-
-void
-Breathing_sign::do_post_processing()
-{
-  Real dl = staff_line_leading_f();
-
-  translate_axis(2.0 * dl * dir_, Y_AXIS);
 }

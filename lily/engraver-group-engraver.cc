@@ -3,83 +3,100 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "proto.hh"
+#include "flower-proto.hh"
 #include "engraver-group-engraver.hh"
 #include "engraver.hh"
 #include "debug.hh"
 #include "paper-score.hh"
-#include "score-element.hh"
+#include "grob.hh"
 
 
-ADD_THIS_TRANSLATOR(Engraver_group_engraver);
+ADD_THIS_TRANSLATOR (Engraver_group_engraver);
 
 void
-Engraver_group_engraver::announce_element (Score_element_info info)
+Engraver_group_engraver::announce_grob (Grob_info info)
 {
   announce_info_arr_.push (info);
-  Engraver::announce_element (info);
+  Engraver::announce_grob (info);
+}
+
+
+void
+Engraver_group_engraver::create_grobs ()
+{
+
+  for (SCM p = simple_trans_list_; gh_pair_p (p); p = gh_cdr (p))
+    {
+      Translator * t = unsmob_translator (gh_car (p));
+      Engraver * eng = dynamic_cast<Engraver*> (t);
+      if (eng)
+	eng->create_grobs ();
+    }
 }
 
 void
-Engraver_group_engraver::do_announces()
+Engraver_group_engraver::acknowledge_grobs ()
 {
-  Link_array<Translator_group> groups = group_l_arr ();
-  for (int i=0; i < groups.size(); i++) 
+  for (int j =0; j < announce_info_arr_.size (); j++)
     {
-      Engraver_group_engraver * group = dynamic_cast<Engraver_group_engraver*> (groups[i]);
-      if (group)
+      Grob_info info = announce_info_arr_[j];
+      for (SCM p = simple_trans_list_; gh_pair_p (p); p = gh_cdr (p))
 	{
-	  group->do_announces();
+	  Translator * t = unsmob_translator (gh_car (p));
+	  Engraver * eng = dynamic_cast<Engraver*> (t);
+	  if (eng && eng!= info.origin_trans_l_)
+	    eng->acknowledge_grob (info);
 	}
     }
-  
-  Request dummy_req;
+}
 
-  Link_array<Translator> nongroups = nongroup_l_arr ();
+void
+Engraver_group_engraver::do_announces ()
+{
+  for (SCM p = trans_group_list_; gh_pair_p (p); p =gh_cdr (p))
+    {
+      Translator * t = unsmob_translator (gh_car (p));
+      dynamic_cast<Engraver_group_engraver*> (t)->do_announces ();
+    }
+
+  create_grobs ();
+    
   while (announce_info_arr_.size ())
     {
-      for (int j =0; j < announce_info_arr_.size(); j++)
-	{
-	  Score_element_info info = announce_info_arr_[j];
-	  
-	  if (!info.req_l_)
-	    info.req_l_ = &dummy_req;
-	  for (int i=0; i < nongroups.size(); i++) 
-	    {	// Is this good enough?
-	      Engraver * eng = dynamic_cast<Engraver*> (nongroups[i]);
-	      if (eng && eng!= info.origin_trans_l_arr_[0])
-		eng->acknowledge_element (info);
-	    }
-	}
+      acknowledge_grobs ();
       announce_info_arr_.clear ();
-      for (int i=0; i < nongroups.size(); i++)
-	{
-	  Engraver * eng = dynamic_cast<Engraver*> (nongroups[i]);
-	  if (eng)
-	    eng->process_acknowledged ();
-	}
-
+      create_grobs ();
     }
 }
 
+#include <iostream.h>
 
-Staff_info
-Engraver_group_engraver::get_staff_info() const
+/*
+  order is : top to bottom (as opposed to do_announces)
+ */
+void
+Engraver_group_engraver::process_music ()
 {
-  Staff_info inf = Engraver::get_staff_info();
-
-  Link_array<Translator> simple_translators = nongroup_l_arr (); 
-  for (int i=0; i < simple_translators.size(); i++)
+   for (SCM p = simple_trans_list_; gh_pair_p (p); p =gh_cdr (p))
     {
-    Engraver * eng = dynamic_cast<Engraver*> (simple_translators[i]);
-    if (eng)
-      eng->fill_staff_info (inf);
+      Translator * t = unsmob_translator (gh_car (p));
+      Engraver * eng = dynamic_cast<Engraver*> (t);
+
+      if (eng)
+	eng->process_music ();
     }
-  return inf;
+   for (SCM p = trans_group_list_; gh_pair_p (p); p =gh_cdr (p))
+    {
+      Translator * t = unsmob_translator (gh_car (p));
+      Engraver*eng = dynamic_cast<Engraver*> (t);
+      if (eng)
+	eng->process_music ();
+    }
 }
+
 
 
 

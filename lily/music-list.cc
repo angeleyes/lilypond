@@ -3,17 +3,20 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "music-list.hh"
 #include "music-wrapper.hh"
-#include "musical-pitch.hh"
+#include "pitch.hh"
 #include "request.hh"
 #include "musical-request.hh"
 #include "music-iterator.hh"
 #include "main.hh"
 #include "killing-cons.tcc"
+#include "simultaneous-music-iterator.hh"
+#include "sequential-music-iterator.hh"
+#include "request-chord-iterator.hh"
 
 Moment
 Simultaneous_music::length_mom () const
@@ -21,24 +24,34 @@ Simultaneous_music::length_mom () const
   return maximum_length ();
 }
 
-
-void
-Music_sequence::compress (Moment m)
+Simultaneous_music::Simultaneous_music (SCM head)
+  : Music_sequence (head)
 {
-  for (Cons<Music> *i = music_p_list_p_->head_; i;  i = i->next_)
-    i->car_->compress (m);
+  set_mus_property ("iterator-ctor",
+		    Simultaneous_music_iterator::constructor_cxx_function);
 }
 
-Simultaneous_music::Simultaneous_music(Music_list *p)
-  : Music_sequence (p)
+Simultaneous_music::Simultaneous_music ()
+  : Music_sequence ()
 {
-
+  set_mus_property ("iterator-ctor",
+		    Simultaneous_music_iterator::constructor_cxx_function);
+  
 }
 
-Sequential_music::Sequential_music(Music_list *p)
-  : Music_sequence (p)
+Sequential_music::Sequential_music (SCM head)
+  : Music_sequence (head)
 {
+  set_mus_property ("iterator-ctor",
+		    Sequential_music_iterator::constructor_cxx_function);
 }
+Sequential_music::Sequential_music ()
+  : Music_sequence ()
+{
+  set_mus_property ("iterator-ctor",
+		    Sequential_music_iterator::constructor_cxx_function);
+}
+
 
 Moment
 Sequential_music::length_mom () const
@@ -46,71 +59,38 @@ Sequential_music::length_mom () const
   return cumulative_length ();
 }
 
-Musical_pitch
-Simultaneous_music::to_relative_octave (Musical_pitch p)
+Pitch
+Simultaneous_music::to_relative_octave (Pitch p)
 {
   return do_relative_octave (p, true);
 }
 
-
-Musical_pitch
-Music_sequence::do_relative_octave (Musical_pitch p, bool b)
+Request_chord::Request_chord (SCM s)
+  : Simultaneous_music (s)
 {
-  return music_p_list_p_->do_relative_octave (p, b);  
+  set_mus_property ("iterator-ctor",
+		    Request_chord_iterator::constructor_cxx_function);
 }
 
-
-Musical_pitch 
-Music_list::do_relative_octave (Musical_pitch last, bool ret_first)
+Request_chord::Request_chord ()
 {
-  Musical_pitch retval;
-  int count=0;
-  for (Cons<Music> *i = head_; i ; i = i->next_)
+  set_mus_property ("iterator-ctor",
+		    Request_chord_iterator::constructor_cxx_function);
+}
+
+Pitch
+Request_chord::to_relative_octave (Pitch last)
+{
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
     {
-      last = i->car_->to_relative_octave (last);
-      if (!count ++ )
-	retval = last;
-    }
-
-  if (!ret_first)
-    retval = last;
-  
-  return retval;
-}
-
-
-Music_list::Music_list (Music_list const &s)
-  : Cons_list<Music> (s), Input (s)
-{
-  Cons_list<Music>::init ();
-  clone_killing_cons_list (*this, s.head_);
-}
-
-
-void
-Music_list::add_music (Music*m_p)
-{
-  if (!m_p)
-    return;
-
-  append (new Killing_cons<Music> (m_p, 0));
-}
-
-Request_chord::Request_chord()
-  : Simultaneous_music (new Music_list)
-{
-}
-
-
-Musical_pitch
-Request_chord::to_relative_octave (Musical_pitch last)
-{
-  for (Cons<Music> *i = music_p_list_p_->head_; i ; i = i->next_)
-    {
-      if (Melodic_req *m= dynamic_cast <Melodic_req *> (i->car_))
+      Music * mus = unsmob_music (gh_car (s));
+      if (Melodic_req *m= dynamic_cast <Melodic_req *> (mus))
 	{
-	  Musical_pitch &pit = m->pitch_;
+	  Pitch pit = *unsmob_pitch (m->get_mus_property ("pitch"));
+	  
 	  pit.to_relative_octave (last);
+	  m->set_mus_property ("pitch", pit.smobbed_copy ());
+	  	  
 	  return pit;
 	}
     }
@@ -118,11 +98,7 @@ Request_chord::to_relative_octave (Musical_pitch last)
 }
 
 
-Music_list::Music_list ()
-{
-}
 
-Music_sequence::~Music_sequence ()
-{
-  delete music_p_list_p_;
-}
+ADD_MUSIC (Simultaneous_music);
+ADD_MUSIC (Sequential_music);
+ADD_MUSIC (Request_chord);

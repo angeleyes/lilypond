@@ -1,38 +1,40 @@
 /*
   line-of-score.hh -- part of GNU LilyPond
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef SCORELINE_HH
 #define SCORELINE_HH
 
+#include "protected-scm.hh" 
 #include "column-x-positions.hh"
-#include "axis-group-spanner.hh"
-#include "super-element.hh"
+#include "spanner.hh"
 
-/// the columns of a score that form one line.
-class Line_of_score : public Axis_group_spanner, public Super_element
+class Line_of_score : public Spanner
 {
 public:
-  Link_array<Paper_column> cols_;
+  int rank_i_;
+  void post_processing (bool);
 
-  Line_of_score();
-    
+  Line_of_score (SCM);
   /// is #c# contained in #*this#?
   bool contains_b (Paper_column const *c) const;
-    
-  Line_of_score * set_breaking (Array<Column_x_positions> const&, int j);
+  int element_count () const;
 
+  void break_into_pieces (Array<Column_x_positions> const&);
+  void output_lines ();
 
-  void output_all (bool last_line);
-  void add_column (Paper_column*);
+  Link_array<Item> broken_col_range (Item const*, Item const*) const;
+  Link_array<Grob> column_l_arr () const;
   
+  void add_column (Paper_column*);
+  void typeset_grob (Grob*);
+  void output_molecule (SCM, Offset);
+  void output_scheme (SCM);
+  void pre_processing ();
 protected:
-  virtual void do_substitute_element_pointer (Score_element*, Score_element*);
-  virtual Link_array<Score_element> get_extra_dependencies () const;
-  virtual void do_print() const;
-  VIRTUAL_COPY_CONS(Score_element);
+  VIRTUAL_COPY_CONS (Grob);
 };
 
 #endif

@@ -3,7 +3,7 @@
 
   source file of the LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -27,24 +27,24 @@ public:
    Get a char.
    Only class member who uses text_file::get
    */
-  char data_get();    
+  char data_get ();    
   void data_unget (char c) {
     unget (c);
   }
 
   /// read line, eat #\n#
-  String get_line();
+  String get_line ();
     
   /// read a word till next space, leave space. Also does quotes
-  String get_word();
+  String get_word ();
 
   /// gobble horizontal white stuff.
-  void gobble_white();
+  void gobble_white ();
 
   /// gobble empty stuff before first field.
-  void gobble_leading_white();
+  void gobble_leading_white ();
   Data_file (String);
-  ~Data_file();
+  ~Data_file ();
   /**
      eat complete file
      @post

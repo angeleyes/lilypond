@@ -3,30 +3,23 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef DOTS_HH
 #define DOTS_HH
 
-#include "item.hh"
-#include "staff-symbol-referencer.hh"
-/**
-  The dots to go with a notehead/rest.  A separate class, since they
-  are a party in collision resolution.
-  */
-class Dots : public Item, public Staff_symbol_referencer
+#include "lily-proto.hh"
+#include "lily-guile.hh"
+
+
+
+class Dots
 {
-protected:
-  virtual Molecule * do_brew_molecule_p () const;
-  virtual void do_post_processing ();
 public:
-  int dots_i_;
-  int position_i_;
-  Direction resolve_dir_;
-  
-  Dots ();
+  DECLARE_SCHEME_CALLBACK (quantised_position_callback, (SCM element, SCM axis));
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
 };
 
 #endif // DOTS_HH

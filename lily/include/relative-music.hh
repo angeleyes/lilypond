@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -15,13 +15,11 @@
 class Relative_octave_music : public Music_wrapper
 {
 public:
-  Musical_pitch last_pitch_;
-
-  void do_print () const;
-  Relative_octave_music (Music*, Musical_pitch);
+  Relative_octave_music (SCM l);
+  Relative_octave_music ();
   
-  VIRTUAL_COPY_CONS(Music);
-  virtual Musical_pitch to_relative_octave (Musical_pitch);
+  VIRTUAL_COPY_CONS (Music);
+  virtual Pitch to_relative_octave (Pitch);
 };
 
 

@@ -3,146 +3,159 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
-#include "dimension-cache.hh"
+
 
 #include "engraver.hh"
-#include "staff-side.hh"
-#include "text-item.hh"
+#include "side-position-interface.hh"
+#include "item.hh"
 #include "musical-request.hh"
-#include "note-head.hh"
 #include "stem.hh"
-#include "staff-symbol.hh"
+#include "rhythmic-head.hh"
 
+
+/**
+   typeset directions that are  plain text.
+ */
 class Text_engraver : public Engraver
 {
   Link_array<Text_script_req> reqs_;
-  Link_array<Staff_side_item> positionings_;
-  Link_array<Text_item> texts_;
+  Link_array<Item> texts_;
 public:
-  Text_engraver();
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
 protected:
-  virtual bool do_try_music (Music* m);
-  virtual void do_pre_move_processing ();
-  virtual void do_post_move_processing ();
-  virtual void do_process_requests ();
-  virtual void acknowledge_element (Score_element_info);
+  virtual bool try_music (Music* m);
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+  virtual void create_grobs ();
+  virtual void acknowledge_grob (Grob_info);
 };
 
-Text_engraver::Text_engraver ()
-{
-  
-}
-
 bool
-Text_engraver::do_try_music (Music *m)
+Text_engraver::try_music (Music *m)
 {
-  if (Text_script_req *r = dynamic_cast<Text_script_req*> (m))
+  if (dynamic_cast<Text_script_req*> (m)
+      && m->get_mus_property ("text-type") != ly_symbol2scm ("dynamic"))
     {
-      reqs_.push (r);
+      reqs_.push (dynamic_cast<Text_script_req*> (m));
       return true;
     }
   return false;
 }
 
-
 void
-Text_engraver::acknowledge_element (Score_element_info i)
+Text_engraver::acknowledge_grob (Grob_info inf)
 {
-  if (Note_head *n = dynamic_cast<Note_head*> (i.elem_l_))
+  if (Rhythmic_head::has_interface (inf.elem_l_))
     {
-      for (int i=0; i < positionings_.size (); i++)
+      for (int i=0; i < texts_.size (); i++)
 	{
-	  positionings_[i]->add_support (n);
-	  if (positionings_[i]->axis_ == X_AXIS
-	      && !positionings_[i]->parent_l (Y_AXIS))
-	    positionings_[i]->set_parent (n, Y_AXIS);
+	  Grob*t = texts_[i];
+	  Side_position_interface::add_support (t,inf.elem_l_);
+
+	  /*
+	    ugh.
+	   */
+	  if (Side_position_interface::get_axis (t) == X_AXIS
+	      && !t->parent_l (Y_AXIS))
+	    t->set_parent (inf.elem_l_, Y_AXIS);
+	  else if (Side_position_interface::get_axis (t) == Y_AXIS
+	      && !t->parent_l (X_AXIS))
+	    t->set_parent (inf.elem_l_, X_AXIS);
 	}
     }
-  if (Stem *n = dynamic_cast<Stem*> (i.elem_l_))
+  
+  if (Stem::has_interface (inf.elem_l_))
     {
-      for (int i=0; i < positionings_.size (); i++)
+      for (int i=0; i < texts_.size (); i++)
 	{
-	  positionings_[i]->add_support (n);
+	  Side_position_interface::add_support (texts_[i],inf.elem_l_);
 	}
     }
 }
 
 void
-Text_engraver::do_process_requests ()
+Text_engraver::create_grobs ()
 {
+  if (texts_.size ())
+    return;
   for (int i=0; i < reqs_.size (); i++)
     {
       Text_script_req * r = reqs_[i];
-
-      Text_item *text = new Text_item;
-      Staff_side_item *ss = new Staff_side_item;
-
-
-
-      Scalar axisprop = get_property ("scriptHorizontal",0);
-      if (axisprop.to_bool ())
-	{
-	  ss->axis_ = X_AXIS;
-	  text->set_parent (ss, Y_AXIS);
-			       
-	}
-      ss->set_victim (text);
-      ss->set_elt_property (script_priority_scm_sym,
-			    gh_int2scm (200));
-
-      ss->dir_ = r->dir_;
-
-      text->text_str_ = r->text_str_;
       
-      if (r->style_str_.empty_b ())
+      // URG: Text vs TextScript
+      String basic = "TextScript";
+
+      if (r->get_mus_property ("text-type") == ly_symbol2scm ("finger"))
 	{
-	  Scalar p (get_property ("textStyle", 0));
-	  if (p.length_i ())
-	    text->style_str_ = p;
+	  basic = "Fingering";
 	}
-      else
-	text->style_str_ = r->style_str_;
+
+      Item *text = new Item (get_property (basic.ch_C ()));
+
+      /*
+	FIXME -> need to use basic props.
+       */
+      SCM axisprop = get_property ("scriptHorizontal");
       
-      Scalar padding = get_property ("textScriptPadding", 0);
-      if (padding.length_i() && padding.isnum_b ())
+      Axis ax = to_boolean (axisprop) ? X_AXIS : Y_AXIS;
+      Side_position_interface::set_axis (text, ax);
+
+#if 0
+      if (r->style_str_ == "finger" && ax == Y_AXIS)
 	{
-	  ss->set_elt_property (padding_scm_sym, gh_double2scm(Real(padding)));
+	  /*
+	    nicely center the scripts.
+	   */ 
+	  text->add_offset_callback (Side_position_interface::aligned_on_self_proc, X_AXIS);
+	  text->add_offset_callback (Side_position_interface::centered_on_parent_proc, X_AXIS);
 	}
+#endif
+      
 
-      Scalar empty = get_property ("textEmptyDimension", 0);
-      if (empty.to_bool ())
-	{
-	  text->set_empty (true, X_AXIS);
-	}
+      
+      /*
+	make sure they're in order by adding i to the priority field.
+	*/
+      text->set_grob_property ("script-priority",
+			      gh_int2scm (200 + i));
 
-      announce_element (Score_element_info (text, r));
-      announce_element (Score_element_info (ss, r));
-
+      if (r->get_direction ())
+	Side_position_interface::set_direction (text, r->get_direction ());
+      
+      text->set_grob_property ("text", r->get_mus_property ("text"));
+      
+      SCM nonempty = get_property ("textNonEmpty");
+      if (to_boolean (nonempty))
+	/*
+	  empty text: signal that no rods should be applied.  
+	 */
+	text->set_grob_property ("no-spacing-rods" , SCM_BOOL_F);
+		
+      announce_grob (text, r);
       texts_.push (text);
-      positionings_.push (ss);
     }
 }
 
 void
-Text_engraver::do_pre_move_processing ()
+Text_engraver::stop_translation_timestep ()
 {
   for (int i=0; i < texts_.size (); i++)
     {
-      typeset_element (texts_[i]);
-      typeset_element (positionings_[i]);
+      Item *ti = texts_[i];
+      Side_position_interface::add_staff_support (ti);
+      typeset_grob (ti);
     }
   texts_.clear ();
-  positionings_.clear ();
 }
 
 void
-Text_engraver::do_post_move_processing ()
+Text_engraver::start_translation_timestep ()
 {
   reqs_.clear ();
 }
 
-ADD_THIS_TRANSLATOR(Text_engraver);
+ADD_THIS_TRANSLATOR (Text_engraver);
+

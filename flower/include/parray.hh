@@ -3,7 +3,7 @@
 
   source file of the Flower Library
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -34,10 +34,10 @@ class Link_array : private Array<void *>
     {
     }
 public:
-  Link_array()
+  Link_array ()
     {}
 
-  Link_array(T * const *tp, int n)
+  Link_array (T * const *tp, int n)
     : Array<void*> ((void **)tp, n)
     {
     }
@@ -51,7 +51,7 @@ public:
     {
       return elem_ref (i);
     }
-  T *&elem_ref  (int i) const
+  T *&elem_ref (int i) const
     {
       return (T*&) Array<void*>::elem_ref (i);
     }
@@ -107,16 +107,16 @@ public:
 	}
     
     }
-  void default_sort() {
+  void default_sort () {
     sort (default_compare);
   }
   // quicksort.
-  void sort (int (*compare)(T *const&,T *const&),
+  void sort (int (*compare) (T *const&,T *const&),
 	     int lower = -1, int upper = -1);
   
-  void uniq() {
+  void uniq () {
     Link_array<T> l_arr;
-    for (int i=0; i < size(); i++) 
+    for (int i=0; i < size (); i++) 
       if (!i || elem (i-1) != elem (i))
 	l_arr.push (elem (i)); 
     *this = l_arr;
@@ -129,16 +129,35 @@ public:
   Array<void*>::empty;
   Array<void*>::reverse;
   Array<void*>::tighten_maxsize;
+
+  T *& boundary (int d, int i)
+  {
+    assert (d);
+    if (d == 1)
+      return top (i);
+    else
+      return elem_ref (i);
+  }
+  T * boundary (int d, int i)const
+  {
+    assert (d);
+    if (d == 1)
+      return top (i);
+    else
+      return elem_ref (i);
+  }
+
+  
   T ** access_array () const
     {
-      return (T**) Array<void*>::access_array();
+      return (T**) Array<void*>::access_array ();
     }
   T * get (int i)
     {
       return (T*) Array<void*>::get (i);
     }
   Link_array<T>
-  slice(int l,int u)
+  slice (int l,int u)
     {
       return Array<void*>::slice (l,u);
     }
@@ -147,7 +166,7 @@ public:
       Array<void*>::concat (a2);
     }
   int find_i (T const * t) const {
-    for (int i=0; i < size(); i++)
+    for (int i=0; i < size (); i++)
       if (elem (i) == t)
 	return i;
     return -1;
@@ -176,7 +195,7 @@ typecast_array (Link_array<V> const &a, T * /* dummy */ )
 
 
 template<class T> inline void
-Link_array<T>::sort (int (*compare)(T *const&,T *const&),
+Link_array<T>::sort (int (*compare) (T *const&,T *const&),
 		int lower = -1, int upper = -1) 
 {
   if (lower < 0) 
@@ -189,7 +208,7 @@ Link_array<T>::sort (int (*compare)(T *const&,T *const&),
   swap (lower, (lower+upper)/2);
   int last = lower;
   for (int i= lower +1; i <= upper; i++)
-    if (compare (elem (i), elem(lower)) < 0)
+    if (compare (elem (i), elem (lower)) < 0)
       swap (++last,i);
   swap (lower, last);
   sort (compare, lower, last-1);
@@ -206,6 +225,77 @@ junk_pointer_array (Link_array<T> &a)
     }
   a.clear ();
 }
+
+
+
+/*
+  lookup with binsearch, return tokencode.
+*/
+template<class T>
+int
+binsearch_array (Array<T> const &arr, T t, int (*compare) (T const&,T const&))
+{
+  int lo;
+  int hi;
+  int cmp;
+  int result;
+  lo = 0;
+  hi = maxkey;
+
+  /* binary search */
+  do
+  {
+      cmp = (lo + hi) / 2;
+
+      result = compare (t, arr[cmp]);
+
+      if (result < 0)
+          hi = cmp;
+      else
+          lo = cmp;
+    }
+  while (hi - lo > 1);
+  if (!compare (t, arr[lo]))
+    return lo;
+  else
+    return -1;              /* not found */
+}
+
+
+template<class T>
+int
+binsearch_link_array (Link_array<T> const &arr, T *t,
+		      int (*compare) (T *const&,T *const&))
+{
+  int lo;
+  int hi;
+  int cmp;
+  int result;
+  lo = 0;
+  hi = arr.size ();
+
+  if (hi == 0)
+    return -1;
+  
+  /* binary search */
+  do
+  {
+      cmp = (lo + hi) / 2;
+
+      result = compare (t, arr[cmp]);
+
+      if (result < 0)
+          hi = cmp;
+      else
+          lo = cmp;
+    }
+  while (hi - lo > 1);
+  if (!compare (t, arr[lo]))
+    return lo;
+  else
+    return -1;              /* not found */
+}
+
 
 #endif // PARRAY_HH
 

@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -33,12 +33,11 @@
    
    BODY A B C
 
-   is called "semi" folded.  This is common notation
+   is called volta.  This is common notation
 
    BODY A BODY B BODY C
 
    is called unfolded.  Useful for MIDI.
-
 
    If the number of repeats is smaller than the number of alternatives, then
    the excess alternatives are ignored for all timing purposes.
@@ -50,36 +49,29 @@
 class Repeated_music : public Music
 {
 public:
-  bool fold_b_;
-  /// if FOLD_B_ is false, semifold this.
-  bool volta_fold_b_;
+  Music * body () const;
+  Music_sequence * alternatives () const;
 
   /// how often do we repeat?
-  int repeats_i_;
+  int repeat_count ( ) const;
+  virtual Pitch to_relative_octave (Pitch);
 
-  Music * repeat_body_p_;
-  Music_sequence * alternatives_p_;
+  Moment body_length_mom () const;
+  Moment alternatives_length_mom (bool fold) const;
+  Moment alternatives_volta_length_mom () const;  
 
-  virtual Musical_pitch to_relative_octave (Musical_pitch);
-
-  /// The duration of this piece of music
-  virtual Moment length_mom () const;
-
-  Moment alternatives_length_mom () const;
-
-  void print() const;
+  DECLARE_SCHEME_CALLBACK (unfolded_music_length, (SCM));
+  DECLARE_SCHEME_CALLBACK (volta_music_length, (SCM));
+  DECLARE_SCHEME_CALLBACK (folded_music_length, (SCM));    
+  
   /// Transpose, with the interval central C to #p#
-  virtual void transpose (Musical_pitch p);
+  virtual void transpose (Pitch p);
 
   /// Scale the music in time by #factor#.
   virtual void compress (Moment factor);
-  VIRTUAL_COPY_CONS(Music);
-
-  Repeated_music (Music*, int , Music_sequence*);
-  Repeated_music (Repeated_music const&);
-  ~Repeated_music ();
-protected:
-  virtual void do_print() const;
+  VIRTUAL_COPY_CONS (Music);
+  Repeated_music ();
+  Repeated_music (SCM);
 };
 
 

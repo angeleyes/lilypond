@@ -3,34 +3,26 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1998--2001 Jan Nieuwenhuizen <janneke@gnu.org>
   
  */
 
 #ifndef MULTI_MEASURE_REST_HH
 #define MULTI_MEASURE_REST_HH
 
-#include "spanner.hh"
-#include "staff-symbol-referencer.hh"
+#include "lily-proto.hh"
+#include "lily-guile.hh"
+#include "rod.hh"
 
-class Multi_measure_rest : public Spanner, public Staff_symbol_referencer
+class Multi_measure_rest
 {
 public:
-  Multi_measure_rest ();
-  int measures_i_;
-  void add_column (Item*);
-
-  Link_array<Item> column_arr_;
-
-protected:
-  virtual Molecule *do_brew_molecule_p () const;
-  VIRTUAL_COPY_CONS (Score_element);
-
-  virtual void do_add_processing ();
-  virtual void do_post_processing ();
-  virtual void do_print () const;
-  virtual Array<Rod> get_rods () const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  DECLARE_SCHEME_CALLBACK (percent, (SCM));
+  static  void add_column (Grob*,Item*);
+  DECLARE_SCHEME_CALLBACK (set_spacing_rods, (SCM ));
 };
 
 #endif /* MULTI_MEASURE_REST_HH */

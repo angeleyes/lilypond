@@ -1,62 +1,68 @@
 /*
-  staff-gravs.cc -- implement Line_group_engraver
+  line-group-engraver-group.cc -- implement Line_group_engraver
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "staff-symbol.hh"
-#include "axis-group-spanner.hh"
 #include "command-request.hh"
 #include "bar.hh"
 #include "debug.hh"
 #include "line-group-group-engraver.hh"
 #include "paper-column.hh"
+#include "axis-group-interface.hh"
+#include "spanner.hh"
 
-Line_group_engraver_group::Line_group_engraver_group()
+
+Line_group_engraver_group::Line_group_engraver_group ()
 {
   staffline_p_ =0;
 }
 
 
 void
-Line_group_engraver_group::typeset_element (Score_element *elem)
+Line_group_engraver_group::typeset_grob (Grob *elem)
 {
   if (!elem->parent_l (Y_AXIS))      
-    staffline_p_->add_element (elem);
-  Engraver_group_engraver::typeset_element (elem);
+    Axis_group_interface::add_element (staffline_p_, elem);
+  Engraver_group_engraver::typeset_grob (elem);
 }
 
 
 void
-Line_group_engraver_group::do_removal_processing()
+Line_group_engraver_group::finalize ()
 {
-  Engraver_group_engraver::do_removal_processing ();
+  Engraver_group_engraver::finalize ();
+  Grob *  it
+    = unsmob_grob (get_property (ly_symbol2scm ("currentCommandColumn")));
 
-  staffline_p_->set_bounds(RIGHT,get_staff_info().command_pcol_l ());
-  Engraver_group_engraver::typeset_element (staffline_p_);
+  staffline_p_->set_bound (RIGHT,it);
+  Engraver_group_engraver::typeset_grob (staffline_p_);
   staffline_p_ = 0;
 }
 
 void
-Line_group_engraver_group::do_creation_processing()
+Line_group_engraver_group::initialize ()
 {
   create_line_spanner ();
-  staffline_p_->set_bounds(LEFT,get_staff_info().command_pcol_l ());
+  Grob *  it
+    = unsmob_grob (get_property (ly_symbol2scm ("currentCommandColumn"))); 
+  staffline_p_->set_bound (LEFT,it);
   
-  Engraver::announce_element (Score_element_info (staffline_p_,0));
+  Engraver::announce_grob (staffline_p_,0);
 }
 
 void
 Line_group_engraver_group::create_line_spanner ()
 {
-  staffline_p_ = new Axis_group_spanner ;
-  staffline_p_->set_axes (Y_AXIS,Y_AXIS);
+  staffline_p_ = new Spanner (SCM_EOL);
+  Axis_group_interface::set_interface (staffline_p_);
+  Axis_group_interface::set_axes (staffline_p_, Y_AXIS,Y_AXIS);
 }
 
 
 
 
-ADD_THIS_TRANSLATOR(Line_group_engraver_group);
+ADD_THIS_TRANSLATOR (Line_group_engraver_group);
 

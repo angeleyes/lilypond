@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 #include <math.h>
 
@@ -18,7 +18,7 @@ String
 Offset::str () const
 {
   String s;
-  s = String("(") + to_str (coordinate_a_[X_AXIS]) + ", " 
+  s = String (" (") + to_str (coordinate_a_[X_AXIS]) + ", " 
     + to_str (coordinate_a_[Y_AXIS]) + ")";
   return s;
 }
@@ -39,11 +39,28 @@ Offset
 complex_multiply (Offset z1, Offset z2)
 {
   Offset z;
-  if(!isinf_b(z2[Y_AXIS]))
+  if (!isinf_b (z2[Y_AXIS]))
   {
       z[X_AXIS] = z1[X_AXIS] * z2[X_AXIS] - z1[Y_AXIS]*z2[Y_AXIS];
       z[Y_AXIS] = z1[X_AXIS] * z2[Y_AXIS] + z1[Y_AXIS] * z2[X_AXIS];
   }
+  return z;
+}
+
+
+Offset
+complex_conjugate (Offset o)
+{
+  o[Y_AXIS] = - o[Y_AXIS];
+  return o;
+}
+
+Offset
+complex_divide (Offset z1, Offset z2)
+{
+  z2 = complex_conjugate (z2);
+  Offset z = complex_multiply (z1, z2);
+  z *= 1/z2.length ();
   return z;
 }
 
@@ -57,13 +74,13 @@ complex_exp (Offset o)
   
   Real r = exp (o[X_AXIS]);
 
-  return Offset(r*c, r*s);
+  return Offset (r*c, r*s);
 }
 
 Real
 Offset::arg () const
 {
-  return atan2 (y (), x());
+  return atan2 (coordinate_a_[Y_AXIS], coordinate_a_[X_AXIS]);
 }
 
 /**
@@ -72,7 +89,7 @@ Offset::arg () const
 Real
 Offset::length () const
 {
-  return sqrt (sqr (x()) + sqr (y()));
+  return sqrt (sqr (coordinate_a_[X_AXIS]) + sqr (coordinate_a_[Y_AXIS]));
 }
 void
 Offset::mirror (Axis a)

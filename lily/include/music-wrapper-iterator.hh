@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -21,17 +21,21 @@
 class Music_wrapper_iterator : public Music_iterator
 {
 public:
+  VIRTUAL_COPY_CONS (Music_iterator);
+  static SCM constructor_cxx_function;  
   Music_wrapper_iterator ();
+  Music_wrapper_iterator (Music_wrapper_iterator const&);
   ~Music_wrapper_iterator ();
 
-  virtual void construct_children  () ;
-  virtual Moment next_moment () const;
+  virtual void construct_children () ;
+  virtual Moment pending_moment () const;
   virtual bool ok () const;
+  virtual SCM get_music (Moment)const;
+  virtual void skip (Moment);
 
 protected:
-  virtual void do_print () const;
-  virtual void do_process_and_next (Moment) ;
-  virtual Music_iterator *try_music_in_children (Music const *) const;
+  virtual void process (Moment);
+  virtual Music_iterator *try_music_in_children (Music *) const;
 
   Music_iterator *child_iter_p_;
 };

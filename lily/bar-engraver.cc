@@ -3,145 +3,96 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997, 1998, 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   Jan Nieuwenhuizen <janneke@gnu.org>
 */
+
+#include "bar.hh"
 #include "score-engraver.hh"
-#include "bar-engraver.hh"
-#include "staff-bar.hh"
 #include "musical-request.hh"
-#include "multi-measure-rest.hh"
-#include "command-request.hh"
-#include "time-description.hh"
 #include "engraver-group-engraver.hh"
 #include "warn.hh"
+#include "item.hh"
+#include "engraver.hh"
 
-Bar_engraver::Bar_engraver()
+/*
+  generate bars. Either user ("|:"), or default (new measure)
+
+  */
+class Bar_engraver : public Engraver
+{
+public:
+  Bar_engraver ();
+  VIRTUAL_COPY_CONS (Translator);
+  void request_bar (String type_str);
+    
+protected:
+  virtual void finalize ();
+  virtual void stop_translation_timestep ();
+  virtual void create_grobs ();
+
+private:
+  void typeset_bar ();
+  void create_bar ();
+
+  Item * bar_p_;
+};
+
+Bar_engraver::Bar_engraver ()
 {
   bar_p_ =0;
-  do_post_move_processing();
 }
-
-bool
-Bar_engraver::do_try_music (Music*r_l)
-{
-  if (Bar_req  * b= dynamic_cast <Bar_req *> (r_l))
-    {
-      if (bar_req_l_ && bar_req_l_->equal_b (b)) // huh?
-	return false;
-      
-      bar_req_l_ = b;
-      return true;
-    }
-  
-  return false;
-}
-
-
 
 void
 Bar_engraver::create_bar ()
 {
   if (!bar_p_)
     {
-      bar_p_ = new Staff_bar;
-      bar_p_->set_elt_property (break_priority_scm_sym, gh_int2scm (0));
+      bar_p_ = new Item (get_property ("BarLine"));
 
-      // urg: "" != empty...
-      String default_type = get_property ("defaultBarType", 0);
-      if (default_type.length_i ())
-	{
-	  bar_p_->type_str_ = default_type;
-	}
-
-      /*
-	urg.  Why did I implement this?
-       */
-      Scalar prop = get_property ("barAtLineStart", 0);
-      if (prop.to_bool ())
-	{
-	  bar_p_->set_elt_property (at_line_start_scm_sym, SCM_BOOL_T);
-	}
-      prop = get_property ("barSize", 0);
-      if (prop.isnum_b ())
-	{
-	  bar_p_->set_elt_property (bar_size_scm_sym, 
-				    gh_double2scm (Real(prop)));
-	}
-      announce_element (Score_element_info (bar_p_, bar_req_l_));
+      SCM gl = get_property ("whichBar");
+      if (scm_equal_p (gl, bar_p_->get_grob_property ("glyph")) != SCM_BOOL_T)
+	  bar_p_->set_grob_property ("glyph", gl);
+      
+      announce_grob (bar_p_, 0);
     }
 }
 
-/**
-   Make a barline.  If there are both |: and :| requested, merge them
-   to :|:.
+void
+Bar_engraver::finalize ()
+{
+  typeset_bar ();
+}
 
+/*
+  Bar_engraver should come *after* any engravers that expect bars to
+  modify whichBar in  deprecated_process_music () be typeset
 */
 void
-Bar_engraver::request_bar (String requested_type)
+Bar_engraver::create_grobs ()
 {
-  Scalar prop = get_property ("barAtLineStart", 0);
-  if (!now_mom ())
+  if (!bar_p_ && gh_string_p (get_property ("whichBar")))
     {
-      Scalar prop = get_property ("barAtLineStart", 0);
-      if (!prop.to_bool ())
-	return;
+      create_bar ();
     }
-  bool  bar_existed = bar_p_;
-  create_bar ();
-  if (bar_existed && requested_type == "")
-    {
-      return;
-    }
-  else if (((requested_type == "|:") && (bar_p_->type_str_ == ":|"))
-    || ((requested_type == ":|") && (bar_p_->type_str_ == "|:")))
-    bar_p_->type_str_ = ":|:";
-  else
-    bar_p_->type_str_ = requested_type;
-}
-
-void 
-Bar_engraver::do_creation_processing ()
-{
-  create_bar ();
-  bar_p_->type_str_ = "";
 }
 
 void
-Bar_engraver::do_removal_processing ()
+Bar_engraver::typeset_bar ()
 {
   if (bar_p_) 
     {
-      typeset_element (bar_p_);
+      typeset_grob (bar_p_);
       bar_p_ =0;
     }
 }
 
-void
-Bar_engraver::do_process_requests()
-{  
-  Time_description const *time = get_staff_info().time_C_;
-  if (bar_req_l_) 
-    {
-      create_bar ();    
-      bar_p_->type_str_ = bar_req_l_->type_str_;
-    }
-  else if (!now_mom ())
-    {
-      create_bar ();
-      bar_p_->type_str_ = "|";
-    }
-  else 
-    {
-      Scalar nonauto = get_property ("barNonAuto", 0);
-      if (!nonauto.to_bool ())
-	{
-	  Scalar always = get_property ("barAlways", 0);
-	  if ((time && !time->whole_in_measure_) || always.to_bool ())
-	    create_bar ();
-	}
-    }
-  
+/*
+  lines may only be broken if there is a barline in all staffs 
+*/
+void 
+Bar_engraver::stop_translation_timestep ()
+{
   if (!bar_p_)
     {
       Score_engraver * e = 0;
@@ -150,33 +101,14 @@ Bar_engraver::do_process_requests()
 	{
 	  e = dynamic_cast<Score_engraver*> (t);
 	}
-      
+
       if (!e)
 	programming_error ("No score engraver!");
       else
-	e->forbid_breaks ();
+	e->forbid_breaks ();	// guh. Use properties!
     }
+  else
+    typeset_bar ();
 }
 
-
-void 
-Bar_engraver::do_pre_move_processing()
-{
-  if (bar_p_) 
-    {
-      typeset_element (bar_p_);
-      bar_p_ =0;
-    }
-}
-
-void
-Bar_engraver::do_post_move_processing()
-{
-  bar_req_l_ = 0;
-}
-
-
-
-ADD_THIS_TRANSLATOR(Bar_engraver);
-
-
+ADD_THIS_TRANSLATOR (Bar_engraver);

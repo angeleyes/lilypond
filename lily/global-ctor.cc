@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 #include "global-ctor.hh"
@@ -23,5 +23,5 @@ void
 call_constructors ()
 {
   for (int i=0; i < ctor_global_static_arr_p_->size (); i++)
-    (ctor_global_static_arr_p_->elem (i)) ();
+ (ctor_global_static_arr_p_->elem (i)) ();
 }

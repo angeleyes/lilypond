@@ -3,41 +3,44 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "grace-align-item.hh"
-#include "lookup.hh"
+#include "align-interface.hh"
+
 #include "paper-column.hh"
+#include "paper-def.hh"
 
-Grace_align_item::Grace_align_item ()
+MAKE_SCHEME_CALLBACK (Grace_align_item,before_line_breaking,1);
+SCM
+Grace_align_item::before_line_breaking (SCM smob)
 {
-  stacking_dir_ = RIGHT;
-  set_axis (X_AXIS);
-}
-  
-void
-Grace_align_item::do_pre_processing ()
-{
-  Real nhw = lookup_l ()->notehead (2, "").dim_[X_AXIS].length();
-  threshold_interval_[MIN] = nhw* 1.5;
-  column_l ()->set_elt_property (contains_grace_scm_sym, SCM_BOOL_T);
+  Grob*me = unsmob_grob (smob);
 
-  
-  Axis_align_item::do_pre_processing ();
-  Note_head_side::do_pre_processing ();
+  SCM space = me->get_grob_property ("horizontal-space");
+  me->set_grob_property ("threshold",
+			gh_cons (space,
+				 gh_double2scm (infinity_f)));
+  dynamic_cast<Item*> (me)->column_l ()->set_grob_property ("contains-grace", SCM_BOOL_T);
 
-  translate_axis (-0.5* nhw, X_AXIS); // ugh.
+  return SCM_UNSPECIFIED;
 }
 
 void
-Grace_align_item::do_substitute_element_pointer (Score_element*o, Score_element*n)
+Grace_align_item::set_interface (Grob*me)
 {
-  Axis_align_item::do_substitute_element_pointer (o,n);
-  Note_head_side::do_substitute_element_pointer( o,n);
+  me->set_interface (ly_symbol2scm ("grace-align-interface"));
+  me->set_grob_property ("stacking-dir", gh_int2scm (RIGHT));
+  Align_interface::set_interface (me);
+  Align_interface::set_axis (me,X_AXIS);
 }
-void
-Grace_align_item::do_add_processing ()
+
+
+
+bool
+Grace_align_item::has_interface (Grob*m)
 {
+  return m&& m->has_interface (ly_symbol2scm ("grace-align-interface"));
 }

@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -13,17 +13,20 @@
 
 class Interpretation_context_handle
 {
-  Translator_group * report_to_l_;
-  void down ();
-  void up (Translator_group*);
 public:
   ~Interpretation_context_handle ();
   Interpretation_context_handle ();
+  Interpretation_context_handle* clone () const;
   void set_translator (Translator_group*);
   bool try_music (Music *);
-  void operator =(Interpretation_context_handle const&);
+  void operator = (Interpretation_context_handle const&);
   Interpretation_context_handle (Interpretation_context_handle const&);
   Translator_group * report_to_l () const;
+
+private:
+  Translator_group * report_to_l_;
+  void down ();
+  void up (Translator_group*);
 };
 
 #endif /* INTERPRETATION_CONTEXT_HANDLE_HH */

@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -14,19 +14,26 @@
 #include "array.hh"
 #include "string.hh"
 #include "lily-guile.hh"
-
-#ifdef __powerpc__
 #include "protected-scm.hh"
-#endif
 
 /**
-  Abstract interface for a Score_element to output itself.
- */
+   Interface for a Grob to output itself; The Paper_score contains a
+   pointer to a Paper_outputter, and this enables every grob to output
+   itself.
+
+   The Paper_outputter contains a reference to an output stream
+ (Paper_stream).  */
+
 class Paper_outputter
 {
+  bool verbatim_scheme_b_;
+  Paper_stream * stream_p_;
 public:
-  Paper_outputter (Paper_stream *);
+  String basename_;
+  Paper_outputter (String nm);
   ~Paper_outputter ();
+  
+  void dump_scheme (SCM);
 
   void output_int_def (String k, int v);
   void output_Real_def (String k, Real v);
@@ -36,15 +43,12 @@ public:
   void output_font_def (int i, String str);
   void output_font_switch (int i);
   void output_header ();
-  void output_molecule (Molecule const *, Offset, char const *);
   void output_comment (String s);
+  void output_string (SCM s);
   void output_scheme (SCM scm);
-  void start_line (Real height);
-  void stop_line ();
-  void stop_last_line ();
-  void switch_to_font (String fontname);
 
-  Paper_stream* outstream_l_;
+  static void write_header_field_to_file (String filename, String key, String value);
+  void write_header_fields_to_file (Scope *);
 };
 
 #endif // PAPER_OUTPUTTER_HH

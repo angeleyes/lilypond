@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -11,18 +11,18 @@
 #define REST_COLLISION_HH
 
 #include "lily-proto.hh"
-#include "item.hh"
+#include "lily-guile.hh"
 
-class Rest_collision : public Item {
-    Link_array<Note_column> rest_l_arr_;
-    Link_array<Note_column> ncol_l_arr_;
+
+
+
+class Rest_collision
+{
 public:
-    void add_column (Note_column*);
-    
-    Rest_collision();
-protected:
-    virtual void do_pre_processing();
-    virtual void do_print() const;
-    virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static void add_column (Grob*me,Grob*);
+  static void set_interface (Grob*me);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (force_shift_callback, (SCM element, SCM axis));
+  static SCM do_shift (Grob*,SCM);
 };
 #endif // REST_COLLISION_HH

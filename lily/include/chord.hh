@@ -3,33 +3,37 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 #ifndef CHORD_HH
 #define CHORD_HH
 
-#include "array.hh"
-#include "musical-pitch.hh"
-#include "lily-proto.hh"
+#include "pitch.hh"
 
+/*
+  This is not an Item, just a collection of Chord manipulation helper
+  functions
+  
+  ``chord'' is encoded:
+ (PITCHES . (INVERSION . BASS))
+
+  Chord:: namespace...  */
 class Chord
 {
 public:
-  Chord (Array<Musical_pitch> pitch_arr);
-  Chord (Musical_pitch tonic, Array<Musical_pitch>* add_arr_p, Array<Musical_pitch>* sub_arr_p, Musical_pitch* inversion_p);
-
-  void rebuild_from_base (int base_i);
-  void rebuild_insert_inversion (int tonic_i);
-  void rebuild_with_bass (int bass_i);
-
-  String banter_str (Musical_pitch* inversion) const;
-  int find_tonic_i () const;
-  int find_pitch_i (Musical_pitch p) const;
-  int find_notename_i (Musical_pitch p) const;
-  void find_additions_and_subtractions(Array<Musical_pitch>* add_arr_p, Array<Musical_pitch>* sub_arr_p) const;
-
-  Array<Musical_pitch> pitch_arr_;
+  static SCM base_pitches (SCM tonic);
+  static SCM transpose_pitches (SCM tonic, SCM pitches);
+  static SCM lower_step (SCM tonic, SCM pitches, SCM step);
+  static SCM member_notename (SCM p, SCM pitches);
+  static SCM member_pitch (SCM p, SCM pitches);
+  static SCM step_scm (SCM tonic, SCM p);
+  static SCM missing_thirds (SCM pitches);
+  static SCM to_pitches (SCM chord);
+  static SCM add_above_tonic (SCM pitch, SCM pitches);
+  static SCM add_below_tonic (SCM pitch, SCM pitches);
+  static SCM tonic_add_sub_to_pitches (SCM tonic, SCM add, SCM sub);
+  static Simultaneous_music *get_chord (SCM tonic, SCM add, SCM sub, SCM inversion, SCM bass, SCM dur);
 };
 
-#endif // CHORD_HH
+#endif /* CHORD_HH */

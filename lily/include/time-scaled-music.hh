@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -17,12 +17,10 @@
 class Time_scaled_music : public Music_wrapper
 {
 public:
-  int num_i_;
-  int den_i_;
-
-  Time_scaled_music (int, int, Music *);
+  Time_scaled_music (SCM);
+  Time_scaled_music ();
   
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 #endif /* Time_scaled_music_HH */

@@ -3,36 +3,40 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "engraver.hh"
 #include "grace-align-item.hh"
+#include "align-interface.hh"
 #include "note-column.hh"
-#include "local-key-item.hh"
 #include "warn.hh"
+#include "directional-element-interface.hh"
+#include "side-position-interface.hh"
+#include "local-key-item.hh"
+#include "paper-def.hh"
 
 /**
-   catch notes, and put them in a row.
+   Catch notes, and put them in a row. Used for aligning grace notes.
  */
 class Align_note_column_engraver: public Engraver
 {
-  Grace_align_item * align_item_p_;
-  Note_column * now_column_l_;
-  Local_key_item * accidental_l_;
+  Item * align_item_p_;
+  Grob * now_column_l_;
+  Grob * accidental_l_;
 
-  virtual void process_acknowledged ();
-  virtual void do_post_move_processing ();
-  virtual void do_creation_processing ();
-  virtual void do_removal_processing ();
-  virtual void acknowledge_element (Score_element_info);
+  virtual void create_grobs ();
+  virtual void start_translation_timestep ();
+  virtual void initialize ();
+  virtual void finalize ();
+  virtual void acknowledge_grob (Grob_info);
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
   Align_note_column_engraver ();
 };
 
-Align_note_column_engraver::Align_note_column_engraver()
+Align_note_column_engraver::Align_note_column_engraver ()
 {
   align_item_p_ =0;
   now_column_l_ =0;
@@ -40,40 +44,45 @@ Align_note_column_engraver::Align_note_column_engraver()
 }
 
 void
-Align_note_column_engraver::do_creation_processing ()
+Align_note_column_engraver::initialize ()
 {
-  align_item_p_ = new Grace_align_item;
+  align_item_p_ = new Item (get_property ("GraceAlignment"));
+  Grace_align_item::set_interface (align_item_p_);
+  Side_position_interface::set_axis (align_item_p_, X_AXIS);
+  Side_position_interface::set_direction (align_item_p_, LEFT);
+  
   // needed  for setting font size.
-  announce_element (Score_element_info (align_item_p_, 0));
+  announce_grob (align_item_p_, 0);
 }
 
 void
-Align_note_column_engraver::do_removal_processing ()
+Align_note_column_engraver::finalize ()
 {
-  Scalar al = get_property ("graceAlignPosition", 0);
-  if (al.isdir_b ())
+  SCM al = get_property ("graceAlignPosition");
+  if (isdir_b (al))
     {
-      align_item_p_->notehead_align_dir_ = Direction (int (al));
+      Direction d = to_dir (al);
+      Directional_element_interface::set (align_item_p_,d);
     }
   
-  typeset_element (align_item_p_);
+  typeset_grob (align_item_p_);
   align_item_p_ =0;
 }
 
 void
-Align_note_column_engraver::acknowledge_element (Score_element_info inf)
+Align_note_column_engraver::acknowledge_grob (Grob_info inf)
 {
-  if (Note_column * n = dynamic_cast<Note_column*> (inf.elem_l_))
+  if (Note_column::has_interface (inf.elem_l_))
     {
-      now_column_l_ =n;
+      now_column_l_ =inf.elem_l_;
     }
-  else if (Local_key_item * it = dynamic_cast<Local_key_item*> (inf.elem_l_))
+  else if (Local_key_item::has_interface (inf.elem_l_))
     {
-      accidental_l_ = it;
+      accidental_l_ = inf.elem_l_;
     }
 }
 void
-Align_note_column_engraver::process_acknowledged ()
+Align_note_column_engraver::create_grobs ()
 {
   if (now_column_l_ && accidental_l_)
     {
@@ -84,28 +93,40 @@ Align_note_column_engraver::process_acknowledged ()
 
 	 B. it has no pscore_l_ field.
 
+
+	 UGH UGH: separate note-spacing into  separate class,  and
+	 use that to space grace notes.	 
       */
-      Scalar grsp = get_property ("graceAccidentalSpace", 0);
-      if (grsp.isnum_b ())
+      SCM grsp = get_property ("graceAccidentalSpace") ;
+      if (gh_number_p (grsp))
 	{
-	  Real extra_space = double(grsp);
-	  SCM e = gh_cons (gh_double2scm (-extra_space), gh_double2scm (0.0));
-	  now_column_l_->set_elt_property (extra_space_scm_sym, e);
+	  /*
+	    ugh.
+	  */
+	  Real extra_space = gh_scm2double (grsp);
+	  SCM e = gh_cons (gh_double2scm (-extra_space),
+			   gh_double2scm (0.0));
+	  now_column_l_->set_grob_property ("extra-space", e);
 	}
     }
 
+  if (now_column_l_ && !align_item_p_)
+    programming_error ("Align_note_column_engraver:: urg\n");
+  else
+      
   if (now_column_l_)
     {
-      align_item_p_->add_element (now_column_l_);
+      Align_interface::add_element (align_item_p_,now_column_l_, Align_interface::alignment_callback_proc);
       now_column_l_ =0;
     }
 }
 
 void
-Align_note_column_engraver::do_post_move_processing ()
+Align_note_column_engraver::start_translation_timestep ()
 {
   now_column_l_ =0;
   accidental_l_ =0;
 }
 
-ADD_THIS_TRANSLATOR(Align_note_column_engraver);
+ADD_THIS_TRANSLATOR (Align_note_column_engraver);
+

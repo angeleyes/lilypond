@@ -1,37 +1,45 @@
-/*   
-  staff-sym-referencer.hh -- declare Staff_sym_referencer
-  
-  source file of the GNU LilyPond music typesetter
-  
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
-  
+/* 
+ staff-sym-referencer.hh -- declare staff_symbol_referencer
+ 
+ source file of the GNU LilyPond music typesetter
+ 
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+ 
  */
 
-#ifndef STAFF_SYM_REFERENCER_HH
-#define STAFF_SYM_REFERENCER_HH
+#ifndef STAFF_SYMBOL_REFERENCER_HH
+#define STAFF_SYMBOL_REFERENCER_HH
 
-#include "score-element.hh"
+#include "grob.hh"
+
 
 /**
-   A notation object that needs access to variables of the staff (no
-   lines, leading).
-   
+ A notation object that needs access to variables of the staff (no
+ lines, leading).
+ 
  */
-class Staff_symbol_referencer : public virtual Score_element
+class Staff_symbol_referencer 
 {
-protected:
-  Staff_symbol * staff_sym_l_;
-
 public:
-  Staff_symbol_referencer ();
-  void set_staff_symbol (Staff_symbol*);
-  Real staff_line_leading_f () const;
-  Staff_symbol * staff_symbol_l () const;
-  int lines_i () const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  static void set_position (Grob*,Real);
+  DECLARE_SCHEME_CALLBACK (callback, (SCM element, SCM axis));
 
-  virtual int position_i () const;
+  /**
+     Leading are the lead strips between the sticks (lines) of
+     typeface. ie. leading is vertical space.
+  */
+ 
+  static Real staff_space (Grob*);
+  static Grob * staff_symbol_l (Grob*);
+  static bool on_staffline (Grob*);
+  static bool on_staffline (Grob*,int);
+  static int line_count (Grob*);
+  static Real position_f (Grob*);
+  static Real staff_radius (Grob*);
 };
 
-#endif /* STAFF_SYM_REFERENCER_HH */
+int compare_position (Grob *const&,Grob *const&); 
+#endif /* STAFF_SYMBOL_REFERENCER_HH */
 

@@ -3,68 +3,70 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "time-signature-engraver.hh"
 #include "time-signature.hh"
 #include "command-request.hh"
-#include "timing-engraver.hh"
+#include "engraver.hh"
+
+
 #include "engraver-group-engraver.hh"
 
-Time_signature_engraver::Time_signature_engraver()
+
+/**
+  generate time_signatures. 
+  */
+class Time_signature_engraver : public Engraver {
+protected:
+  virtual void stop_translation_timestep ();
+  virtual void create_grobs ();
+public:
+  VIRTUAL_COPY_CONS (Translator);
+  Item * time_signature_p_;
+  SCM last_time_fraction_;
+  Time_signature_engraver ();
+};
+
+
+Time_signature_engraver::Time_signature_engraver ()
 { 
   time_signature_p_ =0;
+  last_time_fraction_ = SCM_BOOL_F;
 }
 
 void
-Time_signature_engraver::do_process_requests()
+Time_signature_engraver::create_grobs ()
 {
-  Translator * result =
-    daddy_grav_l()->get_simple_translator ("Timing_engraver");	// ugh
-
-  if (!result)
+  /*
+    not rigorously safe, since the value might get GC'd and
+    reallocated in the same spot */
+  SCM fr= get_property ("timeSignatureFraction");
+  if (!time_signature_p_ && last_time_fraction_ != fr)
     {
-      warning (_ ("lost in time") + ": " + _ ("can't find") 
-        + " Timing_translator");
-      return ;
+      last_time_fraction_ = fr; 
+      time_signature_p_ = new Item (get_property ("TimeSignature"));
+      time_signature_p_->set_grob_property ("fraction",fr);
+
+      if (time_signature_p_)
+	announce_grob (time_signature_p_, 0);
     }
   
-  Timing_engraver * timing_grav_l= dynamic_cast<Timing_engraver *> (result);
-  
-  Time_signature_change_req *req = timing_grav_l->time_signature_req_l();
-  if (req)
-    {
-      Array<int> args;
-      args.push (req->beats_i_);
-      args.push (req->one_beat_i_);
-	
-      time_signature_p_ = new Time_signature ();
-      time_signature_p_->args_ = args;
-      time_signature_p_->set_elt_property (break_priority_scm_sym, gh_int2scm (1)); // 1
-    }
-
-  
-  if (time_signature_p_)
-    announce_element (Score_element_info (time_signature_p_, req));
 }
 
+
+
 void
-Time_signature_engraver::do_pre_move_processing()
+Time_signature_engraver::stop_translation_timestep ()
 {
   if (time_signature_p_) 
     {
-      Scalar sigstyle = get_property ("timeSignatureStyle", 0);
-      if (sigstyle.length_i ())
-	{
-	  time_signature_p_->time_sig_type_str_ = sigstyle;
-	}
-
-      typeset_element (time_signature_p_);
+      typeset_grob (time_signature_p_);
       time_signature_p_ =0;
     }
 }
 
 
-ADD_THIS_TRANSLATOR(Time_signature_engraver);
+ADD_THIS_TRANSLATOR (Time_signature_engraver);
  
+

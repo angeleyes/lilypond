@@ -3,31 +3,26 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef STAFFSYM_HH
 #define STAFFSYM_HH
-#include "spanner.hh"
+
+#include "lily-guile.hh"
 
 /**
-  This spanner draws the lines of a pstaff.
-  The bottom line is position 0.
+  TODO: add stafflinethickness as parameter.
   */
-class Staff_symbol : public Spanner
+class Staff_symbol 
 {
 public:
-  /// this many lines.
-  int no_lines_i_;
-  Real staff_line_leading_f_;
-  
-  Staff_symbol ();
-  int steps_i() const;
-protected:
-  VIRTUAL_COPY_CONS(Score_element);
-  virtual Interval do_height () const;
-  virtual Molecule* do_brew_molecule_p() const;
-  virtual void do_print() const;
+  static Real staff_space (Grob*) ;
+  static int steps_i (Grob*) ;
+  static int line_count (Grob*);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  static bool has_interface (Grob*);
+  static void set_interface (Grob*);
 };
 #endif // STAFFSYM_HH

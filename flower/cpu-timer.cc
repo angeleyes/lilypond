@@ -3,7 +3,7 @@
 
   source file of the Flower Library
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "cpu-timer.hh"
@@ -13,7 +13,7 @@
 #ifdef CLK_TCK
 #define CLOCKS_PER_SEC  CLK_TCK
 #elif defined _SC_CLK_TCK
-#define CLOCKS_PER_SEC  sysconf(_SC_CLK_TCK)
+#define CLOCKS_PER_SEC  sysconf (_SC_CLK_TCK)
 #else
 #error cannot determine CLOCKS_PER_SEC
 #endif
@@ -34,5 +34,5 @@ Real
 Cpu_timer::read ()
 {
   clock_t stop = clock ();
-  return (stop-start_clock_)/Real(CLOCKS_PER_SEC);
+  return (stop-start_clock_)/Real (CLOCKS_PER_SEC);
 }

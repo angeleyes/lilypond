@@ -3,21 +3,26 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "time-scaled-music.hh"
+#include "time-scaled-music-iterator.hh"
 
-
-Time_scaled_music::Time_scaled_music (int n, int d,Music *mp)
-  : Music_wrapper (mp)
+Time_scaled_music::Time_scaled_music (SCM l)
+  : Music_wrapper (l)
 {
-  num_i_ = n;
-  den_i_ = d;
-  compress (Moment (num_i_,den_i_));
+  set_mus_property ("iterator-ctor",
+		    Time_scaled_music_iterator::constructor_cxx_function);
+  
+}
+
+Time_scaled_music::Time_scaled_music ()
+{
+  
 }
 
 
 
-
+ADD_MUSIC (Time_scaled_music);

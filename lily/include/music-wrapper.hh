@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -11,7 +11,7 @@
 #define MUSIC_WRAPPER_HH
 
 #include "music.hh"
-#include "musical-pitch.hh"
+#include "pitch.hh"
 
 /** A Music that modifies an existing Music.  This data structure
   corresponds to a production that takes a single Music argument,
@@ -21,18 +21,16 @@
   */
 class Music_wrapper : public Music
 {
-  Music * element_p_;
 public:
-  Music_wrapper (Music*);
-  Music * element_l () const;
-  virtual void transpose (Musical_pitch);
-  virtual void do_print () const;
+  Music_wrapper (SCM);
+  Music_wrapper ();
+  Music * element () const;
+  virtual void transpose (Pitch);
+
   
-  VIRTUAL_COPY_CONS(Music);
-  Music_wrapper (Music_wrapper const&);
+  VIRTUAL_COPY_CONS (Music);
   virtual Moment length_mom () const;
-  virtual ~Music_wrapper ();
-  virtual Musical_pitch to_relative_octave (Musical_pitch);
+  virtual Pitch to_relative_octave (Pitch);
   virtual void compress (Moment);
 };
 

@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -24,7 +24,7 @@ struct Drul_array
   T &elem (Direction d)
     {
       assert (d==1 || d== -1);
-      return array_[(d+1)/2];
+      return array_[ (d+1)/2];
 
     }
   T &operator[] (Direction d)
@@ -34,10 +34,10 @@ struct Drul_array
   T elem (Direction d) const
     {
     assert (d==1 || d== -1);
-    return array_[(d+1)/2];
+    return array_[ (d+1)/2];
     }
   
-  T operator[]  (Direction d) const
+  T operator[] (Direction d) const
   {
     return elem (d);
   }

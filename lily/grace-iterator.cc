@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -27,9 +27,9 @@ Grace_iterator::construct_children ()
 }
 
 void
-Grace_iterator::do_process_and_next (Moment m)
+Grace_iterator::process (Moment)
 {
-  Global_translator * t = dynamic_cast<Global_translator*>(report_to_l ());
+  Global_translator * t = dynamic_cast<Global_translator*> (report_to_l ());
   if (t)
     {
       t->start ();
@@ -40,14 +40,15 @@ Grace_iterator::do_process_and_next (Moment m)
     }
   else
     {
-      warning (_("No Grace context available!")); 
+      warning (_ ("no Grace context available")); 
     }
-  Music_iterator::do_process_and_next (m);
 }
 
 Moment
-Grace_iterator::next_moment () const
+Grace_iterator::pending_moment () const
 {
   return 0;
 }
 
+
+IMPLEMENT_CTOR_CALLBACK (Grace_iterator);

@@ -3,19 +3,41 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "dimension-cache.hh"
+
 #include "slur.hh"
-#include "rhythmic-column-engraver.hh"
-#include "note-head.hh"
+#include "engraver.hh"
+#include "rhythmic-head.hh"
 #include "stem.hh"
 #include "note-column.hh"
 #include "dot-column.hh"
 #include "musical-request.hh"
+#include "item.hh"
 
-Rhythmic_column_engraver::Rhythmic_column_engraver()
+class Rhythmic_column_engraver :public Engraver
+{
+  Link_array<Grob> rhead_l_arr_;
+  Link_array<Grob> grace_slur_endings_;
+  Grob * stem_l_;
+  Grob *ncol_p_;
+  Grob *dotcol_l_;
+
+protected:
+  VIRTUAL_COPY_CONS (Translator);
+  virtual void acknowledge_grob (Grob_info);
+  virtual void create_grobs ();
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+public:
+  Rhythmic_column_engraver ();
+  
+};
+
+
+
+Rhythmic_column_engraver::Rhythmic_column_engraver ()
 {
   stem_l_ =0;
   ncol_p_=0;
@@ -24,20 +46,21 @@ Rhythmic_column_engraver::Rhythmic_column_engraver()
 
 
 void
-Rhythmic_column_engraver::process_acknowledged ()
+Rhythmic_column_engraver::create_grobs ()
 {
   if (rhead_l_arr_.size ())
     {
       if (!ncol_p_)
 	{
-	  ncol_p_ = new Note_column;
-	  announce_element (Score_element_info (ncol_p_, 0));
+	  ncol_p_ = new Item (get_property ("NoteColumn"));
+	  Note_column::set_interface (ncol_p_);
+	  announce_grob (ncol_p_, 0);
 	}
 
       for (int i=0; i < rhead_l_arr_.size (); i++)
 	{
-	  if (!rhead_l_arr_[i]->parent_l(X_AXIS))
-	    ncol_p_->add_head (rhead_l_arr_[i]);
+	  if (!rhead_l_arr_[i]->parent_l (X_AXIS))
+	    Note_column::add_head (ncol_p_, rhead_l_arr_[i]);
 	}
       rhead_l_arr_.set_size (0);
     }
@@ -46,90 +69,78 @@ Rhythmic_column_engraver::process_acknowledged ()
   if (ncol_p_)
     {
       if (dotcol_l_
-	  && !dotcol_l_->parent_l(X_AXIS))
+	  && !dotcol_l_->parent_l (X_AXIS))
 	{
-	  ncol_p_->set_dotcol (dotcol_l_);
+	  Note_column::set_dotcol (ncol_p_, dotcol_l_);
 	}
 
       if (stem_l_
-	  && !stem_l_->parent_l(X_AXIS))
+	  && !stem_l_->parent_l (X_AXIS))
 	{
-	  ncol_p_->set_stem (stem_l_);
+	  Note_column::set_stem (ncol_p_, stem_l_);
 	  stem_l_ = 0;
 	}
 
-
-      bool wegrace = get_property ("weAreGraceContext",0).to_bool ();
+      SCM wg = get_property ("weAreGraceContext");
+      bool wegrace = to_boolean (wg);
 
       if (!wegrace)
-	for (int i=0; i < grace_slur_endings_.size(); i++)
-	  grace_slur_endings_[i]->add_column (ncol_p_);
+	for (int i=0; i < grace_slur_endings_.size (); i++)
+	  Slur::add_column (grace_slur_endings_[i], ncol_p_);
       grace_slur_endings_.clear ();
     }
 }
 
 void
-Rhythmic_column_engraver::acknowledge_element (Score_element_info i)
+Rhythmic_column_engraver::acknowledge_grob (Grob_info i)
 {
-  if ((get_property ("weAreGraceContext",0).to_bool () !=
-      (i.elem_l_->get_elt_property (grace_scm_sym) != SCM_BOOL_F))
-    && !dynamic_cast<Slur*> (i.elem_l_))
+  SCM wg = get_property ("weAreGraceContext");
+  bool wegrace = to_boolean (wg);
+  if (wegrace != to_boolean (i.elem_l_->get_grob_property ("grace"))
+    && !Slur::has_interface (i.elem_l_))
     return ;
   
   Item * item =  dynamic_cast <Item *> (i.elem_l_);
-  if (Stem*s=dynamic_cast<Stem *> (item))
+  if (item && Stem::has_interface (item))
     {
-      stem_l_ = s;
+      stem_l_ = item;
     }
-  else if (Rhythmic_head*r=dynamic_cast<Rhythmic_head *> (item))
+  else if (item && Rhythmic_head::has_interface (item))
     {
-      rhead_l_arr_.push (r);
+      rhead_l_arr_.push (item);
     }
-  else if (Dot_column*d =dynamic_cast<Dot_column *> (item))
+  else if (item && Dot_column::has_interface (item))
     {
-      dotcol_l_ = d;
+      dotcol_l_ = item;
     }
-  else if (Slur *s = dynamic_cast<Slur*> (i.elem_l_))
+  else if (Slur::has_interface (i.elem_l_))
     {
       /*
 	end slurs starting on grace notes
        */
       
-      if (s->get_elt_property (grace_scm_sym) != SCM_BOOL_F)
-	grace_slur_endings_.push (s);
+      if (to_boolean (i.elem_l_->get_grob_property ("grace")))
+	grace_slur_endings_.push (i.elem_l_);
    }
 }
 
 void
-Rhythmic_column_engraver::do_pre_move_processing()
+Rhythmic_column_engraver::stop_translation_timestep ()
 {
   if (ncol_p_) 
     {
-      Scalar sh = get_property ("horizontalNoteShift", 0);
-      if (sh.isnum_b ())
-	{
-	  ncol_p_->set_elt_property (horizontal_shift_scm_sym,
-				     gh_int2scm (int (sh)));
-	}
-
-      sh = get_property ("forceHorizontalShift" ,0);
-      if (sh.isnum_b ())
-	{
-	  ncol_p_->set_elt_property (force_hshift_scm_sym,
-				     gh_double2scm (double (sh)));
-	}
-
-      typeset_element (ncol_p_);
+      typeset_grob (ncol_p_);
       ncol_p_ =0;
     }
 }
 
 void
-Rhythmic_column_engraver::do_post_move_processing()
+Rhythmic_column_engraver::start_translation_timestep ()
 {
   grace_slur_endings_.clear ();
   dotcol_l_ =0;
   stem_l_ =0;
 }
 
-ADD_THIS_TRANSLATOR(Rhythmic_column_engraver);
+ADD_THIS_TRANSLATOR (Rhythmic_column_engraver);
+

@@ -1,8 +1,10 @@
+#include <stdlib.h>
+#include <iostream.h>
 #include "text-stream.hh"
 
 Text_stream::Text_stream (String fn)
 {
-  ios::sync_with_stdio();
+  ios::sync_with_stdio ();
   if (fn == "")
     {
       name = _ ("<stdin>");
@@ -28,7 +30,7 @@ Text_stream::Text_stream (String fn)
 void
 Text_stream::message (String s)
 {
-  cerr << '\n'<<get_name() << ": " << line ()<<": "<<s<<endl;
+  cerr << '\n'<<get_name () << ": " << line ()<<": "<<s<<endl;
 }
 
 bool
@@ -39,3 +41,11 @@ Text_stream::eof_b ()
       // !pushback.size () && 
       feof (f);
 }
+
+Text_stream::~Text_stream ()
+{
+    if (!eof_b ()) 
+      cerr <<__FUNCTION__<< ": closing unended file";
+    
+    fclose (f);
+  }

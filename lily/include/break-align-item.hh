@@ -3,26 +3,24 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef BREAK_ALIGN_ITEM_HH
 #define BREAK_ALIGN_ITEM_HH
 
-#include "axis-align-item.hh"
+#include "item.hh"
 
-/// align breakable items (clef, bar, etc.)
-class Break_align_item : public Axis_align_item {
-
-
-protected:
-  virtual void do_pre_processing();
+class Break_align_interface
+{
 public:
-  void add_breakable_item (Item *it);
-
-  Break_align_item ();
-  VIRTUAL_COPY_CONS(Score_element);
-	
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
+  static void do_alignment (Grob*);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  static void add_element (Grob*me, Grob*add);
+  DECLARE_SCHEME_CALLBACK (alignment_callback, (SCM element, SCM axis));
+  DECLARE_SCHEME_CALLBACK (self_align_callback, (SCM element, SCM axis));
 };
 #endif // BREAK_ALIGN_ITEM_HH

@@ -1,7 +1,7 @@
 /*
   performer-group-performer.hh -- declare Performer_group_performer
 
-  (c) 1996,  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1996--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
                  Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
@@ -19,12 +19,16 @@
 
 class Performer_group_performer : public Performer, public virtual Translator_group {
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
 
-  virtual void do_announces();
+  virtual void do_announces ();
   virtual void announce_element (Audio_element_info);
 protected:
   Array<Audio_element_info> announce_info_arr_;
+  void create_audio_elements ();
+
+private:
+  void acknowledge_audio_elements ();
 };
 
 #endif // PERFORMER_GROUP_PERFORMER_HH

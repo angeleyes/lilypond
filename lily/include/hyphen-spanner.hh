@@ -7,33 +7,15 @@
 #ifndef HYPHEN_SPANNER_HH
 #define HYPHEN_SPANNER_HH
 
-#include "directional-spanner.hh"
+#include "spanner.hh"
 
-/** 
-  centred hyphen 
-
-  A centred hyphen is a simple line between lyrics used to
-  divide syllables.
-
-  The length of the hyphen line should stretch based on the
-  size of the gap between syllables.
-  */
-class Hyphen_spanner : public Directional_spanner
+struct Hyphen_spanner 
 {
 public:
-Hyphen_spanner ();
-  Offset center () const;  
-  void set_textitem (Direction, Item*);
-
-protected:
-  virtual Molecule* do_brew_molecule_p () const;
-  Interval do_height () const;
-
-  void do_post_processing ();
- 
-  VIRTUAL_COPY_CONS (Score_element);
-
-  Drul_array<Real> dx_f_drul_;
+  Spanner* elt_l_;
+  Hyphen_spanner (Spanner*);
+  void set_textitem (Direction, Grob*);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
 };
 
 #endif // HYPHEN_SPANNER_HH

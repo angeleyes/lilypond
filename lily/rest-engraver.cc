@@ -3,13 +3,34 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
-
-#include "rest-engraver.hh"
+#include "item.hh"
+#include "staff-symbol-referencer.hh"
 #include "musical-request.hh"
 #include "dots.hh"
-#include "rest.hh"
+#include "rhythmic-head.hh"
+#include "engraver.hh"
+
+
+class Rest_engraver : public Engraver
+{
+  Rest_req *rest_req_l_;
+  Item * dot_p_;
+  Grob* rest_p_;
+protected:
+  virtual bool try_music (Music *);
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+  virtual void create_grobs ();
+
+public:
+  
+  VIRTUAL_COPY_CONS (Translator);
+  Rest_engraver ();
+};
+
+
 /*
   Should merge with Note_head_engraver
  */
@@ -21,56 +42,60 @@ Rest_engraver::Rest_engraver ()
 }
 
 void
-Rest_engraver::do_post_move_processing ()
+Rest_engraver::start_translation_timestep ()
 {
   rest_req_l_ =0;
 }
 
 void
-Rest_engraver::do_pre_move_processing ()
+Rest_engraver::stop_translation_timestep ()
 {
   if (rest_p_)
     {
-      typeset_element (rest_p_);
+      typeset_grob (rest_p_);
       rest_p_ =0;
     }
   if (dot_p_)
     {
-      typeset_element (dot_p_);
+      typeset_grob (dot_p_);
       dot_p_ =0;
     }    
 }
 
 void
-Rest_engraver::do_process_requests ()
+Rest_engraver::create_grobs ()
 {
   if (rest_req_l_ && !rest_p_) 
     {
-      rest_p_ = new Rest;
-      rest_p_->balltype_i_ = rest_req_l_->duration_.durlog_i_; 
+      rest_p_ = new Item (get_property ("Rest"));
+      Rhythmic_head::set_interface (rest_p_);
+      Staff_symbol_referencer::set_interface (rest_p_);
+      
+      int durlog  = unsmob_duration (rest_req_l_->get_mus_property ("duration"))-> duration_log ();
+      
+      rest_p_->set_grob_property ("duration-log",
+				 gh_int2scm (durlog));
 
-      if (rest_req_l_->duration_.dots_i_)
+      int dots =unsmob_duration (rest_req_l_->get_mus_property ("duration"))->dot_count ();
+      
+      if (dots)
 	{
-	  dot_p_ = new Dots;
-	  rest_p_->dots_l_  =dot_p_;
-	  dot_p_->dots_i_ = rest_req_l_->duration_.dots_i_;	  
-	  announce_element (Score_element_info (dot_p_,0));
+	  dot_p_ = new Item (get_property ("Dots"));
+
+	  Rhythmic_head::set_dots (rest_p_, dot_p_);
+	  dot_p_->set_parent (rest_p_, Y_AXIS);
+	  dot_p_->set_grob_property ("dot-count", gh_int2scm (dots));
+	  announce_grob (dot_p_,0);
 	}
-      if (rest_p_->balltype_i_ >= 2) 
-	{
-	  String reststyle = get_property ("restStyle", 0);
-	  if (reststyle.length_i ())
-	    rest_p_->set_elt_property (style_scm_sym,
-				       ly_ch_C_to_scm (reststyle.ch_C()));
-	}
-      announce_element (Score_element_info (rest_p_, rest_req_l_));
+
+      announce_grob (rest_p_, rest_req_l_);
     }
 }
 
 bool
-Rest_engraver::do_try_music (Music *req)
+Rest_engraver::try_music (Music *m)
 {
-  if (Rest_req *r = dynamic_cast <Rest_req *> (req))
+  if (Rest_req *r = dynamic_cast <Rest_req *> (m))
     {
       rest_req_l_ = r;
       return true;
@@ -79,4 +104,4 @@ Rest_engraver::do_try_music (Music *req)
 }
 
 
-ADD_THIS_TRANSLATOR(Rest_engraver);
+ADD_THIS_TRANSLATOR (Rest_engraver);

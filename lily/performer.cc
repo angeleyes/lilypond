@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1996,  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1996--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
                Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
@@ -18,9 +18,9 @@ Performer::play_element (Audio_element* p)
 }
 
 int
-Performer::get_tempo_i() const
+Performer::get_tempo_i () const
 {
-  return daddy_perf_l ()->get_tempo_i();
+  return daddy_perf_l ()->get_tempo_i ();
 }
 
 Performer_group_performer*
@@ -32,12 +32,12 @@ Performer::daddy_perf_l () const
 }
 
 void
-Performer::acknowledge_element (Audio_element_info)
+Performer::acknowledge_audio_element (Audio_element_info)
 {
 }
 
 void
-Performer::process_acknowledged ()
+Performer::create_audio_elements ()
 {
 }
 
@@ -45,6 +45,7 @@ Performer::process_acknowledged ()
 void
 Performer::announce_element (Audio_element_info i)
 {
-  i.origin_trans_l_arr_.push (this);
-  daddy_perf_l()->announce_element (i);
+  if (!i.origin_trans_l_)
+    i.origin_trans_l_= this;
+  daddy_perf_l ()->announce_element (i);
 }

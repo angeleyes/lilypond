@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "type-swallow-translator.hh"
@@ -11,7 +11,7 @@
 
 
 bool
-Type_swallow_translator::do_try_music (Music*r)
+Type_swallow_translator::try_music (Music*r)
 {
   if (classname (r) == swallow_str_)
       return true;
@@ -20,4 +20,4 @@ Type_swallow_translator::do_try_music (Music*r)
 
 
 
-DECLARE_REQUEST_SWALLOWER(Skip_req);
+DECLARE_REQUEST_SWALLOWER (Skip_req);

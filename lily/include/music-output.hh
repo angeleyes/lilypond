@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -14,7 +14,7 @@
 #include "lily-proto.hh"
 
 /**
-  Output something that was defined in a mudela file. 
+  Output something that was defined in a lilypond file. 
  */
 class Music_output 
 {
@@ -24,9 +24,9 @@ public:
   String origin_str_;
   int errorlevel_i_;
 
-  virtual void process() {} 
+  virtual void process () {} 
   virtual ~Music_output (){}
-  Music_output() 
+  Music_output () 
   {
     errorlevel_i_ = 0;
   }

@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -15,10 +15,10 @@
 class Swallow_performer : public Performer
 {
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
   
 protected:
-  virtual bool do_try_music (Music*) { return true; }
+  virtual bool try_music (Music*) { return true; }
 };
 
 #endif // SWALLOW_PERF_HH

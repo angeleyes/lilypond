@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -15,23 +15,23 @@
 
 class Grace_engraver_group : public Engraver_group_engraver, public Global_translator
 {
-  Link_array<Score_element> typeset_us_;
-  Array<Score_element_info> announce_to_top_;
+  Link_array<Grob> typeset_us_;
+  Array<Grob_info> announce_to_top_;
   bool calling_self_b_;
   bool pass_to_top_b (Music *) const;
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
   Grace_engraver_group ();
 protected:
-  virtual void announce_element (Score_element_info);
+  virtual void initialize ();
+  virtual void announce_grob (Grob_info);
   virtual void start ();
   virtual void finish ();
-  virtual void process ();
+  virtual void one_time_step ();
   virtual void each (Method_pointer);
-  virtual void each (Const_method_pointer) const;
-  virtual void do_removal_processing () ;
-  virtual void typeset_element (Score_element*);
-  virtual bool do_try_music (Music *m);
+  virtual void finalize () ;
+  virtual void typeset_grob (Grob*);
+  virtual bool try_music (Music *m);
 };
 
 

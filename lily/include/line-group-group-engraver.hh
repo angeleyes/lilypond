@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -20,16 +20,16 @@
   */
 class Line_group_engraver_group : public Engraver_group_engraver {
 protected:
-  Axis_group_spanner *staffline_p_;   
+  Spanner *staffline_p_;   
 
   virtual void create_line_spanner ();
-  virtual void do_creation_processing();
-  virtual void do_removal_processing();
-  virtual void typeset_element (Score_element*);
+  virtual void initialize ();
+  virtual void finalize ();
+  virtual void typeset_grob (Grob*);
 public:
-  VIRTUAL_COPY_CONS(Translator);
+  VIRTUAL_COPY_CONS (Translator);
   
-  Line_group_engraver_group();
+  Line_group_engraver_group ();
 };
 
 

@@ -1,29 +1,28 @@
 /*
   bar.hh -- part of GNU LilyPond
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef BAR_HH
 #define BAR_HH
-#include "item.hh"
+
+#include "lily-guile.hh"
+#include "lily-proto.hh"
 
 /**
   A vertical bar.
  */
-class Bar:public Item {
+class Bar
+{
 public:
-  String type_str_;
-  VIRTUAL_COPY_CONS(Score_element);
-  Bar ();
-
-protected:
-  virtual void do_pre_processing ();
-  virtual Molecule* do_brew_molecule_p () const;
-  virtual Real get_bar_size () const;
-
-private:
-  void do_print () const;
+  static bool has_interface (Grob*);
+  static void set_interface (Grob*);
+  static Molecule compound_barline (Grob*, String, Real height) ;
+  static Molecule simple_barline (Grob*, Real wid, Real height) ;      
+  DECLARE_SCHEME_CALLBACK (get_staff_bar_size, (SCM ));
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
 };
 #endif // BAR_HH
 

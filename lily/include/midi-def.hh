@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 
@@ -20,23 +20,17 @@
   definitions for midi output. Rather empty
  */
 class Midi_def : public Music_output_def {
-  static int default_count_i_;
-  int count_per_minute_i;  
+  static int score_count_i_;
+
 public:
-  VIRTUAL_COPY_CONS(Music_output_def);
+  VIRTUAL_COPY_CONS (Music_output_def);
 
-  /// duration of whole note measured in seconds.
-  Moment whole_in_seconds_mom_;
+  Midi_def ();
 
-  Midi_def();
-  ~Midi_def();
-
-  Real length_mom_to_seconds_f (Moment);
   int get_tempo_i (Moment moment);
-  void print() const;
   void set_tempo (Moment moment, int count_per_minute_i);
-  virtual int get_next_default_count () const;
-  static void reset_default_count();
+  virtual int get_next_score_count () const;
+  static void reset_score_count ();
 };
 
 #endif // MIDI_DEF_HH

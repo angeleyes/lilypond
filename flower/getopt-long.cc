@@ -4,26 +4,30 @@
    this is (Copyleft) 1996, Han-Wen Nienhuys, <hanwen@cs.uu.nl>
  */
 
+#include <string.h>
 #include <stdio.h>
 #include <iostream.h>
 #include <assert.h>
+#include <stdlib.h>
+
 #include "config.h"
 #include "getopt-long.hh"
 #include "international.hh"
 #include "string-convert.hh"
 
+
 #if !HAVE_GETTEXT
 inline char*
 gettext (char const* s)
 {
-  return s;
+  return (char*)s;
 }
 #else
 #include <libintl.h>
 #endif
 
 long
-Getopt_long::argument_to_i()
+Getopt_long::argument_to_i ()
 {
   long l;
   if (!optional_argument_ch_C_
@@ -34,7 +38,7 @@ Getopt_long::argument_to_i()
 }
 
 const Long_option_init *
-Getopt_long::parselong()
+Getopt_long::parselong ()
 {
   char const *optnm = arg_value_ch_a_a_[array_index_i_] + 2 ;
   assert (*optnm);
@@ -138,22 +142,24 @@ Getopt_long::report (Errorcod c)
   switch (c)
     {
     case E_ARGEXPECT:
-      str += _f ("option `%s\' requires an argument",
+      str += _f ("option `%s' requires an argument",
 	found_option_l_->str ());
       break;
     case  E_NOARGEXPECT:
-      str += _f ("option `%s\' doesn't allow an argument",
+      str += _f ("option `%s' doesn't allow an argument",
 	found_option_l_->str ());
       break;
     case E_UNKNOWNOPTION:
-      str += _f ("unrecognized option: `%s\'",
+      str += _f ("unrecognized option: `%s'",
       String (argument_index_i_ 
-	      ? String ("-" + _f("%c",arg_value_ch_a_a_[array_index_i_][argument_index_i_]))
+	      ? String ("-" + String_convert::form_str ("%c", 
+	        arg_value_ch_a_a_[array_index_i_][argument_index_i_]))
 	      : String (arg_value_ch_a_a_[array_index_i_])));
       break;
     case E_ILLEGALARG:
-      str += _f ("invalid argument `%s\' to option `%s'",
+      str += _f ("invalid argument `%s' to option `%s'",
         optional_argument_ch_C_, found_option_l_->str ());
+      break;
     default:
       assert (false);
     }
@@ -162,7 +168,7 @@ Getopt_long::report (Errorcod c)
 }
 
 const Long_option_init *
-Getopt_long::parseshort()
+Getopt_long::parseshort ()
 {
   char c=arg_value_ch_a_a_[array_index_i_][argument_index_i_];
   found_option_l_=0;
@@ -206,17 +212,17 @@ Getopt_long::parseshort()
 }
 
 const Long_option_init *
-Getopt_long::operator()()
+Getopt_long::operator () ()
 {
-  if (!ok())
+  if (!ok ())
     return 0;
 
-  next();
+  next ();
   if (!ok ())
     return 0;
 
   if (argument_index_i_)
-    return parseshort();
+    return parseshort ();
 
   const char * argument_C = arg_value_ch_a_a_[array_index_i_];
 
@@ -225,7 +231,7 @@ Getopt_long::operator()()
 
   if (argument_C[1] == '-') {// what to do with "command  --  bla"
     if (argument_C[2])
-      return parselong();
+      return parselong ();
     else
       return 0;
   }
@@ -234,7 +240,7 @@ Getopt_long::operator()()
       if (argument_C[ 1 ])
 	{
 	  argument_index_i_ = 1;
-	  return parseshort();
+	  return parseshort ();
 	}
       else
 	{
@@ -262,13 +268,13 @@ Getopt_long::Getopt_long (int c, char  **v, Long_option_init *lo)
 }
 
 bool
-Getopt_long::ok() const
+Getopt_long::ok () const
 {
   return  array_index_i_ < argument_count_i_;
 }
 
 void
-Getopt_long::next()
+Getopt_long::next ()
 {
   error_ = E_NOERROR;
   while (array_index_i_ < argument_count_i_
@@ -280,7 +286,7 @@ Getopt_long::next()
 }
 
 char const *
-Getopt_long::current_arg()
+Getopt_long::current_arg ()
 {
   if (array_index_i_ >= argument_count_i_)
     return 0;
@@ -289,9 +295,9 @@ Getopt_long::current_arg()
 }
 
 char const *
-Getopt_long::get_next_arg()
+Getopt_long::get_next_arg ()
 {
-  char const * a = current_arg();
+  char const * a = current_arg ();
   if (a)
     {
       array_index_i_ ++;

@@ -19,7 +19,7 @@
  */
 
 template<class T> INLINE void 
-arrcpy (T*dest, T*src, int count)
+arrcpy (T*dest, T const* src, int count)
 {
   for (int i_shadows_local=0; i_shadows_local < count ; i_shadows_local++)
 #ifdef __powerpc__
@@ -49,7 +49,7 @@ Array<T>::insert (T k, int j)
 }
 
 template<class T> INLINE void
-Array<T>::sort (int (*compare)(T const&,T const&),
+Array<T>::sort (int (*compare) (T const&,T const&),
 	   int lower = -1, int upper = -1) 
 {
   if (lower < 0) 
@@ -79,7 +79,7 @@ Array<T>::reverse ()
 
 template<class T> INLINE
 void
-Array<T>::OK() const
+Array<T>::OK () const
 {
   assert (max_ >= size_ && size_ >=0);
   if (max_) assert (array_p_);
@@ -98,7 +98,7 @@ Array<T>::remove_array_p ()
 
 template<class T> INLINE
 Array<T>
-Array<T>::slice (int lower, int upper)
+Array<T>::slice (int lower, int upper) const
 {
   assert (lower >= 0 && lower <=upper&& upper <= size_);
   Array<T> r;

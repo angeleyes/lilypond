@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
  */
 
 #include <math.h>
@@ -11,56 +11,162 @@
 #include "staff-symbol-referencer.hh"
 #include "staff-symbol.hh"
 #include "paper-def.hh"
-#include "dimension-cache.hh"
-
-Staff_symbol_referencer::Staff_symbol_referencer ()
+ 
+bool
+Staff_symbol_referencer::has_interface (Grob*e)
 {
-  staff_sym_l_ =0;
-}
-
-void
-Staff_symbol_referencer::do_substitute_element_pointer (Score_element *o, Score_element*n)
-{
-  if (staff_sym_l_ == o)
-    {
-      staff_sym_l_ = dynamic_cast<Staff_symbol*> (n);
-    }
+  return unsmob_grob (e->get_grob_property ("staff-symbol"))
+    || gh_number_p (e->get_grob_property ("staff-position"));
 }
 
 int
-Staff_symbol_referencer::lines_i () const
+Staff_symbol_referencer::line_count (Grob*me) 
 {
-  return (staff_sym_l_) ?  staff_sym_l_->no_lines_i_ : 5;
+  Grob *st = staff_symbol_l (me);
+  return st  ?  Staff_symbol::line_count (st) : 0;
 }
 
-void
-Staff_symbol_referencer::set_staff_symbol (Staff_symbol*s)
+bool
+Staff_symbol_referencer::on_staffline (Grob*me)
 {
-  staff_sym_l_ =s;
-  add_dependency (s);
+  return on_staffline (me, (int) rint (position_f (me)));
 }
 
-Staff_symbol*
-Staff_symbol_referencer::staff_symbol_l () const
+bool
+Staff_symbol_referencer::on_staffline (Grob*me, int pos)
 {
-  return staff_sym_l_;
+  int sz = line_count (me)-1;
+  return ((pos + sz) % 2) == 0;
+}
+
+Grob*
+Staff_symbol_referencer::staff_symbol_l (Grob*me) 
+{
+  SCM st = me->get_grob_property ("staff-symbol");
+  return unsmob_grob (st);
 }
 
 Real
-Staff_symbol_referencer::staff_line_leading_f () const
+Staff_symbol_referencer::staff_space (Grob*me) 
 {
-  return (staff_sym_l_) ? staff_sym_l_->staff_line_leading_f_ : paper_l ()->get_realvar (interline_scm_sym);
+  Grob * st = staff_symbol_l (me);
+  if (st)
+    return Staff_symbol::staff_space (st);
+
+  
+  return 1.0;
+}
+
+
+Real
+Staff_symbol_referencer::position_f (Grob*me) 
+{
+  Real p =0.0;
+  Grob * st = staff_symbol_l (me);
+  Grob * c = st ? me->common_refpoint (st, Y_AXIS) : 0;
+  if (st && c)
+    {
+      Real y = me->relative_coordinate (c, Y_AXIS)
+	- st->relative_coordinate (c, Y_AXIS);
+
+      p += 2.0 * y / Staff_symbol::staff_space (st);
+    }
+  else
+    {
+      SCM pos = me->get_grob_property ("staff-position");
+      if (gh_number_p (pos))
+	return gh_scm2double (pos);
+    }
+  
+  return  p;
+}
+
+
+
+/*
+  should use offset callback!
+ */
+MAKE_SCHEME_CALLBACK (Staff_symbol_referencer,callback,2);
+SCM
+Staff_symbol_referencer::callback (SCM element_smob, SCM)
+{
+  Grob *me = unsmob_grob (element_smob);
+
+  
+  SCM pos = me->get_grob_property ("staff-position");
+  Real off =0.0;
+  if (gh_number_p (pos))
+    {
+      Real space = Staff_symbol_referencer::staff_space (me);
+      off = gh_scm2double (pos) * space/2.0;
+    }
+
+  me->set_grob_property ("staff-position", gh_double2scm (0.0));
+
+  return gh_double2scm (off);
+}
+
+ /*
+  
+  This sets the position relative to the center of the staff symbol.
+ 
+  The function is hairy, because it can be callled in two situations:
+
+  1.  There is no staff yet; we must set staff-position
+
+  2.  There is a staff, and perhaps someone even applied a
+  translate_axis (). Then we must compensate for the translation
+  
+  In either case, we set a callback to be sure that our new position
+  will be extracted from staff-position
+  
+ */
+void
+Staff_symbol_referencer::set_position (Grob*me,Real p)
+{
+  Grob * st = staff_symbol_l (me);
+  if (st && me->common_refpoint (st, Y_AXIS))
+    {
+      Real oldpos = position_f (me);
+      me->set_grob_property ("staff-position", gh_double2scm (p - oldpos));
+    }
+  else
+    {
+      me->set_grob_property ("staff-position",
+			    gh_double2scm (p));
+
+    }
+
+  if (me->has_offset_callback_b (Staff_symbol_referencer::callback_proc, Y_AXIS))
+    return ; 
+
+  me->add_offset_callback (Staff_symbol_referencer::callback_proc, Y_AXIS);
+}
+
+/*
+  half  of the height, in staff space.
+ */
+Real
+Staff_symbol_referencer::staff_radius (Grob*me)
+{
+  return (line_count (me) -1) / 2;
 }
 
 
 int
-Staff_symbol_referencer::position_i () const
+compare_position (Grob *const  &a, Grob * const &b)
 {
-  if (!staff_sym_l_ )
-    return 0;
-
-  Graphical_element * c = common_refpoint (staff_sym_l_, Y_AXIS);
-  Real y = relative_coordinate (c, Y_AXIS) - staff_sym_l_->relative_coordinate (c, Y_AXIS);
-
-  return int (2.0 * y / staff_line_leading_f ());
+  return sign (Staff_symbol_referencer::position_f ((Grob*)a) - 
+    Staff_symbol_referencer::position_f ((Grob*)b));
 }
+
+
+void
+Staff_symbol_referencer::set_interface (Grob * e)
+{
+  if (!gh_number_p (e->get_grob_property ("staff-position")))
+      e->set_grob_property ("staff-position", gh_double2scm (0.0));
+
+  e->add_offset_callback (Staff_symbol_referencer::callback_proc, Y_AXIS);
+}
+

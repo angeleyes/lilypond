@@ -3,25 +3,21 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #ifndef Script_COLUMN_HH
 #define Script_COLUMN_HH
 
-#include "item.hh"
+#include "lily-guile.hh"
+#include "lily-proto.hh"
 
-class Script_column : public Item
+class Script_column
 {
-  /**
-     Array of objects that are placed by staffsides
-   */
-  Link_array<Item> staff_sided_item_l_arr_;
 public:
-  void add_staff_sided (Item*);
-protected:
-  virtual void do_pre_processing ();
+  static void add_staff_sided (Grob*, Item*);
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
 };
 
 

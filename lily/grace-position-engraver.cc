@@ -3,30 +3,33 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "engraver.hh"
 #include "grace-align-item.hh"
-#include "note-head.hh"
+#include "rhythmic-head.hh"
 #include "local-key-item.hh"
 #include "paper-column.hh"
-#include "dimension-cache.hh"
+#include "note-head.hh"
+#include "side-position-interface.hh"
+#include "axis-group-interface.hh"
+
 
 class Grace_position_engraver:public Engraver
 {
   Paper_column *last_musical_col_l_;
 protected:
-  VIRTUAL_COPY_CONS(Translator);
-  virtual void acknowledge_element (Score_element_info);
-  virtual void process_acknowledged ();
-  virtual void do_post_move_processing ();
-  virtual void do_pre_move_processing ();
-  Grace_align_item*align_l_;
+  VIRTUAL_COPY_CONS (Translator);
+  virtual void acknowledge_grob (Grob_info);
+  virtual void create_grobs ();
+  virtual void start_translation_timestep ();
+  virtual void stop_translation_timestep ();
+  Item*align_l_;
   Link_array<Item> support_;
 public:
-  Grace_position_engraver();
+  Grace_position_engraver ();
 };
 
 
@@ -37,40 +40,43 @@ Grace_position_engraver::Grace_position_engraver ()
 }
 
 void
-Grace_position_engraver::acknowledge_element (Score_element_info i)
+Grace_position_engraver::acknowledge_grob (Grob_info i)
 {
-  if (Grace_align_item*g  =dynamic_cast<Grace_align_item*>(i.elem_l_))
+  Item *item = dynamic_cast<Item*> (i.elem_l_);
+  if (item && Grace_align_item::has_interface (i.elem_l_))
     {
-      align_l_ = g;
+      align_l_ = item;
     }
-  else if (Note_head * n = dynamic_cast <Note_head*> (i.elem_l_))
+  else if (item && Note_head::has_interface (i.elem_l_))
     {
-      if (n->get_elt_property (grace_scm_sym) == SCM_BOOL_F)
-	support_.push (n);
+      if (!to_boolean (item->get_grob_property ("grace")))
+	support_.push (item);
     }
-  else if (Local_key_item*it = dynamic_cast<Local_key_item*>(i.elem_l_))
+  else if (item && Local_key_item::has_interface (i.elem_l_))
     {
-      if (it->get_elt_property (grace_scm_sym) == SCM_BOOL_F)
-	support_.push (it);
+      if (!to_boolean (item->get_grob_property ("grace")))
+	support_.push (item);
       else if (align_l_) 
-	it->add_dependency (align_l_);
+	item->add_dependency (align_l_);
     }
 }
 
 void
-Grace_position_engraver::process_acknowledged ()
+Grace_position_engraver::create_grobs ()
 {
   if (align_l_)
     {
       for (int i=0; i < support_.size (); i++)
-	align_l_->add_support (support_[i]);
+	Side_position_interface::add_support (align_l_,support_[i]);
       support_.clear ();
     }
 }
 
 void
-Grace_position_engraver::do_pre_move_processing ()
+Grace_position_engraver::stop_translation_timestep ()
 {
+  if (align_l_ && !Side_position_interface::supported_b (align_l_))
+    {
   /*
      We don't have support. Either some moron tried attaching us to a rest,
      or we're at the end of the piece.  In the latter case, we have a
@@ -80,29 +86,32 @@ Grace_position_engraver::do_pre_move_processing ()
      Solution: attach ourselves to  the last musical column known.  A little intricate.
      
   */
-  if (align_l_ && !align_l_->supported_b ())
-    {
-      Graphical_element * elt = align_l_->parent_l (X_AXIS);
+
+      Grob * elt = align_l_->parent_l (X_AXIS);
       if (elt)
 	return;
 
-      warning (_("Unattached grace notes. Attaching to last musical column."));
-      Axis_group_element * ae = dynamic_cast<Axis_group_element*> (elt);
-      if (ae)
-	ae->remove_element (align_l_);
-      else if (elt)
-	align_l_->set_parent (0, X_AXIS);
-      last_musical_col_l_->add_element (align_l_);
+      if (last_musical_col_l_)
+	{
+	  warning (_ ("Unattached grace notes.  Attaching to last musical column."));
+      
+	  align_l_->set_parent (0, X_AXIS);
+	  Axis_group_interface::add_element (last_musical_col_l_, align_l_);
+	}
+      else
+	{
+	  // tja.
+	}
     }
-
-  last_musical_col_l_ = get_staff_info ().musical_pcol_l ();
+  last_musical_col_l_ = dynamic_cast<Paper_column*> (unsmob_grob (get_property ("currentMusicalColumn")));
 }
 
 void
-Grace_position_engraver::do_post_move_processing ()
+Grace_position_engraver::start_translation_timestep ()
 {
   support_.clear ();
   align_l_ =0;
 }
 
-ADD_THIS_TRANSLATOR(Grace_position_engraver);
+ADD_THIS_TRANSLATOR (Grace_position_engraver);
+

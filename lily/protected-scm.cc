@@ -3,45 +3,38 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 #include "protected-scm.hh"
 #include "lily-guile.hh"
 #include "main.hh"
 
-#ifdef LYPROT
-#define PROTECT   ly_protect_scm
-#define UNPROTECT ly_unprotect_scm
-#else
-#define PROTECT   scm_protect_object 
-#define UNPROTECT scm_unprotect_object
-#endif
-
 Protected_scm::Protected_scm ()
 {
-  object_ = 0;
+  object_ = SCM_UNDEFINED;
 }
 
 Protected_scm::Protected_scm (SCM s)
 {
-  object_ = s  ? PROTECT (s): 0;
+  object_ = SCM_NIMP (s)  ? scm_protect_object (s): s;
 }
 
 Protected_scm::Protected_scm (Protected_scm const &s)
 {
-  object_ = s.object_ ? PROTECT (s.object_) : 0;
+  object_ = SCM_NIMP (s.object_) ? scm_protect_object (s.object_) : s.object_;
 }
 
 Protected_scm & 
-Protected_scm::operator =(SCM s)
+Protected_scm::operator = (SCM s)
 {
   if (object_ == s)
     return *this;
-  if (object_)
-    UNPROTECT(object_);
+  
+  if (SCM_NIMP (object_))
+    scm_unprotect_object (object_);
 
-  object_ =  s ? PROTECT (s): 0;
+  object_ =  SCM_NIMP (s) ? scm_protect_object (s): s;
   return *this;
 }
 
@@ -54,10 +47,9 @@ Protected_scm::operator = (Protected_scm const &s)
 
 Protected_scm::~Protected_scm ()
 {
-  if  (object_)
+  if (SCM_NIMP (object_))
     {
-      UNPROTECT (object_);
-      object_ =0L;		// be nice to conservative GC
+      scm_unprotect_object (object_);
     }
 }
 

@@ -3,67 +3,80 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
-#include "dot-column.hh"
+#include <math.h>		// ceil
+
+#include "axis-group-interface.hh"
 #include "note-column.hh"
-#include "beam.hh"
-#include "note-head.hh"
 #include "stem.hh"
-#include "rest.hh"
 #include "debug.hh"
 #include "paper-def.hh"
+#include "group-interface.hh"
+#include "staff-symbol-referencer.hh"
+#include "rest.hh"
+#include "note-head.hh"
 
 bool
-Note_column::rest_b () const
+Note_column::rest_b (Grob*me) 
 {
-  return rest_l_arr_.size ();
+  return unsmob_grob (me->get_grob_property ("rest"));
 }
 
 int
-Note_column::shift_compare (Note_column *const &p1, Note_column*const&p2)
+Note_column::shift_compare (Grob *const &p1, Grob *const&p2)
 {
-  SCM s1 = p1->get_elt_property (horizontal_shift_scm_sym);
-  SCM s2 = p2->get_elt_property (horizontal_shift_scm_sym);
+  SCM s1 = p1->get_grob_property ("horizontal-shift");
+  SCM s2 = p2->get_grob_property ("horizontal-shift");
 
-  int h1 = (s1 == SCM_BOOL_F) ? 0 : gh_scm2int (SCM_CDR(s1));
-  int h2 = (s2 == SCM_BOOL_F) ? 0 : gh_scm2int (SCM_CDR(s2));
+  int h1 = (gh_number_p (s1))?  gh_scm2int (s1) :0;
+  int h2 = (gh_number_p (s2)) ? gh_scm2int (s2):0;
   return h1 - h2;
 }
 
-Note_column::Note_column()
+void
+Note_column::set_interface (Grob* me)
 {
-  set_axes (X_AXIS, Y_AXIS);
-  stem_l_ = 0;
+  me->set_grob_property ("note-heads", SCM_EOL);  
+  me->set_interface (ly_symbol2scm ("note-column-interface"));
+  
+  Axis_group_interface::set_interface (me);
+  Axis_group_interface::set_axes (me, X_AXIS, Y_AXIS);
 }
 
-void
-Note_column::sort()
+Item *
+Note_column::stem_l (Grob*me) 
 {
-  head_l_arr_.sort (Note_head::compare);
+  SCM s = me->get_grob_property ("stem");
+  return  dynamic_cast<Item*> (unsmob_grob (s));
 }
   
 Slice
-Note_column::head_positions_interval() const
+Note_column::head_positions_interval (Grob *me)
 {
   Slice  iv;
 
   iv.set_empty ();
-  for (int i=0; i <head_l_arr_.size ();i ++)
+
+  SCM h = me->get_grob_property ("note-heads");
+  for (; gh_pair_p (h); h = gh_cdr (h))
     {
-      int j = head_l_arr_[i]->position_i ();
+      Grob *se = unsmob_grob (gh_car (h));
+      
+      int j = int (Staff_symbol_referencer::position_f (se));
       iv.unite (Slice (j,j));
     }
   return iv;
 }
 
 Direction
-Note_column::dir () const
+Note_column::dir (Grob*  me)
 {
-  if (stem_l_)
-    return stem_l_->dir_;
-  else if (head_l_arr_.size ())
-    return (Direction)sign (head_positions_interval().center ());
+  Grob *stem = unsmob_grob (me->get_grob_property ("stem"));
+  if (stem && Stem::has_interface (stem))
+    return Stem::get_direction (stem);
+  else if (gh_pair_p (me->get_grob_property ("note-heads")))
+    return (Direction)sign (head_positions_interval (me).center ());
 
   programming_error ("Note column without heads and stem!");
   return CENTER;
@@ -71,116 +84,59 @@ Note_column::dir () const
 
 
 void
-Note_column::set_stem (Stem * stem_l)
+Note_column::set_stem (Grob*me,Grob * stem_l)
 {
-  stem_l_ = stem_l;
-  add_dependency (stem_l);
-  add_element (stem_l);
-}
-
-
-void
-Note_column::do_substitute_element_pointer (Score_element*o, Score_element*n)
-{
-  if (stem_l_ == o) 
-    {
-      stem_l_ = n ? dynamic_cast<Stem *> (n):0;
-    }
-  if (dynamic_cast<Note_head *> (o))
-    {
-      head_l_arr_.substitute (dynamic_cast<Note_head *> (o), 
-			      (n)? dynamic_cast<Note_head *> (n) : 0);
-    }
-
-  if (dynamic_cast<Rest *> (o)) 
-    {
-      rest_l_arr_.substitute (dynamic_cast<Rest *> (o), 
-			      (n)? dynamic_cast<Rest *> (n) : 0);
-    }
+  me->set_grob_property ("stem", stem_l->self_scm ());
+  me->add_dependency (stem_l);
+  Axis_group_interface::add_element (me, stem_l);
 }
 
 void
-Note_column::add_head (Rhythmic_head *h)
+Note_column::add_head (Grob*me,Grob *h)
 {
-  if (Rest*r=dynamic_cast<Rest *> (h))
+  if (Rest::has_interface (h))
     {
-      rest_l_arr_.push (r);
+      me->set_grob_property ("rest", h->self_scm ());
     }
-  if (Note_head *nh=dynamic_cast<Note_head *> (h))
+  else if (Note_head::has_interface (h))
     {
-      head_l_arr_.push (nh);
+      Pointer_group_interface::add_element (me, "note-heads",h);
     }
-  add_element (h);
+  Axis_group_interface::add_element (me, h);
 }
 
 /**
   translate the rest symbols vertically by amount DY_I.
  */
 void
-Note_column::translate_rests (int dy_i)
+Note_column::translate_rests (Grob*me,int dy_i)
 {
-  invalidate_cache (Y_AXIS);
-  for (int i=0; i < rest_l_arr_.size(); i++)
-    rest_l_arr_[i]->translate_axis (dy_i  * rest_l_arr_[i]->staff_line_leading_f ()/2.0,
-				    Y_AXIS);
+  Grob * r = unsmob_grob (me->get_grob_property ("rest"));
+  if (r)
+    {
+      r->translate_axis (dy_i * Staff_symbol_referencer::staff_space (r)/2.0, Y_AXIS);
+    }
 }
 
+
 void
-Note_column::do_print() const
+Note_column::set_dotcol (Grob*me,Grob *d)
 {
-#ifndef NPRINT
-  DOUT << "rests: " << rest_l_arr_.size() << ", ";
-  DOUT << "heads: " << head_l_arr_.size();
-#endif
+  Axis_group_interface::add_element (me, d);
 }
 
-void
-Note_column::set_dotcol (Dot_column *d)
+
+
+
+Grob*
+Note_column::first_head (Grob*me) 
 {
-  add_element (d);
+  Grob * st = stem_l (me);
+  return st?  Stem::first_head (st): 0; 
 }
 
-/*
-  [TODO]
-  handle rest under beam (do_post: beams are calculated now)
-  what about combination of collisions and rest under beam.
-
-  Should lookup
-    
-    rest -> stem -> beam -> interpolate_y_position ()
-    
-*/
-
-void
-Note_column::do_post_processing ()
+bool
+Note_column::has_interface (Grob*me)
 {
-  if (!stem_l_ || !rest_b ())
-    return;
-
-  Beam * b = stem_l_->beam_l_;
-  if (!b || !b->stems_.size ())
-    return;
-  
-  /* ugh. Should be done by beam. */
-  Direction d = stem_l_->get_dir ();
-  Real beamy = (stem_l_->hpos_f () - b->stems_[0]->hpos_f ()) * b->slope_f_ + b->left_y_;
-
-  Real staff_space = rest_l_arr_[0]->staff_line_leading_f ();      
-  Real rest_dim = extent (Y_AXIS)[d]*2.0  /staff_space ;
-
-  Real minimum_dist
-    = paper_l ()->get_var ("restcollision_minimum_beamdist") ;
-  Real dist =
-    minimum_dist +  -d  * (beamy - rest_dim) >? 0;
-
-  int stafflines = rest_l_arr_[0]->lines_i ();
-
-  // move discretely by half spaces.
-  int discrete_dist = int (ceil (dist ));
-
-  // move by whole spaces inside the staff.
-  if (discrete_dist < stafflines+1)
-    discrete_dist = int (ceil (discrete_dist / 2.0)* 2.0);
-
-  translate_rests (-d *  discrete_dist);
+  return me && me->has_interface (ly_symbol2scm ("note-column-interface"));
 }

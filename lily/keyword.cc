@@ -1,10 +1,8 @@
 /*
   keyword.cc -- keywords and identifiers
  */
-
+#include <string.h>
 #include <stdlib.h>
-
-
 #include "keyword.hh"
 
 
@@ -12,8 +10,8 @@
 int
       tabcmp (void const * p1, void const * p2)
 {
-  return strcmp (((Keyword_ent const *) p1)->name,
-		 ((Keyword_ent const *) p2)->name);
+  return strcmp (( (Keyword_ent const *) p1)->name,
+ ((Keyword_ent const *) p2)->name);
 }
 
 Keyword_table::Keyword_table (Keyword_ent *tab)

@@ -1,40 +1,26 @@
 /*
   volta-spanner.hh -- part of GNU LilyPond
 
-  (c) 1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 #ifndef VOLTA_SPANNER_HH
 #define VOLTA_SPANNER_HH
 
 
-#include "pointer.hh"
 #include "spanner.hh"
 
-/** Volta bracket with number */
+/** 
+*/
 
-class Volta_spanner : public Spanner
+class Volta_spanner
 {
 public:
-  Volta_spanner ();
- 
-  void add_column (Note_column*);
-  void add_bar (Bar*);
- 
-  String number_str_;
-  Link_array<Bar> bar_arr_;
-  Link_array<Note_column> note_column_arr_;
-  bool last_b_;
-
- 
-protected:
-  virtual Molecule* do_brew_molecule_p () const;
-  VIRTUAL_COPY_CONS (Score_element);
-
-  virtual void do_add_processing ();
-  virtual Interval do_height () const;
-  virtual void do_post_processing ();
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  static void add_column (Grob*, Grob*col);
+  static void add_bar (Grob*me, Item*bar);
 };
 
 #endif // VOLTA_SPANNER_HH

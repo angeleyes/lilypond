@@ -3,62 +3,80 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 #include "music-list.hh"
 #include "debug.hh"
-#include "musical-pitch.hh"
-
-Music_sequence::Music_sequence (Music_sequence const&s)
-  : Music (s)
-{
-  music_p_list_p_ = new Music_list (*s.music_p_list_p_);
-}
-
-
-
-Music_sequence::Music_sequence(Music_list *mlist_p)
-{
-  music_p_list_p_ = mlist_p;
-}
-
-void
-Music_sequence::transpose (Musical_pitch rq)
-{
-  for (Cons<Music> *i = music_p_list_p_->head_; i;  i = i->next_)
-    i->car_->transpose (rq);    
-}
-
-void
-Music_sequence::do_print() const
-{
-#ifndef NPRINT
-  for (Cons<Music> *i = music_p_list_p_->head_; i;  i = i->next_)  
-    i->car_->print();
-#endif 
-}
+#include "pitch.hh"
 
 
 void
-Music_sequence::add_music (Music *m_p)
+Music_sequence::truncate (int k)
 {
-  music_p_list_p_->add_music (m_p);
+  SCM l = get_mus_property ("elements");
+  if (k == 0)
+    {
+      l = SCM_EOL;
+    }
+  else
+    {
+      SCM s = l;
+      k--;
+      for (; gh_pair_p (s) && k--; s = gh_cdr (s))
+	;
+
+      if (gh_pair_p (s))
+	{
+	  gh_set_cdr_x (s, SCM_EOL);
+	}
+    }
+  set_mus_property ("elements", l);
 }
+
+SCM
+Music_sequence::music_list ()const
+{
+  return get_mus_property ("elements");
+}
+
+/*
+  Ugh this sucks. Linear. do not use.
+ */
+void
+Music_sequence::append_music (Music *m)
+{
+  set_mus_property ("elements",
+		    gh_append2 (music_list (), gh_cons (m->self_scm (), SCM_EOL)));
+  scm_unprotect_object (m->self_scm ());
+}
+
+Music_sequence::Music_sequence (SCM l)
+  : Music (l)
+{
+}
+
+void
+Music_sequence::transpose (Pitch rq)
+{
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
+    unsmob_music (gh_car (s))->transpose (rq);    
+}
+
+
+
 
 Moment
 Music_sequence::cumulative_length () const
 {
   Moment last=0;
-  for (Cons<Music> *i = music_p_list_p_->head_; i;  i = i->next_)
-    {
-      last += i->car_->length_mom ();
-    }
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
+    last += unsmob_music (gh_car (s))->length_mom ();
   return  last;
 }
 
-Musical_pitch
-Music_sequence::to_relative_octave (Musical_pitch p)
+Pitch
+Music_sequence::to_relative_octave (Pitch p)
 {
   return do_relative_octave (p, false);
 }
@@ -68,13 +86,48 @@ Moment
 Music_sequence::maximum_length () const
 {
   Moment dur = 0;
-  for (Cons<Music> *i = music_p_list_p_->head_; i;  i = i->next_)
-    dur = dur >? i->car_->length_mom ();
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
+    dur = dur >? unsmob_music (gh_car (s))->length_mom ();
 
   return dur;
 }
 int
 Music_sequence::length_i () const
 {
-  return cons_list_size_i (music_p_list_p_->head_);
+  return scm_ilength (music_list ());
+}
+
+Pitch
+Music_sequence::do_relative_octave (Pitch p, bool ret_first)
+{
+  Pitch retval;
+  int count=0;
+
+  Pitch last = p;
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
+    {
+      last = unsmob_music (gh_car (s))->to_relative_octave (last);
+      if (!count ++)
+	retval = last;
+    }
+
+  if (!ret_first)
+    retval = last;
+  
+  return retval;
+}
+
+void
+Music_sequence::compress (Moment m)
+{
+  for (SCM s = music_list (); gh_pair_p (s);  s = gh_cdr (s))
+    unsmob_music (gh_car (s))->compress (m);
+}
+
+ADD_MUSIC (Music_sequence);
+
+Music_sequence::Music_sequence ()
+  : Music (SCM_EOL)
+{
+  
 }

@@ -8,65 +8,83 @@
 TODO:
 
   . Cancel any beams running through the breathing sign
-    ([e8 \breathe f e f] should become [e8] \breathe [f e f])
+ ([e8 \breathe f e f] should become [e8] \breathe [f e f])
   . Spacing is not yet completely pretty
 
 */
 
-#include "breathing-sign-engraver.hh"
+#include "staff-symbol-referencer.hh"
 #include "breathing-sign.hh"
 #include "musical-request.hh"
 #include "command-request.hh"
 #include "engraver-group-engraver.hh"
-#include "note-head.hh"
-#include "local-key-item.hh"
+#include "item.hh"
+#include "engraver.hh"
+#include "command-request.hh"
 
-#include <iostream.h>
+class Breathing_sign_engraver : public Engraver {
+public:
+  Breathing_sign_engraver ();
+  VIRTUAL_COPY_CONS (Translator);
+  
+protected:
+  virtual bool try_music (Music *req_l);
+  virtual void create_grobs ();
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
 
-Breathing_sign_engraver::Breathing_sign_engraver()
+private:
+  Breathing_sign_req * breathing_sign_req_l_;
+  Grob * breathing_sign_p_;
+};
+
+Breathing_sign_engraver::Breathing_sign_engraver ()
 {
   breathing_sign_p_ = 0;
   breathing_sign_req_l_ = 0;
 }
 
 bool
-Breathing_sign_engraver::do_try_music (Music*r_l)
+Breathing_sign_engraver::try_music (Music*r_l)
 {
-  if (Breathing_sign_req  * b= dynamic_cast <Breathing_sign_req *> (r_l)) {
-    breathing_sign_req_l_ = b;
-    return true;
-  }
+  if (Breathing_sign_req  * b= dynamic_cast <Breathing_sign_req *> (r_l))
+    {
+      breathing_sign_req_l_ = b;
+      return true;
+    }
  
   return false;
 }
 
 void
-Breathing_sign_engraver::do_process_requests()
+Breathing_sign_engraver::create_grobs ()
 {
-  if(breathing_sign_req_l_) {
-    breathing_sign_p_ = new Breathing_sign;
+  if (breathing_sign_req_l_ && ! breathing_sign_p_)
+    {
+      SCM b = get_property ("BreathingSign");
+      breathing_sign_p_ = new Item (b);
 
-    Scalar prop = get_property ("verticalDirection", 0);
-    if(prop.isnum_b())
-      breathing_sign_p_->set_vertical_position((Direction)int(prop));
+      Breathing_sign::set_interface (breathing_sign_p_);
 
-    announce_element (Score_element_info (breathing_sign_p_, breathing_sign_req_l_));
-  }
+      announce_grob (breathing_sign_p_, breathing_sign_req_l_);
+      breathing_sign_req_l_ = 0;
+    }
 }
 
 void 
-Breathing_sign_engraver::do_pre_move_processing()
+Breathing_sign_engraver::stop_translation_timestep ()
 {
-  if(breathing_sign_p_) {
-    typeset_element(breathing_sign_p_);
-    breathing_sign_p_ = 0;
-  }
+  if (breathing_sign_p_)
+    {
+      typeset_grob (breathing_sign_p_);
+      breathing_sign_p_ = 0;
+    }
 }
 
 void
-Breathing_sign_engraver::do_post_move_processing()
+Breathing_sign_engraver::start_translation_timestep ()
 {
-    breathing_sign_req_l_ = 0;
+  breathing_sign_req_l_ = 0;
 }
 
-ADD_THIS_TRANSLATOR(Breathing_sign_engraver);
+ADD_THIS_TRANSLATOR (Breathing_sign_engraver);

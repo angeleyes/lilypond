@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -17,7 +17,7 @@ enum Axis {
 };
 
 
-#include "string.hh"		// ugh
+class String;
 
 String axis_name_str (Axis);
 
@@ -25,9 +25,9 @@ String axis_name_str (Axis);
 /**
   the operator ++ for Axis. 
  */
-Axis post_incr(Axis &);
-Axis incr(Axis &);
-//Axis operator++(Axis);
+Axis post_incr (Axis &);
+Axis incr (Axis &);
+//Axis operator++ (Axis);
 
 
 

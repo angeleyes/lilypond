@@ -1,101 +1,92 @@
 /*   
-     script.cc --  implement Script
+  script.cc --  implement Script
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
-/*
-
-  TODO: Quantisation support (staccato dots between stafflines)
-
-*/
 #include "debug.hh"
 #include "script.hh"
-#include "lookup.hh"
-#include "staff-side.hh"
+#include "font-interface.hh"
+#include "side-position-interface.hh"
 #include "paper-def.hh"
-#include "dimension-cache.hh"
-
-Script::Script ()
-{
-  staff_side_l_ =0;
-}
-
-void
-Script::do_substitute_element_pointer (Score_element*o, Score_element*n)
-{
-  if (o == staff_side_l_)
-    staff_side_l_ = dynamic_cast<Staff_side_item*>(n);
-}
-
-
+#include "item.hh"
+#include "molecule.hh"
+#include "lookup.hh"
 
 Molecule
-Script::get_molecule(Direction d) const
+Script::get_molecule (Grob * me, Direction d)
 {
-  SCM s = get_elt_property (molecule_scm_sym);
-  assert  (s != SCM_BOOL_F);
+  SCM s = me->get_grob_property ("molecule");
+  assert (gh_pair_p (s));
 
-  s = SCM_CDR(s);
-  SCM key = SCM_CAR (s);
-  if (key == ly_symbol ("feta"))
+  SCM key = gh_car (s);
+  if (key == ly_symbol2scm ("feta"))
     {
-      return lookup_l ()->afm_find ("scripts-" +
-				    ly_scm2string (index_cell (SCM_CDR (s), d)));
+      return Font_interface::get_default_font (me)->find_by_name ("scripts-" +
+				    ly_scm2string (index_cell (gh_cdr (s), d)));
     }
-  else if (key == ly_symbol ("accordion"))
+  else if (key == ly_symbol2scm ("accordion"))
     {
-      return lookup_l ()->accordion (SCM_CDR(s), paper_l()->get_realvar(interline_scm_sym));
+      return Lookup::accordion (gh_cdr (s), 1.0, Font_interface::get_default_font (me));
     }
-
-  else assert (false);
+  else
+    assert (false);
 
   return Molecule ();
 }
 
-
-void
-Script::do_pre_processing ()
+MAKE_SCHEME_CALLBACK (Script,before_line_breaking,1);
+SCM
+Script::before_line_breaking (SCM smob)
 {
+  Grob * me = unsmob_grob (smob);
+
+  Direction d = Side_position_interface::get_direction (me);
+
+  if (!d)
+    {
   /*
-    center my self on the note head.
+    we should not have `arbitrary' directions. 
    */
-  Graphical_element * e = staff_side_l_->parent_l(X_AXIS);
-  translate_axis (e->extent (X_AXIS).center (), X_AXIS);
+      programming_error ("Script direction not yet known!");
+      d = DOWN;
+    }
+  
+  Side_position_interface::set_direction (me,d);
+
+  return SCM_UNSPECIFIED;
+}
+
+
+MAKE_SCHEME_CALLBACK (Script,brew_molecule,1);
+
+SCM
+Script::brew_molecule (SCM smob)
+{
+  Grob *me= unsmob_grob (smob);
+
+  Direction dir = Side_position_interface::get_direction (me);
+  if (!dir)
+    {
+      programming_error ("Script direction not known, but molecule wanted.");
+      dir= DOWN;
+    }
+  
+  return get_molecule (me, dir).smobbed_copy ();
+}
+
+bool
+Script::has_interface (Grob*me)
+{
+  return me->has_interface (ly_symbol2scm ("script-interface"));
 }
 
 void
-Script::do_post_processing ()
+Script::set_interface (Grob*me)
 {
-  Direction d =  staff_side_l_->dir_;
-  Molecule m (get_molecule(d));
-
-  /*
-    UGH UGH UGH
-   */
-  if (staff_side_l_->get_elt_property (no_staff_support_scm_sym) == SCM_BOOL_F) 
-    translate_axis (- m.dim_[Y_AXIS][Direction (-d)], Y_AXIS);
+  return me->set_interface (ly_symbol2scm ("script-interface"));
 }
 
-void
-Script::set_staff_side (Staff_side_item*g)
-{
-  staff_side_l_ = g;
-  add_dependency (g);
-  set_parent (g, Y_AXIS);
-}
-
-Molecule*
-Script::do_brew_molecule_p () const
-{
-  return new Molecule (get_molecule (staff_side_l_->dir_));
-}
-
-void
-Script::do_print () const
-{
-
-}

@@ -1,17 +1,18 @@
 /*
   audio-item.hh -- declare Audio_items
 
-  (c) 1996,  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1996--2001 Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
 #ifndef AUDIO_ITEM_HH
 #define AUDIO_ITEM_HH
 
+#include <typeinfo>
 #include "lily-proto.hh"
 #include "string.hh"
 #include "audio-element.hh"
-#include "key-def.hh"
-#include "musical-pitch.hh"
+
+#include "pitch.hh"
 #include "moment.hh"
 #include "drul-array.hh"
 
@@ -28,20 +29,27 @@ public:
 
   Audio_column* audio_column_l_;
 
-protected:
-  virtual void do_print () const;
   
 private:
   Audio_item (Audio_item const&);
-  Audio_item& operator=( Audio_item const&);
+  Audio_item& operator= ( Audio_item const&);
+};
+
+class Audio_dynamic : public Audio_item
+{
+public:
+  Audio_dynamic (Real volume);
+
+  Real volume_;
 };
 
 class Audio_key : public Audio_item
 {
 public:
-  Audio_key (Key_def const& key);
+  Audio_key (int acc, bool major);
 
-  Key_def key_;
+  int accidentals_;
+  bool major_;
 };
 
 class Audio_instrument : public Audio_item
@@ -55,16 +63,23 @@ public:
 class Audio_note : public Audio_item
 {
 public:  
-  Audio_note (Musical_pitch p, Moment m, int transposing_i = 0);
+  Audio_note (Pitch p, Moment m, int transposing_i = 0);
 
   void tie_to (Audio_note*);
 
-  Musical_pitch pitch_;
+  Pitch pitch_;
   Moment length_mom_;
   Moment delayed_mom_;
   Moment delayed_until_mom_;
   int transposing_i_;
   Audio_note* tied_;
+};
+
+class Audio_piano_pedal : public Audio_item
+{
+public:
+  String type_str_;
+  Direction dir_;
 };
 
 class Audio_text : public Audio_item

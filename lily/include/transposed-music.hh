@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -16,13 +16,12 @@
 class Transposed_music : public Music_wrapper
 {
 public:
-  Musical_pitch transpose_to_pitch_;
-
-  void do_print () const;
-  Transposed_music (Music*, Musical_pitch);
+  Transposed_music (SCM);
+  Transposed_music ();
   
-  VIRTUAL_COPY_CONS(Music);
-  virtual Musical_pitch to_relative_octave (Musical_pitch);
+  
+  VIRTUAL_COPY_CONS (Music);
+  virtual Pitch to_relative_octave (Pitch);
 };
 
 #endif /* TRANSPOSED_MUSIC_HH */

@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -24,7 +24,7 @@ public:
   Protected_scm (Protected_scm const &);
   ~Protected_scm ();
   Protected_scm &operator = (SCM);
-  Protected_scm &operator =( Protected_scm const&);
+  Protected_scm &operator = ( Protected_scm const&);
   operator SCM () const;
   SCM to_SCM () const;
 };

@@ -3,35 +3,36 @@
 
 
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include <assert.h>
 #include "axes.hh"
+#include "string.hh"
 
 String
 axis_name_str (Axis a)
 {
-  return to_str (char(a + 'x'));
+  return to_str (char (a + 'x'));
 }
 
 /*
   TODO inline these.
  */
 Axis
-post_incr(Axis &a)
+post_incr (Axis &a)
 {
-  assert(a < NO_AXES);
+  assert (a < NO_AXES);
   Axis b= a;
-  a = Axis(int(a) + 1);
+  a = Axis (int (a) + 1);
   return b;
 }
 
 Axis
-incr(Axis &a)
+incr (Axis &a)
 {
-  assert(a < NO_AXES);
-  a = Axis(int(a) + 1);
+  assert (a < NO_AXES);
+  a = Axis (int (a) + 1);
   return a;
 }
 

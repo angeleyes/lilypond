@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -12,20 +12,17 @@
 
 #include "spanner.hh"
 
-class Spacing_spanner : public Spanner
+class Spacing_spanner
 {
 public:
-  Spacing_spanner ();
-  VIRTUAL_COPY_CONS(Score_element);
-  Score_column *scol (int) const;
-  Array<Spring> do_measure (int,int) const;
-  int col_count () const;
-protected:
-  virtual  Array<Spring> get_springs () const;
+  static void set_interface (Grob*);
+  static void do_measure (Grob*,Link_array<Grob>) ;
 
-  Real stem_dir_correction (Score_column*,Score_column*)  const;
-  Real default_bar_spacing (Score_column*,Score_column*,Moment)  const;
-  Real note_spacing (Score_column*,Score_column*,Moment)  const;  
+  DECLARE_SCHEME_CALLBACK (set_springs, (SCM ));
+  static Real stem_dir_correction (Grob*,Grob*,Grob*)  ;
+  static Real default_bar_spacing (Grob*,Grob*,Grob*,Moment)  ;
+  static Real note_spacing (Grob*,Grob*,Grob*,Moment)  ;
+  static Real get_duration_space (Grob*,Moment dur, Moment shortest) ;
 };
 
 #endif /* SPACING_SPANNER_HH */

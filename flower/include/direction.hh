@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -25,14 +25,12 @@ enum Direction
   BIGGER=1,
   START = -1,
   STOP = 1,
-  X=1,
-  Y=-1,
 };
 
 inline Direction
 other_dir (Direction const d)
 {
-  return (Direction)(-d);
+  return (Direction) (-d);
 }
 
 inline Direction

@@ -3,97 +3,61 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "scope.hh"
-#include "dictionary-iter.hh"
-#include "debug.hh"
-#include "identifier.hh"
+#include "string.hh"
+#include "scm-hash.hh"
 
-void
-Scope::print () const
+Scope::Scope (Scheme_hash_table * st)
 {
-  bool init_b = false;		// ugh
-  for (Scope_iter ai (*this);  ai.ok(); ai++)
-    {
-      if (ai.val()->init_b_ == init_b)
-	{
-	  DOUT << ai.key() << "=";
-	  ai.val()->print ();
-	}
-    }
-}
-
-Scope::~Scope ()
-{
-  for (Scope_iter ai (*this); ai.ok(); ai++)
-    {
-      DOUT << "deleting: " << ai.key() << '\n';
-      delete ai.val ();
-    }
-}
-
-Scope::Scope (Scope const&s)
-  : Hash_table<Protected_scm,Identifier*> (s)
-{
-  for (Scope_iter ai (s); ai.ok(); ai++)
-    {
-      (*this)[ai.scm_key ()] = ai.val ()->clone ();
-    }
-}
-
-unsigned int scm_hash (Protected_scm s)
-{
-  return scm_ihashv (s, ~1u);
-}
-
-Scope::Scope ()
-{
-  hash_func_ = scm_hash;
+  assert (st);
+  id_dict_ =st;
 }
 
 bool
 Scope::elem_b (String s) const
 {
-  return elem_b (ly_symbol (s.ch_C()));
-}
-
-
-Identifier *&
-Scope::elem (String s) 
-{
-  return elem (ly_symbol (s.ch_C()));
-}
-
-
-Scope_iter::Scope_iter (Scope const &s)
-  : Hash_table_iter<Protected_scm,Identifier*>(s)
-{
-}
-
-String
-Scope_iter::key () const
-{
-  SCM s= Hash_table_iter<Protected_scm,Identifier*>::key ();
-  return symbol_to_string (s);
+  return id_dict_->elem_b (ly_symbol2scm (s.ch_C ()));
 }
 
 bool
 Scope::elem_b (SCM s) const
 {
-  return Hash_table<Protected_scm,Identifier*> ::elem_b (s);
+  return id_dict_->elem_b (s);
 }
 
-Identifier* &
-Scope::elem (SCM s)
+
+SCM
+Scope::scm_elem (SCM s)const
 {
-  return Hash_table<Protected_scm,Identifier*> ::elem (s);
+  return id_dict_->get (s);
 }
 
 SCM
-Scope_iter::scm_key () const
+Scope::scm_elem (String s) const
 {
-  return Hash_table_iter<Protected_scm,Identifier*>::key ();
+ return scm_elem (ly_symbol2scm (s.ch_C ()));
 }
+
+
+void
+Scope::set (String s, SCM id)
+{
+  return id_dict_->set (ly_symbol2scm (s.ch_C ()), id);
+}
+
+SCM
+Scope::to_alist () const
+{
+  return id_dict_->to_alist ();
+}
+
+bool
+Scope::try_retrieve (SCM k , SCM *v)const
+{
+  return id_dict_->try_retrieve (k, v);
+}
+

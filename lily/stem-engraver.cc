@@ -3,149 +3,175 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "stem-engraver.hh"
-#include "note-head.hh"
+#include "staff-symbol-referencer.hh"
+#include "rhythmic-head.hh"
 #include "stem.hh"
 #include "musical-request.hh"
-#include "duration-convert.hh"
 #include "misc.hh"
 #include "stem-tremolo.hh"
-#include "staff-info.hh"
+#include "item.hh"
 #include "translator-group.hh"
+#include "engraver.hh"
 
-Stem_engraver::Stem_engraver()
+/**
+  Make stems upon receiving noteheads.
+ */
+class Stem_engraver : public Engraver
 {
-  abbrev_req_l_ = 0;
+
+public:
+  VIRTUAL_COPY_CONS (Translator);
+  Stem_engraver ();
+  
+protected:
+  virtual void acknowledge_grob (Grob_info);
+  virtual void stop_translation_timestep ();
+  virtual bool try_music (Music*);
+  
+private:
+  Grob  *stem_p_;
+  Grob *tremolo_p_;
+  Rhythmic_req *rhythmic_req_l_;
+  Tremolo_req* tremolo_req_l_;
+};
+
+ADD_THIS_TRANSLATOR (Stem_engraver);
+
+Stem_engraver::Stem_engraver ()
+{
+  tremolo_req_l_ = 0;
   stem_p_ = 0;
-  abbrev_p_ = 0;
-  default_abbrev_i_ = 16;
+  tremolo_p_ = 0;
   rhythmic_req_l_ =0;
 }
 
-void
-Stem_engraver::do_creation_processing ()
-{
-  Scalar prop = get_property ("abbrev", 0);
-  if (prop.isnum_b ()) 
-    {
-      default_abbrev_i_  = prop;
-    }
-}
 
 void
-Stem_engraver::acknowledge_element(Score_element_info i)
+Stem_engraver::acknowledge_grob (Grob_info i)
 {
-  if (Rhythmic_head * h = dynamic_cast<Rhythmic_head *> (i.elem_l_))
+  Grob* h = i.elem_l_;
+  if (Rhythmic_head::has_interface (h))
     {
-      if (h->stem_l_)
+      if (Rhythmic_head::stem_l (h))
 	return;
       
-      Rhythmic_req * r = dynamic_cast <Rhythmic_req *> (i.req_l_);
-      int duration_log = r->duration_.durlog_i_;      
+      int duration_log  = unsmob_duration (i.req_l_->get_mus_property ("duration"))-> duration_log ();
+	    
       if (!stem_p_) 
 	{
-	  stem_p_ = new Stem;
-	  stem_p_->flag_i_ = duration_log;
+	  stem_p_ = new Item (get_property ("Stem"));
+	  Stem::set_interface (stem_p_);
+	  Staff_symbol_referencer::set_interface (stem_p_);
 
-	  if (abbrev_req_l_)
+	  
+	  stem_p_->set_grob_property ("duration-log", gh_int2scm (duration_log));
+
+	  if (tremolo_req_l_)
 	    {
 	      /*
-		suggests typing of:
-		c8:16 c: c: c:
-	        hmm, which isn't so bad?
-	      */
-	      int t = abbrev_req_l_->type_i_;
-	      if (!t)
-		t = default_abbrev_i_;
-	      else
-		default_abbrev_i_ = t;
+		Stem tremolo is never applied to a note by default,
+		is must me requested.  But there is a default for the
+		tremolo value:
 
-	      if (t)
+		   c4:8 c c:
+
+		the first and last (quarter) note bothe get one tremolo flag.
+	       */
+	      int requested_type = gh_scm2int (tremolo_req_l_->get_mus_property ("tremolo-type"));
+	      
+	      SCM f = get_property ("tremoloFlags");
+	      if (!requested_type && gh_number_p (f))
+		requested_type = gh_scm2int (f);
+	      else
+		daddy_trans_l_->set_property ("tremoloFlags", gh_int2scm (requested_type));
+
+	      if (requested_type)
 		{
-		  abbrev_p_ = new Stem_tremolo;
-		  announce_element (Score_element_info (abbrev_p_, abbrev_req_l_));
-		  abbrev_p_->abbrev_flags_i_ =intlog2 (t) - (duration_log>? 2);
+		  tremolo_p_ = new Item (get_property ("StemTremolo"));
+		  Stem_tremolo::set_interface (tremolo_p_);
+
+		  announce_grob (tremolo_p_, tremolo_req_l_);
+		  /*
+		    The number of tremolo flags is the number of flags of
+		    the tremolo-type minus the number of flags of the note
+		    itself.
+		   */
+		  int tremolo_flags = intlog2 (requested_type) - 2
+		    - (duration_log > 2 ? duration_log - 2 : 0);
+		  if (tremolo_flags < 0)
+		    tremolo_flags = 0;
+		  tremolo_p_->set_grob_property ("tremolo-flags",
+						gh_int2scm (tremolo_flags));
 		}
 	    }
-
-	  // must give the request, to preserve the rhythmic info.
-	  announce_element (Score_element_info (stem_p_, r));
+	  announce_grob (stem_p_, i.req_l_);
 	}
 
-      if (stem_p_->flag_i_ != duration_log)
+      if (Stem::flag_i (stem_p_) != duration_log)
 	{
-	  r->warning (_f("Adding note head to incompatible stem (type = %d)", 1 <<  stem_p_->flag_i_));
+	  i.req_l_->origin ()->warning (_f ("Adding note head to incompatible stem (type = %d)", 1 <<  Stem::flag_i (stem_p_)));
 	}
 
-      stem_p_->add_head (h);
+      Stem::add_head (stem_p_,h);
     }
 }
 
 void
-Stem_engraver::do_pre_move_processing()
+Stem_engraver::stop_translation_timestep ()
 {
-  if (abbrev_p_)
+  if (tremolo_p_)
     {
-      abbrev_p_->set_stem (stem_p_);
-      typeset_element (abbrev_p_);
-      abbrev_p_ = 0;
+      Stem_tremolo::set_stem (tremolo_p_, stem_p_);
+      typeset_grob (tremolo_p_);
+      tremolo_p_ = 0;
     }
 
   if (stem_p_)
     {
-      Scalar prop = get_property ("verticalDirection", 0);
-      Direction dir = prop.isnum_b () ? (Direction)int(prop) : CENTER;
-      if (dir)
+      SCM prop = get_property ("stemLeftBeamCount");
+      if (gh_number_p (prop))
 	{
-	  stem_p_->dir_ = dir;
-	  stem_p_->set_elt_property (dir_forced_scm_sym, SCM_BOOL_T);
+	  Stem::set_beaming (stem_p_,gh_scm2int (prop),LEFT);
+	  daddy_trans_l_->set_property ("stemLeftBeamCount", SCM_UNDEFINED);
+	}
+      prop = get_property ("stemRightBeamCount");
+      if (gh_number_p (prop))
+	{
+	  Stem::set_beaming (stem_p_,gh_scm2int (prop), RIGHT);
+	  daddy_trans_l_->set_property ("stemRightBeamCount", SCM_UNDEFINED);
 	}
 
-      Translator_group* which;
-      prop = get_property ("stemLeftBeamCount", &which);
-      if (prop.isnum_b ())
-	{
-	  stem_p_->beams_i_drul_[LEFT] = prop;
-	  ((Translator_group*)which)->set_property ("stemLeftBeamCount", "");
-	}
-      prop = get_property ("stemRightBeamCount", &which);
-      if (prop.isnum_b ())
-	{
-	  stem_p_->beams_i_drul_[RIGHT] = prop;
-	  ((Translator_group*)which)->set_property ("stemRightBeamCount", "");
-	}
-
-      prop = get_property ("stemLength", 0);
-      if (prop.isnum_b ())
-	{
-	  stem_p_->set_elt_property (length_scm_sym, gh_double2scm (prop.to_f ()));
-	}
-
-      prop = get_property ("stemStyle", 0);
-      if (prop.to_bool ())
-	{
-	  stem_p_->set_elt_property (style_scm_sym, ly_ch_C_to_scm (prop.ch_C()));
-	}
       
-      typeset_element(stem_p_);
+      // UGH. Should mark non-forced instead.
+      /*
+	 aargh: I don't get it.  direction is being set (and then set
+	 to forced), if we have a Chord_tremolo.
+       */
+      SCM dir = stem_p_->get_grob_property ("direction");
+      if (gh_number_p (dir) && to_dir (dir))
+	{
+	  stem_p_->set_grob_property ("dir-forced", SCM_BOOL_T);	  
+	}
+
+      typeset_grob (stem_p_);
       stem_p_ = 0;
     }
-  abbrev_req_l_ = 0;
+
+
+  tremolo_req_l_ = 0;
 }
 
 bool
-Stem_engraver::do_try_music (Music* r)
+Stem_engraver::try_music (Music* r)
 {
   if (Tremolo_req* a = dynamic_cast <Tremolo_req *> (r))
     {
-      abbrev_req_l_ = a;
+      tremolo_req_l_ = a;
       return true;
     }
   return false;
 }
 
-
-ADD_THIS_TRANSLATOR(Stem_engraver);

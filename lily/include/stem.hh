@@ -1,111 +1,51 @@
 /*
   stem.hh -- declare Stem
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef STEM_HH
 #define STEM_HH
-#include "item.hh"
-#include "array.hh"
-#include "moment.hh"
-#include "molecule.hh"
-#include "staff-symbol-referencer.hh"
 
-/**the rule attached to the ball.
-  takes care of:
+#include "lily-proto.hh"
+#include "lily-guile.hh"
+#include "stem-info.hh"
+#include "drul-array.hh"
 
-  \begin{itemize}
-  \item the rule
-  \item the flag
-  \item up/down position.
-  \end{itemize}
-
-  should move beam_{left, right} into Beam
-
-  TODO.
-  
-  Stem size depends on flag.
-
-  elt properties:
-
-  beam_dir: direction of the beam (int)
-
-  dir_force: is direction explicitely specified? (bool)
-
-  /// how many abbrev beam don't reach stem?
-  int beam_gap_i_;
-
-
-  
-  */
-// todo: remove baseclass Staff_symbol_referencer, since stem
-// can be across a staff.
-class Stem : public Item, public Staff_symbol_referencer {
-
-  /**extent of the stem (positions).
-    fractional, since Beam has to adapt them.
-    */
-  Drul_array<Real> yextent_drul_;
-
+class Stem 
+{
 public:
-  Link_array<Note_head> head_l_arr_;
-  Link_array<Rest> rest_l_arr_;
-    
-  /// log of the duration. Eg. 4 -> 16th note -> 2 flags
-  int flag_i_;
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
 
-  /** 
-    don't print flag when in beam.
-    our beam, for aligning abbrev flags
-   */
-  Beam* beam_l_;
+  static  int flag_i (Grob*) ;
+  static int beam_count (Grob*,Direction) ;
+  static void set_beaming (Grob*,int,  Direction d);
+  static Grob * beam_l (Grob*);
+  static Grob * first_head (Grob*) ;
+  static Drul_array<Grob*> extremal_heads (Grob*);
+  static Grob * support_head (Grob*) ;
+  static void add_head (Grob*me, Grob*n);
+  static Stem_info calc_stem_info (Grob *) ;
+  static Real chord_start_f (Grob *) ;
+  static Direction get_direction (Grob*) ;
+  static int type_i (Grob *) ;
+  static void set_stemend (Grob *,Real);
+  static Direction get_default_dir (Grob *) ;
+  static int get_center_distance (Grob *,Direction) ;
+  static int heads_i (Grob *) ;
+  static bool invisible_b (Grob *) ;
+  static Interval head_positions (Grob *) ;
+  static Real get_default_stem_end_position (Grob*me) ;
+  static void position_noteheads (Grob*);
+  static Real stem_end_position (Grob*) ;
+  DECLARE_SCHEME_CALLBACK (off_callback, (SCM element, SCM axis));
+  static Molecule flag (Grob*);
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
+  DECLARE_SCHEME_CALLBACK (dim_callback, (SCM smob, SCM axis));
+  DECLARE_SCHEME_CALLBACK (height, (SCM,SCM));
+  static bool has_interface (Grob*);
+  static void set_interface (Grob*);
 
-  Drul_array<int> beams_i_drul_;
-
-  void set_direction (Direction d);
-  /// direction stem (that's me)
-  Direction dir_;
-
-
-  Stem ();
-    
-  /// ensure that this Stem also encompasses the Notehead #n#
-  void add_head (Rhythmic_head*n);
-
-  Real hpos_f () const;
-  Real chord_start_f () const;
-  
-  int type_i () const;
-
-  void do_print() const;
-  void set_stemend (Real);
-  Direction get_default_dir() const;
-  Direction get_dir () const;
-
-  int get_center_distance(Direction) const;
-
-  void set_default_stemlen();
-  void set_default_extents();
-  void set_noteheads();
-
-  Real stem_length_f() const;
-  Real stem_end_f() const;
-  Real stem_begin_f() const;
-  Real note_delta_f () const;
-
-  bool invisible_b() const;
-    
-  /// heads that the stem encompasses (positions)
-  Interval_t<int> head_positions() const;
-
-protected:
-  Molecule flag () const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
-  virtual void do_pre_processing();
-  virtual Interval do_width() const;
-  virtual Molecule* do_brew_molecule_p() const;
-
-  void set_spacing_hints () ;
+  static void set_spacing_hints (Grob*me) ;
 };
 #endif

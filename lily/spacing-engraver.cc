@@ -3,14 +3,56 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "musical-request.hh"
-#include "score-column.hh"
-#include "spacing-engraver.hh"
+#include "paper-column.hh"
+
 #include "spacing-spanner.hh"
+#include "engraver.hh"
+#include "pqueue.hh"
+
+struct Rhythmic_tuple
+{
+  Grob_info info_;
+  Moment end_;
+  
+  Rhythmic_tuple ()
+    {
+    }
+  Rhythmic_tuple (Grob_info i, Moment m)
+    {
+      info_ = i;
+      end_ = m;
+    }
+  static int time_compare (Rhythmic_tuple const &, Rhythmic_tuple const &);  
+};
+
+/**
+   Acknowledge rhythmic elements, for initializing spacing fields in
+   the columns.
+
+   should be the  last one of the toplevel context
+*/
+class Spacing_engraver : public Engraver
+{
+  PQueue<Rhythmic_tuple> playing_durations_;
+  Array<Rhythmic_tuple> now_durations_;
+  Array<Rhythmic_tuple> stopped_durations_;
+
+  Spanner * spacing_p_;
+protected:
+  VIRTUAL_COPY_CONS (Translator);
+  virtual void acknowledge_grob (Grob_info);
+  virtual void start_translation_timestep ();
+  virtual void stop_translation_timestep ();
+  virtual void initialize ();
+  virtual void finalize ();
+public:
+  Spacing_engraver ();
+};
 
 inline int
 compare (Rhythmic_tuple const &a, Rhythmic_tuple const &b)
@@ -22,51 +64,50 @@ int
 Rhythmic_tuple::time_compare (Rhythmic_tuple const &h1,
 			      Rhythmic_tuple const &h2)
 {
-  
-  return (h1.end_ - h2.end_ ).sign ();
+  return (h1.end_ - h2.end_).sign ();
 }
 
-Spacing_engraver::Spacing_engraver()
+Spacing_engraver::Spacing_engraver ()
 {
   spacing_p_ = 0;
 }
 
 void
-Spacing_engraver::do_creation_processing ()
+Spacing_engraver::initialize ()
 {
-  spacing_p_  =new Spacing_spanner;
-  spacing_p_->set_bounds (LEFT, get_staff_info ().command_pcol_l ());  
-  announce_element (Score_element_info (spacing_p_, 0));
+  spacing_p_  =new Spanner (get_property ("SpacingSpanner"));
+  Spacing_spanner::set_interface (spacing_p_);
+  spacing_p_->set_bound (LEFT, unsmob_grob (get_property ("currentCommandColumn")));  
+  announce_grob (spacing_p_, 0);
 }
 
 void
-Spacing_engraver::do_removal_processing ()
+Spacing_engraver::finalize ()
 {
-  Paper_column * p = get_staff_info ().command_pcol_l ();
-
-  spacing_p_->set_bounds (RIGHT, p);
-  typeset_element (spacing_p_);
+  Grob * p = unsmob_grob (get_property ("currentCommandColumn"));
+  spacing_p_->set_bound (RIGHT, p);
+  typeset_grob (spacing_p_);
   spacing_p_ =0;
 }
 
 void
-Spacing_engraver::acknowledge_element (Score_element_info i)
+Spacing_engraver::acknowledge_grob (Grob_info i)
 {
-  if (i.elem_l_->get_elt_property (grace_scm_sym) != SCM_BOOL_F)
+  if (to_boolean (i.elem_l_->get_grob_property ("grace")))
     return;
 
-  if (i.elem_l_->get_elt_property (non_rhythmic_scm_sym) != SCM_BOOL_F)
+  if (to_boolean (i.elem_l_->get_grob_property ("non-rhythmic")))
     return;
   
-  if (Rhythmic_req * r = dynamic_cast<Rhythmic_req*>(i.req_l_))
+  if (Rhythmic_req * r = dynamic_cast<Rhythmic_req*> (i.req_l_))
     {
-      Rhythmic_tuple t(i, now_mom () + r->length_mom ());
+      Rhythmic_tuple t (i, now_mom () + r->length_mom ());
       now_durations_.push (t);
     }
 }
 
 void
-Spacing_engraver::do_pre_move_processing ()
+Spacing_engraver::stop_translation_timestep ()
 {
   Moment shortest_playing;
   shortest_playing.set_infinite (1);
@@ -74,9 +115,11 @@ Spacing_engraver::do_pre_move_processing ()
     {
       Moment m = (playing_durations_[i].info_.req_l_)->length_mom ();
       if (m)
-	shortest_playing = shortest_playing <? m;
+	{
+	  shortest_playing = shortest_playing <? m;
+	}
     }
-
+  
   Moment starter, inf;
   inf.set_infinite (1);
   starter=inf;
@@ -92,15 +135,18 @@ Spacing_engraver::do_pre_move_processing ()
   
   shortest_playing = shortest_playing <? starter;
   
-  Score_column * sc
-    = dynamic_cast<Score_column*> (get_staff_info ().musical_pcol_l ());
+  Paper_column * sc
+    = dynamic_cast<Paper_column*> (unsmob_grob (get_property ("currentMusicalColumn")));
 
-  sc->shortest_playing_mom_ = shortest_playing;
-  sc->shortest_starter_mom_ = starter;
+  SCM sh = shortest_playing.smobbed_copy ();
+  SCM st = starter.smobbed_copy ();
+
+  sc->set_grob_property ("shortest-playing-duration", sh);  
+  sc->set_grob_property ("shortest-starter-duration", st);
 }
 
 void
-Spacing_engraver::do_post_move_processing ()
+Spacing_engraver::start_translation_timestep ()
 {
   Moment now = now_mom ();
   stopped_durations_.clear ();
@@ -110,5 +156,6 @@ Spacing_engraver::do_post_move_processing ()
     stopped_durations_.push (playing_durations_.get ());
 }
 
-ADD_THIS_TRANSLATOR(Spacing_engraver);
+ADD_THIS_TRANSLATOR (Spacing_engraver);
+
 

@@ -3,15 +3,14 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 #ifndef ITEM_HH
 #define ITEM_HH
 
 
 #include "box.hh"
-#include "string.hh"
-#include "score-element.hh"
+#include "grob.hh"
 #include "drul-array.hh"
 #include "protected-scm.hh"
 
@@ -21,54 +20,31 @@
   Item is the datastructure for printables whose width is known
   before the spacing is calculated
 
-  NB. This doesn't mean an Item has to initialize the output field before
-  spacing calculation. 
-  
-
-  
-  @signature
-  visibility_lambda :: int -> (bool . bool)
-     
-  @in
-  break direction
-     
-  @out
-  (transparent, empty) cons
-     
-   */
-class Item : public virtual Score_element {
-  void do_break ();
-  void try_visibility_lambda ();
+*/
+class Item : public Grob
+{
   Drul_array<Item*> broken_to_drul_;
 
-
 public:
+  VIRTUAL_COPY_CONS (Grob);
+  Item (SCM);
+  Item (Item const &);
 
-  /// I am really to be broken?
-  bool breakable_b () const;
-  bool broken_original_b () const;
+  static bool breakable_b (Grob*me);
+  bool broken_b () const;
   
   Direction break_status_dir () const;
   
   Item * find_prebroken_piece (Direction) const;
-  Item * find_prebroken_piece (Line_of_score*) const;    
+  Grob * find_broken_piece (Line_of_score*) const;    
 
-  Item();
-  Real hpos_f() const;
-  
-  virtual Line_of_score * line_l() const;
+  virtual Line_of_score * line_l () const;
   virtual Paper_column * column_l () const;
-    
-  static int left_right_compare (Item const *, Item const*);
-  
-  Item (Item const &);
+  virtual void handle_prebroken_dependencies ();
 protected:
-  virtual void do_breakable_col_processing();
-  virtual void handle_prebroken_dependencies();
-  virtual void do_print() const;
-  virtual void handle_prebroken_dependents ();
-
-  void copy_breakable_items();
+  virtual void discretionary_processing ();
+  void copy_breakable_items ();
+  virtual SCM do_derived_mark ();
 };
 
 

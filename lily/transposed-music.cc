@@ -3,35 +3,28 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "transposed-music.hh"
 #include "debug.hh"
 
-Transposed_music::Transposed_music (Music *p, Musical_pitch pit)
-  : Music_wrapper (p)
+Transposed_music::Transposed_music (SCM l)
+  : Music_wrapper (l)
 {
-  transpose_to_pitch_ = pit;
-  p->transpose (pit);
+  set_mus_property ("type", ly_symbol2scm ("transposed-music"));
 }
 
-void
-Transposed_music::do_print () const
-{
-  Music_wrapper::do_print ();
-  DOUT << "transposition pitch: " << transpose_to_pitch_.str ();
-}
 
-Musical_pitch
-Transposed_music::to_relative_octave (Musical_pitch p)
+Pitch
+Transposed_music::to_relative_octave (Pitch p)
 {
-#if 0				// Mats?
-    warning (_ ("Will ignore \\relative for transposed music"));
-#endif
   return p;
 }
 
+ADD_MUSIC (Transposed_music);
+Transposed_music::Transposed_music ()
+{
 
-
+}

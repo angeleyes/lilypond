@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -19,10 +19,11 @@
 struct Audio_element_info {
   Audio_element * elem_l_;
   Music *req_l_;
-  Link_array<Translator> origin_trans_l_arr_;
+  Translator *  origin_trans_l_;
+  Link_array<Translator> origin_trans_l_arr (Translator*) const;  
 
   Audio_element_info (Audio_element*, Music*);
-  Audio_element_info();
+  Audio_element_info ();
 };
 
 

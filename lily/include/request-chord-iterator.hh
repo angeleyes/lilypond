@@ -3,37 +3,42 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef REQUEST_ITER_HH
 #define REQUEST_ITER_HH
 
-#include "music-iterator.hh"
+#include "simple-music-iterator.hh"
 
 /**
    Walk through a Request_chord
  */
-class Request_chord_iterator : public Music_iterator {
+class Request_chord_iterator : public Simple_music_iterator
+{
   Request_chord * elt_l () const;
   /**
-     cache elt_l ()->length_mom ().
+     Find a bottom notation context to deliver requests to.
    */
-  Moment elt_length_mom_;
-  bool last_b_;
-  Cons<Music>* cursor_;
+  virtual Translator_group* get_req_translator_l ();
 
-public:
-  Request_chord_iterator ();
+
+  /*
+    Since Request_chord_iterator has no list-cursor internally, we
+    must use a status variable to adminstrate where we are */
   
+  enum { NONE_DONE, START_DONE, END_DONE }  status_;
+public:
+  VIRTUAL_COPY_CONS (Music_iterator);
+  static SCM constructor_cxx_function;
+  Request_chord_iterator ();
+  Request_chord_iterator (Request_chord_iterator const&);
 
+  virtual SCM get_music (Moment) const;
 protected:
-  virtual void do_process_and_next (Moment);
-  virtual Moment next_moment() const;
-  virtual void construct_children();
-  virtual bool ok() const;
-  virtual void do_print() const;
+  virtual void process (Moment);
+  virtual void construct_children ();
 };
 
 

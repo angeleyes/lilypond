@@ -1,9 +1,9 @@
 /*   
-  abbrev.cc --  implement Stem_tremolo
+  stem-tremolo.cc --  implement Stem_tremolo
   
   source file of the GNU LilyPond music typesetter
   
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -13,123 +13,152 @@
 #include "paper-def.hh"
 #include "lookup.hh"
 #include "stem.hh"
-#include "offset.hh"
+#include "item.hh"
+#include "staff-symbol-referencer.hh"
+#include "directional-element-interface.hh"
 
-Stem_tremolo::Stem_tremolo ()
-{
-  stem_l_ = 0;
-  abbrev_flags_i_ = 1;
-}
-
-void
-Stem_tremolo::do_print () const
-{
-  DOUT << "abbrev_flags_i_ " << abbrev_flags_i_;
-}
-
-Interval
-Stem_tremolo::do_width () const
-{
-  Real space = stem_l_->staff_line_leading_f ();
-  return Interval (-space, space);
-}
+/*
+  TODO:
+    lengthen stem if necessary
+ */
 
 void
-Stem_tremolo::do_pre_processing ()
+Stem_tremolo::set_interface (Grob *me)
 {
+  me->set_interface (ly_symbol2scm ("stem-tremolo"));
 }
 
-Molecule*
-Stem_tremolo::do_brew_molecule_p () const
+bool
+Stem_tremolo::has_interface (Grob *me)
 {
-  int mult =0;
-  if (Beam * b = stem_l_->beam_l_)
+  return me->has_interface (ly_symbol2scm ("stem-tremolo"));
+}
+
+MAKE_SCHEME_CALLBACK (Stem_tremolo,dim_callback,2);
+
+/*
+  todo: init with cons. 
+ */
+SCM
+Stem_tremolo::dim_callback (SCM e, SCM)
+{
+  Grob * se = unsmob_grob (e);
+  
+  Real space = Staff_symbol_referencer::staff_space (se);
+  return ly_interval2scm (Interval (-space, space));
+}
+
+/*
+  ugh ?  --from Slur
+ */
+MAKE_SCHEME_CALLBACK (Stem_tremolo, height, 2);
+SCM
+Stem_tremolo::height (SCM smob, SCM ax)
+{
+  Axis a = (Axis)gh_scm2int (ax);
+  Grob * me = unsmob_grob (smob);
+  assert (a == Y_AXIS);
+
+  SCM mol = me->get_uncached_molecule ();
+  return ly_interval2scm (unsmob_molecule (mol)->extent (a));
+}
+
+
+MAKE_SCHEME_CALLBACK (Stem_tremolo,brew_molecule,1);
+SCM
+Stem_tremolo::brew_molecule (SCM smob)
+{
+  Grob *me= unsmob_grob (smob);
+  Grob * stem = unsmob_grob (me->get_grob_property ("stem"));
+  Grob * beam = Stem::beam_l (stem);
+  
+  Real dydx;
+  if (beam)
     {
-      Stem_info i = b->get_stem_info (stem_l_);
-      mult = i.mult_i_;
+      Real dy = 0;
+      SCM s = beam->get_grob_property ("dy");
+      if (gh_number_p (s))
+	dy = gh_scm2double (s);
+      Real dx = Beam::last_visible_stem (beam)->relative_coordinate (0, X_AXIS)
+	- Beam::first_visible_stem (beam)->relative_coordinate (0, X_AXIS);
+      dydx = dx ? dy/dx : 0;
     }
+  else
+    // urg
+    dydx = 0.25;
+
+  Real ss = Staff_symbol_referencer::staff_space (stem);
+  Real thick = gh_scm2double (me->get_grob_property ("beam-thickness"));
+  Real width = gh_scm2double (me->get_grob_property ("beam-width"));
+  width *= ss;
+  thick *= ss;
   
-  Real interbeam_f = paper_l ()->interbeam_f (mult);
-  Real w = 1.5 * lookup_l ()->notehead (2, "").dim_[X_AXIS].length ();
-  Real space = stem_l_->staff_line_leading_f ();
-  Real internote_f = space/2;
+  Molecule a (Lookup::beam (dydx, width, thick));
+  a.translate (Offset (-width/2, width / 2 * dydx));
   
-  Real beam_f = paper_l ()->beam_thickness_f ();
+  int tremolo_flags;
+  SCM s = me->get_grob_property ("tremolo-flags");
+  if (gh_number_p (s))
+    tremolo_flags = gh_scm2int (s);
+  else
+    // huh?
+    tremolo_flags = 1;
 
-  int beams_i = 0;
-  Real slope_f = internote_f / 4 / internote_f;	// HUH?
+  int mult = beam ? Beam::get_multiplicity (beam) : 0;
+  SCM space_proc = me->get_grob_property ("beam-space-function");
+  SCM space = gh_call1 (space_proc, gh_int2scm (mult));
+  Real interbeam_f = gh_scm2double (space) * ss;
 
-  if (stem_l_ && stem_l_->beam_l_) {
-    slope_f = stem_l_->beam_l_->slope_f_;
-    // ugh, rather calc from Stem_tremolo_req
-    beams_i = stem_l_->beams_i_drul_[RIGHT] >? stem_l_->beams_i_drul_[LEFT];
-  } 
-  Real sl = slope_f * internote_f;
 
-  Molecule a (lookup_l ()->beam (sl, w, beam_f));
-  a.translate (Offset (-w/2, w / 2 * slope_f));
-
-  Molecule *beams= new Molecule; 
-  for (int i = 0; i < abbrev_flags_i_; i++)
+  Molecule mol; 
+  for (int i = 0; i < tremolo_flags; i++)
     {
       Molecule b (a);
       b.translate_axis (interbeam_f * i, Y_AXIS);
-      beams->add_molecule (b);
+      mol.add_molecule (b);
     }
-  beams->translate_axis (-beams->extent ()[Y_AXIS].center (), Y_AXIS);
-
-  if (stem_l_)
-    { 
-      if (stem_l_->beam_l_)
-        {
-	  beams->translate (Offset(stem_l_->hpos_f () - hpos_f (),
-	    stem_l_->stem_end_f () * internote_f - 
-	    stem_l_->beam_l_->dir_ * beams_i * interbeam_f));
-	}
-      else
-	{  
-	  /*
-	    Beams should intersect one beamthickness below staff end
-	   */
-	  Real dy = - beams->extent ()[Y_AXIS].length () / 2 * stem_l_->dir_;
-
-	  /*
-	    uhg.  Should use relative coords and placement
-	  */
-	  Real whole_note_correction = (stem_l_ && stem_l_->invisible_b( ))
-	    ? -stem_l_->get_dir () * stem_l_->note_delta_f ()/2
-	    : 0.0;
-
-	  /*
-	    UGH. Internote fudging.
-	   */
-	  dy /= internote_f;
-	  dy += stem_l_->stem_end_f ();
-	  dy *= internote_f;
-	  beams->translate (Offset(stem_l_->hpos_f () - hpos_f ()+
-				   whole_note_correction, dy));
-	}
+  if (tremolo_flags)
+    mol.translate_axis (-mol.extent (Y_AXIS).center (), Y_AXIS);
+  if (beam)
+    {
+      // ugh, rather calc from Stem_tremolo_req
+      int beams_i = Stem::beam_count (stem, RIGHT) >? Stem::beam_count (stem, LEFT);
+      mol.translate (Offset (stem->relative_coordinate (0, X_AXIS) - me->relative_coordinate (0, X_AXIS),
+			    Stem::stem_end_position (stem) * ss / 2 - 
+			    Directional_element_interface::get (beam) * beams_i * interbeam_f));
+    }
+  else
+    {  
+      /*
+	Beams should intersect one beamthickness below stem end
+      */
+      Real dy = Stem::stem_end_position (stem) * ss / 2;
+      dy -= mol.extent (Y_AXIS).length () / 2 *  Stem::get_direction (stem);
 
       /*
-	there used to be half a page of code that was long commented out.
-	Removed in 1.1.35
-       */
+	uhg.  Should use relative coords and placement
+      */
+      Real whole_note_correction;
+      if (Stem::invisible_b (stem))
+	{
+	  Grob *hed = Stem::support_head (stem);
+	  whole_note_correction = -Stem::get_direction (stem)
+	    *hed->extent (hed, X_AXIS).length () / 2;
+	}
+      else
+	whole_note_correction = 0;
+	 
+      mol.translate (Offset (stem->relative_coordinate (0, X_AXIS) - me->relative_coordinate (0, X_AXIS) +
+			     whole_note_correction, dy));
     }
   
-  return beams;
-}
-
-void
-Stem_tremolo::do_substitute_element_pointer (Score_element*o, Score_element*n)
-{
-  if (stem_l_ == o)
-    stem_l_ = dynamic_cast<Stem*> (n);
+  return mol.smobbed_copy ();
 }
 
 
 void
-Stem_tremolo::set_stem (Stem *s)
+Stem_tremolo::set_stem (Grob*me,Grob *s)
 {
-  stem_l_ = s;
-  add_dependency (s);
+  me->set_grob_property ("stem", s->self_scm ());
 }
+

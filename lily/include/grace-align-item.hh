@@ -3,25 +3,23 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #ifndef GRACE_ALIGN_ITEM_HH
 #define GRACE_ALIGN_ITEM_HH
 
-#include "note-head-side.hh"
-#include "axis-align-item.hh"
 
-class Grace_align_item : public Axis_align_item, public Note_head_side
+#include "lily-guile.hh"
+#include "lily-proto.hh"
+
+class Grace_align_item
 {
 public:
-  VIRTUAL_COPY_CONS (Score_element);
-  Grace_align_item ();
-protected:
-  virtual void do_add_processing ();
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
-  virtual void do_pre_processing ();
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
 };
 #endif /* GRACE_ALIGN_ITEM_HH */
 

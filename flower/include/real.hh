@@ -3,7 +3,7 @@
 
   source file of the Flower Library
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -11,11 +11,10 @@
 #define REAL_HH
 
 
-#include <math.h>
 #include <limits.h>
 
 typedef double Real;
-const Real infinity_f = HUGE_VAL;
+extern const Real infinity_f;
 
 template<class T> inline T abs (T x)
 {
@@ -25,7 +24,7 @@ template<class T> inline T abs (T x)
 template<class T> inline int sign (T x)
 {
   if (x)
-    return x > 0 ? 1 : -1;
+    return x > T (0) ? 1 : -1;
   return 0;
 }
 

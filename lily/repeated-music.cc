@@ -3,132 +3,169 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "repeated-music.hh"
 #include "music-list.hh"
-#include "musical-pitch.hh"
+#include "pitch.hh"
 #include "debug.hh"
 
-Repeated_music::Repeated_music(Music *beg, int times, Music_sequence * alts)
+Music *
+Repeated_music::body ()const
 {
-  repeat_body_p_ = beg;
-  fold_b_ = false;
-  repeats_i_ = times;
-  alternatives_p_ = alts;
-  volta_fold_b_ = true;
-  if (alts)
-    alts->music_p_list_p_->truncate (times);
+  return unsmob_music (get_mus_property ("body"));
 }
 
-Repeated_music::Repeated_music (Repeated_music const &s)
-  : Music (s)
+Music_sequence*
+Repeated_music::alternatives ()const
 {
-  repeats_i_ = s.repeats_i_;
-  fold_b_ = s.fold_b_;
-  volta_fold_b_ = s.volta_fold_b_;
-  
-  repeat_body_p_ = s.repeat_body_p_ ? s.repeat_body_p_->clone () : 0;
-  alternatives_p_ = s.alternatives_p_
-    ? dynamic_cast<Music_sequence*> (s.alternatives_p_->clone ()):0;
+  return dynamic_cast<Music_sequence*> (unsmob_music (get_mus_property ("alternatives")));
 }
 
-Repeated_music::~Repeated_music ()
+
+Repeated_music::Repeated_music (SCM l)
+  : Music (l)
 {
-  delete repeat_body_p_;
-  delete alternatives_p_;
+  set_mus_property ("type", ly_symbol2scm ("repeated-music"));
+}
+
+
+Pitch
+Repeated_music::to_relative_octave (Pitch p)
+{
+  if (body ())
+    p = body ()->to_relative_octave (p);
+
+  Pitch last = p ; 
+  if (alternatives ())
+    for (SCM s = alternatives ()->music_list (); gh_pair_p (s);  s = gh_cdr (s))
+      unsmob_music (gh_car (s))->to_relative_octave (p);
+     
+
+  return last;
 }
 
 void
-Repeated_music::do_print () const
+Repeated_music::transpose (Pitch p)
 {
-#ifndef NPRINT
-  DOUT << "Fold = " << fold_b_ << " reps: " << repeats_i_;
+  if (body ())
+    body ()->transpose (p);
 
-  if (repeat_body_p_)
-    repeat_body_p_->print();
-  
-  if (alternatives_p_)
-    alternatives_p_->print();
-#endif
-}
-
-Musical_pitch
-Repeated_music::to_relative_octave (Musical_pitch p)
-{
-  if (repeat_body_p_)
-    p = repeat_body_p_->to_relative_octave (p);
-
-  if (alternatives_p_)
-    p = alternatives_p_->do_relative_octave (p, true);
-  return p;
-}
-
-
-
-void
-Repeated_music::transpose (Musical_pitch p)
-{
-  if (repeat_body_p_)
-    repeat_body_p_->transpose (p);
-
-  if (alternatives_p_)
-    alternatives_p_->transpose (p);  
+  if (alternatives ())
+    alternatives ()->transpose (p);  
 }
 
 void
 Repeated_music::compress (Moment p)
 {
-  if (repeat_body_p_)
-    repeat_body_p_->compress (p);
+  if (body ())
+    body ()->compress (p);
 
-  if (alternatives_p_)
-    alternatives_p_->compress (p);  
+  if (alternatives ())
+    alternatives ()->compress (p);  
 }
 
 Moment
-Repeated_music::alternatives_length_mom () const
+Repeated_music::alternatives_length_mom (bool fold) const
 {
-  if (!alternatives_p_ )
+  if (!alternatives ())
     return 0;
   
-  if  (fold_b_)
-    return alternatives_p_->maximum_length ();
+  if (fold)
+    return alternatives ()->maximum_length ();
 
   Moment m =0;
   int done =0;
-  Cons<Music> *p = alternatives_p_->music_p_list_p_->head_;
-  while (p && done < repeats_i_)
+
+  SCM p = alternatives ()->music_list ();
+  while (gh_pair_p (p) && done < repeat_count ())
     {
-      m = m + p->car_->length_mom ();
+      m = m + unsmob_music (gh_car (p))->length_mom ();
       done ++;
-      if (volta_fold_b_
-	  || repeats_i_ - done < alternatives_p_->length_i ())
-	p = p->next_;
+      if (repeat_count () - done < alternatives ()->length_i ())
+	p = gh_cdr (p);
     }
   return m;
 }
 
+/*
+  Sum all duration of all available alternatives. This is for the case
+  of volta repeats, where the alternatives are iterated just as they
+  were entered.  */
 Moment
-Repeated_music::length_mom () const
+Repeated_music::alternatives_volta_length_mom () const
 {
-  Moment m =0;
-  if (fold_b_)
-    {
-      if (repeat_body_p_)
-	m += repeat_body_p_->length_mom ();
-    }
-  else
-    {
-      Moment beg = (repeat_body_p_) ? repeat_body_p_->length_mom () : Rational(0);
-      if (!volta_fold_b_)
-	beg *=  Rational (repeats_i_);
-      m += beg;
-    }
+  if (!alternatives ())
+    return 0;
 
-  m += alternatives_length_mom ();
+  Moment m;
+  SCM p = alternatives ()->music_list ();
+  while (gh_pair_p (p))
+    {
+      m = m + unsmob_music (gh_car (p))->length_mom ();
+      p = gh_cdr (p);
+    }
   return m;
 }
 
+
+/*
+  Length of the body in THIS. Disregards REPEAT-COUNT. 
+ */
+Moment
+Repeated_music::body_length_mom () const
+{
+  Moment m = 0;
+  if (body ())
+    {
+      m = body ()->length_mom ();
+    }
+  return m;
+}
+
+int
+Repeated_music::repeat_count () const
+{
+  return gh_scm2int (get_mus_property ("repeat-count"));
+}
+
+
+MAKE_SCHEME_CALLBACK (Repeated_music,unfolded_music_length, 1);
+MAKE_SCHEME_CALLBACK (Repeated_music,folded_music_length, 1);
+MAKE_SCHEME_CALLBACK (Repeated_music,volta_music_length, 1);
+
+SCM
+Repeated_music::unfolded_music_length (SCM m)
+{
+  Repeated_music* r = dynamic_cast<Repeated_music*> (unsmob_music (m));
+  
+  Moment l = Moment (r->repeat_count ()) * r->body_length_mom () + r->alternatives_length_mom (false);
+  return l.smobbed_copy ();
+}
+
+SCM
+Repeated_music::folded_music_length (SCM m)
+{
+  Repeated_music* r = dynamic_cast<Repeated_music*> (unsmob_music (m));
+ 
+  Moment l =  r->body_length_mom () + r->alternatives_length_mom (true);
+  return l.smobbed_copy ();
+}
+
+SCM
+Repeated_music::volta_music_length (SCM m)
+{
+  Repeated_music* r = dynamic_cast<Repeated_music*> (unsmob_music (m));
+  Moment l =  r->body_length_mom () + r->alternatives_volta_length_mom ();
+  return l.smobbed_copy ();
+}
+
+ADD_MUSIC (Repeated_music);
+
+Repeated_music::Repeated_music ()
+  : Music (SCM_EOL)
+{
+ set_mus_property ("type", ly_symbol2scm ("repeated-music"));
+}

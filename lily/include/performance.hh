@@ -1,7 +1,7 @@
 /*
   performance.hh -- declare Performance
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
 #ifndef PERFORMANCE_HH
@@ -26,8 +26,8 @@ public:
   void output (Midi_stream& midi_stream_r);
   void output_header_track (Midi_stream& midi_stream_r);
 
-  void print() const;
-  void process();
+  void print () const;
+  void process ();
 
 
   Link_array<Audio_staff> audio_staff_l_arr_;

@@ -3,31 +3,29 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "relative-music.hh"
 #include "debug.hh"
 
-Musical_pitch
-Relative_octave_music::to_relative_octave (Musical_pitch)
+Pitch
+Relative_octave_music::to_relative_octave (Pitch)
 {
-  return last_pitch_;
+  return * unsmob_pitch (get_mus_property ("last-pitch"));
 }
 
 
-Relative_octave_music::Relative_octave_music(Music*p,Musical_pitch def)
-  : Music_wrapper (p)
+Relative_octave_music::Relative_octave_music (SCM l)
+  : Music_wrapper (l)
 {
-  last_pitch_ = element_l ()->to_relative_octave (def);
+  set_mus_property ("type", ly_symbol2scm ("relative-octave-music"));  
 }
 
-void
-Relative_octave_music::do_print () const
+Relative_octave_music::Relative_octave_music ()
 {
-  Music_wrapper::do_print ();
-  DOUT << "default pitch: " << last_pitch_.str ();
+    set_mus_property ("type", ly_symbol2scm ("relative-octave-music"));
 }
 
-
+ADD_MUSIC (Relative_octave_music);

@@ -3,38 +3,35 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef COLLISION_HH
 #define COLLISION_HH
+
 #include "lily-proto.hh"
-#include "axis-group-item.hh"
-#include "tuple.hh"
+#include "lily-guile.hh"
 
-
-typedef Tuple<Note_column*, Real> Shift_tup;
 
 /**
   Resolve conflicts between various Note_columns (chords).
   
   TODO 
 
-  multistaff support (see Chlapik: equal noteheads should be on the
+  * multistaff support (see Chlapik: equal noteheads should be on the
   same hpos.)  
-*/
-class Collision : public Axis_group_item {
-protected:
-  Array<Shift_tup> automatic_shift ();
-  Array<Shift_tup> forced_shift ();
+
+  * Make interface of this, similar to align-interface.
   
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
-  virtual void do_pre_processing();
+*/
+class Collision			// interface
+{
 public:
-  Link_array<Note_column> clash_l_arr_;
-    
-  void add_column (Note_column*ncol_l);
-  Collision();
+  static SCM automatic_shift (Grob*);
+  static SCM forced_shift (Grob*);
+  DECLARE_SCHEME_CALLBACK (force_shift_callback, (SCM element, SCM axis));
+  static void do_shifts (Grob*);
+  static void add_column (Grob*me,Grob*ncol_l);
 };
 #endif // COLLISION_HH

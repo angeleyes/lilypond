@@ -3,7 +3,7 @@
   
   source file of the Flower Library
   
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -13,14 +13,14 @@
 
 INLINE 
 char &
-String::operator [](int n)
+String::operator [] (int n)
 {
   return (char &) strh_[n]; 
 }
 
 INLINE 
 char 
-String::operator [](int n) const
+String::operator [] (int n) const
 {
   return strh_[n]; 
 }

@@ -3,15 +3,14 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 #include "rod.hh"
 #include "paper-column.hh"
 #include "debug.hh"
 #include "dimensions.hh"
-#include "single-malt-grouping-item.hh"
-
+#include "spaceable-element.hh"
 
 Rod::Rod ()
 {
@@ -19,33 +18,27 @@ Rod::Rod ()
   item_l_drul_[LEFT] = item_l_drul_[RIGHT] =0;
 }
 
-void
-Column_rod::print () const
-{
-#ifndef NDEBUG
-  DOUT << "Column_rod { rank = "
-       << other_l_->rank_i () << ", dist = " << distance_f_ << "}\n";   
-#endif
-}
 
-Column_rod::Column_rod ()
-{
-  distance_f_ = 0;
-  other_l_ = 0;
-}
-  
-int
-Column_rod::compare (const Column_rod &r1, const Column_rod &r2)
-{
-  return r1.other_l_->rank_i() - r2.other_l_->rank_i();
-}
+
 void
-Rod::add_to_cols ()
+Rod::columnize ()
 {
   Direction d = LEFT;
   do {
-    item_l_drul_[-d]->column_l ()->add_rod
-      (item_l_drul_[d]->column_l (), distance_f_);
-  }while ((flip (&d))!=LEFT);
+    Paper_column * pc = item_l_drul_[d]->column_l ();
+    distance_f_ += - d * item_l_drul_[d]->relative_coordinate (pc, X_AXIS);
+    item_l_drul_[d] = pc;
+  } while ((flip (&d))!=LEFT);
+
+}
+
+void
+Rod::add_to_cols ()
+{
+  columnize ();
+  if (item_l_drul_[LEFT] != item_l_drul_[RIGHT])
+    Spaceable_grob::add_rod (item_l_drul_[LEFT],
+				item_l_drul_[RIGHT],
+				distance_f_);
 }
 

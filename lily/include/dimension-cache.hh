@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -14,64 +14,41 @@
 #include "real.hh"
 #include "lily-proto.hh"
 #include "parray.hh"
+#include "dimension-cache-callback.hh"
+#include "lily-guile.hh"
 
-class Dimension_cache;
-typedef Interval (*Dim_cache_callback)(Dimension_cache *);
 
 /**
-  Adminstration of offset dimension info. 
- */
-class Dimension_cache
+  Adminstration of offset dimension info.
+*/
+struct Dimension_cache
 {
-  bool valid_b_;
-  /** Is this element dimensionless?.
-    This is private to guarantee correctness of the cache
+  /*
+    Multi typed:
+
+     - cons: interval
+     - procedure: callback
+     - else: empty
    */
-  bool empty_b_;
-  Interval dim_;
+  SCM dimension_;
+
   /**
     The offset wrt. to the center of #parent_l_#
    */
+
   Real offset_;
-  Graphical_element *elt_l_;
-  Dim_cache_callback callback_l_;
-  friend class Graphical_element;
-
-  void init ();
-public:
-  void set_callback (Dim_cache_callback);
-  /** The #offset_# is defined with regard to this graphical_element/
-    dimension_cache.  */
+  SCM offset_callbacks_;
   
-  Dimension_cache * parent_l_;
-  Link_array<Dimension_cache> dependencies_l_arr_;
-  Graphical_element *element_l () { return elt_l_; }
-
-  void invalidate ();
-  void invalidate_dependencies ();
-  
-  Dimension_cache(Dimension_cache const&);
-  Dimension_cache ();
-
+  char offsets_left_;
 
   /**
-     Find the offset relative to D.  If   D equals THIS, then it is 0.
-     Otherwise, it recursively defd as
-
-     OFFSET_ + PARENT_L_->relative_coordinate (D)
+     What to call to find extent.  Nil means empty. 
    */
-  Real relative_coordinate (Dimension_cache *d) const;
-  Dimension_cache*common_refpoint (Dimension_cache const* s) const;
-  Dimension_cache*common_refpoint (Link_array<Dimension_cache> caches) const;
-  void set_empty (bool);
-  void translate (Real);
+  Grob * parent_l_;
 
-  // junkme.
-  void set_offset (Real);
-
-  bool valid_b () const { return valid_b_; }
-  bool empty_b() const { return empty_b_; }
-  Interval get_dim () const;
+  Dimension_cache (Dimension_cache const&);
+  Dimension_cache ();
+  void init ();
 };
 
 

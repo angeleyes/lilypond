@@ -3,35 +3,29 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef TIE_HH
 #define TIE_HH
 
-#include "bow.hh"
-#include "rod.hh"
+#include "lily-guile.hh"
+#include "lily-proto.hh"
 
-/**
-  Connect two noteheads.
-  */
-class Tie : public Bow
+
+class Tie
 {
 public:
-  Tie ();
-  void set_head (Direction, Note_head*head_l);
-  VIRTUAL_COPY_CONS(Score_element);
-
-  Drul_array<Note_head *> head_l_drul_;
-protected:
-  virtual void do_add_processing ();
-  virtual void do_post_processing ();
-  virtual Direction get_default_dir() const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
-  virtual Array<Rod> get_rods () const;
-
-  Array<Offset> get_controls () const;
+  static void set_head (Grob*,Direction, Item*head_l);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  static Grob * head (Grob*,Direction) ;
+  static Real position_f (Grob*) ;
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  static Direction get_default_dir (Grob*) ;
+  static SCM get_control_points (SCM);
+  DECLARE_SCHEME_CALLBACK (set_spacing_rods, (SCM ));
 };
 
 #endif // TIE_HH
