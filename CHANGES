@@ -1,3 +1,5 @@
+* backport stepmake/aclocal.m4: Fix for ash as /bin/sh.
+
 * backport stepmake/aclocal.m4: Append $FULL_VERSION to datadir.
 
 * backport lilypond-mode.el (LilyPond-xdvi-command): Default to plain xdvi.
