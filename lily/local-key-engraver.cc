@@ -1,173 +1,310 @@
 /*
   local-key-engraver.cc -- implement Local_key_engraver
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "musical-request.hh"
 #include "command-request.hh"
-#include "local-key-engraver.hh"
 #include "local-key-item.hh"
-#include "key-engraver.hh"
-#include "debug.hh"
-#include "key-item.hh"
+#include "item.hh"
 #include "tie.hh"
-#include "note-head.hh"
-#include "time-description.hh"
+#include "rhythmic-head.hh"
+#include "timing-translator.hh"
 #include "engraver-group-engraver.hh"
 #include "grace-align-item.hh"
+#include "staff-symbol-referencer.hh"
+#include "side-position-interface.hh"
+#include "engraver.hh"
+#include "arpeggio.hh"
 
-Local_key_engraver::Local_key_engraver()
+/**
+
+
+   FIXME: should not compute vertical positioning of accidentals, but
+   get them from the noteheads
+
+   The algorithm for accidentals should be documented, and made
+   tweakable.
+
+*/
+
+
+struct Local_key_engraver : Engraver {
+  Item *key_item_p_;
+protected:
+  VIRTUAL_COPY_CONS (Translator);
+  virtual void process_music ();
+  virtual void acknowledge_grob (Grob_info);
+  virtual void stop_translation_timestep ();
+  virtual void initialize ();
+  virtual void create_grobs ();
+  virtual void finalize ();
+public:
+
+  // todo -> property
+  SCM last_keysig_;
+
+  /*
+    Urgh. Since the accidentals depend on lots of variables, we have to
+    store all information before we can really create the accidentals.
+   */
+  Link_array<Grob> arpeggios_;
+  
+  Link_array<Note_req> mel_l_arr_;
+  Link_array<Grob> support_l_arr_;
+  Link_array<Item> forced_l_arr_;
+  Link_array<Grob> tie_l_arr_;
+  Local_key_engraver ();
+
+  Item * grace_align_l_;
+};
+
+Local_key_engraver::Local_key_engraver ()
 {
-  key_grav_l_ = 0;
   key_item_p_ =0;
   grace_align_l_ =0;
+  last_keysig_ = SCM_EOL;
 }
 
 void
-Local_key_engraver::do_creation_processing ()
+Local_key_engraver::initialize ()
 {
-  /*
-    UGHGUHGUH.
-
-    Breaks if Key_engraver is removed from under us.
-   */
-  Translator * result =
-    daddy_grav_l()->get_simple_translator ("Key_engraver");
-
-  key_grav_l_ = dynamic_cast<Key_engraver *> (result);
-
-  if (!key_grav_l_)
-    {
-      warning (_ ("out of tune") + "! " + _ ("can't find") + " Key_engraver");
-    }
-  else
-    {
-      local_key_ = key_grav_l_->key_;
-    }
-
-  /*
-    TODO
-    (if we are grace) get key info from parent Local_key_engraver
-  */
+  last_keysig_ = get_property ("keySignature");
+  daddy_trans_l_->set_property ("localKeySignature",  last_keysig_);  
 }
 
 void
-Local_key_engraver::process_acknowledged ()
+Local_key_engraver::create_grobs ()
 {
-  if (!key_item_p_ && mel_l_arr_.size()) 
+  if (!key_item_p_ && mel_l_arr_.size ()) 
     {
-      bool forget = get_property ("forgetAccidentals",0).to_bool();
-      for (int i=0; i  < mel_l_arr_.size(); i++) 
+      SCM localsig = get_property ("localKeySignature");
+  
+      for (int i=0; i  < mel_l_arr_.size (); i++) 
 	{
-	  Item * support_l = support_l_arr_[i];
+	  Grob * support_l = support_l_arr_[i];
 	  Note_req * note_l = mel_l_arr_[i];
 
-	  if (tied_l_arr_.find_l (support_l) && 
-	      !note_l->forceacc_b_)
-	    {
-	      if (!forget)
-		local_key_.set (note_l->pitch_);
-	      continue;
-	    }
-	    
-	  if (!note_l->forceacc_b_
-	      && local_key_.different_acc (note_l->pitch_))
-	    continue;
-	  if (!key_item_p_) 
-	    {
-	      key_item_p_ = new Local_key_item;
-	      announce_element (Score_element_info (key_item_p_, 0));	      
-	    }
-
-
-	  key_item_p_->add_pitch (note_l->pitch_,
-				  note_l->cautionary_b_);
-	  key_item_p_->add_support (support_l);
+	  int n = unsmob_pitch (note_l->get_mus_property ("pitch"))->notename_i_;
+	  int o = unsmob_pitch (note_l->get_mus_property ("pitch"))->octave_i () ;
+	  int a = unsmob_pitch (note_l->get_mus_property ("pitch"))->alteration_i_;
 	  
-	  if (!forget)
-	    local_key_.set (note_l->pitch_);
-	}
-    }
-  if (key_item_p_ && grace_align_l_)
-    {
-      grace_align_l_->add_support (key_item_p_);
-      grace_align_l_ =0;
+	  /* see if there's a tie that "changes" the accidental */
+	  /* works because if there's a tie, the note to the left
+	     is of the same pitch as the actual note */
+
+	  SCM prev = scm_assoc (gh_cons (gh_int2scm (o), gh_int2scm (n)), localsig);
+	  if (prev == SCM_BOOL_F)
+	    prev = scm_assoc (gh_int2scm (n), localsig);
+	  SCM prev_acc = (prev == SCM_BOOL_F) ? gh_int2scm (0) : gh_cdr (prev);
+	  bool different = !gh_equal_p (prev_acc , gh_int2scm (a));
+	  int p = gh_number_p (prev_acc) ? gh_scm2int (prev_acc) : 0;
+
+	  Grob *tie_break_reminder = 0;
+	  bool tie_changes = false;
+	  for (int i=0; i < tie_l_arr_.size (); i++)
+	    if (support_l == Tie::head (tie_l_arr_[i], RIGHT))
+	      {
+		tie_changes = different;
+		/* Enable accidentals for broken tie
+
+		   We only want an accidental on a broken tie,
+		   if the tie changes the accidental.
+		   
+		   Maybe check property noTieBreakForceAccidental? */
+		if (different)
+		  tie_break_reminder = tie_l_arr_[i];
+		break;
+	      }
+
+	  /* When do we want accidentals:
+
+	     1. when property force-accidental is set, and not
+	     tie_changes
+	     2. when different and not tie-changes
+	     3. maybe when at end of a tie: we must later see if
+	     we're after a line break */
+	  if (( (to_boolean (note_l->get_mus_property ("force-accidental"))
+		|| different)
+	       && !tie_changes)
+	      || tie_break_reminder)
+	    {
+	      if (!key_item_p_) 
+		{
+		  key_item_p_ = new Item (get_property ("Accidentals"));
+		  Local_key_item::set_interface (key_item_p_);
+
+		  
+		  Staff_symbol_referencer::set_interface (key_item_p_);
+		  SCM c0 = get_property ("centralCPosition");
+		  if (gh_number_p (c0))
+		    Staff_symbol_referencer::set_position (key_item_p_, gh_scm2int (c0));
+			 
+		  announce_grob (key_item_p_, 0);
+		}
+
+	      
+	      bool extra_natural =
+		sign (p) * (p - a) == 1
+		&& abs (p) == 2;
+
+	      Local_key_item::add_pitch (key_item_p_, *unsmob_pitch (note_l->get_mus_property ("pitch")),
+					 to_boolean (note_l->get_mus_property ("cautionary")),
+					 extra_natural,
+					 tie_break_reminder);
+	      Side_position_interface::add_support (key_item_p_,support_l);
+	    }
+	  
+	  /*
+	    We should not record the accidental if it is the first
+	    note and it is tied from the previous measure.
+
+	    Checking whether it is tied also works mostly, but will it
+	    always do the correct thing?
+
+	   */
+	  bool forget = to_boolean (get_property ("forgetAccidentals"));
+	  if (tie_changes)
+	    {
+	      /*
+		Remember an alteration that is different both from
+		that of the tied note and of the key signature.
+
+	       */
+	      localsig = scm_assoc_set_x (localsig, gh_cons (gh_int2scm (o),
+							     gh_int2scm (n)),
+					  SCM_BOOL_T); 
+
+	    }
+	  else if (!forget)
+	    {
+	      /*
+		not really really correct if there are more than one
+		noteheads with the same notename.
+	       */
+	      localsig = scm_assoc_set_x (localsig, gh_cons (gh_int2scm (o),
+							     gh_int2scm (n)),
+					  gh_int2scm (a)); 
+
+	    }
+        }
+
+
+  
+  
+      daddy_trans_l_->set_property ("localKeySignature",  localsig);
     }
   
+  if (key_item_p_ && grace_align_l_)
+    {
+      Side_position_interface::add_support (grace_align_l_,key_item_p_);
+      grace_align_l_ =0;
+    }
+
+  if (key_item_p_)
+    {
+      /*
+	Hmm. Which one has to be on the left?
+
+	On which left, code or paper?
+
+ (Arpeggios are engraved left of accidentals, of course.)
+       */
+      for (int i=0;  i < arpeggios_.size ();  i++)
+	Side_position_interface::add_support (arpeggios_[i], key_item_p_);
+
+      arpeggios_.clear ();
+    }
 }
 
 void
-Local_key_engraver::do_removal_processing ()
+Local_key_engraver::finalize ()
 {
-  // TODO: signal accidentals to Local_key_engraver the 
+  // TODO: if grace ? signal accidentals to Local_key_engraver the 
 }
 
 void
-Local_key_engraver::do_pre_move_processing()
+Local_key_engraver::stop_translation_timestep ()
 {
   if (key_item_p_)
     {
-      for (int i=0; i < support_l_arr_.size(); i++)
-	key_item_p_->add_support (support_l_arr_[i]);
+      for (int i=0; i < support_l_arr_.size (); i++)
+	Side_position_interface::add_support (key_item_p_,support_l_arr_[i]);
 
-      typeset_element (key_item_p_);
+      typeset_grob (key_item_p_);
       key_item_p_ =0;
     }
 
   grace_align_l_ = 0;
-  mel_l_arr_.clear();
-  tied_l_arr_.clear();
-  support_l_arr_.clear();
-  forced_l_arr_.clear();	
+  mel_l_arr_.clear ();
+  arpeggios_.clear ();
+  tie_l_arr_.clear ();
+  support_l_arr_.clear ();
+  forced_l_arr_.clear ();	
 }
 
 void
-Local_key_engraver::acknowledge_element (Score_element_info info)
+Local_key_engraver::acknowledge_grob (Grob_info info)
 {
-  bool selfgr = get_property ("weAreGraceContext", 0).to_bool ();
-  bool he_gr = info.elem_l_->get_elt_property (grace_scm_sym) != SCM_BOOL_F;
-
-  Grace_align_item * gai = dynamic_cast<Grace_align_item*> (info.elem_l_);  
-  if (he_gr && !selfgr && gai)
-    {
-      grace_align_l_ = gai;
-    }
-  Note_req * note_l =  dynamic_cast <Note_req *> (info.req_l_);
-  Note_head * note_head = dynamic_cast<Note_head *> (info.elem_l_);
-
-
+  SCM wg= get_property ("weAreGraceContext");
   
+  bool selfgr = gh_boolean_p (wg) &&gh_scm2bool (wg);
+  bool he_gr = to_boolean (info.elem_l_->get_grob_property ("grace"));
+
+  Item * item = dynamic_cast<Item*> (info.elem_l_);  
+  if (he_gr && !selfgr && item && Grace_align_item::has_interface (item))
+    {
+      grace_align_l_ = item;
+    }
   if (he_gr != selfgr)
     return;
   
-  if (note_l && note_head)
+  Note_req * note_l =  dynamic_cast <Note_req *> (info.req_l_);
+
+  if (note_l && Rhythmic_head::has_interface (info.elem_l_))
     {
       mel_l_arr_.push (note_l);
-      support_l_arr_.push (note_head);
+      support_l_arr_.push (info.elem_l_);
     }
- else if (Tie * tie_l = dynamic_cast<Tie *> (info.elem_l_))
+  else if (Tie::has_interface (info.elem_l_))
     {
-      tied_l_arr_.push (tie_l-> head_l_drul_[RIGHT]);
+      tie_l_arr_.push (info.elem_l_);
     }
+  else if (Arpeggio::has_interface (info.elem_l_))
+    {
+      arpeggios_.push (info.elem_l_); 
+    }
+  
 }
 
+/*
+  ugh. repeated deep_copy generates lots of garbage.
+ */
 void
-Local_key_engraver::do_process_requests()
+Local_key_engraver::process_music ()
 {
-  Time_description const * time_C_ = get_staff_info().time_C_;
-  if (time_C_ && !time_C_->whole_in_measure_)
+  SCM smp = get_property ("measurePosition");
+  Moment mp = (unsmob_moment (smp)) ? *unsmob_moment (smp) : Moment (0);
+
+  SCM sig = get_property ("keySignature");
+
+  /*
+    Detect key sig changes. If we haven't found any, check if at start
+    of measure, and set localKeySignature anyhow.  */
+  if (last_keysig_ != sig) 
     {
-      bool no_res = get_property ("noResetKey",0).to_bool ();
-      if (!no_res && key_grav_l_)
-	local_key_= key_grav_l_->key_;
+      daddy_trans_l_->set_property ("localKeySignature",  ly_deep_copy (sig));
+      last_keysig_ = sig;
     }
-  else if (key_grav_l_ && key_grav_l_->key_changed_b ())
+  else if (!mp)
     {
-      local_key_ = key_grav_l_->key_;
+      if (!to_boolean (get_property ("noResetKey")))
+	daddy_trans_l_->set_property ("localKeySignature",  ly_deep_copy (sig));
     }
 }
 
 
 
-ADD_THIS_TRANSLATOR(Local_key_engraver);
+ADD_THIS_TRANSLATOR (Local_key_engraver);
+
