@@ -3,29 +3,27 @@
  An incomplete description of the Enigma Transport Format
 </h2>
 <p>
-Enigma Transport Format (ETF for short) is a format designed by Coda
-music technology, and it is used in the proprietary notation package
-Finale.
-</p>
-<p>
-The ETF specification issued by CODA is available at
-<a href="http://www.cs.ruu.nl/~hanwen/lily-devel/etfspec.pdf">http://www.cs.ruu.nl/~hanwen/lily-devel/etfspec.pdf</a>
-Some other information can be found in the Finale Plug-in Development
-(it includes the pdf file, and some source files that are useful).
-You can download the PDK from Coda's website,
-`<a href="http://www.codamusic.com/coda/Fin2000_pdk_download.asp">http://www.codamusic.com/coda/Fin2000_pdk_download.asp</a>'. You do need
-to register as a user, but you can also do that if you have never bought an
-Coda product.
+Enigma Transport Format (ETF for short) is a format designed by
+MakeMusic! inc. (formerly known as Coda Music Technology), and it is
+used in the proprietary notation package Finale (Finale is a
+registered trademark of MakeMusic! inc.).
 </p>
 
 <p>
-Unfortunately many crucial details (which are partly listed here) have been omitted from the specs by Coda, we will attempt some doco here.
+The ETF specification issued by CODA is available at <a
+href="http://www.xs4all.nl/~hanwen/lily-devel/etfspec.pdf">http://www.xs4all.nl/~hanwen/lily-devel/etfspec.pdf</a>.
+
+
+
+<p>
+Unfortunately many crucial details (which are partly listed here) have
+been omitted from the specs by Coda, we will attempt some doco here.
 </p>
 <p>
 ETF is an memory dump where object pointers have been replaced by
 object numbers. The numbers are larger than 0 and the number 0 is used
-to denote the nil pointer.  The dump is encoded in ASCII (where the mac
-version uses CR, and the PC CR/LF as line delimiters)
+to denote the nil pointer.  The dump is encoded in ASCII (where the
+mac version uses CR, and the PC CR/LF as line delimiters)
 </p>
 <p>
 A file is divided into sections like this
@@ -192,7 +190,7 @@ M is the note number.
 The articulation definition looks like
 </p>
 <pre>
-	IX(n)  ... <u>24 16-bit words</u><a href="http://lilypond.org/wiki/?edit=24%2016-bit%20words">?</a> ..
+	IX(n)  ... [24 16-bit words] ..
 </pre>
 <p>
 the layout is described in edata.h. The first two words contain info  on the glyph.
@@ -241,26 +239,23 @@ More tags:
 <p>
 <hr>
 </p>
-<p>
-[edited comment about pdf spec, see top of document;
-The spec you mentioned is the original one by coda, and doesn't contain any interesting information. --<a href="http://lilypond.org/wiki/?HanWenNienhuys">HanWenNienhuys</a>
 
-]
-</p>
 <p>
---<em><a href="http://lilypond.org/wiki/?HenrikBehrens">HenrikBehrens</a></em>
-</p>
-<p>
-<hr>
-</p>
-<p>
-There is a webpage for Finale <u>PlugIn</u><a href="http://lilypond.org/wiki/?edit=PlugIn">?</a> developers at
-<a href="http://www.finaletips.nu/?plugindevtips.html">http://www.finaletips.nu/?plugindevtips.html</a>
 
-</p>
-<p>
-<hr>
-</p>
-<p>
-Margaret Cahill (<a href="http://www.csn.ul.ie/~cahillm/">http://www.csn.ul.ie/~cahillm/</a>) wrote a MSc thesis on ETF.
+<h2>Related information</h2>
+
+
+<ul>
+<li>
+Margaret Cahill (<a
+href="http://www.csis.ul.ie/staff/margaretcahill/default.htm">http://www.csn.ul.ie/~cahillm/</a>)
+wrote an MSc thesis on ETF.
+<li>
+Some other information can be found in the Finale Plug-in Development
+(it includes the pdf file, and some source files that are useful).
+You can download the PDK from Coda's website, `<a
+href="http://www.codamusic.com/coda/Fin2000_pdk_download.asp">http://www.codamusic.com/coda/Fin2000_pdk_download.asp</a>'. You
+do need to register as a user, but you can also do that if you have
+never bought an Coda product.
+</ul>
 </p>
