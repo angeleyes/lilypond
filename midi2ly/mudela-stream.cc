@@ -72,6 +72,7 @@ Mudela_stream::handle_pending_indent()
 void
 Mudela_stream::header()
 {
+  /* Maybe better not to translate these? */
   *os_p_ << _ ("% Creator: ");
   if (no_timestamps_b_g)
     *os_p_ << "GNU LilyPond\n"; 
@@ -92,7 +93,7 @@ Mudela_stream::header()
   *os_p_ << filename_str_g;
   *os_p_ << "\n\n";
   // ugh
-  *os_p_ << "\\version \"1.1.60\";\n";
+  *os_p_ << "\\version \"1.2.7\";\n";
 }
 
 void
@@ -100,7 +101,7 @@ Mudela_stream::open()
 {
   os_p_ = new ofstream (filename_str_.ch_C ());
   if  (!*os_p_)
-    error (_f ("can't open file: `%s\'",  filename_str_));
+    error (_f ("Can't open file: `%s'",  filename_str_));
 }
 
 void
