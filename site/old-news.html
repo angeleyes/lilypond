@@ -12,6 +12,27 @@
     <td>
       <dl>
 
+        <dt>September 11, 2004</dt><dd>
+
+        LilyPond 2.3.16 was released. It fixes a couple of annoying
+        bugs, and has an important addition in the slur-formatter. Slurs that
+        pass note heads much closer than the average distance get an extra
+        penalty. This fixes a lot of difficult slurring cases. See
+        input/regression/new-slur for some examples.
+
+        Please consider this release as a 3.0 pre-release so try to find as
+        many bugs as possible. A report including a small .ly example 
+        can be filed at bug-lilypond@gnu.org
+
+        In this case, a bug is defined as something that the current 2.3 does
+        worse than the latest 2.2 release.  We want to be sure that no output
+        will get uglier by upgrading to 3.0, so that once 3.0 is out, nothing
+        will hold users back in switching. Download it <a
+        href="download/#2.3">here</a> and check out the changes in
+        the <a
+        href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2562&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
+      </dd> 
+
         <dt>September 10, 2004</dt><dd>
 
         LilyPond 2.3.15 was released. It fixes for some gaffes with
