@@ -1,249 +1,90 @@
-<pre>
-
-Dear LilyPond afficionado,
-
+<h3>Dear LilyPond afficionado,</h3>
+<p>
 As you might have noticed, LilyPond has been improving at a breakneck
 speed for the last year, which is a good thing.  This email hopes to
 continue that trend by unleashing an enormous source of development
 potential, and that is ...
-
+<blockquote>
 	You!
-
-
+</blockquote>
 
 LilyPond already has seen an increase contributions over the past
 months, from packagers, bugfixers, proofreaders, etc.  We love your
 help, and we can't have enough of it so we are seeking help.  Join
 LilyPond development for riches, eternal fame, and getting your name
 in the THANKS file :-)
+<p>
 
 There are plenty of ways to get into the THANKS file, for example, by
 taking care of documentation, bug reports, releases, etc.  We have
 compiled a list of tasks that we would love to be helped with.  Have a
 look to see if there is something for you!
+<p>
 
 Many of the tasks are not very technical, so don't dismiss yourself
 too quickly.  We have plenty of experience with these tasks, so there
 is always someone to guide you and get you started.
+<p>
 
 Hopefully, together we can address problems in the LilyPond
 development process, among others
-
-  * Stable releases don't happen often enough.
-
-  * Development is too much centralized.
-
-  * The learning curve is too steep.
-
+<ul>
+<li> Stable releases don't happen often enough.
+<li> Development is too much centralized.
+<li> The learning curve is too steep.
+</ul>
 
 The list of tasks is not exhaustive.  If you have good ideas on how to
 get more people involved, or how to use our energy more efficiently,
 don't hesitate to drop a note on the development mailing list
-
+<pre>
 	lilypond-devel@gnu.org
-
+</pre>
 Of course, if you have an itch to scratch, you can also send patches
 to this mailinglist :-)
+<p>
 
+<h3>What other great plans can you expect from us?</h3>
 
-What other great plans can you expect from us?
 
 We have a roadmap, sort of, which is to implement the following
 features for the next major release
-
-  * Support for font-encoding like latin1, cyrillic, etc.
- 
-  * Usable direct postscript output (with titling, and multiple scores).
-
-  * Optimal page breaking.
+<ul>
+<li> Support for font-encoding like latin1, cyrillic, etc.
+<li> Usable direct postscript output (with titling, and multiple scores).
+<li> Optimal page breaking.
+</ul>
 
 Of course, the release date depends on how much help we get with all
 the tasks mentioned below.
 
+<h3>Volunteers are requested for </h3> 
 
+<ul>
+<li> <a href="release-meister.html">release meister</a> 
+<li> <a href="build-meister.html">build meister</a>
+(Pedro Kroeger has taken on this job)
 
+<li> <a href="bug-meister.html">bug meister</a>
+(Erik Sandberg hsa taken on this job)
 
-****************
+<li> <a href="documentation-editor.html">documentation editor</a>
+(Graham Parcival has taken on this job)
 
-RELEASE-MEISTER
+<li> <a href="code-janitor.html">code janitor</a>
+<li> <a href="newsletter-editor.html">newsletter editor</a>
+<li> <a href="implementation-documenter.html">Implementation documenter</a>
+</ul>
 
-The job of the release-meister is to coordinate releases.  Ideally,
-they would happen less frequently than they do now --perhaps once a
-month-- but offer a better quality.
+In addition, we are still looking for help with the following website
+tasks,
 
-LilyPond is ready for a release when
+<ul>
+<li>An overview of all <a href="editors.html">editing environments
+available</a>.
 
-  * The regression test comes out clean
+<li><a href="feature-page.html">Feature pages</a> for
+part-combining/auto-cue notes, for tweaking, 
 
-  * All features work as documented 
 
-  * A new release would offer an improvement over the last one
-
-The release-meister keeps an eye on the bugreports and ChangeLog, and
-has the responsibility to decide when a release is in order.
-
-The actual mechanics entail branching CVS, pestering developers for
-important bug-fixes, creating and uploading the tarball, announcing it
-on mailing lists, websites, etc.
-
-
-****************
-
-BUILD-MEISTER
-
-The responsibility of the build-meister it is to make sure that binary
-packages of LilyPond are available for all platforms.
-
-To this end, the build-meister
-
-  * Regularly (say, once a week) packages LilyPond CVS for one
-    platform.  This is to check for bugs in the installation procedure.
-
-  * Tries to find people that will build LilyPond packages for other
-    platforms, either for releases or from CVS.
-
-  * Tries to convince vendors (Fedora, Mandrake, etc.)  to put lily in
-    their base distributions.
-
-  * Maintains the lilypond.org/download/ page.
-
-
-****************
-
-BUG-MEISTER
-
-The Bug-meister is the human face behind the collection of LilyPond
-bugs.  He (or she, of course) keeps an eye on bugs in LilyPond,
-especially those where LilyPond produces incorrect notation or
-typography.  This is a very important job, since good responses to
-bugreports makes LilyPond look good for struggling users.
-
-  * He will be reading the bug-lilypond and lilypond-user mailing
-    list, replying to bugreporters and distilling small failure cases
-    for each report.
-
-  * Every bug goes into a bug-collection.  In the collection for each
-    bug, there is
-
-     - A .ly snippet, trimmed as far as possible.
-
-     - An image demonstrating the problem.
-
-     - A description of what is wrong.
-
-     - Whether the bug concerns a new feature, or breaks existing
-       features.
-
-     - If the latter, the version number where the bug started
-       manifesting.
-
-     - The severity of the bug: a bug should get priority if it causes
-       crashes, when there are no workarounds, or if it affects a large
-       number of people.
-
-  * Periodically (say, every week), the bug-collection is run through
-    LilyPond to determine which problems are still open.
-
-  * Some bugs, when fixed, should be added as a regression test.
-
-  * Of course, the bug-meister will pester developers to fix serious
-    bugs.
-
-An example of excellent bug-reports is the bug-collection of Werner
-Lemberg, see for example
-http://mail.gnu.org/archive/html/lilypond-devel/2004-03/msg00138.html
-
-REQUIREMENTS: read email regularly, so bugreports are replied to in a
-timely fashion.
-
-****************
-
-The
-
-DOCUMENTATION EDITOR
-
-eases LilyPond's learning curve by improving the manual.
-Specifically, the documentation editor will
-
-  * Read the mailing lists, and analyze how confused users could be
-    helped better by the manual.
-
-  * Take questions and answers from the mailing list, and rewrite them
-    to fit in the manual.
-
-  * Edit the manual for spelling, grammar, clarity etc.
-
-  * Maintain style standards for the manual.
-
-REQUIREMENTS
-
-This is a job best suited to a native English speaker with affinity
-for technical writing.
-
-****************
-
-
-The
-
-CODE JANITOR
-
-makes sure that new C++ and Scheme code follows the standards.
-
-Writing LilyPond code is an intensive --and sometimes frantic--
-process, and the code that is written in deep-hack mode often is
-unpolished.  The janitor helps by adding the polish, and standardizing
-the code
-
-  * Cleanup code spacing, formatting, indenting, file names, etc.
-
-  * Standardize
-    - error messages
-    - doc strings
-    - texidoc strings
-    - function comments
-    - debugging code
-
-  * Submit pot files to the translation robot, and update the
-    translations in CVS.
-
-  * Define new coding style standards, where necessary.
-
-REQUIREMENTS:
-
-Moderate experience with programming C, Scheme and/or Python
-
-
-****************
-
-
-The LilyPond community is centered around the lilypond-user mailing
-list, which is becoming rather high-traffic nowadays; even we have
-trouble keeping up with it ourselves.  We think it would be a boon to
-have a
-
-NEWSLETTER EDITOR
-
-who summarizes the hot topics on lilypond-user and lilypond-devel.  We
-was thinking along the lines of the "Kernel traffic" newsletter
-(http://www.kerneltraffic.org/index.html).  Hopefully, this will make
-lurking on the list easier, and help build a wider community of
-LilyPond followers.
-
-
-****************
-
-Developers "scratch their own itch", but they can only do that if they
-have an overview of how the source code is organized.  A
-
-WRITER of IMPLEMENTATION DOCUMENTATION
-
-describes the general design of LilyPond, and helps with writing a
-"HOWTO" document on implementing new features.
-
-We're thrilled that Doug Linhardt is working on a such a document.
-Nevertheless, if you want to help, drop a note on the lilypond-devel
-list.
-
-****************
-
-</pre>
+</ul>
