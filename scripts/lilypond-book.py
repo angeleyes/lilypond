@@ -50,15 +50,28 @@ import operator
 # Handle bug in Python 1.6-2.1
 #
 # there are recursion limits for some patterns in Python 1.6 til 2.1. 
-# fix this by importing pre instead. Fix by Mats.
+# fix this by importing the 1.5.2 implementation pre instead. Fix by Mats.
 
-# todo: should check Python version first.
+if float (sys.version[0:3]) < 2.2:
+        try:
+                import pre
+                re = pre
+                del pre
+        except ImportError:
+                import re
+else:
+        import re
+
+# Attempt to fix problems with limited stack size set by Python!
+# Sets unlimited stack size. Note that the resource module only
+# is available on UNIX.
 try:
-	import pre
-	re = pre
-	del pre
-except ImportError:
-	import re
+       import resource
+       resource.setrlimit (resource.RLIMIT_STACK, (-1, -1))
+except:
+       pass
+
+
 
 program_version = '@TOPLEVEL_VERSION@'
 if program_version == '@' + 'TOPLEVEL_VERSION' + '@':

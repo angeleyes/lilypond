@@ -1,12 +1,19 @@
-lilypond_1_4
-============
-
-1.4.13.mb1
+1.4.13.mb2
 ==========
+
+* Backport feta font symbol documentation in the manual.
+
+* Backport Python 2.2 compatibility in lilypond-book.
+
+* Backport new font installation strategy and its documentation.
 
 * Include lilypond-indent.el in Redhat, SUSE and Debian distr.
 
 * Include input/, mutopia/ for Redhat RPM.
+
+
+1.4.13.jcn
+==========
 
 * Backport: stepmake/autogen.sh: Check for autoconf2.13, and abort if not
   found.
