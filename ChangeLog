@@ -1,3 +1,13 @@
+2003-04-01  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* GNUmakefile (buttons): New target.
+
+	* format-page.py: Further development.
+
+	* lily-button.scm: 
+	* aqua-pill-button.scm: 
+	* newweb.css: New file.
+
 2003-03-31  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* GNUmakefile (upload): New target.

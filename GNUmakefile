@@ -1,12 +1,13 @@
 .PHONY: site
 
-SCRIPTS=$(wildcard *.py) 
+SCRIPTS=$(wildcard *.py *.scm) 
 
-site: menuify renderlys
+site: menuify renderlys buttons
 
 menuify:
 	python format-page.py --outdir out/  `find site -name '*.html'`
-	for a in `find site -name '*.png' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done 
+	for a in `find site -name '*.png' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
+	cp newweb.css out/site
 
 
 renderlys:
@@ -17,9 +18,22 @@ renderlys:
 VERSION=0.0
 DISTDIR=lily-web-$(VERSION)
 
-FILES=$(SCRIPTS) GNUmakefile `find site -name '*.html' -or -name '*.py' -or -name '*.ly' -or -name '*.png'`
+FILES=$(SCRIPTS) GNUmakefile newweb.css `find site -name '*.html' -or -name '*.py' -or -name '*.ly' -or -name '*.png'`
 
 outball=site.tar.gz
+
+buttons:
+	mkdir -p out/images
+	cd out/images && \
+		cat ../buttons | \
+		while read i; do \
+			if [ ! -f $$i.png ]; then \
+				gimp -s -b '(lily-button "'$$i'" 0)' \
+					'(gimp-quit 0)'; \
+				gimp -s -b '(lily-button "'$$i'" 1)' \
+					'(gimp-quit 0)'; \
+			fi \
+		done
 
 out/$(outball): site
 	cd out && tar czvf $(outball) site
@@ -33,8 +47,7 @@ dist:
 	cp --parents -av $(FILES) $(DISTDIR)
 	tar cfz $(DISTDIR).tar.gz $(DISTDIR)
 	rm -rf $(DISTDIR)
+
 clean:
 	rm -rf out
-
-
 

@@ -1,0 +1,70 @@
+/* http://www.w3.org/TR/REC-CSS2 */
+
+{
+    position: relative;
+    background: #111111;
+    border-style: none;
+    border-width: 0;
+}
+
+img {
+    border-style: none;
+}
+
+a {
+    //color: #ba2c2c;
+    color: #a0a0ff;
+    text-decoration: none;
+    //font-weight: bold;
+}
+
+a:hover {
+    /* font-size: large; */
+    text-decoration: underline;
+}
+
+table {
+    //text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    padding-left: 1em;
+    padding-top: 0.5em;
+
+#location {
+}
+
+#menu {
+}
+
+/*
+ NOT currently defined in HTML
+
+#footer {
+    /* fixme: bottom of page, not bottom of screen */
+    background: #e8e8ff;
+}
+
+#header {
+    position: absolute;
+    text-align: right;
+    left: 160px;
+    top: 0px;
+    padding-top: 10px;
+    width: 84%;
+    background: #e8ffe8;
+}
+
+#main {
+    width: 85%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    vertical-align: top; 
+}
+*/
+
+
+
