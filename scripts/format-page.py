@@ -52,14 +52,6 @@ top_script = '''\
         document.f_lily_google.brute_query.focus ();
 	return true;
       }
-
-    var LANGUAGES = new HashSet ("nl");
-    function language_redirect ()
-      {
-        if (LANGUAGES.contains (navigator.language))
-	  window.location = "index." + navigator.language + ".html";
-	return true;
-      }
     // !-->
   </SCRIPT>
 '''
@@ -241,7 +233,6 @@ def format_page (html, file_name, lang):
 		# Ugh: search box is moved to bottom,
 		#      which makes browser scroll down upon focussing it.
 		#onload = "setfocus ();"
-		onload = "language_redirect ();"
 
 	# Find available translations of this page.
 	rel_name = string.join (string.split (file_name, '/')[1:], '/')
