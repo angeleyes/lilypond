@@ -713,7 +713,7 @@ Repeated_music:
 			r-> set_mus_property ("alternatives", alts->self_scm ());
 			scm_gc_unprotect_object (alts->self_scm ());  
 			}
-		SCM func = scm_eval2 (ly_symbol2scm ("repeat-name-to-ctor"), SCM_EOL);
+		SCM func = scm_primitive_eval (ly_symbol2scm ("repeat-name-to-ctor"));
 		SCM result = gh_call1 (func, $2);
 
 		set_music_properties (r, result);
@@ -1090,7 +1090,7 @@ command_element:
 		sp-> set_mus_property ("context-type", ly_str02scm ( "Score"));
 	}
 	| CLEF STRING  {
-		SCM func = scm_eval2 (ly_symbol2scm ("clef-name-to-properties"), SCM_EOL);
+		SCM func = scm_primitive_eval (ly_symbol2scm ("clef-name-to-properties"));
 		SCM result = gh_call1 (func, $2);
 
 		SCM l = SCM_EOL;
@@ -1567,9 +1567,11 @@ optional_notemode_duration:
 	}
 	| multiplied_duration	{
 		$$ = $1;
+		THIS->default_duration_ = *unsmob_duration ($$);
 	}
 	| explicit_duration {
 		$$ = $1;
+		THIS->default_duration_ = *unsmob_duration ($$);
 	}	
 	;
 
@@ -1582,15 +1584,11 @@ steno_duration:
 			l =  intlog2 ($1);
 
 		$$ = Duration (l, $2).smobbed_copy ();
-
-		THIS->set_last_duration (unsmob_duration ($$));
 	}
 	| DURATION_IDENTIFIER dots	{
 		Duration *d =unsmob_duration ($1);
 		Duration k (d->duration_log (),d->dot_count () + $2);
 		$$ = k.smobbed_copy ();
-
-		THIS->set_last_duration (unsmob_duration ($$));
 	}
 	;
 
@@ -1926,7 +1924,7 @@ string:
 		$$ = $1;
 	}
 	| string '+' string {
-		$$ = scm_string_append (scm_listify ($1, $3, SCM_UNDEFINED));
+		$$ = scm_string_append (scm_list_n ($1, $3, SCM_UNDEFINED));
 	}
 	;
 
