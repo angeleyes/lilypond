@@ -3,6 +3,18 @@
 <dt>February 28, 2005</dt>
 
 <dd>
+LilyPond 2.5.13 is available for Fedora Core 3. You need to install
+<a
+href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-8.15rc2-1.i386.rpm">ESP
+Ghostscript 8.15rc2</a>. Unfortunately, this version of Ghostscript
+lacks the IJS dynamic library, which means that it will conflict with
+the gimp-print package. You may install it with --nodeps. Use at your
+own risk.
+</dd>
+
+<dt>February 28, 2005</dt>
+
+<dd>
 LilyPond 2.5.13 is out. This release has Point and click support for
 PDF output. You can read more about it <a
 href="http://lilypond.org/doc/v2.5/Documentation/user/out-www/lilypond/Point-and-click.html">here</a>.
