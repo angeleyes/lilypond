@@ -14,40 +14,32 @@
 #include "font-interface.hh"
 #include "virtual-font-metric.hh"
 #include "paper-def.hh"
-#include "scaled-font-metric.hh"
 
 MAKE_SCHEME_CALLBACK (Text_item, interpret_markup, 3)
 SCM
 Text_item::interpret_markup (SCM paper, SCM props, SCM markup)
 {
-  if (ly_string_p (markup))
+  if (gh_string_p (markup))
     {
       String str = ly_scm2string (markup);
       
       Paper_def *pap = unsmob_paper (paper);
       Font_metric *fm = select_font (pap, props);
-      SCM lst = SCM_EOL;      
-      Box b;
-      if (Modified_font_metric* mf = dynamic_cast<Modified_font_metric*> (fm))
-	{
-	  lst = scm_list_3 (ly_symbol2scm ("text"),
-			    mf->self_scm (),
-			    markup);
-	
-	  b = mf->text_dimension (str);
-	}
-      else
-	{
-	  /* ARGH. */
-	  programming_error ("Must have Modified_font_metric for text.");
-	}
+      SCM lst = scm_list_n (ly_symbol2scm ("text"), markup, SCM_UNDEFINED);
       
+      if (dynamic_cast<Virtual_font_metric*> (fm))
+	/* ARGH. */
+	programming_error ("Can't use virtual font for text.");
+      else
+	lst = fontify_atom (fm, lst);
+
+      Box b = fm->text_dimension (str);
       return Stencil (b, lst).smobbed_copy ();
     }
-  else if (ly_pair_p (markup))
+  else if (gh_pair_p (markup))
     {
-      SCM func = ly_car (markup);
-      SCM args = ly_cdr (markup);
+      SCM func = gh_car (markup);
+      SCM args = gh_cdr (markup);
       if (!markup_p (markup))
 	programming_error ("Markup head has no markup signature.");
       
@@ -75,13 +67,13 @@ bool
 Text_item::markup_p (SCM x)
 {
   return
-    ly_string_p (x) ||
-    (ly_pair_p (x)
-     && SCM_BOOL_F != scm_object_property (ly_car (x), ly_symbol2scm ("markup-signature")));
+    gh_string_p (x) ||
+    (gh_pair_p (x)
+     && SCM_BOOL_F != scm_object_property (gh_car (x), ly_symbol2scm ("markup-signature")));
 }
 
 ADD_INTERFACE (Text_item,"text-interface",
-  "A scheme markup text, see @usermanref{Text-markup}.",
+  "A scheme markup text, see @usermanref{Text markup}.",
   "text baseline-skip word-space");
 
 

@@ -65,17 +65,46 @@ b
 
 
 
+
+@iftex
+@macro separate 
+@c I want some space over here,  not silly characters.
+@tex
+@end tex
+@end macro
+@end iftex
+
+@c \heartsf was supposed to be filled?
+
+@c center*** is broken?
+
+@ifinfo
+@macro separate
+
+@quotation
+@end quotation
+@end macro
+@end ifinfo
+
+@ifhtml
+@macro separate
+@html
+<p></p><br><br>
+@end html
+@end macro
+@end ifhtml
+
+
 @c dup?
 @ifhtml
 @macro internalsref{NAME}
-@uref{../lilypond-internals/\NAME\.html,\NAME\}@c
+@ref{\NAME\,,,lilypond-internals}@c
 @cindex \NAME\@c
 @end macro
 
 
-
 @macro inputfileref{DIR,NAME}
-@uref{../../../../\DIR\/out-www/collated-files.html#\NAME\,@file{\DIR\/\NAME\}}@c
+@uref{source/\DIR\/out-www/collated-files.html#\NAME\,@file{\DIR\/\NAME\}}@c
 @end macro
 
 @end ifhtml
@@ -117,7 +146,7 @@ internals document,  @internalsref{\NAME\}
 
 @ifinfo
 @macro usermanref{NAME}
-@ref{\NAME\,,,lilypond/lilypond}@c
+@ref{\NAME\}@c
 @end macro
 @end ifinfo
 
