@@ -12,12 +12,13 @@ site: tree menuify renderlys # buttons
 
 menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`
-	for a in `find site -name '*.png' -or -name '*.jpg' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
+	for a in `find site -name '*.png' -or -name '*.jpeg' -or -name '*.pdf'` ; do  cp $$a out/$$a  ;done
 	cp newweb.css out/site
 
 tree:
-	-mkdir out
-	tar cf - `find site -type d`  |tar  -C out -xf -
+	rm -rf out
+	mkdir out
+	for a in `find site -type d -not -name CVS `; do mkdir out/$$a; done 
 
 
 renderlys:
