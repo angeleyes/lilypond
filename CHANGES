@@ -1,3 +1,38 @@
+1.4.10.uu1
+==========
+
+* pktrace for makefile, spec, etc.
+
+* fresh/used translator bugfix (backport from 1.5)
+
+* rest-collision fix (backport from 1.5)
+
+1.4.10.jcn2
+===========
+
+* Documentation/windows/compiling.texi: Update.
+
+* Documentation/index.texi: Add link to orphaned compiling for
+  windows page.
+
+* stepmake/bin/add-html-footer.py: Python2.[12] re workarounds.
+
+* Documentation/footer.html.in: Comment fix.
+
+* po: regenerate.
+
+* lilypond-1.4.10/midi2ly/lilypond-stream.cc (header): Add xgettext
+helper comment.
+
+* stepmake/bin: backport from 1.5
+
+* Documentation/windows/installing.texi:
+* Documentation/windows/compiling.texi: Update for Cygwin's teTeX.
+
+* Documentation/windows/gs-profile.sh: previously lily-gs.sh
+
+1.4.10
+======
 
 1.4.9.uu2
 =========
