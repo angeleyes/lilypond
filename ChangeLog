@@ -1,3 +1,9 @@
+2004-07-26  Heikki Junes  <hjunes@cc.hut.fi>
+
+	* site/index.html: workaround for most common browsers.
+	
+	* site/images/black.png: shrink to 1x1 px.
+	
 2004-07-25  Heikki Junes  <hjunes@cc.hut.fi>
 
 	* site/index.html: make home page look more similar in different
