@@ -1,4 +1,4 @@
-.PHONY: site
+.PHONY: all clean dist menuify scripts site TAGS tree
 
 SCRIPTS=$(wildcard *.py *.scm) 
 
@@ -12,6 +12,9 @@ scripts:
 
 # no silly buttons
 site: tree menuify
+
+TAGS:
+	etags `find site -name '*.html'`
 
 menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`

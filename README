@@ -13,15 +13,32 @@ Type
 this will leave the site in the directory out/site/
 
 
+NOTE
+
+    images live in @IMAGES@
+    doc lives in @DOC@
+
+Hmm, now we get (stale) urls like:
+
+   <a href="@DOC@v1.8/Documentation/user/out-www/lilypond/Tutorial">tutorial</a>.
+
+
+STATIC ENTRY URLS
+
+   GNU LilyPond:       http://lilypond.org/
+   Essay               http://lilypond.org/web/about/automated-engraving
+   Documentation       http://lilypond.org/documentation
+   (of latest stable)
+   Tutorial            http://lilypond.org/tutorial
+   (of latest stable)
+   Glossary            http://lilypond.org/music-glossary
+   of musical terms  
+   (of latest stable)
+
+
 DISTRIBUTION
 
 * The format-page.py script is GPL
 
 * Verbatim redistribution of the .html files and images is allowed and
   encouraged.
-
-NOTE:
-
-    images live in @IMAGES@
-    doc lives in @DOC@
-
