@@ -1,5 +1,13 @@
 lilypond_1_4
 ============
+* scripts/lilypond-book.py: Import from HEAD.
+
+* scripts/ly2dvi.py: fix by Mats. Try to import pre if available.
+
+* Documentation/user/lilypond-book.itely: 
+* scripts/lilypond-book.py: Add options [no]indent, linewidth and
+  noinline.
+
 * configure: Regenerate.
 
 * aclocal.m4: Add --enable/disable-optimising option.
