@@ -3,6 +3,8 @@
 
 * Include lilypond-indent.el in Redhat, SUSE and Debian distr.
 
+* Include input/, mutopia/ for Redhat RPM.
+
 lilypond_1_4
 ============
 
