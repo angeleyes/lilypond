@@ -4,7 +4,8 @@
 
   source file of the LilyPond music typesetter
 
-  (c) 1996,1997 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1996--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+           Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 
@@ -17,28 +18,41 @@
       lex.backup
   contains no backup states, but only the reminder
       Compressed tables always back up.
-  (don-t forget to rm lex.yy.cc :-)
+ (don-t forget to rm lex.yy.cc :-)
  */
 
 
 #include <stdio.h>
 #include <ctype.h>
+#include <iostream.h> /* gcc 3.0 */
+#include <errno.h>
 
+
+#include "score.hh"
+#include "lily-guile.hh"
 #include "string.hh"
 #include "string-convert.hh"
 #include "my-lily-lexer.hh"
 #include "array.hh"
 #include "interval.hh"
+#include "lily-guile.hh"
 #include "parser.hh"
 #include "debug.hh"
 #include "main.hh"
 #include "musical-request.hh"
-#include "identifier.hh"
-#include "mudela-version.hh"
 #include "version.hh"
+#include "lilypond-input-version.hh"
+#include "translator-def.hh"
+#include "music-output-def.hh"
+
+/*
+RH 7 fix (?)
+*/
+#define isatty HORRIBLEKLUDGE
 
 void strip_trailing_white (String&);
 void strip_leading_white (String&);
+String lyric_fudge (String s);
 
 
 bool
@@ -50,7 +64,8 @@ valid_version_b (String s);
 	yy_push_state (quote);\
 	yylval.string = new String
 
-#define yylval (*(YYSTYPE*)lexval_l)
+#define yylval \
+	(*(YYSTYPE*)lexval_l)
 
 #define YY_USER_ACTION	add_lexed_char (YYLeng ());
 /*
@@ -58,6 +73,9 @@ valid_version_b (String s);
 LYRICS		({AA}|{TEX})[^0-9 \t\n\f]*
 
 */
+
+
+SCM scan_fraction (String);
 
 %}
 
@@ -83,14 +101,15 @@ A		[a-zA-Z]
 AA		{A}|_
 N		[0-9]
 AN		{AA}|{N}
-PUNCT		[?!:']
+PUNCT		[?!:'`]
 ACCENT		\\[`'"^]
-NATIONAL  [\001-\006\021-\027\031\036\200-\377]
+NATIONAL	[\001-\006\021-\027\031\036\200-\377]
 TEX		{AA}|-|{PUNCT}|{ACCENT}|{NATIONAL}
 WORD		{A}{AN}*
 ALPHAWORD	{A}+
 DIGIT		{N}
 UNSIGNED	{N}+
+FRACTION	{N}+\/{N}+
 INT		-?{UNSIGNED}
 REAL		({INT}\.{N}*)|(-?\.{N}+)
 KEYWORD		\\{WORD}
@@ -130,13 +149,13 @@ HYPHEN		--
 <INITIAL,chords,lyrics,notes>\\version{WHITE}*	{
 	yy_push_state (version);
 }
-<version>\"[^"]*\";?   { /* got the include file name */
+<version>\"[^"]*\"     { /* got the version number */
 	String s (YYText ()+1);
 	s = s.left_str (s.index_last_i ('"'));
-	DOUT << "#version `" << s << "\'\n";
+
+	yy_pop_state ();
 	if (!valid_version_b (s))
 		return INVALID;
-	yy_pop_state ();
 }
 <version>. 	{
 	LexerError ("No quoted string found after \\version");
@@ -166,7 +185,7 @@ HYPHEN		--
 		main_input_b_ = true;
 	}
 	else
-		error ("\\maininput disallowed outside init files.");
+		error (_ ("\\maininput disallowed outside init files"));
 }
 
 <INITIAL,chords,lyrics,notes>\\include           {
@@ -175,7 +194,7 @@ HYPHEN		--
 <incl>\"[^"]*\";?   { /* got the include file name */
 	String s (YYText ()+1);
 	s = s.left_str (s.index_last_i ('"'));
-	DOUT << "#include `" << s << "\'\n";
+
 	new_input (s,source_global_l);
 	yy_pop_state ();
 }
@@ -184,34 +203,31 @@ HYPHEN		--
 	strip_trailing_white (s);
 	if (s.length_i () && (s[s.length_i () - 1] == ';'))
 	  s = s.left_str (s.length_i () - 1);
-	DOUT << "#include `\\" << s << "'\n";
-	Identifier * id = lookup_identifier (s);
-	if (id) 
-	  {
-	    String* s_l = id->access_content_String (false);
-	    DOUT << "#include `" << *s_l << "\'\n";
-	    new_input (*s_l, source_global_l);
 
-	    yy_pop_state ();
-	  }
-	else
-	  {
-	    String msg (_f ("undefined identifier: `%s\'", s ));	
+	SCM sid = lookup_identifier (s);
+	if (gh_string_p (sid)) {
+		new_input (ly_scm2string (sid), source_global_l);
+		yy_pop_state ();
+	} else { 
+	    String msg (_f ("wrong or undefined identifier: `%s'", s ));
+
 	    LexerError (msg.ch_C ());
+	    SCM err = scm_current_error_port ();
+	    scm_puts ("This value was found in the table: ", err);
+	    scm_display (sid, err);
 	  }
 }
 <incl>\"[^"]*   { // backup rule
-	cerr << _ ("missing end quote") << endl;
+	cerr << _ ("Missing end quote") << endl;
 	exit (1);
 }
 <chords,notes>{RESTNAME} 	{
 	const char *s = YYText ();
-	yylval.string = new String (s);	
-	DOUT << "rest:"<< yylval.string;
+	yylval.scm = ly_str02scm (s);
 	return RESTNAME;
 }
 <chords,notes>R		{
-	return MEASURES;
+	return MULTI_MEASURE_REST;
 }
 <INITIAL,chords,lyrics,notes>\\\${BLACK}*{WHITE}	{
 	String s=YYText () + 2;
@@ -231,6 +247,26 @@ HYPHEN		--
 	cerr << _ ("white expected") << endl;
 	exit (1);
 }
+
+<INITIAL,chords,lyrics,notes>#	{ //embedded scm
+	//char const* s = YYText () + 1;
+	char const* s = here_ch_C ();
+	int n = 0;
+	if (main_input_b_ && safe_global_b) {
+		error (_ ("Can't evaluate Scheme in safe mode"));
+		yylval.scm =  SCM_EOL;
+		return SCM_T;
+	}
+	yylval.scm = ly_parse_scm (s, &n);
+	
+	for (int i=0; i < n; i++)
+	{
+		yyinput ();
+	}
+	char_count_stack_.top () += n;
+
+	return SCM_T;
+}
 <notes>{
 	{ALPHAWORD}	{
 		return scan_bare_word (YYText ());
@@ -238,6 +274,10 @@ HYPHEN		--
 
 	{NOTECOMMAND}	{
 		return scan_escaped_word (YYText () + 1); 
+	}
+	{FRACTION}	{
+		yylval.scm =  scan_fraction (YYText ());
+		return FRACTION;
 	}
 
 	{DIGIT}		{
@@ -259,14 +299,19 @@ HYPHEN		--
 }
 <quote>{
 	\\{ESCAPED}	{
-		*yylval.string += to_str (escaped_char(YYText()[1]));
+		*yylval.string += to_str (escaped_char (YYText ()[1]));
 	}
 	[^\\"]+	{
 		*yylval.string += YYText ();
 	}
 	\"	{
-		DOUT << "quoted string: `" << *yylval.string << "'\n";
+
 		yy_pop_state ();
+
+		/* yylval is union. Must remember STRING before setting SCM*/
+		String *sp = yylval.string;
+		yylval.scm = ly_str02scm (sp->ch_C ());
+		delete sp;
 		return STRING;
 	}
 	.	{
@@ -277,6 +322,10 @@ HYPHEN		--
 <lyrics>{
 	\" {
 		start_quote ();
+	}
+	{FRACTION}	{
+		yylval.scm =  scan_fraction (YYText ());
+		return FRACTION;
 	}
 	{UNSIGNED}		{
 		yylval.i = String_convert::dec2_i (String (YYText ()));
@@ -292,25 +341,19 @@ HYPHEN		--
 			return yylval.i = EXTENDER;
 		if (s == "--")
 			return yylval.i = HYPHEN;
-		int i = 0;
-               	while ((i=s.index_i ("_")) != -1) // change word binding "_" to " "
-			*(s.ch_l () + i) = ' ';
-		if ((i=s.index_i ("\\,")) != -1)   // change "\," to TeX's "\c "
-			{
-			*(s.ch_l () + i + 1) = 'c';
-			s = s.left_str (i+2) + " " + s.right_str (s.length_i ()-i-2);
-			}
+		s = lyric_fudge (s);
 
 		char c = s[s.length_i () - 1];
-		if (c == '{' &&  c == '}') // brace open is for not confusing dumb tools.
+		if (c == '{' ||  c == '}') // brace open is for not confusing dumb tools.
 			here_input ().warning (
-				"Brace found at end of lyric. Did you forget a space?");
-		yylval.string = new String (s);
-		DOUT << "lyric : `" << s << "'\n";
+				_ ("Brace found at end of lyric. Did you forget a space?"));
+		yylval.scm = ly_str02scm (s.ch_C ());
+
+
 		return STRING;
 	}
 	. {
-		return yylval.c = YYText ()[0];
+		return YYText ()[0];
 	}
 }
 <chords>{
@@ -319,6 +362,10 @@ HYPHEN		--
 	}
 	{NOTECOMMAND}	{
 		return scan_escaped_word (YYText () + 1);
+	}
+	{FRACTION}	{
+		yylval.scm =  scan_fraction (YYText ());
+		return FRACTION;
 	}
 	{UNSIGNED}		{
 		yylval.i = String_convert::dec2_i (String (YYText ()));
@@ -330,16 +377,22 @@ HYPHEN		--
 	-  {
 		return CHORD_MINUS;
 	}
+	:  {
+		return CHORD_COLON;
+	}
+	\/\+ {
+		return CHORD_BASS;
+	}
 	\^  {
 		return CHORD_CARET;
 	}
 	. {
-		return yylval.c = YYText ()[0];
+		return YYText ()[0];
 	}
 }
 
 <<EOF>> {
-	DOUT << "<<eof>>";
+
 
 	if (! close_input ()) { 
  	  yyterminate (); // can't move this, since it actually rets a YY_NULL
@@ -357,8 +410,8 @@ HYPHEN		--
 	Real r;
 	int cnv=sscanf (YYText (), "%lf", &r);
 	assert (cnv == 1);
-	DOUT  << "REAL" << r<<'\n';
-	yylval.real = r;
+
+	yylval.scm = gh_double2scm (r);
 	return REAL;
 }
 
@@ -369,22 +422,21 @@ HYPHEN		--
 
 [{}]	{
 
-	DOUT << "parens\n";
 	return YYText ()[0];
 }
 [*:=]		{
 	char c = YYText ()[0];
-	DOUT << "misc char" <<c<<"\n";
+
 	return c;
 }
 
 <INITIAL,notes>.	{
-	return yylval.c = YYText ()[0];
+	return YYText ()[0];
 }
 
 <INITIAL,lyrics,notes>\\. {
     char c= YYText ()[1];
-    yylval.c = c;
+
     switch (c) {
     case '>':
 	return E_BIGGER;
@@ -392,13 +444,17 @@ HYPHEN		--
 	return E_SMALLER;
     case '!':
 	return E_EXCLAMATION;
+    case '(':
+	return E_OPEN;
+    case ')':
+	return E_CLOSE;
     default:
 	return E_CHAR;
     }
 }
 
 <*>.		{
-	String msg = _f ("invalid character: `%c\'", YYText ()[0]);
+	String msg = _f ("invalid character: `%c'", YYText ()[0]);
 	LexerError (msg.ch_C ());
 	return YYText ()[0];
 }
@@ -432,57 +488,78 @@ My_lily_lexer::pop_state ()
 int
 My_lily_lexer::scan_escaped_word (String str)
 {
-	DOUT << "\\word: `" << str<<"'\n";
+	// use more SCM for this.
+
+	SCM sym = ly_symbol2scm (str.ch_C ());
+
 	int l = lookup_keyword (str);
 	if (l != -1) {
-		DOUT << "(keyword)\n";
 		return l;
 	}
-	Identifier * id = lookup_identifier (str);
-	if (id) {
-		DOUT << "(identifier)\n";
-		yylval.id = id;
-		return id->token_code_i_;
+	SCM sid = lookup_identifier (str);
+	if (gh_string_p (sid)) {
+		yylval.scm = sid; 
+		return STRING_IDENTIFIER;
+	} else if (gh_number_p (sid)) {
+		yylval.scm = sid;
+		return NUMBER_IDENTIFIER;
+	} else if (unsmob_translator_def (sid)) {
+		yylval.scm = sid;
+		return TRANSLATOR_IDENTIFIER;
+	} else if (unsmob_score (sid)) {
+		yylval.scm =sid;
+		return SCORE_IDENTIFIER;
+	} else if (Music * mus =unsmob_music (sid)) {
+		yylval.scm = sid;
+		
+		return dynamic_cast<Request*> (mus) ? REQUEST_IDENTIFIER : MUSIC_IDENTIFIER;
+	} else if (unsmob_duration (sid)) {
+		yylval.scm = sid;
+		return DURATION_IDENTIFIER;
+	} else if (unsmob_music_output_def (sid)) {
+		yylval.scm = sid;
+		return MUSIC_OUTPUT_DEF_IDENTIFIER;
 	}
+
+	if (sid != SCM_UNDEFINED) {
+		yylval.scm = sid;
+		return SCM_IDENTIFIER;
+	}
+
 	if ((YYSTATE != notes) && (YYSTATE != chords)) {
-		if (notename_b (str)) {
-			yylval.pitch = new Musical_pitch (lookup_notename (str));
-			yylval.pitch->set_spot (Input (source_file_l (), 
-			  here_ch_C ()));
+		SCM pitch = scm_hashq_get_handle (pitchname_tab_, sym);
+		
+		if (gh_pair_p (pitch))
+		{
+			yylval.scm = gh_cdr (pitch);
 			return NOTENAME_PITCH;
 		}
 	}
-	if (check_debug)
-		print_declarations (true);
-	String msg (_f ("unknown escaped string: `\\%s\'", str));	
+	String msg (_f ("unknown escaped string: `\\%s'", str));	
 	LexerError (msg.ch_C ());
-	DOUT << "(string)";
-	String *sp = new String (str);
-	yylval.string=sp;
+
+	yylval.scm = ly_str02scm (str.ch_C ());
+
 	return STRING;
 }
 
 int
 My_lily_lexer::scan_bare_word (String str)
 {
-	DOUT << "word: `" << str<< "'\n";	
+	SCM sym = ly_symbol2scm (str.ch_C ());
 	if ((YYSTATE == notes) || (YYSTATE == chords)) {
-		if (notename_b (str)) {
-		    DOUT << "(notename)\n";
-		    yylval.pitch = new Musical_pitch (lookup_notename (str));
-		    yylval.pitch->set_spot (Input (source_file_l (), 
-		      here_ch_C ()));
+		SCM pitch = scm_hashq_get_handle (pitchname_tab_, sym);
+		if (gh_pair_p (pitch)) {
+		    yylval.scm = gh_cdr (pitch);
                     return (YYSTATE == notes) ? NOTENAME_PITCH : TONICNAME_PITCH;
-		} else if (chordmodifier_b (str)) {
-		    DOUT << "(chordmodifier)\n";
-		    yylval.pitch = new Musical_pitch (lookup_chordmodifier (str));
-		    yylval.pitch->set_spot (Input (source_file_l (), 
-		      here_ch_C ()));
+		} else if ((pitch = scm_hashq_get_handle (chordmodifier_tab_, sym))!= SCM_BOOL_F)
+		{
+		    yylval.scm = gh_cdr (pitch);
 		    return CHORDMODIFIER_PITCH;
 		}
 	}
 
-	yylval.string=new String (str);
+	yylval.scm = ly_str02scm (str.ch_C ());
 	return STRING;
 }
 
@@ -505,7 +582,7 @@ My_lily_lexer::lyric_state_b () const
 }
 
 /*
- urg, belong to String(_convert)
+ urg, belong to String (_convert)
  and should be generalised 
  */
 void
@@ -532,18 +609,68 @@ strip_trailing_white (String&s)
 
 
 
+Lilypond_version oldest_version ("1.3.59");
+
+void
+print_lilypond_versions (ostream &os)
+{
+  os << _f ("Oldest supported input version: %s", oldest_version.str ()) 
+    << endl;
+}
+
 
 bool
 valid_version_b (String s)
 {
-  Mudela_version current ( MAJOR_VERSION "." MINOR_VERSION "." PATCH_LEVEL );
-  Mudela_version ver (s);
-  if (!((ver >= oldest_version) && (ver <= current)))
+  Lilypond_version current ( MAJOR_VERSION "." MINOR_VERSION "." PATCH_LEVEL );
+  Lilypond_version ver (s);
+  if (! ((ver >= oldest_version) && (ver <= current)))
 	{	
-		error (_f ("incorrect mudela version: %s (%s, %s)", ver.str (), oldest_version.str (), current.str ()));
-		if (!version_ignore_global_b)
-			return false;
+		non_fatal_error (_f ("incorrect lilypond version: %s (%s, %s)", ver.str (), oldest_version.str (), current.str ()));
+		non_fatal_error (_ ("Consider converting the input with the convert-ly script")); 
+		return false;
     }
   return true;
 }
 	
+
+String
+lyric_fudge (String s)
+{
+  char  * chars  =s.copy_ch_p ();
+
+  for (char * p = chars; *p ; p++)
+    {
+      if (*p == '_' && (p == chars || *(p-1) != '\\'))
+	*p = ' ';
+    }
+  
+  s = String (chars);
+  delete[] chars;
+
+  int i =0;	
+  if ((i=s.index_i ("\\,")) != -1)   // change "\," to TeX's "\c "
+    {
+      * (s.ch_l () + i + 1) = 'c';
+      s = s.left_str (i+2) + " " + s.right_str (s.length_i ()-i-2);
+    }
+
+  return s;
+}
+
+/*
+Convert "NUM/DEN" into a '(NUM . DEN) cons.
+*/
+SCM
+scan_fraction (String frac)
+{
+	int i = frac.index_i ('/');
+	int l = frac.length_i ();
+	String left = frac.left_str (i);
+	String right = frac.right_str (l - i - 1);
+
+	int n = String_convert::dec2_i (left);
+	int d = String_convert::dec2_i (right);
+	return gh_cons (gh_int2scm (n), gh_int2scm (d));
+}
+		
