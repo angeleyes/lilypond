@@ -1,3 +1,7 @@
+2004-01-13  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* site/download/index.html: add separator between linux and others.
+
 2004-01-12  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
 	* site/download/index.html: add Suse 9 / lily 1.8
