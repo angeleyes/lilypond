@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 #include "debug.hh"
 #include "audio-item.hh"
@@ -20,7 +20,7 @@ Audio_item::Audio_item ()
   audio_column_l_ = 0;
 }
 
-Audio_note::Audio_note (Musical_pitch p, Moment m, int transposing_i)
+Audio_note::Audio_note (Pitch p, Moment m, int transposing_i)
 {
   pitch_ = p;
   length_mom_ = m;
@@ -40,9 +40,15 @@ Audio_note::tie_to (Audio_note* t)
 }
 
 		    
-Audio_key::Audio_key (Key_def const& k)
+Audio_key::Audio_key (int acc, bool major)
 {
-  key_ = k;
+  accidentals_=acc;
+  major_=major;
+}
+
+Audio_dynamic::Audio_dynamic (Real volume)
+{
+  volume_ = volume;
 }
 
 Audio_tempo::Audio_tempo (int per_minute_4_i)
@@ -73,19 +79,10 @@ Audio_tie::set_note (Direction d, Audio_note* note_l)
 {
   assert (!note_l_drul_[d]);
   note_l_drul_[d] = note_l;
-  //set_bounds (d, head_l);
+  //set_bound (d, head_l);
 
   //  add_dependency (head_l);
 }
 
-void
-Audio_item::do_print () const
-{
-#ifndef NPRINT
-  if (audio_column_l_)
-    {
-      DOUT << "at: "<< audio_column_l_->at_mom ();
-    }
-#endif
-}
+
 
