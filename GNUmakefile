@@ -71,6 +71,9 @@ po/newweb.pot: $(PY) $(SVG)
 nl:
 	$(MAKE) LANG=$@ png menuify
 
+check-translation:
+	python $(SCRIPTDIR)/check-translation.py $(HTML)
+
 png: $(SVG:site/graphics/%.svg=out/site/graphics/%.$(LANG).png)
 
 new:

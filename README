@@ -128,6 +128,16 @@ let it really preserve markup.
 #    Edit/Preferences/Composer: (X) Retain original source formatting
 #
 
+CHECK STATE OF TRANSLATION
+
+Running
+
+    make LANG=nl check-translation
+
+presents a diff of the original pages since the most recent revision
+of the translation.  To check a single page, run
+
+    scripts/check-translation.py nl/index.html
 
 
 SUBMIT TO CVS

@@ -1,11 +1,5 @@
 #!/usr/bin/python
 
-## TODO
-#
-## * Add CVS Revision up-to-date checking and reporting for translated
-##   page.
-
-
 import __main__
 import getopt
 import gettext
@@ -18,8 +12,9 @@ import sys
 outdir = '/var/www'
 verbose = 0
 
+C = 'site'
 LANGUAGES = (
-	('site', 'English'),
+	(C, 'English'),
 	('nl', 'Nederlands'),
 	)
 
@@ -104,7 +99,7 @@ def dir_lang (file, lang):
 def file_lang (file, lang):
 	(base, ext) = os.path.splitext (file)
 	base = os.path.splitext (base)[0]
-	if lang and lang != 'site':
+	if lang and lang != C:
 		return base + '.' + lang + ext
 	return base + ext
 
@@ -143,7 +138,7 @@ def format_page (html, file_name, lang):
 
 	def get_menu (dir):
 		'''Return menu list for DIR.'''
-		f = os.path.join (dir_lang (dir, 'site'), 'menu-entries.py')
+		f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
 		if os.path.isfile (f):
 			menu = eval (open (f).read (),
@@ -186,7 +181,7 @@ def format_page (html, file_name, lang):
 
 	def grab_ihtml (match):
 		s = match.group (1)
-		for d in (dir, lang, 'site'):
+		for d in (dir, lang, C):
 			n = os.path.join (d, s)
 			if os.path.exists (n):
 				return open (n).read ()
@@ -256,11 +251,11 @@ def format_page (html, file_name, lang):
 		languages = LANGUAGES_TEMPLATE % vars ()
 
 	page_template = PAGE_TEMPLATE
-	f = os.path.join (dir_lang (dir, 'site'), 'template.ihtml')
+	f = os.path.join (dir_lang (dir, C), 'template.ihtml')
 	if dir != lang and os.path.isfile (f):
 		page_template = open (f).read ()
 
-	if lang != 'site':
+	if lang != C:
 		slang = lang
 		dot_lang = '.' + lang
 		iso_lang = lang
@@ -312,10 +307,10 @@ def do_file (file_name):
 	if verbose:
 		sys.stderr.write ('%s...\n' % file_name)
 	lang = string.split (file_name, '/')[0]
-	if lang == 'site':
+	if lang == C:
 		out_file_name = file_name
 	else:
-		out_file_name = file_lang (dir_lang (file_name, 'site'), lang)
+		out_file_name = file_lang (dir_lang (file_name, C), lang)
 	out_file_name = os.path.join (outdir, out_file_name)
 
 	if file_name == out_file_name:
@@ -351,7 +346,7 @@ def main ():
 	files = do_options ()
 
 	global PAGE_TEMPLATE
-	f = os.path.join (dir_lang ('', 'site'), 'template.ihtml')
+	f = os.path.join (dir_lang ('', C), 'template.ihtml')
 	if os.path.isfile (f):
 		PAGE_TEMPLATE = open (f).read ()
 
