@@ -5,7 +5,10 @@ SCRIPTS=$(wildcard *.py *.scm)
 LILYPONDDIR=$(HOME)/usr/src/lilypond
 LY2DVI=python $(LILYPONDDIR)/scripts/ly2dvi.py
 
-all: menuify
+all: scripts menuify
+
+scripts:
+	cd site/about/automated-engraving ; python big-page.py 
 
 # no silly buttons
 site: tree menuify
