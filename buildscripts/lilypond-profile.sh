@@ -15,7 +15,7 @@ datadir="@datadir@"
 GS_FONTPATH="$datadir/afm:$datadir/pfa"
 
 # For direct ps output: ps/lilyponddefs.ps
-GS_LIB="$datadir/ps"
+GS_LIB="$datadir/ps:"${GS_LIB:=""}
 
 # bit silly. for ly2dvi, overrules compiled-in datadir...
 # Better comment this out.  Compiled-in datadir serves exactly the
