@@ -66,7 +66,10 @@ import __main__
 import operator
 import tempfile
 import traceback
-
+import resource
+ 
+ 
+       
 datadir = '@datadir@'
 sys.path.append (datadir + '/python')
 try:
@@ -179,10 +182,7 @@ Distributed under terms of the GNU General Public License. It comes with
 NO WARRANTY.'''))
 	sys.stdout.write ('\n')
 
-if ( os.name == 'posix' ):
-	errorport=sys.stderr
-else:
-	errorport=sys.stdout
+errorport=sys.stderr
 
 def progress (s):
 	errorport.write (s + '\n')
@@ -270,7 +270,7 @@ def help ():
 		('\n'),
 		(options_help_str (option_definitions)),
 		('\n\n'),
-		(_ ("Report bugs to %s") % 'bug-gnu-music@gnu.org'),
+		(_ ("Report bugs to %s") % 'bug-lilypond@gnu.org'),
 		('\n')]
 	map (sys.stdout.write, ls)
 	
@@ -296,12 +296,11 @@ def system (cmd, ignore_error = 0):
 
 	Exit status of CMD
 	"""
-	
-        if ( os.name != 'posix' ):
-		cmd = re.sub (r'''\\''', r'''\\\\\\''', cmd)
-		cmd = "sh -c \'%s\'" % cmd
 
-		
+        # Attempt to fix problems with limited stack size set by Python!
+        # Sets unlimited stack size.
+        resource.setrlimit(resource.RLIMIT_STACK, (-1,-1))
+	
 	if verbose_p:
 		progress (_ ("Invoking `%s\'") % cmd)
 	st = os.system (cmd)
@@ -576,7 +575,7 @@ None
 
 	cmd = 'latex \\\\nonstopmode \\\\input %s' % latex_fn
 
-	if not verbose_p and os.name == 'posix':
+	if not verbose_p:
 		progress ( _("Running %s...") % 'LaTeX')
 		cmd = cmd + ' 1> /dev/null 2> /dev/null'
 
@@ -601,7 +600,7 @@ None.
 
 	cmd = 'dvips %s -o%s %s' % (opts, outbase + '.ps', outbase + '.dvi')
 	
-	if not verbose_p and os.name == 'posix':
+	if not verbose_p:
 		progress ( _("Running %s...") % 'dvips')
 		cmd = cmd + ' 1> /dev/null 2> /dev/null'
 		
