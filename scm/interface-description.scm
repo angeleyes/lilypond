@@ -532,7 +532,11 @@ that helps show the length of a melissima (tied/slurred note)."
    'lyric-syllable-interface
    "a single piece of lyrics"
    '(
-    word-space  
+    word-space
+    alignment
+    ignore-length-mismatch
+    begin-alignment
+    end-alignment
     ))
 
 
@@ -773,7 +777,7 @@ direction = Forced direction for all ties"
    ))
 
 
-(ly-eval (cons
+(primitive-eval (cons
 	  'begin
 	  (map (lambda (x) (list 'define (car x) (list 'quote (cdr x))))
 	       all-interfaces)))
