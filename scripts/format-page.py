@@ -50,6 +50,15 @@ top_script = '''\
     function setfocus ()
       {
         document.f_lily_google.brute_query.focus ();
+	return true;
+      }
+
+    var LANGUAGES = new HashSet ("nl");
+    function language_redirect ()
+      {
+        if (LANGUAGES.contains (navigator.language))
+	  window.location = "index." + navigator.language + ".html";
+	return true;
       }
     // !-->
   </SCRIPT>
@@ -114,33 +123,6 @@ def format_page (html, file_name, lang):
 			self.name = dir
 			self.up = up
 
-	def list_directories (dir, up):
-		if not dir:
-			return []
-		return [dir_entry (dir, up)] \
-		       + list_directories (os.path.split (dir)[0], up + 1)
-
-	dir = os.path.dirname (file_name)
-	directories = list_directories (dir, 0)
-
-	base_name = os.path.basename (file_name)
-	is_index = base_name == 'index.html'
-	depth = len (directories)
-
-	dir_split = rreverse (string.split (dir, '/'))
-	def is_active (dir_entry, url):
-		return (url == dir_split[dir_entry.up - 1] \
-			or os.path.join (dir_entry.name, url) == file_name)
-
-	def get_menu (d):
-		f = os.path.join (dir_lang (d, 'site'), 'menu-entries.py')
-		
-		if os.path.isfile (f):
-			menu = eval (open (f).read (), __main__.__dict__, {})
-		else:
-			menu = [('', os.path.splitext (d)[0]),]
-		return menu
-
 	class item:
 		def __init__ (self, dir_entry, menu_entry):
 			URL = 0
@@ -150,26 +132,37 @@ def format_page (html, file_name, lang):
 			self.url = menu_entry[URL]
 			self.name = menu_entry[NAME]
 
+	def list_directories (dir, up):
+		'''Return list of DIR-ENTRYs for DIR and all parent DIRs.'''
+		if not dir:
+			return []
+		return [dir_entry (dir, up)] \
+		       + list_directories (os.path.split (dir)[0], up + 1)
+
+	def is_active (dir_entry, url):
+		'''Return if DIR_ENTRY is used in URL.'''
+		return (url == dir_split[dir_entry.up - 1] \
+			or os.path.join (dir_entry.name, url) == file_name)
+
+	def get_menu (dir):
+		'''Return menu list for DIR.'''
+		f = os.path.join (dir_lang (dir, 'site'), 'menu-entries.py')
+
+		if os.path.isfile (f):
+			menu = eval (open (f).read (),
+				     {'__builtins__': {}, '_': _ }, {})
+		else:
+			menu = [('', os.path.splitext (dir)[0]),]
+		return menu
+
 	def directory_menu (dir_entry):
 		return map (lambda x: item (dir_entry, x),
 			    get_menu (dir_entry.name))
-	
-	listings = map (directory_menu, directories)
 
 	def location_menu (dir_entry):
 		active = filter (lambda x: is_active (dir_entry, x[0]),
 				 get_menu (dir_entry.name))
 		return map (lambda x: item (dir_entry, x), active)
-
-	locations = filter (lambda x: x, map (location_menu, directories))
-	locations = rreverse (map (lambda x: x[0], locations))
-
-	is_root = is_index and depth == 1
-	if is_root:
-		locations = []
-	else:
-		home = item (dir_entry (lang, depth - 1), ('.', _ ("Home")))
-		locations = [home] + locations
 
 	def itemize (item, css, ACTIVE, INACTIVE):
 		is_active = item.is_active
@@ -186,23 +179,10 @@ def format_page (html, file_name, lang):
 		return itemize (item, 'menu',
 				MENU_ITEM_ACTIVE, MENU_ITEM_INACTIVE)
 
-	menus = map (lambda x: map (menuitemize, x), listings)
-	menu_strings = map (lambda x: MENU_TEMPLATE % string.join (x),
-			    menus)
-	menu = string.join (rreverse (menu_strings), MENU_SEP)
-
 	def locationize (item):
 		return itemize (item, 'location',
 				LOCATION_ITEM, LOCATION_ITEM)
 
-	location = string.join (map (locationize, locations), LOCATION_SEP)
-	location_title = LOCATION_TITLE % string.join (map (lambda x: x.name,
-							    locations[1:]),
-						       ' - ')
-
-	## @AT@ substitutions.
-
-	titles = [location_title]
 	def grab_title (match):
 		titles.append (match.group (1))
 		return ''
@@ -218,18 +198,67 @@ def format_page (html, file_name, lang):
 	def grab_gettext (match):
 		return gettext (match.group (1))
 
+	def langify_url (match):
+		rel = match.group (1)
+		file = os.path.join (dir_lang (dir, lang), rel)
+		if os.path.isfile (file):
+			rel = file_lang (rel, lang)
+		elif os.path.isdir (file) \
+		   and os.path.isfile (os.path.join (file, 'index.html')):
+			rel = file_lang (os.path.join (rel, 'index.html'), lang)
+		return '''href="%(rel)s"''' % vars ()
+
+	dir = os.path.dirname (file_name)
+	dir_split = rreverse (string.split (dir, '/'))
+	base_name = os.path.basename (file_name)
+	is_index = base_name == 'index.html'
+	directories = list_directories (dir, 0)
+	depth = len (directories)
+
+	# Make menu.
+	listings = map (directory_menu, directories)
+	menus = map (lambda x: map (menuitemize, x), listings)
+	menu_strings = map (lambda x: MENU_TEMPLATE % string.join (x),
+			    menus)
+	menu = string.join (rreverse (menu_strings), MENU_SEP)
+
+
+	# Make location.
+	locations = filter (lambda x: x, map (location_menu, directories))
+	locations = rreverse (map (lambda x: x[0], locations))
+
+	is_root = is_index and depth == 1
+	if is_root:
+		locations = []
+	else:
+		home = item (dir_entry (lang, depth - 1), ('.', _ ("Home")))
+		locations = [home] + locations
+
+	location = string.join (map (locationize, locations), LOCATION_SEP)
+	location_title = LOCATION_TITLE % string.join (map (lambda x: x.name,
+							    locations[1:]),
+						       ' - ')
+
+	# Ugh: title and script hacks.
+	titles = [location_title]
 	root_url = '../' * (depth - 1)
 	main = re.sub ('<title>(.*?)</title>', grab_title, html)
 
+	script = ''
+	onload = ''
 	if is_root:
 		script = top_script
-	else:
-		script = ''
+		# Ugh: search box is moved to bottom,
+		#      which makes browser scroll down upon focussing it.
+		#onload = "setfocus ();"
+		onload = "language_redirect ();"
 
 	page_template = PAGE_TEMPLATE
 	f = os.path.join (dir_lang (dir, 'site'), 'template.ihtml')
 	if dir != lang and os.path.isfile (f):
 		page_template = open (f).read ()
+
+	# Do @AT@ substitution.
 
 	# Ugh: factor 2 slowdown
 	# page = re.sub ('@MAIN@', main, page_template)
@@ -240,7 +269,8 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@MENU@', menu, page)
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
-	
+	page = re.sub ('@ONLOAD@', onload, page)
+
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
 	page = re.sub ('@IMAGES@', os.path.join (root_url, 'images/'), page)
@@ -248,11 +278,13 @@ def format_page (html, file_name, lang):
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
+	# Find available translations of this page.
 	rel_name = string.join (string.split (file_name, '/')[1:], '/')
 	available = filter (lambda x: lang != x[0] \
 			    and os.path.exists (os.path.join (x[0], rel_name)),
 			    LANGUAGES)
 
+	# Create language menu.
 	language_menu = ''
 	for (prefix, name) in available:
 		lang_file = file_lang (base_name, prefix)
@@ -261,19 +293,7 @@ def format_page (html, file_name, lang):
 	if lang == 'site':
 		language_menu = ''
 
-	###page = PAGE_TEMPLATE % vars ()
-
-	lang_dir = dir_lang (dir, lang)
-	def langify_url (match):
-		rel = match.group (1)
-		file = os.path.join (lang_dir, rel)
-		if os.path.isfile (file):
-			rel = file_lang (rel, lang)
-		elif os.path.isdir (file) \
-		   and os.path.isfile (os.path.join (file, 'index.html')):
-			rel = file_lang (os.path.join (rel, 'index.html'), lang)
-		return '''href="%(rel)s"''' % vars ()
-		
+	# Langify all urls that have available pages.
 	if lang != 'site':
 		page = re.sub ('''href=[\'"]([^/][^:\'"]*)[\'"]''',
 			       langify_url, page)
@@ -301,12 +321,12 @@ def do_file (file_name):
 	html = open (file_name).read ()
 	page = format_page (html, file_name, lang)
 	open (out_file_name, 'w').write (page)
-	
+
+
 def do_options ():
 	global outdir, verbose
-	(options, files) = getopt.getopt (sys.argv[1:],
-					  '',
-					  ['outdir=', 'help', 'verbose']) 
+	(options, files) = getopt.getopt (sys.argv[1:], '',
+					  ['outdir=', 'help', 'verbose'])
 	for (o, a) in options:
 		if o == '--outdir':
 			outdir = a

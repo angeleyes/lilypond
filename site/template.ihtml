@@ -5,15 +5,15 @@
     <LINK REL="shortcut icon" HREF="@IMAGES@shortcut.png">
     @SCRIPT@
   </HEAD>
-  <BODY>
+  <BODY onload="@ONLOAD@">
     <DIV class="menu">
       @MENU@
     </DIV>
     <DIV class="main">
       <HR>
-      <!-- BEGIN %(file_name)s !-->
+      <!-- BEGIN @FILE_NAME@ !-->
 @MAIN@
-      <!-- END %(file_name)s !-->
+      <!-- END !-->
       <BR clear="all">
       <HR>
     </DIV>
