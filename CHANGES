@@ -1,5 +1,8 @@
 lilypond_1_4
 ============
+* scripts/lilypond-book.py (re_dict): remove all *? regexps.
+
+* Documentation/windows/setup.hint (requires): Add gsview dependency.
 
 * Documentation/windows/installing.texi: Suggest gswin32c (console
 program) for getting the version.  Layout fixes.
