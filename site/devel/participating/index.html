@@ -46,7 +46,9 @@ example, you could
   http://www2.iro.umontreal.ca/~pinard/po/registry.cgi?domain=lilypond</a>
 
 <li>
- help proofreading and editing.
+ help proofreading and editing the documentation. The user manual is
+ found in <tt>lilypond/Documentation/user/</tt>, in the
+ <tt>*.itely</tt> files.
  
 <li>
  help <a href=../packaging.html>packaging</a>.
@@ -62,3 +64,30 @@ example, you could
   cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/lilypond co newweb
  </pre>
 </ul>
+
+<h2>Submitting patches</h2>
+<p>
+If you want to contribute fixes of any kind, use the following
+procedure:
+
+<ul>
+<li>Check out the latest sources from <a
+href="http://savannah.gnu.org/cvs/?group=lilypond">CVS</a>.
+
+<li>Make your changes,
+
+<li>Add an entry to the ChangeLog file (In Emacs: <tt>C-x 4 a</tt>)
+
+<li> Create a patch:
+<xmp>
+  cvs diff -u > patch
+</xmp>
+
+<li>Email the patch to <tt>lilypond-devel@gnu.org</tt>, or to one of
+the maintainers.
+<li>
+
+</ul>
+<xmp>
+  
+</xmp>
