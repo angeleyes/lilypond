@@ -1,6 +1,7 @@
 2003-08-07  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* site/download/index.html (href): fix URL.
+	kroeger deb to 1.8
 
 	* site/index.html (href): tweaks to improve doc link visibility
 
