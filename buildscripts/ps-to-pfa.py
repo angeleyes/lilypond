@@ -13,13 +13,14 @@ version = '0.4'
 
 datadir = ''
 
-import find
 import os
 import sys
 import getopt
 from string import *
 import re
 import time
+
+logfile = sys.stdout
 
 def program_id ():
     return name + ' version ' + version;
@@ -58,19 +59,19 @@ for opt in options:
 
 
 def gulp_file (f):
-	sys.stderr.write ('[%s' % f)
+	logfile.write ('[%s' % f)
 	try:
 		i = open (f)
 		i.seek (0, 2)
 		n = i.tell ()
 		i.seek (0,0)
 	except:
-		sys.stderr.write ('can\'t open file %s\n ' % f)
+		logfile.write ('can\'t open file %s\n ' % f)
 		return ''
 	s = i.read (n)
-	sys.stderr.write (']')
+	logfile.write (']')
 	if len (s) <= 0:
-		sys.stderr.write ('gulped empty file: %s\n'% f)
+		logfile.write ('gulped empty file: %s\n'% f)
 	return s
 
 mf = files[0]
@@ -81,7 +82,7 @@ if not output_name:
     output_name  = font_name + '.pfa'
 
 
-sys.stderr.write ('Font: %s\n'% font_name)
+logfile.write ('Font: %s\n'% font_name)
 
 def header (f):
 	f.write ('%!PS-AdobeFont-3.0: ' + font_name + '\n')
@@ -92,7 +93,7 @@ def header (f):
 /FontType 3 def                             %% Required elements of font
 /FontName /%s def""" % font_name)
 	f.write (r"""
-/FontMatrix [.083 0 0 .083 0 0] def       %% why .83?
+/FontMatrix [.083 0 0 .083 0 0] def       %% 12 is default height: 1/12 = 0.083
 /FontBBox [-1000 -1000 1000 1000] def	  %% does not seem to matter.
 /Encoding 256 array def                     %% Trivial encoding vector
 0 1 255 {Encoding exch /.notdef put} for
@@ -122,17 +123,16 @@ end                                         % of font dictionary
 	f.write (''
 'exch definefont pop                         % Define the font\n')
 
-
-suspect_re = re.compile ('closepath (.*?) 1 setgray newpath (.*?) closepath fill')
+suspect_re = re.compile ('closepath ((gsave )*fill( grestore stroke)*) 1 setgray newpath (.*?) closepath fill')
 
 def characters (f):
-	sys.stderr.write ('[')
+	logfile.write ('[')
 	
 	files = []
-	import find			# q
+	import glob
 	suffixes = [".[0-9]", ".[0-9][0-9]",  ".[0-9][0-9][0-9]"]
 	for suf in suffixes:
-		files = files + find.find (font_name + suf)
+		files = files + glob.glob(font_name + suf)
 
 
 	# concat all files into charprocs.
@@ -153,7 +153,7 @@ def characters (f):
 			m = suspect_re.search (s)
 			while m:
 				fill = m.group (1)
-				path = m.group (2)
+				path = m.group (4)
 
 				# be complicated, in case of gsave/grestore.
 				# vill as quick hack to avoid duple substitutions.
@@ -180,14 +180,14 @@ def characters (f):
 	f.write ('end                                         % of CharProcs\n')
 	f.write (encoding)
 	f.write ('\n')
-	sys.stderr.write (']')
+	logfile.write (']')
 
 
 ps_file = open (output_name, 'w')
 header (ps_file)
 characters (ps_file)
 footer (ps_file)
-sys.stderr.write ('\n')
+logfile.write ('\n')
 ps_file.close ()
-sys.stderr.write ('Wrote PostScript font: %s\n' % output_name)
+logfile.write ('Wrote PostScript font: %s\n' % output_name)
 
