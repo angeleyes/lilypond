@@ -37,7 +37,7 @@ out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
 
-WEBSERVER=lilypond.org
+WEBSERVER=base.lilypond.org
 upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && 	\
