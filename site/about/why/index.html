@@ -21,6 +21,7 @@ very beautifully hand-engraved edition from 1950, the one on the right
 is a typical contemporary computer product. Take a few seconds to let
 the looks of both pages sink in. Which one do you like better, and
 why?
+
 <p>
 <table>
 <tr><td align=center>
@@ -41,12 +42,14 @@ and flowing lines.... Except, the score doesn't show it: it looks
 rigid and mechanical.  To understand better why that is, let's blow up
 a fragment of both pieces:
 
-<p>
+<p align=center>
 
 <img src="baer-suite1-line.png">
 
 <p align=center> Hand-made
-<p><br><p>
+<p><br>
+
+<p align=center>
 
 <img src="henle-suite1-line.png">
 <p align=center>Computer-made
@@ -377,11 +380,12 @@ and less.
 
 How do we go about building such a system?  When we started, we wrote
 the program in C++. Essentially, this means that the program
-functionality is set in stone by us, the developers.
+functionality is set in stone by us developers. That proved to be
+unsatisfactory:
 
 <ul>
-<li> If things must be tuned by hand, then we must the user access to
-  the formatting engine. Hence, data structures and variables can be
+<li> If things must be tuned by hand, then the user must access to the
+  formatting engine. Hence, data structures and variables cannot be
   fixed at compile time, but they must be accessible for the user.
 
 <li> Engraving is a matter of visual judgement, and hence it is a
@@ -390,8 +394,8 @@ functionality is set in stone by us, the developers.
   style must also be accessible to the user.
 
 <li> Finally, we continually refine the formatting algorithms, so we
- need a flexible approach to rules.  The way that C++ forces us to
- group and apply rules.
+ need a flexible approach to rules.  C++ forces us to group and apply
+ rules that do not match how music notation works.
 
 </ul>
 
@@ -412,9 +416,8 @@ objects. Each object carries variables:
 <li> Variables control layout decisions.  For example, many objects
 have a <tt>direction</tt> variable that encodes the choice between up
 and down (or left and right).  Here you see two chords, with accents
-and arpeggio. In the first chord, the objects have all 
- directions  down (or left). In the second with all directions up
-(right).
+and arpeggio. In the first chord, the objects have all directions down
+(or left). The second chord has all directions up (right).
 
 <p align=center>
 <img src="directions-updown.png">
@@ -445,18 +448,126 @@ use to produce their symbol is changed during the music fragment:
 
 <h2>Notation benchmarking</h2>
 
-
-
-<hr>
+A flexible architecture is necessary for good
+formatting. Unfortunately, it is not sufficient.  Only a careful
+emulation of printed matter will give a good result.  We suggested in
+the introduction to compare program output with existing hand-engraved
+scores.  It is exactly this technique that we use to perfect LilyPond
+output.  In a way, this a benchmarking technique: the performance of
+the program, in terms of quality, is measured in relation to a known
+quantity.
 
 <p>
-A second difference is in the blackness of the page: the
-B&auml;renreiter has a stronger look, simply because it uses a heavier
-font, and thicker staff lines. This is also easily visible
-when you look at blowups of the scores: 
+Here you see parts of a benchmark piece. At the top the reference
+edition (B&auml;renreiter BA 350) at the bottom the output from
+LilyPond 1.4:
+
+<p align=center>
+<img src=baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+
+<p align=center>
+<img src=lily14-sarabande.png>
+<p align=center>
+LilyPond 1.4
 <p>
-<img src=henle-flat-bw.png>
-<img  src=baer-flat-bw.png>
-<img src=lily-flat-bw.png>
+
+The LilyPond output is certainly readable, and for many people it would be
+acceptable. However, close comparison with a hand-engraved score
+showed a lot of errors in the details:
+
+<p align=center>
+<img src=lily14-sarabande-correct.png>
+<p align=center>
+
+<ul>
+<li> Lots of symbols were unbalanced. In particular the trill sign was
+too large.
+
+<li> Stems and beams were all wrong: the stems were too long, and
+beam should be slanted to cover staff lines exactly. The beam was also
+too light.
+
+<li> The spacing was irregular: some measures were too tight, other
+too wide.
+</ul>
+
+<p>
+
+
+
+By addressing the relevant algorithms, settings, and font designs, we
+were able to improve the output. The output for LilyPond 1.8 is shown
+below. Although it is not a clone of the reference edition, this
+output is very close to publication quality.
+
+<p align=center>
+<img src=lily17-sarabande.png>
+<p align=center>
+LilyPond 1.8
+
+<p align=center>
+<img src=baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+<p>
+
+
+<h2>Font design</h2>
+
+A large factor that makes LilyPond output look traditional lies in the
+blackness of the page. By using heavy stafflines, and a font design to
+match that, the overall impression is much stronger. This is also very
+clear from the following blowups:
+
+<table align=center><tr><td>
+<img src=henle-flat-bw.png></td>
+<td>
+<img  src=baer-flat-bw.png></td>
+<td>
+<img src=lily-flat-bw.png></td>
+</tr><tr>
+<td align=center>Henle (2000)</td>
+<td align=center>B&auml;renreiter (1950)</td>
+<td align=center>LilyPond (2003)</td>
+</tr>
+</table>
+<p>
+Another typical aspect of hand-engraved scores is the general look of
+the symbols: they never have sharp corners. We suspect that this is
+due to the mechanics of the reproduction process.  This general
+rounded shape is also present in all glyphs of our "Feta" font.
+
+
+
+ 
+<h2>Spacing</h2>
+
+<p>
+
+One of the problems that the Bach piece above inspired us to attack,
+is the spacing engine. One of its features is optical spacing.
+It is demonstrated in the fragment below.  
+
+<p align=center>
+<img src=spacing-with-corr.png>
+
+<p align=center>
+<img src=spacing-no-corr.png>
+
+<p>
+
+This fragment only uses quarter notes: notes that are played in a
+constant rhythm. The spacing should reflect that. Unfortunately, the
+eye deceives us a little: not only does it notice the distance between
+note heads, it also takes into account the distance between
+consecutive stems. As a result, the notes of an up-stem/down-stem
+combination should be put farther apart, and the notes of a down-up
+combination should be put closer together, all depending on the
+combined vertical positions of the notes. The top fragment is printed
+with this correction, the bottom one without.  In the last case, the
+down-stem/up-stems combinations form clumps of notes.
+
 <p>
 

@@ -2,5 +2,6 @@
  ('joyofwindows.html', "Windows, urgh!"),
  ("mandrake.html", "Mandrake"),
  ("redhat.html", "RedHat"),
- ("windows.html", "Windows")
+ ("windows.html", "Windows"),
+ ("suse.html", "SuSE"),
  ]
