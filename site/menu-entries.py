@@ -1,7 +1,7 @@
 
-[('about', 'About'),
- ('switch/', 'Switch to LilyPond'),
+[('switch/', 'Switch'),
  ('background/', 'Why LilyPond?'),
+ ('about', 'About'),
  ('download', 'Download'),
  ('devel', 'Develop'),
  ]

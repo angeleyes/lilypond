@@ -29,12 +29,16 @@ music fragments.
 img {
     border-style: none;
 }
-
 a {
-    //color: #ba2c2c;
-    color: #a0a0ff;
-    text-decoration: none;
-    //font-weight: bold;
+text-decoration: none;
+}
+
+
+a:link    {
+color: #a0a0ff;
+}
+a:visited {
+color:#945b99;
 }
 
 a:hover {
