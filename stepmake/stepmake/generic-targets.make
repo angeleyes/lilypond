@@ -3,7 +3,7 @@
 
 .PHONY : all clean config default dist doc doc++  exe help html lib TAGS\
 	 po
-
+# VPATH=$(outdir)/		#ugh?
 # target all:
 #
 all:	 default
@@ -84,12 +84,6 @@ doc++:
 	(cd $(outdir); sh ../$(step-bindir)/tar-docxx.sh $(package)-$(TOPLEVEL_VERSION).tar.gz)
 
 
-update-state-vector:
-ifneq ($(strip $(state-vector)),)
-	if [ "`tail -1 $(state-vector)`" != "$(TOPLEVEL_VERSION)" ]; then\
-	  echo $(TOPLEVEL_VERSION) >> $(state-vector); \
-	fi
-endif
 
 local-dist: $(DIST_FILES) $(OUT_DIST_FILES) $(NON_ESSENTIAL_DIST_FILES)
 	mkdir -p $(distdir)/$(localdir)
@@ -119,9 +113,12 @@ TAGS:
 
 	$(LOOP)
 
-$(outdir)/version.hh: VERSION
-	sh ./$(step-bindir)/make-version.sh > $@
+# ugh . -> $(outdir)
+$(outdir)/VERSION: $(depth)/VERSION
+	cp $< $@
 
+$(outdir)/version.hh: $(outdir)/VERSION
+	sh ./$(step-bindir)/make-version.sh $< > $@
 
 # should this be in Rules?
 configure: configure.in aclocal.m4
@@ -154,6 +151,8 @@ installextradoc:
 
 WWW: local-WWW
 	$(LOOP)
+
+local-WWW:
 
 include $(stepdir)/package.make
 
