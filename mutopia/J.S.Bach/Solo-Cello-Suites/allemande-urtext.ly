@@ -9,9 +9,9 @@ But merging melodic and scripts doen't work too well yet (see viola_scripts).
 
 n = { \slurnormal }
 d = { \slurdotted }
-comma = "\\sethuge\\ \\ ,";
+comma = "\\sethuge\\ \\ ,"
 
-allemande_a = \melodic \relative c {
+allemande_a = \notes \relative c {
 	\voiceone a'16 | 
 	[a8 bes16()a] \onevoice
 	[g()f e()d][d()cis d()e][a,8 \d bes16()g] |
@@ -67,7 +67,7 @@ allemande_a = \melodic \relative c {
 	\stemup [d,16 \stemboth d''(c!)a][bes!(g)e cis'][d a f d] d,8.
 }
 
-allemande_b = \melodic \relative c {
+allemande_b = \notes \relative c {
 	\voicetwo
 	s16 |
 	% <d'8 g' f'> s8 s2. |
@@ -93,7 +93,7 @@ allemande_b = \melodic \relative c {
 	bes8. 
 }
 
-allemande = \type Staff \melodic<
+allemande = \type Staff \notes<
 	\$allemande_a
 	\$allemande_b
 >
