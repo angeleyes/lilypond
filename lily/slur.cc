@@ -3,18 +3,22 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1996,  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1996--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
     Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 /*
   [TODO]
+    * should avoid stafflines with horizontal part.
     * begin and end should be treated as a/acknowledge Scripts.
-    * broken slur should have uniform trend
+    * smart changing of endings
+    * smart changing of (Y-?)offsets to avoid ugly beziers
+ (along-side-stem)
  */
 
+#include "directional-element-interface.hh"
+#include "group-interface.hh"
 #include "slur.hh"
-#include "scalar.hh"
 #include "lookup.hh"
 #include "paper-def.hh"
 #include "note-column.hh"
@@ -22,34 +26,78 @@
 #include "paper-column.hh"
 #include "molecule.hh"
 #include "debug.hh"
-#include "box.hh"
-#include "bezier.hh"
-#include "encompass-info.hh"
+#include "slur-bezier-bow.hh"
 #include "main.hh"
+#include "group-interface.hh"
+#include "staff-symbol-referencer.hh"
+#include "spanner.hh"
 
-Slur::Slur ()
+
+void
+Slur::set_interface (Grob*me)
 {
+  /* Copy to mutable list. */
+  me->set_grob_property ("attachment",
+			 ly_deep_copy (me->get_grob_property ("attachment")));
 }
 
 void
-Slur::add_column (Note_column*n)
+Slur::add_column (Grob*me, Grob*n)
 {
-  if (!n->head_l_arr_.size ())
-    warning (_ ("Putting slur over rest. Ignoring"));
+  if (!gh_pair_p (n->get_grob_property ("note-heads")))
+    warning (_ ("Putting slur over rest.  Ignoring."));
   else
     {
-      encompass_arr_.push (n);
-      add_dependency (n);
+      Pointer_group_interface::add_element (me, "note-columns",n);
+      me->add_dependency (n);
     }
+
+  add_bound_item (dynamic_cast<Spanner*> (me), dynamic_cast<Item*> (n));
+}
+
+void
+Slur::de_uglyfy (Grob*me, Slur_bezier_bow* bb, Real default_height)
+{
+  Real length = bb->curve_.control_[3][X_AXIS] ; 
+  Real ff = bb->fit_factor ();
+  for (int i = 1; i < 3; i++)
+    {
+      Real ind = abs (bb->curve_.control_[ (i-1)*3][X_AXIS]
+		      - bb->curve_.control_[i][X_AXIS]) / length;
+      Real h = bb->curve_.control_[i][Y_AXIS] * ff / length;
+
+      Real f = default_height / length;
+      SCM up = me->get_grob_property ("de-uglify-parameters");
+      
+      Real c1 = gh_scm2double (gh_car (up));
+      Real c2 = gh_scm2double (gh_cadr (up));
+      Real c3 = gh_scm2double (gh_caddr (up)); 
+      
+      if (h > c1 * f)
+	{
+	  h = c1 * f; 
+	}
+      else if (h > c2 + c3 * ind)
+	{
+	  h = c2 + c3 * ind; 
+	}
+      
+      bb->curve_.control_[i][Y_AXIS] = h * length;
+    } 
+
+  bb->curve_.assert_sanity ();
 }
 
 Direction
-Slur::get_default_dir () const
+Slur::get_default_dir (Grob*me) 
 {
+  Link_array<Grob> encompass_arr =
+    Pointer_group_interface__extract_elements (me, (Grob*)0, "note-columns");
+  
   Direction d = DOWN;
-  for (int i=0; i < encompass_arr_.size (); i ++) 
+  for (int i=0; i < encompass_arr.size (); i ++) 
     {
-      if (encompass_arr_[i]->dir () < 0) 
+      if (Note_column::dir (encompass_arr[i]) < 0) 
 	{
 	  d = UP;
 	  break;
@@ -58,418 +106,553 @@ Slur::get_default_dir () const
   return d;
 }
 
-void
-Slur::do_add_processing ()
-{
-  set_bounds (LEFT, encompass_arr_[0]);    
-  if (encompass_arr_.size () > 1)
-    set_bounds (RIGHT, encompass_arr_.top ());
-}
 
-void
-Slur::do_pre_processing ()
+MAKE_SCHEME_CALLBACK (Slur, after_line_breaking,1);
+SCM
+Slur::after_line_breaking (SCM smob)
 {
-  // don't set directions
-}
-
-void
-Slur::do_substitute_element_pointer (Score_element*o, Score_element*n)
-{
-  int i;
-  while ((i = encompass_arr_.find_i (dynamic_cast<Note_column *> (o))) >=0) 
+  Grob *me = unsmob_grob (smob);
+  if (!scm_ilength (me->get_grob_property ("note-columns")))
     {
-      if (n)
-	encompass_arr_[i] = dynamic_cast<Note_column *> (n);
-      else
-	encompass_arr_.del (i);
+      me->suicide ();
+      return SCM_UNSPECIFIED;
     }
-}
+  set_extremities (me);
+  set_control_points (me);
+  return SCM_UNSPECIFIED;
+} 
 
-static int 
-Note_column_compare (Note_column *const&n1 , Note_column* const&n2)
-{
-  return Item::left_right_compare (n1, n2);
-}
 
 void
-Slur::do_post_processing ()
+Slur::check_slope (Grob *me)
 {
-  encompass_arr_.sort (Note_column_compare);
-  if (!dir_)
-    dir_ = get_default_dir ();
-
-  /* 
-   Slur and tie placement [OSU]
-
-   Slurs:
-   * x = centre of head - d * x_gap_f
-
-   TODO:
-   * y = length < 5ss : horizontal tangent + d * 0.25 ss
-     y = length >= 5ss : y next interline - d * 0.25 ss
-   */
-
-  Real interline_f = paper_l ()->get_realvar (interline_scm_sym);
-  Real internote_f = interline_f / 2;
-
-  Real x_gap_f = paper_l ()->get_var ("slur_x_gap");
-  Real y_gap_f = paper_l ()->get_var ("slur_y_gap");
-
-  Drul_array<Note_column*> note_column_drul;
-  note_column_drul[LEFT] = encompass_arr_[0];
-  note_column_drul[RIGHT] = encompass_arr_.top ();
-
-  bool fix_broken_b = false;
-  Direction d = LEFT;
-  do 
-    {
-      dx_f_drul_[d] = dy_f_drul_[d] = 0;
-      if ((note_column_drul[d] == spanned_drul_[d])
-	  && note_column_drul[d]->head_l_arr_.size ()
-	  && (note_column_drul[d]->stem_l_))
-	{
-	  Stem* stem_l = note_column_drul[d]->stem_l_;
-	  /*
-	    side directly attached to note head;
-	    no beam getting in the way
-	  */
-	  if ((stem_l->extent (Y_AXIS).empty_b ()
-	       || !((stem_l->dir_ == dir_) && (dir_ != d)))
-	      && !((dir_ == stem_l->dir_)
-		   && stem_l->beam_l_ && (stem_l->beams_i_drul_[-d] >= 1)))
-	    {
-	      dx_f_drul_[d] = spanned_drul_[d]->extent (X_AXIS).length () / 2;
-	      dx_f_drul_[d] -= d * x_gap_f;
-
-	      if (stem_l->dir_ != dir_)
-		{
-		  dy_f_drul_[d] = note_column_drul[d]->extent (Y_AXIS)[dir_];
-		}
-	      else
-		{
-		  dy_f_drul_[d] = stem_l->chord_start_f ()
-		    + dir_ * internote_f;
-		}
-	      dy_f_drul_[d] += dir_ * y_gap_f;
-	    }
-	  /*
-	    side attached to (visible) stem
-	  */
-	  else
-	    {
-	      dx_f_drul_[d] = stem_l->hpos_f ()
-		- spanned_drul_[d]->relative_coordinate (0, X_AXIS);
-	      /*
-		side attached to beamed stem
-	       */
-	      if (stem_l->beam_l_ && (stem_l->beams_i_drul_[-d] >= 1))
-		{
-		  dy_f_drul_[d] = stem_l->extent (Y_AXIS)[dir_];
-		  dy_f_drul_[d] += dir_ * 2 * y_gap_f;
-		}
-	      /*
-		side attached to notehead, with stem getting in the way
-	       */
-	      else
-		{
-		  dx_f_drul_[d] -= d * x_gap_f;
-		  
-		  dy_f_drul_[d] = stem_l->chord_start_f ()
-		    + dir_ * internote_f;
-		  dy_f_drul_[d] += dir_ * y_gap_f;
-		}
-	    }
-	}
-      /*
-	loose end
-      */
-      else
-	{
-	  dx_f_drul_[d] = get_broken_left_end_align ();
-	  	
-	  /*
-	    broken: should get y from other piece, so that slur
-	    continues up/down trend
-
-	    for now: be horizontal..
-	  */
-	  fix_broken_b = true;
-	}
-    }
-  while (flip (&d) != LEFT);
-
-  int interstaff_i = 0;
-  for (int i = 0; i < encompass_arr_.size (); i++)
-    {
-      Encompass_info info (encompass_arr_[i], dir_, this);
-      if (info.interstaff_f_)
-	{
-	  interstaff_i++;
-	}
-    }
-  bool interstaff_b = interstaff_i && (interstaff_i < encompass_arr_.size ());
-
-  Drul_array<Encompass_info> info_drul;
-  info_drul[LEFT] = Encompass_info (encompass_arr_[0], dir_, this);
-  info_drul[RIGHT] = Encompass_info (encompass_arr_.top (), dir_, this);
-  Real interstaff_f = info_drul[RIGHT].interstaff_f_
-    - info_drul[LEFT].interstaff_f_;
-
-  if (fix_broken_b)
-    {
-      Direction d = (encompass_arr_.top () != spanned_drul_[RIGHT]) ?
-	RIGHT : LEFT;
-      dy_f_drul_[d] = info_drul[d].o_[Y_AXIS];
-      if (!interstaff_b)
-	{
-	  dy_f_drul_[d] -= info_drul[d].interstaff_f_;
-	  
-	  if (interstaff_i)
-	    {
-	      dy_f_drul_[LEFT] += info_drul[d].interstaff_f_;
-	      dy_f_drul_[RIGHT] += info_drul[d].interstaff_f_;
-	    }
-	}
-    }
-	
-
-  /*
-    Now we've got a fine slur
-    Catch and correct some ugly cases
-   */
-
-  Real height_damp_f;
-  Real slope_damp_f;
-  Real snap_f;
-  Real snap_max_dy_f;
-
-  if (!interstaff_b)
-    {
-      height_damp_f = paper_l ()->get_var ("slur_height_damping");
-      slope_damp_f = paper_l ()->get_var ("slur_slope_damping");
-      snap_f = paper_l ()->get_var ("slur_snap_to_stem");
-      snap_max_dy_f = paper_l ()->get_var ("slur_snap_max_slope_change");
-    }
-  else
-    {
-      height_damp_f = paper_l ()->get_var ("slur_interstaff_height_damping");
-      slope_damp_f = paper_l ()->get_var ("slur_interstaff_slope_damping");
-      snap_f = paper_l ()->get_var ("slur_interstaff_snap_to_stem");
-      snap_max_dy_f = paper_l ()->get_var ("slur_interstaff_snap_max_slope_change");
-    }
-
-  if (!fix_broken_b)
-    dy_f_drul_[RIGHT] += interstaff_f;
-
-  Real dy_f = dy_f_drul_[RIGHT] - dy_f_drul_[LEFT];
-  if (!fix_broken_b)
-    dy_f -= interstaff_f;
-  Real dx_f = do_width ().length () + dx_f_drul_[RIGHT] - dx_f_drul_[LEFT];
-
   /*
     Avoid too steep slurs.
    */
-  Real slope_ratio_f = abs (dy_f / dx_f);
-  if (slope_ratio_f > slope_damp_f)
+  SCM s = me->get_grob_property ("slope-limit");
+  if (gh_number_p (s))
     {
-      Direction d = (Direction)(- dir_ * (sign (dy_f)));
-      if (!d)
-	d = LEFT;
-      Real damp_f = (slope_ratio_f - slope_damp_f) * dx_f;
-      /*
-	must never change sign of dy
-       */
-      damp_f = damp_f <? abs (dy_f);
-      dy_f_drul_[d] += dir_ * damp_f;
-    }
+      Array<Offset> encompass = get_encompass_offset_arr (me);
+      Drul_array<Offset> attachment;
+      attachment[LEFT] = encompass[0];
+      attachment[RIGHT] = encompass.top ();
 
-  /*
-   Avoid too high slurs 
-
-   Wierd slurs may look a lot better after they have been
-   adjusted a bit.
-   So, we'll do this in 3 steps
-   */
-  for (int i = 0; i < 3; i++)
-    {
-      Drul_array<Interval> curve_xy_drul = curve_extent_drul ();
-      Real height_f = curve_xy_drul[Y].length ();
-      Real width_f = curve_xy_drul[X].length ();
+      Real dx = attachment[RIGHT][X_AXIS] - attachment[LEFT][X_AXIS];
+      Real dy = attachment[RIGHT][Y_AXIS] - attachment[LEFT][Y_AXIS];
+      if (!dx)
+	return;
       
-      dy_f = dy_f_drul_[RIGHT] - dy_f_drul_[LEFT];
-      if (!fix_broken_b)
-	dy_f -= interstaff_f;
+      Real slope = slope = abs (dy / dx);
 
-      Real height_ratio_f = abs (height_f / width_f);
-      if (height_ratio_f > height_damp_f)
-	{
-	  Direction d = (Direction)(- dir_ * (sign (dy_f)));
-	  if (!d)
-	    d = LEFT;
-	  /* take third step */
-	  Real damp_f = (height_ratio_f - height_damp_f) * width_f / 3;
-	  /*
-	    if y positions at about the same height, correct both ends
-	  */
-	  if (abs (dy_f / dx_f ) < slope_damp_f)
-	    {
-	      dy_f_drul_[-d] += dir_ * damp_f;
-	      dy_f_drul_[d] += dir_ * damp_f;
-	    }
-	  /*
-	    don't change slope too much, would have been catched by slope damping
-	  */
-	  else
-	    {
-	      damp_f = damp_f <? abs (dy_f/2);
-	      dy_f_drul_[d] += dir_ * damp_f;
-	    }
-	}
-    }
+      Real limit = gh_scm2double (s);
 
-  /*
-    If, after correcting, we're close to stem-end...
-  */
-  Drul_array<Real> snapy_f_drul;
-  snapy_f_drul[LEFT] = snapy_f_drul[RIGHT] = 0;
-  Drul_array<Real> snapx_f_drul;
-  snapx_f_drul[LEFT] = snapx_f_drul[RIGHT] = 0;
-  Drul_array<bool> snapped_b_drul;
-  snapped_b_drul[LEFT] = snapped_b_drul[RIGHT] = false;
-  do
-    {
-      if ((note_column_drul[d] == spanned_drul_[d])
-	  && (note_column_drul[d]->stem_l_)
-	  && (note_column_drul[d]->stem_l_->dir_ == dir_)
-	  && (abs (note_column_drul[d]->stem_l_->extent (Y_AXIS)[dir_]
-		   - dy_f_drul_[d] + (d == LEFT ? 0 : interstaff_f))
-	      <= snap_f))
+      if (slope > limit)
 	{
-	  /*
-	    prepare to attach to stem-end
-	  */
-	  Stem* stem_l = note_column_drul[d]->stem_l_;
-	  snapx_f_drul[d] = stem_l->hpos_f ()
-	    - spanned_drul_[d]->relative_coordinate (0, X_AXIS);
-	  snapy_f_drul[d] = stem_l->extent (Y_AXIS)[dir_];
-	  snapy_f_drul[d] += info_drul[d].interstaff_f_;
-	  snapy_f_drul[d] += dir_ * 2 * y_gap_f;
-	  snapped_b_drul[d] = true;
-	}
-    }
-  while (flip (&d) != LEFT);
+	  Real staff_space = Staff_symbol_referencer::staff_space ((Grob*)me);
+	  Direction dir = (Direction)gh_scm2int (me->get_grob_property ("direction"));
+	  Direction d = (Direction) (- dir * (sign (dy)));
+	  SCM a = me->get_grob_property ("attachment-offset");
+	  Drul_array<Offset> o;
+	  o[LEFT] = ly_scm2offset (index_cell (a, LEFT));
+	  o[RIGHT] = ly_scm2offset (index_cell (a, RIGHT));
+	  o[d][Y_AXIS] -= (limit - slope) * dx * dir / staff_space;
 
-  /*
-    only use snapped positions if sign (dy) will not change
-    and dy doesn't change too much
-    */
-  if (!fix_broken_b)
-    dy_f += interstaff_f;
-  if (snapped_b_drul[LEFT] && snapped_b_drul[RIGHT]
-      && ((sign (snapy_f_drul[RIGHT] - snapy_f_drul[LEFT]) == sign (dy_f)))
-      && (!dy_f || (abs (snapy_f_drul[RIGHT] - snapy_f_drul[LEFT] - dy_f)
-		    < abs (dy_f * snap_max_dy_f))))
-    {
-      do
-	{
-	  dy_f_drul_[d] = snapy_f_drul[d];
-	  dx_f_drul_[d] = snapx_f_drul[d];
+	  o[d][Y_AXIS] *= Directional_element_interface::get (me);
+
+	  me->set_grob_property ("attachment-offset",
+				gh_cons (ly_offset2scm (o[LEFT]),
+					 ly_offset2scm (o[RIGHT])));
 	}
-      while (flip (&d) != LEFT);
-  
-    }
-  else if (snapped_b_drul[LEFT]
-      && ((sign (dy_f_drul_[RIGHT] - snapy_f_drul[LEFT]) == sign (dy_f)))
-      && (!dy_f || (abs (dy_f_drul_[RIGHT] - snapy_f_drul[LEFT] - dy_f)
-		    < abs (dy_f * snap_max_dy_f))))
-    {
-      Direction d = LEFT;
-      dy_f_drul_[d] = snapy_f_drul[d];
-      dx_f_drul_[d] = snapx_f_drul[d];
-    }
-  else if (snapped_b_drul[RIGHT]
-      && ((sign (snapy_f_drul[RIGHT] - dy_f_drul_[LEFT]) == sign (dy_f)))
-      && (!dy_f || (abs (snapy_f_drul[RIGHT] - dy_f_drul_[LEFT] - dy_f)
-		    < abs (dy_f * snap_max_dy_f))))
-    {
-      Direction d = RIGHT;
-      dy_f_drul_[d] = snapy_f_drul[d];
-      dx_f_drul_[d] = snapx_f_drul[d];
     }
 }
 
-Array<Offset>
-Slur::get_encompass_offset_arr () const
+void
+Slur::set_extremities (Grob *me)
 {
-  Array<Offset> offset_arr;
-#if 0
-  /*
-    check non-disturbed slur
-    FIXME: x of ends off by a tiny bit!!
-  */
-  offset_arr.push (Offset (0, dy_f_drul_[LEFT]));
-  offset_arr.push (Offset (0, dy_f_drul_[RIGHT]));
-  return offset_arr;
-#endif
+  if (!Directional_element_interface::get (me))
+    Directional_element_interface::set (me, get_default_dir (me));
 
-  int interstaff_i = 0;
-  for (int i = 0; i < encompass_arr_.size (); i++)
+  Direction dir = LEFT;
+  do 
     {
-      Encompass_info info (encompass_arr_[i], dir_, this);
-      if (info.interstaff_f_)
+      if (!gh_symbol_p (index_cell (me->get_grob_property ("attachment"), dir)))
 	{
-	  interstaff_i++;
+	  for (SCM s = me->get_grob_property ("extremity-rules");
+	       s != SCM_EOL; s = gh_cdr (s))
+	    {
+	      SCM r = gh_call2 (gh_caar (s), me->self_scm (),
+				 gh_int2scm ((int)dir));
+	      if (r != SCM_BOOL_F)
+		{
+		  index_set_cell (me->get_grob_property ("attachment"), dir,
+				  gh_cdar (s));
+		  break;
+		}
+	    }
 	}
     }
-  bool interstaff_b = interstaff_i && (interstaff_i < encompass_arr_.size ());
+  while (flip (&dir) != LEFT);
+
+  check_slope (me);
+}
+
+
+Real
+Slur::get_first_notecolumn_y (Grob *me, Direction dir)
+{
+  Grob *col = dir == LEFT
+    ? unsmob_grob (gh_car (scm_reverse (me->get_grob_property
+ ("note-columns"))))
+    : unsmob_grob
+ (gh_car (me->get_grob_property ("note-columns")));
   
-  Offset origin (relative_coordinate (0, X_AXIS), 0);
+  Grob *common[] =
+  {
+    0,
+    me->common_refpoint (col, Y_AXIS)
+  };
+  Real y;
+  if (col == ((Spanner*)me)->get_bound (dir))
+    {
+      y = get_attachment (me, dir, common)[Y_AXIS];
+    }
+  else
+    {
+      y = encompass_offset (me, col, common)[Y_AXIS]
+	- me->relative_coordinate (common[Y_AXIS], Y_AXIS); 
+    }
+  return y;
+}
+
+Offset
+Slur::broken_trend_offset (Grob *me, Direction dir)
+{
+  /*
+    A broken slur should maintain the same vertical trend
+    the unbroken slur would have had.
+  */
+  Offset o;
+  if (Spanner *mother =  dynamic_cast<Spanner*> (me->original_l_))
+    {
+      for (int i = dir == LEFT ? 0 : mother->broken_into_l_arr_.size () - 1;
+	   dir == LEFT ? i < mother->broken_into_l_arr_.size () : i > 0;
+	   dir == LEFT ? i++ : i--)
+	{
+	  if (mother->broken_into_l_arr_[i - dir] == me)
+	    {
+	      Grob *neighbour = mother->broken_into_l_arr_[i];
+	      if (dir == RIGHT)
+		neighbour->set_grob_property ("direction",
+					     me->get_grob_property ("direction"));
+	      Real neighbour_y = get_first_notecolumn_y (neighbour, dir);
+	      Real y = get_first_notecolumn_y (me, -dir);
+	      int neighbour_cols = scm_ilength (neighbour->get_grob_property ("note-columns"));
+	      int cols = scm_ilength (me->get_grob_property ("note-columns"));
+	      o = Offset (0, (y*neighbour_cols + neighbour_y*cols) /
+ (cols + neighbour_cols));
+	      break;
+	    }
+	}
+    }
+  return o;
+}
+
+Offset
+Slur::get_attachment (Grob *me, Direction dir,
+		      Grob **common) 
+{
+  SCM s = me->get_grob_property ("attachment");
+  if (!gh_symbol_p (index_cell (s, dir)))
+    {
+      set_extremities (me);
+      s = me->get_grob_property ("attachment");
+    }
+  SCM a = dir == LEFT ? gh_car (s) : gh_cdr (s);
+  Spanner*sp = dynamic_cast<Spanner*> (me);
+  String str = ly_symbol2string (a);
+  Real staff_space = Staff_symbol_referencer::staff_space ((Grob*)me);
+  Real hs = staff_space / 2.0;
+  Offset o;
+  
+  Grob *stem = 0;
+  if (Note_column::has_interface (sp->get_bound (dir)))
+    {
+      Grob * n =sp->get_bound (dir);
+      if ((stem = Note_column::stem_l (n)))
+	{
+	  Real x_extent;
+	  if (Grob *head = Note_column::first_head (n))
+	    x_extent = head->extent (head, X_AXIS).length ();
+	  else
+	    x_extent = n->extent (n, X_AXIS).length ();
+
+	  if (str == "head")
+	    {
+	      o = Offset (0, Stem::head_positions (stem)
+			  [Directional_element_interface::get (me)] * hs);
+	      /*
+		Default position is centered in X, on outer side of head Y
+	       */
+	      o += Offset (0.5 * x_extent,
+			   0.5 * staff_space
+			   * Directional_element_interface::get (me));
+	    }
+	  else if (str == "alongside-stem")
+	    {
+	      o = Offset (0, Stem::chord_start_f (stem));
+	      /*
+		Default position is on stem X, on outer side of head Y
+	       */
+	      o += Offset (x_extent * (1 + Stem::get_direction (stem)),
+			   0.5 * staff_space
+			   * Directional_element_interface::get (me));
+	    }
+	  else if (str == "stem")
+	    {
+	      o = Offset (0, Stem::stem_end_position (stem) * hs);
+	      /*
+		Default position is on stem X, at stem end Y
+	       */
+	      o += Offset (0.5 *
+			   x_extent * (1 + Stem::get_direction (stem)),
+			   0);
+	    }
+	}
+    }
+  /*
+    If we're not a note_column, we can't be anything but a loose-end.
+    But if user has set (attachment . (stem . stem)), our string is
+    stem, not loose-end.
+
+    Hmm, maybe after-line-breaking should set this to loose-end?  */
+  else // if (str == "loose-end")
+    {
+      SCM other_a = dir == LEFT ? gh_cdr (s) : gh_car (s);
+      if (ly_symbol2string (other_a) != "loose-end")
+	o = broken_trend_offset (me, dir);
+    }
+
+  SCM alist = me->get_grob_property ("extremity-offset-alist");
+  int stemdir = stem ? Stem::get_direction (stem) : 1;
+  int slurdir = gh_scm2int (me->get_grob_property ("direction"));
+  SCM l = scm_assoc
+    (scm_listify (a,
+		  gh_int2scm (stemdir * dir),
+		  gh_int2scm (slurdir * dir),
+                  SCM_UNDEFINED), alist);
+
+  if (l != SCM_BOOL_F)
+    {
+      Offset off = ly_scm2offset (gh_cdr (l)) * staff_space;
+      off[X_AXIS] *= dir;
+      off[Y_AXIS] *= Directional_element_interface::get (me);
+      o += off;
+    }
+
+  /*
+    What if get_bound () is not a note-column?
+   */
+  if (str != "loose-end"
+      && sp->get_bound (dir)->common_refpoint (common[Y_AXIS], Y_AXIS) == common[Y_AXIS])
+    {      
+      o[Y_AXIS] += sp->get_bound (dir)->relative_coordinate (common[Y_AXIS], Y_AXIS) 
+	- me->relative_coordinate (common[Y_AXIS], Y_AXIS);
+    }
+
+  Offset off = ly_scm2offset (index_cell (me->get_grob_property
+					  ("attachment-offset"),
+					  dir)) * staff_space;
+
+  off[Y_AXIS] *= Directional_element_interface::get (me);
+  o += off;
+  return o;
+}
+
+Offset
+Slur::encompass_offset (Grob*me,
+			Grob* col,
+			Grob **common) 
+{
+  Offset o;
+  Grob* stem_l = unsmob_grob (col->get_grob_property ("stem"));
+  
+  Direction dir = Directional_element_interface::get (me);
+  
+  if (!stem_l)
+    {
+      warning (_ ("Slur over rest?"));
+      o[X_AXIS] = col->relative_coordinate (common[X_AXIS], X_AXIS);
+      o[Y_AXIS] = col->relative_coordinate (common[Y_AXIS], Y_AXIS);
+      return o;  
+    }
+  Direction stem_dir = Directional_element_interface::get (stem_l);
+  o[X_AXIS] = stem_l->relative_coordinate (0, X_AXIS);
+
+  /*
+    Simply set x to middle of notehead
+   */
+  Real x_extent;
+  if (Grob *head = Note_column::first_head (col))
+    x_extent = head->extent (head, X_AXIS).length ();
+  else
+    x_extent = col->extent (col, X_AXIS).length ();
+  o[X_AXIS] -= 0.5 * stem_dir * x_extent;
+
+  if ((stem_dir == dir)
+      && !stem_l->extent (stem_l, Y_AXIS).empty_b ())
+    {
+      o[Y_AXIS] = stem_l->extent (common[Y_AXIS], Y_AXIS)[dir];
+    }
+  else
+    {
+      o[Y_AXIS] = col->extent (common[Y_AXIS], Y_AXIS)[dir];
+    }
+
+  /*
+   leave a gap: slur mustn't touch head/stem
+   */
+  o[Y_AXIS] += dir * gh_scm2double (me->get_grob_property ("y-free")) *
+    1.0;
+  return o;
+}
+
+Array<Offset>
+Slur::get_encompass_offset_arr (Grob *me)
+{
+  Spanner*sp = dynamic_cast<Spanner*> (me);
+  SCM eltlist = me->get_grob_property ("note-columns");
+  Grob *common[] = {me->common_refpoint (eltlist, X_AXIS),
+			     me->common_refpoint (eltlist, Y_AXIS)};
+
+
+  common[X_AXIS] = common[X_AXIS]->common_refpoint (sp->get_bound (RIGHT), X_AXIS);
+  common[X_AXIS] = common[X_AXIS]->common_refpoint (sp->get_bound (LEFT), X_AXIS);
+  
+  Link_array<Grob>  encompass_arr;
+  while (gh_pair_p (eltlist))
+    {
+      encompass_arr.push (unsmob_grob (gh_car (eltlist)));      
+      eltlist =gh_cdr (eltlist);
+    }
+  encompass_arr.reverse ();
+
+  
+  Array<Offset> offset_arr;
+
+  Offset origin (me->relative_coordinate (common[X_AXIS], X_AXIS),
+		 me->relative_coordinate (common[Y_AXIS], Y_AXIS)); 
 
   int first = 1;
-  int last = encompass_arr_.size () - 2;
+  int last = encompass_arr.size () - 2;
 
-  offset_arr.push (Offset (dx_f_drul_[LEFT], dy_f_drul_[LEFT]));
+  offset_arr.push (get_attachment (me, LEFT, common));
+
   /*
     left is broken edge
   */
-  if (encompass_arr_[0] != spanned_drul_[LEFT])
+
+  if (encompass_arr[0] != sp->get_bound (LEFT))
     {
       first--;
-      Encompass_info left_info (encompass_arr_[0], dir_, this);
-      if (interstaff_b)
-	offset_arr[0][Y_AXIS] += left_info.interstaff_f_;
+
+      // ?
+      offset_arr[0][Y_AXIS] -=
+	encompass_arr[0]->relative_coordinate (common[Y_AXIS], Y_AXIS) 
+	- me->relative_coordinate (common[Y_AXIS], Y_AXIS); 
     }
 
   /*
     right is broken edge
   */
-  if (encompass_arr_.top () != spanned_drul_[RIGHT])
+  if (encompass_arr.top () != sp->get_bound (RIGHT))
     {
       last++;
     }
 
   for (int i = first; i <= last; i++)
     {
-      Encompass_info info (encompass_arr_[i], dir_, this);
-      offset_arr.push (info.o_ - origin);
+      Offset o (encompass_offset (me, encompass_arr[i], common));
+      offset_arr.push (o - origin);
     }
 
-  offset_arr.push (Offset (do_width ().length () + dx_f_drul_[RIGHT],
-			   dy_f_drul_[RIGHT]));
+  offset_arr.push (Offset (sp->spanner_length (), 0) + get_attachment (me, RIGHT,common));
+
+  if (encompass_arr[0] != sp->get_bound (LEFT))
+    {
+      offset_arr.top ()[Y_AXIS] -= encompass_arr.top ()->relative_coordinate (common[Y_AXIS], Y_AXIS) 
+	- me->relative_coordinate (common[Y_AXIS], Y_AXIS);
+    }
 
   return offset_arr;
 }
 
 
-Array<Rod>
-Slur::get_rods () const
-{
-  Array<Rod> a;
-  Rod r;
-  r.item_l_drul_ = spanned_drul_;
-  r.distance_f_ = paper_l ()->get_var ("slur_x_minimum");
 
-  a.push (r);
-  return a;
+
+/*
+  ugh ?
+ */
+MAKE_SCHEME_CALLBACK (Slur, height, 2);
+SCM
+Slur::height (SCM smob, SCM ax)
+{
+  Axis a = (Axis)gh_scm2int (ax);
+  Grob * me = unsmob_grob (smob);
+  assert (a == Y_AXIS);
+
+  SCM mol = me->get_uncached_molecule ();
+  return ly_interval2scm (unsmob_molecule (mol)->extent (a));
 }
+
+/*
+  Ugh should have dash-length + dash-period
+ */
+MAKE_SCHEME_CALLBACK (Slur, brew_molecule,1);
+SCM
+Slur::brew_molecule (SCM smob)
+{
+  Grob * me = unsmob_grob (smob);
+  if (!scm_ilength (me->get_grob_property ("note-columns")))
+    {
+      me->suicide ();
+      return SCM_EOL;
+    }
+
+  Real thick = me->paper_l ()->get_var ("stafflinethickness") *
+    gh_scm2double (me->get_grob_property ("thickness"));
+  Bezier one = get_curve (me);
+
+  // get_curve may suicide
+  if (!scm_ilength (me->get_grob_property ("note-columns")))
+    return SCM_EOL;
+
+  Molecule a;
+  SCM d =  me->get_grob_property ("dashed");
+  if (gh_number_p (d))
+    a = Lookup::dashed_slur (one, thick, thick * gh_scm2double (d));
+  else
+    a = Lookup::slur (one, Directional_element_interface::get (me) * thick, thick);
+
+  return a.smobbed_copy ();
+}
+
+void
+Slur::set_control_points (Grob*me)
+{
+  Real staff_space = Staff_symbol_referencer::staff_space ((Grob*)me);
+
+  SCM details = me->get_grob_property ("details");
+  SCM h_inf_scm = scm_assq (ly_symbol2scm ("height-limit"), details);
+  SCM r_0_scm = scm_assq (ly_symbol2scm ("ratio"), details);
+
+  Real r_0 = gh_scm2double (gh_cdr (r_0_scm));
+  Real h_inf = staff_space * gh_scm2double (gh_cdr (h_inf_scm));
+  
+  Slur_bezier_bow bb (get_encompass_offset_arr (me),
+		      Directional_element_interface::get (me),
+		      h_inf, r_0);
+
+  if (bb.fit_factor () > 1.0)
+    {
+      Real length = bb.curve_.control_[3][X_AXIS]; 
+      Real default_height = slur_height (length, h_inf, r_0);
+
+      SCM ssb = me->get_grob_property ("beautiful");
+      Real sb = 0;
+      if (gh_number_p (ssb))
+	sb = gh_scm2double (ssb);
+
+      bb.minimise_enclosed_area (sb, details);
+      SCM sbf = scm_assq (ly_symbol2scm ("force-blowfit"), details);
+      Real bff = 1.0;
+      if (gh_pair_p (sbf) && gh_number_p (gh_cdr (sbf)))
+	  bff = gh_scm2double (gh_cdr (sbf));
+
+      bb.curve_.control_[1][Y_AXIS] *= bff;
+      bb.curve_.control_[2][Y_AXIS] *= bff;
+      bb.blow_fit ();
+
+      
+      Real beautiful = length * default_height * sb;
+      Real area = bb.enclosed_area_f ();
+      
+      /*
+	Slurs that fit beautifully are not ugly
+      */
+      if (area > beautiful)
+	de_uglyfy (me, &bb, default_height);
+    }
+
+  Bezier b = bb.get_bezier ();
+
+
+  SCM controls = SCM_EOL;
+  for (int i= 4; i--;)
+    {
+      controls = gh_cons (ly_offset2scm (b.control_[i]), controls);
+      /*
+	BRRR WHURG.
+	All these null control-points, where do they all come from?
+      */
+      if (i && b.control_[i][X_AXIS] == 0)
+	{
+	  me->suicide ();
+	  return;
+	}
+    }
+
+  me->set_grob_property ("control-points", controls);
+}
+  
+Bezier
+Slur::get_curve (Grob*me) 
+{
+  Bezier b;
+  int i = 0;
+
+  if (!Directional_element_interface::get (me)
+      || ! gh_symbol_p (index_cell (me->get_grob_property ("attachment"), LEFT))
+      || ! gh_symbol_p (index_cell (me->get_grob_property ("attachment"), RIGHT)))
+    set_extremities (me);
+  
+  if (!gh_pair_p (me->get_grob_property ("control-points")))
+    set_control_points (me);
+
+  // set_control_points may suicide
+  if (!scm_ilength (me->get_grob_property ("note-columns")))
+    return b;
+
+  for (SCM s= me->get_grob_property ("control-points"); s != SCM_EOL; s = gh_cdr (s))
+    {
+      b.control_[i] = ly_scm2offset (gh_car (s));
+      i++;
+    }
+
+  Array<Offset> enc (get_encompass_offset_arr (me));
+  Direction dir = Directional_element_interface::get (me);
+  
+  Real x1 = enc[0][X_AXIS];
+  Real x2 = enc.top ()[X_AXIS];
+
+  Real off = 0.0;
+  for (int i=1; i < enc.size ()-1; i++)
+    {
+      Real x = enc[i][X_AXIS];
+      if (x > x1 && x <x2)
+	{
+	  Real y = b.get_other_coordinate (X_AXIS, x);
+	  off = off >? dir * (enc[i][Y_AXIS] - y);
+	}
+    }
+  b.translate (Offset (0, dir * off));
+  return b;
+}
+
+
+bool
+Slur::has_interface (Grob*me)
+{
+  return me->has_interface (ly_symbol2scm ("slur-interface"));
+}
+
 
