@@ -1,5 +1,7 @@
 2005-02-14  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* site/about/faq.html (href): Fix link to RUMOR.
+
 	* site/index.html: Add Validation marker.
 
 	* scripts/format-page.py (grab_gettext): Support anchors.
