@@ -1,3 +1,7 @@
+2004-10-25  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/download/index.html: change path to fedora-3
+
 2004-10-23  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/index.html: add uwaterloo mirror link.
