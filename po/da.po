@@ -1,12 +1,13 @@
 # Danish translation of lilypond
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Keld Simonsen <keld@dkuug.dk>, 2001.
+# Reviewed 2001-09-28 Rune Zedeler <rz@daimi.au.dk>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lilypond 1.4.6\n"
 "POT-Creation-Date: 2001-06-14 13:22+0200\n"
-"PO-Revision-Date: 2001-09-22 21:00+0200\n"
+"PO-Revision-Date: 2001-09-28 21:00+0200\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -425,7 +426,7 @@ msgstr "bjælke har mindre end to nodehalse"
 
 #: beam.cc:637
 msgid "weird beam vertical offset"
-msgstr "underligt lodret afstand for bjælke"
+msgstr "underlig lodret afstand for bjælke"
 
 #: beam-engraver.cc:91 beam-engraver.cc:124
 msgid "can't find start of beam"
@@ -496,7 +497,7 @@ msgstr "der er ingen som kan skrive en tremolo"
 
 #: collision.cc:127
 msgid "Too many clashing notecolumns.  Ignoring them."
-msgstr "For mange sammenhængende nodekolonner. Ignorerer dem."
+msgstr "For mange overlappende nodekolonner. Ignorerer dem."
 
 #: dimensions.cc:13
 msgid "NaN"
@@ -528,7 +529,7 @@ msgstr "Der er ingenting at forbinde udvideren mod til venstre. Ignorerer ønsket
 
 #: folded-repeat-iterator.cc:78
 msgid "no one to print a repeat brace"
-msgstr "det er ingen som kan skrive et gentagelsestegn"
+msgstr "der er ingen som kan skrive et gentagelsestegn"
 
 #: font-interface.cc:237
 msgid "couldn't find any font satisfying "
@@ -540,11 +541,11 @@ msgstr "Ingen mulig linjebrydning fandtes"
 
 #: grace-iterator.cc:43
 msgid "no Grace context available"
-msgstr "ingen prydomgivelse tilgængelig"
+msgstr "ingen forslagsnodeomgivelse (Grace) tilgængelig"
 
 #: grace-position-engraver.cc:96
 msgid "Unattached grace notes.  Attaching to last musical column."
-msgstr "Ikke-fæstede prydsnoder. Fæster ved sidste musikkolonne."
+msgstr "Ikke-fæstede forslagsnoder. Fæster ved sidste musikkolonne."
 
 #: hairpin.cc:93
 msgid "decrescendo too small"
@@ -560,7 +561,7 @@ msgstr "uafsluttet bindestreg"
 
 #: hyphen-engraver.cc:102
 msgid "Nothing to connect hyphen to on the left.  Ignoring hyphen request."
-msgstr "Det er ingenting at forbinde bindestregen mod til venstre. Ignorerer bindestregsforespørgslen."
+msgstr "Der er ingenting at forbinde bindestregen med til venstre. Ignorerer bindestregsforespørgslen."
 
 #: key-engraver.cc:99
 msgid "Conflicting key signatures found."
@@ -577,7 +578,7 @@ msgstr "FIX: tonartsskiftsfletning"
 #: lily-guile.cc:141
 #, c-format
 msgid "(load path: `%s')"
-msgstr "(indlæsningssøgesti: \"%s\""
+msgstr "(indlæsningssøgesti: \"%s\")"
 
 #: line-of-score.cc:96
 #, c-format
@@ -595,7 +596,7 @@ msgstr "Beregner kolonnepositioner..."
 
 #: lyric-phrasing-engraver.cc:284
 msgid "lyrics found without any matching notehead"
-msgstr "tekst fundet uden noget matchende nodehoved"
+msgstr "tekst fundet uden noget tilhørende nodehoved"
 
 #: lyric-phrasing-engraver.cc:289
 msgid "Huh? Melismatic note found to have associated lyrics."
@@ -625,7 +626,7 @@ msgstr "FELT"
 
 #: main.cc:109
 msgid "write header field to BASENAME.FIELD"
-msgstr "skriv rubrikfælt til BASNAVN.FELT"
+msgstr "skriv rubrikfelt til BASENAVN.FELT"
 
 #: main.cc:110
 msgid "add DIR to search path"
@@ -734,7 +735,7 @@ msgstr "tåbelig tone"
 #: musical-request.cc:28
 #, c-format
 msgid "Transposition by %s makes accidental larger than two"
-msgstr "Transponering med %s gør accicental større end to"
+msgstr "Transponering med %s medfører løst fortegn større end to"
 
 #: music.cc:232
 msgid "ly_get_mus_property (): Not a Music"
@@ -777,7 +778,7 @@ msgstr "Tolker..."
 
 #: my-lily-parser.cc:57
 msgid "Braces don't match"
-msgstr "Krølleparenteser passer ikke"
+msgstr "Klammer passer ikke"
 
 #: output-property-music-iterator.cc:20 request-chord-iterator.cc:76
 #, c-format
@@ -833,11 +834,11 @@ msgstr "ingen af disse i min familie: \"%s\""
 
 #: percent-repeat-engraver.cc:117
 msgid "Don't know how to handle a percent repeat of this length."
-msgstr "Véd ikke hvordan en procentgentagelse af denne længde skal håndteres."
+msgstr "Véd ikke hvordan en procenttegnsgentagelse (percent) af denne længde skal håndteres."
 
 #: percent-repeat-iterator.cc:53
 msgid "no one to print a percent"
-msgstr "der er ingen som kan skrive en procent"
+msgstr "der er ingen som kan skrive et procent-tegn"
 
 #: performance.cc:51
 msgid "Track ... "
@@ -945,21 +946,21 @@ msgstr "Separation_item: Jeg har drukket for meget"
 
 #: slur.cc:48
 msgid "Putting slur over rest.  Ignoring."
-msgstr "Sætter bue over pause. Ignorerer."
+msgstr "Sætter legatobue over pause. Ignorerer."
 
 #: slur.cc:383
 msgid "Slur over rest?"
-msgstr "Bue over pause?"
+msgstr "Legatobue over pause?"
 
 #: slur-engraver.cc:127
 msgid "unterminated slur"
-msgstr "uafsluttet bue"
+msgstr "uafsluttet legatobue"
 
 #. How to shut up this warning, when Voice_devnull_engraver has
 #. eaten start request?
 #: slur-engraver.cc:144
 msgid "can't find start of slur"
-msgstr "kan ikke finde start på bue"
+msgstr "kan ikke finde start på legatobue"
 
 #: stem.cc:116
 msgid "Weird stem size; check for narrow beams"
@@ -968,7 +969,7 @@ msgstr "Mærkelig nodehalsstørrelse; tjek for smalle bjælker"
 #: stem-engraver.cc:115
 #, c-format
 msgid "Adding note head to incompatible stem (type = %d)"
-msgstr "Tilføjer nodehoved til inkompatibel bue (type = %d)"
+msgstr "Tilføjer nodehoved til inkompatibel nodehals (type = %d)"
 
 #: text-spanner.cc:121
 msgid "Text_spanner too small"
@@ -1005,15 +1006,15 @@ msgstr "%s: TFM-fil har %u parametre, hvilket er mere end de %u jeg kan håndtere
 #. they were suicided by Thread_devnull_engraver?
 #: tie-engraver.cc:220 tie-performer.cc:173
 msgid "No ties were created!"
-msgstr "Ingen buer blev lavet!"
+msgstr "Ingen bindebuer blev lavet!"
 
 #: tie-engraver.cc:240
 msgid "lonely tie"
-msgstr "ensom bue"
+msgstr "ensom bindebue"
 
 #: time-scaled-music-iterator.cc:25
 msgid "no one to print a tuplet start bracket"
-msgstr "der findes ingen som kan skrive en startparentes for tuppel"
+msgstr "der findes ingen som kan skrive en startklamme for tuppel"
 
 #: timing-translator.cc:38
 #, c-format
@@ -1071,11 +1072,11 @@ msgstr "ly-get-trans-property: forventede et Translator_group-argument"
 
 #: volta-engraver.cc:87
 msgid "No volta spanner to end"
-msgstr "Ingen reprisebro til slut"
+msgstr "Ingen volte-bro at afslutte"
 
 #: volta-engraver.cc:104
 msgid "Already have a volta spanner.  Stopping that one prematurely."
-msgstr "Har allerede en reprisebro. Stopper denne for tidligt."
+msgstr "Har allerede en volte-bro. Stopper denne for tidligt."
 
 #: volta-engraver.cc:108
 msgid "Also have a stopped spanner.  Giving up."
@@ -1092,7 +1093,7 @@ msgstr "Identificerer må kun indeholde alfabetiske tegn"
 
 #: parser.yy:697
 msgid "More alternatives than repeats.  Junking excess alternatives."
-msgstr "Flere alternativer end repriser. Stryger tiloversblevne alternativer."
+msgstr "Flere alternativer end gentagelser. Stryger tiloversblevne alternativer."
 
 #: parser.yy:761
 msgid "Second argument must be a symbol"
@@ -1280,7 +1281,7 @@ msgstr "TONE[:MOL]"
 
 #: main.cc:97
 msgid "set key: ACC +sharps/-flads; :1 minor"
-msgstr "sæt tonart: TONE +forhøjelser/-sænkninger; :1 mol"
+msgstr "sæt toneart: TONE +forhøjelser/-sænkninger; :1 mol"
 
 #: main.cc:98
 msgid "don't output tuplets, double dots or rests, smallest is 32"
