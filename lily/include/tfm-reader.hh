@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 
 
   revamped code from GNU Fontutils-0.6
@@ -18,10 +18,6 @@
 
 class Tex_font_metric_reader
 {
-public:
-  Tex_font_metric_reader (String name);
-  Tex_font_metric read_tfm ();
-  
 private:
   Real get_U32_fix_f ();
   Real get_U32_fix_scaled_f ();
@@ -33,8 +29,17 @@ private:
   Tex_font_char_metric read_char ();
   void read_lig_kern_program (Array<Tfm_ligature>* ligature_arr_p, Array <Tfm_kern>* kern_arr_p);
 
-  Tex_font_metric tfm_;
+
   Binary_source_file input_;
+
+public:
+  Tex_font_metric_reader ( String name);
+
+  
+  Tfm_info info_;
+  Tfm_header header_;
+  Array<Tex_font_char_metric> char_metrics_;
+  Array<int> ascii_to_metric_idx_;
 };
 
 

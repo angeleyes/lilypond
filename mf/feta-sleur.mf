@@ -3,16 +3,16 @@
 % 
 % source file of LilyPond's pretty-but-neat music font
 % 
-% (c) 1997, 1998 Jan Nieuwenhuizen <janneke@gnu.org>
-% & Han-Wen Nienhuys <hanwen@stack.nl>
+% (c) 1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
+% & Han-Wen Nienhuys <hanwen@cs.uu.nl>
 % 
 % see Documentation/fonts.tex
 
 % mode_setup;
 
 %% staffsize#=16pt#;
-% interline#:=staffsize#/4;
-% stafflinethickness#:=0.1interline#;
+% staff_space#:=staffsize#/4;
+% stafflinethickness#:=0.1staff_space#;
 
 pi:=3.14159;
 
@@ -25,7 +25,7 @@ sleur_pen#:=stafflinethickness#;
 slurheightlimit#:=staffsize#/2;
 slurthick#:=1.8stafflinethickness#;
 
-define_pixels(staffsize,interline,stafflinethickness);
+define_pixels(staffsize,staff_space,stafflinethickness);
 define_pixels(sleur_pen,slurheightlimit,slurthick);
 
 sluralpha:=2slurheightlimit#/pi;

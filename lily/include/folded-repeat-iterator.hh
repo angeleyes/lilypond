@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -18,25 +18,30 @@
  */
 class Folded_repeat_iterator : public Music_iterator
 {
-  Music_iterator * main_iter_p_;
-  Music_iterator * alternative_iter_p_;
-  int count_;
-  Moment main_length_mom_;
 public:
+  VIRTUAL_COPY_CONS (Music_iterator);
+  static SCM constructor_cxx_function;
+
+  Folded_repeat_iterator (Folded_repeat_iterator const &src);
   Folded_repeat_iterator ();
   ~Folded_repeat_iterator ();
   
   virtual void construct_children ();
-  virtual Moment next_moment () const;
+  virtual Moment pending_moment () const;
   virtual bool ok () const;
 
 protected:
   void enter_alternative ();
   void leave_body ();
   
-  virtual void do_print () const;
-  virtual void do_process_and_next (Moment);
-  virtual Music_iterator *try_music_in_children (Music const *) const;
+  virtual void process (Moment);
+  virtual Music_iterator *try_music_in_children (Music *) const;
+
+private:
+  Music_iterator * main_iter_p_;
+  Music_iterator * alternative_iter_p_;
+
+  Moment main_length_mom_;
 };
 #endif /* FOLDED_REPEAT_ITERATOR_HH */
 

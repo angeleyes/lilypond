@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -15,9 +15,11 @@
 class Time_scaled_music_iterator : public Music_wrapper_iterator
 {
 public:  
-  // construction
+  VIRTUAL_COPY_CONS (Music_iterator);
+  static SCM constructor_cxx_function; 
+  /* construction */
 protected:
-  virtual void do_process_and_next (Moment);
+  virtual void process (Moment);
 };
 
 

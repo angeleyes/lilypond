@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -13,21 +13,18 @@
 #include "direction.hh"
 #include "drul-array.hh"
 
-struct Column_rod
-{
-  Paper_column *other_l_;
-  Real distance_f_;
-
-  Column_rod ();
-  static int compare (const Column_rod &r1, const Column_rod &r2);
-  void print () const;
-};
 
 
 struct Rod
 {
   Drul_array <Item*> item_l_drul_;
   Real distance_f_;
+
+  /**
+    translate the rod so as to refer to Paper_columns  
+   */
+  void columnize ();
+  
   void add_to_cols ();
 
   Rod ();

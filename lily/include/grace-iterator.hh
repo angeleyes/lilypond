@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -15,11 +15,12 @@
 class Grace_iterator : public Music_wrapper_iterator
 {
 public:
+  VIRTUAL_COPY_CONS (Music_iterator);
   ~Grace_iterator ();
   virtual void construct_children () ;
-  virtual void do_process_and_next (Moment);
-
-  Moment next_moment () const;
+  virtual void process (Moment);
+  static SCM constructor_cxx_function;
+  Moment pending_moment () const;
 };
 
 

@@ -1,7 +1,7 @@
 /*
   midi-item.hh -- declare Midi items
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
 #ifndef MIDI_ITEM_HH
@@ -10,8 +10,8 @@
 #include "cons.hh"
 #include "string.hh"
 #include "lily-proto.hh"
-#include "proto.hh"
 #include "moment.hh"
+#include "audio-item.hh"
 
 /**
   Any piece of midi information.
@@ -158,6 +158,26 @@ public:
   virtual String str () const;
 
   Audio_text* audio_l_;
+};
+
+class Midi_dynamic : public Midi_item
+{
+public:
+  Midi_dynamic (Audio_dynamic*);
+  
+  virtual String str () const;
+
+  Audio_dynamic* audio_l_;
+};
+
+class Midi_piano_pedal : public Midi_item
+{
+public:
+  Midi_piano_pedal (Audio_piano_pedal*);
+  
+  virtual String str () const;
+
+  Audio_piano_pedal* audio_l_;
 };
 
 class Midi_tempo : public Midi_item

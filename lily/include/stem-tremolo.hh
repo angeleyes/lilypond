@@ -3,28 +3,25 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #ifndef ABBREV_HH
 #define ABBREV_HH
 
-#include "item.hh"
+#include "lily-proto.hh"
+#include "lily-guile.hh"
 
-
-class Stem_tremolo : public Item {
-  Stem * stem_l_;
-protected:
-  virtual void do_print () const;
-  virtual Molecule *do_brew_molecule_p () const;
-  virtual void do_substitute_element_pointer (Score_element*, Score_element*);
-  virtual Interval do_width () const;
-  virtual void do_pre_processing ();
+class Stem_tremolo
+{
 public:
-  int abbrev_flags_i_;
-  Stem_tremolo ();
-  void set_stem (Stem *);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (dim_callback, (SCM smob, SCM axis));
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  DECLARE_SCHEME_CALLBACK (height, (SCM,SCM));
+  static void set_stem (Grob*me, Grob *st);
 };
 
 #endif /* ABBREV_HH */

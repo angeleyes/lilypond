@@ -3,82 +3,61 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "rhythmic-head.hh"
 #include "debug.hh"
-#include "molecule.hh"
-#include "paper-def.hh"
-#include "lookup.hh"
 #include "rest.hh"
-#include "dots.hh"
-#include "axis-group-element.hh"
-#include "paper-score.hh"
 #include "stem.hh"
+#include "staff-symbol-referencer.hh"
+#include "item.hh"
 
 
+Item*
+Rhythmic_head::dots_l (Grob*me) 
+{
+  SCM s = me->get_grob_property ("dot");
+  return dynamic_cast<Item*> (unsmob_grob (s));
+}
 
 int
-Rhythmic_head::dots_i () const
+Rhythmic_head::balltype_i (Grob*me) 
 {
-  return dots_l_ ? dots_l_->dots_i_ : 0;
-}
+  SCM s = me->get_grob_property ("duration-log");
   
-void
-Rhythmic_head::do_post_processing ()
-{
-  if (dots_l_)
-    {
-      dots_l_->position_i_ = position_i ();
-    }
+  return gh_number_p (s) ? gh_scm2int (s) : 0;
 }
 
-void
-Rhythmic_head::do_pre_processing ()
+Item*
+Rhythmic_head::stem_l (Grob*me) 
 {
-  translate_axis (position_i_ * staff_line_leading_f () /2.0, Y_AXIS);
-  position_i_ = 0;
+  SCM s = me->get_grob_property ("stem");
+  return dynamic_cast<Item*> (unsmob_grob (s));
 }
 
 int
-Rhythmic_head::position_i () const
+Rhythmic_head::dot_count (Grob*me) 
 {
-  return position_i_ +  Staff_symbol_referencer::position_i ();
+  return dots_l (me)
+    ? gh_scm2int (dots_l (me)->get_grob_property ("dot-count")) : 0;
+}
+
+void
+Rhythmic_head::set_dots (Grob*me,Item *dot_l)
+{
+  me->set_grob_property ("dot", dot_l->self_scm ());
 }
 
 
 void
-Rhythmic_head::add_dots (Dots *dot_l)
+Rhythmic_head::set_interface (Grob*me)
 {
-  dots_l_ = dot_l;  
-  dot_l->add_dependency (this);  
+  me->set_interface (ly_symbol2scm ("rhythmic-head-interface"));
 }
 
-Rhythmic_head::Rhythmic_head ()
+bool
+Rhythmic_head::has_interface (Grob*me)
 {
-  dots_l_ =0;
-  balltype_i_ =0;
-  stem_l_ =0;
-  position_i_ =0;
+  return me &&  me->has_interface (ly_symbol2scm ("rhythmic-head-interface"));
 }
-
-void
-Rhythmic_head::do_substitute_element_pointer (Score_element*o,Score_element*n)
-{
-  Staff_symbol_referencer::do_substitute_element_pointer (o,n);
-  if (o == dots_l_)
-    dots_l_ = dynamic_cast<Dots *> (n) ;
-  else if (o == stem_l_)
-    stem_l_ = dynamic_cast<Stem*>(n);
-}
-
-
-void
-Rhythmic_head::do_print () const
-{
-#ifndef NPRINT
-  DOUT << "balltype = "<< balltype_i_ << "dots = " << dots_i ();
-#endif
-}
-

@@ -3,102 +3,114 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1998--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1998--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
-#include "chord-name-engraver.hh"
+#include "engraver.hh"
+#include "chord-name.hh"
 #include "chord.hh"
 #include "musical-request.hh"
 #include "paper-def.hh"
-#include "lookup.hh"
+#include "font-interface.hh"
 #include "paper-def.hh"
 #include "main.hh"
 #include "dimensions.hh"
-#include "text-item.hh"
+#include "item.hh"
+#include "pitch.hh"
+#include "protected-scm.hh"
+
+class Chord_name_engraver : public Engraver 
+{
+public:
+  Chord_name_engraver ();
+  VIRTUAL_COPY_CONS (Translator);
+
+protected:
+  virtual void stop_translation_timestep ();
+  virtual void acknowledge_grob (Grob_info i);
+  virtual void create_grobs ();
+  virtual bool try_music (Music *);
+
+private:
+  void add_note (Note_req *);
+  
+  Item* chord_name_p_;
+
+  Protected_scm chord_;
+  Protected_scm last_chord_;
+};
 
 ADD_THIS_TRANSLATOR (Chord_name_engraver);
 
 Chord_name_engraver::Chord_name_engraver ()
 {
-  tonic_req_ = 0;
+  chord_name_p_ = 0;
+  chord_ = gh_cons (SCM_EOL, gh_cons (SCM_EOL, SCM_EOL));
+  last_chord_ = chord_;
 }
 
 void
-Chord_name_engraver::acknowledge_element (Score_element_info i)
+Chord_name_engraver::add_note (Note_req* n)
 {
-  if (Note_req* n = dynamic_cast<Note_req*> (i.req_l_))
-    pitch_arr_.push (n->pitch_);
+  SCM pitches = gh_car (chord_);
+  SCM modifiers = gh_cdr (chord_);
+  SCM inversion = modifiers == SCM_EOL ? SCM_EOL : gh_car (modifiers);
+  SCM bass = modifiers == SCM_EOL ? SCM_EOL : gh_cdr (modifiers);
+  
+  if (n->get_mus_property ("inversion") == SCM_BOOL_T)
+    inversion = n->get_mus_property ("pitch");
+  else if (n->get_mus_property ("bass") == SCM_BOOL_T)
+    bass = n->get_mus_property ("pitch");
+  else
+    pitches = scm_sort_list (gh_cons (n->get_mus_property ("pitch"), pitches),
+			     Pitch::less_p_proc);
+  chord_ = gh_cons (pitches, gh_cons (inversion, bass));
 }
 
 bool
-Chord_name_engraver::do_try_music (Music* m)
+Chord_name_engraver::try_music (Music* m)
 {
   if (Note_req* n = dynamic_cast<Note_req*> (m))
     {
-      pitch_arr_.push (n->pitch_);
-      return true;
-    }
-  if (Tonic_req* t = dynamic_cast<Tonic_req*> (m))
-    {
-      tonic_req_ = t;
+      add_note (n);
       return true;
     }
   return false;
 }
 
 void
-Chord_name_engraver::do_process_requests ()
+Chord_name_engraver::acknowledge_grob (Grob_info i)
 {
-  if (text_p_arr_.size ())
-    return;
-  if (!pitch_arr_.size ())
-    return;
-
-  Chord chord (pitch_arr_);
-  Musical_pitch* inversion = 0;
-  Scalar chord_inversion = get_property ("chordInversion", 0);
-  if (chord_inversion.to_bool ())
-    {
-      int tonic_i = tonic_req_
-	? chord.find_notename_i (tonic_req_->pitch_) : chord.find_tonic_i ();
-	
-      if (tonic_i)
-	{
-	  inversion = &pitch_arr_[0];
-	  chord.rebuild_insert_inversion (tonic_i);
-	}
-    }
-    
-  Text_item* item_p =  new Text_item;
-
-  /*
-   TODO:
-     - switch on property, add american (?) chordNameStyle:
-       Chord::american_str (...)
-
-  Scalar chordNameStyle = get_property ("chordNameStyle", 0);
-  if (chordNameStyle == "Banter")
-    item_p->text_str_ = chord.banter_str (inversion);
-   */
-
-  item_p->text_str_ = chord.banter_str (inversion);
-  
-  Scalar style = get_property ("textStyle", 0);
-  if (style.length_i ())
-    item_p->style_str_ = style;
-  
-  text_p_arr_.push (item_p);
-  announce_element (Score_element_info (item_p, 0));
+  if (Note_req* n = dynamic_cast<Note_req*> (i.req_l_))
+    add_note (n);
 }
 
 void
-Chord_name_engraver::do_pre_move_processing ()
+Chord_name_engraver::create_grobs ()
 {
-  for (int i=0; i < text_p_arr_.size (); i++)
+  if (!chord_name_p_ && gh_car (chord_) != SCM_EOL)
     {
-      typeset_element (text_p_arr_[i]);
+      chord_name_p_ = new Item (get_property ("ChordName"));
+      chord_name_p_->set_grob_property ("chord", chord_);
+      announce_grob (chord_name_p_, 0);
+      SCM s = get_property ("chordChanges");
+      if (to_boolean (s) && gh_car (last_chord_) != SCM_EOL
+	  	  && gh_equal_p (chord_, last_chord_))
+	chord_name_p_->set_grob_property ("begin-of-line-visible", SCM_BOOL_T);
     }
-  text_p_arr_.clear ();
-  pitch_arr_.clear ();
-  tonic_req_ = 0;
 }
+
+void
+Chord_name_engraver::stop_translation_timestep ()
+{
+  if (chord_name_p_)
+    {
+      typeset_grob (chord_name_p_);
+    }
+  chord_name_p_ = 0;
+
+  if (gh_car (chord_) != SCM_EOL)
+    last_chord_ = chord_;
+  chord_ = gh_cons (SCM_EOL, gh_cons (SCM_EOL, SCM_EOL));
+}
+
