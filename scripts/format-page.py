@@ -230,7 +230,7 @@ def do_one_file (in_file_name, out_file_name, lang):
 		here_dir = in_file_name
 
 	try:
-		os.makedirs (os.path.join (outdir, dir))
+		os.makedirs (os.path.dirname (out_file_name))
 	except:
 		OSError
 		
