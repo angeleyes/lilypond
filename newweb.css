@@ -1,32 +1,26 @@
-/* http://www.w3.org/TR/REC-CSS2 */
-
-{
-    background: #ff0000;
-    border-style: none;
-    padding-left: 5%;
-    padding-right: 5%;
-}
+/* -*-css-*- http://www.w3.org/TR/REC-CSS2 */
 
 dt {
-		font-weight: bold;
+    font-weight: bold;
 }
 	
 dd {
-	margin: 0 0 1em 1em;
+    margin: 0 0 1em 1em;
 }
 
-
-// ugh, this is not what we want
+/*
 p {
     padding-left: 5%;
     padding-right: 5%;
 }
-body {
-
-/* other colors would be nice, but they don't look too well with white
-music fragments.
 */
 
+p.location {
+}
+
+body {
+    /* other colors would be nice, but they don't look too well with white
+       music fragments.  */
     background: #ffffff;
     padding-left: 5%;
     padding-right: 5%;
@@ -35,25 +29,24 @@ music fragments.
 img {
     border-style: none;
 }
+
 a {
-text-decoration: none;
+    text-decoration: none;
 }
 
-
-a:link    {
-color: #a0a0ff;
+a:link {
+    color: #a0a0ff;
 }
+
 a:visited {
-color:#945b99;
+    color:#945b99;
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-p.location {
-}
-
+/* Plain text MENU.  */
 td.menuleftedge {
 }
 
@@ -66,16 +59,16 @@ td.menuactiveleftedge {
 td.menuactiverightedge {
 }
 
-
 td.menu {
-  padding-left: .75em;
-  padding-right: .75em;
-  padding-top: 0.5em;
+    padding-left: .75em;
+    padding-right: .75em;
+    padding-top: 0.5em;
 }
+
 td.menuunclickable {
-  padding-left: .75em;
-  padding-right: .75em;
-  padding-top: 0.5em;
+    padding-left: .75em;
+    padding-right: .75em;
+    padding-top: 0.5em;
 }
 
 td.menuactive {
@@ -94,4 +87,44 @@ hr {
     background-color: #000000;
     border: 0;
     height: 1;
+}
+
+/* classes */
+p.top {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+h1.top {
+    margin-top: 2px;
+    text-align: center;
+}
+
+span.top {
+    font-size: smaller;
+    font-style: italic;
+}
+
+p.teaser {
+    text-align: right;
+}
+
+table.news {
+    padding: 10;
+    width: 100%;
+}
+
+td.news {
+    vertical-align: top;
+    border: right;
+}
+
+table.links {
+    halign: left;
+    padding: 5;
+}
+
+th.news {
+    font-size: x-large;
 }

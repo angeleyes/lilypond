@@ -1,10 +1,10 @@
 
-# this list should be as short as possible.
+# This is the toplevel menu.  Keep it short.
 [
- ('index.html', 'Home'),
- ('switch/', 'Introduction'),
- ('about', 'About'),
- ('download', 'Download'),
- ('documentation.html', 'Documentation'),
- ('devel', 'Development'),
+ ('index.html', _ ('Home')),
+ ('switch', _ ('Introduction')),
+ ('about', _ ('About')),
+ ('download', _ ('Download')),
+ ('documentation.html', _ ('Documentation')),
+ ('devel', _ ('Development')),
  ]

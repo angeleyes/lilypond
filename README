@@ -1,17 +1,20 @@
-This is the website for lilypond.org:
+This is the website for lilypond.org
 
-Required:
+REQUIREMENTS
 
   * python
   * make
-  
-MAKING IT:
+  * gettext
 
-Type
+BUILD
+
+To generate the main web site, run
+
 	make
 
-this will leave the site in the directory out/site/
+To generate the web site for language LANG (available: nl), run
 
+	make LANG
 
 NOTE
 
@@ -21,7 +24,6 @@ NOTE
 Hmm, now we get (stale) urls like:
 
    <a href="@DOC@v1.8/Documentation/user/out-www/lilypond/Tutorial">tutorial</a>.
-
 
 STATIC ENTRY URLS
 
@@ -42,3 +44,26 @@ DISTRIBUTION
 
 * Verbatim redistribution of the .html files and images is allowed and
   encouraged.
+
+
+START NEW TRANSLATION
+
+Type
+	make new LANG=nl
+
+TRANSLATE A PAGE
+
+Copy the file from site into your language tree
+
+	cp site/about/index.html nl/about/index.html
+
+Add it to CVS
+
+	cvs add nl/about/index.html
+
+Translate all plain text index.html, leave all URLs in tact.
+
+Update CVS
+
+	cvs ci -m 'new translation' nl/about/index.html
+
