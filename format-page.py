@@ -32,8 +32,10 @@ location_template = '''<DIV class="location">
 </DIV>
 '''
 
-button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(name)s.png" ONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
-button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" ONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(name)s-active.png'"></A></TD>'''
+# don't use mouseover magic as long as we don't have button images
+button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(name)s.png" XONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
+button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" XONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s-active.png'"></A></TD>'''
+
 
 outdir = '/tmp'
 (options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=']) 
