@@ -43,6 +43,7 @@
 #include "repeated-music.hh"
 #include "mudela-version.hh"
 #include "grace-music.hh"
+#include "auto-change-music.hh"
 
 // mmm
 Mudela_version oldest_version ("1.1.52");
@@ -69,7 +70,7 @@ print_mudela_versions (ostream &os)
 #define THIS ((My_lily_parser *) my_lily_parser_l)
 
 #define yyerror THIS->parser_error
-#define ARRAY_SIZE(a,s)   if (a.size () != s) THIS->parser_error (_f("expecting %d arguments", s))
+#define ARRAY_SIZE(a,s)   if (a.size () != s) THIS->parser_error (_f ("Expecting %d arguments", s))
 
 %}
 
@@ -124,7 +125,7 @@ yylex (YYSTYPE *s,  void * v_l)
 %pure_parser
 
 /* tokens which are not keywords */
-
+%token AUTOCHANGE
 %token TEXTSCRIPT
 %token ACCEPTS
 %token ALTERNATIVE
@@ -310,7 +311,7 @@ embedded_scm:
 	}
 	| SCM_T STRING semicolon {
 		if (THIS->lexer_p_->main_input_b_ && safe_global_b)
-			error (_("Cannot evaluate Scheme in safe mode"));
+			error (_("Can't evaluate Scheme in safe mode"));
 		gh_eval_str ($2->ch_l ());
 		delete $2;
 	};
@@ -572,7 +573,7 @@ paper_def_body:
 			URG URG.
 		*/
 		if ($3->size () % 2)
-			warning ("Need even number of args for shape array");
+			warning (_ ("Need even number of args for shape array"));
 
 		for (int i=0; i < $3->size ();  i+=2)
 		{
@@ -651,15 +652,21 @@ real_array:
 */
 midi_block:
 	MIDI
-
-	'{' midi_body '}' 	{ $$ = $3; }
+	'{' midi_body '}' 	{
+		$$ = $3;
+		THIS-> lexer_p_-> scope_l_arr_.pop();
+	}
 	;
 
 midi_body: /* empty */ 		{
-		$$ = THIS->default_midi_p ();
+		Midi_def * p =THIS->default_midi_p ();
+		$$ = p;
+		THIS->lexer_p_->scope_l_arr_.push (p->scope_p_);
 	}
 	| MIDI_IDENTIFIER	{
-		$$ = $1-> access_content_Midi_def (true);
+		Midi_def * p =$1-> access_content_Midi_def (true);
+		$$ = p;
+		THIS->lexer_p_->scope_l_arr_.push (p->scope_p_);
 	}
 	| midi_body assignment semicolon {
 
@@ -720,7 +727,7 @@ Repeated_music:
 	{
 		Music_sequence* m = dynamic_cast <Music_sequence*> ($5);
 		if (m && $3 < m->length_i ())
-			$5->warning ("More alternatives than repeats. Junking excess alternatives.");
+			$5->warning (_ ("More alternatives than repeats.  Junking excess alternatives."));
 
 		Repeated_music * r = new Repeated_music ($4, $3 >? 1, m);
 		$$ = r;
@@ -784,6 +791,12 @@ Composite_music:
 		delete $2;
 
 		$$ = csm;
+	}
+	| AUTOCHANGE STRING Music	{
+		Auto_change_music * chm = new Auto_change_music (*$2, $3);
+		delete $2;
+		$$ = chm;
+		chm->set_spot ($3->spot ());
 	}
 	| GRACE Music {
 		$$ = new Grace_music ($2);
@@ -945,7 +958,7 @@ abbrev_command_req:
 		if (!Duration::duration_type_b ($3))
 		  THIS->parser_error (_f ("not a duration: %d", $3));
 		else if ($3 < 8)
-		  THIS->parser_error (_ ("can't abbreviate"));
+		  THIS->parser_error (_ ("Can't abbreviate"));
 		else
 		  THIS->set_abbrev_beam ($3);
 
@@ -995,10 +1008,10 @@ verbose_command_req:
 		m->one_beat_i_=$4;
 		$$ = m;
 	}
-	| PENALTY int	{
+	| PENALTY int 	{
 		Break_req * b = new Break_req;
-		b->penalty_i_ = $2;
-		b-> set_spot (THIS->here_input ());
+		b->penalty_f_ = $2 / 100.0;
+		b->set_spot (THIS->here_input ());
 		$$ = b;
 	}
 	| SKIP duration_length {
@@ -1073,7 +1086,7 @@ request_with_dir:
 		if (Script_req * gs = dynamic_cast<Script_req*> ($2))
 			gs->dir_ = Direction ($1);
 		else if ($1)
-			$2->warning ("Can't specify direction for this request");
+			$2->warning (_ ("Can't specify direction for this request"));
 		$$ = $2;
 	}
 	;
@@ -1208,7 +1221,7 @@ explicit_duration:
 extender_req:
 	EXTENDER {
 		if (!THIS->lexer_p_->lyric_state_b ())
-			THIS->parser_error (_ ("have to be in Lyric mode for lyrics"));
+			THIS->parser_error (_ ("Have to be in Lyric mode for lyrics"));
 		$$ = new Extender_req;
 	}
 	;
@@ -1216,7 +1229,7 @@ extender_req:
 hyphen_req:
 	HYPHEN {
 		if (!THIS->lexer_p_->lyric_state_b ())
-			THIS->parser_error (_ ("have to be in Lyric mode for lyrics"));
+			THIS->parser_error (_ ("Have to be in Lyric mode for lyrics"));
 		$$ = new Hyphen_req;
 	}
 	;
@@ -1379,7 +1392,7 @@ abbrev_type:
 		if (!Duration::duration_type_b ($2))
 			THIS->parser_error (_f ("not a duration: %d", $2));
 		else if ($2 < 8)
-			THIS->parser_error (_ ("can't abbreviate"));
+			THIS->parser_error (_ ("Can't abbreviate"));
 		$$ = $2;
 	}
 	;
@@ -1388,7 +1401,7 @@ abbrev_type:
 simple_element:
 	musical_pitch exclamations questions optional_notemode_duration {
 		if (!THIS->lexer_p_->note_state_b ())
-			THIS->parser_error (_ ("have to be in Note mode for notes"));
+			THIS->parser_error (_ ("Have to be in Note mode for notes"));
 
 
 		Note_req *n = new Note_req;
@@ -1400,7 +1413,7 @@ simple_element:
 		if (THIS->abbrev_beam_type_i_)
 		  {
 		    if (n->duration_.plet_b ())
-		      THIS->parser_error (_ ("can't abbreviate tuplet"));
+		      THIS->parser_error (_ ("Can't abbreviate tuplet"));
 		    else
 		      n->duration_.set_plet (1, 2);
 		  }
@@ -1441,13 +1454,13 @@ simple_element:
 	}
 	| STRING optional_notemode_duration 	{
 		if (!THIS->lexer_p_->lyric_state_b ())
-			THIS->parser_error (_ ("have to be in Lyric mode for lyrics"));
+			THIS->parser_error (_ ("Have to be in Lyric mode for lyrics"));
 		$$ = THIS->get_word_element (*$1, $2);
 		delete $1;
 	}
 	| chord {
 		if (!THIS->lexer_p_->chord_state_b ())
-			THIS->parser_error (_ ("have to be in Chord mode for chords"));
+			THIS->parser_error (_ ("Have to be in Chord mode for chords"));
 		$$ = $1;
 	}
 	;

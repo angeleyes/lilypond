@@ -59,10 +59,10 @@ void
 Midi_def::print() const
 {
 #ifndef NPRINT
+  DEBUG_OUT << "MIDI {\n";
   Music_output_def::print ();
-  DOUT << "Midi {";
-  DOUT << "4/min: " << Moment (60) / (whole_in_seconds_mom_ * Moment (4));
-  DOUT << "}\n";
+  DEBUG_OUT << "4/min: " << Moment (60) / (whole_in_seconds_mom_ * Moment (4));
+  DEBUG_OUT << "}\n";  
 #endif
 }
 
