@@ -12,6 +12,48 @@
     <td>
       <dl>
 
+        <dt>August 1, 2004</dt><dd>
+
+          LilyPond 2.3.10 is out. This release has a major clean-up of the
+          input/test/ directory. Many examples have been moved to the regression
+          test or manual, and the superfluous or outdated ones have been
+          removed. The directory has gone from 146 examples to 72 examples. That
+          means that we're halfway cleaning it out.  Incidentally, the manual
+          has gone from 200 to 220 pages. New features:
+          <ul>
+          <li>Running trills now have their own spanner and event. They are
+          started and stopped with \startTrillSpan and \stopTrillSpan</li>
+          <li>There is a new markup command `\postscript' that takes a string
+          that is dumped as verbatim PostScript</li>
+         </ul>
+          Download it <a href="download/#2.3">here</a> and check out
+          the changes in the <a
+          href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2435&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
+      
+      </dd> 
+
+
+        <dt>July 30, 2004</dt><dd>
+
+          LilyPond 2.3.9 is out.  The important change is that lilypond
+          now once-again directly runs the binary. The old wrapper script has
+          been renamed to lilypond-latex.py, and should only be used for legacy
+          projects. The recommended route is either using lilypond directly
+          (with \book, you can have multiple movements within one document), or
+          to run lilypond-book with a LaTeX wrapper file.
+
+          This release also fixes a bunch of small errors.  I now consider
+          LilyPond feature complete for a 3.0 release.  Next on the TODO list is
+          updating the manual, and after that's done we can release 3.0. The
+          projected date for this to happen is in about a month.
+
+
+          Download it <a href="download/#2.3">here</a> and check out
+          the changes in the <a
+          href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2416&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
+      
+      </dd> 
+
       <dt>July 23, 2004</dt><dd>
 
           Lilypond 2.3.8 fixes a few minor bugs in the new slur code,
