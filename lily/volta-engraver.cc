@@ -60,37 +60,37 @@ Volta_engraver::Volta_engraver ()
 bool
 Volta_engraver::staff_eligible ()
 {
-  /*
-    UGH.
-   */
-  if (!unsmob_grob (staff_))
-    return true;
-  
-  if (!to_boolean (get_property ("voltaOnThisStaff")))
+  SCM doit =get_property ("voltaOnThisStaff");
+  if (ly_c_boolean_p (doit))
     {
-      /*
-	TODO: this does weird things when you open a piece with a
-	volta spanner.
-	
-       */
-      SCM staffs = get_property ("stavesFound");
+      return to_boolean (doit);
+    }
 
-      /*
-	only put a volta on the top staff.
+
+  if (!unsmob_grob (staff_))
+    return false;
+
+  /*
+    TODO: this does weird things when you open a piece with a
+    volta spanner.
+  */
+  SCM staffs = get_property ("stavesFound");
+
+  /*
+    only put a volta on the top staff.
 	
-	May be this is a bit convoluted, and we should have a single
-	volta engraver in score context or somesuch.
+    May be this is a bit convoluted, and we should have a single
+    volta engraver in score context or somesuch.
 	
-      */
-      if (!ly_pair_p (staffs))
-	{
-	  programming_error ("Huh? Volta engraver can't find staffs?");
-	  return false;
-	}
-      else if (ly_car (scm_last_pair (staffs)) != staff_)
-	{
-	  return false;
-	}
+  */
+  if (!ly_c_pair_p (staffs))
+    {
+      programming_error ("Huh? Volta engraver can't find staffs?");
+      return false;
+    }
+  else if (ly_car (scm_last_pair (staffs)) != staff_)
+    {
+      return false;
     }
   return true;
 }
@@ -106,13 +106,13 @@ Volta_engraver::process_music ()
     
   bool  end = false;
   start_string_ = SCM_EOL;
-  while (ly_pair_p (cs))
+  while (gh_pair_p (cs))
     {
       SCM c = ly_car (cs);
 
-      if (ly_pair_p (c)
+      if (gh_pair_p (c)
 	  && ly_car (c) == ly_symbol2scm ("volta")
-	  && ly_pair_p (ly_cdr (c)))
+	  && gh_pair_p (ly_cdr (c)))
 	{
 	  if (ly_cadr (c) ==  SCM_BOOL_F)
 	    end = true;
@@ -146,7 +146,7 @@ Volta_engraver::process_music ()
     }
 
   if (volta_span_ && 
-      (ly_string_p (start_string_) || ly_pair_p (start_string_)))
+      (gh_string_p (start_string_) || gh_pair_p (start_string_)))
     {
       warning (_ ("Already have a volta spanner.  Stopping that one prematurely."));
       
@@ -161,7 +161,7 @@ Volta_engraver::process_music ()
     }
 
   if (!volta_span_ && 
-      (ly_string_p (start_string_) || ly_pair_p (start_string_)))
+      (gh_string_p (start_string_) || gh_pair_p (start_string_)))
     {
       started_mom_ = now_mom () ;
 
@@ -233,6 +233,18 @@ Volta_engraver::stop_translation_timestep ()
       
       volta_span_->suicide ( );
       volta_span_ = 0;
+    }
+  if (volta_span_ && !volta_span_->get_bound (LEFT))
+    {
+      Grob * cc = unsmob_grob (get_property ("currentCommandColumn"));
+      Item * ci = dynamic_cast<Item*> (cc);
+      volta_span_->set_bound (LEFT, ci);
+    }
+  if (end_volta_span_ && !end_volta_span_->get_bound (RIGHT))
+    {
+      Grob * cc = unsmob_grob (get_property ("currentCommandColumn"));
+      Item * ci = dynamic_cast<Item*> (cc);
+      end_volta_span_->set_bound (RIGHT, ci);
     }
   
   if (end_volta_span_)
