@@ -130,30 +130,22 @@
 
 (define-public (unfold-repeats music)
   "
-This function replaces all repeats  with unfold repeats. "
+This function replaces all repeats  with unfold repeats. It was 
+written by Rune Zedeler. "
   
   (let ((es (ly:music-property music 'elements))
 	(e  (ly:music-property music 'element))
 	(n  (ly:music-name music)))
     (if (equal? n "Repeated_music")
-	(begin
+	(let*
+	    ((seq-arg? (memq 'sequential-music
+						   (ly:music-property e 'types))))
 	  
 	  (if (equal? (ly:music-property music 'iterator-ctor)
 		      Chord_tremolo_iterator::constructor)
-	      (let*
-		  ((seq-arg? (memq 'sequential-music
-				   (ly:music-property e 'types)))
-		   (count  (ly:music-property music 'repeat-count))
-		   (dot-shift (if (= 0 (remainder count 3))
-				  -1 0))
-		   )
-
-		(if (= 0 -1)
-		    (set! count (* 2 (quotient count 3))))
-		
+	      (begin
 		(shift-duration-log music (+ (if seq-arg? 1 0)
-					     (ly:intlog2 count)) dot-shift)
-		
+					     (ly:intlog2 (ly:music-property music 'repeat-count))) 0)
 		(if seq-arg?
 		    (ly:music-compress e (ly:make-moment (length (ly:music-property e 'elements)) 1)))
 		))
@@ -645,11 +637,11 @@ without context specification. Called  from parser."
 (define-public (set-accidental-style style . rest)
   "Set accidental style to STYLE. Optionally takes a context argument,
 e.g. 'Staff or 'Voice. The context defaults to Voice, except for piano styles, which
-use PianoStaff as a context. "
+use GrandStaff as a context. "
   (let ((context (if (pair? rest)
 		     (car rest) 'Staff))
 	(pcontext (if (pair? rest)
-		      (car rest) 'PianoStaff)))
+		      (car rest) 'GrandStaff)))
     (ly:export
      (cond
       ;; accidentals as they were common in the 18th century.
@@ -693,14 +685,14 @@ use PianoStaff as a context. "
       ((equal? style 'piano)
        (set-accidentals-properties #f
 				   '( Staff (same-octave . 0) (any-octave . 0) (same-octave . 1)
-					    PianoStaff (any-octave . 0) (same-octave . 1))
+					    GrandStaff (any-octave . 0) (same-octave . 1))
 				   '()
 				   pcontext))
       ((equal? style 'piano-cautionary)
        (set-accidentals-properties #f
 				   '(Staff (same-octave . 0))
 				   '(Staff (any-octave . 0) (same-octave . 1)
-					   PianoStaff (any-octave . 0) (same-octave . 1))
+					   GrandStaff (any-octave . 0) (same-octave . 1))
 				   pcontext))
       ;; do not set localKeySignature when a note alterated differently from
       ;; localKeySignature is found.
