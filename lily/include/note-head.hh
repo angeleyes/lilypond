@@ -1,30 +1,32 @@
 /*
   note-head.hh -- part of GNU LilyPond
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef NOTEHEAD_HH
 #define NOTEHEAD_HH
 
-#include "rhythmic-head.hh"
+#include "lily-guile.hh"
+#include "molecule.hh"
 
-/** ball at the end of the stem. Takes care of:
+/** ball at the end of the stem. Also takes care of ledger lines.
 
-  * help lines  
+    NoteHead is a kind of RhythmicHead, see there.
 
-  */
+  Read-only:
+*/
 
-class Note_head : public Rhythmic_head {
+class Note_head 
+{
 public:
-
-  Note_head ();
-  void flip_around_stem (Direction);
-  static int compare (Note_head * const &a, Note_head *const &b) ;
-protected:
-  virtual Interval do_width () const;
-  virtual void do_pre_processing();
-  virtual Molecule* do_brew_molecule_p() const;
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  static Molecule ledger_lines (Grob*,int,Direction,Interval);
+  static Molecule ledger_line (Interval, Grob*) ;
+  DECLARE_SCHEME_CALLBACK (brew_ez_molecule, (SCM ));
+  static bool has_interface (Grob*);
+  static Real stem_attachment_coordinate (Grob *, Axis a);
+  
 };
 #endif // NOTEHEAD_HH
 

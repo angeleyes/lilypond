@@ -3,101 +3,180 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
+#include <math.h>
 
 #include "misc.hh"
 #include "dots.hh"
 #include "note-head.hh"
 #include "debug.hh"
-#include "lookup.hh"
+#include "font-interface.hh"
 #include "molecule.hh"
 #include "musical-request.hh"
-#include "stem.hh"
 
-void
-Note_head::flip_around_stem (Direction d)
-{
-  translate_axis (do_width ().length () * d, X_AXIS);
-}
+#include "staff-symbol-referencer.hh"
 
-Note_head::Note_head ()
-{
-}
-
-void
-Note_head::do_pre_processing ()
-{
-  Rhythmic_head::do_pre_processing ();
-  // 8 ball looks the same as 4 ball:
-  if (balltype_i_ > 2)
-    balltype_i_ = 2;
-  if (dots_l_)			// move into Rhythmic_head?
-    dots_l_->position_i_ = position_i ();
-}
-
-
-
-int
-Note_head::compare (Note_head *const  &a, Note_head * const &b)
-{
-  return a->position_i () - b->position_i ();
-}
-
-/**
- Don't account for ledgerlines in the width.
+/*
+  build a ledger line for small pieces.
  */
-Interval
-Note_head::do_width () const
+Molecule
+Note_head::ledger_line (Interval xwid, Grob *me) 
 {
-  Molecule a =  lookup_l ()->notehead (balltype_i_, ""); // UGH
-  Interval i = a.dim_[X_AXIS];
-  return i;
+  Drul_array<Molecule> endings;
+  endings[LEFT] = Font_interface::get_default_font (me)->find_by_name ("noteheads-ledgerending");
+  Molecule *e = &endings[LEFT];
+  endings[RIGHT] = *e;
+  
+  Real thick = e->extent (Y_AXIS).length ();
+  Real len = e->extent (X_AXIS).length () - thick;
+
+  Molecule total;
+  Direction d = LEFT;
+  do {
+    endings[d].translate_axis (xwid[d] - endings[d].extent (X_AXIS)[d], X_AXIS);
+    total.add_molecule (endings[d]);    
+  } while ((flip (&d)) != LEFT);
+
+  Real xpos = xwid [LEFT] + len;
+
+  while (xpos + len + thick /2 <= xwid[RIGHT])
+    {
+      e->translate_axis (len, X_AXIS);
+      total.add_molecule (*e);
+      xpos += len;
+    }
+
+  return total;
 }
 
-Molecule*
-Note_head::do_brew_molecule_p() const 
+
+Molecule
+Note_head::ledger_lines (Grob*me, int count, Direction dir, Interval idw)
 {
-  Real inter_f = staff_line_leading_f ()/2;
-  int sz = lines_i ()-1;
+  Real inter_f = Staff_symbol_referencer::staff_space (me)/2;
+  Molecule ledger (ledger_line (idw, me));
 
-  int streepjes_i = abs (position_i ()) < sz 
-    ? 0
-    : (abs(position_i ()) - sz) /2;
+  ledger.set_empty (true);
+  Real offs = (Staff_symbol_referencer::on_staffline (me))
+    ? 0.0
+    : -dir * inter_f;
 
-
-  String type; 
-  SCM style  =get_elt_property (style_scm_sym);
-  if (style != SCM_BOOL_F)
+  Molecule legs;
+  for (int i=0; i < count; i++)
     {
-      type = ly_scm2string (SCM_CDR(style));
+      Molecule s (ledger);
+      s.translate_axis (-dir * inter_f * i*2 + offs,
+			Y_AXIS);
+      legs.add_molecule (s);
     }
-  
-  Molecule*  out = new Molecule (lookup_l()->notehead (balltype_i_, type));
 
-  Box b = out->dim_;
+  return legs;
+}
+
+MAKE_SCHEME_CALLBACK (Note_head,brew_molecule,1);
+
+SCM
+Note_head::brew_molecule (SCM smob)  
+{
+  Grob *me = unsmob_grob (smob);
+
+  int sz = Staff_symbol_referencer::line_count (me)-1;
+  int p = (int)  rint (Staff_symbol_referencer::position_f (me));
+  int streepjes_i = abs (p) < sz 
+    ? 0
+    : (abs (p) - sz) /2;
+
+  SCM style  = me->get_grob_property ("style");
+  if (!gh_symbol_p (style))
+    {
+      return SCM_EOL;
+    }
+
+  /*
+    ugh: use gh_call ()
+
+    UGH: use grob-property.
+  */
+  Molecule out = Font_interface::get_default_font (me)->find_by_name (String ("noteheads-") + 
+		ly_scm2string (scm_eval2 (gh_list (ly_symbol2scm ("find-notehead-symbol"),
+						  me->get_grob_property ("duration-log"),
+						  ly_quote_scm (style),
+						  SCM_UNDEFINED),
+					  SCM_EOL)));
 
   if (streepjes_i) 
     {
-      Direction dir = (Direction)sign (position_i ());
-      Interval hd = out->dim_[X_AXIS];
+      Direction dir = (Direction)sign (p);
+      Interval hd = out.extent (X_AXIS);
       Real hw = hd.length ()/4;
-      
-      Molecule ledger
-	= lookup_l ()->ledger_line  (Interval (hd[LEFT] - hw,
-					       hd[RIGHT] + hw));
-      
-      int parity =  abs(position_i ()) % 2;
-      
-      for (int i=0; i < streepjes_i; i++)
-	{
-	  Molecule s (ledger);
-	  s.translate_axis (-dir * inter_f * (i*2 + parity),
-			   Y_AXIS);
-	  out->add_molecule (s);
-	}
+      out.add_molecule (ledger_lines (me, streepjes_i, dir,
+				      Interval (hd[LEFT] - hw,
+						hd[RIGHT] + hw)));
     }
+  
+  return out.smobbed_copy ();
+}
 
-  out->dim_ = b;
-  return out;
+bool
+Note_head::has_interface (Grob*m)
+{
+  return m&& m->has_interface (ly_symbol2scm ("note-head-interface"));
+}
+
+
+MAKE_SCHEME_CALLBACK (Note_head,brew_ez_molecule,1);
+
+SCM
+Note_head::brew_ez_molecule (SCM smob)
+{
+  Grob *me = unsmob_grob (smob);
+  int l = gh_scm2int (me->get_grob_property ("duration-log"));
+
+  int b = (l >= 2);
+  SCM at = gh_list (ly_symbol2scm ("ez-ball"),
+		    me->get_grob_property ("note-character"),
+		    gh_int2scm (b),
+		    gh_int2scm (1-b),
+		    SCM_UNDEFINED);
+  Box bx (Interval (0, 1.0), Interval (-0.5, 0.5));
+  Molecule m (bx, at);
+  int p = (int)  rint (Staff_symbol_referencer::position_f (me));
+
+  int sz = Staff_symbol_referencer::line_count (me)-1;
+  int streepjes_i = abs (p) < sz 
+    ? 0
+    : (abs (p) - sz) /2;
+
+ if (streepjes_i)
+   {
+      Direction dir = (Direction)sign (p);
+      Interval hd = m.extent (X_AXIS);
+      Real hw = hd.length ()/4;
+      m.add_molecule (ledger_lines (me, streepjes_i, dir,
+				      Interval (hd[LEFT] - hw,
+						hd[RIGHT] + hw)));
+    }
+  
+  return m.smobbed_copy ();
+}
+
+
+Real
+Note_head::stem_attachment_coordinate (Grob *me, Axis a)
+{
+  SCM v = me->get_grob_property ("stem-attachment-function");
+
+  if (!gh_procedure_p (v))
+    return 0.0;
+
+  SCM st = me->get_grob_property ("style");
+  SCM result = gh_apply (v, gh_list (st, SCM_UNDEFINED));
+
+  if (!gh_pair_p (result))
+    return 0.0;
+
+  result = (a == X_AXIS) ? gh_car (result) : gh_cdr (result);
+  
+  return gh_number_p (result) ?  gh_scm2double (result) : 0.0;
 }
