@@ -1,12 +1,12 @@
+lilypond_1_4
+============
+
 1.4.13.mb1
 ==========
 
 * Include lilypond-indent.el in Redhat, SUSE and Debian distr.
 
 * Include input/, mutopia/ for Redhat RPM.
-
-lilypond_1_4
-============
 
 * Backport: stepmake/autogen.sh: Check for autoconf2.13, and abort if not
   found.
