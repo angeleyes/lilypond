@@ -28,7 +28,7 @@ LILYPOND_INCLUDES = $(include-lib) $(depth)/lib/$(outdir) $(include-flower) $(de
 
 # installed by 'make installextradoc'
 EXTRA_DOC_FILES = \
-  ANNOUNCEMENT ANNOUNCE-0.1 AUTHORS.txt BUGS COPYING DEDICATION INSTALL.txt NEWS PATCHES.txt README.txt TODO \
+  ANNOUNCEMENT ANNOUNCE-0.1 AUTHORS.txt  COPYING DEDICATION INSTALL.txt NEWS PATCHES.txt README.txt TODO \
   Documentation/out/*.txt\
   Documentation/tex/*.doc\
   Documentation/tex/*.bib\
@@ -58,4 +58,6 @@ INSTALL_DIST_FILES = \
 
 
 INSTALLED_DIST_FILES = $(addprefix $(prefix:/%=%)/, $(INSTALL_DIST_FILES))
+
+
 
