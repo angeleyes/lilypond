@@ -1,5 +1,7 @@
 2005-02-24  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* scripts/check-translation.py (CVS_DIFF): Omit keyword expansion.
+
 	* site/index.html: HTML fixes, run indent-region.
 
 	* GNUmakefile (check-translation): New target.
