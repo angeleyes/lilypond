@@ -1,4 +1,10 @@
-#!/bin/sh
+#!@SHELL@
+# use kpsewhich?
+# maybe (optionally) (not) clean stuff from other versions, ie, don't clean
+#     /var/spool/texmf/tfm/lilypond/<NOT-OUR-VERSION>/
+# ?
+
+VERSION="@TOPLEVEL_VERSION@"
 
 case  $# in
 0) 
@@ -7,19 +13,25 @@ case  $# in
     WHAT=$1;;
 esac
 
-# should use kpsepath 
+dirs=".
+/var/lib/texmf
+/var/spool/texmf
+/var/tmp/texfonts
+/var/texfonts
+"
 
-if [ -d /var/lib/texmf ]; then
-    TEXDIR=/var/lib/texmf
-elif [ -d /var/texfonts ]; then
-    TEXDIR=/var/texfonts
-else
-    TEXDIR=/var/
+for i in $dirs; do
+	if [ -d "$i" ]; then
+		TEXDIRS="$TEXDIRS $i"
+	fi
+done
+
+if [ -z "$TEXDIRS" -o "$TEXDIRS" = "." ]; then
+    TEXDIRS=". /var"
 fi
 
 # remove possibly stale .pk/.tfm files 
-echo> /tmp/cleaning-font-dummy
-FILES=`find .  $TEXDIR -name "feta*$WHAT*tfm" -or -name "feta*$WHAT*pk"`
+FILES=`find $TEXDIRS -name "feta*$WHAT*tfm" -or -name "feta*$WHAT*pk"`
 
 echo removing $FILES
 rm  -f $FILES /tmp/cleaning-font-dummy
