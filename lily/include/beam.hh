@@ -1,93 +1,57 @@
 /*
   beam.hh -- part of GNU LilyPond
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef BEAM_HH
 #define BEAM_HH
 
 #include "lily-proto.hh"
-#include "directional-spanner.hh"
-#include "stem-info.hh"
+#include "lily-guile.hh"
 
 
-/** a beam connects multiple stems.
 
-  Beam adjusts the stems its owns to make sure that they reach the
-  beam and that point in the correct direction
-
-elt property:
-
-damping: amount of beam slope damping. (int)
-
-should beam slope be damped? 0: no, 1: yes, 100000: horizontal beams 
-
-
-*/
-class Beam : public Directional_spanner  {
+class Beam
+{
 public:
-  /** 
-    The beams should be prevented to conflict with the stafflines, 
-    especially at small slopes.
-    */
-  enum Quantisation { NONE, NORMAL, TRADITIONAL, TEST };
-  enum Dir_algorithm { /* DOWN=-1, UP=1, */ MAJORITY=2, MEAN, MEDIAN };
+  static int visible_stem_count (Grob*);
+  static Item* first_visible_stem (Grob*);
+  static Item* last_visible_stem (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (rest_collision_callback, (SCM element, SCM axis));
+  Beam (SCM);
+  static void add_stem (Grob*,Grob*);
+  static void set_beaming (Grob*,Beaming_info_list *);
+  static void set_stemlens (Grob*);
+  static int get_multiplicity (Grob*me);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
+  DECLARE_SCHEME_CALLBACK (before_line_breaking, (SCM ));
+  DECLARE_SCHEME_CALLBACK (after_line_breaking, (SCM ));
 
-  Link_array<Stem> stems_;
-  /**
-     the slope of the beam in (staffpositions) per (X-dimension, in PT).
-     UGH. standardise this for once and for all.
+  /*
+    y-dy callbacks
    */
-  Real slope_f_;
+  DECLARE_SCHEME_CALLBACK (least_squares, (SCM));
+  DECLARE_SCHEME_CALLBACK (cancel_suspect_slope, (SCM));
+  DECLARE_SCHEME_CALLBACK (slope_damping, (SCM));
+  DECLARE_SCHEME_CALLBACK (quantise_dy, (SCM));
+  DECLARE_SCHEME_CALLBACK (user_override, (SCM));
+  DECLARE_SCHEME_CALLBACK (do_quantise_y, (SCM));
 
-  /// position of leftmost end of beam  
-  Real left_y_;
-
-  /** should beam pos / slope be quantised? 0: no, 1: yes, 2: traditional
-      JUNKME.
-   */
-  Quantisation quantisation_;
-  
-  /// maximum number of beams (for opening-up of beam-spacing)
-  int multiple_i_;
-
-  Array<Stem_info> sinfo_;
-  
-  Beam();
-  void add_stem (Stem*);
-  Stem_info get_stem_info (Stem*);
-
-  void set_grouping (Rhythmic_grouping def, Rhythmic_grouping current);
-  void set_beaming (Beaming_info_list *);
-  void set_stemlens ();
-  VIRTUAL_COPY_CONS(Score_element);
-
-protected:
-  virtual Interval do_width () const;    
-  Offset center () const;
-  Direction get_default_dir () const;
-  void set_direction (Direction);
-  void set_steminfo ();
-  
-  virtual void do_pre_processing ();
-  virtual void do_post_processing ();
-  virtual void do_substitute_element_pointer (Score_element*, Score_element*);
-  virtual void do_add_processing ();
-  virtual void do_print() const;
-  virtual Molecule*do_brew_molecule_p () const;
-
-  Molecule stem_beams (Stem *here, Stem *next, Stem *prev) const;
+  static Molecule stem_beams (Grob*,Item *here, Item *next, Item *prev, Real, Real);
 
 private:
-  void calculate_slope ();
-  Real check_stemlengths_f (bool set_b);
-  void solve_slope ();
-
-  void quantise_left_y (bool extend_b);
-  void quantise_dy ();
-
+  static Direction get_default_dir (Grob*);
+  static void set_stem_directions (Grob*);
+  static void consider_auto_knees (Grob*);
+  static void set_stem_shorten (Grob*);
+  static Real calc_stem_y_f (Grob*, Item* s, Real y, Real dy);
+  static Real check_stem_length_f (Grob*, Real y, Real dy);
+  static void set_stem_lengths (Grob*);
+  static Real quantise_y_f (Grob*, Real y, Real dy, int quant_dir);
+  static int forced_stem_count (Grob*);
 };
 
-#endif // BEAM_HH
+#endif /* BEAM_HH */
 
