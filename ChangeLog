@@ -1,5 +1,7 @@
 2003-08-07  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
+	* site/download/index.html (href): fix URL.
+
 	* site/index.html (href): tweaks to improve doc link visibility
 
 	* site/download/getting-started.html (href): remove lilypond icon.
