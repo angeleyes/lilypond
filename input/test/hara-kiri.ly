@@ -1,69 +1,76 @@
-\version "1.2.0";
+\version "1.3.146"
 
-toeter_i = \notes\relative c <{
-		\property Staff.instrument = "Toeters"
-		\property Staff.instr = "Ttr." }
-	\context Voice = lower { \stemdown s1*6 }
-	\context Voice = upper { \stemup s1*6 }
+\header {
+texidoc = "Hara kiri staffs disappear when empty "
+}
+
+
+% todo: use partcombine?, junk?
+
+toeterI =  \notes\relative c <{
+		\property Staff.instrument = #"Toeters"
+		\property Staff.instr = #"Ttr." }
+	\context Voice = lower { \stemDown s1*6 }
+	\context Voice = upper { \stemUp s1*6 }
 	\context Voice = together  { 
 
-	c'''4 c c c \break
+	c'''4^"toet I" c c c 
 	d d d d \break
-	R1 \break 
+	R1 
 	\context Voice = upper {
 		e4 e e e \break }
-	f f f f \break
+	f f f f
 	g g g g 
 }>
 
-toeter_ii = \notes \relative c \context Voice = together { 
-	c''4 c c c \break
-	d d d d \break
-	R1 \break
+toeterIi =  \notes \relative c \context Voice = together { 
+	c''4^"toet II" c c c 
+	d d d d 
+	R1 
 	\context Voice = lower {
-		\stemdown 
-		e4 e e e \break
+		\stemDown 
+		e4 e e e 
         }
-	f f f f \break
+	f f f f 
 	g g g g
 }
 
-toeters = \context Staff = toeters <
-	\toeter_i
-	\toeter_ii
+toeters =  \context Staff = toeters <
+	\toeterI
+	\toeterIi
 >
  
-zager = \context Staff = zager \notes \relative c'' {
-	\clef treble;
-	\property Staff.instrument = "Zager"
-	\property Staff.instr = "Zag."
-	c4 d e f \break
-	\property Staff.instr = "Zag. \& Zog."
-	f e d c \break
-	c d e f \break
-	\property Staff.instr = "Zag."
-	\stemup
-	f e d c \break
-	c d e f \break
+zager =  \context Staff = zager \notes \relative c'' {
+	\clef treble
+	\property Staff.instrument = #"Zager"
+	\property Staff.instr = #"Zag."
+	c4^"zag" d e f 
+	\property Staff.instr = #"Zag. \\& Zog."
+	f e d c 
+	c d e f 
+	\property Staff.instr = #"Zag."
+	\stemUp
+	f e d c 
+	c d e f 
 	f e d c
 }
 
-zoger = \context Staff = zoger \notes \relative c'' {
-	\clef treble;
-	\property Staff.instrument = "Zoger"
-	\property Staff.instr = "Zog."
-	c4 d e f \break
-	\skip 1*2;
+zoger =  \context Staff = zoger \notes \relative c'' {
+	\clef treble
+	\property Staff.instrument = #"Zoger"
+	\property Staff.instr = #"Zog."
+	c4^"zog" d e f 
+	\skip 1*2
 
 	\translator Staff=zager
-	\stemdown 
+	\stemDown 
 	c2 g2
 	
-	a4 b c d \break
-	\skip 1*1;
+	a4 b c d 
+	\skip 1*1
 }
 
-zagers = \context GrandStaff <
+zagers =  \context GrandStaff <
 	\zager
 	\zoger
 >
@@ -78,7 +85,7 @@ zagers = \context GrandStaff <
 		>
 	>
 	\paper{
-		linewidth = 40.0\mm;
+		linewidth = 80.0\mm
 		\translator { \HaraKiriStaffContext }
 %uh?
 		\translator { \OrchestralScoreContext }

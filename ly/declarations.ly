@@ -1,12 +1,12 @@
 
-  
-breve = \duration { -1 0 }
-longa = \duration { -2 0 }
+\version "1.3.146"
+breve = \duration #(make-duration -1 0)
+longa = \duration #(make-duration -2 0 )
+maxima = \duration #(make-duration -3 0)
 
 \include "nederlands.ly"		% dutch
 \include "chord-modifiers.ly"
 \include "script.ly"
-
 
 % declarations for standard directions
 left = -1
@@ -17,43 +17,39 @@ start = -1
 stop = 1
 smaller = -1
 bigger = 1
-
 center=0
 
-break =  \penalty  10000; 
-nobreak =  \penalty  -10000; 
+break =  \penalty  #-10000
+noBreak =  \penalty #10000
+\include "scale-definitions.ly"
 
-major = 0
-minor = 3
-
-ionian = 0
-locrian = 1
-aeolian = 3
-mixolydian = 5
-lydian = 7
-phrygian = 8
-dorian = 10
-
-melisma = \property Staff.melismaBusy = "1"
-melismaEnd = \property Staff.melismaBusy = "0"
+melisma = \property Staff.melismaBusy = ##t
+melismaEnd = \property Staff.melismaBusy = ##f
 
 
+\include "engraver.ly"
 
-papersize = "a4"
-\include "generic-paper.ly"
-\include "paper20.ly"
+singleLine = \paper { linewidth = 1. }
 
 % ugh
 \include "midi.ly"
 
-\include "textscripts.ly"
+papersize = "a4"
+paperfile = \papersize + ".ly"
+
+\include "generic-paper.ly"
+\include "paper20.ly"
+
+
+\include "dynamic-scripts.ly"
 \include "spanners.ly"
 
 \include "property.ly"
 
 
 
-unusedEntry = \notes { c4 }		% reset default duration
+% reset default duration
+unusedEntry = \notes { c4 }	
 
 % music = "\melodic\relative c"
 

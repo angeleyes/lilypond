@@ -1,24 +1,25 @@
+\version "1.3.146"
 \header{
-title= "Stems and Beams";
-subtitle = "proofsheet"; 
-enteredby =	 "jcn";
-copyright =	 "public domain";
-TestedFeatures =	 "This file tests the length of stems and placement 
-of beams";
+title= "Stems and Beams"
+subtitle =  "proofsheet" 
+enteredby = 	 "jcn"
+copyright = 	 "public domain"
+TestedFeatures = 	 "This file tests the length of stems and placement 
+of beams"
 	
 }
 
-\version "1.2.0";
 
-beamintervals = \notes{
-		\time 7/4;
-		\stemup
+
+beamintervals =  \notes{
+		\time 7/4
+		\stemUp
 \transpose c'{
 		[ c8 d ] [ c e ] [ c f ] [ c g ] [ c a ] [ c b ] [ c c' ] |
 		[ c b, ] [ c a, ] [ c g, ] [ c f, ] [ c e, ] [ c d, ] [ c c, ] |
 		}\transpose c''{
 		[ c b, ] [ c a, ] [ c g, ] [ c f, ] [ c e, ] [ c d, ] [ c c, ] |
-		\stemdown}
+		\stemDown}
 		\transpose c'''{
 		[ c b, ] [ c a, ] [ c g, ] [ c f, ] [ c e, ] [ c d, ] [ c c, ] |
 }		\transpose c''{
@@ -28,10 +29,10 @@ beamintervals = \notes{
 
 \score{
 	\notes\transpose c'{ 
-		\stemup
-		\time 17/4;
+		\stemUp
+		\time 17/4
 		g,4 a, b, c d e f g a b c' d' e' f' g' a' b' |
-		\stemdown
+		\stemDown
 		b' a' g' f' e' d' c' b a g f e d c b, a, g, |
 		\beamintervals
 		\transpose d \beamintervals
@@ -40,8 +41,5 @@ beamintervals = \notes{
 		\transpose g \beamintervals
 		\transpose a \beamintervals
 		\transpose b \beamintervals
-	}
-	\paper{
-		gourlay_maxmeasures = 2.;
 	}
 }

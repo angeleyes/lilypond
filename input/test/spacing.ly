@@ -1,14 +1,15 @@
+\version "1.3.146"
 \header{
-title= "Spacing";
-subtitle = "proofsheet"; 
-enteredby =	 "jcn";
-copyright =	 "public domain";
-TestedFeatures =	 "This file tests various spacings";
+title= "Spacing"
+subtitle =  "proofsheet" 
+enteredby = 	 "jcn"
+copyright = 	 "public domain"
+TestedFeatures = 	 "This file tests various spacings"
 }
 
-\version "1.2.0";
 
-multipart = \notes \relative c'{ 
+
+multipart =  \notes \relative c'{ 
     \context StaffGroup < 
                 \context Staff = one \context Voice { 
                    c4
@@ -74,7 +75,7 @@ multipart = \notes \relative c'{
             >
 	}
 
-singlepart = \notes{ 
+singlepart =  \notes{ 
 	c4 d e f
 	c4 d e [f8 f]
 	c4 d e f8 [f16 f]
@@ -90,7 +91,7 @@ singlepart = \notes{
 	\multipart 
     }
     \paper {
-%    linewidth= 18.\cm;
-%	gourlay_maxmeasures = 4.0
+%    linewidth= 18.\cm
+
     }
 }

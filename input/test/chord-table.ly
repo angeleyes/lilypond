@@ -1,11 +1,12 @@
+\version "1.3.146"
 \header{
-filename =	"chord-table.ly";
-copyright = 	"public domain";
-enteredby = 	"jcn";
+filename = 	"chord-table.ly"
+copyright =  	"public domain"
+enteredby =  	"jcn"
 }
 
-tab = \notes\transpose c'''\chords{
-	c1 c-m c-4 c-m4 c-5+ c-5- c-m5- c-5-.5+ c-6\break %c-m6\break
+tab =  \notes\transpose c'''\chords{
+	c1 c:m c:4 c:m4 c:5+ c:5- c:dim c:5-.5+ c:6\break %c:m6\break
 }
 
 \score{
@@ -36,9 +37,9 @@ tab = \notes\transpose c'''\chords{
 		\context ChordNames=b \notes\transpose b,\tab
 	>
 	\paper{
-		textheight = \vsize - 4.0 * \staffheight;
+		textheight = \vsize - 4.0 * \staffheight
 	}
 
 }
 
-\version "1.2.0"; 
+

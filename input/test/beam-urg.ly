@@ -1,11 +1,13 @@
+\version "1.3.146"
+
 \score{
 	\notes\relative c''{
-		\property Score.beamquantisation = \none
-		% \property Score.beamquantisation = \normal
-		% \property Score.beamquantisation = \traditional
+		\property Score.beamQuantisation = #'none
+		% \property Score.beamQuantisation = #'normal
+		% \property Score.beamQuantisation = #'traditional
 		[g16 e f g]
 	}
 	\paper{
-		linewidth = -1.;
+		linewidth = -1.
 	}
 }

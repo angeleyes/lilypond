@@ -1,8 +1,9 @@
+\version "1.3.146"
 	
-\version "1.2.0";
 
 
-blah = 	\notes{ \transpose c'' {
+
+blah =  	\notes{ \transpose c'' {
 
 	c,4 ->-.-\fermata-"text"
 	c ->-.-\fermata-"text"
@@ -34,16 +35,16 @@ blah = 	\notes{ \transpose c'' {
 	d' _>_._\fermata _"text"
 	d'' _>_._\fermata _"text"
 			
-	\stemup
+	\stemUp
 	b,-. c-. d-. e-. f-. g-. a-. b-. c'-.
-	\stemdown
+	\stemDown
 	a-. b-. c'-. d'-. e'-. f'-. g'-. a'-. b'-.
-	\stemup
+	\stemUp
 	b,-> c-> d-> e-> f-> g-> a-> b-> c'->
-	\stemup
+	\stemUp
 	b,---. c---. d---. e---. f---. g---. a---. b---. c'---.
-	\stemboth
-      \time 4/4;
+	\stemBoth
+      \time 4/4
 	[c8 \< d e \! f][d' \> e' f' \! g'] 
 	[c-> \< d-> e-> \! f->][d'-> \> e'-> f'-> \! g'->] 
 	[c-^ \< d-^ e-^ \! f-^][d'-^ \> e'-^ f'-^ \! g'-^] 

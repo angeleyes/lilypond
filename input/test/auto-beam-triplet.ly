@@ -1,3 +1,5 @@
+\version "1.3.146"
+
 \score{
 	\notes\relative c''{
 		c8 c c c
@@ -7,7 +9,7 @@
 		% urg, avoid crash
 		\translator{
 			\VoiceContext
-			\remove Tuplet_engraver;
+			\remove Tuplet_engraver
 		}
 	}
 }

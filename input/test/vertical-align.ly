@@ -1,12 +1,10 @@
+\version "1.3.146"
 
-\version "1.2.0";
+
 
 \score {
 \notes <
 	\context GrandStaff < {
-	   \property GrandStaff . maxVerticalAlign = "60."
-	   \property GrandStaff . minVerticalAlign = "35."
-
 	   c'1 \break  c'''''1 
 	}
 	    { c'1 \break c,,,,1}
@@ -14,6 +12,10 @@
 
 >
 
-\paper{}
+\paper{
+  \translator{\StaffContext
+    VerticalAlignment \override #'threshold = #'(7 . 12)
+  }
+}
 
 }

@@ -1,3 +1,8 @@
+\version "1.3.146"
+% The volta texts should read: 1-4  and  5
+% Not 1 and 2
+% (see 1.2.17)
+
 %{
 Hi,
 	I want to write some music that has the structure:
@@ -31,8 +36,8 @@ Hi,
 		\context Staff \notes\relative c''{
 			c c c c
 			% coda-klugde: let volta span only one bar
-			\property Staff.voltaSpannerDuration = "1"
-			\repeat semi 5 { d d d d }
+			\property Staff.voltaSpannerDuration = #(make-moment 1 1)
+			\repeat "volta" 5 { d d d d }
 				\alternative { { e e e e f f f f }
 			{ g g g g } }
 		}
@@ -51,4 +56,4 @@ Hi,
 }
 
 
-%\version "1.0.16"; 
+% 

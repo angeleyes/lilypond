@@ -1,13 +1,14 @@
+\version "1.3.146"
 \header{
-enteredby =	 "jcn";
-copyright =	 "public domain";
-TestedFeatures =	 "This file tests Feta embedded slurs" +
-	 "(Feta definitively is not an abbreviation of Font-En-TjA)";
+enteredby = 	 "jcn"
+copyright = 	 "public domain"
+TestedFeatures = 	 "This file tests Feta embedded slurs" +
+	 "(Feta definitively is not an abbreviation of Font-En-TjA)"
 }
 
-\version "1.2.0";
 
-shortlong = \notes{
+
+shortlong =  \notes{
 	c4()c( c c  |
 	c c c c |
 	c c c c |
@@ -15,104 +16,104 @@ shortlong = \notes{
 	c c c )c |
 }
 
-dirs = \notes\transpose c' {
+dirs =  \notes\transpose c' {
 
 	c'1() g' () c () g () c |
 }
 
-complex = \notes{
+complex =  \notes{
 \transpose c'{
 	c,16( e,( g,( b,( d( f( a( c'())))))))c4 c4 |}
 \transpose c'''{
 	c,16( a( f( d( b,( g,( e,( c,())))))))c4 c4 |}
 }
 
-over = \notes\transpose c'{
+over =  \notes\transpose c'{
 
 
 	e( g' g' )e
 	e( a' a' )e
 	e( b' b' )e
 	e( c'' c'' )e
-	\stemup
+	\stemUp
 	e( c' c' )e
 	e( d' d' )e
 	e( e' e' )e
 	e( c'' c'' )e
-	\stemboth
+	\stemBoth
 	e( f' b' )e
 	e( b' f' )e
 	e( e'' g' )e
 	e( g' e'' )e
-	\stemup
+	\stemUp
 	e( d' b )e
 	e( b d' )e
 	e( f' c'' )e
 	e( c'' f )e
 }
 
-under = \notes\transpose c'{
-	\stemdown 
-	f'( \stemboth d d \stemdown )f'
-	f'( \stemboth c c \stemdown )f'
-	f'( \stemboth b, b, \stemdown )f'
-	f'( \stemboth a, a, \stemdown )f'
-	\stemdown
+under =  \notes\transpose c'{
+	\stemDown 
+	f'( \stemBoth d d \stemDown )f'
+	f'( \stemBoth c c \stemDown )f'
+	f'( \stemBoth b, b, \stemDown )f'
+	f'( \stemBoth a, a, \stemDown )f'
+	\stemDown
 	f'( a a )f'
 	f'( g g )f'
 	f'( f f )f'
 	f'( a, a, )f'
 
-	\stemdown 
-	f'( \stemboth d b, \stemdown )f'
-	f'( \stemboth b, d \stemdown )f'
-	f'( \stemboth d, b, \stemdown )f'
-	f'( \stemboth b, d, \stemdown )f'
-	\stemdown
+	\stemDown 
+	f'( \stemBoth d b, \stemDown )f'
+	f'( \stemBoth b, d \stemDown )f'
+	f'( \stemBoth d, b, \stemDown )f'
+	f'( \stemBoth b, d, \stemDown )f'
+	\stemDown
 	f'( f a )f'
 	f'( a f )f'
 	f'( f e, )f'
 	f'( e, f )f'
 }
 
-eccentric = \notes\transpose c'{
-	\stemup
+eccentric =  \notes\transpose c'{
+	\stemUp
 	\times 4/7 { f( a' f f f f )f } |
 	\times 4/7 { f( f f f f a' )f } |
-	\stemdown
+	\stemDown
 	\times 4/7 { e'( c e' e' e' e' )e' } |
 	\times 4/7 { e'( e' e' e' e' c )e' } |
 }
 
-tiltup = \notes\transpose c'{
+tiltup =  \notes\transpose c'{
 	e( c'' c'' )e'
-	\stemup
+	\stemUp
 	e( c'' c'' )e'
-	\stemboth
+	\stemBoth
 	e( g' e'' )e'
-	\stemup
+	\stemUp
 	e( c'' f )e'
-	\stemdown 
-	f'( \stemboth a, a, \stemdown )f''
-	\stemdown
+	\stemDown 
+	f'( \stemBoth a, a, \stemDown )f''
+	\stemDown
 	f'( a, a, )f''
 }
 
-tiltdown = \notes\transpose c'{
+tiltdown =  \notes\transpose c'{
 	e'( c'' c'' )e
-	\stemup
+	\stemUp
 	e'( c'' c'' )e
-	\stemboth
+	\stemBoth
 	e'( g' e'' )e
-	\stemup
+	\stemUp
 	e'( c'' f )e
-	\stemdown 
-	f''( \stemboth a, a, \stemdown )f'
-	\stemdown
+	\stemDown 
+	f''( \stemBoth a, a, \stemDown )f'
+	\stemDown
 	f''( a, a, )f'
 }
 
-broken = \notes\transpose c''{
+broken =  \notes\transpose c''{
       c c c c()
       c c c c(
       c )c c c(
@@ -125,28 +126,28 @@ broken = \notes\transpose c''{
       f,( c c )f,
 }
 
-blend =	\notes\transpose c'{
+blend = 	\notes\transpose c'{
 	e( c'' c'' )e
-	\stemup
+	\stemUp
 	f'( c'' c'' )f'
 	e( c'' c'' )e
-	\stemdown
-	f'( \stemboth a, a, \stemdown )f'
+	\stemDown
+	f'( \stemBoth a, a, \stemDown )f'
 	f'( a, a, )f'
 
-	\stemboth
+	\stemBoth
 	e( c'' c'' )e'
 	e'( c'' c'' )e
 	d( d d )d
 
-	\stemdown
+	\stemDown
 	e( c'' c'' )e'
 	e'( c'' c'' )e
 	d( d d )d
 }
 
 
-bug = \notes\transpose c'{
+bug =  \notes\transpose c'{
 
 	a()g( f )e
 	b'()a'( g' )f'
@@ -155,20 +156,20 @@ bug = \notes\transpose c'{
 	c' () b () c' c'
 }
 
-clipping = \notes\transpose c'{
-	\stemboth
+clipping =  \notes\transpose c'{
+	\stemBoth
 	c( c''' c''')c
 	c( c''' c )c''
 	c''( c c''' )c
-	\stemdown
-	c( \stemup c,,, c,,, \stemdown )c
-	c( \stemup c,,, c \stemdown )c,,
-	c,,( \stemup c c,,, \stemdown )c
+	\stemDown
+	c( \stemUp c,,, c,,, \stemDown )c
+	c( \stemUp c,,, c \stemDown )c,,
+	c,,( \stemUp c c,,, \stemDown )c
 }
 
 \score{
-	\notes{ 
-%		\property Voice.pletvisibility = 0;
+	\context Staff \notes{ 
+%		\property Voice.pletvisibility = 0
 		% use blend for fast check
 		\blend
 % {
@@ -187,10 +188,9 @@ clipping = \notes\transpose c'{
 		%\broken
 	}
 	\paper{ 
-	      indent = 0.0\pt;
+	      indent = 0.0\pt
 		%for broken!
-		% linewidth= 30.\mm;
-		castingalgorithm = \Wordwrap;
+		% linewidth= 30.\mm
 	}
 }
 

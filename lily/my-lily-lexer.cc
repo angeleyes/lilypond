@@ -3,14 +3,17 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include <strstream.h>
 #include <ctype.h>
-#include "notename-table.hh"
+
+#include "lily-proto.hh"
+#include "scm-hash.hh"
 #include "interval.hh"
-#include "identifier.hh"
+
+#include "lily-guile.hh"
 #include "parser.hh"
 #include "keyword.hh"
 #include "my-lily-lexer.hh"
@@ -19,16 +22,22 @@
 #include "main.hh"
 #include "scope.hh"
 #include "input.hh"
+#include "moment.hh"
 
 static Keyword_ent the_key_tab[]={
+  {"alias", ALIAS},
+  {"apply", APPLY},
+  {"arpeggio", ARPEGGIO },
+  {"autochange", AUTOCHANGE},
   {"spanrequest", SPANREQUEST},
+  {"commandspanrequest", COMMANDSPANREQUEST},  
   {"simultaneous", SIMULTANEOUS},
   {"sequential", SEQUENTIAL},
   {"accepts", ACCEPTS},
   {"alternative", ALTERNATIVE},
   {"bar", BAR},
   {"breathe", BREATHE},
-  {"cadenza", CADENZA},
+  {"char", CHAR_T},
   {"chordmodifiers", CHORDMODIFIERS},
   {"chords", CHORDS},
   {"clef", CLEF},
@@ -36,23 +45,31 @@ static Keyword_ent the_key_tab[]={
   {"consists", CONSISTS},
   {"consistsend", CONSISTSEND},
   {"context", CONTEXT},
+  {"default", DEFAULT},
+  {"denies", DENIES},
   {"duration", DURATION},
+  {"dynamicscript", DYNAMICSCRIPT},
+  {"elementdescriptions", ELEMENTDESCRIPTIONS},
   {"font", FONT},
   {"grace", GRACE},
+  {"glissando", GLISSANDO},
   {"header", HEADER},
   {"in", IN_T},
   {"lyrics", LYRICS},
   {"key", KEY},
-  {"keysignature", KEYSIGNATURE},
   {"mark", MARK},
-  {"musicalpitch", MUSICAL_PITCH},
+  {"pitch", PITCH},
   {"time", TIME_T},
   {"times", TIMES},
   {"midi", MIDI},
   {"mm", MM_T},
   {"name", NAME},
-  {"notenames", NOTENAMES},
+  {"pitchnames", PITCHNAMES},
   {"notes", NOTES},
+  {"outputproperty", OUTPUTPROPERTY},
+  {"override", OVERRIDE},
+  {"set", SET},
+  {"revert", REVERT},
   {"partial", PARTIAL},
   {"paper", PAPER},
   {"penalty", PENALTY},
@@ -61,31 +78,29 @@ static Keyword_ent the_key_tab[]={
   {"relative", RELATIVE},
   {"remove", REMOVE},
   {"repeat", REPEAT},
-  {"repetitions", REPETITIONS},
   {"addlyrics", ADDLYRICS},
-  {"scm", SCM_T},
-  {"scmfile", SCMFILE},
+  {"partcombine", PARTCOMBINE},
   {"score", SCORE},
   {"script", SCRIPT},
-  {"shape", SHAPE},
+  {"stylesheet", STYLESHEET},
   {"skip", SKIP},
-  {"textscript", TEXTSCRIPT},
   {"tempo", TEMPO},
   {"translator", TRANSLATOR},
   {"transpose", TRANSPOSE},
   {"type", TYPE},
-  {"version", VERSION},
+  {"unset", UNSET},
   {0,0}
 };
 
-My_lily_lexer::My_lily_lexer()
+My_lily_lexer::My_lily_lexer ()
 {
   keytable_p_ = new Keyword_table (the_key_tab);
-  toplevel_scope_p_ = new Scope;
-  scope_l_arr_.push (toplevel_scope_p_);
+  toplevel_variable_tab_ = new Scheme_hash_table ;
+  scope_p_ = new Scope (toplevel_variable_tab_);
+  
+  scope_l_arr_.push (scope_p_);
+  
   errorlevel_i_ = 0;
-  note_tab_p_ = new Notename_table;
-  chordmodifier_tab_p_ = new Notename_table;
   main_input_b_ = false;
 }
 
@@ -95,132 +110,66 @@ My_lily_lexer::lookup_keyword (String s)
   return keytable_p_->lookup (s.ch_C ());
 }
 
-Identifier*
+SCM
 My_lily_lexer::lookup_identifier (String s)
 {
-  SCM sym = ly_symbol (s.ch_C());
+  SCM sym = ly_symbol2scm (s.ch_C ());
   
-  for (int i = scope_l_arr_.size (); i--; )
-    if (scope_l_arr_[i]->elem_b (sym))
-      return scope_l_arr_[i]->elem(sym);
-  return 0;
+  for (int i = scope_l_arr_.size (); i--;)
+    {
+      SCM val = SCM_UNSPECIFIED;
+      if (scope_l_arr_[i]->try_retrieve (sym, &val))
+	return val;
+    }
+  return SCM_UNSPECIFIED;
 }
 
 void
 My_lily_lexer::start_main_input ()
 {  
-  if (!monitor->silent_b ("InitDeclarations") && check_debug)
-    print_declarations (true);
-  if (!monitor->silent_b ("InitLexer") && check_debug)
-    set_debug (1);
-
-
   new_input (main_input_str_, source_global_l);
-  if (safe_global_b)
-    allow_includes_b_ = false;
-  
-  print_declarations(true);
+  allow_includes_b_ = allow_includes_b_ &&  ! (safe_global_b);
 }
 
 void
-My_lily_lexer::set_identifier (String name_str, Identifier* i, bool )
+My_lily_lexer::set_identifier (String name_str, SCM s)
 {
-  Identifier *old =0;
-  if (scope_l_arr_.top ()->elem_b (name_str))
-    old = scope_l_arr_.top ()->elem(name_str);
- 
-   
-  if  (old)
-    {
-#if 0
-      if (unique_b)
-	old->warning(_f ("redeclaration of `\\%s\'", name_str));
-#endif
-      delete old;
-    }
   if (lookup_keyword (name_str) >= 0)
     {
-      warning (  _f ("Identifier name is a keyword (`%s')", name_str));
+      warning (_f ("Identifier name is a keyword: `%s'", name_str));
     }
   
-  scope_l_arr_.top ()->elem (name_str) = i;
+  scope_l_arr_.top ()->set (name_str, s);
 }
 
-My_lily_lexer::~My_lily_lexer()
+My_lily_lexer::~My_lily_lexer ()
 {
-  delete chordmodifier_tab_p_;
   delete keytable_p_;
-  delete toplevel_scope_p_ ;
-  delete note_tab_p_;
+  scm_unprotect_object (toplevel_variable_tab_->self_scm ());
+  delete scope_p_ ;
 }
 
-void
-My_lily_lexer::print_declarations (bool ) const
-{
-  for (int i=scope_l_arr_.size (); i--; )
-    {
-      DOUT << "Scope no. " << i << '\n';
-      scope_l_arr_[i]->print ();
-    }
-}
+
 
 void
 My_lily_lexer::LexerError (char const *s)
 {
-  if (include_stack_.empty())
+  if (include_stack_.empty ())
     {
-      *mlog << _f ("error at EOF: %s", s) << endl;
+      progress_indication (_f ("error at EOF: %s", s)+ String ("\n"));
     }
   else
     {
       errorlevel_i_ |= 1;
-      Input spot (source_file_l(),here_ch_C());
+      Input spot (source_file_l (),here_ch_C ());
       spot.error (s);
     }
 }
 
-Musical_pitch
-My_lily_lexer::lookup_notename (String s)
-{
-  return (*note_tab_p_)[s];
-}
-
-Musical_pitch
-My_lily_lexer::lookup_chordmodifier (String s)
-{
-  return (*chordmodifier_tab_p_)[s];
-}
-
-bool
-My_lily_lexer::notename_b (String s) const
-{
-  return note_tab_p_->elem_b (s);
-}
-
-void
-My_lily_lexer::set_notename_table (Notename_table *p)
-{
-  delete note_tab_p_;
-  note_tab_p_ = p;
-}
-
-bool
-My_lily_lexer::chordmodifier_b (String s) const
-{
-  return chordmodifier_tab_p_->elem_b (s);
-}
-
-void
-My_lily_lexer::set_chordmodifier_table (Notename_table *p)
-{
-  delete chordmodifier_tab_p_;
-  chordmodifier_tab_p_ = p;
-}
-
 char
-My_lily_lexer::escaped_char(char c) const
+My_lily_lexer::escaped_char (char c) const
 {
-  switch(c)
+  switch (c)
     {
     case 'n':
       return '\n';

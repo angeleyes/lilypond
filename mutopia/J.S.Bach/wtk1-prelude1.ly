@@ -1,25 +1,32 @@
 \header{
-filename =	 "prelude1.ly";
-title =	 "Preludium";
-description =	 "Das Wohltemperierte Clavier I, Prelude I (c-major)";
-opus =	 "BWV 846";
-composer =	 "Johann Sebastian Bach (1685-1750)";
-enteredby =	 "Shay Rojansky";
-copyright =	 "Public Domain";
+title = 	 "Preludium"
+opus = 	 "BWV 846"
+composer = 	 "Johann Sebastian Bach (1685-1750)"
+enteredby = 	 "Shay Rojansky"
+
+
+  % mutopia headers.
+  mutopiatitle = "Das Wohltemperierte Clavier I, Prelude 1 (c-major)"
+  mutopiacomposer = "J.S.Bach"
+  mutopiaopus = "BWV846"
+  style = "baroque"
+  copyright =    "\\\\This music is part of the Mutopia project, http://sca.uwaterloo.ca/Mutopia/\\\\It has been typeset and placed in the public domain by Han-Wen Nienhuys.\\\\Unrestricted modification and redistribution is permitted and encouraged - copy this music and share it!"
+  maintainer = "hanwen@cs.uu.nl"
+  lastupdated = "1999/Oct/14"
 }
 
-\version "1.2.0";
+\version "1.3.146"
 
 % should do programmable input.
-soprane =
+soprane = 
     \notes \transpose c'' {
 	\context Staff <
 	% Real soprane
 	\context Voice = uVoice {
-	\time 4/4;
-        \clef "violin";
+	\time 4/4
+        \clef "violin"
 
-	\stemup
+	\stemUp
 	r8 [g16 c'] [e' g c' e'] r8 [g16 c'] [e' g c' e'] |
 	r8 [a16 d'] [f' a d' f'] r8 [a16 d'] [f' a d' f'] |
 	r8 [g16 d'] [f' g d' f'] r8 [g16 d'] [f' g d' f'] |
@@ -30,7 +37,7 @@ soprane =
 	r8 [e16 g] [c' e g c'] r8 [e16 g] [c' e g c'] |
 	r8 [e16 g] [c' e g c'] r8 [e16 g] [c' e g c'] }
 	% Tenor
-	\context Voice = dVoice {\stemdown
+	\context Voice = dVoice {\stemDown
 	r16 e8. ~ e4 r16 e8. ~ e4 |
 	r16 d8. ~ d4 r16 d8. ~ d4 |
 	r16 d8. ~ d4 r16 d8. ~ d4 |
@@ -69,15 +76,15 @@ soprane =
 
 	r8 [f,16 a,] [c f c a,] [c a, f, a,] [f, d, f, d,] |
 	r8 [g16 b] [d' f' d' b] [d' b g b] [d f e d] |
-	<e1 g c'> \bar "|.";
+	<e1 g c'> \bar "|."
     }
 
-bass =
+bass = 
     \notes {
-        \clef "bass";
+        \clef "bass"
 
 
-	\stemdown
+	\stemDown
 	c'2 c' |
 	c' c' |
 	b b |
@@ -90,7 +97,7 @@ bass =
 %% 10
 	\context Staff <
 	\context Voice =  Alt
-	{\stemup
+	{\stemUp
 	r16 a8. ~ a4 r16 a8. ~ a4 |
 	r16 b8. ~ b4 r16 b8. ~ b4 |
 	r16 bes8. ~ bes4 r16 bes8. ~ bes4 |
@@ -122,7 +129,7 @@ bass =
 	c1 ||}
 
 	\context Voice = Bass
-	{\stemdown
+	{\stemDown
 	d2 d |
 	g g |
 	g g |
@@ -151,7 +158,7 @@ bass =
 	
 	c, c, |
 	c, c, |
-	c,1 \bar "|."; }>
+	c,1 \bar "|." }>
     }
 
         
@@ -160,11 +167,8 @@ bass =
     	\soprane
         \bass
     >
-    \paper{
-	gourlay_maxmeasures =5.;	
-    }
     \midi {
-        \tempo 4 = 84;
+        \tempo 4 = 80
     }
 }
 

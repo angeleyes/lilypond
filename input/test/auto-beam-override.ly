@@ -1,3 +1,7 @@
+\version "1.3.146"
+
+
+
 %{
   Currently (1.1.27.jcn3), the auto-beam engraver will only engrave
   sensible beams, which means that it will end a beam when:
@@ -12,12 +16,12 @@
 	
 \score{
     \notes \relative c''{
-    	\time 2/4;
+    	\time 2/4
 	% one beam per measure
       	c8 c c c
       	c16 c c c c c c c
 	% from here on consider ending beam every 1/4 note
-	\property Voice.beamAutoEnd = "1/4"
+	\property Voice.autoBeamSettings \override #'(end * * * *) = #(make-moment 1 4)
       	c8 c c c
 	% manually override autobeam with weird beaming
       	c8 [c c] c
@@ -25,14 +29,14 @@
       	c8 c c4
       	r8 c c c
 	% no autobeaming
-	\property Voice.beamAuto = "0"
+	\property Voice.noAutoBeaming = ##t
       	c8 c c c
     }
     \paper{
       	\translator{
 	    \VoiceContext
 	    % consider ending beam at every 1/2 note
-	    beamAutoEnd = "1/2";
+	    autoBeamSettings \override #'(end * * * *) = #(make-moment 1 2)
 	}
     }
 }

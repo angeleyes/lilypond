@@ -1,30 +1,22 @@
-\version "1.2.0";
+\version "1.3.146"
 
-global = \notes {
-  s1 | \mark "A";
-  s1*2 | \mark "'12";
+
+global =  \notes {
+  s1 | \mark "A"
+  s1 | \mark \default 
+  s1 | \mark \default 
+  s1 | \mark "12"
+  s1 | \mark \default 
+  s1 | \mark "A2"
+  s1 | \mark #'(music "scripts-segno")  
+  s1
 }
 
-one = \notes\relative c{
-  c'' c c c
-  c c c c
-  c c c c
+one =  \notes \relative c {
+  c''1 c c c c c c 
 }
 
-two = \notes\relative c{
-  b' b b b
-  b b b b
-  b b b b
-}
 
 \score{
-	< \global \one \two >
-	\paper {
-		\translator { \OrchestralPartStaffContext 
-		        markScriptPadding = "4.0";
-			markHangOn  = "Bar";
-			markHangDepth = "1";
-%			markDirection = \down;
-		}
-	}
+\context Staff	< \global \one >
 }

@@ -1,13 +1,14 @@
+\version "1.3.146"
 \header{
-enteredby =	 "jcn";
-copyright =	 "PD";
-TestedFeatures =	 "This file tests Feta embedded slurs" +
-	 "(Feta definitively is not an abbreviation of Font-En-TjA)";
+enteredby = 	 "jcn"
+copyright = 	 "PD"
+TestedFeatures = 	 "This file tests Feta embedded slurs" +
+	 "(Feta definitively is not an abbreviation of Font-En-TjA)"
 }
 
-\version "1.2.0";
 
-shortlong = \notes{
+
+shortlong =  \notes{
 	c4()c( c c  |
 	c c c c |
 	c c c c |
@@ -15,7 +16,7 @@ shortlong = \notes{
 	c c c )c |
 }
 
-broken = \notes\transpose c''{
+broken =  \notes\transpose c''{
 
       c c c c()
       c c c c(
@@ -35,10 +36,10 @@ broken = \notes\transpose c''{
 		\broken
 	}
 	\paper{ 
-	      indent = 0.0\pt;
+	      indent = 0.0\pt
 		%for broken!
-		linewidth= 30.\mm;
-		castingalgorithm = \Wordwrap;
+		linewidth= 30.\mm
+
 	}
 }
 

@@ -1,8 +1,9 @@
-\version "1.2.0";
+\version "1.3.146"
+
 
 \score{
 	\notes\transpose c'{
-		\property Score.beamquantisation = \none
+		\property Score.beamQuantisation = #'none
 
 		[a'8 <a' g''>]
 		[c <c e,>]
@@ -12,7 +13,7 @@
 		[c <c e,>]
 	}
 	\paper{
-		castingalgorithm = \Wordwrap;
-		linewidth = 60.0\mm;
+
+		linewidth = 60.0\mm
 	}
 }

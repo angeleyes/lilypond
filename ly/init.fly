@@ -1,14 +1,14 @@
 % Toplevel initialisation file. 
 	
-\version "1.1.52";
+\version "1.3.146"
 
 
 \include "declarations.ly"
 
 \score { 
-  \notes\relative c {
+  \context Voice \notes\relative c {
     \maininput
   }
   \paper { }  
-  \midi{ }
+  \midi { }
 }

@@ -1,15 +1,15 @@
 % Toplevel initialisation file. 
 	
-\version "1.2.0";
+\version "1.3.146"
 
 
 \include "declarations.ly"
 \include "paper16.ly"
 
  \paper { 
-  \paper_sixteen
-%  linewidth = 7.\cm;
-  linewidth = 11.\cm;
+  \paperSixteen
+%  linewidth = 7.\cm
+  linewidth = 11.\cm
 }
 
 \maininput

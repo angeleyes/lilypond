@@ -1,6 +1,8 @@
+\version "1.3.146"
+
 \header{
 % should look the same
-title="symmetry";
+title="symmetry"
 }
 \score{
 	\notes\relative c'{
@@ -9,7 +11,7 @@ title="symmetry";
 		[d''8( f )a, d'] r2
 	}
 	\paper{
-		castingalgorithm = \Wordwrap;
-		linewidth = 50.0\mm;
+
+		linewidth = 50.0\mm
 	}
 }
