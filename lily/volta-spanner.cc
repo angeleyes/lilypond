@@ -3,124 +3,127 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
+#include <string.h>
 
 #include "box.hh"
 #include "debug.hh"
-#include "lookup.hh"
+#include "font-interface.hh"
 #include "molecule.hh"
-#include "note-column.hh"
 #include "paper-column.hh"
-#include "bar.hh"
 #include "paper-def.hh"
+#include "text-item.hh"
 #include "volta-spanner.hh"
-#include "stem.hh"
+#include "group-interface.hh"
+#include "side-position-interface.hh"
+#include "directional-element-interface.hh"
 
-#include "pointer.tcc"
 
-Volta_spanner::Volta_spanner ()
-{
-  last_b_ = false;
-}
-
-Molecule*
-Volta_spanner::do_brew_molecule_p () const
-{
-  Molecule* mol_p = new Molecule;
-
-  if (!bar_arr_.size ())
-    return mol_p;
-  
-  bool no_vertical_start = false;
-  bool no_vertical_end = last_b_;
-  Spanner *orig_span =  dynamic_cast<Spanner*> (original_l_);
-  if (orig_span && (orig_span->broken_into_l_arr_[0] != (Spanner*)this))
-    no_vertical_start = true;
-  if (orig_span && (orig_span->broken_into_l_arr_.top () != (Spanner*)this))
-    no_vertical_end = true;
-  if (bar_arr_.top ()->type_str_.length_i () > 1)
-    no_vertical_end = false;
-
-  Real interline_f = paper_l ()->get_realvar (interline_scm_sym);
-  Real internote_f = interline_f/2;
-  Real t = paper_l ()->get_realvar (volta_thick_scm_sym);
-
-  Real dx = internote_f;
-  Real w = extent (X_AXIS).length () - dx - get_broken_left_end_align ();
-  Real h = paper_l()->get_var ("volta_spanner_height");
-  Molecule volta (lookup_l ()->volta (h, w, t, no_vertical_start, no_vertical_end));
-
-  
-  Molecule num (lookup_l ()->text ("volta", number_str_, paper_l ()));
-  Real dy = bar_arr_.top ()->extent (Y_AXIS) [UP] > 
-     bar_arr_[0]->extent (Y_AXIS) [UP];
-  dy += 2 * h;
-
-  for (int i = 0; i < note_column_arr_.size (); i++)
-    dy = dy >? note_column_arr_[i]->extent (Y_AXIS)[BIGGER];
-  dy -= h;
-
-  Molecule two (lookup_l ()->text ("number", "2", paper_l ()));
-  Real gap = two.dim_.x ().length () / 2;
-  Offset off (num.dim_.x ().length () + gap, 
-	      h / internote_f - gap);
-  num.translate (off);
-  mol_p->add_molecule (volta);
-  mol_p->add_molecule (num);
-  mol_p->translate (Offset (0, dy));
-  return mol_p;
-}
-  
 void
-Volta_spanner::do_add_processing ()
+Volta_spanner::set_interface (Grob*)
 {
-  if (bar_arr_.size ())
-    {
-      set_bounds (LEFT, bar_arr_[0]);
-      set_bounds (RIGHT, bar_arr_.top ());  
-    }
 }
+
+/*
+  this is too complicated. Yet another version of side-positioning,
+  badly implemented.
+
+  --
+
+  * Should look for system_start_delim to find left edge of staff.
   
-Interval
-Volta_spanner::do_height () const
+*/
+
+MAKE_SCHEME_CALLBACK (Volta_spanner,brew_molecule,1);
+SCM
+Volta_spanner::brew_molecule (SCM smob) 
 {
+  Grob *me = unsmob_grob (smob);
+  Link_array<Item> bar_arr
+    = Pointer_group_interface__extract_elements (me, (Item*)0, "bars");
+
+  if (!bar_arr.size ())
+    return SCM_EOL;
+
+  Spanner *orig_span =  dynamic_cast<Spanner*> (me->original_l_);
+
+  bool first_bracket = orig_span && (orig_span->broken_into_l_arr_[0] == (Spanner*)me);
+  
+  bool last_bracket = orig_span && (orig_span->broken_into_l_arr_.top () == (Spanner*)me);
+
+  bool no_vertical_start = orig_span && !first_bracket;
+  bool no_vertical_end = orig_span && !last_bracket;
+  SCM bars = me->get_grob_property ("bars");
+  Grob * endbar =   unsmob_grob (gh_car (bars));
+  SCM glyph = endbar->get_grob_property("glyph");
+  String str = ly_scm2string(glyph);
+  const char* cs = str.ch_C();
+  no_vertical_end |=
+    (strcmp(cs,":|")!=0 && strcmp(cs,"|:")!=0 && strcmp(cs,"|.")!=0
+     && strcmp(cs,":|:")!=0 && strcmp(cs,".|")!=0);
+
+  Real staff_thick = me->paper_l ()->get_var ("stafflinethickness");  
+  Real half_space = 0.5;
+
+  Item * bound = dynamic_cast<Spanner*> (me)->get_bound (LEFT);
+
   /*
-    in most cases, it's a lot better not no have height...
-  */
-  Interval i;
-  return i;
+    not a start, but really broken in two
+   */
+  Real left =0.;  
+  if (bound->break_status_dir () == RIGHT)
+  {
+    Paper_column *pc = bound->column_l ();
+    left = pc->extent (pc, X_AXIS)[RIGHT]   - bound->relative_coordinate (pc, X_AXIS);
+  }
+  else
+  {
+    /*
+      the volta spanner is attached to the bar-line, which is moved
+      to the right. We don't need to compensate for the left edge.
+    */
+  }
+
+  Real w = dynamic_cast<Spanner*> (me)->spanner_length () - left - half_space;
+  Real h =  gh_scm2double (me->get_grob_property ("height"));
+  Real t =  staff_thick * gh_scm2double (me->get_grob_property ("thickness"));
+
+  /*
+    ugh: should build from line segments.
+   */
+  SCM at = (gh_list (ly_symbol2scm ("volta"),
+		     gh_double2scm (h),
+		     gh_double2scm (w),
+		     gh_double2scm (t),
+		     gh_int2scm (no_vertical_start),
+		     gh_int2scm (no_vertical_end),
+		     SCM_UNDEFINED));
+
+  Box b (Interval (0, w), Interval (0, h));
+  Molecule mol (b, at);
+  SCM text = me->get_grob_property ("text");
+  SCM properties = gh_list (me->mutable_property_alist_, me->immutable_property_alist_,SCM_UNDEFINED);
+  Molecule num = Text_item::text2molecule (me, text, properties);
+
+  mol.add_at_edge (X_AXIS, LEFT, num, - num.extent (X_AXIS).length ()
+		   - 1.0);
+  mol.translate_axis (left, X_AXIS);
+  return mol.smobbed_copy ();
+}
+
+
+void
+Volta_spanner::add_bar (Grob *me, Item* b)
+{
+  Pointer_group_interface::add_element (me, "bars",b);
+  Side_position_interface::add_support (me,b);
+  add_bound_item (dynamic_cast<Spanner*> (me), b); 
 }
 
 void
-Volta_spanner::do_post_processing ()
+Volta_spanner::add_column (Grob*me, Grob* c)
 {
-  if (bar_arr_.size())
-    translate_axis (bar_arr_[0]->extent (Y_AXIS)[UP], Y_AXIS);
-  translate_axis (get_broken_left_end_align (), X_AXIS);
+  Side_position_interface::add_support (me,c);
 }
-
-void
-Volta_spanner::do_substitute_element_pointer (Score_element* o, Score_element* n)
-{
-  if (Note_column* c = dynamic_cast <Note_column*> (o))
-    note_column_arr_.substitute (c, dynamic_cast<Note_column*> (n));
-  else if (Bar* c = dynamic_cast <Bar*> (o))
-    bar_arr_.substitute (c, dynamic_cast<Bar*> (n));
-}
-  
-void
-Volta_spanner::add_bar  (Bar* c)
-{
-  bar_arr_.push (c);
-  add_dependency (c);
-}
-
-void
-Volta_spanner::add_column (Note_column* c)
-{
-  note_column_arr_.push (c);
-  add_dependency (c);
-}
-
