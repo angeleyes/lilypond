@@ -24,8 +24,10 @@ fi
 # and create links to here, if necessary
 #
 sourcetree=`basename \`pwd\``
-(cd ..; rm -f $package 2>&1 > /dev/null)
-(cd ..; ln -s $sourcetree $package)
+if [ "x$sourcetree" != "x$package" ]; then
+	(cd ..; rm -f $package 2>&1 > /dev/null)
+	(cd ..; ln -s $sourcetree $package)
+fi
 #
 if [ ! -r $sources ]; then
 	(cd ..; ln -s `pwd` $sources)
@@ -33,10 +35,10 @@ fi
 #
 mkdir -p $prefix/bin
 result=`echo $PATH | grep "$HOME/usr/bin"`
-if [ "x$result" = "x" ];then
+if [ "x$result" = "x" ]; then
     PATH=$PATH:$HOME/usr/bin
 fi
 result=`echo $PATH | grep "$sources/$package/bin"`
-if [ "x$result" = "x" ];then
+if [ "x$result" = "x" ]; then
     PATH=$PATH:$sources/$package/bin
 fi
