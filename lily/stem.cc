@@ -23,7 +23,7 @@ void
 Stem::set_direction (Direction d)
 {
   if  (!dir_)
-    warning ("Stem direction set already!");
+    warning (_ ("stem direction set already!"));
 
   dir_ = d;
 
@@ -57,7 +57,7 @@ Stem::head_positions () const
   Interval_t<int> r;
   for (int i =0; i < head_l_arr_.size (); i++)
     {
-      int p = head_l_arr_[i]->position_i ();
+      int p = (int)head_l_arr_[i]->position_f ();
       r[BIGGER] = r[BIGGER] >? p;
       r[SMALLER] = r[SMALLER] <? p;
     }
@@ -68,9 +68,9 @@ void
 Stem::do_print () const
 {
 #ifndef NPRINT
-  DOUT << "flag "<< flag_i_;
+  DEBUG_OUT << "flag "<< flag_i_;
   if (beam_l_)
-    DOUT << "beamed";
+    DEBUG_OUT << "beamed";
 #endif
 }
 
@@ -103,7 +103,7 @@ Stem::set_stemend (Real se)
 {
   // todo: margins
   if (dir_ && dir_ * head_positions()[dir_] >= se*dir_)
-    warning (_ ("weird stem size; check for narrow beams"));
+    warning (_ ("Weird stem size; check for narrow beams"));
 
   
   yextent_drul_[dir_]  =  se;
@@ -201,7 +201,8 @@ Stem::set_default_stemlen ()
   set_stemend ((dir_ > 0) ? head_positions()[BIGGER] + length_f:
 	       head_positions()[SMALLER] - length_f);
 
-  if (!grace_b && (dir_ * stem_end_f () < 0))
+  bool no_extend_b = get_elt_property (no_stem_extend_scm_sym) != SCM_BOOL_F;
+  if (!grace_b && !no_extend_b && (dir_ * stem_end_f () < 0))
     set_stemend (0);
 }
 
@@ -229,10 +230,10 @@ Stem::set_noteheads ()
     head_l_arr_.top ()->set_elt_property (extremal_scm_sym, SCM_BOOL_T);
   
   int parity=1;
-  int lastpos = beginhead->position_i ();
+  int lastpos = int (beginhead->position_f ());
   for (int i=1; i < head_l_arr_.size (); i ++)
     {
-      int dy =abs (lastpos- head_l_arr_[i]->position_i ());
+      int dy =abs (lastpos- (int)head_l_arr_[i]->position_f ());
 
       if (dy <= 1)
 	{
@@ -242,7 +243,7 @@ Stem::set_noteheads ()
 	}
       else
 	parity = 1;
-      lastpos = head_l_arr_[i]->position_i ();
+      lastpos = int (head_l_arr_[i]->position_f ());
     }
 }
 
@@ -270,6 +271,7 @@ Stem::do_pre_processing ()
 
    TODO: more advanced: supply height of noteheads as well, for more advanced spacing possibilities
  */
+
 void
 Stem::set_spacing_hints () 
 {
@@ -369,7 +371,8 @@ Stem::note_delta_f () const
   if (head_l_arr_.size())
     {
       Interval head_wid(0,  head_l_arr_[0]->extent (X_AXIS).length ());
-      Real rule_thick(paper_l ()->rule_thickness ());
+         Real rule_thick = paper_l ()->get_var ("stemthickness");
+
       Interval stem_wid(-rule_thick/2, rule_thick/2);
       if (dir_ == CENTER)
 	r = head_wid.center ();

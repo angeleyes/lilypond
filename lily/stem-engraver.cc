@@ -77,7 +77,7 @@ Stem_engraver::acknowledge_element(Score_element_info i)
 
       if (stem_p_->flag_i_ != duration_log)
 	{
-	  r->warning (_f("Adding note head to incompatible stem (type = %d)", 1 <<  stem_p_->flag_i_));
+	  r->warning (_f ("Adding note head to incompatible stem (type = %d)", 1 <<  stem_p_->flag_i_));
 	}
 
       stem_p_->add_head (h);
@@ -128,6 +128,12 @@ Stem_engraver::do_pre_move_processing()
       if (prop.to_bool ())
 	{
 	  stem_p_->set_elt_property (style_scm_sym, ly_ch_C_to_scm (prop.ch_C()));
+	}
+      
+      prop = get_property ("noStemExtend", 0);
+      if (prop.to_bool ())
+	{
+	  stem_p_->set_elt_property (no_stem_extend_scm_sym, gh_int2scm (1));
 	}
       
       typeset_element(stem_p_);

@@ -8,6 +8,9 @@
 ;(debug-enable 'backtrace)
 
 ;;; library funtions
+
+; :use-module (ice-9 regex))
+
 (define
   (xnumbers->string l)
   (string-append 
@@ -236,7 +239,9 @@
   (define (header-end)
     (string-append
      "\\special{! "
-     (regexp-substitute/global #f "\n" (ly-gulp-file "lily.ps") 'pre " %\n" 'post)
+     (ly-gulp-file "lily.ps")
+     ;; breaks on ppc
+;;     (regexp-substitute/global #f "\n" (ly-gulp-file "lily.ps") 'pre " %\n" 'post)
      "}"
      "\\input lilyponddefs \\turnOnPostScript"))
 
@@ -265,7 +270,10 @@
 
   (define (lily-def key val)
     (string-append
-     "\\def\\" (output-tex-string key) "{" (output-tex-string val) "}\n"))
+     "\\def\\"
+;     (regexp-substitute/global #f "_" (output-tex-string key) 'pre "X" 'post)
+     (output-tex-string key)
+     "{" (output-tex-string val) "}\n"))
 
   (define (number->dim x)
     (string-append 
@@ -408,20 +416,20 @@
 		      )))
   
   (define (select-font font-name magnification)
-      (if (not (equal? font-name current-font))
-	  (begin
-	    (set! current-font font-name)
-	    (define font-cmd (assoc font-name font-alist))
-	    (if (eq? font-cmd #f)
-		(begin
-		  (set! font-cmd (cached-fontname font-count))
-		  (set! font-alist (acons font-name font-cmd font-alist))
-		  (set! font-count (+ 1 font-count))
-		  (string-append "\n/" font-cmd " {/"
-				 font-name " findfont " 
-				 (mag-to-size magnification)
-				 " scalefont setfont} bind def \n"
-				 font-cmd " \n"))
+    (define font-cmd (assoc font-name font-alist))
+    (if (not (equal? font-name current-font))
+	(begin
+	  (set! current-font font-name)
+	  (if (eq? font-cmd #f)
+	      (begin
+		(set! font-cmd (cached-fontname font-count))
+		(set! font-alist (acons font-name font-cmd font-alist))
+		(set! font-count (+ 1 font-count))
+		(string-append "\n/" font-cmd " {/"
+			       font-name " findfont " 
+			       (mag-to-size magnification)
+			       " scalefont setfont} bind def \n"
+			       font-cmd " \n"))
 		(string-append (cdr font-cmd) " ")))
 	  ; font-name == current-font no switch needed
 	  ""				

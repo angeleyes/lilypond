@@ -61,7 +61,7 @@ showln -sf $sources/lilypond $prefix/share/lilypond
 
 
 BUILDDIR=`pwd`
-LOCALES="it nl"
+LOCALES="de it nl"
 for i in $LOCALES; do
 	dir=$BUILDDIR/share/locale/$i/LC_MESSAGES
 	if test ! -x $dir ; then
@@ -79,9 +79,9 @@ fi
 rm -f cmtfm; showln -sf $TEX_TFMDIR $BUILDDIR/cmtfm
 
 
-if [ -f ../.gdbinit ];
+if [ -f ../.gdbinit.lilypond ];
 then
-    showln -f ../.gdbinit .
+    showln -f ../.gdbinit.lilypond .gdbinit
 fi
 
 if [ -f ../.dstreamrc ]

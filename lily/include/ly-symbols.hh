@@ -18,6 +18,8 @@
 
 DECLARE_LY_SYMBOL(alt_symbol);
 DECLARE_LY_SYMBOL(at_line_start);
+DECLARE_LY_SYMBOL(auto_interstaff_knee_gap);
+DECLARE_LY_SYMBOL(auto_knee_gap);
 DECLARE_LY_SYMBOL(bar_size);
 DECLARE_LY_SYMBOL(beam);
 DECLARE_LY_SYMBOL(beam_thickness);
@@ -58,10 +60,12 @@ DECLARE_LY_SYMBOL(notewidth);
 DECLARE_LY_SYMBOL(non_default);
 DECLARE_LY_SYMBOL(non_rhythmic);
 DECLARE_LY_SYMBOL(no_staff_support);
+DECLARE_LY_SYMBOL(no_stem_extend);
 DECLARE_LY_SYMBOL(octave_dir);
 DECLARE_LY_SYMBOL(origin);
 DECLARE_LY_SYMBOL(output);
 DECLARE_LY_SYMBOL(padding);
+DECLARE_LY_SYMBOL(penalty);
 DECLARE_LY_SYMBOL(pianobrace);
 DECLARE_LY_SYMBOL(placebox);
 DECLARE_LY_SYMBOL(rulesym);
