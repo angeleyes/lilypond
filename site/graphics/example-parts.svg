@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   xml:space="preserve"
+   id="svg548"
+   sodipodi:version="0.32"
+   width="210mm"
+   height="297mm"
+   sodipodi:docname="example-parts.svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   inkscape:version="0.39"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch">
+  <defs
+   id="defs550" />
+
+  <sodipodi:namedview
+   id="base"
+   inkscape:zoom="1.7341938"
+   inkscape:cx="297.63779"
+   inkscape:cy="420.94487"
+   inkscape:window-width="1399"
+   inkscape:window-height="1183"
+   inkscape:window-x="24"
+   inkscape:window-y="40" />
+
+  <text
+   style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:28.000000;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;font-stretch:normal;font-variant:normal;"
+   x="63.5809479"
+   y="283.503632"
+   id="text555"
+   sodipodi:linespacing="100%"><tspan
+     x="63.580948"
+     y="283.50363"
+     sodipodi:role="line"
+     id="tspan1190">hornNotes =</tspan><tspan
+     x="63.580948"
+     y="311.50363"
+     sodipodi:role="line"
+     id="tspan1192">\relative c {</tspan><tspan
+     x="63.580948"
+     y="339.50363"
+     sodipodi:role="line"
+     id="tspan1194">  \time 2/4</tspan><tspan
+     x="63.580948"
+     y="367.50363"
+     sodipodi:role="line"
+     id="tspan1196">  R2*3</tspan><tspan
+     x="63.580948"
+     y="395.50363"
+     sodipodi:role="line"
+     id="tspan1198">  r4 f8 a cis4 f e d</tspan><tspan
+     x="63.580948"
+     y="423.50363"
+     sodipodi:role="line"
+     id="tspan1200">}</tspan><tspan
+     x="63.580948"
+     y="451.50363"
+     sodipodi:role="line"
+     id="tspan1202"></tspan><tspan
+     x="63.580948"
+     y="479.50363"
+     sodipodi:role="line"
+     id="tspan1204">bassoonNotes =</tspan><tspan
+     x="63.580948"
+     y="507.50363"
+     sodipodi:role="line"
+     id="tspan1206">\relative c {</tspan><tspan
+     x="63.580948"
+     y="535.50363"
+     sodipodi:role="line"
+     id="tspan1208">  \clef bass</tspan><tspan
+     x="63.580948"
+     y="563.50363"
+     sodipodi:role="line"
+     id="tspan1210">  r4 d,8 f  gis4 c   b bes</tspan><tspan
+     x="63.580948"
+     y="591.50363"
+     sodipodi:role="line"
+     id="tspan1212">  a8 e f4   g d  gis f</tspan><tspan
+     x="63.580948"
+     y="619.50363"
+     sodipodi:role="line"
+     id="tspan1214">}</tspan><tspan
+     x="63.580948"
+     y="647.50363"
+     sodipodi:role="line"
+     id="tspan1216"></tspan><tspan
+     x="63.580948"
+     y="675.50363"
+     sodipodi:role="line"
+     id="tspan1218">    </tspan><tspan
+     x="63.580948"
+     y="703.50363"
+     sodipodi:role="line"
+     id="tspan1220"></tspan><tspan
+     x="63.580948"
+     y="731.50363"
+     sodipodi:role="line"
+     id="tspan1222"></tspan><tspan
+     x="63.580948"
+     y="759.50363"
+     sodipodi:role="line"
+     id="tspan1224"></tspan><tspan
+     x="63.580948"
+     y="787.50363"
+     sodipodi:role="line"
+     id="tspan1226">  </tspan></text>
+
+  <rect
+   style="font-size:12;fill:#01b500;fill-opacity:0.562044;fill-rule:evenodd;stroke:none;stroke-width:1pt;stroke-opacity:1;"
+   id="rect662"
+   width="72.4331894"
+   height="25.8095703"
+   x="93.6635971"
+   y="343.849060" />
+
+  <rect
+   style="font-size:12;fill:#af3738;fill-opacity:0.565217;fill-rule:evenodd;stroke-width:1pt;"
+   id="rect663"
+   width="203.978513"
+   height="31.637497"
+   x="55.781881"
+   y="254.764572" />
+
+  <rect
+   style="font-size:12;fill:#af3738;fill-opacity:0.565217;fill-rule:evenodd;stroke-width:1pt;"
+   id="rect664"
+   width="246.439331"
+   height="25.8095398"
+   x="60.3609848"
+   y="456.245392" />
+
+  <path
+   style="fill:none;fill-rule:evenodd;stroke:#00ad00;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
+   d="M 166.606 360.625 C 239.606 360.625 356.171 337.076 445.655 338.254 "
+   id="path665"
+   transform="translate(0.000000,-3.051758e-5)" />
+
+  <path
+   style="fill:none;fill-rule:evenodd;stroke:#b10000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
+   d="M 306.131 476.601 C 363.824 449.52 492.753 491.908 495.107 454.23 "
+   id="path666"
+   sodipodi:nodetypes="cc"
+   transform="translate(0.000000,-3.051758e-5)" />
+
+  <text
+   style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#00ad00;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
+   x="459.18481"
+   y="321.10385"
+   id="text667">
+    <tspan
+   x="459.18481"
+   y="347.10385"
+   sodipodi:role="line"
+   id="tspan672">
+Enter multi-rest</tspan>
+  </text>
+
+  <text
+   style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#b10000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
+   x="366.66870"
+   y="410.56613"
+   id="text674">
+    <tspan
+   x="366.66870"
+   y="436.56613"
+   sodipodi:role="line"
+   id="tspan680">
+Store notes in variable</tspan>
+  </text>
+
+<metadata
+   id="metadata1054">
+  <rdf:RDF
+     id="RDF1055">
+    <cc:Work
+       rdf:about=""
+       id="Work1056">
+      <dc:format
+         id="format1057">image/svg+xml</dc:format>
+      <dc:type
+         id="type1059"
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    </cc:Work>
+  </rdf:RDF>
+</metadata>
+</svg>

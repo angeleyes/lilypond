@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   xml:space="preserve"
+   id="svg682"
+   sodipodi:version="0.32"
+   width="210mm"
+   height="297mm"
+   sodipodi:docname="example-single-part.svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   inkscape:version="0.39"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch">
+  <defs
+   id="defs684" />
+
+  <sodipodi:namedview
+   id="base"
+   inkscape:zoom="1.7341938"
+   inkscape:cx="297.63779"
+   inkscape:cy="420.94487"
+   inkscape:window-width="1368"
+   inkscape:window-height="1123"
+   inkscape:window-x="72"
+   inkscape:window-y="0" />
+
+  <text
+   style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:28.000000;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;font-stretch:normal;font-variant:normal;"
+   x="38.8550110"
+   y="361.213776"
+   id="text690"
+   sodipodi:linespacing="100%"><tspan
+     x="38.855011"
+     y="361.21378"
+     sodipodi:role="line"
+     id="tspan1160">{</tspan><tspan
+     x="38.855011"
+     y="389.21378"
+     sodipodi:role="line"
+     id="tspan1162">  \set Score.skipBars = ##t</tspan><tspan
+     x="38.855011"
+     y="417.21378"
+     sodipodi:role="line"
+     id="tspan1164">  \transpose f c'  \hornNotes</tspan><tspan
+     x="38.855011"
+     y="445.21378"
+     sodipodi:role="line"
+     id="tspan1166">}</tspan><tspan
+     x="38.855011"
+     y="473.21378"
+     sodipodi:role="line"
+     id="tspan1168">  </tspan></text>
+
+  <rect
+   style="font-size:12.000000;fill:#ee9797;fill-opacity:0.73913002;fill-rule:evenodd;stroke-width:1.0000000pt;"
+   id="rect705"
+   width="429.67987"
+   height="30.066223"
+   x="69.357788"
+   y="364.06888" />
+
+  <rect
+   style="font-size:12.000000;fill:#23e023;fill-opacity:0.49634996;fill-rule:evenodd;stroke-width:1.0000000pt;"
+   id="rect706"
+   width="249.95901"
+   height="26.248253"
+   x="69.155769"
+   y="395.51447" />
+
+  <rect
+   style="font-size:12.000000;fill:#6165d3;fill-opacity:0.60000002;fill-rule:evenodd;stroke-width:1.0000000pt;"
+   id="rect707"
+   width="169.54926"
+   height="22.573122"
+   x="374.42114"
+   y="396.10330" />
+
+  <path
+   style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#b10000;stroke-width:1.8750000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+   d="M 201.22890,365.83552 C 207.11690,306.96352 258.92290,299.89952 287.18090,295.18952"
+   id="path708" />
+
+  <path
+   style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#00b300;stroke-width:1.8750000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+   d="M 108.21290,423.52852 C 65.825930,463.56152 6.9542299,510.65852 58.760930,543.62652"
+   id="path709" />
+
+  <path
+   style="fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#0000b0;stroke-width:1.8750000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+   d="M 397.97000,421.17452 C 346.16300,472.98052 367.35700,496.52952 400.32500,517.72252"
+   id="path710" />
+
+  <text
+   style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#b00000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
+   x="303.66541"
+   y="299.89920"
+   id="text711">
+    <tspan
+   x="303.66541"
+   y="325.89920"
+   sodipodi:role="line"
+   id="tspan716">
+Condense multirests</tspan>
+  </text>
+
+  <text
+   style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#00b200;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
+   x="66.991913"
+   y="540.00531"
+   id="text718">
+    <tspan
+   x="66.991913"
+   y="566.00531"
+   sodipodi:role="line"
+   id="tspan721">
+Transpose for F instrument</tspan>
+  </text>
+
+  <text
+   style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#0000ab;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
+   x="379.02060"
+   y="528.31940"
+   id="text723">
+    <tspan
+   id="tspan724">
+Reuse identifier</tspan>
+  </text>
+
+<metadata
+   id="metadata1154">
+  <rdf:RDF
+     id="RDF1155">
+    <cc:Work
+       rdf:about=""
+       id="Work1156">
+      <dc:format
+         id="format1157">image/svg+xml</dc:format>
+      <dc:type
+         id="type1159"
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    </cc:Work>
+  </rdf:RDF>
+</metadata>
+</svg>

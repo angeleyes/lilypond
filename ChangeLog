@@ -1,3 +1,8 @@
+2004-10-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/graphics/: new directory. Edit SVG images with inkscape
+	0.39
+
 2004-10-25  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/download/index.html: change path to fedora-3
