@@ -6,14 +6,14 @@
   (c)  1997--1998 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
-#include "moment.hh"
+#include "rational.hh"
 #include "source-file.hh"
 #include "source.hh"
 #include "midi2ly-global.hh"
 #include "midi-score-parser.hh"
 #include "midi-track-parser.hh"
-#include "mudela-item.hh"
-#include "mudela-score.hh"
+#include "lilypond-item.hh"
+#include "lilypond-score.hh"
 
 
 void
@@ -21,12 +21,12 @@ Midi_score_parser::open (String filename_str, Sources* sources_l)
 {
   info_l_->source_l_ = sources_l->get_file_l (filename_str);
   if (!info_l_->source_l_)
-    ::error (_f ("can't find file: `%s\'", filename_str));
+    ::error (_f ("can't find file: `%s'", filename_str));
   info_l_->byte_L_ = (Byte const*)info_l_->source_l_->ch_C ();
   info_l_->end_byte_L_ = info_l_->byte_L_ + info_l_->source_l_->length_i () + 1;
 }
 
-Mudela_score*
+Lilypond_score*
 Midi_score_parser::parse (String filename_str, Sources* sources_l)
 {
   Midi_parser_info info;
@@ -46,16 +46,16 @@ Midi_score_parser::parse_header ()
   int length_i = get_i (4);
   // is this signed?
   if (length_i < 6)
-    exit (_ ("Invalid header length"));
+    exit (_ ("invalid header length"));
   info_l_->format_i_ = get_i (2);
   if (info_l_->format_i_ != 0 && info_l_->format_i_ != 1)
-    exit (_("Invalid midi format"));
+    exit (_("invalid MIDI format"));
   info_l_->tracks_i_ = get_i (2);
   if (info_l_->tracks_i_ < 0 || info_l_->tracks_i_ > 32 )
-    exit (_("Invalid number of tracks"));
+    exit (_("invalid number of tracks"));
   info_l_->division_1_i_ = get_i (2) * 4;
   if (info_l_->division_1_i_ < 0)
-    exit (_f ("can't handle %s", _ ("non-metrical time")));
+    exit (_ ("can't handle non-metrical time"));
   // ugh
   Duration::division_1_i_s = info_l_->division_1_i_;
   forward_byte_L (length_i - 6);
@@ -65,7 +65,7 @@ int
 Midi_score_parser::find_earliest_i (Link_array<Midi_track_parser>& tracks)
 {
   int earliest_i = 0;
-  Moment earliest_mom = infinity_mom;
+  Rational earliest_mom = infinity_rat;
   for (int i = 0; i < tracks.size(); i++)
     {
       if ( tracks [i]->at_mom () < earliest_mom )
@@ -77,27 +77,28 @@ Midi_score_parser::find_earliest_i (Link_array<Midi_track_parser>& tracks)
   return earliest_i;
 }
 
-Mudela_score*
+Lilypond_score*
 Midi_score_parser::parse_score ()
 {
   int current_bar_i = 0;
-  Mudela_time_signature m4 (4, 2, 24, 8);
-  Moment bar4_mom = m4.bar_mom ();
+  Lilypond_time_signature m4 (4, 2, 24, 8);
+  Rational bar4_mom = m4.bar_mom ();
 
-  Mudela_score* score_p = new Mudela_score( 1, 1, 1 );
+  Lilypond_score* score_p = new Lilypond_score( 1, 1, 1 );
   info_l_->score_l_ = score_p;
 
   Link_array<Midi_track_parser> tracks;
   for (int i = 0; i < info_l_->tracks_i_; i++)
     tracks.push (new Midi_track_parser (info_l_, i));
 
-  LOGOUT (NORMAL_ver) << _ ("Parsing...\n");
+  LOGOUT (NORMAL_ver) << _ ("Parsing...");
+  LOGOUT (NORMAL_ver) << "\n";
   while (tracks.size ())
     {
       int i = find_earliest_i (tracks);
-      Moment at_mom = tracks [i]->at_mom ();
-      Mudela_column* column_l = score_p->get_column_l (at_mom);
-      Mudela_staff* staff_p = tracks [i]->parse (column_l);
+      Rational at_mom = tracks [i]->at_mom ();
+      Lilypond_column* column_l = score_p->get_column_l (at_mom);
+      Lilypond_staff* staff_p = tracks [i]->parse (column_l);
       if ( staff_p )
 	{
 	  score_p->add_staff (staff_p);

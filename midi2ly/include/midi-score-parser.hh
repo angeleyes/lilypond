@@ -11,21 +11,21 @@
 #define MIDI_SCORE_PARSER_HH
 
 #include "midi-parser.hh"
-#include "proto.hh"
+#include "flower-proto.hh"
 #include "midi2ly-proto.hh"
 #include "parray.hh"
 
 class Midi_score_parser : public Midi_parser
 {
 public:
-  Mudela_score* parse (String filename_str, Sources*);
+  Lilypond_score* parse (String filename_str, Sources*);
 
 private:
   void open (String filename_str, Sources*);
 
   void parse_header ();
   int find_earliest_i (Link_array<Midi_track_parser>& tracks);
-  Mudela_score* parse_score ();
+  Lilypond_score* parse_score ();
 };	    
 
 #endif // MIDI_SCORE_PARSER_HH

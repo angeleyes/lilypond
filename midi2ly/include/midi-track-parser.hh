@@ -10,9 +10,9 @@
 #ifndef MIDI_TRACK_PARSER_HH
 #define MIDI_TRACK_PARSER_HH
 
-#include "proto.hh"
+#include "flower-proto.hh"
 #include "cons.hh"
-#include "moment.hh"
+#include "rational.hh"
 #include "midi2ly-proto.hh"
 #include "midi-parser.hh"
 
@@ -23,21 +23,21 @@ public:
   Midi_track_parser (Midi_parser_info* info_l, int i);
   ~Midi_track_parser ();
 
-  Moment at_mom ();
-  Mudela_staff* parse (Mudela_column* col_l);
+  Rational at_mom ();
+  Lilypond_staff* parse (Lilypond_column* col_l);
 
 private:
   bool eot ();
-  void note_end (Mudela_column* col_l, int channel_i, int pitch_i, int aftertouch_i );
-  void note_end_all (Mudela_column* col_l) ;
+  void note_end (Lilypond_column* col_l, int channel_i, int pitch_i, int aftertouch_i );
+  void note_end_all (Lilypond_column* col_l) ;
   void parse_delta_time ();
-  Mudela_item* parse_event (Mudela_column* col_l);
+  Lilypond_item* parse_event (Lilypond_column* col_l);
   void parse_header ();
 
-  Moment at_mom_;
+  Rational at_mom_;
   Byte running_byte_;
-  Cons_list<Mudela_note> open_note_l_list_;
-  Mudela_staff* mudela_staff_p_;
+  Cons_list<Lilypond_note> open_note_l_list_;
+  Lilypond_staff* lilypond_staff_p_;
   Midi_parser_info* track_info_p_;
 };
 
