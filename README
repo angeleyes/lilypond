@@ -1,5 +1,3 @@
-
-
 This is the website for lilypond.org:
 
 Required:
@@ -7,20 +5,29 @@ Required:
   * python
   * make
   
-
-MAKING IT
+MAKING IT:
 
 Type
-
 	make
 
 this will leave the site in the directory out/site/
-
 
 
 DISTRIBUTION
 
 * The format-page.py script is GPL
 
-* Verbatim redistribution of the .html files and images is allowed
+* Verbatim redistribution of the .html files and images is allowed and
+  encouraged.
+
+NOTE:
+
+Links to the documentation must be site-absolute, eg
+
+    href="/doc/v2.1/Documentation/out-www"
+
+until someone fixes this.  The documentation is also on lilypond.org,
+but not part of the website proper.  It is built from the lilypond
+source package by running `make web'.
+
 
