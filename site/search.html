@@ -1,0 +1,108 @@
+<!--
+    Translation of CVS $Revision$
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>Search LilyPond.org and email archives</title>
+
+<noscript>
+  <em>This page uses JavaScript.  Use the <a
+					     href="search-noscript.html">static search page</a> if you cannot or do
+    not want to use JavaScript.</em>
+</noscript>
+
+<!-- First search block !-->
+
+<h2>Search lilypond.org</h2>
+<form action="http://www.google.com/search" method="get"
+      name="f_lily_google"
+      onSubmit="f_lily_google.q.value='site:lilypond.org '
+		+ f_lily_google.brute_query.value"
+      onMouseMove="f_lily_google.q.value='site:lilypond.org '
+		   + f_lily_google.brute_query.value"
+      onKeyUp="f_lily_google.q.value='site:lilypond.org '
+	       + f_lily_google.brute_query.value">
+  <input name="btnG" type="hidden" value="Google Search">
+  <input type="text" name="brute_query" size="40">
+  <input type="hidden" name="q" value=" ">
+  <input type="submit" value="Search lilypond.org">
+</form>
+
+<!-- Second search block !-->
+<h2>Search mailing lists</h2>
+
+<ul>
+  <li><strong>lilypond-user</strong> is about using LilyPond, especially the 2.4 stable series.</li>
+  <li><strong>lilypond-devel</strong> is about LilyPond development, especially the 2.5 unstable series.</li>
+  <li><strong>bug-lilypond</strong> is the bugreport list for LilyPond.</li>
+  
+  <li><strong>info-lilypond</strong> is the announcement list for LilyPond.</li>
+</ul>
+
+<h3>Search an individual mailing list </h3>
+
+<form action="http://www.mail-archive.com/cgi-bin/htsearch" method="get">
+  <input type="hidden" name="method" value="and">
+  <input type="hidden" name="format" value="short">
+  <select name="config">
+    <option value="lilypond-user_gnu_org">lilypond-user@gnu.org</option>
+
+    <option value="lilypond-devel_gnu_org">lilypond-devel@gnu.org</option>
+    <option value="bug-lilypond-admin_gnu_org">bug-lilypond@gnu.org</option>
+    <option value="info-lilypond_gnu_org">info-lilypond@gnu.org</option>
+  </select>
+  <input type="hidden" name="restrict" value="">
+  <input type="hidden" name="exclude" value="">
+  <input type="text" name="words" value="" size="35">
+  <input type="submit" value="Search">
+</form>
+
+<p>
+  <font size="-1">This uses <a href="http://www.mail-archive.com/">The
+      Mail Archive</a> to search the mailing lists.</font>
+</p>
+
+
+<h3>Search all lists </h3>
+
+<form action="http://www.google.com/search" method="get"
+      name="f_mail_google"
+      onSubmit="f_mail_google.q.value='site:mail.gnu.org +lilypond ' + f_mail_google.brut_query.value"
+      onMouseMove="f_mail_google.q.value='site:mail.gnu.org +lilypond ' + f_mail_google.brut_query.value"
+      onKeyUp="f_mail_google.q.value='site:mail.gnu.org +lilypond ' + f_mail_google.brut_query.value">
+  <input name="btnG" type="hidden" value="Google Search">
+  <input type="text" name="brut_query" size="40">
+  <input type="hidden" name="q" value="site:mail.gnu.org +lilypond ">
+  <input type="submit" value="Search">
+</form>
+
+<p>
+  <font size="-1">This uses <a href="http://www.google.com/">Google</a> to all lists.</font>
+</p>
+
+
+<!-- No wiki currently
+     
+     <h2>Search WikiWiki</h2>
+
+     The
+     <a href="http://lilypond.org/wiki">
+       LilyPond Wiki</a> is our on-line information repository, where you can
+     read and add text about lilypond development ideas, blurbs on music
+     notation, and FAQs.
+
+     <form action="http://lilypond.org/wiki/">
+       Search wiki titles:&nbsp;<input type=text size=30 name=search value="">
+       <input type=submit value="Search">
+     </form>
+
+     <form action="http://lilypond.org/wiki/">
+       Search wiki pages:&nbsp; <input type=text size=30 name=full value="">
+       <input type=submit value="Search">
+     </form>
+     
+     !-->
