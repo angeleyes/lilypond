@@ -5,6 +5,7 @@
 
 	* README: Add some words for translators.
 
+	* nl/about/browser-language.html: 
 	* site/about/browser-language.html: New page.
 
 	* scripts/format-page.py: Do not bracket location items.  Add text
