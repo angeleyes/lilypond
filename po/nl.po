@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 18:49+0100\n"
+"POT-Creation-Date: 2005-01-29 17:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:216
+#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:220
 #: site/menu-entries.py:4
 msgid "Home"
 msgstr "Thuis"
+
+#: scripts/format-page.py:87
+#, python-format
+msgid "Other languages: %s."
+msgstr "Andere talen: %s."
+
+#: scripts/format-page.py:88
+#, python-format
+msgid "Using <A HREF='%s'>automatic language selection</A>."
+msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
 #: site/about/menu-entries.py:2
 msgid "Features"

@@ -1,29 +1,43 @@
-This is the website for lilypond.org
+THE LILYPOND.ORG WEBSITE
 
-REQUIREMENTS
+SOURCES
 
-  * python
-  * make
-  * gettext
+The HTML sources live in a CVS repository.  Get a fresh version here
 
-BUILD
+   cvs -d :ext:anoncvs@subversions.gnu.org:/cvsroot/lilypond co newweb
+
+
+BUILDING THE WEBSITE
 
 To generate the main web site, run
 
-	make
+    make
 
-To generate the web site for language LANG (available: nl), run
+The scripts/format-page.py script merges the pages in the
+site/template.ihtml template and handles @AT-VARIABLE@ substitutions,
+and leaves the result in
 
-	make LANG
+    ./out/site
 
-NOTE
+To generate the web site for language LANG (available: LANG), run
 
-    images live in @IMAGES@
-    doc lives in @DOC@
+    make LANG  # for example:  make nl
 
-Hmm, now we get (stale) urls like:
 
-   <a href="@DOC@v1.8/Documentation/user/out-www/lilypond/Tutorial">tutorial</a>.
+REQUIREMENTS
+
+    * python
+    * make
+    * gettext
+
+AT-VARIABLEs
+
+    @DEPTH@: home url prefix
+    @IMAGES@: image url prefix
+    @DOC@: doc url prefix
+
+See scripts/format-page.py for full overview.
+
 
 STATIC ENTRY URLS
 
@@ -46,24 +60,72 @@ DISTRIBUTION
   encouraged.
 
 
-START NEW TRANSLATION
+AUTOMATIC LANGUAGE SELECTION
 
-Type
-	make new LANG=nl
+Apache can be configured to append .LANG.html to an url, where LANG is
+the user's browser preferred language.
+
+The format-page.py script strips the .HTML from file names, but for
+directory urls, that does not work.  This could be fixed by adding
+'/index' to directory urls, but easier is to add an .htaccess (used on
+lilypond.org):
+
+    #.htaccess
+    DirectoryIndex index
+
+
+
+TRANSLATION
+
+Get the sources.  See the top of README.
+
 
 TRANSLATE A PAGE
 
 Copy the file from site into your language tree
 
-	cp site/about/index.html nl/about/index.html
+    cp site/about/index.html nl/about/index.html
 
-Add it to CVS
+Translate it, see UPDATE a TRANSLATION
 
-	cvs add nl/about/index.html
+Add the page to CVS
 
-Translate all plain text index.html, leave all URLs in tact.
+    cvs add nl/about/index.html
 
-Update CVS
+or send it to your CVS translation sponsor.
 
-	cvs ci -m 'new translation' nl/about/index.html
 
+UPDATE A TRANSLATION
+
+Open the HTML source file and translate all plain text, leaving markup
+and URLs in tact.  Tracking changes is much easier, that way.
+
+The best choice for non-destructive editing HTML source is probably
+Mozilla Composer (the new Mozilla Firefox/Thunderbird suite does not
+include an HTML editor yet).  You get to see the result and the HTML
+markup codes in different TABs.  *NOTE*: be sure to tell Mozilla
+Composer to leave the original markup in tact, setting
+
+    Edit/Preferences/Composer: (X) Retain original source formatting
+
+Of course, if you are comfortable with a texteditor (ie, not a word
+processor) such as Emacs, VI, jEDIT, please use that and check the
+result in your favorite browser.
+
+If you think the original text should be changed or fixed, please do
+so first, but share your suggestion before changing CVS.  Typos may be
+fixed right away.
+
+
+SUBMIT TO CVS
+
+    cvs ci -m 'translation update' nl/about/index.html
+
+If you do not have CVS write access, send your translated page to your
+CVS translation sponsor, or the the lilypond-user list.
+
+
+STARTING A NEW LANGUAGE
+
+Type
+    make new LANG=nl

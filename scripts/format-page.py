@@ -1,5 +1,11 @@
 #!/usr/bin/python
 
+## TODO
+#
+## * Add CVS Revision up-to-date checking and reporting for translated
+##   page.
+
+
 import __main__
 import getopt
 import gettext
@@ -29,19 +35,7 @@ except:
 underscore = _
 
 
-'''
-NOTES
-
-* Do not use absolute URL locations.  That breaks local installs
-  of the website.  Rather, use '../' * depth to get to the root.
-
-'''
-
 PAGE_TEMPLATE = '''@MAIN@'''
-
-LANGUAGES_TEMPLATE = '''\
-<P class="location">%s</P>
-'''
 
 # ugh, move to .ithml
 top_script = '''\
@@ -80,17 +74,27 @@ MENU_ITEM = '''\
 <TD class="%%(css)s">%s</TD>
 <TD class="%%(css)srightedge" width="1"></TD>
 '''
-
 MENU_ITEM_INACTIVE = MENU_ITEM \
 		     % '<A class=%(css)s" href="%(url)s">%(name)s</A>'
 MENU_ITEM_ACTIVE = MENU_ITEM \
 		   % '<A class="%(css)s" href="%(url)s">[%(name)s]</A>'
 
-LOCATION_ITEM = '<a href="%(url)s">[%(name)s]</a>'
+LOCATION_ITEM = '<a href="%(url)s">%(name)s</a>'
 LOCATION_SEP = ' &gt; '
 
 LOCATION_TITLE = 'LilyPond - %s'
 
+language_available = _ ("Other languages: %s.") % "%(language_menu)s"
+browser_language = _ ("Using <A HREF='%s'>automatic language selection</A>.") \
+		      % "%(root_url)sabout/browser-language"
+
+LANGUAGES_TEMPLATE = '''\
+<P>
+  %(language_available)s
+  <BR>
+  %(browser_language)s
+</P>
+''' % vars ()
 
 def dir_lang (file, lang):
 	return string.join ([lang] + string.split (file, '/')[1:], '/')
@@ -245,7 +249,10 @@ def format_page (html, file_name, lang):
 	for (prefix, name) in available:
 		lang_file = file_lang (base_name, prefix)
 		language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
-	languages = LANGUAGES_TEMPLATE % language_menu
+
+	languages = ''
+	if language_menu:
+		languages = LANGUAGES_TEMPLATE % vars ()
 
 	page_template = PAGE_TEMPLATE
 	f = os.path.join (dir_lang (dir, 'site'), 'template.ihtml')
@@ -264,6 +271,7 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
 	page = re.sub ('@ONLOAD@', onload, page)
+	page = re.sub ('@FILE_NAME@', file_name, page)
 
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
@@ -277,7 +285,7 @@ def format_page (html, file_name, lang):
 		       'href="\\1"', page)
 
 	# No autoselection for automatic language menu.
-	page = re.sub ('@LANGUAGES@', languages, page)
+	page = re.sub ('@LANGUAGE_MENU@', languages, page)
 
 	return page
 
