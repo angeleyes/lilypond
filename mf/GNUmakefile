@@ -6,11 +6,11 @@ include $(depth)/make/stepmake.make
 
 AF_FILES = $(wildcard *.af) 
 
-EXTRA_DIST_FILES += README feta.tex cmr.enc
+EXTRA_DIST_FILES += README feta.tex
 
 # We don't use $(MF_FILES), because there's more .mf cruft here
 FETA_MF_FILES = $(wildcard feta[0-9]*.mf)\
-	$(wildcard feta-braces-[a-z].mf)\
+	$(wildcard feta-braces*[0-9].mf)\
 	$(wildcard feta-din*[0-9].mf)\
 	$(wildcard feta-nummer*[0-9].mf)\
 	$(wildcard parmesan[0-9]*.mf)
@@ -23,7 +23,7 @@ LOG_FILES = $(FETA_MF_FILES:%.mf=$(outdir)/%.log)
 TEXTABLES = $(FETA_MF_FILES:%.mf=$(outdir)/%.tex)
 AFM_FILES = $(FETA_MF_FILES:%.mf=$(outdir)/%.afm) \
 	$(AF_FILES:%.af=$(outdir)/%.afm)
-ENC_FILES = $(TEXTABLES:.tex=.enc) $(outdir)/cmr.enc
+ENC_FILES = $(TEXTABLES:.tex=.enc)
 TFM_FILES = $(FETA_MF_FILES:%.mf=$(outdir)/%.tfm)
 FETA_LIST_FILES = $(FETA_MF_FILES:%.mf=$(outdir)/%list.ly)
 
@@ -60,7 +60,7 @@ ALL_GEN_FILES= $(TFM_FILES) $(TEXTABLES) $(AFM_FILES) $(TFM_FILES) $(LOG_FILES) 
 INSTALLATION_DIR=$(local_lilypond_datadir)/fonts/source
 INSTALLATION_FILES=$(MF_FILES) $(AF_FILES)
 
-INSTALLATION_OUT_SUFFIXES=1 2 3 4 5 6 7
+INSTALLATION_OUT_SUFFIXES=1 2 3 4 5 6
 
 INSTALLATION_OUT_DIR1=$(local_lilypond_datadir)/tex
 INSTALLATION_OUT_FILES1=$(TEXTABLES)
@@ -79,9 +79,6 @@ INSTALLATION_OUT_FILES5=$(PFA_FILES) $(outdir)/fonts.scale $(outdir)/Fontmap $(o
 
 INSTALLATION_OUT_DIR6=$(local_lilypond_datadir)/dvips/
 INSTALLATION_OUT_FILES6=$(outdir)/lilypond.map
-
-INSTALLATION_OUT_DIR7=$(local_lilypond_datadir)/ps/
-INSTALLATION_OUT_FILES7=$(ENC_FILES)
 
 export MFINPUTS:=.:$(MFINPUTS)
 
@@ -121,7 +118,7 @@ get-deb-pfa: $(outdir)/$(debian-package)
 
 redhat-package=lilypond-$(TOPLEVEL_VERSION)-1.i386.rpm
 $(outdir)/$(redhat-package):
-	wget  --passive-ftp -P $(outdir) http://lilypond.org/download/binaries/Fedora-1/$(redhat-package)
+	wget  --passive-ftp -P $(outdir) http://lilypond.org/download/binaries/RedHat-9/$(redhat-package)
 
 get-rpm-pfa: $(outdir)/$(redhat-package)
 	cd $(outdir) ; rm -rf usr/ # (root alert!) 
@@ -200,7 +197,5 @@ $(SAUTER_FONTS:%=$(outdir)/%.bla):
 	$(foreach i, $@, touch $i && ) true
 
 $(outdir)/%.pfa: $(outdir)/%.bla
-	$(MFTRACE) -I $(outdir)/ --pfa --simplify --keep-trying $(notdir $(basename $@))  && mv $(notdir $@) $(outdir)/
+	$(MFTRACE) -I $(outdir)/ --formats=pfa --simplify --keep-trying $(notdir $(basename $@))  && mv $(notdir $@) $(outdir)/
 
-$(outdir)/%.enc: %.enc
-	cp $< $@
