@@ -36,7 +36,7 @@ out/$(outball): site
 upload: menuify
 	cvs commit -m 'upload commit'   
 	cd out/site && \
-	rsync --delete --stats --progress -rltvu -e ssh . x:/var/www/lilypond/web/
+	rsync --delete --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
 
 
 dist:
