@@ -135,7 +135,6 @@
 
 
 % stacked horizontal lines 
-
 \def\interscoreline{\vskip 16pt}
 \def\setdynamic#1{\dynfont #1}
 \def\setfinger#1{\fingerfont #1}
@@ -146,7 +145,9 @@
 \def\columnerrormark{\placebox{-5pt}{0pt}{\bf C!}}
 \def\scorelineerrormark{\placebox{0pt}{-10pt}{\bf L!}}
 \def\errormark{{\bf E!}}
-\def\unknown{{\bf u}}
+\def\unknown{%
+  %{\bf u} %FIXME
+}
 
 \input dyndefs
 \input fetdefs
@@ -229,11 +230,22 @@
 
 %
 % macros suck. \ifundefined{nolilyfooter} gives wierd errors from time
-%        to time. 
+%        to time.
+%
+
+%
+% Warning: the order is conceptually weird.  It says:
+
+% if not defined (``nolilyfooter''):
+%    do_footer ()
+% else 
+%    dont_do_footer ()
+%
 \ifx\csname nolilyfooter\endcsname\relax
-	\message{footer defined}%
-        \csname lilyfooter\texsuffix\endcsname
+        \message{[footer defined]}%
+        \csname lilyfooter\texsuffix\endcsname%
 \else
-	\message{page empty!}
-	\csname nolilyfooter\texsuffix\endcsname
+        \message{[footer empty]}
+        \csname%
+        nolilyfooter\texsuffix\endcsname
 \fi
