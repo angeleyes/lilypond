@@ -1,3 +1,7 @@
+2004-03-14  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* site/download/index.html: add gentoo link.
+
 2004-03-13  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* README: Add note about absolute document links.
