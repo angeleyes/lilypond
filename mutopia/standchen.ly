@@ -16,9 +16,9 @@ multiple \paper{}s in one \score
 Note: Original key F.
 %}
 
-\version "1.0.2";
+\version "1.0.7";
 
-$vocal_verse1 = \melodic\relative c{
+$vocal_verse1 = \notes\relative c{
 	% ugh: treble/bass
 %	\clef treble;
 %	\clef violin;
@@ -58,7 +58,7 @@ $vocal_verse1 = \melodic\relative c{
 	c!2. |
 }
 
-$vocal_through = \melodic\relative c{
+$vocal_through = \notes\relative c{
 	\property Voice.dynamicdir=1
 	g''8. g16 b8. b16 d8. d16 |
 	c4 b r |
@@ -81,7 +81,7 @@ $vocal_through = \melodic\relative c{
 	e2 r4 |
 }
 
-$lyric_verse1 = \lyric{
+$lyric_verse1 = \lyrics{
 % 5
 	\[/3 Lei-4 se8 \] fleh-4. en8 |
 	\[/3 mei-4 ne8 \] Lie-4 der8 _8 |
@@ -112,7 +112,7 @@ $lyric_verse1 = \lyric{
 	nicht.2. |
 }
 	
-$lyric_verse2 = \lyric{
+$lyric_verse2 = \lyrics{
 % 5
 	\[/3 H\"orst4 die8 \] Nach-4. ti-8 
 	\[/3 gal-4 len8 \] schla-4 gen?8 _8
@@ -146,7 +146,7 @@ $lyric_verse2 = \lyric{
 	Herz.2.
 }
 
-$lyric_through = \lyric{
+$lyric_through = \lyrics{
 % 37
 	La\ss8. auch16 dir8. die16 Brust8. be-16 |
 	we-4 gen _ |
@@ -166,7 +166,7 @@ $lyric_through = \lyric{
 	mich!2 _4 |
 }
 
-$treble_intro = \melodic\relative c{
+$treble_intro = \notes\relative c{
 	\clef violin;
 	% ugh: id like to type this!
 	%r8\pp [<g'-. c-.> <c-. es-.> <g-. c-.> <c-. es-.> <g-. c-.>] |
@@ -177,7 +177,7 @@ $treble_intro = \melodic\relative c{
 	\break
 }
 
-$treble_verse1 = \melodic\relative c{
+$treble_verse1 = \notes\relative c{
 %	\clef violin;
 	%5
 	r8 <[g' c> <c es> <g c> <c es> <g c]> |
@@ -210,7 +210,7 @@ $treble_verse1 = \melodic\relative c{
 	<{[/3 f'8\f( e f]1/1 a4.-> )f8 } {\[/3 f' e f \]/1 a4. f8 } > |
 }
 
-$treble_eentje = \melodic\relative c'{
+$treble_eentje = \notes\relative c'{
 	<e2 e'> <e4 g>|
 	<f2\mf as!(> <[as8.->( c> <)f16 )as]> |
 	<e4. g> <[e8-. g-.(> <e-. g-.> <e-. )g-.]> |
@@ -223,7 +223,7 @@ $treble_eentje = \melodic\relative c'{
 	<e2. g> |
 }
 
-$treble_through = \melodic\relative c'{
+$treble_through = \notes\relative c'{
 	<e2. e'> |
 	%61
 	R2. |
@@ -271,7 +271,7 @@ $treble_through = \melodic\relative c'{
 	<g2.-\fermata e' g> |
 }
 
-$bass_intro = \melodic\relative c{
+$bass_intro = \notes\relative c{
 	\clef bass;
 	\property Voice.dynamicdir=1
 %1
@@ -281,7 +281,7 @@ $bass_intro = \melodic\relative c{
 	<g2 g'> r4 |
 }
 
-$bass_verse1 = \melodic\relative c{
+$bass_verse1 = \notes\relative c{
 %	\clef bass;
 	\property Voice.dynamicdir=1
 %5
@@ -313,7 +313,7 @@ $bass_verse1 = \melodic\relative c{
 	c,8 <[c' e g> <e g c> <c e g> <e g c> <c e g]> |
 }
 
-$bass_eentje = \melodic\relative c{
+$bass_eentje = \notes\relative c{
 	\property Voice.dynamicdir=1
 	<c,8 c'> <[c' f as!> <f as c> <c f as> <f as c> <c f as]> |
 	c,8 <[c' e g> <e g c> <c e g> <e g c> <c e g]> |
@@ -325,7 +325,7 @@ $bass_eentje = \melodic\relative c{
 	c,8 <[e' g> <g c> <e g> <g c> <e g]> |
 }
 
-$bass_through = \melodic\relative c{
+$bass_through = \notes\relative c{
 	\property Voice.dynamicdir=1
 	%61
 	<g,8^"cresc." g'> <[g' b d> <b d f> <g b d> <as!-> b-> d->> <b d f]> |
@@ -359,7 +359,7 @@ $bass_through = \melodic\relative c{
 	<c,2._\fermata g' c> |
 }
 		
-global = \melodic{
+global = \notes{
 	\time 3/4; 
 	\key es;
 	\skip 4 * 12;
@@ -369,14 +369,14 @@ global = \melodic{
 }
 
 
-$lyric_four = \lyric{ 
+$lyric_four = \lyrics{ 
 	_4 _ _
 	_ _ _
 	_ _ _
 	_ _ _
 }
-
-lyrics = {
+ 
+allLyrics = {
 	\time 3/4; 
 %	\skip 4 * 12; 
 	\$lyric_four
@@ -389,10 +389,10 @@ lyrics = {
 }
 
 $lyric_staff = \type Lyrics = lyric<
-	\$lyrics
+	\allLyrics
 >
 		
-vocals = \melodic{
+vocals = \notes{
 	\property Voice.dynamicdir=UP
 	\skip 4 * 12; 
 	\$vocal_verse1 
@@ -444,11 +444,11 @@ $grand_staff = \type GrandStaff<
 	% To get original, \transpose d'
 	% \transpose a gives a' to d'' (for basses, who sing an octave down)
 	<
-		{ \melodic \transpose a { \$vocal_staff } }
+		{ \notes \transpose a { \$vocal_staff } }
 		\$lyric_staff
-		{ \melodic \transpose a { \$grand_staff } }
+		{ \notes \transpose a { \$grand_staff } }
 	>
-	\include "score-paper.ly";
+	\paper { \translator { \OrchestralScoreContext }}
 	\midi{
 		\tempo 4 = 54;
 	}
