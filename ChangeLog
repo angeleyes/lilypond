@@ -1,5 +1,8 @@
 2004-03-14  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* site/download/index.html: Add local Debian logos.  Linux ->
+	GNU/Linux for distribution.
+
 	* format-page.py (do_one_file): Handle @DOC@, change all HTML sources.
 
 2004-03-14  Han-Wen Nienhuys   <hanwen@xs4all.nl>
