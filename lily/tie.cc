@@ -3,195 +3,311 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
+#include <math.h>
 
+
+#include "spanner.hh"
+#include "lookup.hh"
 #include "paper-def.hh"
 #include "tie.hh"
-#include "note-head.hh"
+#include "rhythmic-head.hh"
+#include "bezier.hh"
 #include "paper-column.hh"
 #include "debug.hh"
+#include "staff-symbol-referencer.hh"
+#include "directional-element-interface.hh"
+#include "molecule.hh"
+#include "bezier-bow.hh"
+#include "stem.hh"
+#include "note-head.hh"
 
+/*
+  tie: Connect two noteheads.
+
+  What if we have
+
+  c4 ~ \clef bass ; c4 or
+
+  c4 \staffchange c4
+
+  do we have non-horizontal ties then?
+  */
 
 
 void
-Tie::set_head (Direction d, Note_head * head_l)
+Tie::set_head (Grob*me,Direction d, Item * head_l)
 {
-  assert (!head_l_drul_[d]);
-  head_l_drul_[d] = head_l;
-  set_bounds (d, head_l);
-
-  add_dependency (head_l);
+  assert (!head (me,d));
+  index_set_cell (me->get_grob_property ("heads"), d, head_l->self_scm ());
+  
+  dynamic_cast<Spanner*> (me)->set_bound (d, head_l);
+  me->add_dependency (head_l);
 }
 
-Tie::Tie()
+void
+Tie::set_interface (Grob*me)
 {
-  head_l_drul_[RIGHT] =0;
-  head_l_drul_[LEFT] =0;
+  me->set_grob_property ("heads", gh_cons (SCM_EOL, SCM_EOL));
+  me->set_interface (ly_symbol2scm ("tie-interface"));
+}
+
+bool
+Tie::has_interface (Grob*me)
+{
+  return me->has_interface (ly_symbol2scm ("tie-interface"));
+}
+
+Grob*
+Tie::head (Grob*me, Direction d) 
+{
+  SCM c = me->get_grob_property ("heads");
+  c = index_cell (c, d);
+
+  return unsmob_grob (c);
+}
+
+Real
+Tie::position_f (Grob*me) 
+{
+  Direction d = head (me,LEFT) ? LEFT:RIGHT;
+  return Staff_symbol_referencer::position_f (head (me,d));
 }
 
 
 /*
-  ugh: direction of the Tie is more complicated.  See [Ross] p136 and further
- */
+  Default:  Put the tie oppositie of the stem [Wanske p231]
+
+  In case of chords: Tie_column takes over
+  
+  The direction of the Tie is more complicated (See [Ross] p136 and
+  further).
+*/
 Direction
-Tie::get_default_dir () const
+Tie::get_default_dir (Grob*me) 
 {
-  int m = (head_l_drul_[LEFT]->position_i () 
-	  + head_l_drul_[RIGHT]->position_i ()) /2;
+  Item * sl =  head (me,LEFT) ? Rhythmic_head::stem_l (head (me,LEFT)) :0;
+  Item * sr =  head (me,RIGHT) ? Rhythmic_head::stem_l (head (me,RIGHT)) :0;  
 
-  /*
-    If dir is not determined: inverse of stem: down
-    (see stem::get_default_dir ())
-   */
-  Direction neutral_dir = (Direction)(int)paper_l ()->get_var ("stem_default_neutral_direction");
-  return (m == 0) ? other_dir (neutral_dir) : (m < 0) ? DOWN : UP;
-}
-
-void
-Tie::do_add_processing()
-{
-  if (!(head_l_drul_[LEFT] && head_l_drul_[RIGHT]))
-    warning (_ ("lonely tie"));
-
-  Direction d = LEFT;
-  Drul_array<Note_head *> new_head_drul = head_l_drul_;
-  do {
-    if (!head_l_drul_[d])
-      new_head_drul[d] = head_l_drul_[(Direction)-d];
-  } while (flip(&d) != LEFT);
-  head_l_drul_ = new_head_drul;
-}
-
-void
-Tie::do_post_processing()
-{
-  assert (head_l_drul_[LEFT] || head_l_drul_[RIGHT]);
-
-  Real interline_f = paper_l ()->get_realvar (interline_scm_sym);
-  Real internote_f = interline_f / 2;
-  Real x_gap_f = paper_l ()->get_var ("tie_x_gap");
-  Real y_gap_f = paper_l ()->get_var ("tie_y_gap");
-
-  /* 
-   Slur and tie placement [OSU]
-
-   Ties:
-
-       * x = inner vertical tangent - d * gap
-
-   */
-
-
-  /*
-    OSU: not different for outer notes, so why all this code?
-    ie,  can we drop this, or should it be made switchable.
-   */
-#if 0
-  Direction d = LEFT;
-  do
+  if (sl && sr)
     {
-      Real head_width_f = head_l_drul_[d]
-	? head_l_drul_[d]->extent (X_AXIS).length ()
-	: 0;
-      /*
-	side attached to outer (upper or lower) notehead of chord
-      */
-      if (head_l_drul_[d]
-	  /*
-	    && head_l_drul_[d]->remove_elt_property (extremal_scm_sym) != SCM_BOOL_F)
-	    ugh, ugh:
-
-	        a~a~a;
-
-	    to second tie, middle notehead seems not extremal
-
-	    Getting scared a bit by score-element's comment:
-	    // is this a good idea?
-	  */
-	  && (head_l_drul_[d]->get_elt_property (extremal_scm_sym)
-	      != SCM_BOOL_F))
-	{
-	if (d == LEFT)
-	    dx_f_drul_[d] += head_width_f;
-	  dx_f_drul_[d] += -d * x_gap_f;
-	}
-      /*
-	side attached to inner notehead
-      */
-      else
-	{
-	  dx_f_drul_[d] += -d * head_width_f;
-	}
-    } while (flip (&d) != LEFT);
-
-#else
-
-  if (head_l_drul_[LEFT])
-    dx_f_drul_[LEFT] = head_l_drul_[LEFT]->extent (X_AXIS).length ();
-  else
-    dx_f_drul_[LEFT] = get_broken_left_end_align ();
-  dx_f_drul_[LEFT] += x_gap_f;
-  dx_f_drul_[RIGHT] -= x_gap_f;
-
-#endif
-
-  /* 
-   Slur and tie placement [OSU]  -- check this
-
-   Ties:
-
-       * y = dx <  5ss: horizontal tangent
-	 y = dx >= 5ss: y next interline - d * 0.25 ss
-
-	 which probably means that OSU assumes that
-
-	    dy <= 5 dx
-
-	 for smal slurs
-   */
-
-  int ypos_i = head_l_drul_[LEFT] ? head_l_drul_[LEFT]->position_i ()
-    : head_l_drul_[RIGHT]->position_i ();
-
-  Real y_f = internote_f * ypos_i; 
-
-  Real dx_f = extent (X_AXIS).length () + dx_f_drul_[RIGHT] - dx_f_drul_[LEFT];
-  if (dx_f < paper_l ()->get_var ("tie_staffspace_length"))
-    {
-      if (abs (ypos_i) % 2)
-	y_f += dir_ * internote_f;
-      y_f += dir_ * y_gap_f;
+      if (Directional_element_interface::get (sl) == UP
+	  && Directional_element_interface::get (sr) == UP)
+	return DOWN;
     }
+  else if (sl || sr)
+    {
+      Item *s = sl ? sl : sr;
+      return - Directional_element_interface::get (s);
+    }
+
+  
+  return UP;
+}
+
+
+SCM
+Tie::get_control_points (SCM smob)
+{  
+  Spanner*me = dynamic_cast<Spanner*> (unsmob_grob (smob));
+  Direction headdir = CENTER; 
+  if (head (me,LEFT))
+    headdir = LEFT;
+  else if (head (me,RIGHT))
+    headdir = RIGHT;
   else
     {
-      if (! (abs (ypos_i) % 2))
-	y_f += dir_ * internote_f;
-      y_f += dir_ * internote_f;
-      y_f -= dir_ * y_gap_f;
+      programming_error ("Tie without heads.");
+      me->suicide ();
+      return SCM_UNSPECIFIED;
     }
   
-  dy_f_drul_[LEFT] = dy_f_drul_[RIGHT] = y_f;
+  if (!Directional_element_interface::get (me))
+    Directional_element_interface::set (me, Tie::get_default_dir (me));
+  
+  Real staff_space = Staff_symbol_referencer::staff_space (me);
+
+  Real x_gap_f = gh_scm2double (me->get_grob_property ("x-gap"));
+
+  Grob* l = me->get_bound (LEFT);
+  Grob* r = me->get_bound (RIGHT);  
+
+  Grob* commonx = me->common_refpoint (l, X_AXIS);
+  commonx = me->common_refpoint (r, X_AXIS);
+  
+  Real left_x;
+
+  /*
+    this is a kludge: the tie has to be long enough to be
+    visible, but should not go through key sigs.
+
+ (please fixme)
+   */
+  Real lambda = 0.5;		
+  
+  if (Note_head::has_interface (l))
+    left_x = l->extent (l, X_AXIS)[RIGHT] + x_gap_f;
+  else
+    left_x = l->extent (l, X_AXIS).linear_combination (lambda);
+  
+
+  Real width;
+  if (Note_head::has_interface (l) && Note_head::has_interface (r))
+    {
+      width = 
+	+ r->extent (commonx,X_AXIS)[LEFT]
+	- l->extent (commonx, X_AXIS)[RIGHT]
+	-2 * x_gap_f;
+    }
+  else
+    {
+      if (Note_head::has_interface (l))
+	width = r->relative_coordinate (commonx, X_AXIS)
+	  - l->extent (commonx, X_AXIS)[RIGHT]
+	  - 2 * x_gap_f;
+      else
+	width =
+	  - l->extent (commonx, X_AXIS).linear_combination (lambda)  
+	  + r->extent (commonx, X_AXIS)[LEFT]
+	  - 2 * x_gap_f;
+    }
+  
+  Direction dir = Directional_element_interface::get (me);
+
+  SCM details = me->get_grob_property ("details");
+
+  SCM lim // groetjes aan de chirurgendochter.
+    = scm_assq (ly_symbol2scm ("height-limit"),details);
+  
+  Real h_inf = gh_scm2double (gh_cdr (lim)) *  staff_space;
+  Real r_0 = gh_scm2double (gh_cdr (scm_assq (ly_symbol2scm ("ratio"),details)));
+
+  Bezier b  = slur_shape (width, h_inf, r_0);
+  
+  /*
+    I think this better, particularly for small ties. It always allows the user to move ties if
+    they seem in the wrong place
+
+    TODO: what if 2 heads have different size.
+
+  */
+
+  Real ypos = Tie::position_f (me) * staff_space/2
+    + dir * gh_scm2double (me->get_grob_property ("y-offset"));;
+
+  /*
+    Make sure we don't start on a dots
+   */
+  if (Note_head::has_interface (l) && Rhythmic_head::dots_l (l))
+    {
+      Grob* dots = Rhythmic_head::dots_l(l);
+      if(fabs (staff_space * Staff_symbol_referencer::position_f (dots) /2
+	       - ypos) < 0.5)
+	{
+	  ypos += 0.5 * dir ;
+	}
+    }
+
+  
+  /*
+    todo: prevent ending / staffline collision.
+
+    todo: tie / stem collision
+   */
+
+  b = slur_shape (width,h_inf, r_0);
+  b.scale (1, dir);
+  b.translate (Offset (left_x, ypos));
+  
+
+  /*
+    Avoid colliding of the horizontal part with stafflines.
+
+    
+    TODO: redo this, heuristic is half-baken, and ties often look ugly
+    as a result.
+
+    TODO: doesn't work when on staff with even number of lines.
+   */
+  Array<Real> horizontal (b.solve_derivative (Offset (1,0)));
+  if (horizontal.size ())
+    {
+      /*
+	ugh. Doesnt work for non-horizontal curves.
+       */
+      Real y = b.curve_point (horizontal[0])[Y_AXIS];
+
+      Real ry = rint (y/staff_space) * staff_space;
+      Real diff = ry - y;
+      Real newy = y;
+
+      Real clear = staff_space * gh_scm2double (me->get_grob_property ("staffline-clearance"));
+
+      if (fabs (y) <= Staff_symbol_referencer::staff_radius (me)
+	  && fabs (diff) < clear)
+	{
+	  Real y1 = ry + clear;
+	  Real y2 = ry - clear;
+	  
+	  newy = (fabs (y1 - y) < fabs (y2 - y)) ? y1 : y2;
+	  
+	  // newy = ry - 0.5 * staff_space * sign (diff) ;
+
+	  /*
+	    we don't want horizontal ties
+	   */
+	  if (fabs (newy - b.control_[0][Y_AXIS]) < 1e-2)
+	    {
+	      newy = newy + dir * staff_space; 
+	    }
+	}
+
+      Real y0 = b.control_ [0][Y_AXIS];
+      b.control_[2][Y_AXIS] = 
+      b.control_[1][Y_AXIS] =
+ (b.control_[1][Y_AXIS] - y0)  * ((newy - y0) / (y - y0)) + y0; 
+    }
+  else
+    programming_error ("Tie is nowhere horizontal");
+
+
+
+  SCM controls = SCM_EOL;
+  for (int i= 4; i--;)
+    controls = gh_cons (ly_offset2scm (b.control_[i]), controls);
+  return controls;
 }
 
-void
-Tie::do_substitute_element_pointer (Score_element*o, Score_element*n)
+
+MAKE_SCHEME_CALLBACK (Tie,brew_molecule,1);
+SCM
+Tie::brew_molecule (SCM smob) 
 {
-  Note_head *new_l = n ? dynamic_cast<Note_head *> (n) : 0;
-  if (dynamic_cast <Item *> (o) == head_l_drul_[LEFT])
-    head_l_drul_[LEFT] = new_l;
-  else if (dynamic_cast <Item *> (o) == head_l_drul_[RIGHT])
-    head_l_drul_[RIGHT] = new_l;
+  Grob*me = unsmob_grob (smob);
+
+  SCM cp = me->get_grob_property ("control-points");
+  if (cp == SCM_EOL)
+    {
+      cp = get_control_points (smob);
+      me->set_grob_property ("control-points", cp);
+    }
+  
+  Real thick =
+    gh_scm2double (me->get_grob_property ("thickness"))
+    * me->paper_l ()->get_var ("stafflinethickness");
+
+  Bezier b;
+  int i = 0;
+  for (SCM s= cp; s != SCM_EOL; s = gh_cdr (s))
+    {
+      b.control_[i] = ly_scm2offset (gh_car (s));
+      i++;
+    }
+  
+   Molecule a = Lookup::slur (b, Directional_element_interface::get (me) * thick, thick);
+   
+   return a.smobbed_copy ();
 }
 
 
-Array<Rod>
-Tie::get_rods () const
-{
-  Array<Rod> a;
-  Rod r;
-  r.item_l_drul_ = spanned_drul_;
-  r.distance_f_ = paper_l ()->get_var ("tie_x_minimum");
-  a.push (r);
-  return a;
-}
