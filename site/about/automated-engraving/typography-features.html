@@ -56,6 +56,36 @@ combined vertical positions of the notes. The top fragment is printed
 with this correction, the bottom one without.  In the last case, the
 down-stem/up-stems combinations form clumps of notes.
 
+
+<h2>Ledger lines</h2>
+
+Ledger lines are typographically difficult. They can easily blot
+together with other signs, such as ledger lines or accidentals.
+
+<table align=center><tr><td>
+<img src=@IMAGES@henle-ledger.png>
+&nbsp;
+</td>
+<td>
+<img src=@IMAGES@baer-ledger.png>&nbsp;
+
+</td>
+<td>
+<img src=@IMAGES@lily-ledger.png></td>
+</tr><tr>
+<td align=center>Henle (2000)</td>
+<td align=center>B&auml;renreiter (1950)</td>
+<td align=center>LilyPond (2004)</td>
+</tr>
+</table>
+
+Engravers would adjust the size of a ledger line, depending on what
+symbol where in the neighborhood. LilyPond does the same: ledger are
+shortened so they never collide with neighboring lines, and they are
+shortened when there is an accidental.
+
+
+
 <p align=right>
 Next: <a href=input-format.html>Use the Source, Luke</a>, or: what
 goes into LilyPond.
