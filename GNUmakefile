@@ -36,13 +36,15 @@ outball=site.tar.gz
 out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
+
+WEBSERVER=lilypond.org
 upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
 	chmod -R g+w * && \
 	chmod 2775 . `find  -type d` && \
-	rsync --delete -go --stats --progress -rltvu -e ssh . x:/var/www/lilypond/web/
+	rsync --delete -go --stats --progress -rltvu -e ssh . $(WEBSERVER):/var/www/lilypond/web/
 
 
 dist:
