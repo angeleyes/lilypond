@@ -1,142 +1,157 @@
 % property.ly
-% list of properties that lily recognises
-% and some shorthands (ugh)
 
-%{
+\version "1.3.146"
 
-SEE THE REFERENCE MANUAL FOR EXPLANATIONS.
+stemUp = \property Voice.Stem \set #'direction = #1
+stemDown = \property Voice.Stem \set #'direction = #-1 
+stemBoth= \property Voice.Stem \revert #'direction
 
-%}
+slurUp   = \property Voice.Slur \override #'direction = #1
+slurDown = \property Voice.Slur \override #'direction = #-1
+slurBoth = \property Voice.Slur \revert #'direction 
+shiftOn  = \property Voice.NoteColumn \override #'horizontal-shift = #1
+shiftOnn  = \property Voice.NoteColumn \override #'horizontal-shift = #2
+shiftOnnn  = \property Voice.NoteColumn \override #'horizontal-shift = #3
+shiftOff  = \property Voice.NoteColumn \revert #'horizontal-shift 
 
-\version "1.2.0";
+tieUp = \property Voice.Tie \override #'direction = #1
+tieDown = \property Voice.Tie \override #'direction = #-1
+tieBoth = \property Voice.Tie \revert #'direction 
 
-%hmm, (these) abbrevs suck, imo
-% i guess they're meant as some form of doco
-% that's what i use them for...
-stemup =        \property Voice.verticalDirection = \up 
-stemboth= 	\property Voice.verticalDirection = \center
-stemdown = 	\property Voice.verticalDirection = \down
-
-slurup = \notes {
-	s1*0
-	\property Voice.slurVerticalDirection = \up 
-	}
-slurboth= \notes {
-	s1*0
-	\property Voice.slurVerticalDirection = \center
+dynamicUp  = {
+  \property Voice.DynamicText \override #'direction = #1
+  \property Voice.DynamicLineSpanner \override #'direction = #1
 }
-slurdown = \notes { 	
-	s1*0
-	\property Voice.slurVerticalDirection = \down
+dynamicDown = {
+  \property Voice.DynamicText \override #'direction = #-1
+  \property Voice.DynamicLineSpanner \override #'direction = #-1
 }
-
-shifton = \property Voice.horizontalNoteShift = 1
-shiftoff = \property Voice.horizontalNoteShift = 0
-
-onevoice = { 	
-	\stemboth \shiftoff	
+dynamicBoth = {
+  \property Voice.DynamicText \revert #'direction
+  \property Voice.DynamicLineSpanner \revert #'direction
 }
 
-%{ THESE ARE DEPRECATED  %}
-voiceone = 
-	\context Voice = one  {
-	\stemup
+scriptUp  = {
+  \property Voice.TextScript \override #'direction = #1
+  \property Voice.Script \override #'direction = #1
+}
+scriptDown = {
+  \property Voice.TextScript \override #'direction = #-1
+  \property Voice.Script \override #'direction = #-1
+}
+scriptBoth = {
+  \property Voice.TextScript \revert #'direction
+  \property Voice.Script \revert #'direction
 }
 
-voicetwo = 
-	\context Voice = two {
-	\stemdown
+tupletUp  = {
+  \property Voice.TupletBracket \override #'direction = #1
+  \property Voice.TupletBracket \override #'direction = #1
+}
+tupletDown = {
+  \property Voice.TupletBracket \override #'direction = #-1
+  \property Voice.TupletBracket \override #'direction = #-1
+}
+tupletBoth = {
+  \property Voice.TupletBracket \revert #'direction
+  \property Voice.TupletBracket \revert #'direction
 }
 
-voicethree = 
-	\context Voice = three {
-	\stemup
 
+
+cadenzaOn = \property Score.timing = ##f
+cadenzaOff = {
+  \property Score.timing = ##t
+  \property Score.measurePosition = #(make-moment 0 1)
 }
 
-voicefour = 
-	\context Voice = four {
-	\stemdown
-	\shifton
+newpage = {
+  \break
+  % urg, only works for TeX output
+  \context Score \outputproperty #(make-type-checker 'paper-column-interface)
+    #'between-system-string = #"\\newpage"
 }
 
-%{ END OF DEPRECATED %}
-
-
-% ugh, cluttering global namespace...
-
-% ugh2. 
-none=0
-free=0
-normal=1
-traditional=2
-infinity=10000
-
-beamslopeproportional = 
-	\property Score.beamslopedamping = \none
-
-beamslopedamped = 
-	\property Score.beamslopedamping = \normal
-
-
-beamslopezero = 
-	\property Score.beamslopedamping = \infinity
-
-
-% this sucks, you'd want to pass an array, at least
-% (or embedded code: you still can't dictate the slope / stemlength)
-beamposfree = 
-	\property Score.beamquantisation = \none
-
-
-beamposnormal = 
-	\property Score.beamquantisation = \normal
-
-
-beampostraditional = 
-	\property Score.beamquantisation = \traditional
-
-
-slurnormal = 
-	\property Voice.slurDash = ""
-
-
-slurdotted = 
-	\property Voice.slurDash = 1
-
-
-tupletoff = {
-	\property Voice.tupletVisibility = 0
-}
-tupleton = {
-	\property Voice.tupletVisibility = 3
-}
-tiny  = {
-	\property Voice.fontSize= "-2"
+% dynamic dir?  text script, articulation script dir?	
+oneVoice = { 	
+  \stemBoth
+  \slurBoth
+  \tieBoth
+  \shiftOff
 }
 
-small  = {
-	\property Voice.fontSize= "-1"
+voiceOne = {
+  \stemUp
+  \slurUp
+  \tieUp
 }
+
+voiceTwo = {
+  \stemDown
+  \slurDown
+  \tieDown
+}
+   
+voiceThree = {
+  \stemUp
+  \slurUp
+  \tieUp
+  \shiftOn
+}
+
+voiceFour = {
+  \stemDown
+  \slurDown
+  \tieDown
+  \shiftOn
+}
+
+% There's also dash, but setting dash period/length should be fixed.
+slurDotted = \property Voice.Slur \override #'dashed = #1
+slurSolid = \property Voice.Slur \revert #'dashed
+tieDotted = \property Voice.Tie \override #'dashed = #1
+tieSolid = \property Voice.Tie \revert #'dashed
+
+	
+tiny  = 
+	\property Voice.fontSize= -2
+
+
+small  = 
+	\property Voice.fontSize= -1
+
 
 normalsize = {
-	\property Voice.fontSize= "0"
+	\property Voice.fontSize= 0
 }
 
 normalkey = {
-	\property Staff.keyOctaviation = 1
+	\property Staff.keyOctaviation = ##f
 }
 
 specialkey = {
-	\property Staff.keyOctaviation = 0
+	\property Staff.keyOctaviation = ##t
 }
 
 % End the incipit and print a ``normal line start''.
 endincipit = \notes{
-    \partial 16; s16  % Hack to handle e.g. \bar ".|"; \endincipit
-    \property Staff.clefStyle = "fullSizeChanges" 
-    \nobreak \bar "";
+    \partial 16 s16  % Hack to handle e.g. \bar ".|" \endincipit
+    \context Staff \outputproperty #(make-type-checker 'clef-interface) #'full-size-change = ##t
+    \context Staff \outputproperty #(make-type-checker 'clef-interface) #'non-default = ##t
+    \bar ""
 }
 
-autoBeamOff = \property Voice.noAutoBeaming = "1"
-autoBeamOn = \property Voice.noAutoBeaming = ""  
+autoBeamOff = \property Voice.noAutoBeaming = ##t
+autoBeamOn = \property Voice.noAutoBeaming = ##f
+
+emptyText = \property Voice.textNonEmpty = ##f
+fatText = \property Voice.textNonEmpty = ##t
+
+showStaffSwitch = \property PianoStaff.followVoice = ##t
+hideStaffSwitch = \property PianoStaff.followVoice = ##f
+
+
+% To remove a Volta bracet or some other graphical object,
+% set it to turnOff. Example: \property Staff.VoltaBracket = \turnOff
+
+turnOff = #'((meta .  ((interfaces . ()))))
