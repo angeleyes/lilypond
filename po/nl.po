@@ -213,7 +213,7 @@ msgstr "Voer multi-rust in"
 
 #: site/graphics/annotate-example-parts.svg:178
 msgid "Store notes in variable"
-msgstr "Bewaar noten in veranderlijke"
+msgstr "Bewaar noten in variabele"
 
 #: site/graphics/annotate-example-score.svg:115
 msgid "Create staff"
@@ -225,7 +225,7 @@ msgstr "Combineer notenbalken parallel"
 
 #: site/graphics/annotate-example-single-part.svg:120
 msgid "Condense multi-rests"
-msgstr "Concentreer multi-rusten"
+msgstr "Voeg lange rusten samen"
 
 #: site/graphics/annotate-example-single-part.svg:134
 msgid "Transpose for F instrument"
@@ -233,4 +233,4 @@ msgstr "Transponeer voor F instrument"
 
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse identifier"
-msgstr "Hergebruik veranderlijke"
+msgstr "Hergebruik variabele"
