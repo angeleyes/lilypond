@@ -20,7 +20,7 @@ SCRIPTS = configure aclocal.m4 autogen.sh
 README_FILES =  ChangeLog  COPYING DEDICATION README.mandrake ROADMAP THANKS
 README_TXT_FILES = AUTHORS.txt README.txt INSTALL.txt NEWS.txt
 IN_FILES := $(wildcard *.in)
-EXTRA_DIST_FILES = $(wildcard *.el) vimrc VERSION $(README_FILES)  $(SCRIPTS) $(IN_FILES)  emacsclient.patch server.el.patch darwin.patch .cvsignore  lexer-gcc-3.1.sh  lilypond.words
+EXTRA_DIST_FILES = $(wildcard *.el) lilypond.vim vimrc VERSION $(README_FILES)  $(SCRIPTS) $(IN_FILES)  emacsclient.patch server.el.patch darwin.patch .cvsignore  lexer-gcc-3.1.sh  lilypond.words
 NON_ESSENTIAL_DIST_FILES = $(README_TXT_FILES)
 INSTALLATION_DIR=$(local_lilypond_datadir)
 INSTALLATION_FILES=$(config_make) VERSION
@@ -151,5 +151,5 @@ $(config_h): configure.in aclocal.m4
 # maybe move into private script?
 rsync-web:
 	cd out-www &&  mkdir web && tar  -xzf web.tar.gz -C web
-	cd out-www/web &&  rsync --delete --stats --progress -rltvu -e ssh . x:/var/www/lilypond/doc/v1.9/
+	cd out-www/web &&  rsync --delete --stats --progress -rltvu -e ssh . x:/var/www/lilypond/doc/v1.8/
 	cd out-www && rm -rf web/
