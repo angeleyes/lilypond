@@ -40,6 +40,46 @@ te_kpath te_mpost libpng python gpp libgpp gettext autoconf netpbm
 libnetpb gs_serv gs_lib gs_fonts guile
 
 
+
+<h2>Debian</h2>
+
+<p>If you're real impatient, you may even do:
+<pre>     
+     	cd lilypond-x.y.z   # a previous version
+             uscan               # download and build latest directly from upstream
+     </pre>
+
+   <p>The build scripts are in the subdirectory <code>debian/</code>; you can
+make the .deb by doing, for example:
+
+<pre>       $ su - root
+       # dpkg --purge lilypond lilypond1.3
+       # exit
+       $ tar xzf lilypond-1.8.0.tar.gz
+       $ cd lilypond-1.8.0
+       $ dch -p -v 1.8.0-0.local.1 "Local build."
+       $ debuild -B
+       $ su - root
+       # dpkg -i ../lilypond_1.8.0-*.deb
+       # exit
+       $
+</pre>
+
+<p>
+To ensure the creation of the lilypond deb is
+trouble-free, we recommend that you first install the following packages
+by running apt-get as root before building the package:
+
+<p>
+For Debian 3.0:
+<pre>  
+       apt-get install g++ libc6-dev \
+               python libguile-dev tetex-bin libkpathsea-dev \
+               tetex-extra flex bison texinfo groff gs \
+               netpbm m4 gettext mftrace pfaedit autotrace t1utils
+</pre>
+
+
 <h2>Cygwin</h2>
 
 
@@ -89,77 +129,3 @@ directory <code>cygwin/mknetrel</code> and <a
 href="../../cygwin/mknetrel">mknetrel:extra/lilypond</a>.
 
 
-
-<h2>Debian</h2>
-
-
-
-<p>If you're real impatient, you may even do:
-<pre>     
-     	cd lilypond-x.y.z   # a previous version
-             uscan               # download and build latest directly from upstream
-     </pre>
-
-<p>Debian's TeX installation must have its memory increased:
-<pre>     --- texmf.cnf.orig	Sun Dec 16 23:47:07 2001
-     +++ texmf.cnf	Sun Dec 16 23:46:34 2001
-     @ -411,8 +411,8 @
-      main_memory.context = 1500000
-      main_memory.mpost = 1000000
-      main_memory = 263000 % words of inimemory available; also applies to inimf&amp;mp
-     -extra_mem_top = 0    % extra high memory for chars, tokens, etc.
-     -extra_mem_bot = 0    % extra low memory for boxes, glue, breakpoints, etc.
-     +extra_mem_top = 1000000    % extra high memory for chars, tokens, etc.
-     +extra_mem_bot = 1000000    % extra low memory for boxes, glue, breakpoints, etc.
-     
-      obj_tab_size.context = 300000
-     
-     @ -430,7 +430,7 @
-      % Max number of characters in all strings, including all error messages,
-      % help texts, font names, control sequences.  These values apply to TeX and MP.
-      pool_size.context = 750000
-     -pool_size = 125000
-     +pool_size = 250000
-      % Minimum pool space after TeX/MP's own strings; must be at least
-      % 25000 less than pool_size, but doesn't need to be nearly that large.
-      string_vacancies.context = 45000
-     </pre>
-
-<p>Another option is
-to export <code>extra_mem_top</code> and <code>extra_mem_bot</code> as
-environment variables.
-
-   <p>Please contact Anthony Fok <a href="mailto:lilypond@packages.debian.org">lilypond@packages.debian.org</a> for more
-information.
-
-   <p>The build scripts are in the subdirectory <code>debian/</code>; you can
-make the .deb by doing, for example:
-
-<pre>     	$ su - root
-     	# dpkg --purge lilypond lilypond1.3
-     	# exit
-     	$ tar xzf lilypond-1.4.3.tar.gz
-     	$ cd lilypond-1.4.3
-     	$ dch -p -v 1.4.3-0.local.1 "Local build."
-     	$ debuild
-     	$ su - root
-     	# dpkg -i ../lilypond_1.4.3*.deb
-     	# exit
-     	$
-     </pre>
-
-   <p>For compilation on a Debian GNU/Linux system you need these packages,
-in addition to the those needed for running:
-
-     <ul>
-<li>g++, cpp, libc6-dev, libstdc++&lt;<var>your-libstdc++-version-here</var>&gt;-dev
-<li>libguile&lt;<var>your-libguile-version-here</var>&gt;-dev
-<li>make, m4, flex, bison
-<li>gettext
-<li>groff, texinfo
-<li>tetex-base, tetex-bin, tetex-extra, libkpathsea-dev or tetex-dev
-<li>dpkg-dev, debhelper, fakeroot
-<li>gs, netpbm
-<li>pnmtopng (only in Debian 2.2; pnmtopng has been merged with netpbm
-  in Debian testing/unstable.) 
-</ul>

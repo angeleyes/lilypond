@@ -1,3 +1,8 @@
+2003-08-06  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/devel/packaging.html: Apply Anthony's changes for Debian.
+	Move Cygwin to bottom.
+
 2003-08-06  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* format-page.py (do_one_file): 
