@@ -1,5 +1,9 @@
 lilypond_1_4
 ============
+* configure: Regenerate.
+
+* aclocal.m4: Add --enable/disable-optimising option.
+
 * scripts/lilypond-book.py: fix by Mats. Try to import pre if available.
 
 * scripts/lilypond-book.py (re_dict): remove all *? regexps.
