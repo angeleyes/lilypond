@@ -39,7 +39,7 @@ out/$(outball): site
 upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && 	chgrp -R lilypond .  && \
-	rsync --delete --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
+	rsync --delete --group --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
 
 
 dist:
