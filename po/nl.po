@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-28 12:59+0100\n"
+"POT-Creation-Date: 2005-01-28 13:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,31 +23,31 @@ msgstr "Thuis"
 
 #: site/about/menu-entries.py:2
 msgid "Features"
-msgstr ""
+msgstr "Mogelijkheden"
 
 #: site/about/menu-entries.py:3
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 #: site/about/menu-entries.py:4
 msgid "Essay"
-msgstr ""
+msgstr "Essay"
 
 #: site/about/menu-entries.py:5
 msgid "Publications"
-msgstr ""
+msgstr "Publicaties"
 
 #: site/about/menu-entries.py:6
 msgid "Donate"
-msgstr ""
+msgstr "Steun"
 
 #: site/about/menu-entries.py:7
 msgid "Acknowledgements"
-msgstr ""
+msgstr "Dankbetuigingen"
 
 #: site/about/news/menu-entries.py:2
 msgid "Older news"
-msgstr ""
+msgstr "Ouder nieuws"
 
 #: site/menu-entries.py:5
 msgid "Introduction"
@@ -59,7 +59,7 @@ msgstr "Over"
 
 #: site/menu-entries.py:7
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: site/menu-entries.py:8
 msgid "Documentation"
@@ -71,88 +71,88 @@ msgstr "Ontwikkeling"
 
 #: site/devel/menu-entries.py:2
 msgid "Participate"
-msgstr ""
+msgstr "Doe mee"
 
 #: site/devel/menu-entries.py:3
 msgid "Packaging"
-msgstr ""
+msgstr "Paketten"
 
 #: site/devel/misc/menu-entries.py:2
 msgid "Finale ETF format"
-msgstr ""
+msgstr "Finale ETF formaat"
 
 #: site/devel/misc/menu-entries.py:3
 msgid "Conferences relevant to LilyPond"
-msgstr ""
+msgstr "Relevante conferenties voor LilyPond"
 
 #: site/devel/misc/menu-entries.py:4
 msgid "Related online resources"
-msgstr ""
+msgstr "Verwante webzijden"
 
 #: site/devel/notation/menu-entries.py:2
 msgid "appogiatura"
-msgstr ""
+msgstr "voorslag"
 
 #: site/devel/notation/menu-entries.py:3
 msgid "Basso Continuo"
-msgstr ""
+msgstr "Basso Continuo"
 
 #: site/devel/notation/menu-entries.py:4
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #: site/devel/notation/menu-entries.py:5
 msgid "Ligature"
-msgstr ""
+msgstr "Ligatuur"
 
 #: site/devel/participating/menu-entries.py:2
 msgid "Help wanted!"
-msgstr ""
+msgstr "Hulp gevraagd!"
 
 #: site/devel/participating/menu-entries.py:3
 msgid "Localization"
-msgstr ""
+msgstr "Vertalen"
 
 #: site/devel/participating/menu-entries.py:4
 msgid "Standards"
-msgstr ""
+msgstr "Standaarden"
 
 #: site/download/windows/menu-entries.py:2
 msgid " Cygwin"
-msgstr ""
+msgstr "Cygwin"
 
 #: site/download/windows/menu-entries.py:3
 msgid "Troubleshooting"
-msgstr ""
+msgstr "Probleemoplossingen"
 
 #: site/download/menu-entries.py:2
 msgid "MacOS X"
-msgstr ""
+msgstr "MacOS X"
 
 #: site/download/menu-entries.py:3
 msgid "Windows"
-msgstr ""
+msgstr "Windows"
 
 #: site/download/menu-entries.py:4
 msgid "First use"
-msgstr ""
+msgstr "Eerste gebruik"
 
 #: site/download/menu-entries.py:5
 msgid "User help"
-msgstr ""
+msgstr "Gebruikershulp"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
-msgstr ""
+msgstr "Waarom LilyPond gebruiken?"
 
 #: site/switch/menu-entries.py:3
 msgid "Testimonials"
-msgstr ""
+msgstr "Bekentenissen"
 
 #: site/switch/menu-entries.py:4
 msgid "A short tour"
-msgstr ""
+msgstr "Een korte rondleiding"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
-msgstr ""
+msgstr "Stoomcursus"
