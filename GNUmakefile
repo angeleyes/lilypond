@@ -8,7 +8,7 @@ LY2DVI=python $(LILYPONDDIR)/scripts/ly2dvi.py
 all: menuify
 
 # no silly buttons
-site: tree menuify renderlys # buttons
+site: tree menuify
 
 menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`
@@ -21,44 +21,22 @@ tree:
 	for a in `find site -type d -not -name CVS `; do mkdir out/$$a; done 
 
 
-renderlys:
-	$(foreach  a, $(shell find site -name '*.ly'), \
-		cp $(a) out/$(a) && \
-		(cd  $(dir out/$(a) ) ; $(LY2DVI) --preview --html --png --pdf $(notdir $(a))) && ) true
 
-VERSION=0.0
+VERSION=1.0
 DISTDIR=lily-web-$(VERSION)
 
 FILES=$(SCRIPTS) GNUmakefile newweb.css `find site -name '*.html' -or -name '*.py' -or -name '*.ly' -or -name '*.png'`
 
 outball=site.tar.gz
 
-silly-buttons:
-	mkdir -p out/images
-	cd out/images && \
-		cat ../buttons | \
-		while read i; do \
-			if [ ! -f $$i.png ]; then \
-				gimp -s -b '(lily-button "'$$i'" 0)' \
-					'(gimp-quit 0)'; \
-				gimp -s -b '(lily-button "'$$i'" 1)' \
-					'(gimp-quit 0)'; \
-			fi \
-		done
-
-BUTTONS = $(shell cat out/buttons | sed -e s/^/\"/ -e s/$$/\"/)
-
-buttons:
-	mkdir -p out/images
-	cd out/images && \
-		gimp -c -s -b '(lily-buttons (list $(BUTTONS)))' '(gimp-quit 0)'
 
 out/$(outball): site
-	cd out && tar czvf $(outball) site images
+	cd out && tar czvf $(outball) site 
 
-upload: out/$(outball)
-	scp out/$(outball) lilypond.org:/var/www/lilypond/newweb/out
-	ssh lilypond.org 'cd /var/www/lilypond/newweb/out; tar vxzf $(outball)'
+upload: menuify
+	cd out/site && \
+	rsync --delete --stats --progress -lavu -e ssh . x:/var/www/lilypond/web/
+
 
 dist:
 	mkdir $(DISTDIR)
