@@ -11,8 +11,16 @@ header = '''<HTML>
 </HEAD>
 '''
 
+main_template = '''<DIV class="main">
+<HR>
+%s
+<HR>
+</DIV>
+'''
+
 footer = '''
 </BODY>'''
+
 
 menu_template = '''<DIV class="menu">
 %s
@@ -94,7 +102,7 @@ def do_one_file (in_file_name):
 	except:
 		OSError
 		
-	contents = open (in_file_name).read ()
+	html = open (in_file_name).read ()
 	
 	file_name = in_file_name
 	tabs = []
@@ -142,9 +150,10 @@ def do_one_file (in_file_name):
 	
 	menu = menu_template % string.join (tabs)
 	nav_str = location_template % nav_str
-	contents = header + menu  + contents + '<p><br><p>' + nav_str + footer
+	main = main_template % html
+	page = header + menu + main + nav_str + footer
 	
-	open (os.path.join (outdir, in_file_name), 'w').write (contents)
+	open (os.path.join (outdir, in_file_name), 'w').write (page)
 
 for (o,a) in options:
 	if o == '--outdir':

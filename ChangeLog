@@ -1,5 +1,9 @@
 2003-04-01  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* newweb.css: Add margins.
+
+	* format-page.py (main_template): Add.
+
 	* GNUmakefile (buttons):
 	(all): New target.
 	(out/$(outball)): Add images too.

@@ -1,11 +1,22 @@
 /* http://www.w3.org/TR/REC-CSS2 */
 
 {
-    position: relative;
-    background: #111111;
+    background: #ffffff;
     border-style: none;
-    border-width: 0;
+    padding-left: 5%;
+    padding-right: 5%;
 }
+
+// ugh, this is not what we want
+p {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+body {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
 
 img {
     border-style: none;
@@ -24,7 +35,6 @@ a:hover {
 }
 
 table {
-    //text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
