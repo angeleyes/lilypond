@@ -20,7 +20,7 @@ enddef;
 def draw_staff(expr first, last, offset)=
 	pickup pencircle scaled stafflinethickness;
 	for i:= first step 1 until last:
-		draw (- interline, (i + offset) * interline) .. (4 interline,( i+ offset)* interline);
+		draw (- staff_space, (i + offset) * staff_space) .. (4 staff_space,( i+ offset)* staff_space);
 	endfor
 	enddef;
 
@@ -214,7 +214,11 @@ def draw_bulb(expr turndir, zl, zr, bulb_rad, radius_factor)=
 	save rad, ang;
 
 	ang = angle(zr-zl);
-	z0 = zr + bulb_rad * (zl-zr)/length(zr -zl);
+
+	% don't get near infinity
+	%z0 = zr + bulb_rad * (zl-zr)/length(zr -zl);
+	z0 = zr + bulb_rad /length(zr -zl) * (zl-zr);
+
 	rad =  bulb_rad;
 
 	z1 = z0 + radius_factor* rad * dir(ang + turndir* 100);

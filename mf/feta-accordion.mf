@@ -1,17 +1,14 @@
 % -*- Fundamental -*-
 
-accreg_dot_size# := .5interline#;
+fet_begingroup("accordion")
 
-% FIXME
-% 'strange turning path' in accSB and others:
-%     mf '\mode=laserjet; input feta11'
-%     mf '\mode=laserjet; input feta13'
+accreg_dot_size# := .5staff_space#;
 accreg_linethickness# := 1.3stafflinethickness#;
 
 % This dimention is the same on all registersymbols.
 % The different symbols should calculate their other
 % dimensions from this and accreg_dot_size
-accreg_lh# := 1.0interline#;
+accreg_lh# := 1.0staff_space#;
 
 define_pixels(accreg_dot_size, accreg_linethickness, accreg_lh);
 pen accreg_pen;
@@ -62,13 +59,15 @@ fet_beginchar("accStdbase", "accStdbase", "accStdbase")
 	currentpicture := currentpicture shifted (0, r);
 fet_endchar;
 
+%%% strange turning path.
 fet_beginchar("accBayanbase", "accBayanbase", "accBayanbase")
 	save lh;
 	lh = accreg_lh;
 %	set_char_box(accreg_lh#, accreg_lh#, 3accreg_lh#, 0);
 	set_char_box(accreg_lh#, accreg_lh#, 0, 3accreg_lh#);
 	pickup pencircle scaled accreg_linethickness;
-	draw (0, 0)--(2w, 0)--(2w, 3accreg_lh)--(0, 3accreg_lh)--(0, 0);
+	%draw (0, 0)--(2w, 0)--(2w, 3accreg_lh)--(0, 3accreg_lh)--(0, 0);
+	draw (0, 0)--(2w, 0)--(2w, 3accreg_lh)--(0, 3accreg_lh)--cycle;
 	draw (0, accreg_lh)--(2w, accreg_lh);
 	draw (0, 2accreg_lh)--(2w, 2accreg_lh);
 	currentpicture := currentpicture shifted (-w, 0);% -3lh);
@@ -83,6 +82,7 @@ def def_B(expr w, h) =
 	penpos12(thick, 0);
 	penpos13(thin, 90);
 	penpos14(thin, 90);
+
 	penpos15(thick, 180);
 	penpos16(thin, -90);
 	penpos17(thin, -90);
@@ -133,23 +133,47 @@ enddef;
 def def_some_vars =
 	save hs, mb, mt, thin, thick, height, width, cOne, cTwo;
 	width = .8staffsize;
-	height = 2.4interline;
-	thin = 0.05interline;
-	thick = 0.2interline;
-	hs = 0.4interline;
+	height = 2.4staff_space;
+	% URG.  smaller sizes should be wider and fatter
+	%thin = 0.05staff_space;
+	%thick = 0.2staff_space;
+	save bx,hx; 4hx+bx=1.15; 10hx+bx=1;
+	fatten:=designsize*hx+bx*1.2;
+	thick:= 0.2staff_space*fatten;
+	% urg: mustn't ever go thinner than blot!
+	thin#:= blot_diameter#;
+	define_pixels (thin);
+
+	hs = 0.4staff_space;
 	mb = .53;
 	mt = .47;	
 	cOne = 0.65;
 	cTwo = 0.60;
 enddef;
 
+def print_penpos (suffix $)=
+	message "z"&str $ &"l = ("&decimal x.$.l&", "&decimal y.$.l&"); z"&str $ &"r = ("&decimal x.$.r&", "&decimal y.$.r&");";
+enddef;
+
+%fet_beginchar("accTEST", "accTEST", "accTEST")
+%	set_char_box(.4staffsize#, .4staffsize#, 0, 2.4staff_space#);
+%	def_some_vars;
+%	penlabels(10, 11, 12, 13, 14);
+%	penstroke z10e--z11e{right}..z12e..z13e{left}--z14e;
+%fet_endchar;
+
 fet_beginchar("accSB", "accSB", "accSB")
-	set_char_box(.4staffsize#, .4staffsize#, 0, 2.4interline#);
+	set_char_box(.4staffsize#, .4staffsize#, 0, 2.4staff_space#);
 	def_some_vars;
 	def_B(.35width, .7height);
 
-	% FIXME -- strange turning path:
-	penstroke z10e--z11e{right}..z12e{up}..z13e{left}--z14e;
+	%print_penpos (10);
+	%print_penpos (11);
+	%print_penpos (12);
+	%print_penpos (13);
+	%print_penpos (14);
+	penlabels(10, 11, 12, 13, 14);
+	penstroke z10e--z11e{right}..z12e..z13e{left}--z14e;
 
 	penstroke z13e{right}..z15e{up}..z16e{left}--z17e;
 	penstroke z18e--z19e;
@@ -158,7 +182,7 @@ fet_beginchar("accSB", "accSB", "accSB")
 	currentpicture := currentpicture shifted(.40width, 0);
 
 	def_S(.35width, .7height);
-%	penlabels(1, 2, 3, 4, 5, 6, 7, 8, 9);
+	penlabels(1, 2, 3, 4, 5, 6, 7, 8, 9);
 	filldraw z1r--z8r--z8l--subpath(t, 1) of bue--cycle;
 	filldraw subpath(t, 1) of bueoverst--z7l--z9r--z9l--cycle;
 	penstroke z1e{down}..z2e{right}..z3e
@@ -169,19 +193,19 @@ fet_beginchar("accSB", "accSB", "accSB")
 	currentpicture := currentpicture shifted (-.40width, -.85height);
 	draw (-.5width, 0)--(.5width, 0)--(.5width, -height)
 		--(-.5width, -height)--(-.5width, 0);
-	currentpicture := currentpicture shifted (0, 2.4interline);
+	currentpicture := currentpicture shifted (0, 2.4staff_space);
 fet_endchar;
 
 fet_beginchar("accBB", "accBB", "accBB")
-	set_char_box(.4staffsize#, .4staffsize#, 0, 2.4interline#);
+	set_char_box(.4staffsize#, .4staffsize#, 0, 2.4staff_space#);
 	def_some_vars;
 	def_B(.35width, .7height);
 
-	% FIXME -- strange turning path:
 	penstroke z10e--z11e{right}..z12e{up}..z13e{left}--z14e;
 
 	penstroke z13e{right}..z15e{up}..z16e{left}--z17e;
 	penstroke z18e--z19e;
+	penlabels(1, 2, 3, 4, 5, 6, 7, 8, 9);
 	pickup pencircle scaled .5thick;
 	drawdot(.37width, .10thick);
 	currentpicture := currentpicture shifted (.40width, 0);
@@ -192,17 +216,19 @@ fet_beginchar("accBB", "accBB", "accBB")
 	currentpicture := currentpicture shifted(-.40width, -.85height);
 	draw (-.5width, 0)--(.5width, 0)--(.5width, -height)
 		--(-.5width, -height)--(-.5width, 0);
-	currentpicture := currentpicture shifted (0, 2.4interline);
+	penlabels(10, 11, 12, 13, 14, 15, 16, 17, 18, 19 );
+	currentpicture := currentpicture shifted (0, 2.4staff_space);
 fet_endchar;
 
 
+%%% strange turning path.
 fet_beginchar("accOldEE", "accOldEE", "accOldEE")
-	set_char_box(interline#, interline#, 0, 2interline#);
+	set_char_box(staff_space#, staff_space#, 0, 2staff_space#);
 	show w;
 	show h;
-	r = interline;
-	lr = .3interline;
-	ir = .6interline;
+	r = staff_space;
+	lr = .3staff_space;
+	ir = .6staff_space;
 	pickup accreg_pen;
 	draw fullcircle scaled 2r;
 	pickup penrazor;
@@ -221,9 +247,9 @@ fet_beginchar("accOldEE", "accOldEE", "accOldEE")
 fet_endchar;
 
 fet_beginchar("accOldEES", "accOldEES", "accOldEES")
-	set_char_box(interline#, interline#, 0, 2interline#);
+	set_char_box(staff_space#, staff_space#, 0, 2staff_space#);
 	save r, shy;
-	r = interline;
+	r = staff_space;
 	shy = .3;
 	pickup accreg_pen;
 	draw fullcircle scaled 2r;
@@ -231,8 +257,22 @@ fet_beginchar("accOldEES", "accOldEES", "accOldEES")
 	save thin, thick, sw, ch, cw, mb, mt;
 	ch = .6h;
 	cw = .8w;
-	thin = .05cw;
-	thick = .17w;
+	% URG.  smaller sizes should be wider and fatter
+	%thin = .05cw;
+	%thick = .17w;
+	save bx,hx; 4hx+bx=1.15; 10hx+bx=1;
+	fatten:=designsize*hx+bx*1.2;
+	thick:= .17w*fatten;
+
+	% urg: mustn't ever go thinner than blot!
+	%thin = 0.05staff_space;
+	%blot#:=.4pt#;
+	thin#:= blot_diameter#;
+	define_pixels (thin);
+
+
+	hs = 0.4staff_space;
+
 	mb = .53; mt = .47;
 	sw = .8thick;
 	z1 = (0, ch-.5thin); penpos1 (thin, -90);
@@ -244,15 +284,18 @@ fet_beginchar("accOldEES", "accOldEES", "accOldEES")
 	z7 = (1.2cw, 0); penpos7(thin, 90);
 	z8 = (1.3cw, .2mb*ch); penpos8(thin, 180);
 	penlabels(1, 2, 3, 4, 5, 6, 7, 8);
+
+	%%AAARG
 	pickup pencircle scaled 0.001pt;
 	filldraw (0, 0)--(0, thin)--(sw, thin)--(sw, ch-thin)
 		--(sw+thick, ch-thin)--(sw+thick, thin)
 		--(2sw+thick, thin)--(2sw+thick, 0)--cycle;
 
-	% FIXME -- strange turning path:
 	penstroke z1e--z2e{right}..z3e..z4e{left}--z5e;
 
 	penstroke z4e{right}..z6e{down}..z7e{right}..z8e{up};
 	currentpicture := currentpicture shifted (-w/2, -shy*h);
 	currentpicture := currentpicture shifted (0, r);
 fet_endchar;
+
+fet_endgroup("accordion")
