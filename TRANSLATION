@@ -29,12 +29,12 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 3 site/about/automated-engraving/
 4 site/devel
 
-1 download/getting-started.html  --  http://lilypond.org/web/download/getting-started.html
-4 download/index.html  --  http://lilypond.org/web/download/index.html
-1 download/macos.html  --  http://lilypond.org/web/download/macos.html
-4 download/slackware.html  --  http://lilypond.org/web/download/slackware.html
-1 download/using.html  --  http://lilypond.org/web/download/using.html
-1 download/windows.html  --  http://lilypond.org/web/download/windows.html
+1 install/getting-started.html  --  http://lilypond.org/web/install/getting-started.html
+4 install/index.html  --  http://lilypond.org/web/install/index.html
+1 install/macos.html  --  http://lilypond.org/web/install/macos.html
+4 install/slackware.html  --  http://lilypond.org/web/install/slackware.html
+1 install/using.html  --  http://lilypond.org/web/install/using.html
+1 install/windows.html  --  http://lilypond.org/web/install/windows.html
 
 
 $ wc $(grep ^1 TODO | cut -f 2)
@@ -44,9 +44,9 @@ $ wc $(grep ^1 TODO | cut -f 2)
    92   405  3080 site/switch/tour.html
   101   281  2505 site/switch/howto.html
   106   276  3883 site/about/index.html
-  133   414  3310 site/download/getting-started.html
-   28    85   900 site/download/macos.html
-   56   115  1131 site/download/using.html
-  135   380  3001 site/download/windows.html
+  133   414  3310 site/install/getting-started.html
+   28    85   900 site/install/macos.html
+   56   115  1131 site/install/using.html
+  135   380  3001 site/install/windows.html
   966  2910 26269 total
 

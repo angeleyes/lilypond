@@ -1,5 +1,8 @@
 2005-03-31  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* site/install: New directory (WAS: download).  Update all links.
+	This enables toplevel lilypond.org transition.
+
 	* site/about/features.html: Fix rosegarden link.  Add close tags,
 	indent-region.
 
