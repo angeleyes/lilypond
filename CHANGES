@@ -1,6 +1,9 @@
 lilypond_1_4
 ============
 
+* Documentation/windows/installing.texi: Suggest gswin32c (console
+program) for getting the version.  Layout fixes.
+
 * Documentation/user/tutorial.itely (Running LilyPond): Backport
 windows doco fix.
 	
