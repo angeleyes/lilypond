@@ -1,0 +1,102 @@
+
+
+<h1>Getting started</h1>
+<p>
+You've installed your shiny new LilyPond, and you can't wait to
+typeset music. Here are some hints.
+
+
+
+
+<h2>Testing LilyPond</h2>
+<p>
+
+<ul>
+<li>Open a terminal window (Windows users: double click the "GNU LilyPond"
+or "Cygwin" icon), and type
+
+<pre>
+     lilypond --help
+</pre>
+in your window.
+You should see something similar to
+<pre>
+     GNU LilyPond 1.8.0
+     Usage: lilypond [OPTION]... FILE...
+     
+     Typeset music and or play MIDI from FILE
+     
+     LilyPond is a music typesetter.  It produces beautiful sheet music
+     using a high level description file as input.  LilyPond is part of
+     the GNU Project.
+     
+     Options:
+       -h,--help             this help
+     [..]
+</pre>     
+<p>
+
+If you see this, you have the program installed, and you can run it.
+<li>Open  <tt>test.ly</tt>  in your favorite text editor (Windows users:
+run <tt>notepad test.ly</tt>). 
+<li> Enter 
+<pre>
+     
+     \score { \notes { c4-(  c4-) } }
+     
+</pre>
+Save file and exit. 
+
+<li> Run 
+<pre>
+     ly2dvi -p test
+</pre>
+
+If everything works well, it  should say
+<pre>
+     DVI output to `test.dvi'...
+     PS output to `test.ps'...
+     PDF output to `test.pdf'...
+</pre>     
+
+<li>
+View the PDF file. Try these commands 
+<pre>
+   ggv test.pdf
+   gv test.pdf
+   kgv test.pdf
+   acroread test.pdf
+   ghostview test.pdf
+</pre>
+
+Windows users: go to folder C: -&gt; CYGWIN -&gt; HOME -&gt;
+<em>your-user-name</em>, and double click <tt>test.pdf</tt>.
+
+</ul>
+
+<h2>Yay, it works!</h2>
+<p>
+
+Good! Then go onto <a href=using.html>Using LilyPond</a>
+
+<h2>Darn, it doesn't work</h2>
+<p>
+
+Whoops, something went astray, so you have to send a bugreport. The
+directions for bugreports are in the <a
+href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
+packaged by the LilyPond team, CC your report to the packager listed
+in the "Courtesy" column <a href="index.html">on the download page</a>
+
+<p>
+
+Windows users: run
+the cywgin terminal (double click the Cygwin or LilyPond icon), and
+run
+
+<pre>
+   sh -x /usr/bin/bug-lilypond-cygwin >& bug.txt
+</pre>
+
+Attach the resulting <tt>bug.txt</tt> file to your bug-report.
+<p>

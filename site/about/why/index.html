@@ -570,18 +570,120 @@ with this correction, the bottom one without.  In the last case, the
 down-stem/up-stems combinations form clumps of notes.
 
 <p>
-<! todo :
 
-  music representation
+
+<h2>Input format</h2>
+<p>
+As discussed earlier, the ideal input format for a music engraving
+system is the content: the music itself. This poses a formidable
+problem: how can we define what music really <em>is</em>? Our way out
+of this problem, is to reverse it.  Instead of defining what music is,
+our program serves as a definition: we write a program capable of
+producing sheet music, and adjust the format to be as lean as
+possible.  When the format can no longer be trimmed down, by
+definition we are left with content itself.
+
+<p>
+The syntax is also the user-interface for LilyPond, hence it is easily
+typable, e.g.,
+
+<pre>
+  c'4 d'8
+</pre>
+Are a quarter note C1 and eighth note D1, as in this example:
+<p align=center>
+<img src="simple-notation.png">
+<p>
+
+On a microscopic scale, such syntax is easy to use. On a larger scale,
+syntax also  needs structure.  How else can  you enter  complex pieces
+like symphonies and operas? The  structure is formed by the concept of
+music expressions:  by combining small fragments of  music into larger
+ones, more complex music can be expressed.  For example,
+
+<table>
+<td align=center>
+c4</td>
+<td>
+<img src="simultaneous-0.png">
+</td></tr></table>
+
+<p>
+Combine this simultaneously with two other notes by enclosing in &lt;
+and &gt;.
+
+<table>
+<tr>
+<td align=center>
+<pre>
+  &lt;c4 d4 e4&gt;
+</pre>
+</td>
+<td>
+<img src="simultaneous-1.png">
+</td>
+</tr></table>
+
+This expression is put in sequence by enclosing it in braces, i.e.,
+<table>
+<tr>
+<td align=center><pre>
+   { &lt;c4 d4 e4&gt; f4  }</pre>
+</td>
+<td>
+<img src="simultaneous-2.png">
+</td>
+</tr></table>
+
+The above is another expression, and therefore, it many combined 
+again with a simultaneous expression (in this case, a half note). 
+
+<table>
+<tr>
+<td align=center>
+<pre>
+&lt; { &lt;c4 d4 e4&gt; f4 } g2 &gt; 
+</pre>
+</td>
+<td>
+<img src="simultaneous-3.png">
+</td>
+</tr>
+</table>
+<p>
+Such recursive structures can be specified neatly and formally in a
+<em>context-free grammar</em>.  The parsing code is also generated
+from this grammar. In other words, the  syntax of LilyPond is clearly
+and unambiguously defined. 
+<p>
+User-interfaces and syntax are what people see and deal with
+most. They are partly a matter of taste, and also subject of much
+discussion.  Although discussions on taste do have their merit, they
+are not very productive.  In the larger picture of LilyPond, the
+importance of input syntax is small: inventing neat syntax is easy,
+writing decent formatting code is much harder.  This is also
+illustrated by the line-counts for the respective components: parsing
+and representation take up less than 10% of the code.
+
+<table>
+<tr><th>Parsing + representation</th><th>total</th></tr>
+<tr>
+<td>6000 lines C++</td>
+<td>61500 lines C++</td></tr>
+</table>
+
+<! todo :
 
   blurbs about lilypond today
 
   future?
   >
-  
+
+
+    
 <h2>Conclusion</h2>
 
 <p>
 We've put a lot of effort into printing nice music.  Thanks to all
 that hard work, you can use the program to print nice music too. <a
-href="../what">See what is possible</a>.
+href="../applications">See what is possible</a>.
