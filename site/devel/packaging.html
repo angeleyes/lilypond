@@ -74,26 +74,27 @@ by running apt-get as root before building the package:
 For Debian 3.0:
 <pre>  
        apt-get install g++ libc6-dev \
-               python libguile-dev tetex-bin libkpathsea-dev \
+               python guile-1.6-dev tetex-bin libkpathsea-dev \
                tetex-extra flex bison texinfo groff gs \
                netpbm m4 gettext mftrace pfaedit autotrace t1utils
 </pre>
 
 
-<h2>Cygwin</h2>
+<h2>Windows</h2>
 
 
 <h3>Requirements</h3>
 
-   <p>You need the following packages to compile LilyPond for Windows
-(ie, for Cygwin).
-
-     <dl>
-<dt><code>The GNU + Cygnus tools, 1.3.10 or newer.</code>
-     <dd>Check out the <a href="http://cygwin.com">Cygwin webpage</a>. 
+<p>To build LilyPond for Windows, you need to install
+<code>the GNU + Cygnus tools, 1.5.5 or newer<code>.
+Check out the <a href="http://cygwin.com">Cygwin webpage</a>. 
 You can get the latest version of the GNU + Cygnus tools from a Cygwin
-<a href="http://cygwin.com/mirrors.html">mirror site</a>. 
-</dl>
+<a href="http://cygwin.com/mirrors.html">mirror site</a>.
+
+<p>
+Currently, LilyPond packages for Cygwin are built on a Debian GNU/Linux host,
+see the section cross compiling below.
+
 
 <h4>Native compiling</h4>
 
@@ -171,7 +172,7 @@ cross compile for Cygwin:
   <li>Cross compiling for Windows on a GNU/Linux box is done with
     mknetrel.
     To get and install it, do something like: <pre>
-      sudo mkdir /netrel
+      sudo mkdir -p /netrel
       sudo chown $USER /netrel
       cvs -d:pserver:anoncvs@sources.redhat.com:/cvs/cygwin-apps \
       co -d /netrel mknetrel
@@ -182,7 +183,8 @@ cross compile for Cygwin:
   
   <a href="http://lilypond.org/cygwin/cyg-apt">cyg-apt</a> script that
   can set it up and help keep it up to date.  Do something like:  <pre>
-    sudo mkdir /cygwin
+    wget -P ~/bin http://lilypond.org/cygwin/cyg-apt
+    sudo mkdir -p /cygwin
     sudo chown $USER /cygwin
     cyg-apt setup
     cyg-apt update
