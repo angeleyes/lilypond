@@ -37,7 +37,7 @@ $(LANG)/%.svg: site/%.svg $(mo)
 
 %.png: %.svg
 	inkscape --export-png=$@- $<
-	pngtopnm -background "#ffffff" $@- | pnmcrop | pnmtopng -transparent =black > $@
+	pngtopnm $@- | pnmcrop | pnmtopng -transparent =black > $@
 	rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
@@ -104,7 +104,8 @@ upload: site
 	   && chgrp -R lilypond . \
 	   && chmod -R g+w * \
 	   && chmod 2775 . $$(find . -type d) \
-&& rsync -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
+	   && rsync -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
+# do not delete, lilypond.org has no inkscape
 #	   && rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
 
 dist:
