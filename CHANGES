@@ -1,6 +1,9 @@
 lilypond_1_4
 ============
 
+* Documentation/windows/gs-profile.sh:
+* Documentation/windows/gsview-profile.sh: Remove.
+
 * lilypond-indent.el: New file, from HEAD.  Fixes lilypond-mode.
 
 1.4.12.uu1
