@@ -26,6 +26,7 @@ header = '''<HTML>
 main_template = '''<DIV class="main">
 <HR>
 %s
+<br clear=all>
 <HR>
 </DIV>
 '''
