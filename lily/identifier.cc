@@ -14,11 +14,10 @@
 #include "my-lily-lexer.hh"
 #include "debug.hh"
 #include "symtable.hh"
-#include "lookup.hh"
 #include "script-def.hh"
 #include "request.hh"
 #include "translator.hh"
-
+#include "notename-table.hh"
 
 IMPLEMENT_IS_TYPE_B(Identifier);
 
@@ -85,7 +84,6 @@ Class ## _identifier::do_print () const { \
 
 
 DEFAULT_PRINT(General_script_def);
-DEFAULT_PRINT(Lookup);
 DEFAULT_PRINT(Translator);
 DEFAULT_PRINT(Symtables);
 DEFAULT_PRINT(Music);
@@ -102,9 +100,8 @@ Class ## _identifier::do_str () const { \
 }
 
 
-
+DUMMY_STR(Notename_table);
 DUMMY_STR(General_script_def);
-DUMMY_STR(Lookup);
 DUMMY_STR(Translator);
 DUMMY_STR(Symtables);
 DUMMY_STR(Music);
@@ -126,7 +123,8 @@ STRING_PRINT(Duration);
 STRING_PRINT(Real);
 STRING_PRINT(int);
 STRING_PRINT(String);
-
+STRING_PRINT(Notename_table);
+  
 #define DEFAULT_STR(Class) \
 String \
 Class ## _identifier::do_str () const\
@@ -178,24 +176,22 @@ IMPLEMENT_ID_CLASS(int);
 IMPLEMENT_ID_CLASS(Real);
 IMPLEMENT_ID_CLASS(String);
 IMPLEMENT_ID_CLASS(General_script_def);
-IMPLEMENT_ID_CLASS(Lookup);
 IMPLEMENT_ID_CLASS(Symtables);
 IMPLEMENT_ID_CLASS(Music);
 IMPLEMENT_ID_CLASS(Score);
 IMPLEMENT_ID_CLASS(Request);
 IMPLEMENT_ID_CLASS(Midi_def);
 IMPLEMENT_ID_CLASS(Paper_def);
-
+IMPLEMENT_ID_CLASS(Notename_table);
 VIRTUAL_ACCESSOR(Music);
 VIRTUAL_ACCESSOR(Request);
 VIRTUAL_ACCESSOR(Translator);
 VIRTUAL_ACCESSOR(General_script_def);
-
+DEFAULT_ACCESSOR(Notename_table);
 DEFAULT_ACCESSOR(Duration);
 DEFAULT_ACCESSOR(int);
 DEFAULT_ACCESSOR(Real);
 DEFAULT_ACCESSOR(String);
-DEFAULT_ACCESSOR(Lookup);
 DEFAULT_ACCESSOR(Symtables);
 DEFAULT_ACCESSOR(Score);
 DEFAULT_ACCESSOR(Midi_def);

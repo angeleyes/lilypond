@@ -1,0 +1,122 @@
+% 
+% feta-timesig.mf --  implement Time Signatures
+% 
+% source file of the Feta (not an abbreviation of Font-En-Tja) music font
+% 
+% (c) 1998 Mats Bengtsson <matsb@s3.kth.se>
+
+fet_begingroup("timesig");
+
+def set_C_width =
+	save left_width, right_width;
+	left_width# := .8 interline#;
+	right_width# := .7 interline#;
+	define_pixels(left_width,right_width);
+enddef;
+
+def draw_C =
+	save hair, bulb_rad;
+	hair# := stafflinethickness#;
+	bulb_rad# := interline# / 3;
+	define_pixels(hair, bulb_rad);
+
+	x1r = x5;
+	y1r = .4 interline;
+	z2 = (0, interline);
+	z3r = (-left_width, 0);
+	z4 = (0, -interline);
+	z5r = (right_width, -2 stafflinethickness);
+	
+	penpos1(hair, 0);
+	penpos2(stafflinethickness, 90);
+	penpos3(4 stafflinethickness, 180);
+	penpos4(stafflinethickness, -90);
+	penpos5(hair, -5);
+	
+	draw_bulb(-1, z1l,  z1r, bulb_rad, .8);
+
+	fill z1l{up} .. z2l{left} .. z3l{down} .. z4l{right} ..
+	simple_serif(z5l, z5r, -90) .. 
+	z4r{left} .. z3r{up} .. z2r{right} .. z1r -- cycle;
+	
+%	labels(1,2,3,4,5);
+	penlabels(1,2,3,4,5);
+enddef;
+
+fet_beginchar ("4/4 meter", "C4/4", "fourfourmeter")
+	set_C_width;
+	set_char_box(left_width# + interline#, right_width# + interline#, 
+		interline#, interline#);
+	
+	draw_C;
+fet_endchar;
+
+fet_beginchar ("2/2 meter", "C2/2", "allabreve")
+	set_C_width;
+	set_char_box(left_width# + interline#, right_width# + interline#, 
+		1.4 interline#, 1.4 interline#);
+	
+	draw_C;
+	draw_block((-1.5stafflinethickness, -d), (0, h));
+fet_endchar;
+
+path threequartercircle;
+threequartercircle = halfcircle & quartercircle rotated 180;
+
+save Cdiameter,Cthickness;
+Cdiameter# := 3/2 interline#;
+Cthickness# := 2 stafflinethickness#;
+define_pixels(Cdiameter,Cthickness);
+
+%% tempus imperfectum cum prolatione imperfecta
+fet_beginchar ("Mensural 4/4 meter", "old4/4", "oldfourfourmeter")
+	set_char_box(.5 Cdiameter# + interline#, .5 Cdiameter# + interline#, 
+		.5 Cdiameter#, .5 Cdiameter#);
+	
+	pickup pencircle scaled Cthickness;
+	draw threequartercircle rotated 45 scaled Cdiameter;
+fet_endchar;
+
+fet_beginchar ("Mensural 2/2 meter", "old2/2", "oldallabreve")
+	set_char_box(.5 Cdiameter# + interline#, .5 Cdiameter# + interline#, 
+		interline#, interline#);
+	
+	pickup pencircle scaled Cthickness;
+	draw threequartercircle rotated 45 scaled Cdiameter;
+	draw_block((-Cthickness, -d), (0, h));
+fet_endchar;
+
+%% tempus perfectum cum prolatione imperfecta
+fet_beginchar ("Mensural 3/2 meter", "old3/2", "oldthreetwometer")
+	set_char_box(.5 Cdiameter# + interline#, .5 Cdiameter# + interline#, 
+		.5 Cdiameter#, .5 Cdiameter#);
+	
+	pickup pencircle scaled Cthickness;
+	draw fullcircle scaled Cdiameter;
+fet_endchar;
+
+%% tempus imperfectum cum prolatione perfecta
+fet_beginchar ("Mensural 6/4 meter", "old6/4", "oldsixfourmeter")
+	set_char_box(.5 Cdiameter# + interline#, .5 Cdiameter# + interline#, 
+		.5 Cdiameter# + .5 interline#, .5 Cdiameter#+ .5 interline#);
+	
+	pickup pencircle scaled Cthickness;
+	draw threequartercircle rotated 45 scaled Cdiameter 
+		shifted (0,.5 interline);
+	pickup pencircle scaled 3 stafflinethickness;
+	draw (0,.5 interline);
+fet_endchar;
+
+%% tempus perfectum cum prolatione perfecta
+fet_beginchar ("Mensural 9/4 meter", "old9/4", "oldninefourmeter")
+	set_char_box(.5 Cdiameter# + interline#, .5 Cdiameter# + interline#, 
+		.5 Cdiameter# + .5 interline#, .5 Cdiameter#+ .5 interline#);
+	
+	pickup pencircle scaled Cthickness;
+	draw fullcircle scaled Cdiameter shifted (0,.5 interline);
+	pickup pencircle scaled 3 stafflinethickness;
+	draw (0,.5 interline);
+fet_endchar;
+
+
+fet_endgroup("timesig");

@@ -17,18 +17,21 @@ in stead <-> instead
 htmlbodyopt(bgcolor)(white)
 htmlcommand(<font color=black>)
 
-latexpackage()(a4wide) COMMENT(UGH)
 latexlayoutcmds(
-%\usepackage[latin1]{inputenc}
-\input mudela-book
+\setlength{\topmargin}{-0.25in}
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{5.875in} 
+\setlength{\oddsidemargin}{0.25in}   
+\setlength{\evensidemargin}{0.25in}
 )
+
 
 whenlatex(notableofcontents())
 whentexinfo(notableofcontents())
 
 article(Glossary of notation terms)
       (Han-Wen Nienhuys and Jan Nieuwenhuizen)
-      (nop()PIPETHROUGH(date "+%B %d, %Y")()()nop())
+      ()
 
 COMMENT(
 
@@ -71,24 +74,12 @@ whenlatex(latexcommand(
        \inlanguage{Nederlands}{#5}\inlanguage{Italiano}{#6}}
       \input glossary-table
     }
+
+    \bibliography{engraving}    
+    \bibliographystyle{plain}
 ))
 
 whenhtml(
     includeverbatim(DOEXPAND(outdir)/glossary-table.html)
 )
-
-whenlatex(latexcommand(
-    \bibliographystyle{plain}
-    \bibliography{engraving}
-))
-
-
-COMMENT(The bib stuff is somewhere else on the WWW site)
-COMMENT(
-setchapterstring{}
-
-whenhtml{
-    nchapter{Bibliography}
-    includeverbatim{out-www/engraving.html}
-})
 

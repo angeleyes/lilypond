@@ -4,7 +4,7 @@
 # 
 # source file of the GNU LilyPond music typesetter
 # 
-# (c) 1997 Han-Wen Nienhuys <hanwen@stack.nl>
+# (c) 1997--1998 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 
 import os
 import sys
@@ -25,7 +25,10 @@ my_options = My_options()
 
 
 def name():
-    return pwd.getpwuid(os.getuid())[4]
+	return os.environ['USERNAME']
+
+# field 4 of passwd is also used for finger info (phone no.,  office etc)
+#   return pwd.getpwuid(os.getuid())[4]
 
 def c_commentify(str):
     return  '/* ' + regsub.gsub('^','  ', str) + '\n */';

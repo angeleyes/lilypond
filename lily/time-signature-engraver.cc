@@ -30,7 +30,7 @@ Time_signature_engraver::do_process_requests()
       return ;
     }
   
-  Timing_engraver * timing_grav_l= (Timing_engraver*) result->engraver_l ();
+  Timing_engraver * timing_grav_l= (Timing_engraver*) result->access_Engraver  ();
   
   Time_signature_change_req *req = timing_grav_l->time_signature_req_l();
   if (req)
@@ -39,10 +39,12 @@ Time_signature_engraver::do_process_requests()
       args.push (req->beats_i_);
       args.push (req->one_beat_i_);
 	
-      time_signature_p_ = new Time_signature (args);
+      time_signature_p_ = new Time_signature ();
+      time_signature_p_->args_ = args;
       time_signature_p_->break_priority_i_ = 1; // ugh
     }
 
+  
   if (time_signature_p_)
     announce_element (Score_element_info (time_signature_p_, req));
 }
@@ -52,6 +54,12 @@ Time_signature_engraver::do_pre_move_processing()
 {
   if (time_signature_p_) 
     {
+      Scalar sigstyle = get_property ("timeSignatureStyle");
+      if (sigstyle.length_i ())
+	{
+	  time_signature_p_->time_sig_type_str_ = sigstyle;
+	}
+
       typeset_element (time_signature_p_);
       time_signature_p_ =0;
     }
