@@ -88,13 +88,19 @@ to better performances.
 
 <h2>What's wrong with music notation software</h2>
 <p>
-Computer music print outs do not look good.  According to us, this
-caused by inadequate software. In other words, programmers have been
-doing a shoddy job on notation programs.  To illustrate that, we have
-a piece of music, which was made in Finale 2003, one of the most
+Computers have made music printing accessible to the masses, but they
+tend to deliver mediocre typography.  Apparently, programmers have
+been doing a shoddy job on notation programs.  To illustrate that, we
+have a piece of music, which was made in Finale 2003, one of the most
 popular `professional' notation programs sold today. It was made with
 all of the default settings. The music is from the Sarabande of the
 2nd Cello Suite by J. S. Bach.
+
+<p>
+<em>
+(Finale is a registered trademark of MakeMusic! Inc.)
+</em>
+
 
 <p align="center" >
 
@@ -124,10 +130,10 @@ Now, one could refute that Finale has a graphical interface, and it
 lets you easily move about elements to correct errors, or use plug-ins
 to do so.  This is certainly true: in fact, good professional
 engravers that use Finale typically spend the majority of their time
-correcting all the errors that Finale routinely makes.  Do you want to
-spend your time correcting pretty obvious errors?  For the spaced out
-line, it is doable, but imagine that you have to correct each and
-every beam that sticks out of the stems....  by hand?
+correcting all the errors that Finale routinely makes.  But do you
+want to spend your time on correcting all glaring errors?  For the
+spaced out line, it is doable, but imagine that you have to correct
+each and every beam that sticks out of the stems....  by hand?
 
 <p>
 There is a less obvious reason why correcting things by hand is a bad
@@ -138,18 +144,18 @@ Did it occur to you that the stem of the last eighth note is too long?
 <p align="center" >
 <img src="finale-flat-correct.png">
 <p>
-Unless you are an expert, typographical errors will --at best-- irk
-you without being obvious. At worst, they go unnoticed and still be in
-the final print.
+Unless you are an expert, typographical errors will irk you without
+being obvious. Many of them will go uncorrected and still be in the
+final print.
 
 <p>
 
 This is one example may seem contrived, but in fact, it's not.  All
 major producers of notation software claim to follow engraving
-standards, but all of them make systemic mistakes.  If you want to
-assess the output of your favorite program, then buy a decent
-hand-made score from a respectable publisher, and try to reproduce one
-page of it. Then compare them:
+standards, but we have not seen any that gets the basics right; all of
+them make systemic mistakes.  If you want to assess the output of your
+favorite program, then buy a decent hand-made score from a respectable
+publisher, and try to reproduce one page of it. Then compare them:
 
 <ul>
 <li>
@@ -162,7 +168,7 @@ How does the spacing compare?  Is it as lively and flowing as the
 hand-made score? If in doubt, try measuring both with a ruler.
 
 <li>
-Put both on a music stand, 1 meter away, that is not uncommon when
+Put both on a music stand, 1 meter away; that is not uncommon when
 performing. Can you read both pages? Almost all computer scores have
 an anemic look: they use lines which are too thin, and symbols which
 are too light. That makes them hard to read from a distance. If in
@@ -224,23 +230,19 @@ content
 
 <p>
 
-In theory, this design is easy, but how do we put it to practice?
 Common music notation encompasses some 500 years of music. Its
-applications range from a simple rhythms for single instruments to
-monstruous counterpoint for large orchestras.
-
+applications range from monophonic melodies to monstruous counterpoint
+for large orchestras.  How can we get a grip on such a many-headed
+beast?  Our solution is to make a strict distinction between notation,
+<em>what</em> symbols to use, and engraving, <em>where</em> to put
+them.  For tackling notation, we have broken up the problem into
+digestible (and programmable) chunks: every type of symbol is handled
+by a separate plugin.  All plugins cooperate through the LilyPond
+architecture.  They are completely modular and independent, so each
+can be developed and improved separately.
 <p>
-
-How can we get a grip on such a many-headed beast?  A first solution
-is to make a strict distinction between notation, <em>what</em>
-symbols to use, and engraving, <em>where</em> to put them.  For
-tackling notation, we have broken up the problem into digestible (and
-programmable) chunks: every type of symbol is handled by a separate
-plugin.  All plugins cooperate through the LilyPond architecture.
-They are completely modular and independent, so each can be developed
-and improved separately.
-<p>
-The most basic plug-in creates Note-heads:
+<ul>
+<li>The most basic plug-in creates Note-heads:
 
 <p align=center> 
 <img src=engraver-noteheads.png>
@@ -249,43 +251,49 @@ This plug-in creates graphical objects from musical events.  People
 that put graphics to musical ideas are called copyists or engravers,
 so by analogy, this plug-in is called <tt>Note_head_engraver</tt>.
 
-<p> Note heads must be put on a staff to
-make sense, hence we add the <tt>Staff_symbol_engraver</tt>, which
-generates the object representing the staff lines.  <p align=center>
-<img src=engraver-staff.png>
+<li> The <tt>Staff_symbol_engraver</tt> generates the object
+representing the staff lines.
 
-<p>
-The note heads have no meaningful pitches without a clef.  The
-<tt>Clef_engraver</tt> tells <tt>Note_head_engraver</tt> how high each
-head should be placed.
+<p align=center> <img
+src=engraver-staff.png>
+
+<li>
+ The <tt>Clef_engraver</tt> tells <tt>Note_head_engraver</tt> how high
+each head should be placed.
 
 <p align=center> 
 <img src=engraver-clef.png>
-<p>
-For the flags and stems we  a <tt>Stem_engraver</tt>:
+
+<li>
+For the flags and stems we add  a <tt>Stem_engraver</tt>:
 <p align=center> 
 <img src=engraver-stem.png>
 <p>
 This engraver is notified of any note head coming along.  Every time
 one (or more, for a chord) note heads is seen, a stem object is
 created, and attached to the note head.
-<p>
-Similarly, beams, slurs, accents are handled by separate engravers,
-that create objects and connect them to stems, note heads, etc.:
 
-<p
-align=center> <img src=engraver-slur.png>
-<p>
+<li>
+Beams, slurs, accents are handled by separate engravers. Like the
+<tt>Stem_engraver</tt>, they create objects and connect them to stems,
+note heads, etc.:
 
-Accidentals are also handled by a separate plug-in: for every note
-outside of the key-signature, an accidental object is created, and
-connected to the note. It needs the cooperation of
-<tt>Key_signature_engraver</tt> that makes the key signature at the
-start of the line. For good measure, we also throw in a
-<tt>Bar_line_engraver</tt> and <tt>Time_signature_engraver</tt>
+<p align=center> <img src=engraver-slur.png>
 
+<li>
+Accidentals, bar lines, time signature, and key signature each have a
+separate
+engraver.
 <p align=center>
 <img src=engraver-acc.png>
+
+<p>
+The <tt>Accidental_engraver</tt> is the most complex plug-in: it has
+to look at the key signature, note pitches, ties, and bar lines to
+decide when to print accidentals.
+
+</ul>
+
 
 <h2> Polyphonic notation</h2>
 
@@ -313,16 +321,17 @@ Score context:
 <h2>Music engraving</h2>
 
 <img src="hader-slaan.jpg" align="right">
-The second problem is that of music engraving: the art of placing
-symbols such that the result looks pleasing.  The term music engraving
-derives from the traditional process of music printing.  Only a few
-decades ago, sheet music was made by cutting and stamping the music
-into zinc or pewter plates, in mirror image.   The plate would be inked, and the depressions caused by
-the cutting and stamping would hold ink.  An image was formed by
-pressing paper to the plate. The stamping and cutting was completely
-done by hand. Making corrections was cumbersome, so engraving had to
-be done correctly in one go. Of course, this was a highly specialized
-skill
+
+When we know what symbols to print, we have to decide where to put
+them so the the result looks pleasing. This art is called <em>music
+engraving</em>.  The term derives from the traditional process of
+music printing.  Only a few decades ago, sheet music was made by
+cutting and stamping the music into zinc or pewter plates in mirror
+image.  The plate would be inked, and the depressions caused by the
+cutting and stamping would hold ink.  An image was formed by pressing
+paper to the plate. The stamping and cutting was completely done by
+hand. Making corrections was cumbersome, so engraving had to be done
+correctly in one go. Of course, this was a highly specialized skill
 
 
 <ul>
@@ -343,51 +352,98 @@ impossible to capture in formal rules.
 
 <h2>Implementing typography</h2>
 
+
+<p>
+
+How do we go about implementing typography?  Answering the "music
+notation" problem left us with a bunch of graphic objects
+representings note heads, the staff, stems, etc.
+
+
 <p>
 If craftsmen need over ten years to become true masters, how could we
 simple hackers ever write a program to take over their jobs?
 <p>
-The answer is: we cannot! At least, not in one go.
+The answer is: we cannot!  Since typography relies on human judgement
+of appearance, people cannot be replaced. However, much of their dull
+work can be automated: if LilyPond solves most of the common
+situations correctly, than this will be a huge improvement over
+existing software. The remaining cases can be tuned by hand.
+Over the course of years, the software can be refined to do
+more and more automatically, so manual overrides are necessary less
+and less.
 
 <p>
-Instead, we try to gradually refine the program: we implement a
-feature, we start with a half-baked solution that might cover 75% of
-the cases badly, but as we continue development of the program, these
-solutions are replaced and refined, so that we provide better and
-better formatting, and getting 85, 90 or even 95 % of the cases
-correct. The remaining 15, 10, or 5 % of the cases must be
-adjusted by hand.
+
+How do we go about building such a system?  When we started, we wrote
+the program in C++. Essentially, this means that the program
+functionality is set in stone by us, the developers.
+
+<ul>
+<li> If things must be tuned by hand, then we must the user access to
+  the formatting engine. Hence, data structures and variables can be
+  fixed at compile time, but they must be accessible for the user.
+
+<li> Engraving is a matter of visual judgement, and hence it is a
+  matter of taste. As knowledgeable as we are, users can disagree with
+  our personal decision. Therefore, the definitions of typographical
+  style must also be accessible to the user.
+
+<li> Finally, we continually refine the formatting algorithms, so we
+ need a flexible approach to rules.  The way that C++ forces us to
+ group and apply rules.
+
+</ul>
+
+Clearly, there is a need for a flexible architecture. The architecture
+should encompass formatting rules, typographical style and individual
+formatting decisions.
+<p>
+
+<h2>A Flexible formatting architecture</h2>
 
 <p>
-This is only possible if the program is modular enough to allow
-development of such a kind: formatting rules are constantly refined or
-replaced to improve the program, and and the user must be able to
-override all formatting decisions. Hence, we need an architecture
-where rules and decisions can be changed on the fly.
-<p>
-This architecture is formed by <a href=http://www.gnu.org>GUILE</a>,
-an interpreter for the LISP-like programming language Scheme.  Layout
-objects representing note heads, slurs, accidentals, etc. carry
-variables.  Formatting rules (Scheme functions) are stored in these
-variables. In the following example, the function that produces a note
-head is changed on the fly, while the rest of the formatting is
-unaltered:
 
+Remember the music notation problem? The solution of it left us with a
+bunch of objects. The formatting architecture is built on these
+objects. Each object carries variables:
+
+<ul>
+<li> Variables control layout decisions.  For example, many objects
+have a <tt>direction</tt> variable that encodes the choice between up
+and down (or left and right).  Here you see two chords, with accents
+and arpeggio. In the first chord, the objects have all 
+ directions  down (or left). In the second with all directions up
+(right).
+
+<p align=center>
+<img src="directions-updown.png">
+<p>
+The process of formatting a score consists of reading and writing
+object variables.
+
+
+<li>Some variables have a preset value. For example, the thickness of
+ many lines ---a characteristic of typographical style--are preset
+ variables. Changing them gives a different typographical impression:
+ 
+ <p align=center>
+ <img src="thickness-tweaks.png">
+ <p>
+ 
+<li>Formatting rules are also preset variables: each object has
+variables containing procedures. These procedure perform the actual
+formatting, and by substituting different ones, we can change
+behavior. In the following example, the rule that note head objects
+use to produce their symbol is changed during the music fragment:
 
 <p align=center>
 <img src="mc-squared.png">
 <p>
 
-Distances, directions and thicknesses, i.e. formatting decisions, are
-also stored in variables.  By changing these, the typographical style
-of a score may be altered. In the next example, the thickness of the
-stem is increased for every note:
+</ul>
 
-<p align=center> 
-<img src="mc-squared-stem-thick.png">
-<p>
-
-
+<h2>Notation benchmarking</h2>
 
 
 
@@ -404,6 +460,3 @@ when you look at blowups of the scores:
 <img src=lily-flat-bw.png>
 <p>
 
-<em>
-Finale is a registered trademark of MakeMusic! Inc.
-</em>
