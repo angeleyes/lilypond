@@ -60,7 +60,7 @@ to become conscious of these differences is to compare a traditionally
 printed and a computer printed edition of the same piece, preferably
 with a magnifying glass.  If you are not sure: traditional engraving
 is photographically reproduced hand-work, and can be recognized by
-slightly irregularities in symbol placement, and small blotches due to
+slight irregularities in symbol placement, and small blotches due to
 the reproduction process.
 
 <p>
@@ -125,8 +125,9 @@ the program.
 Good question. We started LilyPond in 1996, and we always did it as an
 unpaid hobby. We would like to change that.  Since we are not selling
 the program, we sell our expertise. Practically speaking, you can pay
-us for implementing features, or you can hire us engraving music or
-doing typography research. Contact us privately if you are interested.
+us for implementing features, or you can hire us for engraving music
+or doing typography research. Contact us privately if you are
+interested.
 <p>
 
 
@@ -162,7 +163,7 @@ users, and more users is always better. So,
 
 <li> don't remove the "Engraved by LilyPond" tagline, and
 
-<li> mention LilyPond if you use it in theses and books, and cite us
+<li> mention LilyPond if you use it in theses and books, or cite us
 in papers.
 
 </ul>
@@ -235,10 +236,11 @@ stable branch.
 
 <p>
 LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file.
-Then LilyPond is run on it by invoking the <tt>ly2dvi</tt>, which
-takes run the actual <tt>lilypond</tt> program to format the music,
-and adds titling information and page layout.  The resulting DVI can
-be viewed with T<sub>E</sub>X's DVI tools.
+Then LilyPond is run on it by invoking the <tt>lilypond</tt>, scripts
+which takes run the actual <tt>lilypond-bin</tt> program to format the
+music, and adds titling information and page layout.  The resulting
+PS, PDF and DVI can be viewed with T<sub>E</sub>X's DVI tools or
+standard Postscript/PDF viewers.
 <p>
 
 
@@ -288,9 +290,9 @@ redefined. LilyPond has a structured input syntax, in the form of an
 context-free grammar. As such, it is less flexible, but it is also
 harder to make entry errors.
 <p>
-LilyPond does make use of TeX: TeX is the default output format, the
-ly2dvi program uses LaTeX for formatting, and it is possible to enter
-TeX macros in texts (such as lyrics).
+LilyPond does make use of TeX: TeX is the default output format, LaTeX
+is used for formatting the titles, and it is possible to enter TeX
+macros in texts (such as lyrics).
 <p>
 
 <h3>LilyPond is about music and is related to TeX, so it is
