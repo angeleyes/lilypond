@@ -3,199 +3,188 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   */
 
-#include "key-engraver.hh"
 #include "key-item.hh"
 #include "command-request.hh"
-#include "local-key-engraver.hh"
 #include "musical-request.hh"
-#include "local-key-item.hh"
+#include "item.hh"
 #include "bar.hh"
-#include "time-description.hh"
+#include "timing-translator.hh"
+#include "staff-symbol-referencer.hh"
+#include "translator-group.hh"
+#include "engraver.hh"
+#include "pitch.hh"
+#include "protected-scm.hh"
+#include "clef.hh"
+
+/**
+  Make the key signature.
+ */
+class Key_engraver : public Engraver
+{
+  void create_key (bool);
+  void read_req (Key_change_req const * r);
+
+public:
+  Key_engraver ();
+  
+  VIRTUAL_COPY_CONS (Translator);
+
+  Key_change_req * keyreq_l_;
+  Item * item_p_;
+  Protected_scm old_accs_;	// ugh. -> property
+    
+protected:
+  virtual void initialize ();
+  virtual void finalize ();
+  virtual bool try_music (Music *req_l);
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+  virtual void create_grobs ();
+  virtual void acknowledge_grob (Grob_info);
+};
+
+
+void
+Key_engraver::finalize ()
+{
+  old_accs_ = SCM_EOL;		// unprotect can not  be called from dtor.
+}
 
 Key_engraver::Key_engraver ()
 {
+  keyreq_l_ = 0;
   item_p_ = 0;
-  do_post_move_processing ();
-}
-
-bool
-Key_engraver::key_changed_b () const
-{
-  return keyreq_l_ ;
 }
 
 void
-Key_engraver::create_key ()
+Key_engraver::create_key (bool def)
 {
   if (!item_p_) 
     {
-      item_p_ = new Key_item;
-      item_p_->set_elt_property (break_priority_scm_sym, gh_int2scm(-1)); // ugh
-      item_p_->multi_octave_b_ = key_.multi_octave_b_;
-      announce_element (Score_element_info (item_p_,keyreq_l_));
+      item_p_ = new Item (get_property ("KeySignature"));
+
+      item_p_->set_grob_property ("c0-position", gh_int2scm (0));
+
+      // todo: put this in basic props.
+      item_p_->set_grob_property ("old-accidentals", old_accs_);
+      item_p_->set_grob_property ("new-accidentals", get_property ("keySignature"));
+
+      Staff_symbol_referencer::set_interface (item_p_);
+      Key_item::set_interface (item_p_);
+
       
+      announce_grob (item_p_,keyreq_l_);
+    }
 
-      for (int i = 0; i < accidental_idx_arr_.size(); i++) 
-	{
-	  Musical_pitch m_l =accidental_idx_arr_[i];
-	  int a =m_l.accidental_i_;      
-	  if (key_.multi_octave_b_)
-	    item_p_->add (m_l.steps (), a);
-	  else
-	    item_p_->add (m_l.notename_i_, a);
-	}
 
-      for (int i = 0 ; i< old_accidental_idx_arr_.size(); i++) 
-	{
-	  Musical_pitch m_l =old_accidental_idx_arr_[i];
-	  int a =m_l.accidental_i_;
-	  if (key_.multi_octave_b_)
-	    item_p_->add_old (m_l.steps  (), a);
-	  else
-	    item_p_->add_old (m_l.notename_i_, a);
-	}
+  if (!def)
+    {
+      SCM vis = get_property ("explicitKeySignatureVisibility"); 
+      if (gh_procedure_p (vis))
+	item_p_->set_grob_property ("visibility-lambda",vis);
     }
 }      
 
 
 bool
-Key_engraver::do_try_music (Music * req_l)
+Key_engraver::try_music (Music * req_l)
 {
   if (Key_change_req *kc = dynamic_cast <Key_change_req *> (req_l))
     {
-      if (keyreq_l_)
-	warning ("Fixme: key change merge.");
+      if (keyreq_l_ && !keyreq_l_->equal_b (kc))
+	{
+	  kc->origin ()->warning (_ ("Conflicting key signatures found."));
+	  keyreq_l_->origin ()->warning (_ ("This was the other key definition."));	  
+	  return false;
+	}
       keyreq_l_ = kc;
       read_req (keyreq_l_);
+
       return true;
     }   
   return  false;
 }
 
 void
-Key_engraver::acknowledge_element (Score_element_info info)
+Key_engraver::acknowledge_grob (Grob_info info)
 {
-  if (dynamic_cast <Clef_change_req *> (info.req_l_)) 
+  if (Clef::has_interface (info.elem_l_))
     {
-      int i= get_property ("createKeyOnClefChange", 0).length_i ();
-      if (i)
-	create_key ();
-    }
-  else if (dynamic_cast<Bar *> (info.elem_l_)
-	   && accidental_idx_arr_.size ()) 
-    {
-      bool def =  (!item_p_);
-      create_key ();
-      if (def)
+      SCM c =  get_property ("createKeyOnClefChange");
+      if (to_boolean (c))
 	{
-	  item_p_->set_elt_property (visibility_lambda_scm_sym,
-				    ly_ch_C_eval_scm ("postbreak_only_visibility"));
+	  create_key (false);
 	}
     }
+  else if (Bar::has_interface (info.elem_l_)
+	   && gh_pair_p (get_property ("keySignature")))
+    {
+      create_key (true);
+    }
 
 }
 
 void
-Key_engraver::do_process_requests ()
+Key_engraver::create_grobs ()
 {
-  if (keyreq_l_) 
+  if (keyreq_l_ || old_accs_ != get_property ("keySignature"))
     {
-      create_key ();
+      create_key (false);
     }
 }
 
 void
-Key_engraver::do_pre_move_processing ()
+Key_engraver::stop_translation_timestep ()
 { 
   if (item_p_) 
     {
-      typeset_element (item_p_);
+      typeset_grob (item_p_);
       item_p_ = 0;
     }
 }
 
-
-/*
-  TODO Slightly hairy.  
- */
 void
 Key_engraver::read_req (Key_change_req const * r)
 {
-  old_accidental_idx_arr_ = accidental_idx_arr_;
-  key_.clear ();
-  Scalar prop = get_property ("keyOctaviation", 0);
-  if (prop.length_i () > 0)
-    {
-      key_.multi_octave_b_ = ! prop.to_bool ();
-    }
-  
-  accidental_idx_arr_.clear ();
+  SCM p = r->get_mus_property ("pitch-alist");
+  if (!gh_pair_p (p))
+    return;
 
-  if (r->key_.ordinary_key_b_) 
+  SCM n = scm_list_copy (p);
+  SCM accs = SCM_EOL;
+  for (SCM s = get_property ("keyAccidentalOrder");
+       gh_pair_p (s); s = gh_cdr (s))
     {
-      int no_of_acc = r->key_.ordinary_accidentals_i ();
+      if (gh_pair_p (scm_member (gh_car (s), n)))
+	{
+	  accs = gh_cons (gh_car (s), accs);
+	  n = scm_delete_x (gh_car (s), n);
+	}
+    }
+  for (SCM s = n ; gh_pair_p (s); s = gh_cdr (s))
+    if (gh_scm2int (gh_cdar (s)))
+      accs = gh_cons (gh_car (s), accs);
 
-      // Hmm, can't these be handled/constructed by Key_change_req?
-      if (no_of_acc < 0) 
-	{
-	  int accidental = 6 ; // First accidental: bes
-	  for ( ; no_of_acc < 0 ; no_of_acc++ ) 
-	    {
-	      Musical_pitch m;
-	      m.accidental_i_ = -1;
-	      m.notename_i_ = accidental;
-	      if (key_.multi_octave_b_)
-		key_.set (m);
-	      else
-		key_.set (m.notename_i_, m.accidental_i_);
-	      accidental_idx_arr_.push (m);
-	      
-	      accidental = (accidental + 3) % 7 ;
-	    }
-	}
-      else 
-	{ 
-	  int accidental = 3 ; // First accidental: fis
-	  for ( ; no_of_acc > 0 ; no_of_acc-- ) 
-	    {
-	      Musical_pitch m;
-	      m.accidental_i_ = 1;
-	      m.notename_i_ = accidental;
-	      if (key_.multi_octave_b_)
-		key_.set (m);
-	      else
-		key_.set (m.notename_i_, m.accidental_i_);
-	      accidental_idx_arr_.push (m);
-	      
-	      accidental = (accidental + 4) % 7 ;
-	    }
-	}
-    }
-  else // Special key
-    {
-      for (int i = 0; i < r->key_.pitch_arr_.size (); i ++) 
-	{
-	  Musical_pitch m_l =r->key_.pitch_arr_[i];
-	  if (key_.multi_octave_b_)
-	    key_.set (m_l);
-	  else
-	    key_.set (m_l.notename_i_, m_l.accidental_i_);
-	  
-	  accidental_idx_arr_.push (m_l);
-	}
-    }
+  old_accs_ = get_property ("keySignature");
+  daddy_trans_l_->set_property ("keySignature", accs);
 }
 
 void
-Key_engraver::do_post_move_processing ()
+Key_engraver::start_translation_timestep ()
 {
   keyreq_l_ = 0;
-  old_accidental_idx_arr_.clear ();
+  old_accs_ = get_property ("keySignature");
 }
 
+void
+Key_engraver::initialize ()
+{
+  daddy_trans_l_->set_property ("keySignature", SCM_EOL);
+  old_accs_ = SCM_EOL;
+}
 
 
 ADD_THIS_TRANSLATOR (Key_engraver);

@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
@@ -13,138 +13,57 @@
 #include "request.hh"
 #include "array.hh"
 #include "duration.hh"
-#include "musical-pitch.hh"
-#include "key-def.hh"
+#include "pitch.hh"
+#include "protected-scm.hh"
 
 class Break_req : public Request {
 public:
-  enum { DISALLOW = -10000, FORCE = 10000 };
-  int penalty_i_;
-  Break_req ();
 protected:
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 class Mark_req : public Request {
 public:
-  Mark_req (String);
-  String str_;
-protected:
-  virtual void do_print () const;  
-  VIRTUAL_COPY_CONS(Music);
+  virtual bool do_equal_b (Request const*) const;
+  SCM mark_label ();
+  VIRTUAL_COPY_CONS (Music);
 };
 
-
-/** Baseclass for time_signature/partial req. It has to be handled by
-  Staff_{walker,column} baseclass.  */
-class Timing_req  : public Request  {
-public:
-  VIRTUAL_COPY_CONS(Music);
-};
-
-
-class Tempo_req : public Timing_req
+/*
+    int metronome_i_;
+ */
+class Tempo_req : public Request
 {
 public:
-  Duration dur_;
-  int metronome_i_;
-
-  Tempo_req();
+  Tempo_req ();
 protected:
-    virtual void do_print () const;
-  VIRTUAL_COPY_CONS(Music);
-  bool do_equal_b (Request const *) const;
-};
-
-class Partial_measure_req  : public Timing_req  {
-public:
-  Moment length_mom_;
-
-  Partial_measure_req (Moment);
-protected:
-  VIRTUAL_COPY_CONS(Music);
-  virtual void do_print () const;
-  bool do_equal_b (Request const *) const;
-};
-
-/**
-  todo: allow C time_signature
- */
-class Time_signature_change_req  : public Timing_req  {
-public:
-  int beats_i_;
-  int one_beat_i_;
-
-  Time_signature_change_req();
-protected:
-  virtual void do_print () const;
-  bool do_equal_b (Request const *) const;
-  VIRTUAL_COPY_CONS(Music);
-};
-
-/// toggle Cadenza mode
-class Cadenza_req  : public Timing_req  {
-public:
-  /// turn on?
-  bool on_b_;
-  Cadenza_req (bool);
-protected:
-  virtual void do_print () const;
-  
-  bool do_equal_b (Request const *) const;
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 /// check if we're at start of a  measure.
-class Barcheck_req  : public Timing_req  {
+class Barcheck_req  : public Request  {
 public:
   bool do_equal_b (Request const *) const;
-  VIRTUAL_COPY_CONS(Music);
-};
-
-
-/** draw a (repeat)-bar. This something different than #Barcheck_req#,
-  the latter should only happen at the start of a measure.  */
-class Bar_req  : public Request  {
-public:
-  String type_str_;
-  Bar_req (String);
-protected:
-  virtual void do_print () const;
-  bool do_equal_b (Request const *) const;
-
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 class Breathing_sign_req : public Request {
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 /**
     Handle key changes.
-    Routines for sharps and flats are separated, 
-    so that caller may identify non-conventional keys.
 */
 class Key_change_req  : public Request
 {
 public:
-  Key_change_req ();
-  Key_def key_;
-
+  SCM pitch_alist ();
+  
 protected:
-  VIRTUAL_COPY_CONS(Music);
-  void transpose (Musical_pitch  d);
-  virtual void do_print () const;
+  VIRTUAL_COPY_CONS (Music);
+  bool do_equal_b (Request const * ) const;
+  void transpose (Pitch  d);
 };
-
-class Clef_change_req  : public Request  {
-public:
-  String clef_str_;
-  Clef_change_req (String);
-protected:
-  virtual void do_print () const;
-  VIRTUAL_COPY_CONS(Music);
-};
-
 
 #endif // COMMANDREQUEST_HH
+
