@@ -1,9 +1,10 @@
+2003-09-29  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* cygwin/postinstall-lilypond.sh: 
+	* cygwin/postremove-lilypond.sh: Bugfix for fonts remove command
+	(Volker Zell).
+
 2003-09-29  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
-
-	* scripts/lilypond-book.py: resurrect 'eps' option. 
-	(TexiPaper.to_eps): use -Ppdf for EPS files.
-
-	* VERSION (PATCH_LEVEL): branch off 2.0, go to 2.1 in HEAD
 
 	* scripts/lilypond.py (run_dvips): use -Ppdf for preview.
 
