@@ -1,5 +1,9 @@
-1.4.14.jcn2
+1.4.14.jcn3
 ===========
+* backport lily/music.cc (Music): fix very subtle and nasty memory
+ corruption bug. Typical symptom: "programming_error: Rhythmic_req
+ has no duration"
+
 * backport lily/part-combine-music-iterator.cc (get_state): Bugfix: use
   ly_symbol2scm to get a scm symbol (rather than ly_str02scm).
 
