@@ -1,42 +1,30 @@
 
 default:
 
-do-doc: $(OUTTXT_FILES) 
+# UGH. 
+include $(stepdir)/www-targets.make
 
-# ugh. FIXME
-ifeq ($(strip $(README_TOP_FILES)),)
-readme-top_FILES-html:
-readme-top_FILES-txt:
-else
+local-WWW: $(OUTHTML_FILES) footify
 
-readme-top_FILES-txt:
-	$(foreach i, $(README_TOP_FILES), \
-	  cp $(depth)/$(i) $(outdir)/$(i).txt && ) true
+footify:
+	$(footify) $(sort $(wildcard $(outdir)/*.html out/*.html out-www/*.html))
 
-readme-top_FILES-html:
-	$(foreach i, $(README_TOP_FILES), \
-	  $(SHELL) $(step-bindir)/text2html.sh $(outdir)/$(i).txt $(outdir)/$(i).html && \
-	  $(PYTHON) $(step-bindir)/add-html-footer.py --package=$(topdir) --index=$(depth)/../index.html $(outdir)/$(i).html && ) true
-endif
+deep-footify:
+	$(deep-footify) $(sort $(wildcard $(outdir)/*/*.html))
 
-local-WWW: readme-top_FILES-txt readme-top_FILES-html $(OUTHTML_FILES) $(OUTREADME_HTML_FILES) 
-	echo $^ > $(depth)/wwwlist
+# why isn't this in texinfo-targets?
+INFO_INSTALL_FILES = $(wildcard $(addsuffix *, $(INFO_FILES)))
 
-doc: do-doc
+# should we call install-info?
+INFOINSTALL=$(MAKE) INSTALLATION_OUT_DIR=$(infodir) depth=$(depth) INSTALLATION_OUT_FILES="$(INFO_INSTALL_FILES)" -f $(stepdir)/install-out.sub.make
 
-$(outdir)/$(package).info: $(outdir)/topinfo.texinfo $(OUTTEXINFO_FILES)
-	$(MAKEINFO) --force -o $@ $(outdir)/topinfo.texinfo
+local-install: install-info
+local-uninstall: uninstall-info
 
-# what to do here?
-ifneq ($(strip $(INFO_FILES)),)
-
-INFOINSTALL=$(MAKE) INSTALLATION_OUT_DIR=$(infodir) depth=$(depth) INSTALLATION_OUT_FILES="$(INFO_FILES)" -f $(stepdir)/install-out.sub.make $@
-
-localinstall: # $(INFO_FILES)
+install-info: $(INFO_FILES)
 	-$(INSTALL) -d $(infodir)
-	$(INFOINSTALL)
-localuninstall:
-	$(INFOINSTALL)
+	$(INFOINSTALL) local-install
 
-endif
-
+uninstall-info:
+	$(INFOINSTALL) local-uninstall
+	-rmdir $(infodir)
