@@ -1,6 +1,11 @@
 lilypond_1_4
 ============
 
+* Backport: stepmake/autogen.sh: Check for autoconf2.13, and abort if not
+  found.
+
+* Backport: stepmake/aclocal.m4: Bugfix: complain if program not found.
+
 * Backport: Documentation/topdocs/INSTALL.texi: Update GCC, Flex and
   GUILE info. Add info about CVS.
 
