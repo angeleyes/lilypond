@@ -14,8 +14,8 @@ Note: relative paths are meant to be relative to the source directory
 
 sect(Installing)
 
-question(Wow, the webpages look really neat, but if I install the .exe
-file on my DOS/windows 3.11 machine, it doesn't work.)
+question(If I install the .exe file on my DOS/windows 3.11 machine, it
+doesn't work.)
 
 The DOS port is done with the cygnus gnu/windows32 port of the GNU utils.
 It does em(not) work with windows 3.x; you need Windows-NT (95/98?).  This
@@ -181,6 +181,12 @@ question(Do you support multiple staff-sizes?)
 Yes and no.  At this time you can choose between 11, 13, 16, 19,
 20, 23 and 20 pt staff-size.  The sizes can't be changed per staff
 (yet).  Look at file(standchen.ly) for an example.
+
+
+question(Do you support Gregorian chant notation?)
+
+No.  There is no reason why LilyPond can't be extended to do so, but
+we haven't done it yet (and there are currently no plans to do it).
 
 
 sect(How do I ....)
