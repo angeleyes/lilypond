@@ -141,6 +141,12 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
       downloaded</a> from <a href="http://pfaedit.sf.net">pfaedit's
       sourceforge page</a>.
     </li>
+  <li>Tell Cygwin to circumvent DOS/Windows command line restrictions:
+    <pre>
+      mount -f -X c:/cygwin/bin /bin
+      mount -f -x c:/cygwin/bin/strace.exe /bin/strace.exe
+      mount -f -x c:/cygwin/bin/cygcheck.exe /bin/cygcheck.exe
+    </pre></li>
   <li>Install mknetrel:
     <pre>
       cd /
