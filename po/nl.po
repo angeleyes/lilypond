@@ -39,12 +39,12 @@ msgstr "fout: "
 
 #: ly2dvi.py:207 mup2ly.py:100 update-lily.py:125
 msgid "Exiting ... "
-msgstr "Beëidigen ..."
+msgstr "Beëindigen ..."
 
 #: ly2dvi.py:265 mup2ly.py:158 update-lily.py:183
 #, c-format
 msgid "Usage: %s [OPTION]... FILE"
-msgstr "Gebruik: %s [OPTIE]... BESTAND"
+msgstr ""
 
 #: ly2dvi.py:269 main.cc:120 main.cc:149 mup2ly.py:162 update-lily.py:187
 msgid "Options:"
