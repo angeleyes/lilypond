@@ -8,6 +8,10 @@
 % TeXbook ex 7.7
 \def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
 %
+% If we must make titles, do so, before we're Skipped.
+\ifx\mustmakelilypondtitle\undefined\else\makelilypondtitle\fi
+\ifx\mustmakelilypondpiecetitle\undefined\else\makelilypondpiecetitle\fi
+%
 % skip if included already
 \def\SkipLilydefs{\endinput}
 \ifundefined{EndLilyPondOutput}
@@ -29,22 +33,25 @@
 \def\leftalign#1{\hbox to 0pt{#1\hss}}
 
 \input feta20.tex
-\font\textmusic=cmmi10
-\def\textsharp{\raise.4ex\hbox{\textmusic\char"5D}}
-\def\textnatural{\raise.4ex\hbox{\textmusic\char"5C}}
-\def\textflat{\raise.2ex\hbox{\textmusic\char"5B}}
 
-
-
-
+% Attempt to keep lilypiecetitle together with the piece:
+\def\myfilbreak{\par\vfil\penalty200\vfilneg}
 
 % stacked horizontal lines
-\def\interscoreline{\vskip 16pt}
+\ifundefined{lilypondpaperinterscoreline}
+        \def\lilypondpaperinterscoreline{16}
+\fi
+\ifundefined{lilypondpaperinterscorelinefill}
+        \def\lilypondpaperinterscorelinefill{0}
+\fi
+
+\def\interscoreline{\vskip\lilypondpaperinterscoreline pt plus %
+  \lilypondpaperinterscorelinefill fill}
+
 \def\placebox#1#2#3{%
         \botalign{\hbox{\raise #1\leftalign{\kern #2{}#3}}}}%
 
-% Are we using PDFTeX?  If so, use pdf definitions to translate
-% \embeddedps commands to embedded PDF.
+% Are we using PDFTeX?  If so, use pdf definitions.
 \ifx\pdfoutput\undefined  
   \input lily-ps-defs
 \else
@@ -53,7 +60,7 @@
 \fi
 
 \def\EndLilyPondOutput{%
-  \csname bye\endcsname
+ \vskip 0pt plus \lilypondpaperinterscorelinefill00 fill\csname bye\endcsname
 }
 \def\postheader{}
 
@@ -68,8 +75,5 @@
         \csname%
         nolilyfooter\texsuffix\endcsname
 \fi
-
-% fix chord.cc::banter_str before removing these
-\input fetdefs
 
 \endinput
