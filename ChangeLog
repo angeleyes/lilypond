@@ -1,6 +1,7 @@
 2004-06-16  Pedro Kroger  <kroeger@pedrokroeger.net>
 
 	* site/download/index.html: debian and fink packages for 2.3.4
+	and freeBSD for 2.2.2 and 2.3.4.
 
 	* format-page.py (do_one_file): Added regular expression to strip
 	the $Date$ keyword from files.

@@ -257,8 +257,8 @@ def do_one_file (in_file_name):
 		       main)
 	main = re.sub ('@IMAGES@', os.path.join (depth_str, 'images/'),
 		       main)
-	main = re.sub ('\$Date$', '\\1', main)
-  
+	main = re.sub ('\$\Date: (.*) \$', '\\1', main)
+
 	page = header % {'depth': depth_str,
 			 'title': titles[-1], 
 
