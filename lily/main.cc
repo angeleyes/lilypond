@@ -11,6 +11,7 @@
 #include <assert.h>
 #include <locale.h>
 #include "proto.hh"
+#include "dimensions.hh"
 #include "plist.hh"
 #include "getopt-long.hh"
 #include "misc.hh"
@@ -20,6 +21,9 @@
 #include "config.hh"
 #include "file-results.hh"
 #include "debug.hh"
+#include "ps-lookup.hh"
+#include "tex-lookup.hh"
+#include "lily-guile.hh"
 
 #if HAVE_GETTEXT
 #include <libintl.h>
@@ -34,6 +38,9 @@ String default_outname_base_global =  "lelie";
 int default_count_global;
 File_path global_path;
 
+Ps_lookup ps_lookup;
+Tex_lookup tex_lookup;
+Lookup* global_lookup_l = &tex_lookup;
 
 bool experimental_features_global_b = false;
 bool dependency_global_b = false;
@@ -179,8 +186,17 @@ identify ()
   *mlog << get_version_str () << endl;
 }
 
-int
-main (int argc, char **argv)
+void 
+guile_init ()
+{
+#ifdef   HAVE_LIBGUILE
+   gh_eval_str ("(define (add-column p) (display \"adding column (in guile): \") (display p) (newline))");
+#endif
+}
+
+
+void
+setup_paths ()
 {
   // facilitate binary distributions
   char const *env_lily = getenv ("LILYPONDPREFIX");
@@ -204,10 +220,6 @@ main (int argc, char **argv)
   textdomain (name.ch_C ());
 #endif
 
-  identify ();
-  call_constructors ();
-  debug_init ();		// should be first
-
   global_path.add ("");
   // must override (come before) "/usr/local/share/lilypond"!
   char const *env_sz = getenv ("LILYINCLUDE");
@@ -216,24 +228,39 @@ main (int argc, char **argv)
 
   if (!prefix_directory.empty_b())
     {
-      global_path.add (prefix_directory + "/share/lilypond/init/");
-      global_path.add (prefix_directory + "/share/lilypond");
+      global_path.add (prefix_directory + "/share/lilypond/ly/");
+      global_path.add (prefix_directory + "/share/lilypond/afm/");
     }
+  else
+    {
+      global_path.add (String (DIR_DATADIR) + "/ly/");
+      global_path.add (String (DIR_DATADIR) + "/afm/");  
+    }
+}
 
-  global_path.add (String (DIR_DATADIR) + "/init/");
 
-  global_path.push (DIR_DATADIR);
+
+int
+main_prog (int argc, char **argv)
+{
+  guile_init ();
+  identify ();
+  call_constructors ();
+  debug_init ();		// should be first
+
+  setup_paths ();
+
+  String init_str;
+  String outname_str;
 
   Getopt_long oparser (argc, argv,theopts);
-  String init_str;
-
-  String outname_str;
   while (Long_option_init const * opt = oparser ())
     {
       switch (opt->shortname)
 	{
 	case 't':
 	  experimental_features_global_b = true;
+	  global_lookup_l = &ps_lookup;
 	  break;
 	case 'o':
 	  outname_str = oparser.optional_argument_ch_C_;
@@ -360,3 +387,19 @@ distill_inname_str (String name_str, String& ext_r)
   return str;
 }
 
+
+#ifdef HAVE_LIBGUILE
+int
+main (int argc, char **argv)
+{
+  gh_enter (argc, argv, (void(*)())main_prog);
+  return exit_status_i_;
+}
+
+#else
+int main (int argc, char **argv)
+{
+  return main_prog (argc, argv);
+}
+
+#endif

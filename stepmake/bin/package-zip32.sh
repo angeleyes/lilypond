@@ -39,16 +39,16 @@ fi
 distdir=/tmp/${name}
 
 rm -f ${srcdir}/config.cache
-${srcdir}/configure --prefix=${distdir} \
-    --srcdir=${srcdir} \
-    --enable-tex-prefix=${distdir}/texmf \
-    --enable-tex-dir=${distdir}/texmf/tex \
-    --enable-mf-dir=${distdir}/texmf/mf
+PYTHON=${PYTHON:-python} ${srcdir}/configure --prefix=${distdir} \
+    --srcdir=${srcdir}
 
 if ! make ; then
     echo "make failed"
     exit 1
 fi
+
+# failure allowed
+make -C Documentation info
 
 if ! make install ; then
     echo "make install failed"
@@ -75,16 +75,18 @@ fi
 cp $CYGWIN_LIB $distdir/bin
 
 #
-# Rename ly2dvi32 to ly2dvi.py
+# Rename python files to <filename>.py
 #
-mv $distdir/bin/ly2dvi32 $distdir/bin/ly2dvi.py
+mv $distdir/bin/ly2dvi $distdir/bin/ly2dvi.py
+mv $distdir/bin/convert-mudela $distdir/bin/convert-mudela.py
+mv $distdir/bin/mudela-book $distdir/bin/mudela-book.py
 
 #
 # copy man documentation to doc directory
 #
 mkdir $distdir/doc
 cp Documentation/man/out/*.txt $distdir/doc
-mv $distdir/doc/ly2dvi32.txt $distdir/doc/ly2dvi_py.txt
+mv $distdir/doc/ly2dvi32.txt $distdir/doc/ly2dvi.txt
 cd $distdir/..
 $ZIP_CMD $ZIP_FILE $name
 echo "Wrote $ZIP_FILE"
