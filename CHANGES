@@ -1,5 +1,9 @@
 1.4.14.jcn1
 ===========
+* backport stepmake/GNUmakefile.in: Don't install stepmake.  This breaks
+  the use of make/ly.make for use as an external makefile.  Probably
+  noone except for myself ever used this anyway.
+
 * scm/chord-name.scm: Remove debug printing.
 
 * backport stepmake/stepmake/generic-vars.make: 
