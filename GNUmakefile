@@ -37,7 +37,8 @@ $(LANG)/%.svg: site/%.svg $(mo)
 
 %.png: %.svg
 	inkscape --export-png=$@- $<
-	pngtopnm $@- | pnmcrop | pnmtopng -transparent =black > $@
+#	pngtopnm $@- | pnmcrop | pnmtopng -transparent =black > $@
+	pngtopnm $@- | pnmtopng -transparent =black > $@
 	rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
