@@ -1,5 +1,10 @@
 <dl>
 
+  <dt>January 31, 2005</dt> <dd> LilyPond 2.5.10 is out. This release
+sports as new EPS backend, based on the PS backend. This backend is
+used in the new and improved lilypond-book script. Download <a
+href="download/#2.5">here</a>!  </dd>
+
   <dt>January 26, 2005</dt>
   <dd>LilyPond 2.5.9 is out. This release fixes a couple of annoying
 bugs in the direct PS output for piano braces.  Download <a
