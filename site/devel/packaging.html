@@ -3,81 +3,96 @@
 Please help us by compiling and packing up Lily, and we will link to
 your site.
 
+<h2>Debian</h2>
 
-<h2>RedHat</h2>
-
-A spec file is in
-<code>make/out/lilypond.redhat.spec</code>. This file is distributed along
-with the sources.  You can make the rpm by issuing
 <p>
-<pre>     
-        cp lilypond-x.y.z.tar.gz /usr/src/redhat/SOURCES/
-        tar xfz lilypond-x.y.z.tar.gz
-     	rpmbuild -bb lilypond-x.y.z/make/out/lilypond.redhat.spec
-     </pre>
+  To ensure the creation of the lilypond deb is trouble-free, we
+  recommend that you first install the following packages by running
+  apt-get as root before building the package
 
-<p>For compilation on a Red Hat system you need these packages, in
-addition to the those needed for running: glibc-devel, gcc-c++,
-libstdc++-devel, guile-devel, flex, bison, texinfo, groff, mftrace,
-netpbm-progs, autotrace, t1utils.
+  <pre>
+    apt-get install\
+    bison flex fontforge g++ gettext groff gs guile-1.6-dev imagemagick\
+    libc6-dev libfontconfig1-dev libfreetype6-dev libkpathsea-dev\
+    libpango1.0-dev m4 mftrace netpbm potrace python t1utils tetex-bin\
+    tetex-extra texinfo
+  </pre>
+</p>
 
+<p>
+  The build scripts are in the subdirectory <code>debian/</code>; you
+  can make the .deb by doing
+  <pre>
+    tar xzf lilypond-x.y.z.tar.gz
+    cd lilypond-x.y.z
+    dpkg-checkbuilddeps           # print missing build dependencies
+    # apt-get install ...         # install any missing packages
+    dch -p -v x.y.z.local.1 "Local build."
+    debuild
+  </pre>
+</p>
+
+<p>
+  If you are real impatient, you may even do
+  <pre>
+    cd lilypond-x.y.z   # a previous version
+    uscan               # download and build latest directly from upstream
+  </pre>
+</p>
+
+
+<h2>Fedora</h2>
+
+<p>
+  A spec file is in
+  <code>make/out/lilypond.fedora.spec</code>. This file is distributed along
+  with the sources.  You can make the rpm by issuing
+  <pre>    
+    tar zxf lilypond-x.y.z.tar.gz
+    mkdir -p $(rpm --eval=%_sourcedir) $(rpm --eval=%_builddir)
+    cp lilypond-x.y.z.tar.gz $(rpm --eval=%_sourcedir)
+    rpmbuild -bb lilypond-x.y.z/make/out/lilypond.fedora.spec
+  </pre>
+</p>
+
+<p>
+  Note:
+  <br>
+  use a sensible topdir, e.g., in <code>~/.rpmmacros</code> set
+  <pre>
+    %_topdir %(eval echo $HOME)/usr/src/rpm
+  </pre>
+  to avoid building as root,
+  <br>
+  use rpmbuild --nodeps when building on non-Fedora systems.
+</p>
+
+<p>
+  For compilation on a Fedora system you need these packages, in
+  addition to the those needed for running: glibc-devel, gcc-c++,
+  libstdc++-devel, guile-devel, flex, bison, texinfo, groff, mftrace,
+  netpbm-progs, autotrace, t1utils.
+</p>
 
 
 <h2>Mandrake</h2>
 
-<p>You can also compile a RPM for Mandrake yourself.  A spec file is
-in <code>make/out/lilypond.mandrake.spec</code>, see the instructions
-for building the Red Hat RPM.</a>
-
+<p>
+  You can also compile a RPM for Mandrake yourself.  A spec file is
+  in <code>make/out/lilypond.mandrake.spec</code>, see the instructions
+  for building the Fedora RPM.</a>
+</p>
 
 <h2>SuSE</h2>
 
 A spec file is in <code>make/out/lilypond.suse.spec</code>, see the
-instructions building the Red Hat RPM.</a>
-
-<p>You must have the following packages: guile tcsh tetex te_latex
-te_kpath te_mpost libpng python gpp libgpp gettext autoconf netpbm
-libnetpb gs_serv gs_lib gs_fonts guile
-
-
-
-<h2>Debian</h2>
-
-<p>If you're real impatient, you may even do:
-<pre>     
-     	cd lilypond-x.y.z   # a previous version
-             uscan               # download and build latest directly from upstream
-     </pre>
-
-   <p>The build scripts are in the subdirectory <code>debian/</code>; you can
-make the .deb by doing, for example:
-
-<pre>       $ su - root
-       # dpkg --purge lilypond lilypond1.3
-       # exit
-       $ tar xzf lilypond-1.8.0.tar.gz
-       $ cd lilypond-1.8.0
-       $ dch -p -v 1.8.0-0.local.1 "Local build."
-       $ debuild -B
-       $ su - root
-       # dpkg -i ../lilypond_1.8.0-*.deb
-       # exit
-       $
-</pre>
+instructions building the Fedora RPM.</a>
 
 <p>
-To ensure the creation of the lilypond deb is
-trouble-free, we recommend that you first install the following packages
-by running apt-get as root before building the package:
-
-<p>
-For Debian 3.0:
-<pre>  
-       apt-get install g++ libc6-dev \
-               python guile-1.6-dev tetex-bin libkpathsea-dev \
-               tetex-extra flex bison texinfo groff gs \
-               netpbm m4 gettext mftrace pfaedit autotrace t1utils
-</pre>
+  You must have the following packages: guile tcsh tetex te_latex
+  te_kpath te_mpost libpng python gpp libgpp gettext autoconf netpbm
+  libnetpb gs_serv gs_lib gs_fonts guile
+</p>
 
 
 <h2>Windows</h2>
@@ -85,9 +100,11 @@ For Debian 3.0:
 
 <h3>Requirements</h3>
 
-<p>To build LilyPond for Windows, you need to install
-the <code>Cygwin</code> tools. out the <a
-href="http://cygwin.com">Cygwin webpage</a>.
+<p>
+  To build LilyPond for Windows, you need to install
+  the <code>Cygwin</code> tools. out the
+  <a href="http://cygwin.com">Cygwin webpage</a>.
+</p>
 
 <h4>Native compiling</h4>
 
@@ -106,31 +123,31 @@ href="http://cygwin.com">Cygwin webpage</a>.
     Cygwin, but compile out of the box.  fontforge for Cygwin can be
     downloaded from <a href="http://fontforge.sourceforge.net/">fontforge's
       sourceforge page</a>.
-    </li>
+  </li>
   <li>Tell Cygwin to circumvent DOS/Windows command line restrictions:
     <pre>
       mount -f -X c:/cygwin/bin /bin
       mount -f -x c:/cygwin/bin/strace.exe /bin/strace.exe
       mount -f -x c:/cygwin/bin/cygcheck.exe /bin/cygcheck.exe
-    </pre></li>
+  </pre></li>
   <li>Install mknetrel:
     <pre>
       cd /
       cvs -d:pserver:anoncvs@sources.redhat.com:/cvs/cygwin-apps \
-        co -d netrel mknetrel
-    </pre></li>
+      co -d netrel mknetrel
+  </pre></li>
   <li>Get and setup LilyPond source:
     <pre>
-   mkdir -p /netrel/src && cd /netrel/src
-   mkdir -p old
-   wget -P/tmp http://lilypond.org/download/v2.3/lilypond-2.3.25.tar.gz
-   PATH=/netrel/bin:$PATH pimport lilypond</pre>
+      mkdir -p /netrel/src && cd /netrel/src
+      mkdir -p old
+      wget -P/tmp http://lilypond.org/download/v2.3/lilypond-2.3.25.tar.gz
+      PATH=/netrel/bin:$PATH pimport lilypond</pre>
     You can also pull from CVS, but the important thing is to
     have lilypond 2.3.25 or newer, and just one directory named
     `lilypond-x.y.z-r'.
   </li>
   <li>If you build from CVS, you must generate the configure script, do: <pre>
-    cd lilypond-x.y.z-r && NOCONFIGURE=x ./autogen.sh
+      cd lilypond-x.y.z-r && NOCONFIGURE=x ./autogen.sh
   </pre></li>
   <li>Build the package:
     <pre>
@@ -154,23 +171,23 @@ To cross compile for Cygwin:
       sudo chown $USER /netrel
       cd /
       cvs -d:pserver:anoncvs@sources.redhat.com:/cvs/cygwin-apps \
-        co -d netrel mknetrel
+      co -d netrel mknetrel
     </pre>
   </li>
   <li>
-  Setup a binary Cygwin environment.  There is a handy command line
-  
-  <a href="http://lilypond.org/cygwin/cyg-apt">cyg-apt</a> script that
-  can set it up and help keep it up to date.  Do something like:  <pre>
-    wget -P ~/bin http://lilypond.org/cygwin/cyg-apt
-    chmod +x ~/bin/cyg-apt
-    sudo mkdir -p /cygwin
-    sudo chown $USER /cygwin
-    cyg-apt setup
-    cyg-apt update
-    cyg-apt --no-deps install cygwin flex gettext guile-devel libguile12 \
-        libintl2 libkpathsea3 python tetex-devel w32api
-  </pre>
+    Setup a binary Cygwin environment.  There is a handy command line
+    
+    <a href="http://lilypond.org/cygwin/cyg-apt">cyg-apt</a> script that
+    can set it up and help keep it up to date.  Do something like:  <pre>
+      wget -P ~/bin http://lilypond.org/cygwin/cyg-apt
+      chmod +x ~/bin/cyg-apt
+      sudo mkdir -p /cygwin
+      sudo chown $USER /cygwin
+      cyg-apt setup
+      cyg-apt update
+      cyg-apt --no-deps install cygwin flex gettext guile-devel libguile12 \
+      libintl2 libkpathsea3 python tetex-devel w32api
+    </pre>
   </li>
   <li>
     Create a Cygwin cross building environment.
@@ -178,7 +195,7 @@ To cross compile for Cygwin:
 
     <a href="http://lilypond.org/cygwin/debian/dists/unstable">precompiled toolchain
       gcc-i686-cygwin binaries for Debian GNU/Linux i386</a>.  Add to your
-      /etc/apt/sources.list: <pre>
+    /etc/apt/sources.list: <pre>
       deb http://lilypond.org/cygwin/debian unstable .
     </pre> Do: <pre>
       apt-get update
@@ -189,4 +206,4 @@ To cross compile for Cygwin:
     described in section native compiling above.
   </li>
 </ul>
-    
+
