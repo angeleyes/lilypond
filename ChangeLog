@@ -3,6 +3,9 @@
 	* site/images/flaticon.png: new file.
 
 	* format-page.py: add shortcut icon (above).
+
+	* site/images/flaticon.png: renamed.
+	* site/images/shortcut.png: new file.
 	
 2004-07-30  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
