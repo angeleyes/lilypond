@@ -9,6 +9,14 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 
 !-->
 
+<dt>April 6, 2005</dt>
+<dd>
+2.5.18 is a bugfix release. It has many small cleanups in the
+web-based documentation, and many small cleanups all over the
+place. <a href="install/#2.5">Download LilyPond 2.5.18</a>.
+</dd>
+
+
 <dt>March 31, 2005</dt>
 <dd>
 2.5.17 is out. This release features many small bugfixes. In addition,
