@@ -288,9 +288,9 @@ def format_page (html, file_name, lang):
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
-	# Strip .html suffix for auto language selection to work.
-	page = re.sub ('''href=[\'"]([^/][.]*[^.:\'"]*).html[\'"]''',
-		       'href="\\1"', page)
+	# Strip .html, .png suffix for auto language selection.
+	page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)[\'"]''',
+		       '\\1="\\2"', page)
 
 	# No autoselection for automatic language menu.
 	page = re.sub ('@LANGUAGE_MENU@', languages, page)

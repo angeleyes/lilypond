@@ -36,15 +36,15 @@ def file_lang (file, lang):
 
 def translate (s, lang):
 	def grab_gettext (match):
-		return gettext.gettext (match.group (1))
+		s = match.group (1)
+		s = re.sub (r'''\\([\'"\\])''', r'''\1''', s)
+		return gettext.gettext (s)
 
 	# FIXME: simplistic REs
 	if remove_quotes:
-		#s = re.sub (r'''_ *\("(([^"]|([^\\]\\"))*)"\)''', grab_gettext, s)
-		#s = re.sub (r'''\\([^\\])''', r'''\1''', s)
-		s = re.sub ('_ *\("([^"]*)"\)', grab_gettext, s)
+		s = re.sub (r'''_ *\("(([^"]|([^\\]\\"))*)"\)''', grab_gettext, s)
 	else:
-		s = re.sub ('_ *\(("[^"]*")\)', grab_gettext, s)
+		s = re.sub (r'''_ *\(("([^"]|([^\\]\\"))*")\)''', grab_gettext, s)
 	return s
 
 

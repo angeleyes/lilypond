@@ -19,26 +19,23 @@ ifneq ($(LANG),)
 SITE = $(LANG)
 mo = out/locale/$(LANG)/LC_MESSAGES/newweb.mo
 po/$(LANG).po: po/newweb.pot
-	msgmerge $@ $^ > $@.new
-# only update upon success
-	mv $@.new $@
+	msgmerge --update $@ $^
 
 $(mo): po/$(LANG).po
 	mkdir -p $(dir $@)
 	msgfmt --output=$@ $<
 
 # Only regenerate for LANGs
-$(LANG)/%.svg: site/%.svg $(mo)
+$(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 	mkdir -p $(dir $@)
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%)
 
 # no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
 
-%.png: %.svg
-	inkscape --export-png=$@ --export-background-opacity=0 $<
-#	pngtopnm -background "#FFFFFF" $@- | pnmcrop | pnmtopng -transparent "rgb:FF/FF/FF" > $@
-#	rm $@-
+%.png: %.svg GNUmakefile
+	-inkscape --export-png=$@- --export-background-opacity=0 $<
+	-convert -crop 0x0 $@- $@ && rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
 #out/site/graphics/%.$(LANG).png: $(LANG)/graphics/%.png
@@ -67,7 +64,7 @@ TAGS:
 	etags $$(find scripts site -name '*.html' -o -name '.py')
 
 po/newweb.pot: $(PY) $(SVG)
-	xgettext --default-domain=newweb --language=python --output=$@ $(PY) $(SVG)
+	xgettext --default-domain=newweb --language=python --join --output=$@ $(PY) $(SVG)
 
 nl:
 	$(MAKE) LANG=$@ png menuify
@@ -80,8 +77,7 @@ new:
 #	$(foreach i, $(HTML), cp -i $(i) $(LANG)/$(i:site/%=%) &&) true
 
 tree:
-# Let's not.  This runs on lilypond.org, and it has no inkscape too.
-#	rm -rf out/site
+	rm -rf out/site
 	mkdir -p out/site
 	cd out/site && mkdir -p $(TREE)
 
@@ -105,7 +101,7 @@ upload: site
 	   && chmod -R g+w * \
 	   && chmod 2775 . $$(find . -type d) \
 	   && rsync -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
-# do not delete, lilypond.org has no inkscape
+# do not --delete, lilypond.org has no inkscape, transated pngs will be removed
 #	   && rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
 
 dist:

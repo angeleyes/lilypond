@@ -1,3 +1,11 @@
+2005-01-30  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* scripts/translate.py: Bugfix. 
+
+	* GNUmakefile (%.png): Crop generated images.  
+	* (po/$(LANG).po): 
+	* (po/newweb.pot): Update.
+
 2005-01-29  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/switch/howto.html: Cleanups and langify urls.
