@@ -1,9 +1,8 @@
-
 [
- ('features.html', 'Features'),
- ('faq.html', 'FAQ'),
- ('automated-engraving', 'Essay'),
- ('pubs.html', 'Publications'),
- ('donate.html', 'Donate'),
- ('thanks.html', "Acknowledgements"),
+ ("features.html", _ ("Features")),
+ ("faq.html", _ ("FAQ")),
+ ("automated-engraving", _ ("Essay")),
+ ("pubs.html", _ ("Publications")),
+ ("doneet.html", _ ("Donate")),
+ ("thanks.html", _ ("Acknowledgements")),
 ]

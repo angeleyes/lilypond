@@ -1,6 +1,6 @@
 [
- ("appogiatura.html", "appogiatura"),
- ("bassocontinuo.html", "Basso Continuo"),
- ("colors.html", "Color"),
- ('ligature.html', "Ligature")
+ ("appogiatura.html", _ ("appogiatura")),
+ ("bassocontinuo.html", _ ("Basso Continuo")),
+ ("colors.html", _ ("Color")),
+ ("ligature.html", _ ("Ligature"))
 ]

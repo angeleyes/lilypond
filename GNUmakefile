@@ -34,7 +34,6 @@ NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
 TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 
-# not yet?
 LANGUAGES = nl
 
 all: scripts linktree menuify $(LANGUAGES)
@@ -46,13 +45,12 @@ scripts:
 site: all
 
 TAGS:
-	etags $$(find site -name '*.html')
+	etags $$(find scripts site -name '*.html' -o -name '.py')
 
 dummy:
 
 po/newweb.pot: dummy
-	xgettext --default-domain=newweb --output-dir=po $(PY)
-#	mv po/newweb.po $@
+	xgettext --default-domain=newweb --output=$@ $(PY)
 
 nl: dummy
 	$(MAKE) LANG=nl menuify

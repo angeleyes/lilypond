@@ -1,5 +1,5 @@
 [
- ('call-for-help.html', "Help wanted!"),
- ('localization.html', "Localization"),
- ('standards.html', "Standards"),
+ ("call-for-help.html", _ ("Help wanted!")),
+ ("localization.html", _ ("Localization")),
+ ("standards.html", _ ("Standards")),
  ]

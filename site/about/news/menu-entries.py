@@ -1,2 +1,3 @@
-[('oldnews.html', "Older news")
- ]
+[
+  ("oldnews.html", _ ("Older news")),
+]

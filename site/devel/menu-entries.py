@@ -1,4 +1,4 @@
 [
- ('participating', 'Participate'),
- ('packaging.html', 'Packaging'),
+ ("participating", _ ("Participate")),
+ ("packaging.html", _ ("Packaging")),
  ]

@@ -8,16 +8,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-26 13:20+0100\n"
+"POT-Creation-Date: 2005-01-28 08:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:171
 #: site/menu-entries.py:4
 msgid "Home"
+msgstr ""
+
+#: site/about/menu-entries.py:2
+msgid "Features"
+msgstr ""
+
+#: site/about/menu-entries.py:3
+msgid "FAQ"
+msgstr ""
+
+#: site/about/menu-entries.py:4
+msgid "Essay"
+msgstr ""
+
+#: site/about/menu-entries.py:5
+msgid "Publications"
+msgstr ""
+
+#: site/about/menu-entries.py:6
+msgid "Donate"
+msgstr ""
+
+#: site/about/menu-entries.py:7
+msgid "Acknowledgements"
+msgstr ""
+
+#: site/about/news/menu-entries.py:2
+msgid "Older news"
 msgstr ""
 
 #: site/menu-entries.py:5
@@ -38,4 +67,92 @@ msgstr ""
 
 #: site/menu-entries.py:9
 msgid "Development"
+msgstr ""
+
+#: site/devel/menu-entries.py:2
+msgid "Participate"
+msgstr ""
+
+#: site/devel/menu-entries.py:3
+msgid "Packaging"
+msgstr ""
+
+#: site/devel/misc/menu-entries.py:2
+msgid "Finale ETF format"
+msgstr ""
+
+#: site/devel/misc/menu-entries.py:3
+msgid "Conferences relevant to LilyPond"
+msgstr ""
+
+#: site/devel/misc/menu-entries.py:4
+msgid "Related online resources"
+msgstr ""
+
+#: site/devel/notation/menu-entries.py:2
+msgid "appogiatura"
+msgstr ""
+
+#: site/devel/notation/menu-entries.py:3
+msgid "Basso Continuo"
+msgstr ""
+
+#: site/devel/notation/menu-entries.py:4
+msgid "Color"
+msgstr ""
+
+#: site/devel/notation/menu-entries.py:5
+msgid "Ligature"
+msgstr ""
+
+#: site/devel/participating/menu-entries.py:2
+msgid "Help wanted!"
+msgstr ""
+
+#: site/devel/participating/menu-entries.py:3
+msgid "Localization"
+msgstr ""
+
+#: site/devel/participating/menu-entries.py:4
+msgid "Standards"
+msgstr ""
+
+#: site/download/windows/menu-entries.py:2
+msgid " Cygwin"
+msgstr ""
+
+#: site/download/windows/menu-entries.py:3
+msgid "Troubleshooting"
+msgstr ""
+
+#: site/download/menu-entries.py:2
+msgid "MacOS X"
+msgstr ""
+
+#: site/download/menu-entries.py:3
+msgid "Windows"
+msgstr ""
+
+#: site/download/menu-entries.py:4
+msgid "First use"
+msgstr ""
+
+#: site/download/menu-entries.py:5
+msgid "User help"
+msgstr ""
+
+#: site/switch/menu-entries.py:2
+msgid "Why use LilyPond?"
+msgstr ""
+
+#: site/switch/menu-entries.py:3
+msgid "Testimonials"
+msgstr ""
+
+#: site/switch/menu-entries.py:4
+msgid "A short tour"
+msgstr ""
+
+#: site/switch/menu-entries.py:5
+msgid "Crash course"
 msgstr ""

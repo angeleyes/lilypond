@@ -45,7 +45,7 @@ LANGUAGES_TEMPLATE = '''\
 
 # ugh, move to .ithml
 top_script = '''\
-<SCRIPT>
+<SCRIPT type="text/javascript">
   <!--
     function setfocus ()
       {

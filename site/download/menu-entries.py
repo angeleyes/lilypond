@@ -1,6 +1,6 @@
 [
-  ('macos.html', 'MacOS X'),
-  ('windows.html', "Windows"),
-  ('getting-started.html', 'First use'),
-  ('using.html', 'User help'),
+  ("macos.html", _ ("MacOS X")),
+  ("windows.html", _ ("Windows")),
+  ("getting-started.html", _ ("First use")),
+  ("using.html", _ ("User help")),
   ]

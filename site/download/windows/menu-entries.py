@@ -1,4 +1,4 @@
 [
-  ('cygwin.html', ' Cygwin'),
- ('troubleshooting.html', "Troubleshooting"),
+ ("cygwin.html", _ (" Cygwin")),
+ ("troubleshooting.html", _ ("Troubleshooting")),
 ]
