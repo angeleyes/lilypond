@@ -3,22 +3,18 @@
 
   source file of the Flower Library
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef RATIONAL_HH
 #define RATIONAL_HH
 
-#if PARANOIA
-#ifndef Rational
-#define Rational MyRational
-#endif
-#endif
-
 #include "compare.hh"
 #include "arithmetic-operator.hh"
-#include "fproto.hh"
+#include "flower-proto.hh"
+#include "string.hh"
+
 
 /**
    Rational numbers.  Included is support for + and - infinity.
@@ -41,10 +37,10 @@ public:
   void set_infinite (int sign);
   bool infty_b () const;
   void invert ();
-  int num  () const { return sign_ * num_; }
-  int den  () const { return den_; }
-  int num_i  () const { return sign_ * num_; }
-  int den_i  () const { return den_; }
+  int num () const { return sign_ * num_; }
+  int den () const { return den_; }
+  int num_i () const { return sign_ * num_; }
+  int den_i () const { return den_; }
   Rational trunc_rat () const;
   Rational div_rat (Rational) const;
   Rational mod_rat (Rational) const;
@@ -91,8 +87,9 @@ Rational::copy (Rational const&r)
   den_ = r.den_;
 }
 
-class ostream;
 ostream &
 operator << (ostream &,  Rational);
+
+const Rational infinity_rat = INT_MAX;
 
 #endif // RATIONAL_HH

@@ -1,11 +1,13 @@
-//
-// midi-stream.cc
-//
-// source file of the GNU LilyPond music typesetter
-//
-// (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+/*
+  midi-stream.cc -- implement Midi_stream
+
+  source file of the GNU LilyPond music typesetter
+
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
+*/
 
 #include <fstream.h>
+#include "paper-stream.hh"
 #include "string.hh"
 #include "string-convert.hh"
 #include "main.hh"
@@ -13,23 +15,21 @@
 #include "midi-item.hh"
 #include "midi-stream.hh"
 #include "debug.hh"
+#include "scm-option.hh"
 
-Midi_stream::Midi_stream (String filename_str)
+Midi_stream::Midi_stream (String filename)
 {
-  filename_str_ = filename_str;
-  os_p_ = 0;
-  open ();
+  filename_str_ = filename;
+#if __GCC__ > 2
+  os_p_ = open_file_stream (filename, ios::out|ios::bin);
+#else
+  os_p_ = open_file_stream (filename, ios::out|ios::binary);
+#endif
 }
 
 Midi_stream::~Midi_stream ()
 {
-  *os_p_ << flush;		// ugh. Share with tex_stream.
-  if (!*os_p_)
-    {
-      warning (_ ("error syncing file (disk full?)"));
-      exit_status_i_ = 1;
-    }
-  delete os_p_;
+  close_file_stream (os_p_);
 }
 
 Midi_stream&
@@ -42,11 +42,12 @@ Midi_stream::operator << (String str)
 Midi_stream&
 Midi_stream::operator << (Midi_item const& midi_c_r)
 {
-//    *this <<midi_c_r.str (); 
   String str = midi_c_r.str ();
-  if (check_debug && !monitor->silent_b ("Midistrings")) 
+
+
+  if (midi_debug_global_b)
     {
-    str = String_convert::bin2hex_str (str) + "\n";
+     str = String_convert::bin2hex_str (str) + "\n";
     // ugh, should have separate debugging output with Midi*::print routines
     int i = str.index_i ("0a");
     while (i >= 0)
@@ -69,10 +70,3 @@ Midi_stream::operator << (int i)
   return *this;
 }
 
-void
-Midi_stream::open ()
-{
-  os_p_ = new ofstream (filename_str_.ch_C (),ios::out|ios::bin);
-  if (!*os_p_)
-    error (_f ("can't open file: `%s\'", filename_str_));
-}

@@ -3,6 +3,8 @@
 //
 // copyright 1997 Jan Nieuwenhuizen <janneke@gnu.org>
 
+#include <stdlib.h>
+#include <iostream.h>
 #include <assert.h>
 #include <locale.h>
 #include "config.h"
@@ -14,21 +16,23 @@
 
 #include "midi2ly-global.hh"
 #include "midi-score-parser.hh"
-#include "mudela-item.hh"
-#include "mudela-score.hh"
+#include "lilypond-item.hh"
+#include "lilypond-score.hh"
 
 #if HAVE_GETTEXT
 #include <libintl.h>
 #endif
 
+bool testing_level_global;
 
 // ugh
 String filename_str_g;
 
 // ugh
-Mudela_score* mudela_score_l_g = 0;
+Lilypond_score* lilypond_score_l_g = 0;
 
 bool no_timestamps_b_g = false;
+bool no_rests_b_g = false;
 
 Sources source;
 
@@ -50,13 +54,13 @@ version ()
   identify ();
   cout << '\n';
   cout << _f (""
-  "This is free software.  It is covered by the GNU General Public License,"
-  "and you are welcome to change it and/or distribute copies of it under"
+  "This is free software.  It is covered by the GNU General Public License,\n"
+  "and you are welcome to change it and/or distribute copies of it under\n"
   "certain conditions.  Invoke as `%s --warranty' for more information.\n", 
     "midi2ly");
   cout << endl;
 
-  cout << _f ("Copyright (c) %s by", "1996--1999");
+  cout << _f ("Copyright (c) %s by", "1996--2001");
   cout << "Han-Wen Nienhuys <hanwen@cs.uu.nl>\n"
        << "Jan Nieuwenhuizen <janneke@gnu.org>\n";
 }
@@ -91,16 +95,17 @@ Long_option_init long_option_init_a[] =
   {0, "debug", 'd', _i ("enable debugging output")},
   {0, "help", 'h', _i ("this help")},
   {_i ("ACC[:MINOR]"), "key", 'k', _i ("set key: ACC +sharps/-flats; :1 minor")},
-  {0, "no-silly", 'n', _i ("assume no tuplets or double dots, smallest is 32")},
+  {0, "no-silly", 'n', _i ("don't output tuplets, double dots or rests, smallest is 32")},
   {_i ("FILE"), "output", 'o', _i ("set FILE as default output")},
-  {0, "no-tuplets", 'p', _i ("assume no tuplets")},
+  {0, "no-tuplets", 'p', _i ("don't output tuplets")},
   {0, "quiet", 'q', _i ("be quiet")},
-  {_i ("DUR"), "smallest", 's', _i ("Set smallest duration (?)")},
+  {0, "no-rests", 'r', _i ("don't output rests or skips")},
+  {_i ("DUR"), "smallest", 's', _i ("set smallest duration")},
   {0, "no-timestamps", 'T', _i ("don't timestamp the output")},
+  {0, "version", 'V', _i ("print version number")},
   {0, "verbose", 'v', _i ("be verbose")},
   {0, "warranty", 'w', _i ("show warranty and copyright")},
   {0, "no-double-dots", 'x', _i ("assume no double dotted notes")},
-  {0, "version", 'V', _i ("print version number")},
   {0,0,0, 0}
 };
 
@@ -109,14 +114,31 @@ usage()
 {
   cout << _f ("Usage: %s [OPTION]... [FILE]", "midi2ly");
   cout << '\n';
-  cout << _ ("Translate midi-file to mudela");
+  cout << _ ("Translate MIDI-file to lilypond");
   cout << '\n';
   cout << '\n';
   cout << _ ("Options:");
   cout << '\n';
   cout << Long_option_init::table_str (long_option_init_a) << endl;
 
-  cout << _("Report bugs to") << " bug-gnu-music@gnu.org" << endl;
+  cout << _f ("Report bugs to %s", "bug-gnu-music@gnu.org") << endl;
+}
+
+void
+show_settings ()
+{
+  LOGOUT (VERBOSE_ver) << "\n";
+  LOGOUT (VERBOSE_ver) << _f ("no_double_dots: %d\n", 
+    Duration_convert::no_double_dots_b_s);
+  LOGOUT (VERBOSE_ver) << _f ("no_rests: %d\n", 
+    no_rests_b_g);
+  LOGOUT (VERBOSE_ver) << _f ("no_quantify_b_s: %d\n", 
+    Duration_convert::no_quantify_b_s);
+  LOGOUT (VERBOSE_ver) << _f ("no_smaller_than: %d (1/%d)\n", 
+    Duration_convert::no_smaller_than_i_s,
+    Duration_convert::type2_i (Duration_convert::no_smaller_than_i_s));
+  LOGOUT (VERBOSE_ver) << _f ("no_tuplets: %d\n", 
+    Duration_convert::no_tuplets_b_s);
 }
 
 int
@@ -133,7 +155,7 @@ main (int argc_i, char* argv_sz_a[])
 #endif
 
   bool key_override_b = false;
-  Mudela_key key (0, 0);
+  Lilypond_key key (0, 0);
 
  
   Getopt_long getopt_long (argc_i, argv_sz_a, long_option_init_a);
@@ -167,17 +189,21 @@ main (int argc_i, char* argv_sz_a[])
 	}
       case 'n':
 	Duration_convert::no_double_dots_b_s = true;
-	Duration_convert::no_triplets_b_s = true;
+	Duration_convert::no_tuplets_b_s = true;
 	Duration_convert::no_smaller_than_i_s = 5;
+	no_rests_b_g = true;
 	break;
       case 'o':
 	output_str = getopt_long.optional_argument_ch_C_;
 	break;
       case 'p':
-	Duration_convert::no_triplets_b_s = true;
+	Duration_convert::no_tuplets_b_s = true;
 	break;
       case 'q':
 	level_ver = QUIET_ver;
+	break;
+      case 'r':
+	no_rests_b_g = true;
 	break;
       case 'T':
 	no_timestamps_b_g = true;
@@ -226,24 +252,25 @@ main (int argc_i, char* argv_sz_a[])
   char const* arg_sz = 0;
   while ( (arg_sz = getopt_long.get_next_arg ()))
     {
+      show_settings ();
       filename_str_g = arg_sz;
       Midi_score_parser midi_parser;
-      Mudela_score* score_p = midi_parser.parse (arg_sz, &source);
+      Lilypond_score* score_p = midi_parser.parse (arg_sz, &source);
 
       if (!score_p)
 	return 1;
 
       // if given on command line: override
-      if (key_override_b || !score_p->mudela_key_l_)
-	score_p->mudela_key_l_ = &key;
-      mudela_score_l_g = score_p;
+      if (key_override_b || !score_p->lilypond_key_l_)
+	score_p->lilypond_key_l_ = &key;
+      lilypond_score_l_g = score_p;
       score_p->process();
 
       if (!output_str.length_i ())
 	{
-	  String d, dir, base, ext;
-	  split_path (arg_sz, d, dir, base, ext);
-	  output_str = base + ext + ".ly";
+	  Path p = split_path (arg_sz);
+
+	  output_str = p.base + p.ext + ".ly";
 	}
 
       score_p->output (output_str);

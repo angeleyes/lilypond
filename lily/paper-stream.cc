@@ -3,56 +3,90 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
+#include <errno.h>
+#include <sys/types.h>
 #include <fstream.h>
+
+#include "config.h"
+#if HAVE_SYS_STAT_H 
+#include <sys/stat.h>
+#endif
 
 #include "main.hh"
 #include "paper-stream.hh"
+#include "file-path.hh"
 #include "debug.hh"
 
 const int MAXLINELEN = 200;
 
-Paper_stream::Paper_stream (String filename)
+#if __GNUC__ > 2
+ostream *
+open_file_stream (String filename, std::ios_base::openmode mode)
+#else
+ostream *
+open_file_stream (String filename, int mode)
+#endif
 {
-  if (filename.length_i () && (filename != "-"))
-    os = new ofstream (filename.ch_C ());
+  ostream *os;
+  if ((filename == "-"))
+    os = &cout;
   else
-    //    os = new ostream (cout.ostreambuf ());
-    os = new ostream (cout._strbuf);
+    {
+      Path p = split_path (filename);
+      if (!p.dir.empty_b ())
+	if (mkdir (p.dir.ch_C (), 0777) == -1 && errno != EEXIST)
+	  error (_f ("can't create directory: `%s'", p.dir));
+      os = new ofstream (filename.ch_C (), mode);
+    }
   if (!*os)
-    error (_f ("can't open file: `%s\'", filename));
-  nest_level = 0;
-  line_len_i_ = 0;
-  outputting_comment=false;
+    error (_f ("can't open file: `%s'", filename));
+  return os;
 }
 
-Paper_stream::~Paper_stream ()
+void
+close_file_stream (ostream *os)
 {
   *os << flush;
   if (!*os)
     {
-      warning (_ ("error syncing file (disk full?)"));
-      exit_status_i_ = 1;
+      warning (_ ("Error syncing file (disk full?)"));
+      exit_status_global = 1;
     }
-  delete os;
+  if (os != &cout)
+    delete os;
+  os = 0;
+}  
+
+Paper_stream::Paper_stream (String filename)
+{
+  os_ = open_file_stream (filename);
+  nest_level = 0;
+  line_len_i_ = 0;
+  outputting_comment_b_=false;
+}
+
+Paper_stream::~Paper_stream ()
+{
+  close_file_stream (os_);
   assert (nest_level == 0);
 }
 
 // print string. don't forget indent.
 Paper_stream&
-Paper_stream::operator << (Scalar s)
+Paper_stream::operator << (String s)
 {
   for (char const *cp = s.ch_C (); *cp; cp++)
     {
-      if (outputting_comment)
+      if (outputting_comment_b_)
 	{
-	  *os << *cp;
+	  *os_ << *cp;
 	  if (*cp == '\n')
 	    {
-	      outputting_comment=false;
-
+	      outputting_comment_b_=false;
+	      line_len_i_ =0;
 	    }
 	  continue;
 	}
@@ -60,20 +94,20 @@ Paper_stream::operator << (Scalar s)
       switch (*cp)
 	{
 	case '%':
-	  outputting_comment = true;
-	  *os << *cp;
+	  outputting_comment_b_ = true;
+	  *os_ << *cp;
 	  break;
 	case '{':
 	  nest_level++;
-	  *os << *cp;
+	  *os_ << *cp;
 	  break;
 	case '}':
 	  nest_level--;
-	  *os << *cp;
+	  *os_ << *cp;
 
 	  if (nest_level < 0)
 	    {
-	      delete os;	// we want to see the remains.
+	      delete os_;	// we want to see the remains.
 	      assert (nest_level>=0);
 	    }
 
@@ -81,33 +115,34 @@ Paper_stream::operator << (Scalar s)
 	  if (nest_level == 0)
 	    break;
 
-	  *os << '%';
+	  *os_ << '%';
 	  break_line ();
 	  break;
 	case '\n':
 	  break_line ();
 	  break;
 	case ' ':
-	  *os <<  ' ';
+	  *os_ <<  ' ';
 	  if (line_len_i_ > MAXLINELEN)
 	    break_line ();
 
 	  break;
 	default:
-	  *os << *cp;
+	  *os_ << *cp;
 	  break;
 	}
     }
   //urg, for debugging only!!
-  *os << flush;
+  *os_ << flush;
   return *this;
 }
 
 void
 Paper_stream::break_line ()
 {
-  *os << '\n';
-  *os << to_str (' ', nest_level);
+  *os_ << '\n';
+  *os_ << to_str (' ', nest_level);
+  outputting_comment_b_ = false;
   line_len_i_ = 0;
 }
 
