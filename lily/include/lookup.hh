@@ -3,55 +3,29 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 #ifndef LOOKUP_HH
 #define LOOKUP_HH
 
-#include "lily-guile.hh"
+#include "string.hh"
 #include "molecule.hh"
-#include "fproto.hh"
+#include "flower-proto.hh"
 #include "direction.hh"
 #include "box.hh"
 
-/**
-   handy interface to symbol table
-   TODO: move this into GUILE?
- */
-class Lookup
+struct Lookup
 {
-public:
-  Lookup ();
-  Lookup (Lookup const&);
-
-  Molecule simple_bar (String s, Real w, Paper_def*) const;
-  Molecule accidental (int, bool cautionary) const;
-  Molecule afm_find (String, bool warn=true) const;
-  Molecule notehead  (int, String) const;
-  Molecule bar (String, Real height, Paper_def*) const;
-  Molecule beam (Real, Real, Real) const;
-  Molecule clef (String) const;
-  Molecule dashed_slur (Array<Offset> controls, Real thick, Real dash) const;
-  Molecule dots () const;
-  Molecule ledger_line (Interval) const;
-  Molecule fill (Box b) const;
-  Molecule filledbox (Box b) const;  
-  Molecule hairpin (Real width, Real height, Real thick, bool decresc, bool continued) const;
-  Molecule tuplet_bracket (Real dy, Real dx, Real gap, Real thick,Real interline, Direction dir) const;
-  Molecule rest (int, bool outside, String) const;
-  Molecule accordion (SCM arg, Real interline_f) const;
-  Molecule slur (Array<Offset> controls, Real thick) const;
-  Molecule text (String style, String text, Paper_def*) const;
-  Molecule staff_brace (Real dy, int) const;
-  Molecule staff_bracket (Real dy) const;
-  Molecule volta (Real h, Real w,  Real thick,  bool vert_start, bool vert_end) const;
-  Molecule special_time_signature (String, int,int, Paper_def*) const;
-  Molecule time_signature (int n,int d, Paper_def*) const;
-
-  String font_name_;
-  Adobe_font_metric * afm_l_;
+  static Molecule accordion (SCM arg, Real interline_f, Font_metric*fm);
+  static Molecule frame (Box b, Real thick);
+  static Molecule slur (Bezier controls, Real cthick, Real thick) ;
+  static Molecule beam (Real, Real, Real) ;
+  static Molecule dashed_slur (Bezier, Real thick, Real dash) ;
+  static Molecule blank (Box b) ;
+  static Molecule filledbox (Box b) ;
+  static Molecule repeat_slash( Real w, Real slope, Real th);
 };
 
 #endif // LOOKUP_HH
