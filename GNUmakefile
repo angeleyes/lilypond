@@ -12,7 +12,7 @@ site: menuify renderlys # buttons
 
 menuify:
 	python format-page.py --outdir out/  `find site -name '*.html'`
-	for a in `find site -name '*.png' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
+	for a in `find site -name '*.png' -or -name '*.jpg' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
 	cp newweb.css out/site
 
 

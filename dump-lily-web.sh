@@ -5,5 +5,5 @@ if test ! -f newweb.css; then
   exit 2
 fi
 
-#  --delete
+cd out/site
 rsync --delete --stats --progress -lavu -e ssh --exclude '*~' . x:/var/www/lilypond/newweb/

@@ -274,13 +274,18 @@ practical for real use. >
 
 <h3>How do I learn the syntax?</h3>
 <p>
-For many applications, it is possible to learn the syntax by simply
+[todo: revise this question]
+<p>
+For many other programs, it is possible to learn the syntax by simply
 looking at example files. Unfortunately, we have the impression that
-this does not work well for LilyPond. For learning the language, you
-are advised to work through the tutorial, which is included in the
-user manual. It is pretty short, and chopped in easily digestible
-chunks, and we've spent a lot of time polishing it. Please make us
-happy by also using it.
+this does not work very well for LilyPond. For learning the language,
+you are advised to work through the tutorial, which is included in the
+user manual. It is pretty short, chopped in easily digestible chunks,
+and we've spent a lot of time polishing it. Please make us happy by
+also using it.
+
+
+
 <p>
 
 <h3>Please add parameters to the input macros</h3>
@@ -322,16 +327,12 @@ feel that it will simplify the language as a whole, or ease the
 learning curve.  Keep in mind that the syntax is as great as it is now
 because we also did this in the past.
 <p>
-Most of the language changes can be handled
-running 
-the program
-<tt>convert-ly</tt>, which is supplied with LilyPond.  However, 
-<tt>convert-ly</tt>  can only do its job if it knows what version the
+Most of the language changes can be handled by running the program
+<tt>convert-ly</tt>, which is supplied with LilyPond.  However,
+<tt>convert-ly</tt> can only do its job if it knows what version the
 original file was written for. Therefore, it is important to add
-<code>version</code> statements to your files like this:
-<xmp>
-\version "1.3.17"
-</xmp>
+<code>version</code> statements to your files like this: <xmp>
+\version "1.3.17" </xmp>
 <p>
 Changes that cannot be handled by simple edits are marked by a bump in
 the major version number: converting 1.8 to 2.0 files needs
@@ -400,7 +401,8 @@ soon as possible. For this, we need to replicate and isolate the
 problem. Please help us by sending a good bug-report: an input file
 that will reproduce the problem.  Please make it small, so we can
 easily isolate the problem. Don't forget to tell which version you
-use, and on which platform you run it.
+use, and on which platform you run it. Send your report to <a
+href="bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
 
 <p>
 

@@ -1,3 +1,8 @@
+2003-07-26  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
+
+	* site/about/why/index.html: new file. Add tons of images.
+	
+
 2003-07-18  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* dump-lily-web.sh: new file.
