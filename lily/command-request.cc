@@ -3,178 +3,124 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "command-request.hh"
 #include "debug.hh"
 #include "musical-request.hh"
 
-void
-Cadenza_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << (int)on_b_;
-#endif
-}
-
-bool
-Cadenza_req::do_equal_b (Request const *r) const
-{
-  Cadenza_req*cad =  dynamic_cast <Cadenza_req const *> (r);
-  return cad && cad->on_b_ == on_b_;
-}
-
-Cadenza_req::Cadenza_req (bool b)
-{
-  on_b_ =b;
-}
-
-
-
-bool
-Bar_req::do_equal_b (Request const *r) const
-{
-  Bar_req * b = dynamic_cast <Bar_req const *> (r);
-  return b && type_str_ == b->type_str_;
-}
-
-void
-Bar_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << type_str_;
-#endif
-}
-
-Bar_req::Bar_req (String s)
-{
-  type_str_ = s;
-}
-
-Partial_measure_req::Partial_measure_req (Moment m)
-{
-  length_mom_ =m;
-}
-
-bool
-Partial_measure_req::do_equal_b (Request const* r) const
-{
-  Partial_measure_req *p = dynamic_cast <Partial_measure_req  const*> (r);
-
-  return p&& p->length_mom_ == length_mom_;
-}
-
 bool
 Barcheck_req::do_equal_b (Request const *r) const
 {
-  Barcheck_req *b = dynamic_cast<Barcheck_req const*> (r);
+  Barcheck_req  const*b = dynamic_cast<Barcheck_req const*> (r);
   return b;
 }
 
-void
-Clef_change_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << clef_str_ ;
-#endif
-}
-
-Clef_change_req::Clef_change_req (String s)
-{
-  clef_str_ = s;
-}
-
-void
-Partial_measure_req::do_print () const
-{
-  DOUT << length_mom_;
-}
-
-void
-Time_signature_change_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << beats_i_ << "/" << one_beat_i_;
-#endif
-}
-
-bool
-Time_signature_change_req::do_equal_b (Request const *r) const
-{
-  Time_signature_change_req * m
-    = dynamic_cast <Time_signature_change_req  const*> (r);
-
-  return m && m->beats_i_ == beats_i_
-    && one_beat_i_ == m->one_beat_i_;
-}
-
-Time_signature_change_req::Time_signature_change_req ()
-{
-  beats_i_ = 0;
-  one_beat_i_ =0;
-}
-
-
 Tempo_req::Tempo_req ()
 {
-  metronome_i_ = 60;
-  dur_. durlog_i_ = 2;
+  set_mus_property ("duration", Duration (2,0).smobbed_copy ());
 }
 
 void
-Tempo_req::do_print () const
+Key_change_req::transpose (Pitch p)
 {
-  DOUT << dur_.str () << " = " << metronome_i_;
+  SCM newlist = SCM_EOL;
+  SCM pa = get_mus_property ("pitch-alist");
+  for (SCM s = pa; gh_pair_p (s); s = gh_cdr (s))
+    {
+      SCM key = gh_caar (s);
+      SCM alter = gh_cdar (s);
+      if (gh_pair_p (key))
+	{
+	  Pitch orig (gh_scm2int (gh_car (key)),
+			      gh_scm2int (gh_cdr (key)),
+			      gh_scm2int (alter));
+
+	  orig.transpose (p);
+
+	  SCM key = gh_cons (gh_int2scm (orig.octave_i ()),
+			     gh_int2scm (orig.notename_i_));
+
+	  newlist = gh_cons (gh_cons (key, gh_int2scm (orig.alteration_i_)),
+			     newlist);
+	}
+      else if (gh_number_p (key))
+	{
+	  Pitch orig (0, gh_scm2int (key), gh_scm2int (alter));
+	  orig.transpose (p);
+
+	  key =gh_int2scm (orig.notename_i_);
+	  alter = gh_int2scm (orig.alteration_i_);
+	  newlist = gh_cons (gh_cons (key, alter), newlist);
+	}
+    }
+
+  set_mus_property ("pitch-alist", newlist);
 }
 
 
 bool
-Tempo_req::do_equal_b (Request const *r) const
+alist_equal_p (SCM a, SCM b)
 {
-  Tempo_req *t = dynamic_cast <Tempo_req const*> (r);
-
-  return t&& t->dur_.length_mom ()== dur_.length_mom () && metronome_i_ == t->metronome_i_;
-}
-
-
-
-
-void
-Key_change_req::do_print () const
-{
-#ifndef NPRINT
-  for (int i=0; i < key_.pitch_arr_.size (); i++)
+  for (SCM s = a;
+       gh_pair_p (s); s = gh_cdr (s))
     {
-      key_.pitch_arr_[i].print ();
+      SCM key = gh_caar (s);
+      SCM val = gh_cdar (s);
+      SCM l = scm_assoc (key, b);
+
+      if (l == SCM_BOOL_F
+	  || !gh_equal_p ( gh_cdr (l), val))
+
+	return false;
     }
-#endif
+  return true;
 }
 
-Key_change_req::Key_change_req ()
+bool
+Key_change_req::do_equal_b (Request const * m )const
 {
+  Key_change_req const * kc =dynamic_cast<Key_change_req const*> (m);
+
+  if(!kc)
+    return false;
+  return alist_equal_p (get_mus_property ("pitch-alist"),
+			kc->get_mus_property ("pitch-alist"));
 }
 
-Break_req::Break_req ()
+
+
+bool
+Mark_req::do_equal_b (Request const * r) const
 {
-  penalty_i_ = 0;
-}
-
-Mark_req::Mark_req (String s)
-{
-  str_ = s;
-}
-
-void
-Mark_req::do_print () const
-{
-  DOUT << str_;
-}
-void
-Key_change_req::transpose (Musical_pitch p)
-{
-  key_.transpose (p);
+  Mark_req const * other = dynamic_cast<Mark_req const*> (r);
+  return other && scm_equal_p (other->get_mus_property ("label"),
+			       get_mus_property ("label")) == SCM_BOOL_T;
 }
 
 
-			   
+ADD_MUSIC (Articulation_req);
+ADD_MUSIC (Barcheck_req);
+ADD_MUSIC (Break_req);
+ADD_MUSIC (Breathing_sign_req);
+ADD_MUSIC (Busy_playing_req);
+ADD_MUSIC (Extender_req);
+ADD_MUSIC (Glissando_req);
+ADD_MUSIC (Hyphen_req);
+ADD_MUSIC (Key_change_req);
+ADD_MUSIC (Lyric_req);
+ADD_MUSIC (Mark_req);
+ADD_MUSIC (Melisma_playing_req);
+ADD_MUSIC (Melisma_req);
+ADD_MUSIC (Melodic_req);
+ADD_MUSIC (Note_req);
+ADD_MUSIC (Rest_req);
+ADD_MUSIC (Rhythmic_req);
+ADD_MUSIC (Script_req);
+ADD_MUSIC (Skip_req);
+ADD_MUSIC (Span_req);
+ADD_MUSIC (Tempo_req);
+ADD_MUSIC (Text_script_req);
+ADD_MUSIC (Tie_req);
+ADD_MUSIC (Tremolo_req);
