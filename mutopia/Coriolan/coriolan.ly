@@ -7,7 +7,7 @@ enteredby =	 "JCN";
 copyright =	 "public domain";
 }
 
-\version "1.0.2";
+\version "1.0.7";
 
 \include "global.ly"
 
@@ -39,7 +39,7 @@ koper = \type StaffGroup = koper_group <
 
 $timpani_g = \type StaffGroup = timpani_group <
 	\$timpani_staff
-	\type Staff = urgtimpany \melodic{ \skip 1*34; }
+	\type Staff = urgtimpany \notes{ \skip 1*34; }
 >
 
 $violini = \type GrandStaff = violini_group <
@@ -63,7 +63,7 @@ strijkers = \type StaffGroup = strijkers_group <
 	\$bassi
 >
 
-default_paper = \include "score-paper.ly"
+
 \score{
 	<
 		\property Score . textstyle =  "italic"
@@ -76,6 +76,7 @@ default_paper = \include "score-paper.ly"
 	\paper{
 		% Give hara-kiri something to do...
 		linewidth = 130.0\mm;
+		\translator { \OrchestralScoreContext }
 	}
 	\midi{ \tempo 4 = 160; }
 }

@@ -12,16 +12,12 @@
 
 #include "string.hh"
 #include "dictionary.hh"
+#include "scope.hh"
 
 
 /** Store bibliographical information.  The information in the \header
    block is read into this struct.  Lily does not process this
    information.  */
-struct Header : Dictionary<String>
-{
-  String lily_id_str_;
-  String TeX_string() const;
-  Header ();
-};
+typedef Scope Header;
 
 #endif // HEADER_HH

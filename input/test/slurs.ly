@@ -1,8 +1,8 @@
 
-\version "1.0.2";
+\version "1.0.7";
 
 \score{
-	\melodic\transpose c'{
+	\notes\transpose c'{
 
 		c,4 ~ c, c'' ~ c'' ~ g ~ c ~
 		d ~ e ~ f ~ g ~
@@ -27,7 +27,6 @@
 		c c c c |
 		c c c c |
 		c c c )c |
-	}
 	}
 	}
 }

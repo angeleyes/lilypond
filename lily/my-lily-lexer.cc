@@ -27,28 +27,26 @@ static Keyword_ent the_key_tab[]={
   {"accepts", ACCEPTS},
   {"bar", BAR},
   {"cadenza", CADENZA},
-  {"clear", CLEAR},
   {"clef", CLEF},
   {"cm", CM_T},
   {"consists", CONSISTS},
-  {"contains", CONTAINS},
   {"duration", DURATION},
   {"font", FONT},
   {"grouping", GROUPING},
+  {"header", HEADER},
   {"in", IN_T},
-  {"lyric", LYRIC},
+  {"lyrics", LYRICS},
   {"key", KEY},
   {"keysignature", KEYSIGNATURE},
   {"mark", MARK},
-  {"melodic" , MELODIC},
   {"musicalpitch", MUSICAL_PITCH},
   {"time", TIME_T},
+  {"times", TIMES},
   {"midi", MIDI},
   {"mm", MM_T},
-  {"multi", MULTI},
-  {"header", HEADER},
+  {"name", NAME},
   {"notenames", NOTENAMES},
-  {"octave", OCTAVE},
+  {"notes" , NOTES},
   {"output", OUTPUT},
   {"partial", PARTIAL},
   {"paper", PAPER},
@@ -56,11 +54,11 @@ static Keyword_ent the_key_tab[]={
   {"property", PROPERTY},
   {"pt", PT_T},
   {"relative", RELATIVE},
+  {"remove", REMOVE},
   {"score", SCORE},
   {"script", SCRIPT},
   {"shape", SHAPE},
   {"skip", SKIP},
-  {"staff", STAFF},
   {"table", TABLE},
   {"spandynamic", SPANDYNAMIC},
   {"symboltables", SYMBOLTABLES},
@@ -91,7 +89,7 @@ Identifier*
 My_lily_lexer::lookup_identifier (String s)
 {
   for (int i = scope_l_arr_.size (); i--; )
-    if (scope_l_arr_[i]->elt_b (s))
+    if (scope_l_arr_[i]->elem_b (s))
       return (*scope_l_arr_[i])[s];
   return 0;
 }
@@ -112,7 +110,11 @@ My_lily_lexer::start_main_input ()
 void
 My_lily_lexer::set_identifier (String name_str, Identifier* i, bool unique_b)
 {
-  Identifier *old = lookup_identifier (name_str);
+  Identifier *old =0;
+  if (scope_l_arr_.top ()->elem_b (name_str))
+    old = scope_l_arr_.top ()->elem(name_str);
+ 
+   
   if  (old)
     {
 #if 0
@@ -170,7 +172,7 @@ My_lily_lexer::lookup_pitch (String s)
 bool
 My_lily_lexer::notename_b (String s) const
 {
-  return note_tab_p_->elt_b (s);
+  return note_tab_p_->elem_b (s);
 }
 
 void
@@ -180,10 +182,10 @@ My_lily_lexer::add_notename (String s, Musical_pitch p)
 }
 
 void
-My_lily_lexer::clear_notenames()
+My_lily_lexer::set_notename_table(Notename_table *p)
 {
   delete note_tab_p_;
-  note_tab_p_ = new Notename_table;
+  note_tab_p_ = p;
 }
 
 char

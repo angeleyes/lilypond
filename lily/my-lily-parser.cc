@@ -14,7 +14,7 @@
 #include "musical-request.hh"
 #include "command-request.hh"
 #include "parser.hh"
-#include "header.hh"
+#include "scope.hh"
 #include "file-results.hh"
 #include "midi-def.hh"
 #include "paper-def.hh"
@@ -40,11 +40,6 @@ My_lily_parser::~My_lily_parser()
 }
 
 
-void
-My_lily_parser::clear_notenames()
-{
-  lexer_p_->clear_notenames();
-}
 
 void
 My_lily_parser::set_version_check (bool ig)
@@ -176,7 +171,7 @@ My_lily_parser::get_note_element (Note_req *rq, Duration * duration_p)
       assert (!duration_p->plet_b ());
       duration_p->set_plet (1, 2);
     }
-  rq->set_duration (*duration_p);
+  rq->duration_ = *duration_p;
   rq->set_spot (here_input ());
   delete duration_p ;
   return v;
@@ -270,7 +265,7 @@ My_lily_parser::get_parens_request (int t)
   for (int i = 0; i < reqs.size (); i++)
     if (reqs[i]->access_Musical_req ()->access_Span_dynamic_req ())
       {
-	Span_dynamic_req* s_l= (reqs[i]->access_Musical_req ()->access_Span_dynamic_req ()) ;
+	Span_dynamic_req* s_l= reqs[i]->access_Musical_req ()->access_Span_dynamic_req ();
 	s_l->dynamic_dir_ = (t == '<') ? UP:DOWN;
       }
 
@@ -318,14 +313,14 @@ My_lily_parser::add_notename (String s, Musical_pitch p)
 Paper_def*
 My_lily_parser::default_paper_p ()
 {
-  Identifier *id = lexer_p_->lookup_identifier ("default_paper");
+  Identifier *id = lexer_p_->lookup_identifier ("$defaultpaper");
   return id ? id->access_Paper_def () : new Paper_def ;
 }
 
 Midi_def*
 My_lily_parser::default_midi_p ()
 {
-  Identifier *id = lexer_p_->lookup_identifier ("default_midi");
+  Identifier *id = lexer_p_->lookup_identifier ("$defaultmidi");
   return id ? id->access_Midi_def () : new Midi_def ;
 }
 

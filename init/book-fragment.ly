@@ -1,18 +1,20 @@
 % Toplevel initialisation file. 
 	
-\version "1.0.1";
+\version "1.0.7";
 
 
 \include "declarations.ly"
 
 \include "paper16.ly"
-
-\score { 
-  \melodic {
-    \maininput
-  }
   \paper { \paper_sixteen
     linewidth = -1.\cm;
     castingalgorithm = \Wordwrap; 
+    "unusedentry" = "}\\def\\nolilyfooter{";
   }
+
+\score { 
+  \notes {
+    \maininput
+  }
+\paper{}
 }

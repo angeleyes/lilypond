@@ -1,9 +1,7 @@
 COMMENT(-*-text-*-)
 
-DEFINEMACRO(var)(1)(whenlatex(latexcommand({\normalfont\scshape )ARG1+latexcommand(}))\
+redef(var)(1)(whenlatex(latexcommand({\normalfont\scshape )ARG1+latexcommand(}))\
     whenhtml(sc(ARG1)))
-
-
 
 COMMENT( This document contains Mudela fragments.  You need at least
 Yodl-1.30.18 to convert this to tex or html.
@@ -62,14 +60,9 @@ latexcommand(\def\preexample{\par})
 latexcommand(\def\postexample{\par\medskip})
 latexcommand(\def\file#1{{code(#1)}})
 
+COMMENT(urg, texinfo include breaks)
 whenhtml(
-nsubsect(Disclaimer)
-This document is written in url(Yodl)(ftp://pcnov095.win.tue.nl/pub/yodl)
-and should foremost produce nice LaTeX() output.
-In other formats, such as html, some things will look a bit different,
-while other things will be simply left out.
-Therefore, the authoritive version of this document is the PostScript version, 
-produced via LaTeX().
+includefile(html-disclaimer.yo-urg)
 )
 
 sect(Introduction)
@@ -148,8 +141,9 @@ has a special entry mode where you can conveniently abbreviate this to
 `code(d''4.)'.  There are some features that also make the quotes and
 numbers in `code(d''4.)'  superfluous in some cases.
 
-For those who are curious, the numbers in `code(\musicalpitch { 1 2 0
-})' example mean octave, notename, and accidental respectively.  The
+For those who are curious, the numbers in
+`code(\musicalpitch { 1 2 0 })'
+example mean octave, notename, and accidental respectively.  The
 numbers in `code(\duration { 2 1 })' are the (negative) logarithm of the
 duration (2 is a quarter note, 3 is an eighth note, etc.) and the number
 of augmention dots respectively.
@@ -280,7 +274,7 @@ left out some red tape that's needed for a  of Mudela in a form that is accepted
 by LilyPond.  To
 be precise, we wrote code(X Y Z), when we really meant
 verb(\score {
-   \melodic { X Y Z }
+   \notes { X Y Z }
    \paper {}
 })
 We will continue to leave out the red tape this, until the time is right to explain what 
@@ -316,7 +310,7 @@ know any editors, try code(joe silly.ly)),
 and key in the example from bind(Figure)ref(fig:twinkle1), with red tape:
 verb(
 \score {
-        \melodic {
+        \notes {
           c''4 c''4 g''4 g''4
           a''4 a''4 g''2
         }
@@ -387,7 +381,7 @@ case, consult your local TeX() guru on printing and viewing DVI files.
 What is in your window should approximately look like this:
 mudela()(
 \score {
-        \melodic {
+        \notes {
           c''4 c''4 g''4 g''4
           a''4 a''4 g''2
         }
@@ -539,7 +533,7 @@ articulation marks such as staccato and tenuto.  They are shown in the
 following example:
 
 mudela()(
-\score{ \melodic {
+\score{ \notes {
 	\property Voice.textstyle = typewriter
         c''4-._"c''4-." s4
         c''4--_"c''4--"  s4
@@ -979,12 +973,12 @@ To explain what a staff really is,   we'll try to print music without
 these components.  If these components aren't printed, it is still
 possible to print music:
 mudela()(\score{
-\melodic \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
+\notes \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
 \paper { 
   linewidth = -1.;
-  Staff = \translator {
+  \translator {
     \type "Line_group_engraver_group";
-
+    \name Staff ;
     defaultclef = violin;
 
     \consists "Timing_engraver";
@@ -1003,12 +997,12 @@ time signature:
 
 mudela()(
 \score {
-  \melodic \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
+  \notes \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
   \paper{
   linewidth = -1.;
-    Staff = \translator {
+    \translator {
     \type "Line_group_engraver_group";
-    defaultclef = violin;
+    defaultclef = violin;\name Staff;
     \consists "Time_signature_engraver";
     \consists "Separating_line_group_engraver";
     \accepts "Voice";
@@ -1021,12 +1015,12 @@ it is difficult to find them quickly.   Bar lines  help you in finding
 the location within the measure of the notes:
 mudela()(
 \score {
-  \melodic \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
+  \notes \relative c' {  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
   \paper{
   linewidth = -1.;
-    Staff = \translator {
+    \translator {
     \type "Line_group_engraver_group";
-    defaultclef = violin;
+    defaultclef = violin;\name Staff ;
     \consists "Bar_engraver";
     \consists "Time_signature_engraver";
     \consists "Separating_line_group_engraver";
@@ -1039,12 +1033,12 @@ We can remedy part of the difficulties with reading pitches by adding a staff
 symbol:
 
 mudela()(\score{
-  \melodic\relative c' { \time 2/4; g'4 c,4
+  \notes\relative c' { \time 2/4; g'4 c,4
 a'4 f4 e c d2 } \paper {
   linewidth = -1.;
-  Staff = \translator {
+  \translator {
     \type "Line_group_engraver_group";
-
+    \name Staff ;
     defaultclef = violin;
     \consists "Bar_engraver";
     \consists "Time_signature_engraver";
@@ -1060,12 +1054,12 @@ This makes the output decidedly easier to read, but you still don't
 know what the pitches of the notes above are.  So this is still not
 enough.  But suppose you see the following notation:
 mudela()(\score {
-  \melodic \relative c' {\clef alto;  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
+  \notes \relative c' {\clef alto;  \time 2/4; g'4 c,4 a'4 f4 e c d2 }
 \paper {
   linewidth = -1.;
-  Staff = \translator {
+   \translator {
     \type "Line_group_engraver_group";
-
+    \name Staff;
      defaultclef = violin;
     \consists "Bar_engraver";
     \consists "Time_signature_engraver";
@@ -1303,12 +1297,12 @@ Lyrics consist of syllables, which are strings together with
 durations.  Previously we only entered note names, so for entering
 lyrics we have to instruct LilyPond that what we enter are not note
 names but words---or rather: strings.  This instruction is the keyword
-code(\lyric).  After entering this keyword you can enter a musical
+code(\lyrics).  After entering this keyword you can enter a musical
 construct---sequential music, simultaneous music, code(\type)
 entries, etc.--- but with syllables in stead of pitches.  For example:
-verb( \lyric { 'got8 me on my knees4, Le-8 lie! })
+verb( \lyrics { 'got8 me on my knees4, Le-8 lie! })
 
-The effect of code(\lyric) can be compared with the effect of the
+The effect of code(\lyrics) can be compared with the effect of the
 doublequote character, code("), for it also changes the lexical
 meaning of spaces and characters.  This mode is another example of a
 handy input feature of the language.
@@ -1322,14 +1316,14 @@ by a context called code(Lyrics).  You can select this context with
 the code(\type) keyword.  Here is a simple example:
 
 mudela(fragment,verbatim)(
-	\type Lyrics \lyric { 'got8 me on my knees,4 Le-8 lie! })
+	\type Lyrics \lyrics { 'got8 me on my knees,4 Le-8 lie! })
 
 The result is technically more or less correct, but without a melody it
 just doesn't work, so let's add a blob of cream:
 mudela(fragment,verbatim)(
   <
     \type Staff  { c''8. c''16 bes'8. a'16 g'4 f'8 g'4. }
-    \type Lyrics \lyric { 'got8. me16 on8. my16 knees,4 Le-8 lie!4. }
+    \type Lyrics \lyrics { 'got8. me16 on8. my16 knees,4 Le-8 lie!4. }
   >
 )
 
@@ -1346,13 +1340,13 @@ underscore instead of a space.  All these tricks are demonstrated in
 the following example:
 
 COMMENT( urg
-\type Lyrics \lyric { 'got_m\textbf{e}4 on8. m$\cal_Y$16 knees,4 Le-8 lie!4.}
-\type Lyrics \lyric { 'got_m{\bf e}4 on8. m$\cal_Y$16 knees,4 Le-8 lie!4.}
+\type Lyrics \lyrics { 'got_m\textbf{e}4 on8. m$\cal_Y$16 knees,4 Le-8 lie!4.}
+\type Lyrics \lyrics { 'got_m{\bf e}4 on8. m$\cal_Y$16 knees,4 Le-8 lie!4.}
 )
 
 mudela(fragment,verbatim)(<
   \type Staff  { c''8. c''16 bes'8. a'16 g'4 f'8 g'4. }
-  \type Lyrics \lyric { 'got_me4 on8. m$\cal_Y$16 "3s,"4 Le-8 lie!4.}
+  \type Lyrics \lyrics { 'got_me4 on8. m$\cal_Y$16 "3s,"4 Le-8 lie!4.}
 >
 )
 
@@ -1390,26 +1384,26 @@ This is almost  the context that should be around all
 of the previous examples.  The precise context reads thus:
 verb(
 \score {
-        \melodic { ... }
+        \notes { ... }
         \paper {}
 })
 On the ellipsis, you entered what shown as the example input.
 You can see that in the
-above example, the code(\melodic { ... }) forms the music, the
+above example, the code(\notes { ... }) forms the music, the
 code(\paper {}) is a conversion to paper (notation, that is).  The
 code(\paper) definition is copied from a default definition
 (which is in the initialisation file file(paper16.ly)).
 The paper part also contains
 the definition of the contexts.
 
-The keyword code(\melodic) is analogous to the code(\lyric) keyword.  It
+The keyword code(\notes) is analogous to the code(\lyrics) keyword.  It
 will switch the tokenizer into a mode that interprets plain words as
 note names.  If it can't recognize the words as a note name, it will
 assume that they are strings.  That is the reason why you can write
 code(\clef bass) in stead of code(\clef "bass"); most of the strings
-in code(\melodic) mode can be written without quotes.
+in code(\notes) mode can be written without quotes.
 
-The braces that you see after the code(\melodic) keyword are the
+The braces that you see after the code(\notes) keyword are the
 braces that are around sequential music.  Because of these braces, the
 sequences of notes in our simple examples were sequential (and not
 simultaneous).  As a result the notes were printed from left to right,
@@ -1443,15 +1437,15 @@ When you refer
 to the abbreviated entity, you must precede code(identifierName)
 with a backslash, i.e., code(\identifierName).  For example:
 mudela(verbatim)(
-  czerny = \melodic { [c16 g e g] }
+  czerny = \notes { [c16 g e g] }
   \score {
-    \melodic \type GrandStaff <
+    \notes \type GrandStaff <
       { c''2 g''2 }
       { \clef bass; \czerny \czerny \czerny \czerny}
     >
     \paper {
       linewidth = -1.0;
-      stem_length = 12.0*\internote;
+      stem_length = 6.0*\interline;
     }
   }
 )
@@ -1482,7 +1476,7 @@ stemup = \property Voice.ydirection = "1"
 stemdown = \property Voice.ydirection = "-1"
 shift = \property Voice.hshift = "1"
 \score {
-  \type "Staff" \melodic <
+  \type "Staff" \notes <
     \type "Voice" =  "one"  {
       \stemup
       r4 as'4 () as'4 g'4 }
@@ -1580,9 +1574,14 @@ verb(
 \translator
 {
         \type "Engraver_group_engraver";
+
+	\name "ContextName";
+
         \accepts "...";
         \accepts "...";
         \accepts "...";
+
+
 
         \consists " ... ";
         \consists " ... ";
@@ -1640,34 +1639,18 @@ code(Timing_engraver).
 
 mudela(verbatim)(
 polymetricpaper = \paper {
-  Score = \translator {
-    \type Score_engraver;
-    \consists "Score_priority_engraver";
-    \consists "Priority_horizontal_align_engraver";
-    \consists "Vertical_align_engraver";
-    % \consists "Timing_engraver"; % removed Timing_engraver
-    \accepts "Staff";
+  \translator {
+    \ScoreContext
+    \remove "Timing_engraver";
   }
 
-  Staff = \translator {
-    \type "Line_group_engraver_group";
-
-    defaultclef = violin;
-
-    \consists "Bar_engraver";
-    \consists "Clef_engraver";
-    \consists "Key_engraver";
-    \consists "Local_key_engraver";
-    \consists "Time_signature_engraver";
-    \consists "Timing_engraver";  % added Timing_engraver
-    \consists "Staff_sym_engraver";
-    \consists "Separating_line_group_engraver";
-
-    \accepts "Voice";
+  \translator {
+    \StaffContext
+    \consists "Timing_engraver";
   }
 }
 \score {
-  \melodic <
+  \notes <
     \type Staff = one { \time 2/4; c'4 c'4 c'4 c'4 c'4 c'4 }
     \type Staff = two { \time 3/4; c'4 c'4 c'4 c'4 c'4 c'4 }
   >
@@ -1722,12 +1705,12 @@ It can be used as a placeholder, to attach articulation marks to.  It
 is entered as a note with the name code(s).
 
 mudela(verbatim)(
-  bach =  \melodic { [c16 g e' d'] [e' g e' g] }
+  bach =  \notes { [c16 g e' d'] [e' g e' g] }
   
-  staffStuff = \melodic { \clef bass; \time 4/4; s1 \bar "|."; }
+  staffStuff = \notes { \clef bass; \time 4/4; s1 \bar "|."; }
   
-  slursOne = \melodic { s16( s s s s16 s s )s }
-  slursTwo = \melodic { s16-. s s() s s16() s  s ()s }
+  slursOne = \notes { s16( s s s s16 s s )s }
+  slursTwo = \notes { s16-. s s() s s16() s  s ()s }
 
   \score{
     { < \type Voice = celloVoice { \bach \bach }
@@ -1764,9 +1747,9 @@ for the code(\scale) and code(\transpose cis' \scale) part.)
 
 
 mudela(verbatim)(
-scale = \melodic \relative c' { [c8 d e f] }
+scale = \notes \relative c' { [c8 d e f] }
 \score {
-  \melodic {
+  \notes {
     \type Staff { \scale \transpose cis'  \scale }
     }
   \paper { linewidth = -1.0; }
@@ -1790,11 +1773,11 @@ which staff the music is printed.  For example:
 mudela(verbatim)(
 
 % real music
-aVoice = \type Voice = voiceA \melodic { c''4 c4 c4 c''4 }
-bVoice = \type Voice = voiceB \melodic { g,4 g,4 g,4 g,4  }    
+aVoice = \type Voice = voiceA \notes { c''4 c4 c4 c''4 }
+bVoice = \type Voice = voiceB \notes { g,4 g,4 g,4 g,4  }    
 
 % staff switching stuff
-switch = \type Voice = voiceA \melodic { s4 \translator Staff = staffB s4
+switch = \type Voice = voiceA \notes { s4 \translator Staff = staffB s4
     		   s4 \translator Staff = staffA s4 }
 
 \score {
@@ -1867,8 +1850,8 @@ mudela(fragment,verbatim)(
 
 bf(Important) the construct with code([/3) and
 code([/1) is a hack that sets a mode in the parser.  This means that
-verb(id = \melodic { c8 c8 c8 }
-notATriplet =\melodic { [2/3 \id ]1/1 })
+verb(id = \notes { c8 c8 c8 }
+notATriplet =\notes { [2/3 \id ]1/1 })
 does not produce a triplet.  It will hopefully
 soon be replaced by a construction that mixes more elegantly with the
 grammar for Music.
@@ -1930,11 +1913,11 @@ subsect(Identifiers)
 Briefly introduced before, identifiers are your biggest help in structurising
 a large piece of music.  As an example, we'll consider a string quartet.  
 In short, it will look like this: verb(
-    global = \melodic{ }
-    violinoOne = \melodic \relative c { .. }
-    violinoTwo = \melodic \relative c { .. }
-    viola = \melodic \relative c { .. }
-    violoncello = \melodic \relative c { .. }
+    global = \notes{ }
+    violinoOne = \notes \relative c { .. }
+    violinoTwo = \notes \relative c { .. }
+    viola = \notes \relative c { .. }
+    violoncello = \notes \relative c { .. }
 )
 
 The code(\global) part contains everything that is global, i.e., the

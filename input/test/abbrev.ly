@@ -1,6 +1,7 @@
 
+\version "1.0.7";
 \score{
-	\melodic \transpose c'''{
+	\notes \transpose c'''{
 		\stemup
 %		\stemdown
 		% default abbreviations

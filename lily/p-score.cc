@@ -16,11 +16,15 @@
 #include "plist.hh"
 #include "p-col.hh"
 #include "p-score.hh"
-#include "tex-stream.hh"
 #include "p-col.hh"
-#include "header.hh"
+#include "scope.hh"
 #include "word-wrap.hh"
 #include "gourlay-breaking.hh"
+#include "paper-stream.hh"
+#include "ps-stream.hh"
+#include "tex-stream.hh"
+#include "paper-outputter.hh"
+#include "ps-outputter.hh"
 #include "tex-outputter.hh"
 #include "file-results.hh"
 #include "misc.hh"
@@ -190,6 +194,8 @@ Paper_score::calc_breaking ()
   return sol;
 }
 
+
+
 void
 Paper_score::process ()
 {
@@ -203,8 +209,9 @@ Paper_score::process ()
       line_l_->space_processing ();
 
   Array<Column_x_positions> breaking = calc_breaking ();
-  Tex_stream *tex_stream_p = open_output_stream ();
-  outputter_l_=open_tex_outputter (tex_stream_p);
+
+  Paper_stream* paper_stream_p = global_lookup_l->paper_stream_p ();
+  outputter_l_ = global_lookup_l->paper_outputter_p (paper_stream_p, paper_l_, header_l_, origin_str_);
 
   Link_array<Line_of_score> lines;
   for (int i=0; i < breaking.size (); i++)
@@ -228,14 +235,15 @@ Paper_score::process ()
       line_l->output_all ();
 	*mlog << ']' << flush;
       remove_line (line_l);
-	
     }
-  *tex_stream_p << "\n\\EndLilyPondOutput";
+  
+  // huh?
   delete outputter_l_;
-  delete tex_stream_p;
+  delete paper_stream_p;
   outputter_l_ = 0;
-}
 
+  *mlog << '\n' << flush;
+}
 
 void
 Paper_score::remove_line (Line_of_score *l)
@@ -265,61 +273,6 @@ Paper_score::remove_line (Line_of_score *l)
       assert (!to_remove[i]->linked_b ());
       delete to_remove [i];
     }
-}
-
-Tex_stream *
-Paper_score::open_output_stream ()
-{
-  // output
-  String base_outname = paper_l_->outfile_str_ ;
-  if (base_outname.empty_b ())
-    {
-      base_outname = default_outname_base_global;
-      int def = paper_l_->get_next_default_count ();
-      if (def)
-	{
-	  base_outname += "-" + to_str (def);
-	}
-    }
-
-  String outname = base_outname;
-  if (outname != "-")
-     outname += ".tex";
-  target_str_global_array.push (outname);
-
-  *mlog << _f ("TeX output to %s...", 
-    outname == "-" ? String ("<stdout>") : outname ) << endl;
-
-  return  new Tex_stream (outname);
-}
-
-
-
-Tex_outputter *
-Paper_score::open_tex_outputter (Tex_stream *tex_out_p)
-{
-  Tex_outputter *interfees_p= new Tex_outputter (tex_out_p);
-
-  if (header_global_p)
-    {
-      *tex_out_p << header_global_p->TeX_string ();
-    }
-    
-  
-  *tex_out_p << _ ("% outputting Score, defined at: ") << origin_str_ << '\n';
-
-  if (header_l_)
-    {
-      *tex_out_p << header_l_->TeX_string();
-    }
-  *tex_out_p << paper_l_->TeX_output_settings_str ();
-  
-
-  if (experimental_features_global_b)
-    *tex_out_p << "\\turnOnExperimentalFeatures%\n";
-
-  *tex_out_p << "\\turnOnPostScript%\n";
-  return interfees_p;
 }
 
 /** Get all breakable columns between l and r, (not counting l and r).  */

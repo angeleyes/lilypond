@@ -1,7 +1,7 @@
-\version "1.0.2";
+\version "1.0.7";
 
 
-blah = \melodic {
+blah = \notes {
 
 \transpose c'' {
 	\time 4/4;
@@ -20,6 +20,6 @@ blah = \melodic {
 }
 
 \score{
-	\blah
+	\type Staff \blah
 	
 }

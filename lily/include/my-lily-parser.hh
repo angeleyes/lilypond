@@ -40,7 +40,7 @@ public:
   int default_abbrev_i_;
   Duration default_duration_;
   Plet plet_;
-  Header *default_header_p_;
+  Scope *default_header_p_;
     
   bool first_b_;
 
@@ -61,7 +61,6 @@ public:
   Midi_def*default_midi_p();
   void do_yyparse();
   void parser_error (String);
-  void clear_notenames();
 
   Array<Request*>* get_parens_request (int t);
     

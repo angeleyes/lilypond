@@ -43,10 +43,9 @@ public:
   Keyword_table * keytable_p_;
   int errorlevel_i_;
 
-  /* *************** */
 
   void start_main_input ();
-  void clear_notenames();
+  void set_notename_table(Notename_table*tab_p);
   bool notename_b(String) const;
   Identifier*lookup_identifier (String s);
   Musical_pitch lookup_pitch (String s);

@@ -6,7 +6,7 @@ I have extend Mats' patches to allow accidental transposition:
 		= \transpose d =>
         \keysignature gis;
 
-As you can see in output the example file "test.ly" there are a few problems left:
+As you can see in output =  the example file "test.ly" there are a few problems left:
 - key undo (already in the Todo)
 - "wrong" transposition: e.g. \transpose d of fis-major = gis-major (better as-major?).
 	The solution gis=as etc. would concern both note and key transposistion
@@ -22,9 +22,9 @@ copyright =	 "public domain";
 }
 
 
-\version "1.0.2";
+\version "1.0.7";
 
-vOne = \melodic \relative c''{
+vOne = \notes \relative c''{
         \clef"violin";
         \key d;
         \time 2/4 ;
@@ -35,9 +35,9 @@ vOne = \melodic \relative c''{
         c4 c |
 }
 
-vTwo = \melodic \relative c''\transpose d' { \vOne }
+vTwo = \notes \transpose d' { \vOne }
 
-vThree = \melodic \relative c''{
+vThree = \notes \relative c''{
         \clef"violin";
         \keysignature fis cis;
         \time 2/4 ;
@@ -48,7 +48,7 @@ vThree = \melodic \relative c''{
         cis4 ais4 |
 }
 
-vFour = \melodic \relative c''\transpose d' \vThree
+vFour = \notes \transpose d' \vThree
 
 \score {
   \type StaffGroup <

@@ -1,5 +1,7 @@
-$somewhat_long = \lyric{
-	\textstyle "roman" ;
+\version "1.0.7";
+
+$somewhat_long = \lyrics{
+	\property Lyrics . textstyle = "roman" 
 	AaaaaaA2
 	BbbbbbB2
 	CcccccC2 
@@ -8,8 +10,8 @@ $somewhat_long = \lyric{
 	FfffffF2
 }
 
-$rather_long = \lyric{
-	\textstyle "roman" ;
+$rather_long = \lyrics{
+	\property Lyrics . textstyle = "roman" 
 	LLLLoooonggggg2 
 	Syyllllaaabbble2 
 	LLLLoooonggggg2 
@@ -18,8 +20,8 @@ $rather_long = \lyric{
 	Syyyylllaaabbble2
 }
 
-$quite_long = \lyric{
-	\textstyle "roman" ;
+$quite_long = \lyrics{
+	\property Lyrics . textstyle = "roman"
 	LLLLLLLLLooooongggggggg2 
 	Syyyyyyyyyyyyylllllllaaaaaabbble2 
 	LLLLLLLLLooooongggggggg2 
@@ -40,7 +42,7 @@ $quite_long_lyrics_staff = \type Lyrics = quite <
 	\$quite_long
 >
 
-melody = \melodic
+melody = \notes
 \transpose c'{
 	c4 e4 g4 e4  c4 e4 g4 e4  c4 e4 g4 e4  c4 e4 g4 e4
 	c4 e4 g4 e4  c4 e4 g4 e4  c4 e4 g4 e4  c4 e4 g4 e4

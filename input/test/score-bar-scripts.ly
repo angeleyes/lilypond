@@ -1,11 +1,13 @@
 
 
 
-onestaff =	\type Staff = foo\melodic  {
+\version "1.0.7";
+
+onestaff =	\type Staff = foo\notes  {
 		\property Staff.instr = instr
 		\property Staff.instrument = instrument \mark "B"; c1 \mark "A"; \break c2  c2 \break }
 
-grstaff =	\melodic \type GrandStaff <
+grstaff =	\notes \type GrandStaff <
 	\type Staff = bar	{
 
 	\property Staff.instr = instr
@@ -30,7 +32,7 @@ scpaper =  \paper {Score = \translator {
 	\consists "Priority_horizontal_align_engraver";
 	\consists "Vertical_align_engraver";
 
-	\accepts "ChoireStaff";
+	\accepts "ChoirStaff";
 	\accepts "StaffGroup";
 	\accepts "Staff";
 	\accepts "RhythmicStaff";	

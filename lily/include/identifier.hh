@@ -14,13 +14,14 @@
 
 
 #define DECLARE_TYPE_NAME(Class)
+
+class Notename_table_identifier;
 class Translator_identifier;
 class Music_identifier;
 class General_script_def_identifier;
 class Symtables_identifier;
 class Midi_def_identifier;
 class Paper_def_identifier;
-class Lookup_identifier;
 class Real_identifier;
 class int_identifier;
 class String_identifier;
@@ -36,8 +37,6 @@ virtual Class ## _identifier * access_ ## Class ## _identifier () { return 0; }
 
 /**
    A declarable data structure in mudela. 
-
-
    */
 struct Identifier : public Input {
   bool init_b_;
@@ -53,12 +52,12 @@ struct Identifier : public Input {
   void error (String) const;
   String str () const;
   IDACCESSOR(Translator)
+  IDACCESSOR(Notename_table)
   IDACCESSOR(Music)
   IDACCESSOR(General_script_def)
   IDACCESSOR(Symtables)
   IDACCESSOR(Midi_def)
   IDACCESSOR(Paper_def)
-  IDACCESSOR(Lookup)
   IDACCESSOR(Real)
   IDACCESSOR(String)
   IDACCESSOR(Request)
@@ -83,7 +82,7 @@ struct Class ## _identifier : Identifier {\
     {\
       return this;\
     }\
-			     virtual Class* access_ ## Class (bool copy_b = true) const;\
+			     virtual Class* access_ ## Class (bool copy_b) const;\
 			     ~Class ## _identifier();\
 			     virtual void do_print () const; \
 			     virtual String do_str () const; \
@@ -92,10 +91,10 @@ struct Class ## _identifier : Identifier {\
 
 DECLARE_ID_CLASS(Translator);
 DECLARE_ID_CLASS(Duration);
+DECLARE_ID_CLASS(Notename_table);
 DECLARE_ID_CLASS(Real);
 DECLARE_ID_CLASS(String);
 DECLARE_ID_CLASS(General_script_def);
-DECLARE_ID_CLASS(Lookup);
 DECLARE_ID_CLASS(Symtables);
 DECLARE_ID_CLASS(Music);
 DECLARE_ID_CLASS(int);
