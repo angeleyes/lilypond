@@ -80,7 +80,6 @@ td.menuactive {
 table {
     margin-left: auto;
     margin-right: auto;
-    border-spacing: 1.0em;
 }
 
 hr {
@@ -110,7 +109,10 @@ p.teaser {
     text-align: right;
 }
 
+
+
 table.news {
+    border-spacing: 1.0em;
     padding: 10;
     width: 100%;
 }
