@@ -91,10 +91,10 @@ to better performances.
 Computer music print outs do not look good.  According to us, this
 caused by inadequate software. In other words, programmers have been
 doing a shoddy job on notation programs.  To illustrate that, we have
-a piece of music, which was made in one of the most popular
-`professional' notation programs, Finale 2003, using all of the
-default settings. The music is from the Sarabande of the 2nd Cello
-Suite by J. S. Bach.
+a piece of music, which was made in Finale 2003, one of the most
+popular `professional' notation programs sold today. It was made with
+all of the default settings. The music is from the Sarabande of the
+2nd Cello Suite by J. S. Bach.
 
 <p align="center" >
 
@@ -121,15 +121,14 @@ lack thereof) with the underlying PostScript technology.
 <img  src="finale-beam-detail.png">
 <p>
 
-Now, one could refute that Finale has a graphical interface, and it lets
-you easily move about elements to correct errors, or use plug-ins to
-do so.  This is certainly true: in fact, good professional engravers
-that use Finale typically spend the majority of their time correcting
-all the errors that Finale routinely makes. However, that is exactly
-the point that we want to make: you have to spend a lot of time
-correcting pretty obvious errors.  For the spaced out line, that is
-doable, but imagine that you have to correct each and every beam that
-sticks out of the stems, by hand? 
+Now, one could refute that Finale has a graphical interface, and it
+lets you easily move about elements to correct errors, or use plug-ins
+to do so.  This is certainly true: in fact, good professional
+engravers that use Finale typically spend the majority of their time
+correcting all the errors that Finale routinely makes.  Do you want to
+spend your time correcting pretty obvious errors?  For the spaced out
+line, it is doable, but imagine that you have to correct each and
+every beam that sticks out of the stems....  by hand?
 
 <p>
 There is a less obvious reason why correcting things by hand is a bad
@@ -151,9 +150,26 @@ major producers of notation software claim to follow engraving
 standards, but all of them make systemic mistakes.  If you want to
 assess the output of your favorite program, then buy a decent
 hand-made score from a respectable publisher, and try to reproduce one
-page of it. Then compare the printouts using a magnifying glass, a
-ruler, and your typographical eye.  Figure out which one looks better,
-and find out for yourself why. 
+page of it. Then compare them:
+
+<ul>
+<li>
+How does the page layout compare? Typically, computer scores are more
+widely spaced so they take up more pages, meaning more annoying page
+turns.
+
+<li>
+How does the spacing compare?  Is it as lively and flowing as the
+hand-made score? If in doubt, try measuring both with a ruler.
+
+<li>
+Put both on a music stand, 1 meter away, that is not uncommon when
+performing. Can you read both pages? Almost all computer scores have
+an anemic look: they use lines which are too thin, and symbols which
+are too light. That makes them hard to read from a distance. If in
+doubt, measure the difference with a magnifying glass.
+
+</ul>
 
 <p>
 
@@ -202,62 +218,103 @@ content
 
 
 <p>
+
+
+
 <h2>Music notation</h2>
-<p>
- There are two problems in producing such a program.
-<p>
-First, there is music notation: the science of knowing which symbols
-to use for what.  Common music notation developed from a system that
-medieval monks used to record and remind how their sacred music was
-sung. Over the course of the centuries the system evolved: some
-elements disappeared, but mostly it grew and grew, to accomodate the
-musical vocabulary that continued to expand.  The graphic language of
-notation is still under development; the innovations of contemporary
-music require still newer and more complex notations.
-<p>
-
-[should have an astoundingly complex piece of notation here. Berio,
-Ferneyhough, Stockhausen?]
-
-<ul>
-
-<li>
-Music notation is perhaps the most complex graphical language in
-existence today.  Music is presented with a 2D image, but this image
-is highly structured.
-
-<li>
-The music that is expressed in it spans an era of ca. 500 years.  This
-historical baggage is one of the causes of its complexity.
-
-<li>
-There are an enormous amount of rules, and there are exceptions.  for
- virtually every rule.
-
-</ul>
 
 <p>
-<h2>Putting music notation into a program</h2>
+
+In theory, this design is easy, but how do we put it to practice?  One
+of the challenges is music notation itself.  Current
+notation encompasses some 500 years of music. Its applications range
+from a simple rhythms for single instruments to monstruous
+counterpoint for large orchestras.
 
 <p>
-The core problem with music notation is that it is too complex.  It
-can be somewhat formally described, but that description would be huge
-and unwieldy.
-So how do put that in a program? 
+
+How can we get a grip on such a many-headed beast?  A first  solution is to
+make a strict distinction between notation
+(<em>what</em> symbols to use for what musical ideas) and
+engraving, <em>where</em> to put them.  
+
+For tackling the first problem, notation, we have broken up the
+problem in smaller subproblems: every type of symbol is handled by a
+separate plugin.  All plugins cooperate through the LilyPond
+architecture.  They are completely modular and independent, so each
+can be developed and improved separately.
+<p>
+The most basic plug-in is the one creating Note-heads:
+
+<p align=center> 
+<img src=engraver-noteheads.png>
+<p>
+This plug-in creates note-heads --graphical objects-- from musical
+events.  The people making graphics for musical ideas are called
+copyists or engravers, so by analogy, this plug-in is called
+<tt>Note_head_engraver</tt>.
+
+<p> Note heads must be put on a staff to
+make sense, hence we add the <tt>Staff_symbol_engraver</tt>, which
+generates the object representing the staff lines.  <p align=center>
+<img src=engraver-staff.png>
 
 <p>
-We attack the unwieldy problem with an army of program plug-ins. Each
-plug-in is designed to handle a single notation construct. For
-example, there is a plug-in that creates note heads, and another that
-creates stems. There is a plug-in that makes repeat bar lines, and one
-that makes repeat brackets.  The plugins communicate through the
-LilyPond architecture: this communication ensures that stems are
-attached to note heads, and repeat brackets to the bar lines.
+The note heads have no meaningful pitches without a clef.
+The <tt>Clef_engraver</tt>, tells
+<tt>Note_head_engraver</tt> which pitch corresponds to which Y
+position so the notes can be placed correctly.
+
+<p align=center> 
+<img src=engraver-clef.png>
 <p>
-[how to make more compelling ?]
+Rhythm is indicated with the number of flags on a stem. Therefore, we
+must add a <tt>Stem_engraver</tt>. This plug-in creates stems:
+<p align=center> 
+<img src=engraver-stem.png>
+<p>
+The <tt>Stem_engraver</tt> is notified of any note-head object coming
+along.  Every time one (or more, for a chord) note-heads is seen, a
+stem object is created, and attached to the note head.
+<p>
+Similarly, beams, slurs, accents are handled by separate engravers,
+that create objects and connect them to stems, note heads, etc.
+
+<p
+align=center> <img src=engraver-slur.png>
+<p>
+
+Accidentals are also handled by a separate plug-in: for every note
+outside of the key-signature, an accidental object is created, and
+connected to the note. It needs the cooperation of
+<tt>Key_signature_engraver</tt> that makes the key signature at the
+start of the line. For good measure, we also throw in a
+<tt>Bar_line_engraver</tt> and <tt>Time_signature_engraver</tt>
+
+<p align=center>
+<img src=engraver-acc.png>
+
+<h2> Polyphonic notation</h2>
+
+The system shown in the last section works well for monophonic music,
+but what about polyphony?  In polyphonic notation, many voices can
+share a staff:
+<p align=center>
+<img src=engraver-final.png>
+<p>
+In this situation, the accidentals and staff are shared, but the
+stems, slurs, beams, etc. are private to each voice. Hence, engravers
+should be grouped.  The engravers for note-head, stems, slurs, etc. go
+into a group "Voice context," while the engravers for key, accidental,
+bars, etc. go into a group "Staff context."  In the case of polyphony,
+a single <tt>Staff</tt> context contains more than one Voice context.
+Similarly, more Staff contexts can be put into a single Score context:
+
+<p align=center>
+<img src=engraver-score.png>
+<p>
 
 
-<p>
 
 <h2>Music engraving</h2>
 
