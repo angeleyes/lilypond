@@ -1,37 +1,38 @@
 /*
   slur.hh -- declare Slur
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef SLUR_HH
 #define SLUR_HH
 
-#include "bow.hh"
+#include "lily-guile.hh"
+#include "lily-proto.hh"
 #include "rod.hh"
 
-/**
-  A #Bow# which tries to drape itself around the stems too.
- */
-class Slur : public Bow
+class Slur
 {
 public:
-  Slur ();
-  VIRTUAL_COPY_CONS(Score_element);
+  static void add_column (Grob *me, Grob *col);
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM));
+  static void set_interface (Grob*);
+  static bool  has_interface (Grob*);
+  static Array<Offset> get_encompass_offset_arr (Grob *me);
+  static Bezier get_curve (Grob *me);
+  static Direction get_default_dir (Grob *me);
+  DECLARE_SCHEME_CALLBACK (after_line_breaking, (SCM));
 
-  void add_column (Note_column*);
-  
-  Link_array<Note_column> encompass_arr_;
-
-protected:
-  virtual Array<Offset> get_encompass_offset_arr () const;
-
-  virtual Direction get_default_dir () const;
-  virtual void do_post_processing ();
-  virtual void do_add_processing ();
-  virtual void do_pre_processing ();
-  virtual void do_substitute_element_pointer (Score_element*, Score_element*);
-  Array<Rod> get_rods () const;
+  DECLARE_SCHEME_CALLBACK (height, (SCM,SCM));
+private:  
+  static Real get_first_notecolumn_y (Grob *me, Direction dir);
+  static Offset broken_trend_offset (Grob *me, Direction dir);
+  static Offset get_attachment (Grob *me,Direction dir, Grob **common);
+  static void de_uglyfy (Grob *me,Slur_bezier_bow* bb, Real default_height);
+  static void set_extremities (Grob *me);
+  static void set_control_points (Grob *me);
+  static void check_slope (Grob *me);
+  static Offset encompass_offset (Grob *me, Grob *col, Grob **common);
 };
 
 #endif // SLUR_HH

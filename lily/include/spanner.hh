@@ -1,44 +1,27 @@
 /*
   spanner.hh -- part of GNU LilyPond
 
-  (c) 1996--1999 Han-Wen Nienhuys
+  (c) 1996--2001 Han-Wen Nienhuys
 */
 
 #ifndef SPANNER_HH
 #define SPANNER_HH
 
 #include "lily-proto.hh"
-#include "score-element.hh"
+#include "grob.hh"
 #include "drul-array.hh"
 #include "rod.hh"
 
-struct Breaking_information
-{
-  Line_of_score *line_l_;
-  Spanner * broken_spanner_l_;
-  Drul_array<Item*> bounds_;
-  Breaking_information ()
-    {
-      line_l_ =0;
-      broken_spanner_l_ =0;
-      bounds_[LEFT] = bounds_[RIGHT] =0;
-    }
-};
-
-class Axis_group_spanner;
 /** A symbol which is attached between two columns. A spanner is a
   symbol which spans across several columns, so its final appearance
   can only be calculated after the breaking problem is solved.
 
   Examples
 
-  \begin{itemize}
-  \item (de)crescendo
-  \item slur
-  \item beam
-  \item bracket
-  \end{itemize}
-  
+  * (de)crescendo
+  * slur
+  * beam
+  * bracket
 
   Spanner should know about the items which it should consider:
   e.g. slurs should be steep enough to "enclose" all those items. This
@@ -46,37 +29,42 @@ class Axis_group_spanner;
   length of stems of notes they encompass.
 
   */
-class Spanner : public virtual Score_element {
-public:
+class Spanner : public  Grob {
   Drul_array<Item*> spanned_drul_;
-  Link_array<Spanner> broken_into_l_arr_;
-  void set_bounds (Direction d, Item*);
 
+public:
+  DECLARE_SCHEME_CALLBACK (set_spacing_rods, (SCM ));
   
-  Spanner ();
+  Link_array<Spanner> broken_into_l_arr_;
+
+  // todo: move to somewhere else.
+  Real get_broken_left_end_align () const;
+  
+  // TODO: make virtual and do this for Items as well.
+  Interval_t<int> spanned_rank_iv ();
+  void set_bound (Direction d, Grob*);
+  Item *get_bound (Direction d) const;
+  
+  Spanner (SCM);
   Spanner (Spanner const &);
   bool broken_b () const;
+  void do_break ();
+  Real spanner_length () const;
 
-  virtual Array<Rod> get_rods () const;
-  virtual Array<Spring> get_springs () const;  
-  virtual Spanner* find_broken_piece (Line_of_score*) const;
+  static int compare (Spanner * const &,Spanner * const &);
+  virtual Grob* find_broken_piece (Line_of_score*) const;
+  virtual SCM do_derived_mark ();
 protected:
   void set_my_columns ();
-  VIRTUAL_COPY_CONS(Score_element);
 
-  /**
-    this is virtual; for instance, Line_of_score overrides it.
-    */
-  virtual void break_into_pieces ();
-  Real get_broken_left_end_align () const;
-
-  friend Axis_group_spanner; // UGH
-
-  virtual void do_space_processing ();
-  void handle_broken_dependents ();
+  VIRTUAL_COPY_CONS (Grob);
   virtual void do_break_processing ();
-  virtual Interval do_width () const;
-  virtual void do_print () const;
   virtual Line_of_score*line_l () const;
 };
+
+
+void add_bound_item (Spanner*, Item* n);
+void extend_spanner_over_elements (Grob*  span);
+
+
 #endif
