@@ -1,0 +1,63 @@
+dnl configure.in   -*-shell-script-*-
+dnl Process this file with autoconf to produce a configure script. 
+
+# Bootstrap the init proces.  List a file identifies your package.
+AC_INIT(make/lilypond.lsm.in)
+AC_CONFIG_HEADER($CONFIGFILE.h:config.hh.in)
+
+# Bootstrap StepMake configure
+AC_STEPMAKE_INIT
+
+# For all packages except the StepMake package itself
+AC_CONFIG_SUBDIRS(stepmake)
+
+# Uncomment the configuration options your package needs.
+AC_STEPMAKE_COMPILE
+# AC_HAVE_HEADERS(limits.h malloc.h string.h unistd.h values.h)
+
+printing_b=no
+AC_ARG_ENABLE(printing,
+    [  enable-printing         turn on debug printing. Default: off],
+    [printing_b=$enableval])
+
+if test "$optimise_b" = yes; then
+    DEFINES="$DEFINES -DSTRING_UTILS_INLINED"
+    AC_DEFINE(STRINGS_UTILS_INLINED)
+fi
+
+if test "$printing_b" = no; then
+    # ugh
+    AC_DEFINE(NPRINT)
+    DEFINES="$DEFINES -DNPRINT"
+fi
+
+AC_STEPMAKE_CXX
+AC_STEPMAKE_GXX
+AC_STEPMAKE_CXXTEMPLATE
+AC_STEPMAKE_LEXYACC
+AC_STEPMAKE_LIB
+# AC_STEPMAKE_LIBTOOL
+AC_STEPMAKE_LOCALE
+AC_STEPMAKE_GETTEXT
+AC_STEPMAKE_MSGFMT
+AC_STEPMAKE_TEXMF
+AC_STEPMAKE_TEXMF_DIRS
+AC_STEPMAKE_GUILE
+
+dnl should check out -print
+dnl huh?
+dnl AC_CHECK_SEARCH_RESULT($FIND, find, Please use --enable-tex-dir)
+
+AC_FUNC_MEMCMP
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS(memmem snprintf vsnprintf gettext)
+
+AC_DEFINE_UNQUOTED(TOPLEVEL_VERSION, "${FULL_VERSION}")
+AC_DEFINE_UNQUOTED(FLOWER_VERSION, "${FULL_FLOWER_VERSION}")
+
+AC_CHECK_PROGS(MAKEINFO, makeinfo, error)
+AC_CHECK_PROGS(PERL, perl, error)
+
+
+AC_STEPMAKE_END
+
