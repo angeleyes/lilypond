@@ -3,15 +3,16 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 #include <time.h>
 #include <fstream.h>
+#include <math.h>
+#include <iostream.h>
 
 #include "dimensions.hh"
-#include "dictionary-iter.hh"
 #include "virtual-methods.hh"
 #include "paper-outputter.hh"
 #include "paper-stream.hh"
@@ -19,171 +20,129 @@
 #include "array.hh"
 #include "string-convert.hh"
 #include "debug.hh"
-#include "lookup.hh"
+#include "font-metric.hh"
 #include "main.hh"
 #include "scope.hh"
-#include "identifier.hh"
+
 #include "lily-version.hh"
-#include "atom.hh"
+#include "paper-def.hh"
+#include "file-results.hh"
 
-Paper_outputter::Paper_outputter (Paper_stream *s)
+
+/*
+  Ugh, this is messy.
+ */
+
+Paper_outputter::Paper_outputter (String name)
 {
-  outstream_l_ = s;
-  output_header ();
+  stream_p_ =  new Paper_stream (name);
 
-  if (output_global_ch == String ("scm"))
-    *outstream_l_->os << ""
-      "(primitive-load-path 'lily.scm)\n"
-      "(eval (tex-scm 'all-definitions))\n"
-      ";(eval (ps-scm 'all-definitions))\n"
-      "(display (map (lambda (x) (string-append (eval x) \"\\n\")) '(\n"
-    ;
+ /*
+   lilypond -f scm x.ly
+   guile -s x.scm
+  */
+  verbatim_scheme_b_ = output_format_global == "scm";
+
+  if (verbatim_scheme_b_)
+    {
+	*stream_p_ << ""
+	  ";;; Usage: guile -s x.scm > x.tex\n"
+	  " (primitive-load-path 'standalone.scm)\n"
+	  "; (scm-tex-output)\n"
+	  " (scm-ps-output)\n"
+	  " (map (lambda (x) (display (ly-eval x))) ' (\n"
+	;
+    }
+
 }
 
 Paper_outputter::~Paper_outputter ()
 {
-  SCM scm = gh_list (ly_symbol ("end-output"), SCM_UNDEFINED);
-  output_scheme (scm);
-
-  if (String (output_global_ch) == "scm")
+  if (verbatim_scheme_b_)
     {
-      *outstream_l_->os << ")))";
+      *stream_p_ << "))";
     }
+  delete stream_p_;
 }
+
 
 void
 Paper_outputter::output_header ()
 {
   if (safe_global_b)
     {
-      ly_set_scm ("security-paranoia", SCM_BOOL_T);
-      //      ly_ch_C_eval_scm ("(set! security-paranoia #t)");
-    }
-  String s = String ("(eval (") + output_global_ch + "-scm 'all-definitions))";
-  ly_ch_C_eval_scm (s.ch_C ());
-  
-  String creator;
-  if (no_timestamps_global_b)
-    creator = gnu_lilypond_str ();
-  else
-    creator = gnu_lilypond_version_str ();
-  
-  String generate;
-  if (no_timestamps_global_b)
-    generate = ".\n";
-  else
-    {
-      generate = _ (", at ");
-      time_t t (time (0));
-      generate += ctime (&t);
-      //urg
+      gh_define ("security-paranoia", SCM_BOOL_T);      
     }
 
+  SCM exp = gh_list (ly_symbol2scm ((output_format_global + "-scm").ch_C ()),
+		     ly_quote_scm (ly_symbol2scm ("all-definitions")),
+		     SCM_UNDEFINED);
+  exp = scm_eval2 (exp, SCM_EOL);
+  scm_eval2 (exp, SCM_EOL);
+  
+  String creator = gnu_lilypond_version_str ();
+  
+  String       generate = _ (", at ");
+  time_t t (time (0));
+  generate += ctime (&t);
+  generate = generate.left_str (generate.length_i () - 1);
+  
+  /*
+    Make fixed length time stamps
+   */
+  generate = generate + to_str (' ' * (120 - generate.length_i ())>? 0)  ;
+  
   SCM args_scm = 
-    gh_list (ly_ch_C_to_scm (creator.ch_l ()),
-	     ly_ch_C_to_scm (generate.ch_l ()), SCM_UNDEFINED);
+    gh_list (ly_str02scm (creator.ch_l ()),
+	     ly_str02scm (generate.ch_l ()), SCM_UNDEFINED);
 
-#ifndef NPRINT
-  DOUT << "output_header\n";
-  if (check_debug && !monitor->silent_b ("Guile"))
-    {
-      gh_display (args_scm); gh_newline ();
-    }
-#endif
 
-  SCM scm = gh_cons (header_scm_sym, args_scm);
+  SCM scm = gh_cons (ly_symbol2scm ("header"), args_scm);
   output_scheme (scm);
 }
 
-void
-Paper_outputter::output_molecule (Molecule const*m, Offset o, char const *nm)
-{
-  if (check_debug)
-    *outstream_l_ << String ("\n%start: ") << nm << "\n";
 
-
-  if (check_debug)
-    {
-      output_comment (nm);
-    }
-      
-#ifdef ATOM_SMOB
-  for (SCM ptr = m->atom_list_; ptr != SCM_EOL; ptr = SCM_CDR(ptr))
-    {
-      Atom *i = Atom::atom_l (SCM_CAR(ptr));
-#else
-  for (Cons<Atom> *ptr = m->atom_list_; ptr; ptr = ptr->next_)
-    {
-      Atom * i = ptr->car_;
-#endif
-#if 0
-    }
-#endif      
-      Offset a_off = i->off_;
-      a_off += o;
-
-      if (!i->func_)
-	continue; 
-
-      if (a_off.length () > 100 CM)
-	{
-	  warning (_f("Improbable offset for object type `%s\'", nm));
-	  Axis a  =X_AXIS;
-	  while (a < NO_AXES)
-	    {
-	      if (abs(a_off[a]) > 50 CM)
-		a_off[a] = 50 CM;
-	      incr (a);
-	    }
-	}
-	
-      if (i->font_)
-	{
-	  output_scheme (gh_list (ly_symbol ("select-font"),
-				  ly_ch_C_to_scm (symbol_to_string (i->font_).ch_C()),
-				  SCM (i->magn_),
-				  SCM_UNDEFINED));
-	}
-
-      SCM box_scm
-	= gh_list (placebox_scm_sym,
-		   gh_double2scm (a_off.x ()),
-		   gh_double2scm (a_off.y ()),
-		   SCM(i->func_),
-		   SCM_UNDEFINED);
-      
-      output_scheme (box_scm);
-    }
-}
 
 void
 Paper_outputter::output_comment (String str)
 {
-  if (String (output_global_ch) == "scm")
-    {
-      *outstream_l_ << "; " << str << '\n';
-    }
-  else
-    {
-      *outstream_l_ << "% " << str << "\n";
-    }
+  output_scheme (gh_list (ly_symbol2scm ("comment"),
+			  ly_str02scm ((char*)str.ch_C ()),
+			  SCM_UNDEFINED)
+		 );
 }
 
 
 void
 Paper_outputter::output_scheme (SCM scm)
 {
-  if (String (output_global_ch) == "scm")
+  /*
+    we don't rename dump_scheme, because we might in the future want
+    to remember Scheme. We don't now, because it sucks up a lot of memory.
+  */
+  dump_scheme (scm);
+}
+
+
+/*
+  UGH.
+
+  Should probably change interface to do less eval (symbol), and more
+  apply (procedure, args)
+ */
+void
+Paper_outputter::dump_scheme (SCM s)
+{
+  if (verbatim_scheme_b_)
     {
-      SCM result =  scm_eval (scm_listify (ly_symbol ("scm->string"), ly_quote_scm (scm), SCM_UNDEFINED));
-    *outstream_l_->os << ly_scm2string (result)	<< endl;
+      *stream_p_ << ly_scm2string (ly_write2scm (s));
     }
   else
     {
-      SCM result = scm_eval (scm);
+      SCM result = scm_eval2 (s, SCM_EOL);
       char *c=gh_scm2newstr (result, NULL);
-
-      *outstream_l_ << c;
+  
+      *stream_p_ << c;
       free (c);
     }
 }
@@ -191,25 +150,25 @@ Paper_outputter::output_scheme (SCM scm)
 void
 Paper_outputter::output_scope (Scope *scope, String prefix)
 {
-  for (Scope_iter i (*scope); i.ok (); i++)
+  SCM al = scope->to_alist ();
+  for (SCM s = al ; gh_pair_p (s); s = gh_cdr (s))
     {
-      if (dynamic_cast<String_identifier*> (i.val ()))
-	{
-	  String val = *i.val()->access_content_String (false);
+      SCM k = gh_caar (s);
+      SCM v = gh_cdar (s);
+      String s = ly_symbol2string (k);
 
-	  output_String_def (prefix + i.key (), val);
-	}
-      else if(dynamic_cast<Real_identifier*> (i.val ()))
+      
+      if (gh_string_p (v))
 	{
-	  Real val  = *i.val ()->access_content_Real (false);
-
-	  output_Real_def (prefix + i.key (), val);	  
+	  output_String_def (prefix + s, ly_scm2string (v));
 	}
-      else if (dynamic_cast<int_identifier*> (i.val ()))
+      else if (scm_integer_p (v) == SCM_BOOL_T)
 	{
-	  int val  = *i.val ()->access_content_int (false);	  
-	  
-	  output_int_def (prefix + i.key (), val);	  
+	  output_int_def (prefix + s, gh_scm2int (v));	  
+	}
+      else if (gh_number_p (v))
+	{
+	  output_Real_def (prefix + s, gh_scm2double (v));	  
 	}
     }
 }
@@ -218,85 +177,86 @@ void
 Paper_outputter::output_version ()
 {
   String id_str = "Lily was here";
-  if (no_timestamps_global_b)
-    id_str += ".";
-  else
-    id_str += String (", ") + version_str ();
+  id_str += String_convert::pad_to (String (", ") + version_str (), 40);
 
-  output_String_def ( "mudelatagline", id_str);
-  output_String_def ( "LilyPondVersion", version_str ());
+  output_String_def ("lilypondtagline", id_str);
+  output_String_def ("LilyPondVersion", version_str ());
 }
 
-void
-Paper_outputter::start_line (Real height)
-{
-  SCM scm = gh_list (ly_symbol ("start-line"),
-		     gh_double2scm (height),
-		     SCM_UNDEFINED);
-  output_scheme (scm);
-}
 
-void
-Paper_outputter::output_font_def (int i, String str)
-{
-  SCM scm = gh_list (ly_symbol ("font-def"),
-		     gh_int2scm (i),
-		     ly_ch_C_to_scm (str.ch_l ()),
-		     SCM_UNDEFINED);
 
-  output_scheme (scm);
-}
 
 void
 Paper_outputter::output_Real_def (String k, Real v)
 {
   
-  SCM scm = gh_list (ly_symbol ("lily-def"),
-		     ly_ch_C_to_scm (k.ch_l ()),
-		     ly_ch_C_to_scm (to_str(v).ch_l ()),
+  SCM scm = gh_list (ly_symbol2scm ("lily-def"),
+		     ly_str02scm (k.ch_l ()),
+		     ly_str02scm (to_str (v).ch_l ()),
 		     SCM_UNDEFINED);
   output_scheme (scm);
-
-  gh_define (k.ch_l (), gh_double2scm (v));
 }
 
 void
 Paper_outputter::output_String_def (String k, String v)
 {
   
-  SCM scm = gh_list (ly_symbol ("lily-def"),
-		     ly_ch_C_to_scm (k.ch_l ()),
-		     ly_ch_C_to_scm (v.ch_l ()),
+  SCM scm = gh_list (ly_symbol2scm ("lily-def"),
+		     ly_str02scm (k.ch_l ()),
+		     ly_str02scm (v.ch_l ()),
 		     SCM_UNDEFINED);
   output_scheme (scm);
-
-  gh_define (k.ch_l (), ly_ch_C_to_scm (v.ch_l ()));
 }
 
 void
 Paper_outputter::output_int_def (String k, int v)
 {
-  SCM scm = gh_list (ly_symbol ("lily-def"),
-		     ly_ch_C_to_scm (k.ch_l ()),
-		     ly_ch_C_to_scm (to_str (v).ch_l ()),
+  SCM scm = gh_list (ly_symbol2scm ("lily-def"),
+		     ly_str02scm (k.ch_l ()),
+		     ly_str02scm (to_str (v).ch_l ()),
 		     SCM_UNDEFINED);
   output_scheme (scm);
-
-  gh_define (k.ch_l (), gh_int2scm (v));
-}
-
-
-
-void
-Paper_outputter::stop_line ()
-{
-  SCM scm = gh_list (ly_symbol ("stop-line"), SCM_UNDEFINED);
-  output_scheme (scm);
 }
 
 void
-Paper_outputter::stop_last_line ()
+Paper_outputter::output_string (SCM str)
 {
-  SCM scm = gh_list (ly_symbol ("stop-last-line"), SCM_UNDEFINED);
-  output_scheme (scm);
+  *stream_p_ <<  ly_scm2string (str);
+}
+
+void
+Paper_outputter::write_header_field_to_file (String filename, String key, String value)
+{
+  if (filename != "-")
+    filename += String (".") + key;
+  progress_indication (_f ("writing header field `%s' to `%s'...",
+			   key,
+			   filename == "-" ? String ("<stdout>") : filename));
+  
+  ostream *os = open_file_stream (filename);
+  *os << value;
+  close_file_stream (os);
+  progress_indication ("\n");
+}
+
+void
+Paper_outputter::write_header_fields_to_file (Scope * header)
+{
+  if (dump_header_fieldnames_global.size ())
+    {
+      SCM fields = header->to_alist ();
+      for (int i = 0; i < dump_header_fieldnames_global.size (); i++)
+	{
+	  String key = dump_header_fieldnames_global[i];
+	  SCM val = gh_assoc (ly_symbol2scm (key.ch_C ()), fields);
+	  String s;
+	  /* Only write header field to file if it exists */
+	  if (gh_pair_p (val))
+	    {
+	      s = ly_scm2string (gh_cdr (val));
+	      /* Always write header field file, even if string is empty ... */
+	      write_header_field_to_file (basename_, key, s);
+	    }
+	}
+    }
 }

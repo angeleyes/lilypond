@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
 #include <time.h>
@@ -20,6 +20,7 @@
 #include "performance.hh"
 #include "score.hh"
 #include "file-results.hh"
+#include "file-path.hh"
 #include "lily-version.hh"
 
 #include "killing-cons.tcc"
@@ -31,7 +32,7 @@ Performance::Performance ()
 }
 
 
-Performance::~Performance()
+Performance::~Performance ()
 {
   delete audio_elem_p_list_;
 }
@@ -39,22 +40,21 @@ Performance::~Performance()
 void
 Performance::output (Midi_stream& midi_stream)
 {
-  int tracks_i = audio_staff_l_arr_.size() + 1;
+  int tracks_i = audio_staff_l_arr_.size () + 1;
 
   // ugh
   int clocks_per_4_i = 384;
 
   midi_stream << Midi_header (1, tracks_i, clocks_per_4_i);
   output_header_track (midi_stream);
-  *mlog << "\n";
-  *mlog << _ ("Track ... ");
-  int channel = 1;
+  progress_indication ("\n");
+  progress_indication (_ ("Track ... "));
+  int channel = 0;
   for (int i =0; i < audio_staff_l_arr_.size (); i++)
     {
-      *mlog << '[' << flush;
       Audio_staff *s = audio_staff_l_arr_[i];
-
-      *mlog << i << flush;
+      if (verbose_global_b)
+	progress_indication ("[" + to_str (i)) ;
 
       /*
 	Aargh, let's hear it for the MIDI standard.
@@ -62,9 +62,12 @@ Performance::output (Midi_stream& midi_stream)
 	channel 10, the percussion channel by default.
        */
       if (channel == 9)
-	channel++;
+	 channel++;
+      if (s->channel_i_ < 0)
+	 s->channel_i_ = channel;
       s->output (midi_stream, channel++);
-      *mlog << ']' << flush;
+      if (verbose_global_b)
+	progress_indication ("]");
     }
 }
 
@@ -73,12 +76,13 @@ Performance::output_header_track (Midi_stream& midi_stream)
 {
   Midi_track midi_track;
 
+  midi_track.channel_i_ = 9;
+
   // perhaps multiple text events?
-  String str = String (_("Creator: "));
-  if (no_timestamps_global_b)
-    str += gnu_lilypond_str ();
-  else
-    str += gnu_lilypond_version_str();
+  String id_str;
+  String str = String (_ ("Creator: "));
+  id_str = String_convert::pad_to (gnu_lilypond_version_str (), 40);
+  str += id_str;
   str += "\n";
 
   /*
@@ -89,16 +93,19 @@ Performance::output_header_track (Midi_stream& midi_stream)
   Midi_text creator (&creator_a);
   midi_track.add (Moment (0), &creator);
 
-  str = _("Automatically generated");
-  if (no_timestamps_global_b)
-    str += ".\n";
-  else
-    {
-      str += _(", at ");
-      time_t t (time (0));
-      str += ctime (&t);
-      str = str.left_str (str.length_i() - 1);
-    }
+  /* Better not translate this */
+  str = "Generated automatically by: ";
+  str += id_str;
+  str += _ (", at ");
+  time_t t (time (0));
+  str += ctime (&t);
+  str = str.left_str (str.length_i () - 1);
+
+  /*
+    Pad out time stamps to 120 chars.  */
+  
+  str = String_convert::pad_to (str, 120);
+  
   Audio_text generate_a (Audio_text::TEXT, str);
   Midi_text generate (&generate_a);
   midi_track.add (Moment (0), &generate);
@@ -130,50 +137,37 @@ Performance::add_element (Audio_element *p)
     {
       audio_staff_l_arr_.push (s);
     }
-  else if (Audio_column *c = dynamic_cast<Audio_column*>(p))
+  else if (Audio_column *c = dynamic_cast<Audio_column*> (p))
     {
       c->performance_l_ = this;
     }
   audio_elem_p_list_ = new Killing_cons<Audio_element> (p, audio_elem_p_list_);
 }
 
-void
-Performance::print() const
-{
-#ifndef NPRINT
-  DOUT << "Performance { ";
-  DOUT << "Items: ";
-  for (Cons<Audio_element>* i =audio_elem_p_list_; i; i = i->next_)
-    i->car_->print ();
-  DOUT << "}";
-#endif
-}
 
 void
-Performance::process()
+Performance::process ()
 {
-  print ();
-
-  String out = midi_l_->get_default_output ();
-  if (out.empty_b ())
+  String out = output_name_global;
+  if (out == "-")
+    out = "lelie.midi";
+  int def = midi_l_->get_next_score_count ();
+  if (def)
     {
-      
-      out = default_outname_base_global;
-      if (out == "-")
-        out = "lelie";
-      int def = midi_l_->get_next_default_count ();
-      if (def)
-	{
-	  out += "-" + to_str (def);
-	}
-
-      out += ".midi";
+      Path p = split_path (out);
+      p.base += "-" + to_str (def);
+      out = p.str ();
     }
+
+  /* Maybe a bit crude, but we had this before */
+  Path p = split_path (out);
+  p.ext = "midi";
+  out = p.str ();
   
   Midi_stream midi_stream (out);
-  *mlog << _f ("MIDI output to %s...", out) << endl;
+  progress_indication (_f ("MIDI output to `%s'...", out));
   target_str_global_array.push (out);
 
   output (midi_stream);
-  *mlog << endl;
+  progress_indication ("\n");
 }
