@@ -1,5 +1,7 @@
 2003-04-18  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
+	* site/devel/compile/index.html: add warning.
+
 	* site/use/gui.html (href): new file.
 
 2003-04-17  Jan Nieuwenhuizen  <janneke@gnu.org>
