@@ -1,3 +1,12 @@
+2003-10-17  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/index.html: 
+	* site/devel/packaging.html:
+	* site/download/index.html: Add CVS marker, to stimulate getting
+	patches from maintainers.
+
+	* format-page.py (header): Add comment to HTML about generating.
+
 2003-10-09  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* site/download/index.html: add slackware package.
