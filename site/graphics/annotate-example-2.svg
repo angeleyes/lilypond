@@ -7,7 +7,7 @@
    sodipodi:version="0.32"
    width="210mm"
    height="297mm"
-   sodipodi:docname="example-2.svg"
+   sodipodi:docname="annotate-example-2.svg"
    inkscape:version="0.39"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:cc="http://web.resource.org/cc/"
@@ -17,7 +17,7 @@
    xmlns:xml="http://www.w3.org/XML/1998/namespace"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch">
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/graphics">
   <defs
      id="defs550" />
   <sodipodi:namedview
@@ -29,13 +29,6 @@
      inkscape:window-height="1055"
      inkscape:window-x="8"
      inkscape:window-y="8" />
-  <text
-     style="fill:black;stroke:none;font-family:helvetica;font-style:normal;font-weight:normal;font-size:12px;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
-     x="0.000000"
-     y="0.000000"
-     id="text551"><tspan
-       id="tspan552">
-t</tspan></text>
   <text
      xml:space="preserve"
      style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:28.000000;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;font-stretch:normal;font-variant:normal;"
