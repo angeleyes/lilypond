@@ -331,7 +331,7 @@ orchestral or choral score.
   \relative c \context Staff = SB { \clef bass c1 \bar "|." } > 
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \context StaffGroup < 
 %  \property StaffGroup.minVerticalAlign = #12
   \notes\relative c'' \context Staff = SA { \clef treble g4 e c2 }
@@ -361,7 +361,7 @@ in pre-1650 music.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \notes\relative c'' { g\breve } 
 @end lilypond
@@ -378,7 +378,7 @@ lines.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.Clef \override #'full-size-change = ##t
 \property Score.LyricText \set #'font-style = #'large
@@ -437,7 +437,7 @@ chords are denoted open chords
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Voice.TextScript \set #'font-style = #'large
 \time 4/4
@@ -459,7 +459,7 @@ A scale consisting of all 11 @w{@ar{}@strong{semitone}}s.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \notes\relative c' { c1 cis d dis e f fis g gis a ais b c }
 @end lilypond
@@ -514,7 +514,7 @@ Melody moving in the narrow steps of the scale;
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \key g \major \time 4/4
 \notes\relative c'' { g4 g g a | b2 a | g4 b a a | g1 \bar "||" }
 @end lilypond
@@ -603,7 +603,7 @@ abbreviation "cresc.".
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \key g \major \time 4/4
 \notes\relative c'' { g4 \< a b c | \! d1 \bar "|." }
 @end lilypond
@@ -634,7 +634,7 @@ frequently near the beginning marked by a sign:
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Voice.TextScript \set #'font-style = #'large
 \key g \major \time 4/4
 \notes\relative c'' { d1 | g,4^\segno  a b c | b a g2_"d.s." \bar "|." }
@@ -649,7 +649,7 @@ or the abbreviation "decresc.".
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \context Staff \notes\relative c'' {\key g \major \time 4/4
  d4 \> c b a | \! g1 \bar "|." }
 @end lilypond
@@ -674,7 +674,7 @@ also to some extent in newer jazz music.
  
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -688,7 +688,7 @@ also to some extent in newer jazz music.
   \context Lyrics \lyrics { Ionian }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -703,7 +703,7 @@ also to some extent in newer jazz music.
   \context Lyrics \lyrics { Dorian }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -717,7 +717,7 @@ also to some extent in newer jazz music.
   \context Lyrics \lyrics { Phrygian }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -731,7 +731,7 @@ also to some extent in newer jazz music.
   \context Lyrics \lyrics { Lydian }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -745,7 +745,7 @@ also to some extent in newer jazz music.
   \context Lyrics \lyrics { Mixolydian }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -764,7 +764,7 @@ compositional music are primarily the major and the minor scales. In the
 harmonic minor scale type an augmented second (A) occurs between the 6th and
 7th tone.
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -778,7 +778,7 @@ harmonic minor scale type an augmented second (A) occurs between the 6th and
   \context Lyrics \lyrics { Major }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -792,7 +792,7 @@ harmonic minor scale type an augmented second (A) occurs between the 6th and
   \context Lyrics \lyrics { "ancient minor" }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -810,7 +810,7 @@ harmonic minor scale type an augmented second (A) occurs between the 6th and
   \context Lyrics \lyrics { "Harmonic minor" }
 @end lilypond
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -1038,7 +1038,7 @@ example bass recorder) while 8 below the clef symbol indicates playing an
 octave lower (for example on double bass @w{@ar{}@strong{strings}}).
 
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Staff.Clef \override #'full-size-change = ##t
 \property Score.LyricText \set #'font-style = #'large
@@ -1151,7 +1151,7 @@ of the base chords.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -1177,7 +1177,7 @@ that).
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Staff.Clef \set #'full-size-change = ##t
 \property Score.LyricText \set #'font-style = #'large
@@ -1248,7 +1248,7 @@ section. @ar{}@w{}@strong{functional harmony}
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \notes\context PianoStaff < 
   \context Staff = SA \relative c'' { 
     \time 4/4
@@ -1274,7 +1274,7 @@ Consonances:
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.TextScript \set #'font-style = #'large
 \context Voice \notes\relative c'' {
@@ -1292,7 +1292,7 @@ Dissonances:
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.TextScript \set #'font-style = #'large
 \context Voice  \notes\relative c'' {
@@ -1323,7 +1323,7 @@ forms an octave.
 
 @ 
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -1344,7 +1344,7 @@ forms an octave.
 
 @ 
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -1365,7 +1365,7 @@ forms an octave.
 
 @ 
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.LyricText \set #'font-style = #'large
 \property Score.TextScript \set #'font-style = #'large
@@ -1392,7 +1392,7 @@ The difference between an interval and an octave.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t
 \property Score.TextScript \set #'font-style = #'large
 \context Staff \notes\relative c'' {
@@ -1448,7 +1448,7 @@ A ledger line is an extension of the staff.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \notes\relative c'' { a,1 s c'' } 
 @end lilypond
@@ -1506,7 +1506,7 @@ note value: double length of @w{@ar{}@strong{brevis}}. @w{@ar{}@strong{note valu
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \notes\relative c'' { 
   \property Voice.NoteHead \set #'style = #'mensural
@@ -1621,7 +1621,7 @@ First C below the 440 Hz A.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Staff.Clef \set #'full-size-change = ##t
 \notes\relative c' { 
@@ -1671,7 +1671,7 @@ subject.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.TimeSignature \override #'style = #'C2/2
 \property Score.TextScript \set #'font-style = #'large
 \notes\relative c'' { 
@@ -1995,7 +1995,7 @@ the same @w{@ar{}@strong{signature}}.
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.TextScript \set #'font-style = #'large
 \notes\relative c' { 
@@ -2067,7 +2067,7 @@ sub@-do@-mi@-nant (S) and V = dominant (D).
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.LyricText \set #'font-style = #'large
 %\property Lyrics.minVerticalAlign = #8
@@ -2110,7 +2110,7 @@ semitones. @w{@ar{}@strong{interval}} @w{@ar{}@strong{chromatic scale}}
 
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \notes\relative c'' { g1 gis s a bes s b c }
 @end lilypond
@@ -2520,7 +2520,7 @@ a @w{@ar{}@strong{chord}}, usually in the distance of a third
  
 @
 
-@lilypond[13pt,eps] 
+@lilypond[13pt,eps]
 \property Score.barNonAuto = ##t 
 \property Score.TextScript \set #'font-style = #'large
 \notes\relative c' {

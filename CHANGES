@@ -1,6 +1,8 @@
 1.4.14.hwjc1
 ============
 
+* glossary: silly bugfix for lilypond-book.
+
 * Documentation/topdocs/INSTALL.texi (Top): Remove generic Guile
 threads warning.
 
