@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
-[
- <!ATTLIST svg
-  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
-]>
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
 <svg
    id="svg728"
    sodipodi:version="0.32"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    width="210mm"
    height="297mm"
-   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
-   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-score.sodipodi">
+   sodipodi:docname="example-score.sodipodi"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs
      id="defs730" />
   <sodipodi:namedview
@@ -36,25 +31,25 @@
        y="151.728775"
        sodipodi:role="line"
        id="tspan748">
-		&lt;</tspan>
+		&lt;&lt;</tspan>
     <tspan
        x="24.7259216"
        y="177.728775"
        sodipodi:role="line"
        id="tspan750">
-				\context  Staff = hornStaff \hornNotes</tspan>
+				\new Staff \hornNotes</tspan>
     <tspan
        x="24.7259216"
        y="203.728775"
        sodipodi:role="line"
        id="tspan752">
-				\context Staff = bsnStaff \bassoonNotes</tspan>
+				\new Staff \bassoonNotes</tspan>
     <tspan
        x="24.7259216"
        y="229.728775"
        sodipodi:role="line"
        id="tspan754">
-		&gt;</tspan>
+		&gt;&gt;</tspan>
     <tspan
        x="24.7259216"
        y="255.728775"
@@ -65,24 +60,24 @@
   <rect
      style="font-size:12;fill:#c12b28;fill-opacity:0.536585;fill-rule:evenodd;stroke-width:1pt;"
      id="rect758"
-     width="415.033829"
+     width="393.387184"
      height="22.479324"
-     x="81.591409"
-     y="156.938130" />
+     x="89.917068"
+     y="156.938065" />
   <rect
      style="font-size:12;fill:#c12b28;fill-opacity:0.536585;fill-rule:evenodd;stroke-width:1pt;"
      id="rect759"
-     width="400.880135"
+     width="392.554487"
      height="22.479324"
-     x="81.591403"
-     y="182.747592" />
+     x="89.917045"
+     y="182.747559" />
   <rect
      style="font-size:12;fill:#23ca22;fill-opacity:0.588415;fill-rule:evenodd;stroke-width:1pt;"
      id="rect760"
-     width="27.4746552"
+     width="40.795697"
      height="101.572952"
-     x="49.5376282"
-     y="130.296219" />
+     x="49.537627"
+     y="130.296188" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#00b000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
      d="M 64.9401 233.951 C 63.275 288.9 113.229 292.23 159.853 292.23 "

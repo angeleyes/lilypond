@@ -7,7 +7,7 @@
    sodipodi:version="0.32"
    width="210mm"
    height="297mm"
-   sodipodi:docname="d.sp"
+   sodipodi:docname="example-1.sodipodi"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -64,31 +64,31 @@
        y="477.014679"
        sodipodi:role="line"
        id="tspan717">
-		\notes {</tspan>
+\notes {</tspan>
     <tspan
        x="80.3415680"
        y="501.014679"
        sodipodi:role="line"
        id="tspan719">
-				\time 2/4</tspan>
+\time 2/4</tspan>
     <tspan
        x="80.3415680"
        y="525.014679"
        sodipodi:role="line"
        id="tspan721">
-				\clef bass </tspan>
+\clef bass</tspan>
     <tspan
        x="80.3415680"
        y="549.014679"
        sodipodi:role="line"
        id="tspan723">
-				c4 c g g a a g2 </tspan>
+c4 c g g a a g2</tspan>
     <tspan
        x="80.3415680"
        y="573.014679"
        sodipodi:role="line"
        id="tspan725">
-		}</tspan>
+}</tspan>
     <tspan
        x="80.3415680"
        y="597.014679"

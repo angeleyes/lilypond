@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
-[
- <!ATTLIST svg
-  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
-]>
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
 <svg
    id="svg548"
    sodipodi:version="0.32"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    width="210mm"
    height="297mm"
-   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
-   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-2.sodipodi">
+   sodipodi:docname="example-2.sodipodi"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs
      id="defs550" />
   <sodipodi:namedview
@@ -38,153 +33,153 @@ t</tspan>
        x="52.9841156"
        y="382.407318"
        sodipodi:role="line"
-       id="tspan604">
+       id="tspan603">
 </tspan>
     <tspan
        x="52.9841156"
        y="410.407318"
        sodipodi:role="line"
-       id="tspan606">
+       id="tspan605">
 \score {</tspan>
     <tspan
        x="52.9841156"
        y="438.407318"
        sodipodi:role="line"
-       id="tspan608">
+       id="tspan607">
 		\notes \relative c''  {</tspan>
     <tspan
        x="52.9841156"
        y="466.407318"
        sodipodi:role="line"
-       id="tspan610">
-				\key c \minor </tspan>
+       id="tspan609">
+				\key c \minor</tspan>
     <tspan
        x="52.9841156"
        y="494.407318"
        sodipodi:role="line"
-       id="tspan612">
-				g-(</tspan>
+       id="tspan611">
+				g(</tspan>
     <tspan
        x="52.9841156"
        y="522.407318"
        sodipodi:role="line"
-       id="tspan614">
-				&lt;&lt;ees c'&gt;&gt;-)</tspan>
+       id="tspan613">
+				&lt;ees c'&gt;)</tspan>
     <tspan
        x="52.9841156"
        y="550.407318"
        sodipodi:role="line"
-       id="tspan616">
-				&lt;&lt;d f gis b&gt;&gt;-.</tspan>
+       id="tspan615">
+				&lt;d f gis b&gt;-.</tspan>
     <tspan
        x="52.9841156"
        y="578.407318"
        sodipodi:role="line"
-       id="tspan618">
-				&lt;&lt;ees g bes&gt;&gt;-.</tspan>
+       id="tspan617">
+				&lt;ees g bes&gt;-.</tspan>
     <tspan
        x="52.9841156"
        y="606.407318"
        sodipodi:role="line"
-       id="tspan620">
+       id="tspan619">
 		}</tspan>
     <tspan
        x="52.9841156"
        y="634.407318"
        sodipodi:role="line"
-       id="tspan622">
+       id="tspan621">
 }</tspan>
     <tspan
        x="52.9841156"
        y="662.407318"
        sodipodi:role="line"
-       id="tspan624">
+       id="tspan623">
 </tspan>
   </text>
   <rect
      style="font-size:12;fill:#ee9797;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1pt;"
      id="rect626"
-     width="37.0888901"
-     height="77.7100830"
-     x="118.331230"
-     y="502.504639" />
+     width="19.427519"
+     height="77.710083"
+     x="118.331233"
+     y="502.504608" />
   <rect
      style="font-size:12;fill:#ee9797;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:0.955533pt;"
      id="rect627"
-     width="37.088898"
+     width="17.072661"
      height="24.725899"
-     x="249.614136"
-     y="501.327087" />
+     x="236.662471"
+     y="501.327026" />
   <rect
      style="font-size:12;fill:#ee9797;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1pt;"
      id="rect628"
-     width="32.9678955"
-     height="25.9033813"
-     x="304.364410"
-     y="528.407959" />
+     width="14.129138"
+     height="25.903381"
+     x="289.057868"
+     y="528.407867" />
   <rect
      style="font-size:12;fill:#ee9797;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:0.97468pt;"
      id="rect629"
-     width="33.556657"
+     width="17.072718"
      height="24.725952"
-     x="304.953118"
-     y="557.843597" />
+     x="287.291711"
+     y="557.843414" />
   <rect
      style="font-size:12;fill:#67ee7a;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1pt;"
      id="rect630"
-     width="36.500168"
+     width="36.500157"
      height="20.016266"
-     x="170.137939"
-     y="504.859436" />
+     x="153.653996"
+     y="504.859375" />
   <rect
      style="font-size:12;fill:#67ee7a;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1pt;"
      id="rect631"
-     width="35.322739"
+     width="34.145304"
      height="23.548523"
-     x="171.315369"
+     x="153.653997"
      y="559.021027" />
   <rect
      style="font-size:12;fill:#67ee7a;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1.03682pt;"
      id="rect632"
-     width="33.556606"
+     width="30.024335"
      height="25.314667"
-     x="271.396515"
-     y="557.254837" />
+     x="254.912565"
+     y="557.254730" />
   <rect
      style="font-size:12;fill:#ad99f2;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1pt;"
      id="rect633"
-     width="37.6776123"
-     height="25.9033508"
-     x="135.992599"
-     y="473.069000" />
+     width="24.856951"
+     height="25.903351"
+     x="135.992606"
+     y="473.068970" />
   <rect
      style="font-size:12;fill:#ad99f2;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:0.993613pt;"
      id="rect634"
-     width="32.967896"
-     height="26.735904"
-     x="339.098450"
-     y="528.164134" />
+     width="37.677591"
+     height="26.735905"
+     x="303.775733"
+     y="528.164032" />
   <rect
      style="font-size:12;fill:#ad99f2;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1.03923pt;"
      id="rect635"
-     width="31.790461"
+     width="37.677549"
      height="24.725952"
-     x="340.275909"
+     x="304.953133"
      y="557.599701" />
   <rect
      style="font-size:12;fill:#67ee7a;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:1.03682pt;"
      id="rect636"
-     width="33.556606"
+     width="37.088890"
      height="25.314667"
-     x="238.428623"
-     y="528.407898" />
+     x="221.944672"
+     y="528.407806" />
   <rect
      style="font-size:12;fill:#ad99f2;fill-opacity:0.489051;fill-rule:evenodd;stroke:none;stroke-width:0.955533pt;"
      id="rect638"
-     width="37.088898"
+     width="17.072677"
      height="24.725899"
-     x="290.235321"
-     y="501.327087" />
+     x="256.089982"
+     y="501.327026" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#0000b0;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;"
      d="M 176.504 487.05 C 196.485 487.05 293.064 510.362 387.976 488.715 "
@@ -192,17 +187,17 @@ t</tspan>
      sodipodi:nodetypes="cc" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#0000b0;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;"
-     d="M 376.319 543.665 C 409.622 543.665 441.259 530.344 461.241 502.037 "
+     d="M 345.706 541.31 C 379.009 541.31 441.259 530.344 461.241 502.037 "
      id="path640"
      sodipodi:nodetypes="cc" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#00b300;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;"
-     d="M 193.155 587.791 C 203.146 604.442 300.556 662.722 382.148 626.089 "
+     d="M 174.316 584.259 C 184.307 600.91 300.556 662.722 382.148 626.089 "
      id="path641"
      sodipodi:nodetypes="cc" />
   <path
      style="fill:none;fill-rule:evenodd;stroke:#00b300;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;"
-     d="M 290.565 589.456 C 312.212 617.763 316.375 629.419 383.813 611.103 "
+     d="M 269.371 581.214 C 291.018 609.521 316.375 629.419 383.813 611.103 "
      id="path642"
      transform="translate(0.000000,4.995392)"
      sodipodi:nodetypes="cc" />
@@ -245,8 +240,7 @@ Add -es for flat, -is for sharp</tspan>
        x="203.978546"
        y="697.689270"
        sodipodi:role="line"
-       id="tspan705"
-       style="fill:#a60000;fill-opacity:1;">
-Enclose pitches in &lt;&lt; &gt;&gt; for chords</tspan>
+       id="tspan625">
+Enclose pitches in &lt; &gt; for chords</tspan>
   </text>
 </svg>
