@@ -254,10 +254,6 @@ def format_page (html, file_name, lang):
 	for (prefix, name) in available:
 		lang_file = file_lang (base_name, prefix)
 		language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
-	# Disable language selection until we have something useful.
-	if lang == 'site':
-		language_menu = ''
-
 	languages = LANGUAGES_TEMPLATE % language_menu
 
 	page_template = PAGE_TEMPLATE
