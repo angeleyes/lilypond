@@ -198,16 +198,6 @@ def format_page (html, file_name, lang):
 	def grab_gettext (match):
 		return gettext (match.group (1))
 
-	def langify_url (match):
-		rel = match.group (1)
-		file = os.path.join (dir_lang (dir, lang), rel)
-		if os.path.isfile (file):
-			rel = file_lang (rel, lang)
-		elif os.path.isdir (file) \
-		   and os.path.isfile (os.path.join (file, 'index.html')):
-			rel = file_lang (os.path.join (rel, 'index.html'), lang)
-		return '''href="%(rel)s"''' % vars ()
-
 	dir = os.path.dirname (file_name)
 	dir_split = rreverse (string.split (dir, '/'))
 	base_name = os.path.basename (file_name)
@@ -253,6 +243,23 @@ def format_page (html, file_name, lang):
 		#onload = "setfocus ();"
 		onload = "language_redirect ();"
 
+	# Find available translations of this page.
+	rel_name = string.join (string.split (file_name, '/')[1:], '/')
+	available = filter (lambda x: lang != x[0] \
+			    and os.path.exists (os.path.join (x[0], rel_name)),
+			    LANGUAGES)
+
+	# Create language menu.
+	language_menu = ''
+	for (prefix, name) in available:
+		lang_file = file_lang (base_name, prefix)
+		language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
+	# Disable language selection until we have something useful.
+	if lang == 'site':
+		language_menu = ''
+
+	languages = LANGUAGES_TEMPLATE % language_menu
+
 	page_template = PAGE_TEMPLATE
 	f = os.path.join (dir_lang (dir, 'site'), 'template.ihtml')
 	if dir != lang and os.path.isfile (f):
@@ -270,6 +277,7 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
 	page = re.sub ('@ONLOAD@', onload, page)
+	page = re.sub ('@LANGUAGES@', languages, page)
 
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
@@ -277,30 +285,6 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@([-A-Za-z]*.ihtml)@', grab_ihtml, page)
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
-
-	# Find available translations of this page.
-	rel_name = string.join (string.split (file_name, '/')[1:], '/')
-	available = filter (lambda x: lang != x[0] \
-			    and os.path.exists (os.path.join (x[0], rel_name)),
-			    LANGUAGES)
-
-	# Create language menu.
-	language_menu = ''
-	for (prefix, name) in available:
-		lang_file = file_lang (base_name, prefix)
-		language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
-	# Disable language selection until we have something useful.
-	if lang == 'site':
-		language_menu = ''
-
-	# Langify all urls that have available pages.
-	if lang != 'site':
-		page = re.sub ('''href=[\'"]([^/][^:\'"]*)[\'"]''',
-			       langify_url, page)
-
-	# Must add language menu after url langification
-	languages = LANGUAGES_TEMPLATE % language_menu
-	page = re.sub ('@LANGUAGES@', languages, page)
 
 	return page
 
