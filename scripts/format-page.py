@@ -213,7 +213,7 @@ def format_page (html, file_name, lang):
 	if is_root:
 		locations = []
 	else:
-		home = item (dir_entry (lang, depth - 1), ('.', _ ("Home")))
+		home = item (dir_entry (lang, depth - 1), ('', _ ("Home")))
 		locations = [home] + locations
 
 	location = string.join (map (locationize, locations), LOCATION_SEP)
@@ -264,7 +264,6 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
 	page = re.sub ('@ONLOAD@', onload, page)
-	page = re.sub ('@LANGUAGES@', languages, page)
 
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
@@ -272,6 +271,13 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@([-A-Za-z]*.ihtml)@', grab_ihtml, page)
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
+
+	# Strip .html suffix for auto language selection to work.
+	page = re.sub ('''href=[\'"]([^/][.]*[^.:\'"]*).html[\'"]''',
+		       'href="\\1"', page)
+
+	# No autoselection for automatic language menu.
+	page = re.sub ('@LANGUAGES@', languages, page)
 
 	return page
 
