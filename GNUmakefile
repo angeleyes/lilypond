@@ -35,7 +35,7 @@ out/$(outball): site
 
 upload: menuify
 	cd out/site && \
-	rsync --delete --stats --progress -lavu -e ssh . x:/var/www/lilypond/web/
+	rsync --delete --stats --progress -rltvu -e ssh . x:/var/www/lilypond/web/
 
 
 dist:
