@@ -1,5 +1,13 @@
 2004-10-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/images/computer-totaal.jpeg (Module): new file.
+
+	* site/about/thanks.html (Module): mention devel team.
+
+	* site/images/sarabande.png (Module): 2.3 version.
+
+	* site/switch/advantages.html (Module): revise
+
 	* site/about/pubs.html (href): add computer totaal scan. (Thanks,
 	Mars!)
 
