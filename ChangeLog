@@ -1,3 +1,10 @@
+2004-06-16  Pedro Kroger  <kroeger@pedrokroeger.net>
+
+	* site/download/index.html: debian and fink packages for 2.3.4
+
+	* format-page.py (do_one_file): Added regular expression to strip
+	the $Date$ keyword from files.
+
 2004-06-04  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
 	* site/download/windows.html (href): remove "just click next"
