@@ -1,0 +1,622 @@
+i-*-outline-layout:(2 (-1 -1 0 :) 0);outline-stylish-prefixes:nil -*-
+
+* GNU LilyPond TODO
+Features you cannot find in the documentation as working, should be
+mentioned here.  This is an assorted collection of stuff that will be
+done, might be done, or is an idea that we want to think about.
+m
+Most of the items are marked in the code as well
+Grep -i for TODO, FIXME and ugh/ugr/urg.  
+
+.* TODO
+. * make this file understandable for 3rd parties.
+. * use Rhythmic_head::position_i () for all Staff_referenced 
+. * note head on stem err msg in dutch.
+. *  why need to run -C mf twice?
+. * fix interstaff stuff
+. * junk BLURB files.
+. * setting indent to 0 with \shape fails
+. * here's no difference at all in output. When either is jacked up to 7.0,
+everything works and matches up; when either is set just a bit above the
+default 5.0 (5.4 is what I was hoping to use), stems miss note heads. So
+it's some sort of a numerical (truncation/roundoff) problem.
+John
+. * metre -> meter
+. * Fixed size staff heights;
+. * ly2dvi : don't repeat opus if same.
+. * breaks before mmrests are favored.
+. * hara kiri _8 clef.
+. * junk -M ?
+. * mudela-book doco
+. * rerun profile
+. * fix or replace feta-accordion.mf
+. * script engraver
+. * Chords:
+.  * Bass/inversion pitch when not part of Chord
+Sometimes a series of changing chords will be blocked out over a static tone
+in the bass, usually this was referred to as a pedal tone (and it's been
+continued to be used, even in contemporary music).  Another less frequently
+used practice is putting a non-chordal tone in the bass (that is not acting
+as a pedal tone) in order to create tension or make a more colorful sound.
+There are examples of this in the classsical literature, but its use is much
+more prevalent today.  For example, the chord sequence Dm7 - Dm7/G is such a
+sequence, and the Dm7/G defies easy classification.  Is it a G7(no 3rd)add
+9/11?  Or is it a G7(no 3rd)add2/4?  Or perhaps Dm7 add11?  It's a heck of a
+lot easier to read to just leave it as Dm7/G!
+.  * Diminished does not mean 5-
+When speaking of a chord, dimished can mean one of two things:  A diminished
+triad or a dimished seventh chord (which is distinctly different from what's
+known as the 'half-diminished' chord).  The triad is a root with a flat
+third and flat fifth, and is notated (at least in America, someone else will
+have to fill me in on other countries) as (using C as the root) Cdim, or Co.
+The diminished seventh has a root with a flat third, flat fifth, and a
+doubly flatted seventh (which is enharmonically equivalent to a sixth, and
+from which comes tons of confusion).  It is usually notated as (again, using
+C as the root) Cdim7 or Co7.
+
+. * Mondrup:
+
+- I would like the possibility of forcing clef- and key- changes to be
+printed _after_ the new bar line
+
+- I would like an option to define the number of systems on which the
+score must be distributed. As it is now it seems that I may only
+influence that indirectly through the gourlay_maxmeasures property.
+
+- if I change the property minVerticalAlign in a multi staff score with
+lyrics the change affects the lyrics too. I would like the change to
+_only_ affect staves.
+
+- I would like to be able to influence the sloping of xtuplet brackets
+
+- for one of my test scores containing a modern edition of an early
+17'th century composition I have a leading measure containing the
+orginal clefs and note values of the original composition. I use the
+"harmonic" and "diamond" note head styles for that measure and would
+like to have the stems of these notes _centered_ on the notehead as in
+the mensural music notation.
+
+- after the leading measure in the above mentioned score I want a double
+bar line fully drawn across the staves and after that keep to the
+ChoirStaff bar line types in the rest of the scores
+
+- autoBeamMelisma: if I explicitly beam notes in a staff with auto
+beaming disabled I would like to have these beams also to be
+melismatic.
+
+. * make all Feta (including dynamics) available to the user in
+    textual scripts. Examples: "D.S. al \coda", "\mf espress.".
+ 
+. * ?  -Q, --find-old-relative show all changes in relative syntax
+What's old about absolute to relative conversion?  Could maybe use for
+abc2ly, midi2ly?
+
+. * Junk shared cruft (duration, moment) in lib/
+
+
+.* Cleanups needed
+. * \$ and $ identifier syntax in examples.
+. * Junk ghost positioning objects eg, Script leans on  Staffside
+    leans on Staff.
+. * bracket ps code.
+. * Key_engraver, Local_key_item
+. * Think of comprehensive solution for "if (grace_b == self_grace_b_)"
+. * String[String.length] doesn't trap.
+. * Beam
+. * Stem
+. * Rhythmic_column and interaction stem/rhythmic_column/note_head/dots.
+. * Duration
+. * clef engraver 
+. * parser
+. * Lookup::text -> needs  to be TeX independent.
+. * junk Music_iterator::first_b_
+. * Bezier
+
+.* BUGS
+. * [c8. c16 c16 c16] in 6/8 timesig. 
+. * staffside spanner (crescendo!) along with staffswitch.
+
+. * 
+> \context Staff <
+>   {\voiceone''4. r8}
+>  \voicetwo c,4 r4}
+> >
+. * sort out breve shapes.
+. * \time forces keysig?
+
+.* STUFF
+. * We need feta-din*.mf files for more sizes than 10.
+- Rests and beams don't work too well together. Example:
+   [ r8 g''16 des'] [r8 c16 a] 
+
+- The stemLength property should affect also beamed stems.
+
+. * align left edge of broken tuplet-spanner (have a test case?)
+. * fix dynamics decently, ie. use kerning & ligatures.
+. * key restorations & repeats
+. * paperXX.ly \quartwidth, font setting not up to date. (Should read from AFM?)
+. * * auto melismaBusy for beams.
+. *In Caro Mio Ben, bar 8, there's a syllable that starts on a note, and
+ends on a pair of grace notes.  Standard practice is to mark this with
+a slur starting on the main note and ending on the grace note, so a
+singer knows where to break the words.
+
+In bar 27, there's a crescendo that's supposed to start at the start
+of the grace notes and extend to the note after the grace notes.
+. * 5. Sometimes lyrics extend past the right end of the staff. I guess that
+this is a similar problem (if not another symptom of the same problem) as
+one of the spacing bugs mentioned in the TODO.
+. * 4.  Lyrics and grace sections don't go too well together.
+        The words are aligned with the main note, not the start of the
+        grace note.  This is usually wrong, but is sometimes right.
+. * decimal point in \paper {}
+. * tie-direction
+. * repeats and partial measures.
+. * rhythmic staff & accidentals.
+. * use melismaBusy in Lyric context to typeset melismata correctly.  
+. * ly2dvi/lilypond logfile.
+. * hang Item on Spanner
+. * do --safe for PS output?
+. * msgfmt -o check?
+. * collision of lyrics with span_bars. See star-spangled.
+. * Auto_beam debugging output (waarom/wanneer heb jij die weggehaald?)
+. * It is impossible to typeset two textual scripts that are stacked
+  on top of eachother and avoids note collisions and at the same
+  time are typeset with different textStyle. I tried to move around
+  the text_engraver and other engravers between Voice and Thread 
+  but the granularity is not fine enough, the scripts have to 
+  share the same engraver in order to be get correct vertical 
+  position but than they cannot have different style.
+  In my opinion, all scripts that share the same staff, should
+  be stacked vertically, avoiding collisions with the notes
+  in all voices.
+
+. * Matanya's tips: 
+.  * don't  shorten stems/staffs closer to each other.
+.  * accidentals closer to note head
+.  * to space the staffs/staffgroups contained in the score.  
+.  * heavier beams?
+
+. * tuplets that are written as "number : note", for example
+   "3 : [image of a half note here]".  possible?
+. * a note with a circle after it, meaning:
+
+   note + circle = note + 1/4 of its length
+
+   the circle is like a dot that's not filled in.  for example, on
+   page three, the c-sharp on the second line should be a quarter with 
+   a circle, not a quarter tied to a sixteenth.  is this at all
+   possible with lily?
+. * make dependencies () a virtual function.
+. * deprecate hangOnClef.
+. * Abstraction for engravers:
+.  * make "in-between" engraver (Tie)
+.  * make wide_spanner_engraver (line_group_spanner, staff_symbol)
+. * store req -> element, element -> element causes for warnings
+. * compulsory hshift
+. *  My wish list for lyrics. I dream of a time when I will have enough time to
+become familiar enough with the source code to be able to implement some of
+these myself, but I don't know when that will be, so I thought I'd "publish"
+my suggestions in case someone else is in a position to give them some
+priority. Otherwise, perhaps they could go on the todo list?
+
+If any of these are already implemented, please let me what the syntax is to
+use them!
+
+1. Stanza numbering. Numbering at the beginning of a song with the number
+set to the left of the first note. It would also be nice (but not as
+important) to be able to have some form of automatic numbering at the
+beginning of each new line. This would make it easier to follow songs with a
+large number of stanzas.
+
+3. Notes centred above/below lyrics rather than left-aligned.
+
+4. It would be very nice to be able to build some kind of phrasing into the
+lyrics of hymns, etc, so that the first words of a phrase are left aligned
+with each other, the last words are right aligned, and the words in between
+are centred.
+
+5. In a song, with (say) four stanzas and a chorus, it would be nice to be
+able to vertically align the chorus midway between the staves.
+
+6. It would be nice to be able to put vertical brackets either side of a
+repeated section with different words for each repeat.
+. * Give # lines in linebreaking.  
+. * arrows on slurs.
+. * rewrite context defs using Scheme
+. * junk TeX specifics from internal code.
+. * \selectmusic to cut pieces from music. 
+. * formatting of input stuff. 
+.  * deps for ly2dvi
+. * TODO: merge atom & molecule; make  tree from molecule.
+. * Align_element::padding  ?
+. * use streambufs and iostream
+to provide IO handling for TeX stream, mudela stream, data-file.
+. * seriously buffer TeX output (do profile of writing .5 mb TeX file.)
+. * fix partial measures in meaningful way.
+. * uniformise recent feta contributions.
+.  * bigger and fatter 4/4 C
+. * relative mode for midi2ly
+. * junking \skip req in lyrics
+. * midi2ly empty staffs.
+. * use Fourier transformation for rhythmic quantisation.
+. * horizontal centering of dynamics 
+. * $DEPENDENCIES_OUTPUT support
+. * turn slope-damping on/off
+. * sort out directory stuff.
+.  * --prefix option?
+.  * -I option per filetype?
+.  * kpathsea?
+. * fix vertical alignment and stafflines
+. * declaring Performers
+. * text-items clash with stems/beams
+. * --include, -I option for ly2dvi (pass on to lily)
+. * fix placement of beam-less abbrev
+. * \meter 3/4;
+	<{\voiceone cis4. cis8 cis4 | cis4 cis cis | r1 }
+	 {\voicetwo cis,4 r r | r2. | r1 }> |
+	}
+. * Musical_pitch (analogous to Duration and Rhythmic_req)
+	  think about, analogous to pitch: 
+	   * { a4 a16 } c <-- duration of c?
+	   * < a4 b8 > c <-- duration of c?
+. * \tempo 4. = 90;
+. * make sure all ex's have a mudela-version
+. * do rest-collisions for Multi_measure_rests as well.
+. * split error/warning in error/warning/non_fatal_error
+. * add a Duration_convert member to Duration_iter to set parameters.
+	Junk global duration settings. 
+. * en-,discouraged linebreaking: 
+.  * handle DISALLOW < penalty > FORCE
+.  * discourage breaking of slurs
+. * fix variable define/lookup parser global<->paper
+. * fix title/instrument placements; see input/test/title.ly
+. * <\voiceone c4. \voicetwo c4>
+. *  I'd like to change the \repetitions command to Jan's suggested
+  syntax: \repeat "repeatsymbol" 2 {...}, but I'm not sure that
+  I understand the implementation of repeats well enough.
+. * add full cello suites to web site (kom op, Maarten!)
+. * add mudela-book-doc source to webstie.
+. * Rethink Time_description
+\cadenza , \meter,  should all be \properties
+. * fix singleStaffBracket
+. * rename
+.  * partial -> anacrouse
+. * move paper vars into engraver properties
+. * add new glyphs to font.ly
+. * check for groff / troff/ nroff et
+. * more intelligent file searching
+. * disable spaces in TeX stuff
+. * handle ^C for tmp/file creation.
+. * make LilyPond RPM fully relocatable
+. * better hshift (dots, distance, head dependent)
+. * didot / big point.
+. * clefs (AG): The "8" should appear closer to the actual clef,
+touching it.
+. * put errorlevel in Input class
+. * junk nesting slurs
+. * distinguish between unset and empty properties. 
+
+.* FONT
+. * the bracket is ugly (wings are too parabolic, should be more circular)
+. * versioning for Feta
+. * rewrite dynamic signs.  They're kind of spaghetti now. 
+. * The `3' in the meter key is a one or two pixels too thin (at 600dpi)
+	in the middle:
+. * design macro for penstroke with rounded endings
+. * timesig C: fat yet less curved.  Check out relations. 
+. * design decent macro for bulbed endings
+. * printer dependencies.
+. * versioning	
+. * lo-res fixes.
+. * work out sizes of character fonts.
+. * more symbols
+.  * piano pedals: Ped/*
+.  * maxima notehead
+.  * coda signs: Segno, O+
+.  * glissando, arpeggio
+.  * lengthened trill
+. * include important spacing dims in fetalog 
+. * scalability: use blot_diameter everywhere, make font chubbier for
+    small sizes.
+
+.* 3RD PARTY BUGS
+. * UMR: Uninitialized memory read
+      This is occurring while in:
+            qst            [qsort.c]
+            qsort          [libc.so.1]
+            Keyword_table::Keyword_table(Keyword_ent*) [keyword.cc:28]
+            My_lily_lexer::My_lily_lexer() [my-lily-lexer.cc:78]
+            My_lily_parser::parse_file(String,String) [my-lily-parser.cc:54]
+            do_one_file(String,String) [scores.cc:124]
+      Reading 4 bytes from 0xefffeca8 on the stack.
+      Address 0xefffeca8 is 728 bytes below frame pointer in function 
+. *  Array<Axis [2] > axeses;
+
+  for (int i=0; i < loose_elems.size (); i++)
+    {
+      Score_element* elt = loose_elems[i];
+      /*
+	    with which axes do we have to meddle?
+      */
+      int j =0;
+      Axis as [2];
+      for (int a = X_AXIS; a < NO_AXES; ++a)
+	if (elt->parent_l (Axis (a)) == this)
+	  as[j++] = Axis (a);
+      if (j == 1)
+	as[j++] = as[0];
+
+      axeses.push (as);
+    }
+
+. * patch: don't touch timestamp if all patches fail.
+. * MetaPost: should not generate setgray for unfill
+. * mfplain.ini not in tetex 0.9
+. * mf-to-table -> add space 'before ; in AFM output.  (-> check AFM
+spec. Is this a bug in afm2tfm?)
+. * check out GCC signatures?
+. * glibc 2.0:
+	  f = fopen ("/dev/null", "r")
+	  assert (feof (f))
+. * tetex: mfplain.mem
+
+.* PROJECTS
+. * Scripts:
+.  * stack scripts in chords:
+	  % fingering:        footing:
+	    < a-4 c-2 g-1 >   < c-\ltoe e-\lheel >
+.  * script-spacing
+.  * slur parts as a script
+.  * stack parameterised scripts for fingering and footing:
+
+. * convert-mudela:
+.  * automatically add  a \version if not present.
+.  * better parsing
+.  * make smarter
+.  * convert-mudela -e empty.ly
+
+. * emacs mudela-mode
+.  *  should handle block comments too.
+.  *  handle lexer modes (\header, \melodic, \lyric) etc.
+.  *  indentation
+.  *  notenames?
+.  *  fontlock: \melodic \melodic
+
+. * use properties for:
+.  * default tempo.
+.  * cadenza mode? 
+
+. * page handling:
+.  * PS output
+.  * optimal pagebreaking.
+
+. * internationalisation for input.
+.  * Unicode support? -> man 7 unicode
+.  * (The explanation below is mostly intended for Han-Wen and Jan)
+> Before, the font was changed with macros declared separately for 
+> pure TeX and LaTeX, but now all the fonts are declared directly in
+> the generated code using the low-level TeX commands. This circumvents
+> the fontencoding mechanism of LaTeX and is a potential source of
+> problems also for us users of the Latin-1 character set. 
+> I think it still works since the inputencoding latin1 is 
+> declared by ly2dvi, but it still means that e.g. an o with
+> umlaut is typeset as a combination of the two symbols 'o' and
+> 'umlaut' instead of as a single character, as would be the case
+> if fontencoding OT1 had been used. This shouldn't give any 
+> difference in layout, though. One of the main argument for using
+> fontencoding OT1 is for the hyphenation mechanism to work, an 
+> argument that's clearly irrelevant in our application. Yet we
+> see the problem for August.
+
+. * \header
+.  * output header info to MIDI too.
+
+. * a musical dictionary. See Documentation/vocabulary-*, other
+languages:
+.  * explanations
+.  * italian
+.  * german
+.  * dutch
+.  * swedish
+	 .. ?
+
+. * chords
+.  * guitar chords (fret diagrams)
+.  * other chord name styles (american(?) style)
+.  * basso continuo
+.  * MIDI output?
+
+. * Debug logs:
+.  * derive lily_stream, Dstream, texstream from ostream?
+.  * indentable stream as baseclass for TeX stream, lily stream, Dstream.
+.  * use dstream feature in midi2ly
+.  * integrate IO checking into stream class
+
+. * input converters
+.  * NIFF?
+.  * ABC? 
+.  * SMDL?
+
+. * add to MIDI output:
+.  * sharp / flat on trills (in MIDI ??)
+.  * ornaments (and trills?)
+.  * slurs
+.  * accents
+.  * dynamics
+> Would it be hard to add support for proper dynamics in MIDI output?  I
+> would really like to have this feature...
+
+Concretely spoken, for dynamics you have to write a performer
+(Dynamics_performer), that will take the input requests. If I
+understand correctly, every MIDI note played must have its dynamic
+strength set separately.  That means the the Dynamics_performer must
+set the strength of every Audio_note it finds.  This means that one
+has to modify existing Audio items.  The best way of doing this is
+with a broadcast/acknowledge process.
+
+So the best way of handling this, is
+
+  1 supporting dynamic settings in Audio_note
+
+  2 Write a Dynamics_performer that will modify
+  any notes it finds to set appropriate strengths.
+
+I'd say that the work involved is not hard, but you have to be fluent
+with C++ and need some insight into the working of Notation Contexts
+and friends.  I guess I could do it in a day or so, but if you are not
+so fluent with the inner workings of LilyPond, it could take you some
+more time (A few more days?).
+
+Please note, that I am *not* going to code this myself: my days are
+valuable, and I think I have more interesting things to do than fixing
+the MIDI output (I don't even have a soundcard).  But I *do* want to help
+you or other people with implementing this, so if you need help, don't
+hesitate to ask.
+.  * account for rhythmic position in measure
+.  * etc.
+
+
+. * Output class, handles : (smallish)
+.  * help text /(c) notice?
+.  * version line
+.  * warning /errors/progress
+.  * abort on error/warning; exit status
+.  * quiet/ignore-version options
+.  * logfile output
+
+. * PS 
+.  * speed up PS code.
+.  * PS lines to .eps files
+.  * write custom prolog
+
+. * SGML input
+
+. * Documentation
+.  * internal documentation
+
+. * more spanners (smallish)
+.  * Glissando
+.  * trill
+
+. * Rewrite Stem, Beam (hairy)
+.  * general shaving on Beam and Stem
+.  * use plet grouping
+.  * beams over bars
+
+. * lines:
+.  * Ledger lines, should be separate item: Ledger_lines
+.  * beam stem showthrough, inter beam sizes (french vs german style)
+
+. * Collisions
+.  * left/right note balls should be handled by Collision:
+	< \multi 2; { \stem 1; <b c> } { <f as b> } >
+
+. * Keys:
+.  * merge key{item} & localkey{item}?
+.  * spacing
+
+. * Support for TAB
+.  * redo Notehead to allow digits as heads
+.  * add a \tablature {} lexer mode for easy entering
+
+. * should adjust stemlength for flag number.
+
+. * breaking:
+.  * saving them
+.  * specify number of lines
+
+.* INPUTLANGUAGE
+. * convention for slurs vs. phrasing marks.
+. * Language:
+.  * \translator -> ?
+.  * fix \partial 
+.  * \bla {} vs \bla ; 
+.  * \once\property  KEY = VAL
+.  * input property
+. * Figure out semicolons.
+. * <c f a>4 ?
+. * Viola mode?
+
+		@c c g e g 
+	for
+		c g es g, 
+
+		@A c g e g
+	for
+		cis gis e gis
+. * configure pitch_byte
+. * rest name configurable
+
+
+.* SMALLISH PROJECTS
+
+. * A range for context errors (eg. mark both { and }. )
+
+. * lyric in staff  (sharpsharp in staff, text below)
+
+. * write Dynamic_line (to group dynamics horizontally)
+
+. * use Real for all y positions.
+
+. * half-sharps, half-flats
+
+. * adaptive accidental spacing.
+
+. * handle EOF graciously in error messages.
+
+. * midi esp.: use I32 iso int where 32 bits are needed (or assumed...)
+
+. * lily \tempo
+
+. *   % toe to bheel   four to five
+	    %   ^_u            4_5  
+	    %     -                           
+	    %  --|x--         --|x--
+	    %  --|---         --|---
+	    %  --|---         --|---
+          (where "to" is a tiny bow)
+
+. * auxilliary file for caching info.
+. * Text_crescendo
+
+.* IDEAS
+. * Output data structures of Mudela in XML/SGML.
+. * create libmudela, or liblily_frontend
+. * move MIDI stuff (including Quantization) to a ANSI C libmidi library.
+. * Spacing_request for manually adjusting spacing
+. * caching breakpoints
+. * used fixedpoint arithmetic for min. energy.
+
+* OUTLINE SETUP
+.* .EMACS
+;;; from outline.el
+(defvar outline-font-lock-keywords
+  '(;; Highlight headings according to the level.
+    ;; must change this to allout node layout
+    ;;("^\\(\\*+\\)[ \t]*\\(.+\\)?[ \t]*$"
+    ("^\\([.]*[ ]*[*]\\)[ \t]*\\(.*\\)$"
+     (1 font-lock-string-face)
+     (2 (let ((len (- (match-end 1) (match-beginning 1))))
+	  (or (cdr (assq len '((1 . font-lock-function-name-face)
+			       (2 . font-lock-keyword-face)
+			       (3 . font-lock-comment-face))))
+	      font-lock-variable-name-face))
+	nil t))
+    ;; Highlight citations of the form [1] and [Mar94].
+    ("\\[\\([A-Z][A-Za-z]+\\)*[0-9]+\\]" . font-lock-type-face))
+  "Additional expressions to highlight in Outline mode.")
+
+(add-hook 'outline-mode-hook
+	  '(lambda ()
+	    (setq font-lock-maximum-decoration t)
+	    (setq font-lock-maximum-decoration t)
+	    (make-local-variable 'font-lock-defaults)
+	    (setq font-lock-defaults '(outline-font-lock-keywords t))
+	    (font-lock-mode global-font-lock-mode)
+	))
+ 
+(require 'allout)
+(outline-init 't)
+
+ 
