@@ -36,10 +36,9 @@ $(LANG)/%.svg: site/%.svg $(mo)
 .PRECIOUS: %.png %.svg
 
 %.png: %.svg
-	inkscape --export-png=$@- $<
-#	pngtopnm $@- | pnmcrop | pnmtopng -transparent =black > $@
-	pngtopnm $@- | pnmtopng -transparent =black > $@
-	rm $@-
+	inkscape --export-png=$@ --export-background-opacity=0 $<
+#	pngtopnm -background "#FFFFFF" $@- | pnmcrop | pnmtopng -transparent "rgb:FF/FF/FF" > $@
+#	rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
 #out/site/graphics/%.$(LANG).png: $(LANG)/graphics/%.png

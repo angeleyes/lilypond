@@ -40,9 +40,11 @@ def translate (s, lang):
 
 	# FIXME: simplistic REs
 	if remove_quotes:
-		s = re.sub ('_ *\("(([^"]|([^\\\]\\\"))*)"\)', grab_gettext, s)
+		#s = re.sub (r'''_ *\("(([^"]|([^\\]\\"))*)"\)''', grab_gettext, s)
+		#s = re.sub (r'''\\([^\\])''', r'''\1''', s)
+		s = re.sub ('_ *\("([^"]*)"\)', grab_gettext, s)
 	else:
-		s = re.sub ('_ *\(("([^"]|([^\\\]\\\"))*")\)', grab_gettext, s)
+		s = re.sub ('_ *\(("[^"]*")\)', grab_gettext, s)
 	return s
 
 

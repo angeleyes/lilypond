@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: site/graphics/annotate-example-1.svg:242
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-30 01:13+0100\n"
+"POT-Creation-Date: 2005-01-30 02:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,15 +169,183 @@ msgid "Crash course"
 msgstr ""
 
 #: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\"
+msgid "Commands start with \")</tspan></text>"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:197
+msgid ""
+"font-size:28.000000;font-style:normal;font-weight:normal;fill:#008f00;fill-"
+"opacity:1.0000000;stroke:#00d500;stroke-width:0.0000000;stroke-linecap:butt;"
+"stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;"
+"text-anchor:start;writing-mode:lr;"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:198
+#: site/graphics/annotate-example-1.svg:201
+msgid "323.05475"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:199
+#: site/graphics/annotate-example-1.svg:202
+msgid "454.98016"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:200
+msgid "text775"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:203
+#: site/graphics/annotate-example-1.svg:225
+#: site/graphics/annotate-example-1.svg:230
+msgid "line"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:204
+msgid "tspan806"
 msgstr ""
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
 msgstr ""
 
+#: site/graphics/annotate-example-1.svg:207
+#: site/graphics/annotate-example-1.svg:213
+msgid ""
+"fill:none;fill-rule:evenodd;stroke:#0000af;stroke-opacity:1;stroke-"
+"width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-"
+"dasharray:none;"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:208
+msgid ""
+"M 262.30989,573.38170 C 233.76782,572.36234 213.27992,562.25728 "
+"232.13807,506.19251"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:209
+msgid "path782"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:210
+#: site/graphics/annotate-example-1.svg:216
+#: site/graphics/annotate-example-1.svg:236
+msgid "cc"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:211
+#: site/graphics/annotate-example-1.svg:217
+msgid "translate(-103.0247,-0.588715)"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:214
+msgid ""
+"M 465.80736,560.72683 C 471.17433,536.18388 425.20469,554.40167 "
+"426.89137,505.56308"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:215
+msgid "path783"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:219
+msgid ""
+"font-size:28.000000;font-style:normal;font-weight:normal;fill:#0000b1;fill-"
+"opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;"
+"stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;"
+"text-anchor:start;writing-mode:lr;"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:220
+#: site/graphics/annotate-example-1.svg:223
+#: site/graphics/annotate-example-1.svg:228
+msgid "167.61949"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:221
+#: site/graphics/annotate-example-1.svg:224
+msgid "582.76678"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:222
+msgid "text784"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:226
+msgid "tspan802"
+msgstr ""
+
 #: site/graphics/annotate-example-1.svg:227
 msgid "Numbers are durations"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:229
+msgid "610.76678"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:231
+msgid "tspan804"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:233
+msgid ""
+"fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#00af00;stroke-"
+"width:1.8750000;stroke-linecap:butt;stroke-linejoin:miter;stroke-"
+"opacity:1.0000000;"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:234
+msgid ""
+"M 316.57929,448.50436 C 300.09529,448.50436 262.44950,440.40439 "
+"249.19783,485.43300"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:235
+msgid "path808"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:238
+msgid "metadata69"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:240
+msgid "RDF70"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:243
+msgid "Work71"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:245
+msgid "format72"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:247
+msgid "type74"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:248
+msgid "http://purl.org/dc/dcmitype/StillImage"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:253
+msgid ""
+"fill:none;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#a60000;stroke-"
+"width:1.3338088;stroke-linecap:butt;stroke-linejoin:miter;stroke-"
+"opacity:1.0000000;"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:254
+msgid ""
+"M 161.31580,432.69054 L 161.31579,432.69055 C 193.19907,377.64512 "
+"356.49996,393.11427 356.49996,393.42377"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:255
+msgid "path1014"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:256
+msgid "ccc"
 msgstr ""
 
 #: site/graphics/annotate-example-2.svg:181
