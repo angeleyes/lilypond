@@ -38,7 +38,7 @@ buttons:
 		done
 
 out/$(outball): site
-	cd out && tar czvf $(outball) site
+	cd out && tar czvf $(outball) site images
 
 upload: out/$(outball)
 	scp out/$(outball) lilypond.org:/var/www/lilypond/newweb/out

@@ -2,6 +2,7 @@
 
 	* GNUmakefile (buttons):
 	(all): New target.
+	(out/$(outball)): Add images too.
 
 	* format-page.py: Further development.
 
