@@ -1,3 +1,26 @@
+1.4.12.uu1
+==========
+
+* Make Timing_engraver instantiatable, add to Score_performer. Fixes bar checks
+in MIDI
+
+
+1.4.12.af1
+==========
+
+* Debian patches.
+
+
+1.4.12.jcn1
+===========
+
+* Documentation/topdocs/INSTALL.texi: Add section for MacOS X.
+
+* darwin.patch: New file.
+
+1.4.12
+======
+
 1.4.11.uu1
 ==========
 
