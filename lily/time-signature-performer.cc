@@ -3,18 +3,37 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
-#include "time-signature-performer.hh"
-#include "command-request.hh"
 #include "audio-item.hh"
+#include "lily-proto.hh"
+#include "performer.hh"
 
-ADD_THIS_TRANSLATOR (Time_signature_performer);
+
+class Time_signature_performer : public Performer
+{
+public:
+  VIRTUAL_COPY_CONS (Translator);
+  
+  Time_signature_performer ();
+  ~Time_signature_performer ();
+
+protected:
+
+  virtual void stop_translation_timestep ();
+  virtual void create_audio_elements ();
+
+  SCM prev_fraction_;
+private:
+
+  Audio_time_signature* audio_p_;
+};
+
 
 Time_signature_performer::Time_signature_performer ()
 {
-  time_signature_req_l_ = 0;
+  prev_fraction_ = SCM_BOOL_F;
   audio_p_ = 0;
 }
 
@@ -22,29 +41,26 @@ Time_signature_performer::~Time_signature_performer ()
 {
 }
 
-void 
-Time_signature_performer::do_print () const
-{
-#ifndef NPRINT
-  if (time_signature_req_l_)
-    time_signature_req_l_->print ();
-#endif
-}
 
 void
-Time_signature_performer::do_process_requests ()
+Time_signature_performer::create_audio_elements ()
 {
-  if (time_signature_req_l_)
+  SCM fr = get_property ("timeSignatureFraction");
+  if (gh_pair_p (fr) && !gh_equal_p (fr, prev_fraction_))
     {
-      audio_p_ = new Audio_time_signature (time_signature_req_l_->beats_i_, time_signature_req_l_->one_beat_i_);
-      Audio_element_info info (audio_p_, time_signature_req_l_);
+      prev_fraction_ = fr;
+      int b = gh_scm2int (gh_car (fr));
+      int o = gh_scm2int (gh_cdr (fr));
+      
+      audio_p_ = new Audio_time_signature (b,o);
+      Audio_element_info info (audio_p_, 0);
       announce_element (info);
-      time_signature_req_l_ = 0;
+
     }
 }
 
 void
-Time_signature_performer::do_pre_move_processing ()
+Time_signature_performer::stop_translation_timestep ()
 {
   if (audio_p_)
     {
@@ -52,20 +68,5 @@ Time_signature_performer::do_pre_move_processing ()
       audio_p_ = 0;
     }
 }
-
-bool
-Time_signature_performer::do_try_music (Music* req_l)
-{
-  if (time_signature_req_l_)
-    return false;
-
-  if (Time_signature_change_req *t =
-      dynamic_cast <Time_signature_change_req *> (req_l))
-    {
-      time_signature_req_l_ = t;
-      return true;
-    }
-
-  return false;
-}
+ADD_THIS_TRANSLATOR (Time_signature_performer);
 

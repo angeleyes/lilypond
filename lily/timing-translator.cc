@@ -1,114 +1,55 @@
 /*
   timing-translator.cc -- implement Timing_translator
 
+
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
+#include "debug.hh"
 #include "timing-translator.hh"
 #include "command-request.hh"
 #include "translator-group.hh"
 #include "global-translator.hh"
 #include "multi-measure-rest.hh"
 
+/*
+  TODO: change the rest of lily, so communication with
+  Timing_translator is only done through properties.  This means the
+  class declaration can go here.  */
+
 bool
-Timing_translator::do_try_music (Music*r)
+Timing_translator::try_music (Music*r)
 {
-  if (Timing_req *t =  dynamic_cast <Timing_req *> (r))
+  if (dynamic_cast<Barcheck_req*> (r))
     {
-      for (int i=0; i < timing_req_l_arr_.size (); i++)
-	{
-	  if (timing_req_l_arr_[i]->equal_b(t))
-	    return true;
-	  if (String (classname (timing_req_l_arr_[i])) == classname (r))
-	    {
-	      r->warning (_ ("conflicting timing request"));
-	      return false;
-	    }
-	}
-    
-      timing_req_l_arr_.push(t);
+      check_ = r;
       return true;
     }
   return false;
 }
 
-/*ugh.
- */
-Time_signature_change_req*
-Timing_translator::time_signature_req_l() const
+void
+Timing_translator::process_music ()
 {
-  Time_signature_change_req *m_l=0;
-  for (int i=0; !m_l && i < timing_req_l_arr_.size (); i++)
+  if (check_ && measure_position ())
     {
-      m_l=dynamic_cast<Time_signature_change_req*> (timing_req_l_arr_[i]);
+      check_->origin ()->warning (_f ("barcheck failed at: %s", 
+				      measure_position ().str ()));
+      Moment zero; 
+      
+      if (!to_boolean (get_property ("barCheckNoSynchronize")))
+	daddy_trans_l_->set_property ("measurePosition", zero.smobbed_copy ());
     }
-  return m_l;
 }
 
+
 void
-Timing_translator::do_process_requests()
+Timing_translator::stop_translation_timestep ()
 {
-  for (int i=0; i < timing_req_l_arr_.size (); i++)
-    {
-      Timing_req * tr_l = timing_req_l_arr_[i];
-
-      if (Time_signature_change_req *m_l = dynamic_cast <Time_signature_change_req *> (tr_l))
-	{
-	  int b_i= m_l->beats_i_;
-	  int o_i = m_l->one_beat_i_;
-	  if (! time_.allow_time_signature_change_b())
-	    tr_l->warning (_ ("time signature change not allowed here"));
-	  else
-	    {
-	      time_.set_time_signature (b_i, o_i);
-	    }
-	}
-      else if (Partial_measure_req *pm = dynamic_cast <Partial_measure_req *> (tr_l))
-	{
-	  Moment m = pm->length_mom_;
-	  String error = time_.try_set_partial_str (m);
-	  if (error.length_i ())
-	    {
-	      tr_l->warning (error);
-	    }
-	  else
-	    time_.setpartial (m);
-	}
-      else if (dynamic_cast <Barcheck_req *> (tr_l))
-	{
-	  if (time_.whole_in_measure_)
-	    {
-	      tr_l ->warning (_f ("barcheck failed by: %s", 
-	        time_.whole_in_measure_.str ()));
-
-	      time_.whole_in_measure_ = 0; // resync
-	    }
-	}
-      else if (Cadenza_req *cr = dynamic_cast <Cadenza_req *> (tr_l))
-	{
-	  time_.set_cadenza (cr->on_b_);
-	}
-    }
-
-  Translator_group * tr=0;
-
-  Scalar barn = get_property ("currentBarNumber", &tr);
-  if (!barn.empty_b () && barn.isnum_b ())
-    {
-      time_.bars_i_ = int(barn);
-      tr->set_property ("currentBarNumber", "");
-    }
+  check_ = 0;
   
-
-}
-
-
-void
-Timing_translator::do_pre_move_processing()
-{
-  timing_req_l_arr_.set_size (0);
   Translator *t = this;
   Global_translator *global_l =0;
   do
@@ -119,34 +60,128 @@ Timing_translator::do_pre_move_processing()
   while (!global_l);
 
   /* allbars == ! skipbars */
-  bool allbars = ! get_property ("skipBars", 0).to_bool ();
+  SCM sb = get_property ("skipBars");
+  bool allbars = !to_boolean (sb);
 
   // urg: multi bar rests: should always process whole of first bar?
-  if (!time_.cadenza_b_ && allbars)
-    global_l->add_moment_to_process (time_.next_bar_moment ());
+  SCM tim = get_property ("timing");
+  bool timb = to_boolean (tim);
+  if (timb && allbars)
+    {
+      Moment barleft = (measure_length () - measure_position ());
+
+      if (barleft > Moment (0))
+	global_l->add_moment_to_process (now_mom () + barleft);
+    }
 }
 
 
-ADD_THIS_TRANSLATOR(Timing_translator);
+ADD_THIS_TRANSLATOR (Timing_translator);
 
 void
-Timing_translator::do_creation_processing()
+Timing_translator::initialize ()
 {
-  time_.when_ = now_mom ();
+  Moment m;
+  daddy_trans_l_->set_property ("timing" , SCM_BOOL_T);  
+  daddy_trans_l_->set_property ("currentBarNumber" , gh_int2scm (1));
+  daddy_trans_l_->set_property ("measurePosition", m.smobbed_copy ());
+  daddy_trans_l_->set_property ("timeSignatureFraction",
+				gh_cons (gh_int2scm (4), gh_int2scm (4)));
+
+  daddy_trans_l_->set_property ("measureLength", Moment (1).smobbed_copy ());
+  daddy_trans_l_->set_property ("beatLength", Moment (1,4).smobbed_copy ());
+}
+
+Moment
+Timing_translator::measure_length () const
+{
+  SCM l = get_property ("measureLength");
+  if (unsmob_moment (l))
+    return *unsmob_moment (l);
+  else
+    return Moment (1);
+}
+
+
+
+Timing_translator::Timing_translator ()
+{
+
+
+}
+
+
+Moment
+Timing_translator::measure_position () const
+{
+  SCM sm = get_property ("measurePosition");
+  
+  Moment m   =0;
+  if (unsmob_moment (sm))
+    {
+      m = *unsmob_moment (sm);
+      while (m < Moment (0))
+	m += measure_length ();
+    }
+  
+  return m;
 }
 
 void
-Timing_translator::do_post_move_processing()
+Timing_translator::start_translation_timestep ()
 {
-  time_.add (now_mom ()  - time_.when_);
+	check_ =00;
+  Translator *t = this;
+  Global_translator *global_l =0;
+  do
+    {
+      t = t->daddy_trans_l_ ;
+      global_l = dynamic_cast<Global_translator*> (t);
+    }
+  while (!global_l);
 
+  Moment dt = global_l->now_mom_  - global_l -> prev_mom_;
+  if (dt < Moment (0))
+    {
+      programming_error ("Moving backwards in time");
+      dt = 0;
+    }
+  
+  if (!dt)
+    return;
 
+  Moment measposp;
+
+  SCM s = get_property ("measurePosition");
+  if (unsmob_moment (s))
+    {
+      measposp = *unsmob_moment (s);
+    }
+  else
+    {
+      daddy_trans_l_->set_property ("measurePosition", measposp.smobbed_copy ());
+    }
+  
+  measposp += dt;
+  
+  SCM barn = get_property ("currentBarNumber");
+  int b = 0;
+  if (gh_number_p (barn))
+    {
+      b = gh_scm2int (barn);
+    }
+
+  SCM cad = get_property ("timing");
+  bool c= to_boolean (cad);
+
+  Moment len = measure_length ();
+  while (c && measposp >= len)
+    {
+      measposp -= len;
+      b ++;
+    }
+
+  daddy_trans_l_->set_property ("currentBarNumber", gh_int2scm (b));
+  daddy_trans_l_->set_property ("measurePosition", measposp.smobbed_copy ());
 }
 
-void
-Timing_translator::do_print () const
-{
-#ifndef NPRINT
-  time_.print ();
-#endif
-}
