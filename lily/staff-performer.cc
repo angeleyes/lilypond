@@ -3,16 +3,46 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2001 Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
-#include "staff-performer.hh"
 #include "translator-group.hh"
 #include "debug.hh"
 #include "audio-column.hh"
 #include "audio-item.hh"
 #include "audio-staff.hh"
+#include "performer-group-performer.hh"
 
+/** Perform a staff. Individual notes should have their instrument
+ (staff-wide) set, so we override play_element ()
+
+  */
+class Staff_performer : public Performer_group_performer 
+{
+public:
+  VIRTUAL_COPY_CONS (Translator);
+  
+
+  Staff_performer ();
+  ~Staff_performer ();
+
+  String new_instrument_str ();
+  String instrument_str_;
+
+protected:
+  virtual void play_element (Audio_element* p);
+  virtual void finalize ();
+  virtual void initialize ();
+  virtual void create_audio_elements ();
+  virtual void stop_translation_timestep ();
+
+private:
+  Audio_staff* audio_staff_p_;
+  Audio_instrument* instrument_p_;
+  Audio_text* instrument_name_p_;
+  Audio_text* name_p_;
+  Audio_tempo* tempo_p_;
+};
 
 ADD_THIS_TRANSLATOR (Staff_performer);
 
@@ -30,7 +60,7 @@ Staff_performer::~Staff_performer ()
 }
 
 void
-Staff_performer::do_creation_processing ()
+Staff_performer::initialize ()
 {
   audio_staff_p_ = new Audio_staff;
   announce_element (Audio_element_info (audio_staff_p_, 0));
@@ -41,11 +71,11 @@ Staff_performer::do_creation_processing ()
   tempo_p_ = new Audio_tempo (get_tempo_i ());
   announce_element (Audio_element_info (tempo_p_, 0));
 
-  Performer_group_performer::do_creation_processing ();
+  Performer_group_performer::initialize ();
 }
 
 void
-Staff_performer::do_process_requests ()
+Staff_performer::create_audio_elements ()
 {
   String str = new_instrument_str ();
   if (str.length_i ())
@@ -55,12 +85,15 @@ Staff_performer::do_process_requests ()
       instrument_p_ = new Audio_instrument (str);
       announce_element (Audio_element_info (instrument_p_, 0));
     }
-  Performer_group_performer::do_process_requests ();
+  Performer_group_performer::create_audio_elements ();
 }
 
 void
-Staff_performer::do_pre_move_processing ()
+Staff_performer::stop_translation_timestep ()
 {
+  SCM proc = scm_eval2 (ly_symbol2scm ("percussion-p"), SCM_EOL); 
+  SCM drums_p = gh_call1 (proc, ly_symbol2scm (instrument_str_.ch_C()));
+  audio_staff_p_->channel_i_ = (drums_p == SCM_BOOL_T ? 9 : -1 );
   if (name_p_)
     {
       play_element (name_p_);
@@ -81,13 +114,13 @@ Staff_performer::do_pre_move_processing ()
       play_element (instrument_p_);
       instrument_p_ = 0;
     }
-  Performer_group_performer::do_pre_move_processing ();
+  Performer_group_performer::stop_translation_timestep ();
 }
 
 void
-Staff_performer::do_removal_processing ()
+Staff_performer::finalize ()
 {
-  Performer_group_performer::do_removal_processing ();
+  Performer_group_performer::finalize ();
   Performer::play_element (audio_staff_p_);
   audio_staff_p_ = 0;
 }
@@ -96,21 +129,18 @@ String
 Staff_performer::new_instrument_str () 
 { 
   // mustn't ask Score for instrument: it will return piano!
-  String str = get_property ("midiInstrument", 0);
-  if (!str.length_i ())
-    str = get_property ("instrument", 0);
-  if (str == instrument_str_)
+  SCM minstr = get_property (ly_symbol2scm ("midiInstrument"));
+
+  if (!gh_string_p (minstr))
+    minstr = get_property (ly_symbol2scm ("instrument"));
+
+  if (!gh_string_p (minstr)
+      || ly_scm2string (minstr) == instrument_str_)
     return "";
 
-  instrument_str_ = str;
+  instrument_str_ = ly_scm2string (minstr);
 
   return instrument_str_;
-
-/* ugh, but can 't
-  if (properties_dict_.elem_b ("instrument"))
-    return properties_dict_["instrument"];
-  return "";
-*/
 }
 
 void 
