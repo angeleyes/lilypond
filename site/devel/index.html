@@ -1,56 +1,60 @@
 <h1>LilyPond Development</h1>
 
 <a name="warning"></a>
-<em><b>WARNING</b>: compiling LilyPond is involved. Don't do it if there is a
-binary for your platform.</em>
+<em><strong>WARNING</strong>:
+  Building LilyPond is an involved process.  If possible,
+  <a href="../download">download a precompiled binary</a> for your
+  platform.</em>
 
 <h2>Source code</h2>
 
 Source code is available 
 
 <ul>
-<li>By FTP/HTTP from
+  <li>By FTP/HTTP from
 
-<ul><li>
-<a href="http://lilypond.org/download/">
- http://lilypond.org/download/
-</a>
-<li>
-<a href="http://www.lilypond.org/ftp/">
-http://www.lilypond.org/ftp/</a>
-<li>
-<a href="ftp://sca.uwaterloo.ca/pub/">ftp://sca.uwaterloo.ca/pub/</a>
+    <ul><li>
+	<a href="http://lilypond.org/download/">
+	  http://lilypond.org/download/
+	</a>
+      <li>
+	<a href="http://www.lilypond.org/ftp/">
+	  http://www.lilypond.org/ftp/</a>
+      <li>
+	<a href="ftp://sca.uwaterloo.ca/pub/">ftp://sca.uwaterloo.ca/pub/</a>
+    </ul>
+
+    <a href="http://savannah.gnu.org/">
+      <img align="right" src="@IMAGES@floating.png" alt="savannah.gnu.org"></a>
+  <li>
+
+    By CVS from
+    <a href="http://savannah.gnu.org/cvs/?group=lilypond">savannah.gnu.org</a>
+    <pre>
+      CVS_RSH=ssh cvs -d:ext:anoncvs@@savannah.gnu.org:/cvsroot/lilypond co lilypond
+    </pre>
+    <p>
+      The CVS repository does not contain generated files.  To
+      create <code>configure</code>, run
+      <blockquote>
+	<pre>
+	  ./autogen.sh
+	</pre>
+      </blockquote>
+    </p>
 </ul>
 
-<a href="http://savannah.gnu.org/">
-  <img align=right src=@IMAGES@floating.png alt=savannah></a>
-<li>
-
-By CVS  from  <a
-href="http://savannah.gnu.org/cvs/?group=lilypond">http://savannah.gnu.org/cvs/?group=lilypond</a>.
-<p>
-The repository does not contain generated files.  To create <code>configure</code>, run
-<blockquote>
-     <pre>          ./autogen.sh
-          </pre>
-        </blockquote>
-</ul>
-
-
-Instructions for compiling are in the installation instructions.
-(INSTALL <a
-href="@DOC@v2.4/Documentation/topdocs/out-www/INSTALL.html">for
-2.4</a> and <a
-href="@DOC@v2.5/Documentation/topdocs/out-www/INSTALL.html">for 2.5
-INSTALL</a>)
-
-
-<p>
-
+More information on in the INSTALL documents with
+<a
+href="@DOC@v2.4/Documentation/topdocs/out-www/INSTALL.html">building and installation instructions
+(version 2.4)</a> and <a
+href="@DOC@v2.5/Documentation/topdocs/out-www/INSTALL.html">
+building and installation instructions
+(version 2.5)</a>
 
 <h2>Participating</h2>
 
-Participation is highly encouraged! Go <a href="participating/">here</a>
-for more information.
+<a href="participating">Participating in the LilyPond project</a> is
+highly encouraged!
 
 
