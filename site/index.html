@@ -53,6 +53,27 @@
       <div>
       <dl>
 
+        <dt>August 1, 2004</dt><dd>
+
+          LilyPond 2.3.10 is out. This release has a major clean-up of the
+          input/test/ directory. Many examples have been moved to the regression
+          test or manual, and the superfluous or outdated ones have been
+          removed. The directory has gone from 146 examples to 72 examples. That
+          means that we're halfway cleaning it out.  Incidentally, the manual
+          has gone from 200 to 220 pages. New features:
+          <ul>
+          <li>Running trills now have their own spanner and event. They are
+          started and stopped with \startTrillSpan and \stopTrillSpan</li>
+          <li>There is a new markup command `\postscript' that takes a string
+          that is dumped as verbatim PostScript</li>
+         </ul>
+          Download it <a href="download/#2.3">here</a> and check out
+          the changes in the <a
+          href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2435&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
+      
+      </dd> 
+
+
         <dt>July 30, 2004</dt><dd>
 
           LilyPond 2.3.9 is out.  The important change is that lilypond
@@ -74,49 +95,6 @@
       
       </dd> 
 
-      <dt>July 23, 2004</dt><dd>
-
-          Lilypond 2.3.8 fixes a few minor bugs in the new slur code,
-          and has rewritten support for ledger lines. Now, in tight
-          situations, ledger lines will be shortened so they stay
-          separate.  This also required a cleanup of the Ambitus
-          implementation. Download it <a href="download/#2.3">here</a>
-          and check out the changes in the <a
-          href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2395&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
-      
-      </dd> 
-
-      <dt>July 19, 2004</dt><dd>
-
-        LilyPond 2.3.7 was released and has new exciting features!
-        The slur formatting has been rewritten. The new slur code
-        works similar to the Beam formatter: scores are assigned for
-        all esthetic components of a slur. A large number of
-        combinations for begin and end points is then tried out.
-        Slurs will now also take into account collisions with staff
-        lines, scripts (like staccato and accent) and accidentals. In
-        the LilyPond emacs mode, the `|' will now display the current
-        beat within the measure. Download it <a
-        href="download/#2.3">here</a> and check out the changes in
-        the <a href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2383&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
-      
-      </dd> 
-
-      <dt>July 15, 2004</dt><dd>
-
-        LilyPond 2.2.5 was released. It has a few bug fixes from
-        2.3.x. Download it <a href="download/#2.2">here</a> and check
-        out the changes in the <a
-        href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.28&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
-      </dd> 
-
-      <dt>July 11, 2004</dt><dd>
-
-      An introductory article on LilyPond appeared on <a
-      href="http://www.linuxjournal.com/article.php?sid=7657&mode=thread&order=0">Linux
-      Journal</a>.
-
-      </dd> 
       </dl>
       <p align="right"><a href="old-news.html">older news...</a></p>
       </div>
@@ -146,7 +124,7 @@
 
 	  <tr>
 	    <td>Development</td>
-	    <td>2.3.9</td>
+	    <td>2.3.10</td>
 	    <td>
 	      <a href="../doc/v2.3/Documentation/out-www/">Documentation</a>,
 	      <a href="download/#2.3">download</a>.
