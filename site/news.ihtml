@@ -1,5 +1,14 @@
 <dl>
 
+  <dt>February 4, 2005</dt> <dd> LilyPond 2.5.11 is out.  In this
+release, foreign character sets are now <a
+href="../doc/v2.5/Documentation/user/out-www/lilypond/Text-encoding">supported
+in lilypond-book too</a> and it is possible to put <a
+href="../doc/v2.5/input/regression/out-www/collated-files.html#system-separator.ly">
+dividers between systems.</a> Download <a
+href="download/#2.5">here</a>!
+</dd>
+
   <dt>January 31, 2005</dt> <dd> LilyPond 2.5.10 is out. This release
 sports as new EPS backend, based on the PS backend. This backend is
 used in the new and improved lilypond-book script. Download <a
@@ -11,30 +20,7 @@ bugs in the direct PS output for piano braces.  Download <a
 href="download/#2.5">here</a>!
   </dd>
 
-  <dt>January 16, 2005</dt>
 
-  <dd>LilyPond 2.5.8 is out.  This
-    release has many internal code cleanups. In addition,
-    accuracy of error reporting has been improved.
-    See the 
-    <a href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3065&content-type=text/vnd.viewcvs-markup">
-      change log
-    </a> and download <a href="download/#2.5">now</a>!
-  </dd>
-  
-  <dt>January 11, 2005</dt><dd> 
-    
-    LilyPond 2.5.7 is out. This release has a completely usable
-    Pango integration for the PS backend. The default font is
-    Century Schoolbook from the PS font suite.  It also has
-    small updates to the tablature settings by Erlend Aasland,
-    assorted manual updates by Graham, and an overhaul of the
-    font code by Werner. Download it <a
-					href="download/#2.5">here</a> and check out the changes in
-    the <a
-           href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3048&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
-
-  </dd>
 
 
 </dl>
