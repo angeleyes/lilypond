@@ -11,7 +11,7 @@
 ## may want consider switching.  Note that apple has switch not even
 ## in the main menu.
 
- ('switch/', 'Switch'),
+ ('switch/', 'Introduction'),
 
  
  ('about', 'About'),
