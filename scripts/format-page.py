@@ -96,6 +96,7 @@ LANGUAGES_TEMPLATE = '''\
 </P>
 ''' % vars ()
 
+
 def dir_lang (file, lang):
 	return string.join ([lang] + string.split (file, '/')[1:], '/')
 
@@ -192,7 +193,7 @@ def format_page (html, file_name, lang):
 		return match.group (0)
 
 	def grab_gettext (match):
-		return gettext (match.group (1))
+		return gettext.gettext (match.group (1))
 
 	dir = os.path.dirname (file_name)
 	dir_split = rreverse (string.split (dir, '/'))
@@ -259,6 +260,12 @@ def format_page (html, file_name, lang):
 	if dir != lang and os.path.isfile (f):
 		page_template = open (f).read ()
 
+	slang = ''
+	dot_lang = ''
+	if lang != 'site':
+		slang = lang
+		dot_lang = '.' + lang
+
 	# Do @AT@ substitution.
 
 	# Ugh: factor 2 slowdown
@@ -271,7 +278,8 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
 	page = re.sub ('@ONLOAD@', onload, page)
-	page = re.sub ('@FILE_NAME@', file_name, page)
+	page = re.sub ('@LANG@', slang, page)
+	page = re.sub ('@.LANG@', dot_lang, page)
 
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)

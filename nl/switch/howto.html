@@ -1,0 +1,102 @@
+<!--
+    Translation of CVS Revision: 1.17
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<h1>Stoomcursus LilyPond</h1>
+
+<h2>Schermafdruk</h2> 
+
+<p>
+  LilyPond is een <em>batch</em>systeem: het wordt uitgevoerd op een
+  tekstbestand dat de noten bevat.  Het resultaat wordt op het
+  beeldscherm of op een afdruk bekeken.  Een schermafdruk van
+  praktisch gebruik zou er zo uit kunnen zien
+</p>
+
+<p align="center">
+  <a href="@IMAGES@nereid-shot.png"><img width="650" src="@IMAGES@nereid-shot.png"></a>
+</p>
+<p align="center">
+  <em>(click to enlarge)</em>
+</p>
+
+
+<h2>It's as simple as A B C</h2>
+
+Notes are encoded with letters and numbers. Special commands are
+entered with backslashes.
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png">
+  <br>
+  <img src="@IMAGES@example-1.png">
+
+<p>
+  Alterations are made with different names: add -is for sharp, and -es
+  for flat (these are Dutch note names, different languages are
+  available). LilyPond figures out where to put accidentals.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-2@.LANG@.png">
+  <br>
+  <img src="@IMAGES@example-2@.LANG@.png">
+</p>
+
+<h2>Pop music</h2>
+
+<p>
+  Chords and lyrics are supported; together, they form lead sheets:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-lead@.LANG@.png">
+  <br>
+  <img src="@IMAGES@example-lead.png">
+</p>
+
+<h2>Orchestral parts</h2>
+
+<p>
+  <a name="orchestral"></a> The input file list the definition of
+  notes, and these definitions can be reused, thereby guaranteeing
+  that parts and score are always up to date. This is done by
+  assigning notes to a variable:
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-parts@.LANG@.png">
+  <br>
+</p>
+
+<p>
+  This variable is then used in a single part (here transposed, with
+  condensed rests):
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-single-part@.LANG@.png">
+  <br>
+  <img src="@IMAGES@example-singlepart.png">
+</p>
+
+<p>
+  The same variable is used in the full score (here in concert pitch):
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-score@.LANG@.png">
+  <br>
+  <img src="@IMAGES@example-score.png">
+</p>
+
+
+<h2>Learning more</h2>
+
+<a href="../download">Download</a> LilyPond and try the
+<a href="@DOC@v2.4/Documentation/user/out-www/lilypond/Tutorial">tutorial</a>.

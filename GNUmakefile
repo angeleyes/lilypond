@@ -25,7 +25,23 @@ po/$(LANG).po: po/newweb.pot
 
 $(mo): po/$(LANG).po
 	mkdir -p $(dir $@)
-	msgfmt --output=$@ $< 
+	msgfmt --output=$@ $<
+
+# Only regenerate for LANGs
+$(LANG)/%.svg: site/%.svg $(mo)
+	mkdir -p $(dir $@)
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%)
+
+# no inkscape on lilypond.org
+.PRECIOUS: %.png %.svg
+
+%.png: %.svg
+	inkscape --export-png=$@ $<
+
+out/site/%.$(LANG).png: $(LANG)/%.png
+#out/site/graphics/%.$(LANG).png: $(LANG)/graphics/%.png
+	cp $< $@
+
 endif
 
 EXT = .jpeg .ly .pdf .png
@@ -33,6 +49,7 @@ HTML = $(shell find $(SITE) -name '*.html')
 NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
 TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
+SVG = $(shell find site -name '*.svg')
 
 LANGUAGES = nl
 
@@ -47,13 +64,13 @@ site: all
 TAGS:
 	etags $$(find scripts site -name '*.html' -o -name '.py')
 
-dummy:
+po/newweb.pot: $(PY) $(SVG)
+	xgettext --default-domain=newweb --language=python --output=$@ $(PY) $(SVG)
 
-po/newweb.pot: dummy
-	xgettext --default-domain=newweb --output=$@ $(PY)
+nl:
+	$(MAKE) LANG=$@ png menuify
 
-nl: dummy
-	$(MAKE) LANG=nl menuify
+png: $(SVG:site/graphics/%.svg=out/site/graphics/%.$(LANG).png)
 
 new:
 	mkdir -p $(LANG)
@@ -61,7 +78,8 @@ new:
 #	$(foreach i, $(HTML), cp -i $(i) $(LANG)/$(i:site/%=%) &&) true
 
 tree:
-	rm -rf out/site
+# Let's not.  This runs on lilypond.org, and it has no inkscape too.
+#	rm -rf out/site
 	mkdir -p out/site
 	cd out/site && mkdir -p $(TREE)
 
@@ -69,9 +87,9 @@ menuify: $(mo)
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --verbose --outdir=out $(HTML)
 
 linktree: tree
-	$(foreach i, $(NON_HTML), ln $i out/$i &&) true
+	$(foreach i, $(NON_HTML), ln -f $i out/$i &&) true
 	cd out && touch .xvpics && rm -rf $$(find -name .xvpics)
-	ln newweb.css out/site
+	ln -f newweb.css out/site
 
 out/$(outball): site
 	cd out && tar czvf $(outball) site 

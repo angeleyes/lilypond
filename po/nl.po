@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-29 17:50+0100\n"
+"POT-Creation-Date: 2005-01-29 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:220
+#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
 #: site/menu-entries.py:4
 msgid "Home"
 msgstr "Thuis"
@@ -166,3 +166,71 @@ msgstr "Een korte rondleiding"
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
 msgstr "Stoomcursus"
+
+#: site/graphics/annotate-example-1.svg:195 site/images/foe.svg:195
+msgid "Commands start with \\"
+msgstr "Commando's beginnen met \\"
+
+#: site/graphics/annotate-example-1.svg:205 site/images/foe.svg:205
+msgid "Letters are notes"
+msgstr "Letters zijn noten"
+
+#: site/graphics/annotate-example-1.svg:227 site/images/foe.svg:227
+msgid "Numbers are durations"
+msgstr "Getallen zijn nootwaarden"
+
+#: site/graphics/annotate-example-2.svg:181
+msgid "Add articulations"
+msgstr "Voeg articulaties toe"
+
+#: site/graphics/annotate-example-2.svg:191
+msgid "Add -es for flat, -is for sharp"
+msgstr "Gebruik -es voor mol, -is voor kruis"
+
+#: site/graphics/annotate-example-2.svg:201
+msgid "Enclose pitches in &lt; &gt; for chords"
+msgstr "Vat "
+
+#: site/graphics/annotate-example-lead.svg:160
+msgid "Enter chord names"
+msgstr "Voer akkoordnamen in"
+
+#: site/graphics/annotate-example-lead.svg:170
+msgid "Enter melody"
+msgstr "Voer melodie in"
+
+#: site/graphics/annotate-example-lead.svg:177
+msgid "Enter lyrics"
+msgstr "Voer liedtekst in"
+
+#: site/graphics/annotate-example-lead.svg:196
+msgid "Combine melody and lyrics"
+msgstr "Combineer melodie en liedtekt"
+
+#: site/graphics/annotate-example-parts.svg:165
+msgid "Enter multi-rest"
+msgstr "Voer multi-rust in"
+
+#: site/graphics/annotate-example-parts.svg:178
+msgid "Store notes in variable"
+msgstr "Bewaar noten in veranderlijke"
+
+#: site/graphics/annotate-example-score.svg:115
+msgid "Create staff"
+msgstr "Maak notenbalk"
+
+#: site/graphics/annotate-example-score.svg:126
+msgid "Combine staffs in parallel"
+msgstr "Combineer notenbalken parallel"
+
+#: site/graphics/annotate-example-single-part.svg:120
+msgid "Condense multi-rests"
+msgstr "Concentreer multi-rusten"
+
+#: site/graphics/annotate-example-single-part.svg:134
+msgid "Transpose for F instrument"
+msgstr "Transponeer voor F instrument"
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse identifier"
+msgstr "Hergebruik veranderlijke"
