@@ -105,6 +105,7 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
 
 <ul>
   <li>Install Cygwin packages required for building:<br>
+  autoconf (for builds from CVS)
   bash
   binutils
   bison
@@ -155,6 +156,9 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
     have lilypond 1.9.9 or newer, and just one directory named
     `lilypond-x.y.z-r'.
   </li>
+  <li>If you build from CVS, you must generate the configure script, do: <pre>
+    cd lilypond-x.y.z-r && NOCONFIGURE=x ./autogen.sh
+  </pre></li>
   <li>Build the package:
     <pre>
       cp lilypond-1.9.9-1/cygwin/mknetrel /netrel/extra/lilypond
