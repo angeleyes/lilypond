@@ -1,3 +1,8 @@
+2003-08-06  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
+
+	* format-page.py (do_one_file): 
+	no bottom nav bar.
+
 2003-08-04  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/download/index.html: Use http:// for Debian.

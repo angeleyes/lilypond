@@ -46,14 +46,14 @@ like
      ^TG(N1<u>,N2</u><a href="http://lilypond.org/wiki/?edit=%2CN2">?</a>) X1 X2 X3 (etc)
 </pre>
 <p>
-The caret is at the start of the line, `TG' is a two letter tag, and
+The caret is at the start of the line, &lsquo;TG&rsquo; is a two letter tag, and
 N1 (and optionally N2) are numbers identifying the object to be
 described. X3, X4 etc contain data in the form of either a signed 16
 bit number, or a 32 bit number (in hex, with a $ sign prepended). The
 number of Xs per line for a certain tag is constant.
 </p>
 <p>
-The numbers in `N1' need not be consecutive or ascending, mostly.
+The numbers in &lsquo;N1&rsquo; need not be consecutive or ascending, mostly.
 </p>
 <p>
 
@@ -73,7 +73,7 @@ Note structure:
 </p>
 <p>
 Each staff can contain up to four layers, where a layer correspond
-to a horizontal `line' of notes.  Each layer is broken up into frames,
+to a horizontal &lsquo;line&rsquo; of notes.  Each layer is broken up into frames,
 where each frame is one measure of a layer.
 </p>
 <pre>
@@ -86,14 +86,14 @@ Here S is the staff number, M the measure number, FLAGS is a 16-bit
 bit-vector, and F1 to F4 are frame identifiers. C is a clef-identifier.
 </p>
 <p>
-There is a second variant of the `GF' tag, which has only one line;
+There is a second variant of the &lsquo;GF&rsquo; tag, which has only one line;
 it looks like
 </p>
 <pre>
        ^GF(s,m) FR C X Y Z
 </pre>
 <p>
-here, `fr' is a frame number, `c' the clef number. The function of
+here, &lsquo;fr&rsquo; is a frame number, &lsquo;c&rsquo; the clef number. The function of
 x, y , z is unknown.
 </p>
 <p>
@@ -105,7 +105,7 @@ A frame is described by the FR tag
 </pre>
 <p>
 This means frame number N runs from note N1 to note N2 Where
-`running from' is interpreted as "that part of a linked note list that
+&lsquo;running from&rsquo; is interpreted as "that part of a linked note list that
 starts with note N1 and ends with note N2". This is something different
 from the sequence of notes N1, N1 + 1 , ... , N2 - 1, N2.
 </p>
@@ -253,7 +253,7 @@ wrote an MSc thesis on ETF.
 <li>
 Some other information can be found in the Finale Plug-in Development
 (it includes the pdf file, and some source files that are useful).
-You can download the PDK from Coda's website, `<a
+You can download the PDK from Coda's website, &lsquo;<a
 href="http://www.codamusic.com/coda/Fin2000_pdk_download.asp">http://www.codamusic.com/coda/Fin2000_pdk_download.asp</a>'. You
 do need to register as a user, but you can also do that if you have
 never bought an Coda product.

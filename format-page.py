@@ -185,7 +185,8 @@ def do_one_file (in_file_name):
 	# UGH.
 	if locations <> ['Home']:
 		locations = ['Home'] + locations
-
+	else:
+		locations = []
 	nav_elts = []
 	d = len (locations) - 1
 	
