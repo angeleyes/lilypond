@@ -61,7 +61,7 @@ button_active_template = '''<TD class="%(class)s"><A href="%(url)s"
 
 
 outdir = '/tmp'
-(options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=']) 
+(options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=', 'help']) 
 
 def read_menu (f):
 	menu = eval (open (f).read ())
@@ -236,6 +236,8 @@ def do_one_file (in_file_name):
 for (o,a) in options:
 	if o == '--outdir':
 		outdir = a
+	if o == '--help':
+		sys.stdout.write ("This script is licensed under GNU GPL")
 	else:
 		assert unimplemented
 

@@ -1,3 +1,7 @@
+2003-08-08  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
+
+	* format-page.py (grab_title): (c) notice.
+
 2003-08-07  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* site/download/index.html (href): fix URL.

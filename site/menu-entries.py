@@ -5,5 +5,6 @@
  ('switch/', 'Introduction'),
  ('about', 'About'),
  ('download', 'Download'),
+ ('documentation.html', 'Documentation'),
  ('devel', 'Development'),
  ]
