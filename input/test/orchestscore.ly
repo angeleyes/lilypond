@@ -1,12 +1,25 @@
-\version "1.2.0";
+\version "1.3.146"
+\header{
+  latexpackages="graphicx"
+}
 
-m = \notes \relative c''{
-c1 | c2 c | c c | c c | c c | c c | c c | c c | 
+
+
+m =  \notes \relative c''{
+
+c1 | c2 c | c c | c c | \break c c | c c | c c | c c | 
+}
+
+M =  \notes \relative c''{
+
+c1 | c2 c | c c | R1*5 
 }
 
 \score{ < 
   \context StaffGroup = wood <
     \context Staff = flauto <
+    %"\\rotatebox[origin=c]{90}{Flauto}"
+    
       \property Staff.instrument = "Flauto"
       \property Staff.instr = "Fl."
       \m
@@ -36,20 +49,20 @@ c1 | c2 c | c c | c c | c c | c c | c c | c c |
     \context Staff = cor <
       \property Staff.instrument = "2 Corni in F"
       \property Staff.instr = "Cor."
-      \context Voice = corI { \stemup \m }
-      \context Voice = corII { \stemdown \m }
+      \context Voice = corI { \stemUp \M }
+      \context Voice = corII { \stemDown \M }
     >
     \context Staff = trp <
-      \property Staff.instrument = "2 Trp. in B\\textflat  "
+      \property Staff.instrument = #`(columns "2 Trp. in B " (music "accidentals--1"))
       \property Staff.instr = "Trp."
-      \context Voice = trpI { \stemup \m }
-      \context Voice = trpII { \stemdown \m }
+      \context Voice = trpI { \stemUp \M }
+      \context Voice = trpII { \stemDown \M }
     >
   >
     \context StaffGroup = percussion <\context Staff = timpani <
       \property Staff.instrument = "Timpani"
       \property Staff.instr = "Timp."
-      \m
+      \notes{c''1 R1*8}
     >
   >
   \context StaffGroup = strings <
@@ -71,7 +84,8 @@ c1 | c2 c | c c | c c | c c | c c | c c | c c |
       \m
     >
     \context Staff = vlc <
-      \property Staff.instrument = "Violoncello"
+      %% \property Staff.instrument = "Violoncello"
+      \property Staff.instrument = #'(lines "Violoncello" "e" "Contrabasso")
       \property Staff.instr = "Vlc"
       \m
     >
@@ -83,16 +97,18 @@ c1 | c2 c | c c | c c | c c | c c | c c | c c |
   >
 >
  \paper {
-%    \paper_sixteen;
-    linewidth = 185.\mm;
-    textheight = 260.\mm;
+%    \paperSixteen
+    linewidth = 185.\mm
+    textheight = 260.\mm
     \translator {
-	\OrchestralScoreContext
-        minVerticalAlign = 2.2*\staffheight; 
+      \OrchestralScoreContext
+      skipBars = ##t 
+      markScriptPadding = #4.0
+      BarNumber \override #'padding = #3
+      RestCollision \override #'maximum-rest-count = #1
+      marginScriptHorizontalAlignment = #1
     }
-    \translator { \StaffContext
-	\consists "Staff_margin_engraver";
-        marginScriptPadding = 15.0;
+    \translator { \HaraKiriStaffContext
     }
   }
 }
