@@ -9,58 +9,20 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 
 !-->
 
+<dt>March 31, 2005</dt>
+<dd>
+2.5.17 is out. This release features many small bugfixes. In addition,
+it has support for string number notation for guitar. This feature was
+sponsored by Gunther Strube. Download <a href="download/#2.5">Download
+LilyPond 2.5.17</a>.
+</dd>
+
 <dt>March 20, 2005</dt>
 <dd>
 LilyPond 2.5.16 is out. This release fixes a few minor but irritating
 errors. A Fedora Core 3 binary is also available. Download <a
 href="download/#2.5">here</a>!
 </dd>
-
-<dt>March 14, 2005</dt>
-<dd>
-LilyPond 2.5.15 is out. This release has clean ups in the SVG output,
-  and now uses the LilyPond number font for time signatures.  It is
-  now possible to add text before and after music. This can be used to
-  add verses after a music Take a look at the <a
-  href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
-  file and download <a href="download/#2.5">here</a>!
-</dd>
-
-
-<dt>March 7, 2005</dt>
-<dd>
-LilyPond 2.5.14 is out. It is now possible (and in fact, encouraged),
-to build LilyPond either without the Kpathsea TeX library or with the
-Kpathsea dynamically loaded, but only for the -btex backend.  This
-means that packages do not have to depend on TeX anymore. With this,
-the Windows download size will go down significantly. Take a look at
-the <a
-href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
-file and download <a href="download/#2.5">here</a>!
-</dd>
-
-<dt>March 7, 2005</dt>
-
-<dd>
-
-LilyPond 2.4.5 is out. This release backports the tieWaitForNote
-feature and has support for tetex-3.0. Download <a
-href="download/#2.4">here</a>!
-</dd>
-
-<dt>February 28, 2005</dt>
-
-<dd>
-LilyPond 2.5.13 is available for Fedora Core 3. You need to install
-<a
-href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-8.15rc2-1.i386.rpm">ESP
-Ghostscript 8.15rc2</a>. Unfortunately, this version of Ghostscript
-lacks the IJS dynamic library, which means that it will conflict with
-the gimp-print package. You may install it with --nodeps. Use at your
-own risk.
-</dd>
-
-
 
 </dl>
 
