@@ -1,102 +1,218 @@
 /*
-  local-key-item.cc -- implement Local_key_item, Musical_pitch
+  local-key-item.cc -- implement Local_key_item, Pitch
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 #include "local-key-item.hh"
 #include "molecule.hh"
-#include "scalar.hh"
-#include "lookup.hh"
+#include "staff-symbol-referencer.hh"
+#include "font-interface.hh"
 #include "paper-def.hh"
 #include "musical-request.hh"
-#include "note-head.hh"
+#include "rhythmic-head.hh"
 #include "misc.hh"
+#include "spanner.hh"
+#include "tie.hh"
+#include "lookup.hh"
 
-Local_key_item::Local_key_item ()
+static SCM
+pitch_less (SCM p1, SCM p2)
 {
-  c0_position_i_ = 0;
+  return Pitch::less_p (gh_car (p1),  gh_car (p2));
 }
+
+static SCM pitch_less_proc;
 
 void
-Local_key_item::add_pitch (Musical_pitch p, bool cautionary)
+init_pitch_funcs ()
 {
-  for (int i=0; i< accidental_arr_.size(); i++)
-    if (!Musical_pitch::compare (p, accidental_arr_[i].pitch_))
-      return;
-
-  Local_key_cautionary_tuple t;
-  t.pitch_ = p;
-  t.cautionary_b_ = cautionary;
-  accidental_arr_.push (t);
+  pitch_less_proc = gh_new_procedure2_0 ("pits-less", &pitch_less);
 }
+
+ADD_SCM_INIT_FUNC (lkpitch,init_pitch_funcs);
 
 
 void
-Local_key_item::do_pre_processing()
+Local_key_item::add_pitch (Grob*me, Pitch p, bool cautionary, bool natural,
+			   Grob* tie_break_reminder)
 {
-  accidental_arr_.sort (Local_key_cautionary_tuple::compare);
-  Note_head_side::do_pre_processing ();
-}
-
-Molecule*
-Local_key_item::do_brew_molecule_p() const
-{
-  Molecule*output = new Molecule;
-  Real note_distance = staff_line_leading_f ()/2;
-  Molecule *octave_mol_p = 0;
-  int lastoct = -100;
-  
-  for  (int i = 0; i <  accidental_arr_.size(); i++) 
+  SCM acs = me->get_grob_property ("accidentals");
+  SCM pitch = p.smobbed_copy ();
+  SCM opts = SCM_EOL;
+  if (cautionary)
+    opts = gh_cons (ly_symbol2scm ("cautionary"), opts);
+  if (natural)
+    opts = gh_cons (ly_symbol2scm ("natural"), opts);
+  if (tie_break_reminder)
     {
-      Musical_pitch p (accidental_arr_[i].pitch_);
-      // do one octave
-      if (p.octave_i_ != lastoct) 
+      /* Ugh, these 'options' can't have a value, faking... */
+      opts = gh_cons (tie_break_reminder->self_scm (), opts);
+      opts = gh_cons (ly_symbol2scm ("tie-break-reminder"), opts);
+    }
+
+  pitch = gh_cons (pitch, opts);
+  acs = scm_merge_x (acs, gh_cons (pitch, SCM_EOL), pitch_less_proc);
+
+  me->set_grob_property ("accidentals", acs);
+}
+
+Molecule
+Local_key_item::parenthesize (Grob*me, Molecule m)
+{
+  Molecule open = Font_interface::get_default_font (me)->find_by_name (String ("accidentals-("));
+  Molecule close = Font_interface::get_default_font (me)->find_by_name (String ("accidentals-)"));
+  m.add_at_edge (X_AXIS, LEFT, Molecule (open), 0);
+  m.add_at_edge (X_AXIS, RIGHT, Molecule (close), 0);
+
+  return m;
+}
+
+/* HW says: maybe move to tie.cc
+
+  Note, tie should not kill all accidentals when broken, only the ones
+  that are indicated by a property tie-break-reminder, I guess
+
+  Find if any of the accidentals were created because they're at the rhs of a
+  tie.  If that's the reason they exist, and the tie was NOT broken,
+  put the accidental up for deletion.  Clear molecule cache. */
+MAKE_SCHEME_CALLBACK (Local_key_item, after_line_breaking, 1);
+SCM
+Local_key_item::after_line_breaking (SCM smob)
+{
+  Grob *me = unsmob_grob (smob);
+
+  SCM accs = me->get_grob_property ("accidentals");
+  for (SCM s = accs;
+	gh_pair_p (s); s = gh_cdr (s))
+    {
+      SCM opts = gh_cdar (s);
+
+      SCM t = scm_memq (ly_symbol2scm ("tie-break-reminder"), opts);
+      if (t != SCM_BOOL_F)
 	{
-	  if (octave_mol_p)
+	  Grob *tie = unsmob_grob (gh_cadr (t));
+	  Spanner *sp = dynamic_cast<Spanner*> (tie);
+	  if (!sp->original_l_)
+	    {
+	      /* there should be a better way to delete part of me */
+	      scm_set_car_x (s, gh_list (gh_caar (s),
+					 ly_symbol2scm ("deleted"),
+					 SCM_UNDEFINED));
+	      me->set_grob_property ("molecule", SCM_EOL);
+	    }
+	}
+    }
+  
+  return SCM_UNSPECIFIED;
+}
+
+/*
+  UGH. clean me, revise placement routine (See Ross & Wanske;
+  accidental placement is more complicated than this.
+ */
+
+MAKE_SCHEME_CALLBACK (Local_key_item,brew_molecule,1);
+SCM
+Local_key_item::brew_molecule (SCM smob)
+{
+  Grob* me = unsmob_grob (smob);
+  
+  Molecule mol;
+
+  Real note_distance = Staff_symbol_referencer::staff_space (me)/2;
+  Molecule octave_mol;
+  bool oct_b = false;
+  int lastoct = -100;
+
+  SCM accs = me->get_grob_property ("accidentals");
+  for (SCM s = accs;
+	gh_pair_p (s); s = gh_cdr (s))
+    {
+      Pitch p (*unsmob_pitch (gh_caar (s)));
+      SCM opts = gh_cdar (s);
+      
+      if (scm_memq (ly_symbol2scm ("deleted"), opts) != SCM_BOOL_F)
+	continue;
+      
+      // do one octave
+      if (p.octave_i ()  != lastoct) 
+	{
+	  if (oct_b)
 	    {
 	      Real dy =lastoct*7* note_distance;
-	      octave_mol_p->translate_axis (dy, Y_AXIS);
-	      output->add_molecule (*octave_mol_p);
-	      delete octave_mol_p;
+	      octave_mol.translate_axis (dy, Y_AXIS);
+	      mol.add_molecule (octave_mol);
+	      octave_mol = Molecule ();
 	    }
-	  octave_mol_p= new Molecule;
+	  oct_b = true; 
 	}
       
-      lastoct = p.octave_i_;
-      Real dy =
-	(c0_position_i_ + p.notename_i_)
-	* note_distance;
-      Molecule m (lookup_l ()->accidental (p.accidental_i_, 
-					   accidental_arr_[i].cautionary_b_));
+      lastoct = p.octave_i () ;
 
-      m.translate_axis (dy, Y_AXIS);
-      octave_mol_p->add_at_edge (X_AXIS, RIGHT, m, 0);
+      SCM c0 =  me->get_grob_property ("c0-position");
+      Real dy = (gh_number_p (c0) ? gh_scm2int (c0) : 0 + p.notename_i_)
+	* note_distance;
+      
+      Molecule acc (Font_interface::get_default_font (me)->find_by_name (String ("accidentals-")
+					       + to_str (p.alteration_i_)));
+      
+      if (scm_memq (ly_symbol2scm ("natural"), opts) != SCM_BOOL_F)
+	{
+	  Molecule prefix = Font_interface::get_default_font (me)->find_by_name (String ("accidentals-0"));
+	  acc.add_at_edge (X_AXIS, LEFT, Molecule (prefix), 0);
+	}
+
+      if (scm_memq (ly_symbol2scm ("cautionary"), opts) != SCM_BOOL_F)
+	acc = parenthesize (me, acc);
+
+      acc.translate_axis (dy, Y_AXIS);
+      octave_mol.add_at_edge (X_AXIS, RIGHT, acc, 0);
     }
 
-  if (octave_mol_p)
+  if (oct_b)
     {
       Real dy =lastoct*7*note_distance;
-      octave_mol_p->translate_axis (dy, Y_AXIS);
-      output->add_molecule (*octave_mol_p);
-      delete octave_mol_p;
+      octave_mol.translate_axis (dy, Y_AXIS);
+      mol.add_molecule (octave_mol);
+      octave_mol = Molecule ();
     }
   
- if (accidental_arr_.size()) 
+ if (gh_pair_p (accs))
     {
-      Box b(Interval (0, 0.6 * note_distance), Interval (0,0));
-      Molecule m (lookup_l ()->fill (b));
-      output->add_at_edge (X_AXIS, RIGHT, m, 0);
+      Drul_array<SCM> pads;
+
+      /*
+	Use a cons?
+       */
+      pads[RIGHT] = me->get_grob_property ("right-padding");
+      pads[LEFT] = me->get_grob_property ("left-padding");
+
+
+      // unused ?
+      Direction d = LEFT;
+      do {
+	if (!gh_number_p (pads[d]))
+	  continue;
+
+	Box b (Interval (0, gh_scm2double (pads[d]) * note_distance),
+	      Interval (0,0));
+	Molecule m (Lookup::blank (b));
+	mol.add_at_edge (X_AXIS, d, m, 0);
+      } while (flip (&d)!= LEFT);
     }
 
-  return output;
+  return mol.smobbed_copy ();
 }
 
-void
-Local_key_item::do_substitute_element_pointer (Score_element *o, Score_element*n)
+bool
+Local_key_item::has_interface (Grob*m)
 {
-  Note_head_side::do_substitute_element_pointer (o,n);
-  Staff_symbol_referencer::do_substitute_element_pointer (o,n);
-  
+  return m && m->has_interface (ly_symbol2scm ("accidentals-interface"));
+}
+void
+Local_key_item::set_interface (Grob*m)
+{
+  m->set_interface (ly_symbol2scm ("accidentals-interface"));
 }
