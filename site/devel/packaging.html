@@ -95,13 +95,21 @@ You can get the latest version of the GNU + Cygnus tools from a Cygwin
 <a href="http://cygwin.com/mirrors.html">mirror site</a>. 
 </dl>
 
+<h3>Native compiling</h3>
+
+We just had a first <a href="http://mail.gnu.org/archive/html/lilypond-devel/2003-08/msg00118.html">success report</a>
+
+from Józsa Márton, who compiled LilyPond 1.9.0 on Cygwin-1.3.22.
+
+The packages autotrace, t1utils and mftrace are not included
+in Cygwin, but compile out of the box.  pfaedit was downloaded from ?.
+
 <h3>Cross compiling</h4>
 
-<p>Compiling on Windows should be possible, but we never tried.
-Share your experiences on lilypond-devel@gnu.org.
- We always use a cross compile:
+Current LilyPond releases are cross compiled on a GNU/Linux box.
 
- Cross compiling for Windows on a GNU/Linux box is done with
+<p>
+Cross compiling for Windows on a GNU/Linux box is done with
 mknetrel.  Get it from:
 <pre>
         cvs -d:pserver:anoncvs@sources.redhat.com:/cvs/cygwin-apps co mknetrel
