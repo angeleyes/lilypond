@@ -1,0 +1,38 @@
+
+
+	<a href=savannah.gnu.org/projects/lilypond/cvs/>Savannah CVS</a>
+
+	   <p>The latest development version is also available through anonymous
+CVS. See <a href="http://savannah.gnu.org/cvs/?group=lilypond">http://savannah.gnu.org/cvs/?group=lilypond</a>.
+
+   <p>CVS does not contain generated files.  To create <code>configure</code>, run
+<blockquote>
+     <pre>          ./autogen.sh
+          </pre>
+        </blockquote>
+
+   <a name="download-binaries">
+
+   <h4><a name="TOC4"></a>Upgrading</h4>
+
+   <p>There are two options for upgrading sources.
+
+     <ul>
+<li>if you have an unpacked source tree of a previous version, you
+may the patches.
+
+     <p><em>If you upgrade by patching do remember to rerun autoconf after
+applying the patch</em>.
+
+     <li>if you have the <code>.tar.gz</code> file of a previous release, you can
+use
+<a href="ftp://ftp.xcf.berkeley.edu/pub/xdelta/">xdelta</a>. 
+ This is much safer than using patches, and is the recommended way.
+
+     <p>The following command produces <code>lilypond-1.4.3.tar.gz</code> from
+<code>lilypond-1.4.2.tar.gz</code> identical (up to compression dates) to the .3
+on the FTP site.
+     <pre>            xdelta patch lilypond-1.4.2-1.4.3.xd lilypond-1.4.2.tar.gz
+          </pre>
+     </ul>
+

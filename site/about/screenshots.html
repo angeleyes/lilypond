@@ -1,0 +1,63 @@
+<h1>examples</h1>
+
+LilyPond is a batch program, so you run it from the command line.  An
+actual screenshot is not all that interesting, it looks something like: 
+
+<blockquote>
+<font size="-1">
+<pre>
+ly2dvi (GNU LilyPond) 1.7.5
+Running lilypond...
+GNU LilyPond 1.7.11
+Now processing: `input/example-1.ly'
+Parsing...
+Interpreting music...[3]
+Preprocessing elements... 
+Calculating column positions... 
+paper output to `example-1.tex'...
+
+Interpreting music...
+MIDI output to `example-1.midi'...
+Track ... 
+
+Analyzing example-1.tex...
+Running latex...
+DVI output to `example-1.dvi'...
+MIDI output to `example-1.midi'...
+</pre>
+</font></blockquote>
+
+Much more interesting are samples of what you can do with the
+program. Here is the example, along with its output:
+
+<table>
+<tr>
+<td style="width:50%">
+<pre>
+\score { 
+  \context Voice \notes\relative c' {
+    c d e f g a b c
+  }
+}
+</pre>
+</td>
+<td style="width:50%">
+<ly2dvifile>example-1.ly</ly2dvifile>
+</td>
+</tr>
+</table>
+
+Some demonstrative examples here: show simple
+
+<p>
+
+simple example of input:
+<p>
+
+more complex example:
+<p>
+
+show output quality:
+<p>
+
+show flexibility:

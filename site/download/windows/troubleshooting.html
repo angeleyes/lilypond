@@ -1,0 +1,218 @@
+
+	<h3>Troubleshooting</h3>
+
+   <p>For problems and solutions see
+<a href="http://lilypond.org/wiki?TroubleshootingWindows">Troubleshooting Windows</a>
+
+   <p>If you have a problem running LilyPond, you should first make sure
+that you are running the latest version.  Chances are, that your
+problem was already reported and fixed in a newer release.  Click
+<a href="http://cygwin.com/setup.exe">Update Lily now</a> to check if
+new software is available.
+
+   <p>If you subscribe to the <a href="http://cygwin.com/ml/cygwin-announce/">cygwin-announce (archives)</a> mailing list, see
+<a href="http://sources.redhat.com/cygwin/lists.html">Cygwin mailing lists</a>, bottom of page.  You'll be notified of new and updated
+software for Cygwin, including LilyPond.
+
+   <p>Chances are, that a problem you experience has been noted by others. 
+Cygwin specific problems will be reported to the
+<a href="http://cygwin.com/ml/cygwin">cygwin-user (archives)</a> mailing
+list (<a href="http://sources.redhat.com/cygwin/lists.html">Cygwin mailing lists</a>, bottom of page).
+
+   <p>LilyPond specific problems, also concering Cygwin/Windows, are
+reported and discussed on the
+<a href="http://mail.gnu.org/pipermail/lilypond-user">lilypond-user (archives)</a> mailing list.
+
+<h4>Setup.exe does not run at all</h4>
+
+   <p>Make sure that you run <a href="http://cygwin.com/setup.exe">this latest setup.exe</a>. 
+This will also work if  you were using a setup.exe you donwloaded
+before from lilypond.org before.
+
+   <p>If you're sure that you have the very latest version, and it doesn't
+work, and the <a href="http://cygwin.com/ml/cygwin">cygwin-user archives</a>
+do not mention the problem, write to <a href="mailto:cygwin@cygwin.com">cygwin@cygwin.com</a>. 
+Setup is under heavy development, so you may have been unlucky and
+have dowloaded a buggy version.
+
+<h4>ly2dvi:error: filename should not contain spaces</h4>
+
+   <blockquote>
+<em>I don't seem to be able to either change this "default" or to point
+Lilypond to another directory which does not have the space.</em>
+
+     <pre>          ly2dvi:error: filename should not contain spaces: `/usr/bin/Ralph Whedon/foo'
+          </pre>
+
+        <p><em>Any ideas what I should do?</em>
+</blockquote>
+   Best is to create a new home directory.  Start the Cygwin or LilyPond
+shell, and do:
+
+<pre>     HOME=/home/ralph
+     mkdir -p $HOME
+     cd
+     </pre>
+
+   <p>To go there automatically, each time you log in, edit the file
+
+<pre>     /etc/passwd   # windows name: c:\cygwin\etc\passwd
+     </pre>
+
+   <p>using vim or wordpad, and change the `/usr/bin/Ralph Whedon/' to
+`/home/ralph'.
+
+<h4>What's this Bash/Cygwin shell?</h4>
+
+   <p>The bash shell is a basic UNIX-like console that we use for the
+Windows release.  Using such an intercompatible shell makes it easier
+to maintain the Windows release reasonably, notably because it works
+the same as the normal UNIX setup.  Keep in mind that none of the
+developers are using Windows.
+
+   <p>Also it is possible to build LilyPond from source with a complete
+Cygwin install, see <a href="compiling.html">Compiling LilyPond on Windows</a>.
+
+   <p>Bash is not very different from the MS-DOS shell, you'll just have to
+(re-)learn a few commands needed to browse through your hard-drive. 
+Here are some commands you'll definitely be needing.
+
+   <p>To change folders, the usual <code>cd</code>
+
+<pre>     cd ../..    # If you type this at startup, you should be in the root
+                 # directory.  Better do:
+     cd /
+     </pre>
+
+   <p>You'll notice that file names in Bash are written with the slash (/),
+and not the backslash (\) bar as in MS-DOS and Windows.
+
+<pre>     C:\Win98\Bureau\  ---&gt; /cygdrive/c/Win98/Bureau
+     </pre>
+
+   <p>The equivalent of the MS-DOS dir command is ls -l :
+
+<pre>     ls -l       #You'll get the listing of the current folder.
+     </pre>
+
+   <p>To copy a file, use the cp command:
+
+<pre>     cp srcfile destfile
+     </pre>
+
+   <p>For more information, see the
+<a href="http://www.linuxdoc.org/HOWTO/DOS-Win-to-Linux-HOWTO.html">DOS/Windows to Linux HOWTO</a>.
+
+<h4>Requirements and DLLs</h4>
+
+   <p>TeTeX and LilyPond depend on a number of library packages, but as it
+seems, they sometimes do not get selected automagically.
+
+     <ul>
+<li>teTeX
+  requires: ash cygwin ed grep jpeg libkpathsea3 libncurses6 libpng12 tiff
+  sed termcap zlib
+
+     <li>LilyPond
+  requires: bash libguile12 libiconv2 libintl2 libkpathsea3 python
+  tetex-bin, tetex-tiny or tetex-base
+</ul>
+
+   <p><table><tr align="left"><td valign="top">DLL              </td><td valign="top">Package
+<br></td></tr><tr align="left"><td valign="top">cygguile-12.dll  </td><td valign="top">libguile12
+<br></td></tr><tr align="left"><td valign="top">cygintl-2.dll    </td><td valign="top">libintl2
+<br></td></tr><tr align="left"><td valign="top">cygiconv-2.dll   </td><td valign="top">libiconv2
+<br></td></tr><tr align="left"><td valign="top">cygltdl-3.dll    </td><td valign="top">libltdl3
+<br></td></tr><tr align="left"><td valign="top">cygpcre.dll      </td><td valign="top">pcre
+<br></td></tr><tr align="left"><td valign="top">cygpng12.dll     </td><td valign="top">libpng12
+<br></td></tr><tr align="left"><td valign="top">cygtiff3.dll     </td><td valign="top">tiff
+   <br></td></tr></table>
+
+   <p>Also, the more general info on missing DLLs may be helpful:
+<pre>         <a href="http://cygwin.com/faq/faq_4.html#SEC32">http://cygwin.com/faq/faq_4.html#SEC32</a>
+         <a href="http://cygwin.com/ml/cygwin/2002-01/msg01619.html">http://cygwin.com/ml/cygwin/2002-01/msg01619.html</a>
+     </pre>
+
+<h4>Why don't you fix this?</h4>
+
+   <p>Well, we've tried several times, but we can't reproduce the problem
+('It works for me').  If you're experiencing DLL problems, you're much
+invited to help us find the bug and fix it.  You can install the
+binutils package, and use objdump to find which executable depends on
+the missing dll.
+
+<pre>     objdump -x &lt;path to download dir&gt;/setup.exe | grep -i dll
+     objdump -x /usr/bin/awk.exe | grep -i dll
+     objdump -x /usr/bin/python.exe | grep -i dll
+     </pre>
+
+   <p>Of course, you should check what version of the offending package you
+have installed (see <code>/var/log/setup.log</code> and
+<code>/var/log/setup.log.full)</code>.
+
+<h4>Check your TeX installation</h4>
+
+   <p>Start a LilyPond shell and run
+
+<pre>     latex sample2e
+     </pre>
+
+   <p>This should print a few lines of information and produce a file
+<code>sample2e.dvi</code>. Then run
+
+<pre>     dvips sample2e
+     </pre>
+
+   <p>which produces a sample2e.ps, which you can view using <code>gsview32</code>.
+
+   <p>When this works correctly, you could resume your attempts with
+LilyPond.
+
+
+	<h4>Bugreports</h4>
+
+   <p>So you have checked by running <a href="http://cygwin.com/setup.exe">Update Lily now</a> that you run the latest version, and
+<a href="http://lilypond.org/wiki?TroubleshootingWindows">Troubleshooting Windows</a> nor <a href="http://cygwin.com/ml/cygwin">cygwin-user (archives)</a> or <a href="http://mail.gnu.org/pipermail/lilypond-user">lilypond-user (archives)</a> mentions your problem.  It looks like you
+found a bug.
+
+   <p>We can only help you with a problem if you give a full, detailed
+bugreport. A bugreport includes
+
+     <ul>
+<li>A <em>precise</em> description of the problem. 
+<li>A full description of your platform (machine type, operating
+system)
+<li>All version numbers of relevant software you run. 
+      The best way to this is to run
+
+     <pre>                sh -x /usr/bin/bug-lilypond-cygwin &gt;&amp; bug.txt
+                </pre>
+
+     <p>and include the file <code>bug.txt</code>.  (If you are running
+      lilypond 1.5.73 or earlier, download
+      <a href="http://lilypond.org/cygwin/bug-lilypond-cygwin">bug-lilypond-cygwin here</a>. 
+</ul>
+
+   <p>If you have trouble using bug-lilypond-cygwin, you must gather this
+information by hand.  Specifically, we want to see the output of the
+following commands:
+     <ul>
+<li>Version info
+
+     <pre>            python -V
+            lilypond --version
+            ly2dvi --version
+          </pre>
+
+     <li>If ly2dvi fails, then please run it as follows and include the
+  output in the
+
+     <pre>            ly2dvi --verbose MY-FILE
+          </pre>
+
+   </ul>
+
+   <p>The file <code>bug.txt</code> should contain information on your system
+(check that).  Send your problem together with <code>bug.txt</code> to
+<a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>.
+

@@ -1,0 +1,59 @@
+<h3>Windows binary setup</h3>
+
+   <p>The binary LilyPond setup for Windows is in fact a
+<a href="http://cygwin.com">Cygwin</a> installation, including the LilyPond
+package for Cygwin.
+
+   <p>If you run Windows NT, 2000 or XP, please become administrator first;
+installing as an ordinary user does not seem to work on certain
+Windows-NT variants.  Download and run
+<a href="http://cygwin.com/setup.exe">setup.exe</a>.  You will be asked some
+questions.  If you are unsure just click "Next".  Do not change the
+default install directory <code>c:/cygwin</code>.  Do not change the default
+text type <code>UNIX</code>, i.e., do not use <code>DOS</code> mounts.
+
+   <p>In the Package View dialogue window, click on the Publishing section
+to view the available publishing software for Cygwin.  Make sure that
+LilyPond is selected.  If this is a new or first installation, click
+on <em>Skip</em> to select.
+
+   <p>This installs LilyPond, and Cygwin, GUILE, Python, teTeX (MikTeX is not
+supported).  If you already have some of that software under
+<code>c:/cygwin</code>, then don't worry: nothing will be installed twice.
+
+<h4>Additional software</h4>
+
+   <p>If you install the Cygwin's XFree86 X11 window system, tetex-x11 and
+ghostscript-x11 packages too, you can view the <code>dvi</code> output doing
+<code>xdvi test.dvi</code>.
+
+   <p>LilyPond needs a PostScript/PDF viewer to be really useful.  At this
+time (Sun Aug 11 2002), such software is not available in Cygwin, so
+you must use native Windows software instead.
+
+     <dl>
+<dt><code>Ghostview.</code>
+     <dd>
+You can use GSView-2.6.  This old package has two advantages.  It has
+gsview and ghostscript bundeled, and it doesn't popup <em>Register
+Now|Cancel</em> windows all the time.
+
+     <p>Install
+<a href="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/aladdin/gs550/gsv27550.exe">GSView-2.7</a>
+(GhostView for Windows), or visit
+<a href="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum">ftp://mirror.cs.wisc.edu/</a>.
+
+     <p>If you need to view PDFs, or want to create PDFs using GSView, you can
+install the newer versions GSView-3.6 and GhostScript-6.50.  You get
+annoying <em>Register Now|Cancel</em> popups, though.
+
+     <p>Install
+<a href="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/gsv36w32.exe">GSview-3.6</a>
+and
+<a href="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/AFPL/gs650/gs650w32.exe">GhostScript-6.50</a>, or visit the <a href="http://www.cs.wisc.edu/~ghost/">Ghostview and GSview site</a>. 
+</dl>
+
+   <p>Note: <a href="ftp://ftp.cs.wisc.edu/pub/ghost/README">ftp.cs.wisc.edu</a>
+has moved the ghostscript/ghostview distribution to a
+<a href="ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/">rather unreliable server</a>.
+

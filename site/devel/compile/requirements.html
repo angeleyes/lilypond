@@ -1,0 +1,98 @@
+
+
+	     <ul>
+<li>The GNU c++ compiler (version 2.95.2 or newer). 
+EGCS 1.1 may work, but is no longer supported. 
+Check out <a href="ftp://ftp.gnu.org/gnu/gcc/">the gcc site</a>.
+
+     <p>WARNING: if you choose to upgrade to GCC 3.x, enquire if your
+distribution supports g++ 3.x and flex.  At the time of writing (Fri
+Jul 5 2002), <strong>no</strong> distribution that we know of ships a flex
+that generates gcc-3.1.x compliant C++ code.
+
+     </p><li>Python (version 1.5 or newer). 
+Check out <a href="http://www.python.org">the python website</a>.
+
+     <li>GUILE (version 1.4 or newer). 
+Check out
+<a href="http://www.gnu.org/software/guile/guile.html">the GUILE webpage</a>.
+
+     <li>GNU Make. 
+Check out
+<a href="ftp://ftp.gnu.org/gnu/make/">the GNU make FTP directory</a>.
+
+     <li>Flex (version 2.5.4a or newer). 
+Check out <a href="http://www.gnu.org/software/flex/">the Flex webpage</a>.
+
+     <p>WARNING: plain Flex 2.5.4(a) generates invalid C++ code.  GCC 3.x
+chokes on this.  If you wish to use GCC 3.x, make sure that your
+distribution supports g++ 3.x and flex.  For workarounds, see
+lexer-gcc-3.0.patch and lexer-gcc-3.1.sh in the source directory.
+
+     </p><li>Bison (version 1.25 or newer). 
+Check out <a href="http://www.gnu.org/software/bison/">the bison webpage</a>
+
+     <li>TeX.
+
+     <p>TeX is used as an output backend.
+
+     <p>Also, TeX's libkpathsea is used to find the fonts (<code>.mf</code>,
+<code>.afm</code>, <code>.tfm</code>).  Make sure you have tetex 1.0 or newer
+(1.0.6 is known to work).  You may need to install a tetex-devel (or
+tetex-dev or libkpathsea-dev) package too.
+
+     </p><li>Texinfo (version 4.2 or newer). 
+The documentation of lily is written in texinfo.  Check out
+<a href="ftp://ftp.gnu.org/gnu/texinfo/">the texinfo FTP directory</a>.
+
+     <li>The geometry package for LaTeX is needed to use ly2dvi. 
+It is available at
+<a href="ftp://ftp.ctan.org/tex-archive/macros/latex/contrib/supported/geometry">the FTP directory for <code>geometry</code></a>. This package is normally included
+with the TeX distribution.
+
+     <li>kpathsea, a library for searching (TeX) files.  <code>kpathsea</code> is
+usually included with your installation of TeX.  You may need to
+install a tetex-devel or tetex-dev package too. If kpathsea is not
+installed in a directory where the compiler normally looks, read the
+hints for Slackware below.
+
+     <p>In the very unlikely case that kpathsea is not available for your
+platform (ie, you're not running GNU/Linux, Windows, or any recent
+UNIX), you can compile LilyPond without kpathsea support.  In that case,
+you'll probably have to indicate where TeX's tfm files live.  Invoke
+configure something like:
+
+<blockquote>
+<pre>
+./configure --without-kpathsea \
+  --enable-tfm-path=/usr/share/texmf/fonts/tfm/public/cm/\
+  :/usr/share/texmf/fonts/tfm/ams/symbols
+</pre>
+          </blockquote>
+
+   </ul>
+
+
+   <h4><a name="TOC8"></a>Running requirements</h4>
+
+   <p>GNU LilyPond does use a lot of resources. For operation you need the
+following software
+
+     <ul>
+<li>TeX. 
+<li>Xdvi and Ghostscript
+<li>GUILE 1.4, or newer. 
+Check out
+<a href="http://www.gnu.org/software/guile.html">the GUILE webpage</a>
+</ul>
+
+   <p>For running LilyPond successfully you have to help TeX and MetaFont find
+various files.  The recommended way of doing so is adjusting the
+environment variables in the start-up scripts of your shell. Appropriate
+Csh and bourne sh scripts are left in
+<code>buildscripts/out/lilypond-profile</code> and
+<code>buildscripts/out/lilypond-login</code> after compilation.
+
+   <p>LilyPond is a big and slow program.  A fast CPU and plenty of RAM is
+recommended for comfortable use.
+

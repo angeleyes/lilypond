@@ -1,0 +1,126 @@
+
+CodingStandards
+<p>
+   As a general rule, you should always try to continue computations,
+   even if there is some kind of error. When the program stops, it is
+   often very hard for a user to pinpoint what part of the input causes an
+   error. Finding the culprit is much easier if there is some viewable
+   output.
+<p>
+
+   So functions and methods do not return errorcodes, they never crash,
+   but report a programming_error and try to carry on.
+<p>
+
+Languages
+<p>
+
+   C++ and Python are preferred.  Python code should be idented using
+   using TAB characters.
+<p>
+
+Filenames
+<p>
+
+   Definitions of classes that are only accessed via pointers (*) or
+   references (&) shall not be included as include files.
+<p>
+<pre>
+   filenames
+
+        ".hh"   Include files
+             ".cc"      Implementation files
+             ".icc"     Inline definition files
+             ".tcc"     non inline Template defs
+</pre>
+	     <p>
+<pre>
+
+   in emacs:
+
+             (setq auto-mode-alist
+                   (append '(("\\.make$" . makefile-mode)
+                        ("\\.cc$" . c++-mode)
+                        ("\\.icc$" . c++-mode)
+                        ("\\.tcc$" . c++-mode)
+                        ("\\.hh$" . c++-mode)
+                        ("\\.pod$" . text-mode)
+                        )
+                      auto-mode-alist))
+</pre>
+<p>
+
+   The class Class_name is coded in `class-name.*'
+<p>
+
+Indentation
+<p>
+
+   Standard GNU coding style is used.   In emacs:
+<pre>
+
+             (add-hook 'c++-mode-hook
+                  '(lambda() (c-set-style "gnu")
+                     )
+                  )
+<p>
+</pre>
+
+   If you like using font-lock, you can also add this to your `.emacs':
+<pre>
+
+             (setq font-lock-maximum-decoration t)
+             (setq c++-font-lock-keywords-3
+                   (append
+                    c++-font-lock-keywords-3
+                    '(("\\b\\(a-zA-Z_?+_\\)\\b" 1 font-lock-variable-name-face)                    ("\\b\\(A-Z?+a-z_?+\\)\\b" 1 font-lock-type-face))
+                    ))
+</pre>
+
+Classes and Types
+<p>
+<pre>
+
+             This_is_a_class
+</pre>
+<p>
+
+Members
+<p>
+
+   Member variable names end with an underscore:
+<p>
+<pre>
+
+     Type Class::member_
+</pre>
+<p>
+
+Macros
+<p>
+
+   Macro names should be written in uppercase completely.
+
+Broken code
+<p>
+
+   Try not to write broken code. This includes hardwired dependencies,
+   hardwired constants, slow algorithms and obvious limitations. If you can
+   not avoid it, mark the place clearly, and add a comment explaining
+   shortcomings of the code.
+
+Naming
+<p>
+
+   We used to adhere loosely on an almost bearable HungarianNotation
+   variant, but we saw the light, and deprecated that.
+<p>
+
+   You may still find some remains of it in the code, but you're
+   encouraged not to use silly names.
+
+Messages
+<p>
+
+   Messages need to follow <a href=localization.html>LocalisationGuideLines</a>
+<p>

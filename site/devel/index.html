@@ -1,0 +1,77 @@
+
+Install a binary release if possible.  See <a
+href=../downloading>downloading</a>.
+<p>
+
+Check the documentation of the current  version.
+
+ADD LINK.
+
+
+<h2>faq</h2>
+<h1>Frequently asked questions</h1>
+<p>
+With Answers.
+
+<p>
+
+
+<h2>General</h2>
+
+
+
+<h2>Installing</h2>
+
+
+
+<h2>Compiling</h2>
+<h2>Support</h2>
+
+
+
+<h2>Other input formats</h2>
+<h2>Entering music</h2>
+<h2>Printing</h2>
+<h4>
+ Could you implement feature XXXX? It is really easy, just extend the syntax to allow YYYY!
+</h4>
+
+Never hesitate to tell us what kind of feature you need!
+<p>
+However, inventing a new syntax doesn't explain much to us: "extending the syntax" is usually not where the real problem is. The complicated issue how to adapt the internals to do XXXX. The syntax is really a simple front end to the complicated internals.
+
+
+<h4> Can I join in on LilyPond development? How do I do this?</h4>
+
+Subscribe to the development MailingLists (lilypond-devel@gnu.org), and inquire. Do keep in touch (through the mailing list) about what you do, as we have rather high standards for code contributions.
+
+<h4> Are there Coding Standards</h4>
+
+Yes, see <a href=../../Developers/codingstandards.html> the standards.</a>
+
+<h4> I implemented XXXX! How do I get you to include it?</h4
+
+Please use the diff command to generate a patch, eg.
+<pre>
+	diff -u oldfile newfile
+</pre>
+and don't send complete files, even if the diff is larger than the whole file.
+<p>
+Don't forget to put your name and e-mail address in the file `Documentation/topdocs/AUTHORS.texi', or you won't get credits :-)
+<p>
+If you changed more than just one file, making diffs manually can be cumbersome; check out MakingPatches.
+<p>
+
+<h4>How do I inspect `String's and `SCM' values in GDB?</h4>
+
+Use the following command definitions, which can be put in the file ~/.gdbinit.
+
+  define printstr
+      print $arg0.ch_C ()
+  end
+
+  define printscm
+      call gh_display ($arg0)
+      call gh_newline ()
+  end
+

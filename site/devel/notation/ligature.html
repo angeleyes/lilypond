@@ -1,0 +1,85 @@
+
+<p>
+Snipped from e-mail by Juergen Reuter
+</p>
+<p>
+<em>Interesting. What is a ligature in music notation?</em>
+</p>
+<p>
+A ligature in music notation is the fusion of at least two notes into a
+single typographical symbol by e.g. joining them with additional lines
+and/or replacing them with special graphical symbols.  The original idea
+was to express that these notes are somehow related.  At a time when
+there was no fixed metrum in some music (e.g. gregorian chant), most
+(early) ligatures were some sort of hint for the performer to structure
+single notes into groups (either rhythmically or for interpretation
+purposes).  In modal/mensural notation, ligatures were used to
+rhythmically group notes.  In temporary music notation, a very similar
+graphical construct is used to notate sounds and clusters that smoothly
+change their pitch over time.
+</p>
+<p>
+The use of ligatures imposes some interesting constraints that I am not
+sure lilypond currently can handle.  For example, a ligature is a single
+typographical element that may neither be broken nor (usually) be
+spanned, even if the ligature consists of, lets say, 5 noteheads.  Maybe
+the only sensible way to handle these constraints is to model the whole
+ligature as a single item with fixed horizontal size.  So, if a user
+enters code like e.g. "c \ligature e \ligature d", this should end up in
+a single ligature item, whose horizontal size is determined only by the
+number of noteheads (in this example 3) and the type of the ligature.
+</p>
+<p>
+Note that there is even a special type of ligature ("pes" or "podatus")
+where notes are vertically stacked one upon the other, even though they
+are performed sequentially on after the other, beginning with the lowest
+one.  I think, the only way to implement this is once again to merge all
+the noteheads (usually two) into a single item.
+
+</p>
+<p>
+Subject: Re: blot_diameter
+Date: Wed, 6 Feb 2002 19:14:33 +0100 (CET)
+</p>
+<p>
+Just another few links to sites related to ligatures (sorry, but most of
+the stuff is in German):
+</p>
+<ul>
+<li> <a href="http://www.aiscgre.de">http://www.aiscgre.de</a>
+</ul>
+<pre>
+  (international association for studies of gregorian chant)
+</pre>
+<ul>
+
+<li> <a href="http://www.schuyesmans.be/gregoriaans/EN/ENnet.htm">http://www.schuyesmans.be/gregoriaans/EN/ENnet.htm</a>
+</ul>
+<pre>
+  (contains quite a comprehensive list of links to sites related with
+  gregorian chant)
+</pre>
+<ul>
+<li> <a href="http://www.choral.de/frames/gregorianik/gregorianik_frame.htm">http://www.choral.de/frames/gregorianik/gregorianik_frame.htm</a>
+</ul>
+<pre>
+  shows some (tiny) scans of adiastematic neumes.
+</pre>
+
+<ul>
+<li> <a href="http://www.nocturnale.de/Gregorianik/software.html">http://www.nocturnale.de/Gregorianik/software.html</a>
+</ul>
+<pre>
+  sells true-type fonts (vaticana, hufnagel, medicaea...).  (Actually,
+  their "medicaea" font looks like a late edition of medicaea that was
+  printed in the 17th century, while lily's medicaea font sticks to the
+  early editions).
+</pre>
+<p>
+For mensural ligatures, you probably have to search for sites about
+mensural notation rather than sites about neumes.
+</p>
+<p>
+Greetings,
+Juergen
+</p>

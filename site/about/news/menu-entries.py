@@ -1,0 +1,2 @@
+[('oldnews.html', "Older news")
+ ]
