@@ -3,523 +3,433 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
-/*
-  FIXME:
-
-  A triad is a chord of three tones, and not an interval of a third.
- */
-
 #include "chord.hh"
+#include "musical-request.hh"
 #include "warn.hh"
+#include "debug.hh"
+#include "music-list.hh"
+#include "musical-request.hh"
 
-// doesn't seem common, and we should know about this during parsing
-// #define INVERSION_ADDED_AS_BASE 1
+/* some SCM abbrevs
 
-Chord::Chord (Array<Musical_pitch> pitch_arr)
+   zijn deze nou handig?
+   zijn ze er al in scheme, maar heten ze anders? */
+
+
+/* Remove doubles from (sorted) list */
+SCM
+ly_unique (SCM list)
 {
-  pitch_arr_ = pitch_arr;
-}
-
-static void
-rebuild_transpose (Musical_pitch tonic, Array<Musical_pitch>* pitch_arr_p)
-{
-  for (int i = 0; i < pitch_arr_p->size (); i++)
+  SCM unique = SCM_EOL;
+  for (SCM i = list; gh_pair_p (i); i = gh_cdr (i))
     {
-      Musical_pitch p = tonic;
-      Musical_pitch q = (*pitch_arr_p)[i];
-      // duh, c7 should mean <c bes>
-      if (q.notename_i_ == 6)
-        q.accidental_i_--;
-      p.transpose (q);
-      (*pitch_arr_p)[i] = p;
+      if (!gh_pair_p (gh_cdr (i))
+	  || !gh_equal_p (gh_car (i), gh_cadr (i)))
+	unique = gh_cons (gh_car (i), unique);
     }
-  pitch_arr_p->sort (Musical_pitch::compare);
+  return gh_reverse (unique);
 }
 
-static int
-find_pitch_i (Array<Musical_pitch> const* pitch_arr_p, Musical_pitch p)
+/* Hmm, rewrite this using ly_split_list? */
+SCM
+ly_remove_member (SCM s, SCM list)
 {
-  for (int i = 0; i < pitch_arr_p->size (); i++)
-    if (p == (*pitch_arr_p)[i])
-      return i;
-  return -1;
-}
-
-static int
-find_notename_i (Array<Musical_pitch> const* pitch_arr_p, Musical_pitch p)
-{
-  int i = find_pitch_i (pitch_arr_p, p);
-  if (i == -1)
+  SCM removed = SCM_EOL;
+  for (SCM i = list; gh_pair_p (i); i = gh_cdr (i))
     {
-      for (int i = 0; i < pitch_arr_p->size (); i++)
+      if (!gh_equal_p (gh_car (i), s))
+	removed = gh_cons (gh_car (i), removed);
+    }
+  return gh_reverse (removed);
+}
+
+/* tail add */
+SCM
+ly_snoc (SCM s, SCM list)
+{
+  return gh_append2 (list, gh_list (s, SCM_UNDEFINED));
+}
+
+
+/* Split list at member s, removing s.
+   Return (BEFORE . AFTER) */
+SCM
+ly_split_list (SCM s, SCM list)
+{
+  SCM before = SCM_EOL;
+  SCM after = list;
+  for (; gh_pair_p (after);)
+    {
+      SCM i = gh_car (after);
+      after = gh_cdr (after);
+      if (gh_equal_p (i, s))
+	break;
+      before = gh_cons (i, before);
+    }
+  return gh_cons (gh_reverse (before), after);
+}
+
+/*
+  JUNKME. 
+  do something smarter.
+  zoals?
+ */
+SCM
+Chord::base_pitches (SCM tonic)
+{
+  SCM base = SCM_EOL;
+
+  SCM major = Pitch (0, 2, 0).smobbed_copy ();
+  SCM minor = Pitch (0, 2, -1).smobbed_copy ();
+
+  base = gh_cons (tonic, base);
+  base = gh_cons (Pitch::transpose (gh_car (base), major), base);
+  base = gh_cons (Pitch::transpose (gh_car (base), minor), base);
+
+  return gh_reverse (base);
+}
+
+SCM
+Chord::transpose_pitches (SCM tonic, SCM pitches)
+{
+  /* map?
+     hoe doe je lambda in C?
+  */
+  SCM transposed = SCM_EOL;
+  for (SCM i = pitches; gh_pair_p (i); i = gh_cdr (i))
+    {
+      transposed = gh_cons (Pitch::transpose (tonic, gh_car (i)),
+			    transposed);
+    }
+  return gh_reverse (transposed);
+}
+
+/*
+  burp, in SCM duw je gewoon een (if (= (step x) 7) (...)) door pitches
+
+  Lower step STEP.
+  If step == 0, lower all.
+ */
+SCM
+Chord::lower_step (SCM tonic, SCM pitches, SCM step)
+{
+  SCM lowered = SCM_EOL;
+  for (SCM i = pitches; gh_pair_p (i); i = gh_cdr (i))
+    {
+      SCM p = gh_car (i);
+      if (gh_equal_p (step_scm (tonic, gh_car (i)), step)
+	  || gh_scm2int (step) == 0)
 	{
-	  p.octave_i_ = (*pitch_arr_p)[i].octave_i_;
-	  if (p == (*pitch_arr_p)[i])
-	    return i;
+	  p = Pitch::transpose (p, Pitch (0, 0, -1).smobbed_copy ());
+	}
+      lowered = gh_cons (p, lowered);
+    }
+  return gh_reverse (lowered);
+}
+
+/* Return member that has same notename, disregarding octave or alterations */
+SCM
+Chord::member_notename (SCM p, SCM pitches)
+{
+  /* If there's an exact match, make sure to return that */
+  SCM member = gh_member (p, pitches);
+  if (member == SCM_BOOL_F)
+    {
+      for (SCM i = pitches; gh_pair_p (i); i = gh_cdr (i))
+	{
+	  /*
+	    Urg, eindelijk gevonden: () != #f, kan maar niet aan wennen.
+	    Anders kon iets korter...
+	   */
+	  if (unsmob_pitch (p)->notename_i_
+	      == unsmob_pitch (gh_car (i))->notename_i_)
+	    {
+	      member = gh_car (i);
+	      break;
+	    }
 	}
     }
-  return i;
+  else
+    member = gh_car (member);
+  return member;
 }
 
-/*
-  trap (NL) != trap(english)
- */
-static int
-trap_i (Musical_pitch tonic, Musical_pitch p)
+/* Return member that has same notename and alteration, disregarding octave */
+SCM
+Chord::member_pitch (SCM p, SCM pitches)
 {
-  int i = p.notename_i_ - tonic.notename_i_
-    + (p.octave_i_ - tonic.octave_i_) * 7;
+  /* If there's an exact match, make sure to return that */
+  SCM member = gh_member (p, pitches);
+  if (member == SCM_BOOL_F)
+    {
+      for (SCM i = pitches; gh_pair_p (i); i = gh_cdr (i))
+	{
+	  if (unsmob_pitch (p)->notename_i_
+	      == unsmob_pitch (gh_car (i))->notename_i_
+	      && unsmob_pitch (p)->alteration_i_
+	      == unsmob_pitch (gh_car (i))->alteration_i_)
+	    {
+	      member = gh_car (i);
+	      break;
+	    }
+	}
+    }
+  else
+    member = gh_car (member);
+  return member;
+}
+
+SCM
+Chord::step_scm (SCM tonic, SCM p)
+{
+  /* De Pitch intervaas is nog beetje sleutelgat? */
+  int i = unsmob_pitch (p)->notename_i_
+    - unsmob_pitch (tonic)->notename_i_
+    + (unsmob_pitch (p)->octave_i_
+       - unsmob_pitch (tonic)->octave_i_) * 7;
   while (i < 0)
     i += 7;
   i++;
-  return i;
+  return gh_int2scm (i);
 }
 
-static Array<Musical_pitch>
-missing_triads_pitch_arr (Array<Musical_pitch>const* pitch_arr_p)
+/*
+  Assuming that PITCHES is a chord, with tonic (CAR PITCHES), find
+  missing thirds, only considering notenames.  Eg, for
+
+    PITCHES = c gis d'
+
+  return
+  
+    MISSING = e b'
+
+*/
+SCM
+Chord::missing_thirds (SCM pitches)
 {
-  Array<Musical_pitch> triads;
-
+  SCM thirds = SCM_EOL;
+  
   /* is the third c-e, d-f, etc. small or large? */
-  int minormajor_a[] = {0, -1, -1, 0,0,-1,-1};
+  int minormajor_a[] = {0, -1, -1, 0, 0, -1, -1};
   for (int i=0; i < 7; i++)
-    triads.push (Musical_pitch( 2, minormajor_a[i]));
+    thirds = gh_cons (Pitch (0, 2, minormajor_a[i]).smobbed_copy (),
+		      thirds);
+  thirds = scm_vector (gh_reverse (thirds));
+  
+  SCM tonic = gh_car (pitches);
+  SCM last = tonic;
+  SCM missing = SCM_EOL;
 
-  Musical_pitch tonic = (*pitch_arr_p)[0];
-  Musical_pitch last = tonic;
-  Array<Musical_pitch> missing_arr;
-
-  for (int i = 0; i < pitch_arr_p->size ();)
+  for (SCM i = pitches; gh_pair_p (i);)
     {
-      Musical_pitch p = (*pitch_arr_p)[i];
-      int trap = trap_i (tonic, p);
-      if (last.notename_i_ == p.notename_i_)
-	last.transpose (triads[(last.notename_i_ - tonic.notename_i_ + 7) % 7]);
-      if (trap > trap_i (tonic, last))
+      SCM p = gh_car (i);
+      int step = gh_scm2int (step_scm (tonic, p));
+      
+      if (unsmob_pitch (last)->notename_i_ == unsmob_pitch (p)->notename_i_)
 	{
-	  while (trap > trap_i (tonic, last))
+	  int third = (unsmob_pitch (last)->notename_i_
+		       - unsmob_pitch (tonic)-> notename_i_ + 7) % 7;
+	  last = Pitch::transpose (last, scm_vector_ref (thirds, gh_int2scm (third)));
+	}
+      
+      if (step > gh_scm2int (step_scm (tonic, last)))
+	{
+	  while (step > gh_scm2int (step_scm (tonic, last)))
 	    {
-	      if ((last.notename_i_ - tonic.notename_i_ + 7) % 7 == 6)
-		{
-		  Musical_pitch special_seven = last;
-		  Musical_pitch lower (0, -1);
-		  special_seven.transpose (lower);
-		  missing_arr.push (special_seven);
-		}
-	      else
-		{
-		  missing_arr.push (last);
-		}
-	      last.transpose (triads[(last.notename_i_ - tonic.notename_i_ + 7) % 7]);
+	      missing = gh_cons (last, missing);
+	      int third = (unsmob_pitch (last)->notename_i_
+			   - unsmob_pitch (tonic)->notename_i_ + 7) % 7;
+	      last = Pitch::transpose (last, scm_vector_ref (thirds,
+						      gh_int2scm (third)));
 	    }
 	}
       else
 	{
-	  i++;
+	  i = gh_cdr (i);
 	}
     }
-  return missing_arr;
+  
+  return lower_step (tonic, missing, gh_int2scm (7));
 }
+
+/* Return PITCHES with PITCH added not as lowest note */
+SCM
+Chord::add_above_tonic (SCM pitch, SCM pitches)
+{
+  /* Should we maybe first make sure that PITCH is below tonic? */
+  if (pitches != SCM_EOL)
+    while (Pitch::less_p (pitch, gh_car (pitches)) == SCM_BOOL_T)
+      pitch = Pitch::transpose (pitch, Pitch (1, 0, 0).smobbed_copy ());
+   
+  pitches = gh_cons (pitch, pitches);
+  return scm_sort_list (pitches, Pitch::less_p_proc);
+}
+
+/* Return PITCHES with PITCH added as lowest note */
+SCM
+Chord::add_below_tonic (SCM pitch, SCM pitches)
+{
+  if (pitches != SCM_EOL)
+    while (Pitch::less_p (gh_car (pitches), pitch) == SCM_BOOL_T)
+      pitch = Pitch::transpose (pitch, Pitch (-1, 0, 0).smobbed_copy ());
+  return gh_cons (pitch, pitches);
+}
+
 
 
 /*
-  construct from parser output
+  Parser stuff 
+  
+  Construct from parser output:
+
+  PITCHES is the plain chord, it does not include bass or inversion
+  
+  Part of Chord:: namespace for now, because we do lots of
+  chord-manipulating stuff.
 */
-Chord::Chord (Musical_pitch tonic, Array<Musical_pitch>* add_arr_p, Array<Musical_pitch>* sub_arr_p, Musical_pitch* inversion_p)
+SCM
+Chord::tonic_add_sub_to_pitches (SCM tonic, SCM add, SCM sub)
 {
-  rebuild_transpose (tonic, add_arr_p);
-  rebuild_transpose (tonic, sub_arr_p);
-
-  Musical_pitch fifth = tonic;
-  fifth.transpose (Musical_pitch (2));
-  fifth.transpose (Musical_pitch (2, -1));
-
-  /*
-    remove double adds (urg: sus4)
-   */
-  for (int i = add_arr_p->size () - 1; i >= 0 ; i--)
+  /* urg: catch dim modifier: 3rd, 5th, 7th, .. should be lowered */
+  bool dim_b = false;
+  for (SCM i = add; gh_pair_p (i); i = gh_cdr (i))
     {
-      int j = ::find_pitch_i (add_arr_p, (*add_arr_p)[i]);
-      if ((j != -1) && (i != j))
-        {
-	    add_arr_p->get (i);
-	} 
-    }
-
-  /*
-    default chord includes upto 5: <1, 3, 5>
-   */
-  add_arr_p->insert (tonic, 0);
-  Array<Musical_pitch> tmp = *add_arr_p;
-  int highest_trap = trap_i (tonic, tmp.top ());
-  if (highest_trap < 5)
-    tmp.push (fifth);
-
-  /*
-    find missing triads
-   */
-  Array<Musical_pitch> missing_arr = missing_triads_pitch_arr (&tmp);
-  if (highest_trap < 5)
-    missing_arr.push (fifth);
-
-  /*
-    if additions include some 3, don't add third
-   */
-  Musical_pitch third = tonic;
-  third.transpose (Musical_pitch (2));
-  if (::find_notename_i (add_arr_p, third) != -1)
-    {
-      int i = ::find_pitch_i (&missing_arr, third);
-      if (i != -1)
-	missing_arr.get (i);
-    }
-  
-  /*
-    if additions include 4, assume sus4 and don't add third implicitely
-     C-sus (4) = c f g (1 4 5)
-   */
-  Musical_pitch sus = tonic;
-  sus.transpose (Musical_pitch (3));
-  if (::find_pitch_i (add_arr_p, sus) != -1)
-    {
-      int i = ::find_pitch_i (&missing_arr, third);
-      if (i != -1)
-	missing_arr.get (i);
-    }
-
-  /*
-    if additions include some 5, don't add fifth
-   */
-  if (::find_notename_i (add_arr_p, fifth) != -1)
-    {
-      int i = ::find_pitch_i (&missing_arr, fifth);
-      if (i != -1)
-	missing_arr.get (i);
-    }
-  
-  
-  /*
-    complete the list of triads to be added
-   */
-  add_arr_p->concat (missing_arr);
-  add_arr_p->sort (Musical_pitch::compare);
-
-  /*
-   add all that aren't subtracted
-   */
-  for (int i = 0; i < add_arr_p->size (); i++)
-    {
-      Musical_pitch p = (*add_arr_p)[i];
-      int j = 0;
-      for (; j < sub_arr_p->size (); j++)
-	if (p == (*sub_arr_p)[j])
-	  {
-	    sub_arr_p->del (j);
-	    j = -1;
-	    break;
-	  }
-      if (j == sub_arr_p->size ())
-	pitch_arr_.push (p);
-    }
-
-  pitch_arr_.sort (Musical_pitch::compare);
-
-  for (int i = 0; i < sub_arr_p->size (); i++)
-    warning (_f ("invalid subtraction: not part of chord: %s",
-		 (*sub_arr_p)[i].str ()));
-
-  if (inversion_p)
-    {
-      int i = 0;
-      for (; i < pitch_arr_.size (); i++)
-	{
-	  if ((pitch_arr_[i].notename_i_ == inversion_p->notename_i_)
-	      && (pitch_arr_[i].accidental_i_ == inversion_p->accidental_i_))
-	    break;
-	}
-      if (i == pitch_arr_.size ())
-	{
-	  warning (_f ("invalid inversion pitch: not part of chord: %s",
-		       inversion_p->str ()));
-	}
-      else
-	{
-#if INVERSION_ADDED_AS_BASE
-	  pitch_arr_.insert (pitch_arr_[i], 0);
-	  rebuild_with_bass (0);
-#else
-	  rebuild_with_bass (i);
-#endif
-	  
-	}
-      delete inversion_p;
-    }
-}
-
-void
-Chord::find_additions_and_subtractions(Array<Musical_pitch>* add_arr_p, Array<Musical_pitch>* sub_arr_p) const
-{
-  Musical_pitch tonic = pitch_arr_[0];
-  /*
-    construct an array of triads for a normal chord
-   */
-  Array<Musical_pitch> all_arr;
-  all_arr.push (tonic);
-  all_arr.push (pitch_arr_.top ());
-  all_arr.concat (missing_triads_pitch_arr (&all_arr));
-  all_arr.sort (Musical_pitch::compare);
-  
-  int i = 0;
-  int j = 0;
-  while ((i < all_arr.size ()) || (j < pitch_arr_.size ()))
-    {
-      Musical_pitch a = all_arr [i <? all_arr.size () - 1];
-      Musical_pitch p = pitch_arr_ [j <? pitch_arr_.size () - 1];
-      /*
-        this pitch is present: do nothing, check next
-       */
-      if (a == p)
-	{
-	  i++;
-	  j++;
-	}
-      /*
-        found an extra pitch: chord addition
-       */
-      else if ((p < a) || (p.notename_i_ == a.notename_i_))
-	{
-	  add_arr_p->push (p);
-	  (j < pitch_arr_.size ()) ? j++ : i++;
-	}
-      /*
-        a triad is missing: chord subtraction
-       */
-      else
-	{
-	  sub_arr_p->push (a);
-	  (i < all_arr.size ()) ? i++ : j++;
-	}
-    }
-      
-  /*
-    add highest addition, because it names chord
-    (1, 3 and) 5 not an addition: part of normal chord
-   */
-  if (trap_i (tonic, pitch_arr_.top () > 5))
-    add_arr_p->push (pitch_arr_.top ());
-}
-
-String
-Chord::banter_str (Musical_pitch* inversion) const
-{
-  Musical_pitch tonic = pitch_arr_[0];
-
-  //urg, should do translation in scheme.
-  char const *acc[] = {"\\textflat\\textflat ", "\\textflat ", "", "\\textsharp " , "\\textsharp\\textsharp "};
-  String tonic_str = tonic.str ();
-  tonic_str = tonic_str.left_str (1).upper_str ()
-    + acc[tonic.accidental_i_ + 2];
-
-  Array<Musical_pitch> add_arr;
-  Array<Musical_pitch> sub_arr;
-  find_additions_and_subtractions (&add_arr, &sub_arr);
-			   
-
-  Array<Musical_pitch> scale;
-  for (int i=0; i < 7; i++)
-    scale.push (Musical_pitch (i));
-
-  // 7 always means 7-...
-  //  scale.push (Musical_pitch (6, -1)); // b
-
-  rebuild_transpose (tonic, &scale);
-  
-  bool has3m_b = false;
-  bool has4_b = false;
-  String str;
-  String sep_str;
-  for (int i = 0; i < add_arr.size (); i++)
-    {
-      Musical_pitch p = add_arr[i];
-      int trap = trap_i (tonic, p);
-      if (trap == 4)
-	has4_b = true;
-      int accidental = p.accidental_i_ - scale[(trap - 1) % 7].accidental_i_;
-      if ((trap == 3) && (accidental == -1))
-	{
-	  tonic_str += "m";
-	  has3m_b = true;
-	}
-      else if (accidental
-	       || (!(trap % 2) || ((i + 1 == add_arr.size ()) && (trap > 5))))
-        {
-	  str += sep_str;
-          if ((trap == 7) && (accidental == 1))
-            str += "maj7";
-          else
-            {
-              str += to_str (trap);
-              if (accidental)
-                str += accidental < 0 ? "-" : "+";
-            }
-	  sep_str = "/";
-	}
-    }
-
-  for (int i = 0; i < sub_arr.size (); i++)
-    {
-      Musical_pitch p = sub_arr[i];
-      int trap = trap_i (tonic, p);
-      /*
-	if chord has 3-, assume minor and don't display 'no3'
-	if additions include 4, assume sus4 and don't display 'no3'
+      Pitch* p = unsmob_pitch (gh_car (i));
+      /* Ugr
+	This chord modifier stuff should really be fixed
+       Cmaj7 yields C 7/7-
       */
-      if (!((trap == 3) && (has3m_b || has4_b)))
-	{
-	  str += sep_str + "no" + to_str (trap);
-	  sep_str = "/";
+      if (p->octave_i ()  == -100)
+        {
+          p->octave_i_ = 0;
+	  dim_b = true;
 	}
     }
-
-  String inversion_str;
-  if (inversion)
+  add = transpose_pitches (tonic, add);
+  add = lower_step (tonic, add, gh_int2scm (7));
+  add = scm_sort_list (add, Pitch::less_p_proc);
+  add = ly_unique (add);
+  
+  sub = transpose_pitches (tonic, sub);
+  sub = lower_step (tonic, sub, gh_int2scm (7));
+  sub = scm_sort_list (sub, Pitch::less_p_proc);
+  
+  /* default chord includes upto 5: <1, 3, 5>   */
+  add = gh_cons (tonic, add);
+  SCM tmp = add;
+  
+  SCM fifth = ly_last (base_pitches (tonic));
+  int highest_step = gh_scm2int (step_scm (tonic, ly_last (tmp)));
+  if (highest_step < 5)
+    tmp = ly_snoc (fifth, tmp);
+  else if (dim_b)
     {
-      inversion_str = inversion->str ();
-      inversion_str = "/" + inversion_str.left_str (1).upper_str ()
-	+ acc[inversion->accidental_i_ + 2];
-
+      add = lower_step (tonic, add, gh_int2scm (5));
+      add = lower_step (tonic, add, gh_int2scm (7));
     }
 
-  return tonic_str + "$^{" + str + "}$" + inversion_str;
-}
+  /* find missing thirds */
+  SCM missing = missing_thirds (tmp);
+  if (highest_step < 5)
+    missing = ly_snoc (fifth, missing);
 
-int
-Chord::find_notename_i (Musical_pitch p) const
-{
-  return ::find_notename_i (&pitch_arr_, p);
-}
+  /* if dim modifier is given: lower all missing */
+  if (dim_b)
+    missing = lower_step (tonic, missing, gh_int2scm (0));
+  
+  /* if additions include any 3, don't add third */
+  SCM third = gh_cadr (base_pitches (tonic));
+  if (member_notename (third, add) != SCM_BOOL_F)
+    missing = scm_delete (third, missing);
 
-int
-Chord::find_pitch_i (Musical_pitch p) const
-{
-  return ::find_pitch_i (&pitch_arr_, p);
-}
-
-int
-Chord::find_tonic_i () const
-{
-  /*
-    find tonic
+  /* if additions include any 4, assume sus4 and don't add third implicitely
+     C-sus (4) = c f g (1 4 5) */
+  SCM sus = Pitch::transpose (tonic, Pitch (0, 3, 0).smobbed_copy ());
+  if (member_notename (sus, add) != SCM_BOOL_F)
+    missing = scm_delete (third, missing);
+  
+  /* if additions include some 5, don't add fifth */
+  if (member_notename (fifth, add) != SCM_BOOL_F)
+    missing = scm_delete (fifth, missing);
     
-    first try: base of longest line of triads
-   */
-  int tonic_i = 0;
-  int longest_i = 0;
-  for (int i = 0; i < pitch_arr_.size (); i++)
+  /* complete the list of thirds to be added */
+  add = gh_append2 (missing, add);
+  add = scm_sort_list (add, Pitch::less_p_proc);
+  
+  SCM pitches = SCM_EOL;
+  /* Add all that aren't subtracted */
+  for (SCM i = add; gh_pair_p (i); i = gh_cdr (i))
     {
-      int no_triad_i = 0;
-      int last_i = pitch_arr_[i % pitch_arr_.size ()].notename_i_;
-      int j = 0;
-      for (; j < pitch_arr_.size (); j++)
+      SCM p = gh_car (i);
+      SCM s = member_notename (p, sub);
+      if (s != SCM_BOOL_F)
+	sub = scm_delete (s, sub);
+      else
+	pitches = gh_cons (p, pitches);
+    }
+  pitches = scm_sort_list (pitches, Pitch::less_p_proc);
+  
+  for (SCM i = sub; gh_pair_p (i); i = gh_cdr (i))
+    warning (_f ("invalid subtraction: not part of chord: %s",
+		 unsmob_pitch (gh_car (i))->str ()));
+
+  return pitches;
+}
+
+
+/* --Het lijkt me dat dit in het paarse gedeelte moet. */
+Simultaneous_music *
+Chord::get_chord (SCM tonic, SCM add, SCM sub, SCM inversion, SCM bass, SCM dur)
+{
+  SCM pitches = tonic_add_sub_to_pitches (tonic, add, sub);
+  SCM list = SCM_EOL;
+  if (inversion != SCM_EOL)
+    {
+      /* If inversion requested, check first if the note is part of chord */
+      SCM s = member_pitch (inversion, pitches);
+      if (s != SCM_BOOL_F)
 	{
-	  int cur_i = pitch_arr_[(i + j + 1) % pitch_arr_.size ()].notename_i_;
-	  int gap = cur_i - last_i;
-	  while (gap < 0)
-	    gap += 7;
-	  gap %= 7;
-	  if (gap == 2)
-	    last_i = cur_i;
-	  else
-	    no_triad_i++;
+	  /* Then, delete and add as base note, ie: the inversion */
+	  pitches = scm_delete (s, pitches);
+	  Note_req* n = new Note_req;
+	  n->set_mus_property ("pitch", gh_car (add_below_tonic (s, pitches)));
+	  n->set_mus_property ("duration", dur);
+	  n->set_mus_property ("inversion", SCM_BOOL_T);
+	  list = gh_cons (n->self_scm (), list);
+	  scm_unprotect_object (n->self_scm ());
 	}
-      if (j - no_triad_i > longest_i)
-	{
-	  longest_i = j - no_triad_i;
-	  tonic_i = i;
-	}
+      else
+	warning (_f ("invalid inversion pitch: not part of chord: %s",
+		     unsmob_pitch (inversion)->str ()));
     }
 
-  /*
-    second try: note after biggest gap
-   */
-  int biggest_i = 0;
-  //  if (longest_i)
-  if (longest_i <= 1)
-    for (int i = 0; i < pitch_arr_.size (); i++)
-      {
-	int gap = pitch_arr_[i].notename_i_
-	  - pitch_arr_[(i - 1 + pitch_arr_.size ()) 
-	  % pitch_arr_.size ()].notename_i_;
-	while (gap < 0)
-	  gap += 7;
-	gap %= 7;
-	if (gap > biggest_i)
-	  {
-	    biggest_i = gap;
-	    tonic_i = i;
-	  }
-      }
-  return tonic_i;
-}
-
-void
-Chord::rebuild_from_base (int base_i)
-{
-  assert (base_i >= 0);
-  Musical_pitch last (0, 0, -5);
-  Array<Musical_pitch> new_arr;
-  for (int i = 0; i < pitch_arr_.size (); i++)
+  /* Bass is easy, just add if requested */
+  if (bass != SCM_EOL)
     {
-      Musical_pitch p = pitch_arr_[(base_i + i) % pitch_arr_.size ()];
-      if (p < last)
-	{
-	  p.octave_i_ = last.octave_i_;
-	  if (p < last)
-	    p.octave_i_++;
-	}
-      new_arr.push (p);
-      last = p;
+      Note_req* n = new Note_req;
+      n->set_mus_property ("pitch", gh_car (add_below_tonic (bass, pitches)));
+      n->set_mus_property ("duration", dur);
+      n->set_mus_property ("bass", SCM_BOOL_T);
+      list = gh_cons (n->self_scm (), list);
+      scm_unprotect_object (n->self_scm ());
     }
-  pitch_arr_ = new_arr;
-}
-
-void
-Chord::rebuild_insert_inversion (int tonic_i)
-{
-  assert (tonic_i > 0);
-#if INVERSION_ADDED_AS_BASE
-  // inversion was added; don't insert
-  Musical_pitch inversion = pitch_arr_.get (0);
-  (void)inversion;
-#else
-  Musical_pitch inversion = pitch_arr_.get (0);
-  rebuild_from_base (tonic_i - 1);
-  if (pitch_arr_.size ())
+  
+  for (SCM i = pitches; gh_pair_p (i); i = gh_cdr (i))
     {
-      inversion.octave_i_ = pitch_arr_[0].octave_i_ - 1;
-      while (inversion < pitch_arr_[0])
-	inversion.octave_i_++;
+      Note_req* n = new Note_req;
+      n->set_mus_property ("pitch", gh_car (i));
+      n->set_mus_property ("duration", dur);
+      list = gh_cons (n->self_scm (), list);
+      scm_unprotect_object (n->self_scm ());
     }
-  for (int i = 0; i < pitch_arr_.size (); i++)
-    if (pitch_arr_[i] > inversion)
-      {
-	pitch_arr_.insert (inversion, i);
-	break;
-      }
-#endif
+
+  Simultaneous_music*v = new Request_chord (SCM_EOL);
+  v->set_mus_property ("elements", list);
+
+  return v;
 }
 
-void
-Chord::rebuild_with_bass (int bass_i)
-{
-  assert (bass_i >= 0);
-  Musical_pitch inversion = pitch_arr_.get (bass_i);
-  // is lowering fine, or should others be raised?
-  if (pitch_arr_.size ())
-    while (inversion > pitch_arr_[0])
-      inversion.octave_i_--;
-  pitch_arr_.insert (inversion, 0);
-}
+

@@ -1,94 +1,223 @@
-pl 4.hwn1
-	- bf: repeats.
-	- bf: mmrests
-	- bf: simpler guile detection.
-	- use texinfo for reference manual.
-	- inline lily.ps from lilypond.
-	- texi for doco: converted directory Documentation/tex/
+1.4.4.mb1
+========
+  
+* Documentation fixes
+  
+1.4.4.stable.jcn4
+=================
+  
+* Website: downloadable pictures with better alt texts.
 
+* Bugfix: c:dim7 generates <c es ges beses>.
 
-pl 3.hwn1
-	- mudela-book tweaks for surviving texinfo
-	- include feta  command seqs. in .tex 
-	- guile 1.3.2 fixes.
-	- include  config.h directly.
-	- bf: mudela-book.  Now linear in size of document.
-	- scriptHorizontal property; more or less works.
-	- changes in Graphical_element, Graphical_axis_group
-offset removed from public interface, now use relative_coordinate ().
-extent () is given relative to this.
-	- removed Rhythmic_head::dots_i_
- 	- bf: Rhythmic_head::do_substitute_element_pointer ()
-	- Direct access to dim_cache_ replaced by methods in
-Graphical_element.
+* Bugfix: call <c es ges bes> Cm5-/7 in Banter style.
 
-**********
+* Bugfix: don't change value of chord modifiers.
 
+* Bugfix: size and overstrike fix for some Banter chord names.
 
-pl 2.mk1
-	- bf, tie.cc: handle postbreak left align correctly
-pl 2.lec1
-	- abc2ly fixes.
+* Bugfix: text2html: escape entities inside <pre>.
 
-pl 2.hwn1
-       - rewrite of mudela-book.  Now uses chunks, and you can put
-\input, \include and \mudelagraphics  in verbatim sections. 
+* Added some template .ly's for evaluation.
 
+* Bugfix: text2html: escape entities inside <pre>.
 
-pl 2.jcn2
-	- bf: auto-beamer: don't junk beam if manual beam shows up
+* Now really included lexer-gcc-3.0.patch.
 
-pl 2.jcn1
-	- add-html-footer.py, ls-latex.py .tely updates and fixes
-	- tely (texinfo-lily) rules and test Documentation/metadoc/foo.tely
+* Added feature to ly2dvi to find feta pfa font files used in a
+postscript file to make printing of direct postscript a bit easier:
 
-*************
+    lilypond -fps input/trip.ly
+    cat $(ly2dvi -f trip.ps) trip.ps | lpr
 
-pl 1.uu2
-	- complete rewrite of mudela-book. Much cleaner now.
-Support for texinfo.
-	- convert-mudela now per file, add \version if not present.
+* Reincluded 1.4.3.jcn2.
 
-pl 1.uu1.jcn1
-	- internationalization fixes for getopt-long help
+* Website fixes.
 
-pl 1.uu1
-	- rewrite --help messages for help2man:
-	* lilypond
-	* mi2mu
-	* mudela-book
-	* convert-mudela
-	- cleanup: mf-to-table.py
-	- Getopt_long: support for --help msg.
+* Ly2dvi now leaves .tex and .latex output if latex fails, and cleans
+the temp dir if anything fails.
 
-pl 1.mb1
- 	- bf, scalar.cc: ".3" now detected as numerical
+* Fixes for windows scripts.
 
-********
-	
-pl 0.uu1
-	- refman updates by Werner & Mats
-	- now use ChangeLog for changes.
-	
-pl 0.jcn2
-	- po fixes
+* Beam and stem fixes:
+ - Fixes for draw-box and draw_beam PostScript routines.
+ - Stems reach to top (or bottom) of beam.
+ - Beam uses correct stem thickness.
 
-pl 0.jcn1
-	- gcc-2.95 nitpicks
-	- added pointers to mailing lists in toplevel docs
+1.4.4
+=====
 
-0.mb2
-	- configure: more robust detection of Guile
-	- Midi_note_off: revert to fixed note-off velocity. Fixes
-	  problem with notes that never stop.
-	- Decreased breakable_column_space_strength
-	- Added a few TODO
-	- bf: "harmonic" and "cross" note heads also for half and 
-	  whole notes.
-	- linewidth and textheight set independent of the font size.
-	- bf, titledefs.tex: opus and piece are not repeated for 
-	  every piece unless they are explicitly set again.
+1.4.3.jcn2
+==========
 
-0.mb1
-  	- Changed dynamicDir to dynamicDirection.
-  	- refman and tutorial corrections.
+* Included documentatioon and post-flex lexer.cc patch for
+Debian/unstable gcc-3.0.
+
+* Enhanced gcc autoconf and make messages.
+
+* Added -mieee to CFLAGS for alpha.
+
+* Fixed help and documentation of new LilyPond command line.
+
+* Redirected SuSE download to ftp.lilypond.org (where mirror script runs).
+
+1.4.3
+=====
+
+1.4.2.jcn4
+==========
+
+* Windows: bugfix for tex-wrappers, added tex wrapper for dvips.
+LilyPond (read: ly2dvi) should now work right out of the box.
+
+Amazing; it seems that ly2dvi won't generate PK files without this
+dvips wrapper.  We had over 200 downloads of setup.exe, yet only one
+`call for help'.  Did all the others give up, or did none of them
+bother to share their fix/file a bug report?  Urg.
+
+* Included mktexnam.patch (again?).
+
+* Documentation fix (Mark Hindley).
+
+* Debian patch and bashism fix (Anthony).
+
+* Bugfix: local-install should depend on $(INSTALLATION_FILES).  This fixes
+./configure; make install in buildscripts/ (Michael Vanier).
+
+* Removed les-nereides from short-examples, as it is tweaked a lot,
+contrary to what the webpage claims (didn't know that).
+
+1.4.2.mb1
+==========
+
+* ly2dvi, titledefs.tex: Typeset copyright notice at the bottom of the
+first page. Make separate page styles for first and last page.
+
+* Bugfix: Default RehearsalMark font-family changed to roman (only
+affects Scheme text markups).
+
+1.4.2.hwn1
+==========
+
+* Added support for Q: statement to abc2ly. (Laura Conrad)
+
+* Tie shape bugfix (Mark Hindley).
+
+* Bugfix: lilypond-book LatexPaper.__setattr__()
+
+* Bugfix: make Hyphen_spanner::brew_molecule() more robust.
+
+* Don't use stdin when no argument specified.
+
+* Naming smobs -> grobs 
+
+* Bugfix: ledger lines on easy-notation note heads.
+
+1.4.2
+=====
+
+* Glossary fixes (Thanks Jean-Pierre Coulon).
+
+1.4.1.jcn3
+==========
+
+* Updated les-nereides.
+
+* Added \newpage command.
+
+* Doco fixes.
+
+* Debian make fix.
+
+* Fix for index, small doco fixes.
+
+* Bugfix: use roman font (instead of feta) for unacorda pedal.
+
+* Don't use cyclic symlinks for web doc.
+
+* Don't create `empty pngs' with touch, make symlinks instead.
+
+* Added extra header titling fields to ly2dvi too.
+
+1.4.1.mb2
+=========
+
+* documentation fixes
+
+* Add make rule to avoid problems building dvi documentation
+
+* Documentation fixes
+
+* Bugfix: tuplet-number-visibility
+
+1.4.1.hwn1
+==========
+
+* Do not lengthen the stem in case of a collision with the flag, but
+move dots to the right.
+
+* Debian patches (Thanks, Anthony!)
+
+1.4.1
+=====
+
+1.4.0.jcn7
+==========
+
+* Added \tupletUp, \tupletDown, \tupletBoth.
+
+* Bugfix convert-ly: treCorde.
+
+* Slur attachment and extremity offsets taken relative to slur
+direction; so that
+
+   Slur \override #'attachment-offset = #'((0 . 1) . (0 . 1))
+
+will always make the slur move away from the note head.
+
+* Bugfix: slurs on dotted or flagged notes.
+
+* Added @reng, @rgrob, and @rint macros for referencing engravers,
+grobs and interfaces in documentation.
+
+* Bugfix for configure.
+
+* text2html: use python script, use <pre> instead of <xmp>.
+
+* Fixed pa.ly.
+
+* Bugfix: lilypond mode: make view messages scroll by.
+
+* configure: check for splitting makeinfo; small fixes for
+non-splitting makeinfo doc.
+
+* Added some missing titling (dedication, translator) and fixed ps titling
+(Thanks David Arnold).
+
+* More doco fixes.  Added a small legend.
+
+* Bugfix: trend of broken slurs with user-overridden stem attachments.
+
+* Bugfix redhat.spec: use root attributes on files.
+
+* Bugfix: typo in update-lily, re-set download url to /development.
+
+* Removed some empty files.
+
+* Merged tutorials. Simplified the text.
+
+* Small doco fixes.
+
+1.4.0.uu1
+=========
+
+* Bugfix: percussion clef
+
+* Bugfix: multiple scripts.
+
+* Bugfix: read TeX's afm files. Metrics are still messed up (too small), but no
+crash.
+
+* Bugfix: fixed the problem where dots clash with other notes (Timothy S.
+Nelson)
+
