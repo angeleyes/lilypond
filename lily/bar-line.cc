@@ -30,10 +30,10 @@ Bar_line::print (SCM smob)
 
   SCM s = me->get_property ("glyph");
   SCM barsiz_proc = me->get_property ("bar-size-procedure");
-  if (ly_string_p (s) && ly_procedure_p (barsiz_proc))
+  if (gh_string_p (s) && gh_procedure_p (barsiz_proc))
     {
       String str  =ly_scm2string (s);
-      SCM siz = scm_call_1 (barsiz_proc, me->self_scm ());
+      SCM siz = gh_call1 (barsiz_proc, me->self_scm ());
       Real sz = robust_scm2double (siz, 0);
       if (sz < 0)
 	return SCM_EOL;
@@ -52,7 +52,7 @@ Bar_line::compound_barline (Grob*me, String str, Real h)
   Real hair = robust_scm2double (me->get_property ("hair-thickness"), 1);
   Real fatline = robust_scm2double (me->get_property ("thick-thickness"), 1);
 
-  Real staffline = me->get_paper ()->get_dimension (ly_symbol2scm ("linethickness"));
+  Real staffline = me->get_paper ()->get_realvar (ly_symbol2scm ("linethickness"));
   Real staff_space = Staff_symbol_referencer::staff_space (me);
 
   kern *= staffline;
@@ -71,6 +71,9 @@ Bar_line::compound_barline (Grob*me, String str, Real h)
   colon.translate_axis (-dist/2,Y_AXIS);
 
   Stencil m;
+  if (str == "||:")
+    str = "|:";
+  
   
   if (str == "")
     {
@@ -142,7 +145,7 @@ Bar_line::compound_barline (Grob*me, String str, Real h)
 Stencil
 Bar_line::simple_barline (Grob *me,Real w, Real h) 
 {
-  Real blot = me->get_paper ()->get_dimension (ly_symbol2scm ("blotdiameter"));
+  Real blot = me->get_paper ()->get_realvar (ly_symbol2scm ("blotdiameter"));
   return Lookup::round_filled_box (Box (Interval (0,w), Interval (-h/2, h/2)), blot);
 }
 
@@ -157,20 +160,20 @@ Bar_line::before_line_breaking (SCM smob)
   SCM g = me->get_property ("glyph");
   SCM orig = g;
   Direction bsd = item->break_status_dir ();
-  if (ly_string_p (g) && bsd)
+  if (gh_string_p (g) && bsd)
     {
       SCM proc = me->get_property ("break-glyph-function");
-      g = scm_call_2 (proc, g, scm_int2num (bsd));
+      g = gh_call2 (proc, g, scm_int2num (bsd));
     }
   
-  if (!ly_string_p (g))
+  if (!gh_string_p (g))
     {
       me->set_property ("print-function", SCM_EOL);
       me->set_extent (SCM_EOL, X_AXIS);
       // leave y_extent for spanbar? 
     }
 
-  if (! ly_equal_p (g, orig))
+  if (! gh_equal_p (g, orig))
     me->set_property ("glyph", g);
 
   return SCM_UNSPECIFIED;
@@ -186,8 +189,8 @@ Bar_line::get_staff_bar_size (SCM smob)
   Grob*me = unsmob_grob (smob);
   Real ss = Staff_symbol_referencer::staff_space (me);
   SCM size = me->get_property ("bar-size");
-  if (ly_number_p (size))
-    return scm_make_real (ly_scm2double (size)*ss);
+  if (gh_number_p (size))
+    return gh_double2scm (gh_scm2double (size)*ss);
   else if (Staff_symbol_referencer::get_staff_symbol (me))
     {
       /*
@@ -195,7 +198,7 @@ Bar_line::get_staff_bar_size (SCM smob)
 	calculation. That's a nonsense value, which would collapse the
 	barline so we return 0.0 in the next alternative.
       */
-      return scm_make_real ((Staff_symbol_referencer::line_count (me) -1) * ss);
+      return gh_double2scm ((Staff_symbol_referencer::line_count (me) -1) * ss);
     }
   else
     return scm_int2num (0);
