@@ -23,5 +23,5 @@
 	
  ('background/', 'Why LilyPond?'),
  ('download', 'Download'),
- ('devel', 'Develop'),
+ ('devel', 'Development'),
  ]
