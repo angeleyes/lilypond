@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+[
+ <!ATTLIST svg
+  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
+]>
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   id="svg548"
+   sodipodi:version="0.32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="210mm"
+   height="297mm"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-parts.sodipodi">
+  <defs
+     id="defs550" />
+  <sodipodi:namedview
+     id="base" />
+  <text
+     style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:28;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="63.5809479"
+     y="283.503632"
+     id="text555">
+    <tspan
+       x="63.5809479"
+       y="283.503632"
+       sodipodi:role="line"
+       id="tspan634">
+hornNotes = </tspan>
+    <tspan
+       x="63.5809479"
+       y="311.503632"
+       sodipodi:role="line"
+       id="tspan636">
+\notes \relative c {</tspan>
+    <tspan
+       x="63.5809479"
+       y="339.503632"
+       sodipodi:role="line"
+       id="tspan638">
+		\time 2/4</tspan>
+    <tspan
+       x="63.5809479"
+       y="367.503632"
+       sodipodi:role="line"
+       id="tspan640">
+		R2*3</tspan>
+    <tspan
+       x="63.5809479"
+       y="395.503632"
+       sodipodi:role="line"
+       id="tspan642">
+		r4 f8 a cis4 f e d</tspan>
+    <tspan
+       x="63.5809479"
+       y="423.503632"
+       sodipodi:role="line"
+       id="tspan644">
+}</tspan>
+    <tspan
+       x="63.5809479"
+       y="451.503632"
+       sodipodi:role="line"
+       id="tspan646">
+</tspan>
+    <tspan
+       x="63.5809479"
+       y="479.503632"
+       sodipodi:role="line"
+       id="tspan648">
+bassoonNotes =</tspan>
+    <tspan
+       x="63.5809479"
+       y="507.503632"
+       sodipodi:role="line"
+       id="tspan650">
+\notes \relative c {</tspan>
+    <tspan
+       x="63.5809479"
+       y="535.503632"
+       sodipodi:role="line"
+       id="tspan652">
+		\clef bass</tspan>
+    <tspan
+       x="63.5809479"
+       y="563.503632"
+       sodipodi:role="line"
+       id="tspan654">
+		r4 d,8 f  gis4 c   b bes </tspan>
+    <tspan
+       x="63.5809479"
+       y="591.503632"
+       sodipodi:role="line"
+       id="tspan656">
+		a8 e f4   g d  gis f</tspan>
+    <tspan
+       x="63.5809479"
+       y="619.503632"
+       sodipodi:role="line"
+       id="tspan658">
+}</tspan>
+    <tspan
+       x="63.5809479"
+       y="647.503632"
+       sodipodi:role="line"
+       id="tspan660">
+</tspan>
+  </text>
+  <rect
+     style="font-size:12;fill:#01b500;fill-opacity:0.562044;fill-rule:evenodd;stroke:none;stroke-width:1pt;stroke-opacity:1;"
+     id="rect662"
+     width="72.4331894"
+     height="25.8095703"
+     x="93.6635971"
+     y="343.849060" />
+  <rect
+     style="font-size:12;fill:#af3738;fill-opacity:0.565217;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect663"
+     width="203.978513"
+     height="31.637497"
+     x="55.781881"
+     y="254.764572" />
+  <rect
+     style="font-size:12;fill:#af3738;fill-opacity:0.565217;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect664"
+     width="246.439331"
+     height="25.8095398"
+     x="60.3609848"
+     y="456.245392" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#00ad00;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
+     d="M 166.606 360.625 C 239.606 360.625 356.171 337.076 445.655 338.254 "
+     id="path665"
+     transform="translate(0.000000,-3.051758e-5)" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#b10000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
+     d="M 306.131 476.601 C 363.824 449.52 492.753 491.908 495.107 454.23 "
+     id="path666"
+     sodipodi:nodetypes="cc"
+     transform="translate(0.000000,-3.051758e-5)" />
+  <text
+     style="fill:#00ad00;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="462.728119"
+     y="345.906982"
+     id="text667">
+    <tspan
+       x="462.728119"
+       y="345.906982"
+       sodipodi:role="line"
+       id="tspan672"
+       style="fill:#00ad00;fill-opacity:1;">
+Enter multi-rest</tspan>
+  </text>
+  <text
+     style="fill:#b10000;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="398.558434"
+     y="442.455872"
+     id="text674">
+    <tspan
+       x="398.558441"
+       y="442.455872"
+       sodipodi:role="line"
+       id="tspan680"
+       style="fill:#b10000;fill-opacity:1;">
+Store notes in variable</tspan>
+  </text>
+</svg>

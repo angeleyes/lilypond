@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+[
+ <!ATTLIST svg
+  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
+]>
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   id="svg728"
+   sodipodi:version="0.32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="210mm"
+   height="297mm"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-score.sodipodi">
+  <defs
+     id="defs730" />
+  <sodipodi:namedview
+     id="base" />
+  <text
+     style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:26;text-anchor:start;writing-mode:lr;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
+     x="24.7259216"
+     y="125.728775"
+     id="text731">
+    <tspan
+       x="24.7259216"
+       y="125.728775"
+       sodipodi:role="line"
+       id="tspan746">
+\score {</tspan>
+    <tspan
+       x="24.7259216"
+       y="151.728775"
+       sodipodi:role="line"
+       id="tspan748">
+		&lt;</tspan>
+    <tspan
+       x="24.7259216"
+       y="177.728775"
+       sodipodi:role="line"
+       id="tspan750">
+				\context  Staff = hornStaff \hornNotes</tspan>
+    <tspan
+       x="24.7259216"
+       y="203.728775"
+       sodipodi:role="line"
+       id="tspan752">
+				\context Staff = bsnStaff \bassoonNotes</tspan>
+    <tspan
+       x="24.7259216"
+       y="229.728775"
+       sodipodi:role="line"
+       id="tspan754">
+		&gt;</tspan>
+    <tspan
+       x="24.7259216"
+       y="255.728775"
+       sodipodi:role="line"
+       id="tspan756">
+}</tspan>
+  </text>
+  <rect
+     style="font-size:12;fill:#c12b28;fill-opacity:0.536585;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect758"
+     width="415.033829"
+     height="22.479324"
+     x="81.591409"
+     y="156.938130" />
+  <rect
+     style="font-size:12;fill:#c12b28;fill-opacity:0.536585;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect759"
+     width="400.880135"
+     height="22.479324"
+     x="81.591403"
+     y="182.747592" />
+  <rect
+     style="font-size:12;fill:#23ca22;fill-opacity:0.588415;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect760"
+     width="27.4746552"
+     height="101.572952"
+     x="49.5376282"
+     y="130.296219" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#00b000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
+     d="M 64.9401 233.951 C 63.275 288.9 113.229 292.23 159.853 292.23 "
+     id="path761" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#af0000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
+     d="M 173.174 159.02 C 171.508 95.7447 193.155 80.7585 243.109 79.0934 "
+     id="path762" />
+  <text
+     style="fill:#b00000;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;text-anchor:start;writing-mode:lr;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
+     x="262.258057"
+     y="79.0933380"
+     id="text763">
+    <tspan
+       id="tspan764"
+       style="fill:#b00000;fill-opacity:1;">
+Create staff</tspan>
+  </text>
+  <text
+     style="fill:#00b000;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;text-anchor:start;writing-mode:lr;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
+     x="183.164368"
+     y="299.723175"
+     id="text766">
+    <tspan
+       id="tspan767"
+       style="fill:#00b000;fill-opacity:1;">
+Combine staffs in parallel</tspan>
+  </text>
+</svg>

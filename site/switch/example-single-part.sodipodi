@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+[
+ <!ATTLIST svg
+  xmlns:xlink CDATA #FIXED "http://www.w3.org/1999/xlink">
+]>
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   id="svg682"
+   sodipodi:version="0.32"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="210mm"
+   height="297mm"
+   sodipodi:docbase="/home/hanwen/usr/src/savannah/lily/newweb/site/switch"
+   sodipodi:docname="/home/hanwen/usr/src/savannah/lily/newweb/site/switch/example-single-part.sodipodi">
+  <defs
+     id="defs684" />
+  <sodipodi:namedview
+     id="base" />
+  <text
+     style="fill:black;stroke:none;font-family:Luxi Mono;font-style:normal;font-weight:bold;font-size:28;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="38.8550110"
+     y="361.213776"
+     id="text690">
+    <tspan
+       x="38.8550110"
+       y="361.213776"
+       sodipodi:role="line"
+       id="tspan693">
+\score {</tspan>
+    <tspan
+       x="38.8550110"
+       y="389.213776"
+       sodipodi:role="line"
+       id="tspan695">
+		\notes {</tspan>
+    <tspan
+       x="38.8550110"
+       y="417.213776"
+       sodipodi:role="line"
+       id="tspan697">
+				\property Score.skipBars = ##t</tspan>
+    <tspan
+       x="38.8550110"
+       y="445.213776"
+       sodipodi:role="line"
+       id="tspan699">
+				\transpose f c'  \hornNotes</tspan>
+    <tspan
+       x="38.8550110"
+       y="473.213776"
+       sodipodi:role="line"
+       id="tspan701">
+		}</tspan>
+    <tspan
+       x="38.8550110"
+       y="501.213776"
+       sodipodi:role="line"
+       id="tspan703">
+}</tspan>
+  </text>
+  <rect
+     style="font-size:12;fill:#ee9797;fill-opacity:0.73913;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect705"
+     width="512.179871"
+     height="30.066224"
+     x="104.790833"
+     y="392.415375" />
+  <rect
+     style="font-size:12;fill:#23e023;fill-opacity:0.49635;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect706"
+     width="249.959020"
+     height="26.248253"
+     x="104.588815"
+     y="423.860901" />
+  <rect
+     style="font-size:12;fill:#6165d3;fill-opacity:0.6;fill-rule:evenodd;stroke-width:1pt;"
+     id="rect707"
+     width="169.549255"
+     height="22.573122"
+     x="374.421143"
+     y="424.449725" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#b10000;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
+     d="M 236.662 394.182 C 242.55 335.31 294.356 328.246 322.614 323.536 "
+     id="path708" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#00b300;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
+     d="M 143.646 451.875 C 101.259 491.908 42.3873 539.005 94.194 571.973 "
+     id="path709" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#0000b0;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;stroke-dasharray:none;fill-opacity:1;"
+     d="M 397.97 449.521 C 346.163 501.327 367.357 524.876 400.325 546.069 "
+     id="path710" />
+  <text
+     style="fill:#b00000;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="339.098442"
+     y="328.245651"
+     id="text711">
+    <tspan
+       x="339.098450"
+       y="328.245636"
+       sodipodi:role="line"
+       id="tspan716"
+       style="fill:#b00000;fill-opacity:1;">
+Condense multirests</tspan>
+  </text>
+  <text
+     style="fill:#00b200;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"
+     x="105.968262"
+     y="596.698639"
+     id="text718">
+    <tspan
+       x="105.968262"
+       y="596.698669"
+       sodipodi:role="line"
+       id="tspan721"
+       style="fill:#00b200;fill-opacity:1;">
+Transpose for F instrument</tspan>
+  </text>
+  <text
+     style="fill:#0000ab;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;text-anchor:start;writing-mode:lr;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;"
+     x="414.453651"
+     y="556.666107"
+     id="text723">
+    <tspan
+       id="tspan724"
+       style="fill:#0000ab;fill-opacity:1;">
+Reuse identifier</tspan>
+  </text>
+</svg>
