@@ -1,6 +1,10 @@
+2004-01-12  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* site/download/index.html: add Suse 9 / lily 1.8
+
 2003-12-30  Han-Wen Nienhuys   <hanwen@cs.uu.nl>
 
-	* site/download/index.html:change ftp urls.
+	* site/download/index.html: change ftp urls.
 
 2003-10-17  Jan Nieuwenhuizen  <janneke@gnu.org>
 
