@@ -10,39 +10,42 @@
 # directory names:
 
 # depth from group-dir
-# not eh, normally used
+# internal, not normally used
 DEPTH = $(depth)/$(package-depth)
 
-# topdir := $(shell cd $(depth); pwd)
 ifeq ($(topdir),)
 topdir := $(shell cd $(depth); pwd)
 endif
 pwd := $(shell pwd)
 
+# $(depth) is deprecated, for most cases you'll want $(src-depth)
+#
+# Well, on second thought.
+# It can do no harm, but using src-depth iso depth is only necessary
+# for broken rules that do
+#    cd $(outdir) && foo  $(depth) ...
+src-depth = $(depth)/$(srcdir)
+
 # derived names
 ifeq ($(distdir),)
-#  distdir = $(depth)/$(outdir)/$(DIST_NAME)
-# must be absolute for 'make dist' with installed stepmake
   distdir = $(topdir)/$(outdir)/$(DIST_NAME)
   DIST_NAME = $(package)-$(TOPLEVEL_VERSION)
 endif
 distname = $(package)-$(TOPLEVEL_VERSION)
 
 # obsolete?
-makeout = $(depth)/make/$(outdir)
-docout = $(depth)/Documentation/$(outdir)
-binout = $(depth)/bin/$(outdir)
+#makeout = $(depth)/make/$(outdir)
+#docout = $(depth)/Documentation/$(outdir)
+#binout = $(depth)/bin/$(outdir)
 
-doc-dir = $(depth)/Documentation
-po-dir = $(depth)/po
+doc-dir = $(src-depth)/Documentation
+po-dir = $(src-depth)/po
 
 # sort-out which of these are still needed
 #
 $(package)_bindir = $(depth)/bin
 step-bindir = $(stepmake)/bin
-# deprecated
-# abs-step-bindir = $(topdir)/$(stepmake)/bin
-#
+
 group-dir = $(shell cd $(DEPTH)/..; pwd)
 release-dir = $(group-dir)/releases
 patch-dir = $(group-dir)/patches
@@ -53,6 +56,9 @@ patch-dir = $(group-dir)/patches
 rpm-sources = $(release-dir)
 rpm-build = $(group-dir)/RedHat/BUILD
 #
+
+# package-icon=$(outdir)/$(package)-icon.gif
+package-icon=$(outdir)/$(package)-icon.xpm
 
 
 # need to be defined in local Makefiles:
@@ -84,7 +90,8 @@ date := $(shell date +%x)	#duplicated?
 #
 ARFLAGS = ru
 
-INCLUDES =  $(depth) include $(outdir) $($(PACKAGE)_INCLUDES) $(MODULE_INCLUDES)
+#INCLUDES =  $(depth)/$(builddir) include $(outdir) $($(PACKAGE)_INCLUDES) $(MODULE_INCLUDES)
+INCLUDES = include $(outdir) $($(PACKAGE)_INCLUDES) $(MODULE_INCLUDES)
 
 # urg: for windows ?
 # LOADLIBES = $(MODULE_LIBES) $($(PACKAGE)_LIBES) $(EXTRA_LIBES) -lstdc++
@@ -109,7 +116,7 @@ DODEP=rm -f $(depfile); DEPENDENCIES_OUTPUT="$(depfile) $(outdir)/$(notdir $@)"
 # generic target names:
 #
 ifdef NAME
-EXECUTABLE = $(outdir)/$(NAME)$(EXE)
+EXECUTABLE = $(outdir)/$(NAME)
 else
 EXECUTABLE =
 endif
@@ -133,7 +140,11 @@ endif
 
 # substitute $(STRIP) in Site.make if you want stripping
 DO_STRIP=true
-LOOP=$(foreach i,  $(SUBDIRS), $(MAKE) PACKAGE=$(PACKAGE) -C $(i) $@ &&) true
+LOOP=$(foreach i,  $(SUBDIRS), $(MAKE) PACKAGE=$(PACKAGE) package=$(package) -C $(i) $@ &&) true
 
+# different redhat releases need different flags for etags. Just use defaults.
+ETAGS_FLAGS= # -CT
+CTAGS_FLAGS=-h
 
 include $(stepdir)/files.make
+
