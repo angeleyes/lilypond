@@ -3,121 +3,93 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "music-output-def.hh"
 #include "translator-group.hh"
 #include "translator.hh"
 #include "debug.hh"
-#include "rational.hh"
-#include "dictionary-iter.hh"
-
+#include "moment.hh"
+#include "scm-hash.hh"
 #include "killing-cons.tcc"
+#include "translator-def.hh"
 
 Translator_group::Translator_group (Translator_group const&s)
-  : Translator(s)
+  : Translator (s)
 {
-  consists_str_arr_ = s.consists_str_arr_;
-  consists_end_str_arr_ = s.consists_end_str_arr_;
-  accepts_str_arr_ = s.accepts_str_arr_;
   iterator_count_ =0;
-  properties_dict_ = s.properties_dict_;
+  
+  Scheme_hash_table * tab =  new Scheme_hash_table (*s.properties_dict ());
+  properties_scm_ = tab->self_scm ();
+  scm_unprotect_object (tab->self_scm ());
+}
+
+Scheme_hash_table*
+Translator_group::properties_dict () const
+{
+  return Scheme_hash_table::unsmob (properties_scm_);
 }
 
 Translator_group::~Translator_group ()
 {
-  assert (removable_b());
-  trans_p_list_.junk ();
+  
+  //assert (removable_b ());
 }
 
 
-Translator_group::Translator_group()
+Translator_group::Translator_group ()
 {
   iterator_count_  = 0;
+  Scheme_hash_table *tab = new Scheme_hash_table ;
+  properties_scm_ = tab->self_scm ();
+
+  scm_unprotect_object (tab->self_scm ());
 }
 
 void
-Translator_group::check_removal()
+Translator_group::check_removal ()
 {
-  Link_array<Translator_group> groups (group_l_arr ());
+  SCM next = SCM_EOL; 
+  for (SCM p = trans_group_list_; gh_pair_p (p); p = next)
+    {
+      next = gh_cdr (p);
+
+      Translator_group *trg =  dynamic_cast<Translator_group*> (unsmob_translator (gh_car (p)));
+
+      trg->check_removal ();
+      if (trg->removable_b ())
+	terminate_translator (trg);
+    }
+}
+
+
+SCM
+Translator_group::add_translator (SCM list, Translator *t)
+{
+  list = gh_append2 (list, gh_cons (t->self_scm (), SCM_EOL));
+  t->daddy_trans_l_ = this;
+  t->output_def_l_ = output_def_l_;
+  if (Translator_group*tg = dynamic_cast<Translator_group*> (t))
+    {
+      unsmob_translator_def (tg->definition_)->apply_property_operations (tg);
+    }
   
-  for (int i =0; i < groups.size(); i++)
-    {
-      groups[i]->check_removal();
-      if (groups[i]->removable_b())
-	terminate_translator (groups[i]);
-    }
+  t->initialize ();
+  return list;
 }
-
 void
-Translator_group::add_translator (Translator *trans_p)
+Translator_group::add_group_translator (Translator *t)
 {
-  trans_p_list_.append (new Killing_cons<Translator> (trans_p,0));
-  
-  trans_p->daddy_trans_l_ = this;
-  trans_p->output_def_l_ = output_def_l_;
-  trans_p->add_processing ();
+  trans_group_list_ = add_translator (trans_group_list_,t);
 }
 
-void
-Translator_group::set_acceptor (String accepts, bool add)
-{
-  if (add)
-    accepts_str_arr_.push (accepts);
-  else
-    for (int i=accepts_str_arr_.size (); i--; )
-      if (accepts_str_arr_[i] == accepts)
-	accepts_str_arr_.del (i);
-}
 
-void
-Translator_group::add_last_element (String s)
-{
-  if (!get_translator_l (s))
-    error ("Program has no such type");
 
-  for (int i=consists_end_str_arr_.size (); i--; )
-    if (consists_end_str_arr_[i] == s)
-      warning (_f("Already contains a `%s\'", s));
-      
-  consists_end_str_arr_.push (s);
-}
-
-void
-Translator_group::set_element (String s, bool add)
-{
-  if (!get_translator_l (s))
-    error ("Program has no such type");
-
-  if (add)
-    {
-      for (int i=consists_str_arr_.size (); i--; )
-	if (consists_str_arr_[i] == s)
-	  warning (_f("Already contains a `%s\'", s));
-      
-      consists_str_arr_.push (s);
-    }
-  else
-    {
-      for (int i=consists_str_arr_.size (); i--; )
-	if (consists_str_arr_[i] == s)
-	  consists_str_arr_.del (i);
-      for (int i=consists_end_str_arr_.size (); i--; )
-	if (consists_end_str_arr_[i] == s)
-	  consists_end_str_arr_.del (i);
-    }
-}
 bool
-Translator_group::removable_b() const
+Translator_group::removable_b () const
 {
-  for (Cons<Translator> *p = trans_p_list_.head_; p; p = p->next_)
-    {
-      if (dynamic_cast <Translator_group *> (p->car_))
-	return false;
-    }
-
-  return !iterator_count_;
+  return trans_group_list_ == SCM_EOL && ! iterator_count_;
 }
 
 Translator_group *
@@ -126,54 +98,19 @@ Translator_group::find_existing_translator_l (String n, String id)
   if (is_alias_b (n) && (id_str_ == id || id.empty_b ()))
     return this;
 
-  Link_array<Translator_group> groups (group_l_arr ());
   Translator_group* r = 0;
-  for (int i =0; !r && i < groups.size(); i++)
+  for (SCM p = trans_group_list_; !r && gh_pair_p (p); p = gh_cdr (p))
     {
-      r = groups[i]->find_existing_translator_l (n,id);
+      Translator *  t = unsmob_translator (gh_car (p));
+      
+      r = dynamic_cast<Translator_group*> (t)->find_existing_translator_l (n, id);
     }
 
   return r;
 }
 
-Link_array<Translator_group>
-Translator_group::path_to_acceptable_translator (String type) const
-{
- Link_array<Translator_group> accepted_arr;
-  for (int i=0; i < accepts_str_arr_.size (); i++)
-    {
-      Translator *t = output_def_l ()->find_translator_l (accepts_str_arr_[i]);
-      if (!t || !dynamic_cast <Translator_group *> (t))
-	continue;
-      accepted_arr.push (dynamic_cast <Translator_group *> (t));
-    }
 
 
- for (int i=0; i < accepted_arr.size (); i++)
-    if (accepted_arr[i]->type_str_ == type)
-      {
-	Link_array<Translator_group> retval;
-	retval.push (accepted_arr[i]);
-	return retval;
-      }
-
-  Link_array<Translator_group> best_result;
-  int best_depth= INT_MAX;
-  for (int i=0; i < accepted_arr.size (); i++)
-    {
-      Translator_group * g = accepted_arr[i];
-
-      Link_array<Translator_group> result
-	= g->path_to_acceptable_translator (type);
-      if (result.size () && result.size () < best_depth)
-	{
-	  result.insert (g,0);
-	  best_result = result;
-	}
-    }
-
-  return best_result;
-}
 
 Translator_group*
 Translator_group::find_create_translator_l (String n, String id)
@@ -182,7 +119,8 @@ Translator_group::find_create_translator_l (String n, String id)
   if (existing)
     return existing;
 
-  Link_array<Translator_group> path = path_to_acceptable_translator (n);
+  Link_array<Translator_def> path
+    = unsmob_translator_def (definition_)->path_to_acceptable_translator (ly_str02scm ((char*)n.ch_C ()), output_def_l ());
 
   if (path.size ())
     {
@@ -191,8 +129,9 @@ Translator_group::find_create_translator_l (String n, String id)
       // start at 1.  The first one (index 0) will be us.
       for (int i=0; i < path.size (); i++)
 	{
-	  Translator_group * new_group = dynamic_cast<Translator_group*>(path[i]->clone ());
-	  current->add_translator (new_group);
+	  Translator_group * new_group = path[i]->instantiate (output_def_l_);
+
+	  current->add_group_translator (new_group);
 	  current = new_group;
 	}
       current->id_str_ = id;
@@ -204,7 +143,7 @@ Translator_group::find_create_translator_l (String n, String id)
     ret = daddy_trans_l_->find_create_translator_l (n,id);
   else
     {
-      warning (_f ("can't find or create `%s\' called `%s\'", n, id));
+      warning (_f ("can't find or create `%s' called `%s'", n, id));
       ret =0;
     }
   return ret;
@@ -214,16 +153,16 @@ bool
 Translator_group::try_music_on_nongroup_children (Music *m)
 {
   bool hebbes_b =false;
-
-  Link_array<Translator> nongroups (nongroup_l_arr ());
   
-  for (int i =0; !hebbes_b && i < nongroups.size() ; i++)
-    hebbes_b =nongroups[i]->try_music (m);
+  for (SCM p = simple_trans_list_; !hebbes_b && gh_pair_p (p); p = gh_cdr (p))
+    {
+      hebbes_b = unsmob_translator (gh_car (p))->try_music (m);
+    }
   return hebbes_b;
 }
 
 bool
-Translator_group::do_try_music (Music* m)
+Translator_group::try_music (Music* m)
 {
   bool hebbes_b = try_music_on_nongroup_children (m);
   
@@ -233,9 +172,9 @@ Translator_group::do_try_music (Music* m)
 }
 
 int
-Translator_group::depth_i() const
+Translator_group::depth_i () const
 {
-  return (daddy_trans_l_) ? daddy_trans_l_->depth_i()  + 1 : 0;
+  return (daddy_trans_l_) ? daddy_trans_l_->depth_i ()  + 1 : 0;
 }
 
 Translator_group*
@@ -247,41 +186,14 @@ Translator_group::ancestor_l (int level)
   return daddy_trans_l_->ancestor_l (level-1);
 }
 
-Link_array<Translator_group>
-Translator_group::group_l_arr () const
-{
-  Link_array<Translator_group> groups;
-  for (Cons<Translator> *p = trans_p_list_.head_; p; p = p->next_)
-    {
-      if (dynamic_cast <Translator_group *> (p->car_))
-	groups.push (dynamic_cast <Translator_group *> (p->car_));
-    }
-  return groups;
-}
-
-Link_array<Translator>
-Translator_group::nongroup_l_arr () const
-{
-  Link_array<Translator> groups;
-  for (Cons<Translator> *p = trans_p_list_.head_; p; p = p->next_)
-    {
-      if (!dynamic_cast <Translator_group *> (p->car_))
-	groups.push (p->car_);
-    }
-  return groups;
-}
-/**
-   End translator: call "destructor", remove from hierarchy, and delete
- */
-
 void
 Translator_group::terminate_translator (Translator*r_l)
 {
-  DOUT << "Removing " << classname (r_l) << " at " << now_mom () << '\n';
-  r_l->removal_processing();
-  Translator * trans_p =remove_translator_p (r_l);
-
-  delete trans_p;
+  r_l->removal_processing ();
+  /*
+    Return value ignored. GC does the rest.
+   */
+  remove_translator_p (r_l);
 }
 
 
@@ -292,186 +204,273 @@ Translator *
 Translator_group::remove_translator_p (Translator*trans_l)
 {
   assert (trans_l);
-  
-  for (Cons<Translator> **pp = &trans_p_list_.head_; *pp; pp = &(*pp)->next_)
-    if ((*pp)->car_ == trans_l)
-      {
-	Cons<Translator> *r = trans_p_list_.remove_cons (pp);
-	r->car_ =0;
-	trans_l->daddy_trans_l_ =0;
-	delete r;
-	return trans_l;
-      }
 
-  return 0;
+  trans_group_list_ = scm_delq_x (trans_l->self_scm (), trans_group_list_);
+  trans_l->daddy_trans_l_ = 0;
+  return trans_l;
 }
-
-
-Translator*
-Translator_group::get_simple_translator (String type) const
-{
-  Link_array<Translator> nongroups (nongroup_l_arr ());
-  for (int i=0; i < nongroups.size(); i++)
-    {
-      if (classname (nongroups[i]) == type)
-	return nongroups[i];
-    }
-  if (daddy_trans_l_)
-    return daddy_trans_l_->get_simple_translator (type);
-  return 0;
-}
-
 
 bool
 Translator_group::is_bottom_translator_b () const
 {
-  return !accepts_str_arr_.size ();
+  return !gh_string_p (unsmob_translator_def (definition_)->default_child_context_name ());
+
 }
 
-
-
 Translator_group*
-Translator_group::get_default_interpreter()
+Translator_group::get_default_interpreter ()
 {
-  if (accepts_str_arr_.size())
+  if (!is_bottom_translator_b ())
     {
-      Translator*t = output_def_l ()->find_translator_l (accepts_str_arr_[0]);
+      SCM nm = unsmob_translator_def (definition_)->default_child_context_name ();
+      SCM st = output_def_l ()->find_translator_l (nm);
+
+      Translator_def *t = unsmob_translator_def (st);
       if (!t)
 	{
-	  warning (_f ("can't find or create `%s\'", accepts_str_arr_[0]));
-	  t = this;
+	  warning (_f ("can't find or create: `%s'", ly_scm2string (nm).ch_C ()));
+	  t = unsmob_translator_def (this->definition_);
 	}
-      Translator_group * g= dynamic_cast <Translator_group*>(t->clone ());
-      add_translator (g);
+      Translator_group *tg = t->instantiate (output_def_l_);
+      add_group_translator (tg);
 
-      if (!g->is_bottom_translator_b ())
-	return g->get_default_interpreter ();
+      if (!tg->is_bottom_translator_b ())
+	return tg->get_default_interpreter ();
       else
-	return g;
+	return tg;
     }
   return this;
 }
 
-void
-Translator_group::each (Method_pointer method)
+static void
+static_each (SCM list, Method_pointer method)
 {
-  for (Cons<Translator> *p = trans_p_list_.head_; p; p = p->next_)
-    (p->car_->*method) ();
-}
-
-
-void
-Translator_group::each (Const_method_pointer method) const
-{
-  for (Cons<Translator> *p = trans_p_list_.head_; p; p = p->next_)
-    (p->car_->*method) ();
+  for (SCM p = list; gh_pair_p (p); p = gh_cdr (p))
+ (unsmob_translator (gh_car (p))->*method) ();
+  
 }
 
 void
-Translator_group::do_print() const
+Translator_group::each (Method_pointer method) 
 {
-#ifndef NPRINT
-  if (!check_debug)
-    return ;
-  for (Dictionary_iter<Scalar> i (properties_dict_); i.ok (); i++)
+  static_each (simple_trans_list_, method);
+  static_each (trans_group_list_, method);
+}
+
+
+/*
+  PROPERTIES
+ */
+Translator_group*
+Translator_group::where_defined (SCM sym) const
+{
+  if (properties_dict ()->elem_b (sym))
     {
-      DOUT << i.key () << "=" << i.val () << '\n';
+      return (Translator_group*)this;
     }
-  if (status == ORPHAN)
+
+  return (daddy_trans_l_) ? daddy_trans_l_->where_defined (sym) : 0;
+}
+
+/*
+  return SCM_EOL when not found.
+*/
+SCM
+Translator_group::get_property (SCM sym) const
+{
+  SCM val =SCM_EOL;
+  if (properties_dict ()->try_retrieve (sym, &val))
+    return val;
+
+  if (daddy_trans_l_)
+    return daddy_trans_l_->get_property (sym);
+  
+  return val;
+}
+
+void
+Translator_group::set_property (String id, SCM val)
+{
+  set_property (ly_symbol2scm (id.ch_C ()), val);
+}
+
+
+void
+Translator_group::set_property (SCM sym, SCM val)
+{
+  properties_dict ()->set (sym, val);
+}
+
+/*
+  TODO: look up to check whether we have inherited var? 
+ */
+void
+Translator_group::unset_property (SCM sym)
+{
+  properties_dict ()->remove (sym);
+}
+
+
+/*
+  Push or pop (depending on value of VAL) a single entry (ELTPROP . VAL)
+  entry from a translator property list by name of PROP
+*/
+void
+Translator_group::execute_single_pushpop_property (SCM prop, SCM eltprop, SCM val)
+{
+  if (gh_symbol_p (prop))
     {
-      DOUT << "consists of: ";
-      for (int i=0; i < consists_str_arr_.size (); i++)
-	DOUT << consists_str_arr_[i] << ", ";
-      DOUT << "\naccepts: ";
-      for (int i=0; i < accepts_str_arr_.size (); i++)
-	DOUT << accepts_str_arr_[i] << ", ";
+      if (val != SCM_UNDEFINED)
+	{
+	  SCM prev = get_property (prop);
+
+	  if (gh_pair_p (prev) || prev == SCM_EOL)
+	    {
+	      bool ok = type_check_assignment (val, eltprop, ly_symbol2scm ("backend-type?"));
+	      
+
+	      
+	      if (ok)
+		{
+		  prev = gh_cons (gh_cons (eltprop, val), prev);
+		  set_property (prop, prev);
+		}
+	    }
+	  else
+	    {
+	      // warning here.
+	    }
+	  
+	}
+      else
+	{
+	  SCM prev = get_property (prop);
+
+	  SCM newprops= SCM_EOL ;
+	  while (gh_pair_p (prev) && gh_caar (prev) != eltprop)
+	    {
+	      newprops = gh_cons (gh_car (prev), newprops);
+	      prev = gh_cdr (prev);
+	    }
+	  
+	  if (gh_pair_p (prev))
+	    {
+	      newprops = scm_reverse_x (newprops, gh_cdr (prev));
+	      set_property (prop, newprops);
+	    }
+	}
     }
-  else
-    {
-      if (id_str_.length_i ())
-	DOUT << "ID: " << id_str_ ;
-      DOUT << " iterators: " << iterator_count_<< '\n';
-    }
-  each (&Translator::print);
-#endif
 }
 
+
+
+
+
+/*
+  STUBS
+*/
 void
-Translator_group::do_pre_move_processing ()
+Translator_group::stop_translation_timestep ()
 {
-  each (&Translator::pre_move_processing);
+  each (&Translator::stop_translation_timestep);
 }
 
 void
-Translator_group::do_post_move_processing ()
+Translator_group::start_translation_timestep ()
 {
-  each (&Translator::post_move_processing);
+  each (&Translator::start_translation_timestep);
 }
 
 void
-Translator_group::do_process_requests ()
+Translator_group::do_announces ()
 {
-  each (&Translator::process_requests);
+  each (&Translator::announces);
 }
 
 void
-Translator_group::do_creation_processing ()
+Translator_group::initialize ()
 {
-  each (&Translator::creation_processing);
+  each (&Translator::initialize);
 }
 
 void
-Translator_group::do_removal_processing ()
+Translator_group::finalize ()
 {
   each (&Translator::removal_processing);
 }
 
-void
-Translator_group::do_add_processing ()
+
+bool
+type_check_assignment (SCM val, SCM sym,  SCM type_symbol) 
 {
-   for (int i=0; i < consists_str_arr_.size(); i++)
+  bool ok = true;
+  SCM type_p = SCM_EOL;
+
+  if (gh_symbol_p (sym))
+    type_p = scm_object_property (sym, type_symbol);
+
+  if (type_p != SCM_EOL && !gh_procedure_p (type_p))
+      {
+	warning (_f ("Can't find property type-check for `%s'.  Perhaps you made a typing error? Doing assignment anyway.",
+		     ly_symbol2string (sym).ch_C ()));
+      }
+  else
     {
-      String s = consists_str_arr_[i];
-      Translator * t = output_def_l ()->find_translator_l (s);
-      if (!t)
-	warning (_f ("can't find `%s\'", s));
-      else
-	add_translator (t->clone ());
+      if (val != SCM_EOL
+	  && gh_procedure_p (type_p)
+	  && gh_call1 (type_p, val) == SCM_BOOL_F)
+	{
+	  SCM errport = scm_current_error_port ();
+	  ok = false;
+	  SCM typefunc = scm_eval2 (ly_symbol2scm ("type-name"), SCM_EOL);
+	  SCM type_name = gh_call1 (typefunc, type_p);
+
+	  scm_puts (_f ("Type check for `%s' failed; value `%s' must be of type `%s'",
+			ly_symbol2string (sym).ch_C (),
+			ly_scm2string (ly_write2scm (val)).ch_C (),
+			ly_scm2string (type_name).ch_C ()).ch_C (),
+		    errport);
+	  scm_puts ("\n", errport);		      
+	}
     }
-   for (int i=0; i-- < consists_end_str_arr_.size (); i++)
-     {
-       String s = consists_end_str_arr_[i];
-       Translator * t = output_def_l ()->find_translator_l (s);
-       if (!t)
-	 warning (_f ("can't find `%s\'", s));
-       else
-	 add_translator (t->clone ());
-    }
+  return ok;
 }
 
-Scalar
-Translator_group::get_property (String id,
-				Translator_group **where_l) const
+SCM
+ly_get_trans_property (SCM context, SCM name)
 {
-  if (properties_dict_.elem_b (id))
+  Translator *t = unsmob_translator (context);
+  Translator_group* tr=   dynamic_cast<Translator_group*> (t);
+  if (!t || !tr)
     {
-      if (where_l)
-	*where_l = (Translator_group*) this; // ugh
-      return properties_dict_[id];
+      /* programming_error? */
+      warning (_ ("ly-get-trans-property: expecting a Translator_group argument"));
+      return SCM_EOL;
     }
-
-#if 1
-  if (daddy_trans_l_)
-    return daddy_trans_l_->get_property (id, where_l);
-#endif
+  return tr->get_property (name);
   
-  if (where_l)
-    *where_l = 0;
-  return "";
+}
+SCM
+ly_set_trans_property (SCM context, SCM name, SCM val)
+{
+
+  Translator *t = unsmob_translator (context);
+  Translator_group* tr=   dynamic_cast<Translator_group*> (t);
+  if (tr)
+    {
+      tr->set_property (name, val);
+    }
+  return SCM_UNSPECIFIED;
 }
 
+
+
+
 void
-Translator_group::set_property (String id, Scalar val)
+add_trans_scm_funcs ()
 {
-  properties_dict_[id] = val;
+  scm_make_gsubr ("ly-get-trans-property", 2, 0, 0, (Scheme_function_unknown)ly_get_trans_property);
+  scm_make_gsubr ("ly-set-trans-property", 3, 0, 0, (Scheme_function_unknown)ly_set_trans_property);
 }
+
+ADD_SCM_INIT_FUNC (trans_scm, add_trans_scm_funcs);
