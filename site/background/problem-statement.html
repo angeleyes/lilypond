@@ -1,0 +1,46 @@
+
+<h2>Better music notation software</h2>
+<p>
+
+Most notation software needs babysitting to produce acceptable output.
+In our opinion, all this tweaking and tuning is something that a
+computer should do for you.
+
+<p>
+
+
+Our goal with <em>LilyPond</em> is to write an an <em>automated
+engraving system</em>: a system that will produce beautiful music
+("engraving") automatically.  In concept, such a system is simple: the
+objective of such a system is to produce music notation, a graphical
+image.  The content of this picture is music: pitches and
+durations. In automated system, we want to generate the form from the
+content, so schematically, the program could be represented as
+
+<table>
+<tr>
+<td align="center">
+<img src="@IMAGES@simple-notation.png">
+</td>
+<td align="center">
+&lt;--
+</td>
+<td align="center">
+<tt>\notes { c'4 d'8 }</tt>
+</td>
+</tr>
+<tr>
+<td align="center">
+form
+</td>
+<td align="center">
+LilyPond
+</td>
+<td align="center">
+content
+</td>
+</tr>
+</table>
+
+
+<a href=implementing-notation.html>continue</a> 

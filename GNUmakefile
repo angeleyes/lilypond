@@ -15,6 +15,10 @@ menuify:
 	for a in `find site -name '*.png' -or -name '*.jpg' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
 	cp newweb.css out/site
 
+tree:
+	-mkdir out
+	tar cf - `find site -type d`  |tar  -C out -xf -
+
 
 renderlys:
 	$(foreach  a, $(shell find site -name '*.ly'), \

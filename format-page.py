@@ -70,11 +70,25 @@ def read_menu (f):
 
     
 def one_tab (depth, file):
+	"""
+	Return the menu to put at the top, and
+	the label that you for the > > > bars at the bottom.
+
+
+	TODO:
+	use a dict in menu-entries.py for pages without menu at the top
+	(eg. page 1, .. , page 12)
+	"""
+	
 	(path, here) = os.path.split (file)
+
 
 	menu_file = os.path.join (path, 'menu-entries.py')
 	if not os.path.exists (menu_file):
-		return ('', '?')
+		if re.search ('index.html$', file):
+			return ('', '')
+		else:
+			return ('', '?')
 	
 	menu = read_menu (menu_file)
 
@@ -178,8 +192,14 @@ def do_one_file (in_file_name):
 	menu = menu_template % string.join (tabs)
 	nav_str = location_template % nav_str
 	main = main_template % html
-	page = header % {'depth': ('../' * (depth-1)) }  \
-	       +menu + main + nav_str + footer
+	depth_str = ('../' * (depth-1))
+
+	## AT substitutions.
+	main = re.sub ('@DEPTH@', depth_str, main)
+	main = re.sub ('@IMAGES@', os.path.join (depth_str, 'images/'),
+		       main)
+	
+	page = header % {'depth': depth_str} +menu + main + nav_str + footer
 	
 	open (os.path.join (outdir, in_file_name), 'w').write (page)
 

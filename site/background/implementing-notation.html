@@ -1,0 +1,92 @@
+
+<h2>Music notation</h2>
+
+<p>
+
+Common music notation encompasses some 500 years of music. Its
+applications range from monophonic melodies to monstruous counterpoint
+for large orchestras.  How can we get a grip on such a many-headed
+beast?  Our solution is to make a strict distinction between notation,
+<em>what</em> symbols to use, and engraving, <em>where</em> to put
+them.  For tackling notation, we have broken up the problem into
+digestible (and programmable) chunks: every type of symbol is handled
+by a separate plugin.  All plugins cooperate through the LilyPond
+architecture.  They are completely modular and independent, so each
+can be developed and improved separately.
+<p>
+<ul>
+<li>The most basic plug-in creates Note-heads:
+
+<p align=center> 
+<img src=engraver-noteheads.png>
+<p>
+This plug-in creates graphical objects from musical events.  People
+that put graphics to musical ideas are called copyists or engravers,
+so by analogy, this plug-in is called <tt>Note_head_engraver</tt>.
+
+<li> The <tt>Staff_symbol_engraver</tt> generates the object
+representing the staff lines.
+
+<p align=center> <img
+src=engraver-staff.png>
+
+<li>
+ The <tt>Clef_engraver</tt> tells <tt>Note_head_engraver</tt> how high
+each head should be placed.
+
+<p align=center> 
+<img src=engraver-clef.png>
+
+<li>
+For the flags and stems we add  a <tt>Stem_engraver</tt>:
+<p align=center> 
+<img src=engraver-stem.png>
+<p>
+This engraver is notified of any note head coming along.  Every time
+one (or more, for a chord) note heads is seen, a stem object is
+created, and attached to the note head.
+
+<li>
+Beams, slurs, accents are handled by separate engravers. Like the
+<tt>Stem_engraver</tt>, they create objects and connect them to stems,
+note heads, etc.:
+
+<p align=center> <img src=engraver-slur.png>
+
+<li>
+Accidentals, bar lines, time signature, and key signature each have a
+separate
+engraver.
+<p align=center>
+<img src=engraver-acc.png>
+
+<p>
+The <tt>Accidental_engraver</tt> is the most complex plug-in: it has
+to look at the key signature, note pitches, ties, and bar lines to
+decide when to print accidentals.
+
+</ul>
+
+
+<h2> Polyphonic notation</h2>
+
+The system shown in the last section works well for monophonic music,
+but what about polyphony?  In polyphonic notation, many voices can
+share a staff:
+<p align=center>
+<img src=engraver-final.png>
+<p>
+In this situation, the accidentals and staff are shared, but the
+stems, slurs, beams, etc. are private to each voice. Hence, engravers
+should be grouped.  The engravers for note head, stems, slurs, etc. go
+into a group called "Voice context," while the engravers for key,
+accidental, bar, etc. go into a group called "Staff context."  In the
+case of polyphony, a single Staff context contains more than one Voice
+context.  Similarly, more Staff contexts can be put into a single
+Score context:
+
+<p align=center>
+<img src=engraver-score.png>
+<p>
+
+<a href=engraving.html>continue</a>

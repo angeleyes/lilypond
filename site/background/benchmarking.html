@@ -1,0 +1,71 @@
+
+<h2>Notation benchmarking</h2>
+
+A flexible architecture is necessary for good
+formatting. Unfortunately, it is not sufficient.  Only a careful
+emulation of printed matter will give a good result.  We suggested in
+the introduction to compare program output with existing hand-engraved
+scores.  It is exactly this technique that we use to perfect LilyPond
+output.  In a way, this a benchmarking technique: the performance of
+the program, in terms of quality, is measured in relation to a known
+quantity.
+
+<p>
+Here you see parts of a benchmark piece. At the top the reference
+edition (B&auml;renreiter BA 350) at the bottom the output from
+LilyPond 1.4:
+
+<p align=center>
+<img src=baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+
+<p align=center>
+<img src=lily14-sarabande.png>
+<p align=center>
+LilyPond 1.4
+<p>
+
+The LilyPond output is certainly readable, and for many people it would be
+acceptable. However, close comparison with a hand-engraved score
+showed a lot of errors in the details:
+
+<p align=center>
+<img src=lily14-sarabande-correct.png>
+<p align=center>
+
+<ul>
+<li> Lots of symbols were unbalanced. In particular the trill sign was
+too large.
+
+<li> Stems and beams were all wrong: the stems were too long, and
+beam should be slanted to cover staff lines exactly. The beam was also
+too light.
+
+<li> The spacing was irregular: some measures were too tight, other
+too wide.
+</ul>
+
+<p>
+
+
+
+By addressing the relevant algorithms, settings, and font designs, we
+were able to improve the output. The output for LilyPond 1.8 is shown
+below. Although it is not a clone of the reference edition, this
+output is very close to publication quality.
+
+<p align=center>
+<img src=lily17-sarabande.png>
+<p align=center>
+LilyPond 1.8
+
+<p align=center>
+<img src=baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+<p>
+
+
+<p>
+<a href=typography-features.html>continue</a>

@@ -1,0 +1,58 @@
+<h2>Font design</h2>
+
+A large factor that makes LilyPond output look traditional lies in the
+blackness of the page. By using heavy stafflines, and a font design to
+match that, the overall impression is much stronger. This is also very
+clear from the following blowups:
+
+<table align=center><tr><td>
+<img src=henle-flat-bw.png></td>
+<td>
+<img  src=baer-flat-bw.png></td>
+<td>
+<img src=lily-flat-bw.png></td>
+</tr><tr>
+<td align=center>Henle (2000)</td>
+<td align=center>B&auml;renreiter (1950)</td>
+<td align=center>LilyPond (2003)</td>
+</tr>
+</table>
+<p>
+Another typical aspect of hand-engraved scores is the general look of
+the symbols: they never have sharp corners. We suspect that this is
+due to the mechanics of the reproduction process.  This general
+rounded shape is also present in all glyphs of our "Feta" font.
+
+
+
+ 
+<h2>Spacing</h2>
+
+<p>
+
+One of the problems that the Bach piece above inspired us to attack,
+is the spacing engine. One of its features is optical spacing.
+It is demonstrated in the fragment below.  
+
+<p align=center>
+<img src=spacing-with-corr.png>
+
+<p align=center>
+<img src=spacing-no-corr.png>
+
+<p>
+
+This fragment only uses quarter notes: notes that are played in a
+constant rhythm. The spacing should reflect that. Unfortunately, the
+eye deceives us a little: not only does it notice the distance between
+note heads, it also takes into account the distance between
+consecutive stems. As a result, the notes of an up-stem/down-stem
+combination should be put farther apart, and the notes of a down-up
+combination should be put closer together, all depending on the
+combined vertical positions of the notes. The top fragment is printed
+with this correction, the bottom one without.  In the last case, the
+down-stem/up-stems combinations form clumps of notes.
+
+<p>
+
+<a href=input-format.html>continue</a>

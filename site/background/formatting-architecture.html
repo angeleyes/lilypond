@@ -1,0 +1,44 @@
+
+<h2>A flexible formatting architecture</h2>
+
+<p>
+
+Remember the music notation problem? The solution of it left us with a
+bunch of objects. The formatting architecture is built on these
+objects. Each object carries variables:
+
+<ul>
+<li> Variables control layout decisions.  For example, many objects
+have a <tt>direction</tt> variable that encodes the choice between up
+and down (or left and right).  Here you see two chords, with accents
+and arpeggio. In the first chord, the objects have all directions down
+(or left). The second chord has all directions up (right).
+
+<p align=center>
+<img src="@IMAGES@directions-updown.png">
+<p>
+The process of formatting a score consists of reading and writing
+object variables.
+
+
+<li>Some variables have a preset value. For example, the thickness of
+ many lines ---a characteristic of typographical style--are preset
+ variables. Changing them gives a different typographical impression:
+ 
+ <p align=center>
+ <img src="@IMAGES@thickness-tweaks.png">
+ <p>
+ 
+<li>Formatting rules are also preset variables: each object has
+variables containing procedures. These procedure perform the actual
+formatting, and by substituting different ones, we can change
+behavior. In the following example, the rule that note head objects
+use to produce their symbol is changed during the music fragment:
+
+<p align=center>
+<img src="@IMAGES@mc-squared.png">
+<p>
+
+</ul>
+
+<a href=benchmarking.html>continue</a>
