@@ -1,135 +1,166 @@
+<!--
+    Translation of CVS $Revision$
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
 
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>LilyPond - on Microsoft Windows</title>
 
 <h1>LilyPond on Microsoft Windows</h1>
 
 
-<a name="installing"></a>  
-<h2>1. Installation</h2>
-
+<a name="installing"></a>
+<h2>Installing</h2>
 
 <img src="@IMAGES@cygwin-shot.png" align="right">
 
 <ul>
-<li>
-Download  <tt>setup.exe</tt> by shift-clicking <a
-href="http://cygwin.com/setup.exe">here</a>,
+  <li>
+    Download <tt>setup.exe</tt> by shift-clicking
+    <a href="http://cygwin.com/setup.exe">here</a>,
+  </li>
+  <li>
+    For NT, 2000 and XP: become administrator,
+  </li>
 
-<li>For NT, 2000 and XP: become administrator
+  <li>
+    Run <code>setup.exe</code>,
+  </li>
 
-<li>Run <code>setup.exe</code>.
+  <li>
+    Keep clicking "Next" until...
+  </li>
 
+  <li>
+    You get to the <strong>Package View</strong> dialogue.  Select
+    LilyPond, found in the
+    <strong>Publishing</strong> section.
+  </li>
 
-<li>Keep clicking "Next" until 
-
-<li> in 
- the <b>Package View</b> dialogue, select LilyPond, found in the
-<b>Publishing</b> section.
-
-
-<li> LilyPond will now be installed, along with supporting
-programs. The download is 66 MB, and the installation requires 260 MB
-of free disk space.
-
+  <li>
+    LilyPond will now be installed, along with supporting
+    programs. The download is 66 MB, and the installation requires 260 MB
+    of free disk space.
+  </li>
 
 </ul>
 
-If you are not 100% sure of what you are doing, then do not change the
-defaults. <B>Do not</b> change the default install directory
-(<code>c:/cygwin</code>), and
-<b>do not</b> change the default text type (UNIX).
-
-
 <p>
+  If you are not 100% sure what setup.exe asks, please do not change the
+  defaults.  <strong>Do not</strong> change the default install
+  directory (<code>c:/cygwin</code>), and
+  <strong>do not</strong> change the default text type (type UNIX must
+  be used).
+</p>
 
 
-<h2>2. Testing</h2>
+<h2>Testing</h2>
 
 <ul>
-<li>
-Shift-click <a href="test.ly">here</a> to download a test.
+  <li>
+    Shift-click <a href="test.ly">here</a> to download a test.
+  </li>
 
-<li>Save it on
-your desktop as <tt>test.ly</tt>  (make sure it is <b>not</b> called
-<tt>test.ly.TXT</tt>).
+  <li>
+    Save it on your desktop as <tt>test.ly</tt> (make sure it
+    is <strong>not</strong> called
+    <tt>test.ly<em>.TXT</em></tt>).
+  </li>
 
-<li>Double-click the file.
+  <li>
+    Double-click the file.
+  </li>
 </ul>
 
 This will process the file, and show the result in a PDF viewer.
 
-<! should have screenshot >
-
 <h4>Yay, it works!</h4>
-<p>
 
-Good! Then go onto <a href="using.html">Using LilyPond</a>
+<p>
+  Good!  Go onto <a href="using.html">Using LilyPond</a>.
+</p>
 
 <h4>Umm, I'm not sure what to do. Help me!</h4>
 
 <p>
-
-For questions and support, send mail to <a
-href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+  For questions and support, send mail to <a
+					     href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
 
 <h4>Darn, it doesn't work</h4>
-<p>
 
-Whoops, something went astray, so you have to send a bugreport.  There
-is a file <tt>test.log</tt> in the same folder with <tt>test.ly</tt>.
-Send this file to <a
-href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> with a
-description of your problem.
+<p>
+  Whoops, something went astray, so you have to send a bugreport.  There
+  is a file <tt>test.log</tt> in the same folder with <tt>test.ly</tt>.
+  Send this file to <a
+		       href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> with a
+  description of your problem.
+</p>
 
 <h4>Windows 98</h4>
 
-On Windows <b>95, 98 and ME</b> there are problems with the Cygwin
-Python package, which may hamper the operation of LilyPond (see <a
-href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
-fails testsuite</a>).  Unfortunately, these problems are outside
-control of the LilyPond development team.  Windows NT, 2000 and XP are
-not affected.
-
 <p>
+  On Windows <strong>95, 98 and ME</strong> there are problems with the Cygwin
+  Python package, which may hamper the operation of LilyPond (see <a
+								     href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
+    fails testsuite</a>).  Unfortunately, these problems are outside
+  control of the LilyPond development team.  Windows NT, 2000 and XP are
+  not affected.
+</p>
 
 <h4>But I have no <tt>test.log</tt></h4>
 <p>
-The LilyPond package did not install correctly.  Please go back to <a
-href="#installing">1. Installation</a> and double-check that you have
-followed the procedure correctly.  If in doubt, send mail to <a
-href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
-
-<p>
-
+  The LilyPond package did not install correctly.  Please go back to
+  <a href="#installing">Installing</a> and double-check that you have
+  followed the procedure correctly.  If in doubt, send mail to
+  <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
 
 
-<h2>3. Uninstalling</h2>
+<h2>Uninstalling</h2>
 
 <ul>
-<li>
-By brute force:
-remove <code>C:\CYGWIN</code>.
-<em>This also removes your Cygwin <code>/home/</code> directory,
-so 
-copy important files to somewhere  else first.</em>
+  <li>
+    By brute force:
+    remove <code>C:\CYGWIN</code>.
+    <em>This also removes your Cygwin <code>/home/</code> directory,
+      so 
+      copy important files to somewhere else first</em>.
+  </li>
 
-<li>
-Officially:
-<ul>
-<li>
-   <p>Start <code>setup.exe</code>,
-   <li> click Next,
-   <li>select <b>Install from
-Local Directory</b>.
+  <li>
+    Officially:
+    <ul>
+      <li>
+	<p>Start <code>setup.exe</code>,
+	  <li>
+	    Click Next.
+	  </li>
+	  <li>
+	    Select <strong>Install from
+	      Local Directory</strong>.
+	  </li>
 
-<li>Then click next until you reach <b>Select
-packages to install</b>.
+	  <li>
+	    Click next until you reach <strong>Select
+	      packages to install</strong>.
+	  </li>
 
-<li>Click <b>View</b>.
+	  <li>
+	    Click <strong>View</strong>.
+	  </li>
 
-<li>
-For every package you wish to uninstall,,
-click on the recycle icon until it says <b>Uninstall</b>.
+	  <li>
+	    For every package you wish to uninstall,,
+	    click on the recycle icon until it says <strong>Uninstall</strong>.
+	  </li>
 
-<li> click <b>Next</b>.
-</ul>
+	  <li>
+	    Click <strong>Next</strong>.
+	  </li>
+    </ul>
+  </li>
 </ul>

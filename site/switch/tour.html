@@ -1,92 +1,122 @@
+<!--
+    Translation of CVS $Revision$
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
 
 <h2>LilyPond in practice</h2>
 
-
 <p>
-
-With LilyPond we have tried to make engraving available for everyone,
-so what can you do with it in practice?
-
-<p>
-
+  With LilyPond we have tried to make engraving available for everyone,
+  so what can you do with it in practice?
+</p>
 
 <h3>Lead sheets</h3>
+
 <p>
-One of the things you can typeset is pop music. Here is an example:
+  One of the things you can typeset is pop music.  Here is an example:
+</p>
 
 <p align="center">
-<a href="@IMAGES@sondag-morgen.png">
-<img width="450" src="@IMAGES@sondag-morgen-smaller.png"></a>
-<p align="center"><em>click to enlarge </em>
-<p>
+  <a href="@IMAGES@sondag-morgen.png" title="Click to enlarge">
+    <img width="450" src="@IMAGES@sondag-morgen-smaller.png"></a>
+</p>
+<p align="center">
+  <em>Click image to enlarge</em>
+</p>
 
-This example shows chord names, drum notation and tablature in action.
-Note the polyphonic notation for the horn section, and note how the
-chords (The "Em7" and "Hm7" printed at the top) use Danish chord
-names. The latter simply is a layout option.  By switching back a
-toggle, you can print English chord names.
 <p>
+  This example shows chord names, drum notation and tablature in action.
+  Note the polyphonic notation for the horn section, and note how the
+  chords (The "Em7" and "Hm7" printed at the top) use Danish chord
+  names. The latter simply is a layout option.  By switching back a
+  toggle, you can print English chord names.
+</p>
 
 <h3>Classical music</h3>
+
 <p>
-Our work on LilyPond is inspired by classical engraving, so 
-classical music is no problem. Simple solo-pieces are set in a breeze,
+  Our work on LilyPond is inspired by classical engraving, so 
+  classical music is no problem. Simple solo-pieces are set in a breeze,
+</p>
 
 <p align="center">
-
-<a href="@DOC@v2.4/input/mutopia/J.S.Bach/out-www/baerenreiter-sarabande.pdf">
-<img src="@IMAGES@sarabande.png"></a>
-<p align="center"><em>(Click for a PDF file)</em> 
-<p>
-and with a little work,  complex  pieces are also possible
+  <a href="@DOC@v2.4/input/mutopia/J.S.Bach/out-www/baerenreiter-sarabande.pdf"
+     title="Click for a PDF file">
+    <img src="@IMAGES@sarabande.png"></a>
+</p>
 <p align="center">
-<a href="@DOC@v2.4/input/out-www/les-nereides.pdf">
-<img src="@IMAGES@les-nereides.png"> </a>
-<p align="center"><em>(Click for a PDF file)</em>
+  <em>(Click image for a PDF file)</em>
+</p>
 
 <p>
-More samples of the latest LilyPond versions are included in the
-documentation pages. There are separate pages for the <a
-href="@DOC@v2.4/examples.html">stable</a> and for the
-<a href="@DOC@v2.5/examples.html">development</a>
-release.
+  and with a little work, complex pieces are also possible
+</p>
 
+<p align="center">
+  <a href="@DOC@v2.4/input/out-www/les-nereides.pdf"
+     title="Click for a PDF file">
+    <img src="@IMAGES@les-nereides.png"> </a>
+</p>
+<p align="center">
+  <em>(Click image for a PDF file)</em>
+</p>
+
+<p>
+  More samples of the latest LilyPond versions are included in the
+  documentation pages.  There are separate pages for the
+  <a href="@DOC@v2.4/examples.html">stable</a> and for the
+  <a href="@DOC@v2.5/examples.html">development</a> release.
+</p>
 
 <h3>Collect music on-line</h3>
+
 <p>
-LilyPond is libre and free, so it is a safe format for exchanging and
-archiving music. If a composer has been dead for more than 70 years,
-then his/her music is in the Public Domain.  It may freely be put into
-(digital) libraries.  This is what the <a
-href="http://www.mutopiaproject.org">Mutopia project</a> is about: a
-collection of music, typeset in LilyPond.
+  LilyPond is libre and free, so it is a safe format for exchanging and
+  archiving music.  If a composer has been dead for more than 70 years,
+  then his/her music is in the Public Domain.  It may freely be put into
+  (digital) libraries.  This is what the
+  <a href="http://www.mutopiaproject.org">Mutopia project</a> is about: a
+  collection of music, typeset in LilyPond.
+</p>
 
 <p align="center">
-<a href="http://www.mutopiaproject.org"><img src="@IMAGES@mutopia.png"></a>
+  <a href="http://www.mutopiaproject.org"><img src="@IMAGES@mutopia.png"></a>
+</p>
+
 <p>
-
-All the music on Mutopia is in the  public domain, so you can download and
-print it without costs. If you're not satisfied, then add other fingerings,
-transpose it, or use it in your own compositions. 
-
+  All the music on Mutopia is in the  public domain, so you can download and
+  print it without costs.  If you're not satisfied, then add other fingerings,
+  transpose it, or use it in your own compositions. 
+</p>
 
 <h3>Print databases</h3>
+
 <p>
-LilyPond is a batch program: you don't have to be there while running
-it.  It can easily be scripted to convert complete databases of music
-automatically. One example is <a
-href="http://sniff.numachi.com/~rickheit/dtrad/">Yet Another Digital
-Tradition Page</a>, which uses LilyPond to produce sheet music for
-approximately 9000 folk songs. Here is another one. The Computer
-Science department at Utrecht University has an online <a
-href="http://teuge.labs.cs.uu.nl/Rntt/mir/mir.cgi?pwd=none">search
-service</a>, with almost half a million music fragments for music
-retrieval research.  LilyPond's automated engraving provided notation
-for all of them.
+  LilyPond is a batch program: you don't have to be there while running
+  it.  It can easily be scripted to convert complete databases of music
+  automatically.  One example is
+  <a href="http://sniff.numachi.com/~rickheit/dtrad/">Yet Another
+    Digital Tradition Page</a>,
+  which uses LilyPond to produce sheet music for approximately 9000
+  folk songs. Here is another one.  The Computer Science department at
+  Utrecht University has an online
+  <a href="http://teuge.labs.cs.uu.nl/Rntt/mir/mir.cgi?pwd=none">search
+  service</a>,
+  with almost half a million music fragments for music
+  retrieval research.  LilyPond's automated engraving provided
+  notation for all of them.
+</p>
 
 <p align="center">
-<img src="@IMAGES@give-labs.png">
+  <img src="@IMAGES@give-labs.png">
+</p>
 
 <h3>Curious?</h3>
 
-Check out  <a href="howto.html">how prints like these</a> are made. 
+<p>
+  Check out <a href="howto.html">how prints like these</a> are made. 
+</p>

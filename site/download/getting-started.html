@@ -1,4 +1,14 @@
-<title>LilyPond -- getting started</title>
+<!--
+    Translation of CVS $Revision$
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>LilyPond - getting started</title>
+
 <h1>Getting started</h1>
 <p>
   You've installed your shiny new LilyPond, and you can't wait to
@@ -15,8 +25,8 @@
 <h2>Testing LilyPond</h2>
 <p>
   These are the instruction for Unix and Windows on the command line.
-  Windows users are advised to a look at the <a
-  href="windows.html">quickstart method for Windows</a>.
+  Windows users are advised to a look at the
+  <a href="windows.html">quickstart method for Windows</a>.
 </p>
 
 <ul>
@@ -39,8 +49,9 @@
 	For more information, see http://lilypond.org
 
 	Options:
+	-b, --backend=EXT     select backend to use
 	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
-	-f, --format=EXT      select back-end to use
+	-f, --formats=EXTs    list of formats to dump
 	-h, --help            print this help
 	[..]
       </pre>
@@ -48,12 +59,14 @@
     <p>
       If you see this, you have the program installed, and you can run it.
     </p>
+  </li>
   <li>Start your favorite text editor. 
+  </li>
   <li> Enter
     <blockquote>
       <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
 	{
-	    c4( c)
+	c4( c)
 	}
       </pre>
     </blockquote>
@@ -62,7 +75,8 @@
     the above example in
     <code>\notes{}</code> <em>and</em> <code>\score {}</code> blocks.
     
-  <li>Save it as <tt>test.ly</tt>.   Exit the editor.
+  </li>
+  <li>Save it as <tt>test.ly</tt>. Exit the editor.
   <li>Run
     <blockquote>
       <pre>
@@ -78,6 +92,7 @@
 	PDF output to `test.pdf'...
       </pre>
     </blockquote>
+  </li>
   <li>
     View the PDF file. Try these commands
     <blockquote>
@@ -90,7 +105,7 @@
 	ghostview test.pdf
       </pre>
     </blockquote>
-
+  </li>
 
   <li>
     The easiest option for  Windows users is the
@@ -101,13 +116,17 @@
 
       <li>Open a shell by  double clicking the "Cygwin"
 	icon
+      </li>
 
       <li> Start a text editor by running <tt>notepad</tt>.  Be sure 
 	that your files are not saved as <code>test.ly.txt</code>
+      </li>
 
       <li> The PDF file is left in C: -&gt; CYGWIN -&gt; HOME -&gt;
 	<em>your-user-name</em>.
+      </li>
     </ul>
+  </li>
 
 </ul>
 
@@ -125,9 +144,8 @@
 <h2>Darn, it doesn't work</h2>
 <p>
   Whoops, something went astray, so you have to send a bugreport. The
-  directions for bugreports are in the <a
-					  href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
+  directions for bugreports are in the
+  <a href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
   packaged by the LilyPond team, CC your report to the packager listed
   in the "Courtesy" column <a href="index.html">on the download page</a>
 </p>
-
