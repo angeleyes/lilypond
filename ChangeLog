@@ -1,3 +1,7 @@
+2005-01-27  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/news.ihtml (href): announce 2.5.9
+
 2005-01-27  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* GNUmakefile: 
