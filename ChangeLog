@@ -1,5 +1,7 @@
 2004-07-05  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
+	* site/switch/tour.html (href): add link to cs.uu.nl site.  
+
 	* site/download/index.html: add 2.2.4 download links
 
 2004-06-18  Heikki Junes  <hjunes@cc.hut.fi>
