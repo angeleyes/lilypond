@@ -1,9 +1,6 @@
 /* http://www.w3.org/TR/REC-CSS2 */
 
 {
-/*
-huh  ?what's this for? 
-*/
     background: #ff0000;
     border-style: none;
     padding-left: 5%;
@@ -42,7 +39,6 @@ color:#945b99;
 }
 
 a:hover {
-    /* font-size: large; */
     text-decoration: underline;
 }
 
