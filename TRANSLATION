@@ -1,0 +1,52 @@
+
+
+NEW TRANSLATIONS
+
+A new translation will be made available on LILYPOND.ORG as soon as a
+useful part of the site has been translated, and is of good quality.
+
+The initial delivery of a translation for LILYPOND.ORG is about 3000 words.
+
+Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
+
+1 index.html  --  http://lilypond.org/web/index.html
+
+1 switch/index.html  --  http://lilypond.org/web/switch/index.html
+1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
+2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
+1 switch/tour.html  --  http://lilypond.org/web/switch/tour.html
+1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
+4 documentation.html  --  http://lilypond.org/web/documentation.html
+
+1 about/index.html  --  http://lilypond.org/web/about/index.html
+4 about/doneet.html  --  http://lilypond.org/web/about/doneet.html
+3 about/faq.html  --  http://lilypond.org/web/about/faq.html
+3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
+2 about/features.html  --  http://lilypond.org/web/about/features.html
+2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
+
+4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
+3 site/about/automated-engraving/
+4 site/devel
+
+1 download/getting-started.html  --  http://lilypond.org/web/download/getting-started.html
+4 download/index.html  --  http://lilypond.org/web/download/index.html
+1 download/macos.html  --  http://lilypond.org/web/download/macos.html
+4 download/slackware.html  --  http://lilypond.org/web/download/slackware.html
+1 download/using.html  --  http://lilypond.org/web/download/using.html
+1 download/windows.html  --  http://lilypond.org/web/download/windows.html
+
+
+$ wc $(grep ^1 TODO | cut -f 2)
+  161   284  3294 site/index.html
+   54   214  1604 site/switch/index.html
+  100   456  3561 site/switch/advantages.html
+   92   405  3080 site/switch/tour.html
+  101   281  2505 site/switch/howto.html
+  106   276  3883 site/about/index.html
+  133   414  3310 site/download/getting-started.html
+   28    85   900 site/download/macos.html
+   56   115  1131 site/download/using.html
+  135   380  3001 site/download/windows.html
+  966  2910 26269 total
+
