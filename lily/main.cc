@@ -63,23 +63,26 @@ String distill_inname_str (String name_str, String& ext_r);
  Internationalisation kludge in two steps:
    * use _i () to get entry in POT file
    * call gettext () explicitely for actual "translation"
+
+ Note: these messages all start with lower case (ie, don't
+       follow regular localisation guidelines).
  */
 Long_option_init theopts[] = {
-  {_i ("BASENAME"), "output", 'o',  _i ("write output to BASENAME[-x].extension")},
-  {0, "warranty", 'w',  _i ("show warranty and copyright")},
-  {0, "help", 'h',  _i ("this help")},
-  {0, "test", 't',  _i ("switch on experimental features")},
   {0, "debug", 'd',  _i ("enable debugging output")},
-  {_i ("FILE"), "init", 'i',  _i ("use FILE as init file")},
+  {_i ("EXT"), "output-format", 'f',  _i ("use output format EXT")},
+  {0, "help", 'h',  _i ("this help")},
   {_i ("DIR"), "include", 'I',  _i ("add DIR to search path")},
-  {0, "no-paper", 'm',  _i ("produce midi output only")},
+  {_i ("FILE"), "init", 'i',  _i ("use FILE as init file")},
   {0, "dependencies", 'M',  _i ("write Makefile dependencies for every input file")},
+  {0, "no-paper", 'm',  _i ("produce MIDI output only")},
+  {_i ("BASENAME"), "output", 'o',  _i ("write output to BASENAME[-x].extension")},
+  {0, "find-old-relative", 'Q',  _i ("show all changes in relative syntax")},
+  {0, "safe", 's',  _i ("inhibit file output naming and exporting")},
   {0, "no-timestamps", 'T',  _i ("don't timestamp the output")},
-    {0, "find-old-relative", 'Q',  _i ("show all changes in relative syntax")},
+  {0, "test", 't',  _i ("switch on experimental features")},
   {0, "ignore-version", 'V',  _i ("ignore mudela version")},
   {0, "version", 'v',  _i ("print version number")},
-  {_i ("EXT"), "output-format", 'f',  _i ("use output format EXT")},
-  {0, "safe", 's',  _i ("inhibit file output naming and exporting")},
+  {0, "warranty", 'w',  _i ("show warranty and copyright")},
   {0,0,0, 0}
 };
 
@@ -88,10 +91,14 @@ usage ()
 {
   cout << _f ("Usage: %s [OPTION]... [FILE]...", "lilypond");
   cout << "\n\n";
-  cout << _ ("Typeset music and or play MIDI from FILE.");
+  cout << _ ("Typeset music and or play MIDI from FILE");
   cout << "\n\n";
   cout << 
-#include "BLURB.hh"
+_(
+"LilyPond is a music typesetter.  It produces beautiful sheet music\n"
+"using a high level description file as input.  LilyPond is part of \n"
+"the GNU Project.\n"
+);
 
   cout << '\n';
   cout << _ ("Options:");
@@ -109,15 +116,15 @@ usage ()
 #ifdef STRING_UTILS_INLINED
     "STRING_UTILS_INLINED "
 #endif
-    "datadir =" DIR_DATADIR
     "\n"
-    "localedir =" DIR_LOCALEDIR
-
-    "\n\n";
-
-  cout << _("Report bugs to") << " bug-gnu-music@gnu.org" << endl;
+    "datadir: `" DIR_DATADIR "'\n"
+    "localedir: `" DIR_LOCALEDIR "'\n"
+    "\n";
 
   print_mudela_versions (cout);
+  cout << endl;
+
+  cout << _f ("Report bugs to %s", "bug-gnu-music@gnu.org") << endl;
 }
 
 void
@@ -132,8 +139,8 @@ version ()
   identify ();
   cout << '\n';
   cout << _f (""
-  "This is free software.  It is covered by the GNU General Public License,"
-  "and you are welcome to change it and/or distribute copies of it under"
+  "This is free software.  It is covered by the GNU General Public License,\n"
+  "and you are welcome to change it and/or distribute copies of it under\n"
   "certain conditions.  Invoke as `%s --warranty' for more information.\n",
     "lilypond");
   cout << endl;
@@ -225,8 +232,6 @@ main_prog (int, char**)
   /*
     need to do this first. Engravers use lily.scm contents.
    */
-  extern void ly_init_protection();
-  ly_init_protection();  
   init_lily_guile ();
   read_lily_scm_file ( "lily.scm");
   cout << endl;
