@@ -1,3 +1,9 @@
+2004-08-03  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* scripts/big-page.py: take directory as argument.
+
+	* big-page.py: move to scripts/
+
 2004-08-02  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
 	* site/about/automated-engraving/typography-features.html: remark

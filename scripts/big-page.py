@@ -1,4 +1,9 @@
 import re
+import sys
+import os
+
+dir = sys.argv[1]
+os.chdir (dir)
 
 s = ''
 for a in ['index.html',
