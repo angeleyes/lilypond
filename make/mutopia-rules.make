@@ -25,16 +25,16 @@ $(outdir)/%.ly: %.abc
 
 $(outdir)/%.dvi: $(outdir)/%.ly
 	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $(<F)).midi $(outdir)
-	
+	-mv $(basename $(<F))*.midi $(outdir)
+
 # don't junk intermediate .dvi files.  They're easier to view than
 # .ps or .gif
 .PRECIOUS: $(outdir)/%.dvi
 
 $(outdir)/%.dvi: %.ly
 	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $<).midi $(outdir)
+	-mv $(basename $<)*.midi $(outdir)
 
 $(outdir)/%.dvi: %.fly
 	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $<).midi $(outdir)
+	-mv $(basename $<)*.midi $(outdir)
