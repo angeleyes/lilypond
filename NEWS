@@ -1,25 +1,78 @@
-WHAT'S NEW?
 
-* Large cleanups, enhanced design and GUILE integration for smaller
-  memory footprint and more flexible code.
+New features in 1.4
 
-* Direct output to PostScript (optional), PDFTeX or as GUILE script
-  (default output still to plain TeX).
 
-* Convertors for ABC and MUP formats.
+DESIGN
 
-* Font: now available as scalable PostScript.  New glyphs: time
-  signature, more note heads.
 
-* Enhanced input: semi-automatic beaming, (nested) tuplets, (nested)
-  repeats, chordnames, automatic Lyrics durations.
-  
-* Grace notes, volta brackets, multiple styles for note heads and 
-  time signatures, breathing signs, lyric extenders, cross staff 
-  beaming and slurring.
-  
-* --safe option for the paranoid.
+* More pervasive GUILE integration resulting in improved design and
+implementation.  LilyPond is smaller, cleaner, more flexible, etc.
 
-* More elegant spacing.  Text is spaced exactly.
+ - Improved speed with comparable memory footprint
 
-* Lots of bugfixes.
+ - More tweakability using less memory with the new `property push'
+  mechanism.
+
+ - Improved robustness: Lily almost never crashes.
+
+ - Access to internal music representation
+
+* New font selection scheme similar to Latex-NFSS.
+
+* Flexible formatting mechanism for musical texts.
+
+* Chordnames are now configurable in every respect
+
+* Part combining for orchestral scores and hymns: two voices are
+  combined into a staff automatically, including Solo/a2
+  indications as appropriate.
+
+
+ERGONOMICS
+
+* Point and click functionality using emacs and Xdvi.
+
+* Rewritten Emacs mode
+
+* Cleaned up syntax details 
+
+* Comprehensive documentation, including a rewritten tutorial.
+
+* All properties have doc strings, and internal documentation is
+generated automatically.
+
+* Windows point-and-click installer 
+
+
+NOTATION FEATURES
+
+* Piano pedals, Arpeggios, Glissandi, many more note head
+shapes, Medieval clefs, custodes.
+
+* Better lyrics placement: Automatical phrasing, melisma alignment,
+  and stanza numbering.
+
+* Typography: More elegant slurs, aligned dynamics, text crescendos,
+
+* Easy-play note heads
+
+* ASCIIScript: ASCII-art output 
+
+* Improved standalone postscript layout.
+
+
+IMPORT/EXPORT
+
+* dynamics, tempo changes in the MIDI output
+
+* Finale (.etf), PMX, Musedata and Mup import tools.
+
+
+MISCELLANEOUS
+
+* Mutopia ports collection: easily accessible music archive.
+
+* Translations into Japanese, French and Russian
+
+* Many many many bugfixes.
+
