@@ -1,5 +1,8 @@
 1.4.14.jcn3
 ===========
+* backport cvs/lilypond-1.4/ly/engraver.ly (RhythmicStaffContext): Resurrect
+  bar lines.
+
 * backport Documentation/topdocs/INSTALL.texi (Top): Add some warnings
   about guile --with-threads.  Hopefully this issue can be resolved
   rsn, but maybe we should even add warnings for the standard Debian
