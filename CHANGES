@@ -1,5 +1,12 @@
 lilypond_1_4
 ============
+
+* Backport feta-nummer and feta-din.
+
+* Oops. Included '|' rule in parser.yy twice.  
+
+* Generate PDF for examples and manuals.
+
 * scripts/lilypond-book.py: Import from HEAD.
 
 * scripts/ly2dvi.py: fix by Mats. Try to import pre if available.
@@ -11,10 +18,6 @@ lilypond_1_4
 * configure: Regenerate.
 
 * aclocal.m4: Add --enable/disable-optimising option.
-
-* scripts/lilypond-book.py: fix by Mats. Try to import pre if available.
-
-* scripts/lilypond-book.py (re_dict): remove all *? regexps.
 
 * Documentation/windows/setup.hint (requires): Add gsview dependency.
 
