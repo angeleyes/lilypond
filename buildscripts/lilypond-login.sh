@@ -1,28 +1,36 @@
 #!/bin/csh
 
-# env. vars for the C-shell.
+# Setup TeX/LaTeX Ghostscript C-shell environment for LilyPond.
+# 
+# Red Hat-like systems should install this in /etc/profile.d/
 
-# set environment for LilyPond.  To be installed in /etc/profile.d/
-setenv GS_LIB "@datadir@/ps"
-setenv GS_FONTPATH "@datadir@/afm"
+# strange shell, this C
+set datadir="@datadir@"
+
+setenv GS_FONTPATH "$datadir/afm:@datadir@/pfa:$GS_FONTPATH"
+setenv GS_LIB "$datadir/ps:$GS_LIB"
+
+# setenv LILYPONDPREFIX "$datadir"
+
 # bit silly. for ly2dvi, overrules compiled-in datadir...
-setenv LILYPONDPREFIX "@datadir@"
+# setenv LILYPONDPREFIX "@datadir@"
 
 # include an empty path component for the system wide includes.
 if ($?MFINPUTS) then
-        setenv MFINPUTS "/usr/share/lilypond/mf:${MFINPUTS}::"
+        setenv MFINPUTS "$datadir/mf:${MFINPUTS}::"
 else
-        setenv MFINPUTS "/usr/share/lilypond/mf::"
+        setenv MFINPUTS "$datadir/mf::"
 endif
 if ($?TEXINPUTS) then
-        setenv TEXINPUTS "/usr/share/lilypond/tex:${TEXINPUTS}::"
+        setenv TEXINPUTS "$datadir/tex:${TEXINPUTS}::"
 else
-        setenv TEXINPUTS "/usr/share/lilypond/tex::"
+        setenv TEXINPUTS "$datadir/tex::"
 endif
-if ($?GUILE_LOAD_PATH) then
-        setenv GUILE_LOAD_PATH "/usr/share/lilypond/scm:${GUILE_LOAD_PATH}"
+if ($?TFMFONTS) then
+        setenv TFMFONTS "$datadir/tfm:$TFMFONTS"
 else
-        setenv GUILE_LOAD_PATH "/usr/share/lilypond/scm"
+        setenv TFMFONTS "$datadir/tfm:"
 endif
+
 
 

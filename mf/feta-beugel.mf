@@ -1,30 +1,39 @@
+input feta-autometric;
 input feta-macros;
 input feta-params;
 
+fet_beginfont("feta-braces", 16);
+mode_setup;
+
+staffsize#:=16pt#;
+
 save code;
-code :=0;
+code := 0;
 
 
-def draw_brace( expr height_sharp, width_sharp) = 
-	save pendir, height, width, thin, thick;
+def draw_brace (expr height_sharp, width_sharp, slt_sharp) =
+
+	save pendir, height, width, thin, thick, slt;
 	save penangle;
 	height# := height_sharp;
-	width#  := width_sharp;
+	width# := width_sharp;
+	slt# := slt_sharp;
 
-	beginchar(incr code, width#, height#/2, height#/2);
- 
-	define_pixels (height, width);
-	thin = 2 stafflinethickness;
-	thick = .5 interline;
+	beginchar(code, width#, height#/2, height#/2);
+	code := incr code;
+	  
+	define_pixels (height, width, slt);
+	thin = 2 slt;
+	thick = .5 width;
 	
 	z2 = .5 [z1, z3];
-	y3 = y1 + height/2;
+	y3l = y1 + height/2;
 	x3 = x1 + width;
 	y1 =0;
 	x3 = - width / 2;
 
 	pair pendir;
-	pendir = unitvector(x3 - x1, y3/6 - y1);
+	pendir = unitvector(x3 - x1, y3l/6 - y1);
 	penangle = angle pendir - 90;
 	penpos3(thin, penangle);
 	penpos2(thick, angle(z3 -z1) -90 );
@@ -39,6 +48,38 @@ endchar;
 enddef;
 
 
-for h :=  2 staffsize#  step 1 pt# until (7 * staffsize#):
-	draw_brace(h, interline# );
+
+save stafflinethickness;
+save increment;
+
+stafflinethickness := 0.5pt#;
+increment := 0.5pt#;
+y := 10pt#;
+
+
+
+for i := 0 step 1 until font_count:
+
+  %% We can't store more than 64 (65?) height dimensions in a TFM
+  %% file, so we make small files.
+
+  for j := 0 step 1 until 63:
+    % message "l: "&decimal l;
+    % note: define_pixels (x) multiplies x by hppp,
+    % must never get bigger than infinity
+    y := min (y + increment, infinity/hppp - 1);
+
+    % x should be about one staff space, taking brace to have
+    % default height of 3 staffs, this yields height / 3 / 4 = 12
+    % but 15 looks better
+    x := y / 15;
+
+    increment := x / 10;
+    stafflinethickness :=  min (0.5pt#, y/150);
+    if i = font_count:
+      draw_brace (y, x, stafflinethickness);
+    fi
+  endfor;
 endfor
+  
+fet_endfont("feta-braces");
