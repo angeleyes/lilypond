@@ -1,3 +1,11 @@
+2003-08-07  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/devel/packaging.html (href): Fix cygwin links.
+
+	* site/about/doneet.html (href): Fix participating link.
+
+	* site/switch/testimonials.html (href): Typo.
+
 2003-08-06  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/devel/packaging.html: Apply Anthony's changes for Debian.
