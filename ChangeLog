@@ -1,3 +1,9 @@
+2004-06-04  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* site/download/windows.html (href): remove "just click next"
+	warning. We don't want people to skip the package selection
+	dialog.
+
 2004-06-10  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* GNUmakefile (upload): Remove -e ssh, add colon to WEBSERVER

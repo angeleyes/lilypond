@@ -46,7 +46,7 @@ upload: site
 	chgrp -R lilypond .  && \
 	chmod -R g+w * && \
 	chmod 2775 . `find  -type d` && \
-	rsync --delete -go --stats --progress -rltvu . $(WEBSERVER:)/var/www/lilypond/web/
+	rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
 
 
 dist:
