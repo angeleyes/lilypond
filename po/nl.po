@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-29 21:53+0100\n"
+"POT-Creation-Date: 2005-01-30 01:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,15 +167,15 @@ msgstr "Een korte rondleiding"
 msgid "Crash course"
 msgstr "Stoomcursus"
 
-#: site/graphics/annotate-example-1.svg:195 site/images/foe.svg:195
+#: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
 msgstr "Commando's beginnen met \\"
 
-#: site/graphics/annotate-example-1.svg:205 site/images/foe.svg:205
+#: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
 msgstr "Letters zijn noten"
 
-#: site/graphics/annotate-example-1.svg:227 site/images/foe.svg:227
+#: site/graphics/annotate-example-1.svg:227
 msgid "Numbers are durations"
 msgstr "Getallen zijn nootwaarden"
 
