@@ -1,5 +1,4 @@
-[('cygwin.html', ' Cygwin'),
- ('testing.html', 'Testing'),
+[
+  ('cygwin.html', ' Cygwin'),
  ('troubleshooting.html', "Troubleshooting"),
- ('uninstalling.html',  "Uninstalling")
 ]

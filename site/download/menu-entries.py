@@ -1,6 +1,4 @@
-[('debian.html', 'Debian'),
-('macos.html', 'MacOS X'),
-('mandrake.html', 'Mandrake'),
-('redhat.html' , "RedHat"),
-("suse.html", "SuSE"),
-('windows', "Windows")]
+[
+  ('macos.html', 'MacOS X'),
+  ('windows.html', "Windows")
+  ]
