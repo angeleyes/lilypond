@@ -1,122 +1,133 @@
-
-
-
+<title>LilyPond -- getting started</title>
 <h1>Getting started</h1>
 <p>
-You've installed your shiny new LilyPond, and you can't wait to
-typeset music. Here are some hints.
+  You've installed your shiny new LilyPond, and you can't wait to
+  typeset music. Here are some hints.
+</p>
 
-<p align=right>
-<em>Click to enlarge</em>
-<a href=@IMAGES@terminal-shot.png>
-	<img src=@IMAGES@terminal-shot.png width=400 align=right>
-</a>
+<p align="right">
+  <em>Click to enlarge</em>
+  <a href="@IMAGES@terminal-shot.png">
+    <img src="@IMAGES@terminal-shot.png" width="400" align="right">
+  </a>
+</p>
 
 <h2>Testing LilyPond</h2>
 <p>
-These are the instruction for Unix and Windows on the command-line.
-The point &amp; shoot method for Windows is documented <a
-href=windows.html>here</a>.
+  These are the instruction for Unix and Windows on the command line.
+  Windows users are advised to a look at the <a
+  href="windows.html">quickstart method for Windows</a>.
+</p>
 
 <ul>
-<li>Open a terminal window and type
+  <li>Open a terminal window and type
 
-<pre>
-     lilypond --help
-</pre>
-in your window.
-You should see something similar to
-<pre>
-	Usage: lilypond [OPTIONS]... FILE
+    <blockquote>
+      <pre>
+	lilypond --help
+      </pre>
+    </blockquote>
+    in your window.
+    You should see something similar to
+    <blockquote>
+      <pre>
+	Usage: lilypond [OPTION]... FILE...
 
-	Run LilyPond, add titles, generate printable document.
+	Typeset music and/or produce MIDI from FILE.
+
+	LilyPond produces beautiful music notation.
+	For more information, see http://lilypond.org
 
 	Options:
-	  -d, --dependencies             write Makefile dependencies for every input file
-	  -h, --help                     print this help
-	      --debug                    print even more output
+	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
+	-f, --format=EXT      select back-end to use
+	-h, --help            print this help
+	[..]
+      </pre>
+    </blockquote>
+    <p>
+      If you see this, you have the program installed, and you can run it.
+    </p>
+  <li>Start your favorite text editor. 
+  <li> Enter
+    <blockquote>
+      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
+	{
+	    c4( c)
+	}
+      </pre>
+    </blockquote>
+    
+    <strong>NOTE:</strong> users of LilyPond 2.2 and earlier enclose
+    the above example in
+    <code>\notes{}</code> <em>and</em> <code>\score {}</code> blocks.
+    
+  <li>Save it as <tt>test.ly</tt>.   Exit the editor.
+  <li>Run
+    <blockquote>
+      <pre>
+	lilypond test
+      </pre>
+    </blockquote>
 
-	      [..]
-</pre>     
-	<p>
-
-If you see this, you have the program installed, and you can run it.
-<li>Start your favorite text editor. 
-<li> Enter 
-<pre>
-     
-     \score { \notes { c4-(  c4-) } }
-     
-</pre>
-<li>
- 
-Save it as <tt>test.ly</tt>.   Exit the editor.
-
-
-<li> Run 
-<pre>
-     lilypond test
-</pre>
-
-If everything works well, it  should say
-<pre>
-     DVI output `test.dvi'...
-     PS output to `test.ps'...
-     PDF output to `test.pdf'...
-</pre>
+    If everything works well, it  should say
+    <blockquote>
+      <pre>
+	DVI output `test.dvi'...
+	PS output to `test.ps'...
+	PDF output to `test.pdf'...
+      </pre>
+    </blockquote>
+  <li>
+    View the PDF file. Try these commands
+    <blockquote>
+      <pre>
+	ggv test.pdf
+	gv test.pdf
+	kgv test.pdf
+	acroread test.pdf
+	xpdf test.pdf
+	ghostview test.pdf
+      </pre>
+    </blockquote>
 
 
-<em>
-NOTE: users of LilyPond 1.8 and earlier say: <tt>ly2dvi -p test</tt>
-</em>
-<li>
-View the PDF file. Try these commands 
-<pre>
-   ggv test.pdf
-   gv test.pdf
-   kgv test.pdf
-   acroread test.pdf
-   ghostview test.pdf
-</pre>
+  <li>
+    The easiest option for  Windows users is the
+    <a href="windows.html">drag &amp; drop approach</a>.  If you
+    prefer the keyboard, you can try the above procedure, with the
+    following notes:
+    <ul>
 
+      <li>Open a shell by  double clicking the "Cygwin"
+	icon
 
-<li>
-The easiest option for  Windows users is the
-drag & drop approach, described <a href=windows.html>here</a>.
-If you prefer the keyboard, you can try the above procedure, with the
-following notes:
-<ul>
+      <li> Start a text editor by running <tt>notepad</tt>.  Be sure 
+	that your files are not saved as <code>test.ly.txt</code>
 
-<li>Open a shell by  double clicking the "Cygwin"
-icon
-
-<li> Start a text editor by running <tt>notepad</tt>.  Be sure 
-that your files are not saved as <code>test.ly.txt</code>
-
-<li> The PDF file is left in C: -&gt; CYGWIN -&gt; HOME -&gt;
-<em>your-user-name</em>.
-</ul>
+      <li> The PDF file is left in C: -&gt; CYGWIN -&gt; HOME -&gt;
+	<em>your-user-name</em>.
+    </ul>
 
 </ul>
 
 <h2>Yay, it works!</h2>
 <p>
-
-Good! Then go onto <a href=using.html>Using LilyPond</a>
+  Good! Then go onto <a href="using.html">Using LilyPond</a>
+</p>
 
 <h2>Umm, I'm not sure what to do. Help me!</h2>
 
 <p>
-For questions and support, send mail to <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>  
+  For questions and support, send mail to <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
 
 <h2>Darn, it doesn't work</h2>
 <p>
-
-Whoops, something went astray, so you have to send a bugreport. The
-directions for bugreports are in the <a
-href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
-packaged by the LilyPond team, CC your report to the packager listed
-in the "Courtesy" column <a href="index.html">on the download page</a>
-
-<p>
+  Whoops, something went astray, so you have to send a bugreport. The
+  directions for bugreports are in the <a
+					  href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
+  packaged by the LilyPond team, CC your report to the packager listed
+  in the "Courtesy" column <a href="index.html">on the download page</a>
+</p>
 

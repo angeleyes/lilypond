@@ -1,3 +1,9 @@
+2004-11-03  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/download/getting-started.html (Usage): Update to 2.4
+	syntax.  Run indent-region, HTML fixes.  Avoid using `here' for
+	link names.
+
 2004-11-02  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/download/using.html (href): upgrade to 2.4
