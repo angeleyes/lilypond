@@ -1,6 +1,6 @@
 # Porules.make
 
-.SUFFIXES: .po .mo
+.SUFFIXES: .po .pot .mo
 
 $(outdir)/%.mo: %.po
 	$(MSGFMT) -o $@ $<
@@ -27,3 +27,7 @@ po-update:
 po-changes:
 	diff -e $(po-dir)/$(outdir)/$(LANGUAGE).po $(po-dir)/$(LANGUAGE).po \
 	  | sed $(sed-pofile) $(sed-edstuff)
+
+po-replace: po-update
+	mv $(outdir)/$(package).po $(package).pot
+	mv $(outdir)/*.po .
