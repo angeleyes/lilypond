@@ -2,8 +2,7 @@
 
 This document provides some guidelines
 To help translations, user messages must be uniformized.
-Follow these rules when coding  for <a
-href="http://lilypond.org/wiki/?LilyPond">LilyPond</a>.
+Follow these rules when coding for LilyPond.
 
 Hopefully, this can be replaced by general GNU guidelines in the
 future.
@@ -27,7 +26,7 @@ for localisation).  This includes warning and error messages.
 - debug strings
 </p>
 <p>
-- output strings (<a href="http://lilypond.org/wiki/?PostScript">PostScript</a>, TeX)
+- output strings (PostScript, TeX, etc.)
 
 </p>
 <li> Messages to be localised must be encapsulated in `_ (STRING)' or
@@ -56,7 +55,7 @@ macro is a no-op, it only serves as a marker for `xgettext'.
           void
           foo (int i)
           {
-            puts (gettext (messages <u>i</u><a href="http://lilypond.org/wiki/?edit=i">?</a>));
+            puts (gettext (messages <u>i</u>));
           }
 </pre>
 <p>
