@@ -33,7 +33,7 @@ location_template = '''<DIV class="location">
 '''
 
 button_template = '''<TD><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(text)s.png" ONMOUSEOVER="this.src='/newweb/out/images/%(text)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(text)s.png'"></A></TD>'''
-button_active_template = '''<TD><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(text)s-hover.png" ONMOUSEOVER="this.src='/newweb/out/images/%(text)s.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(text)s-hover.png'"></A></TD>'''
+button_active_template = '''<TD><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(text)s-hover.png" ONMOUSEOVER="this.src='/newweb/out/images/%(text)s.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(text)s-hover.png'"></A></TD>'''
 
 outdir = '/tmp'
 (options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=']) 
