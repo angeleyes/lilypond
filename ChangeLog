@@ -1,3 +1,9 @@
+2005-02-26  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/images/ubuntu.png: Add.
+
+	* site/download/index.html: Add ubuntu.
+
 2005-02-26  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml: add LSR
