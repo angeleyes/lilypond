@@ -100,9 +100,25 @@ href="about/automated-engraving/">our essay...</a></p> </td>
 </tr>
 </table>
 
+<br>
+<p align=center>
 
+<!-- First search block -->
+<script><!--
+function setfocus () { document.f_lily_google.brut_query.focus (); }
+// --></script>
 
+<nobr>
+<form action="http://www.google.com/search" method=get name=f_lily_google
+      language="JavaScript"
+	  onSubmit="f_lily_google.q.value='site:www.lilypond.org -wiki ' + f_lily_google.brut_query.value"
+      onMouseMove="f_lily_google.q.value='site:www.lilypond.org -wiki ' + f_lily_google.brut_query.value"
+      onKeyUp="f_lily_google.q.value='site:www.lilypond.org -wiki ' + f_lily_google.brut_query.value">
+<input name=btnG type=hidden value="Google Search">
+<input type="text" framewidth="4" name="brut_query" size="40">
+<input type="hidden" name="q" value=" ">
+<input type=submit value="Search LilyPond.org">
+</form>
+</nobr>
 
-<p>
-<a href=search.html>Search <tt>lilypond.org</tt></a>
 

@@ -12,6 +12,8 @@ Notes for this script.
 * Do not use absolute URL locations. They will break local installs of
   the website. Rather, use '../' * depth to get to the root.
 
+* The handling of the Home > url is completely ugh.
+
 """
 
 
