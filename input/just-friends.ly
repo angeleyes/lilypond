@@ -1,12 +1,13 @@
+\version "1.3.146"
 \header {
-  filename =    "just-friends.ly";
-  title =       "Just Friends";
-  description = "Jazz chords example with bar lines";
-  opus =        "";
-  source =      "mutex@gmd.de";
-  composer =    "";
-  enteredby =   "jcn";
-  copyright =   "Public Domain";
+  filename =    "just-friends.ly"
+  title =       "Just Friends"
+  description = "Jazz chords example with bar lines"
+  opus =        ""
+  source =      "mutex@gmd.de"
+  composer =    ""
+  enteredby =   "jcn"
+  copyright =   "Public Domain"
 }
 
 %{
@@ -29,32 +30,50 @@ of a certain tune (Jazz, Real Book, for example), like
 
 %}
 
+%{
+
+FIXME
+
+This should (and once used to) look like:
+
+    | Fmaj7  | Fmaj7  | F7 | Bes7 |
+
+but all bar lines (note bar line at line start) are now gone.
+
+%}
+
 \score{
 	\context ChordNames \chords{
-		\property Score.chordInversion = 1
 		\property Score.barAtLineStart = 1
-		\repeat semi 2 {
-			f1-maj f-maj f-7 bes-7
-			c-maj c-maj es es
-			d-7 g-7 b2-7/fis e-7 a1-7\break
-			d-7 d-7 d-7 g2-7 ges-7
+		\repeat volta 2 {
+			f1:maj f:maj f:7 bes:7
+			c:maj c:maj es es
+			d:7 g:7 b2:7/fis e:7 a1:7\break
+			d:7 d:7 d:7 g2:7 ges:7
 
-			f1-maj f1-maj f-7 bes-7
-			c-maj c-maj es es
-			d-7 g-7 b2-7/fis e-7 a1-7\break
-			d-7 d2-7 g-7 c1-6 g2-7 c-7
+			f1:maj f1:maj f:7 bes:7
+			c:maj c:maj es es
+			d:7 g:7 b2:7/fis e:7 a1:7\break
+			d:7 d2:7 g:7 c1:6 g2:7 c:7
 		}
 	}
 	\paper{
-		indent = 0.0\mm;
-		linewidth = 100.0\mm;
+		indent = 0.0\mm
+		linewidth = 120.0\mm
 		\translator{
-			\ChordNameContext
-			barAuto = "1";
-			\consists Bar_engraver;
-			\consists "Repeat_engraver";
+			\ChordNamesContext
+			barNonAuto = ##f
+
+			% added 
+			barAuto = ##t
+			defaultBarType = #"|"
+			Bar \override #'bar-size = #4
+			%ChordName \override #'word-space = #3
+			
+			\consists Bar_engraver
+			\consists "Volta_engraver"
 		}
 	}
 }
 
-\version "1.2.0";
+

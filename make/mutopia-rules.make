@@ -1,40 +1,39 @@
 
 
 $(outdir)/%.gif: $(outdir)/%.ps
-	sh $(buildscripts)/ps-to-gifs.sh $<
+	sh $(PS_TO_GIFS) $<
 	-mv $(name-stem)-page*.gif $(outdir)/
-	touch $@
+	ln -s $(name-stem)-page1.gif $@
 
 $(outdir)/%.png: $(outdir)/%.ps
-	sh $(buildscripts)/ps-to-pngs.sh $<
+	sh $(PS_TO_PNGS) $<
 	-mv $(name-stem)-page*.png $(outdir)/
-	touch $@
+	ln -s $(name-stem)-page1.png $@
 
 $(outdir)/%.ly.txt: %.ly
 	ln -f $< $@
 
-$(outdir)/%.fly.txt: %.fly
-	ln -f $< $@
+$(outdir)/%.ly.txt: $(outdir)/%.ly
+	cp -f $< $@
 
 $(outdir)/%.ly.txt: %.abc
 #which file to show here -- abc seems more cute?
 	ln -f $< $@
 
 $(outdir)/%.ly: %.abc
-	$(PYTHON) $(depth)/scripts/abc2ly.py -o $@ $< 
+	$(PYTHON) $(ABC2LY) -o $@ $< 
 
 $(outdir)/%.dvi: $(outdir)/%.ly
-	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $(<F)).midi $(outdir)
-	
+	$(PYTHON) $(LY2DVI) --output=$@ --dependencies $< 
+
 # don't junk intermediate .dvi files.  They're easier to view than
-# .ps or .gif
+# .ps or .png
 .PRECIOUS: $(outdir)/%.dvi
 
 $(outdir)/%.dvi: %.ly
-	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $<).midi $(outdir)
+	$(PYTHON) $(LY2DVI) --output=$@ --dependencies $< 
 
-$(outdir)/%.dvi: %.fly
-	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
-	-mv $(basename $<).midi $(outdir)
+$(outdir)-$(PAPERSIZE)/%.dvi: %.ly
+	$(PYTHON) $(LY2DVI) --output=$@ --dependencies --set=papersize=$(PAPERSIZE) $< 
+
+
