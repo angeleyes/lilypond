@@ -64,6 +64,22 @@
       <div>
       <dl>
 
+        <dt>January 02, 2005</dt><dd> 
+          
+          LilyPond 2.5.6 was released. This is a "technology preview"
+          release, which means that it has all kinds of nifty
+          features, but is not actually usable for producing nicely
+          printed scores. For this reason, an RPM of this release was
+          not produced. The PS backend is now completely switched over
+          to Pango/FontConfig: for -f ps, LilyPond only accepts UTF8
+          input, all text fonts are loaded through Pango, the TeX
+          backend now offloads all metric computations to LaTeX, the
+          SVG and GNOME backends are broken, most probably. Download
+          it <a href="download/#2.5">here</a> and check out the
+          changes in the <a
+          href="http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3013&content-type=text/vnd.viewcvs-markup">ChangeLog</a>.
+
+	</dd>
 
         <dt>December 28, 2004</dt><dd> 
           
@@ -133,7 +149,7 @@
 
 	  <tr>
 	    <td>Development</td>
-	    <td>2.5.5</td>
+	    <td>2.5.6</td>
 	    <td>
 	      <a href="../doc/v2.5/Documentation/out-www/">Documentation</a>,
 	      <a href="download/#2.5">download</a>.
