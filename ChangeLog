@@ -1,3 +1,9 @@
+2005-02-17  Graham Percival  <gperlist@shaw.ca>
+
+	* site/download/index.html: changed MacOSX version from 2.5.9
+	to 2.5.0.  IMO the experimental CVS shouldn't count; 2.5.0 is
+	what we get with "fink install lilypond-unstable".
+
 2005-02-14  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* More html cleaups, validation checks.
