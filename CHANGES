@@ -1,8 +1,10 @@
 1.4.14.hwjc1
 ============
 
-* backport small stack fixes from 1.5
+* Documentation/topdocs/INSTALL.texi (Top): Remove generic Guile
+threads warning.
 
+* backport small stack fixes from 1.5
 
 1.4.14.jcn3
 ===========
