@@ -1,3 +1,20 @@
+1.4.13.jcn1
+===========
+* Bugfix: backport .enc file generation.
+
+* Bugfix: Include $(builddir)/mf/out (was $(srcdir)/mf/out.
+
+* Add toplevel target install-html-doc.
+
+* Bugfixes for --srcdir html-doc build.
+
+* Documentation/windows/lilypond.hint: Renamed (previously setup.hint).
+
+* Documentation/windows/lilypond-doc.hint: New file.
+
+1.4.14
+======
+* backport stepmake/aclocal.m4: Fix for ash as /bin/sh.
 * backport stepmake/aclocal.m4: Fix for ash as /bin/sh.
 
 * backport stepmake/aclocal.m4: Append $FULL_VERSION to datadir.

@@ -20,7 +20,7 @@ endif
 # LilyPond is often run from within $(outdir), making a relative
 # PREFIX incorrect.
 export LILYPONDPREFIX:=$(shell cd $(depth)/ ; pwd)
-export PYTHONPATH:=$(buildscript-dir)/$(outdir):$(PYTHONPATH)
+export PYTHONPATH:=$(topdir)/$(outdir):$(PYTHONPATH)
 
 # guile load path?
 the-script-dir=$(wildcard $(script-dir))
@@ -34,7 +34,7 @@ ABC2LY = $(script-dir)/abc2ly.py
 CONVERT_LY = $(script-dir)/convert-ly.py
 LILYPOND = $(depth)/$(builddir)/lily/$(outconfbase)/lilypond
 LILYPOND_BOOK = $(script-dir)/lilypond-book.py
-LILYPOND_BOOK_INCLUDES = -I $(pwd) -I $(outdir) -I$(input-dir) -I $(input-dir)/tricks/ -I $(input-dir)/regression/ -I $(input-dir)/test/ -I $(input-dir)/tutorial/ -I $(topdir)/mf/$(outdir)/  -I $(topdir)/mf/out/
+LILYPOND_BOOK_INCLUDES = -I $(pwd) -I $(outdir) -I$(input-dir) -I $(input-dir)/tricks/ -I $(input-dir)/regression/ -I $(input-dir)/test/ -I $(input-dir)/tutorial/ -I $(depth)/$(builddir)/mf/$(outdir)/  -I $(depth)/$(builddir)/mf/out/
 LY2DVI = $(script-dir)/ly2dvi.py
 PS_TO_GIFS = $(buildscript-dir)/ps-to-gifs.sh
 PS_TO_PNGS = $(buildscript-dir)/ps-to-pngs.sh
