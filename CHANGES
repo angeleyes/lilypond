@@ -1,5 +1,24 @@
-1.4.14.jcn1
+1.4.14.jcn2
 ===========
+* backport lily/part-combine-music-iterator.cc (get_state): Bugfix: use
+  ly_symbol2scm to get a scm symbol (rather than ly_str02scm).
+
+* Documentation/windows/zlily-profile.sh:
+* Documentation/windows/post-lilypond.sh: Assume normal
+  prefix=/usr for lilypond.
+
+* aclocal.m4:
+* autogen.sh: Regenerate.
+	
+* Documentation/topdocs/INSTALL.texi: 
+* configure.in: 
+* stepmake/configure.in:
+* stepmake/aclocal.m4: Revert autoconf upgrade.  Autoconf 2.53 has
+  a serious bug wrt AC_CONFIG_AUX_DIR (reported).  Creating
+  ./configure once again requires autoconf == 2.13.
+
+* stepmake/autogen.sh: Check for autoconf == 2.13.
+
 * backport GNUmakefile.in (short-examples):
  (long-examples): Bugfix for --srcdir build.
 

@@ -19,7 +19,7 @@ export TFMFONTS:=$(abs-builddir)/mf/$(outconfbase):
 export LILYINCLUDE:=::$(TEX_TFMDIR):$(LILYINCLUDE)
 export extra_mem_top=1000000
 export extra_mem_bottom=1000000
-export pool_size=250000
+export pool_size=300000
 
 
 ifdef DEB_BUILD
