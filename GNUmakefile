@@ -37,12 +37,12 @@ out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
 upload: site
-	cvs commit -m 'upload commit'   
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
-	chmod -R 664 . && \
-	chmod 2775 `find -type d` . && \
+	chmod -R g+w * && \
+	chmod 2775 . `find site -type d` && \
 	rsync --delete -go --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
+	cvs commit -m 'upload commit'   
 
 
 dist:
