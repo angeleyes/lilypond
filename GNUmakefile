@@ -37,7 +37,7 @@ out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
 upload: site
-#	cvs commit -m 'upload commit'   
+	cvs commit -m 'upload commit'   
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
 	chmod -R g+w * && \
