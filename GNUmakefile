@@ -8,9 +8,9 @@ LY2DVI=python $(LILYPONDDIR)/scripts/ly2dvi.py
 all: menuify
 
 # no silly buttons
-site: menuify renderlys # buttons
+site: tree menuify renderlys # buttons
 
-menuify:
+menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`
 	for a in `find site -name '*.png' -or -name '*.jpg' -or -name '*.pdf'` ; do cp $$a out/$$a  ;done
 	cp newweb.css out/site
