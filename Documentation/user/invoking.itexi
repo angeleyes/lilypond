@@ -1,0 +1,109 @@
+@node Invoking LilyPond
+
+@chapter Invoking LilyPond
+@cindex Invoking LilyPond
+@cindex command line options
+@cindex options, command line
+@cindex switches
+
+Usage:
+
+@example
+        lilypond [@var{OPTION}@dots{} @var{FILE}@dots{}
+@end example
+
+To have LilyPond read from stdin, use a dash @code{-} for @var{FILE}.
+
+@unnumberedsec Options
+
+@table @code
+
+@item -e,--evaluate=@var{code}
+  Evaluates the Scheme @var{code} before parsing @file{.ly}
+files. Multiple @code{-e} options may be given. They will be evaluated
+sequentially.
+
+@item -f,--format=@var{format}
+Output format for sheet music. Choices are @code{tex} (for @TeX{}
+output), @code{ps} (for PostScript), @code{scm} (for a Scheme
+dump), and @code{as} (for ASCII-art).
+
+@c TODO: TFMFONTS
+
+For processing both the @TeX{} and the PostScript output, you must have
+appropriate environment variables set.  For @TeX{}, you have to set
+@code{MFINPUTS} and @code{TEXINPUTS} to point to the directory
+containing LilyPond metafont and .tex files.  For processing PostScript
+output with Ghostscript you have to set @code{GS_FONTPATH} to point to
+the directory containing LilyPond PFA files.
+
+Scripts to do this are included in
+@file{buildscripts/out/lilypond-profile} (for sh shells) and
+@file{buildscripts/out/lilypond-login} (for C-shells), and should
+normally be run as part of your login process.
+
+
+@item -h,--help
+Show a summary of usage.
+@item --include, -I=@var{directory}
+Add @var{directory} to the search path for input files.
+@cindex file searching
+@cindex search path
+@item -i,--init=@var{file}
+Set init file to @var{file} (default: @file{init.ly}).
+@item -m,--no-paper
+@cindex MIDI
+Disable @TeX{} output. If you have a @code{\midi} definition midi output
+will be generated.
+@item -M,--dependencies
+Output rules to be included in Makefile.
+@item -o,--output=@var{FILE}
+Set the default output file to @var{FILE}.
+@item -s,--safe
+Disallow untrusted @code{\include} directives, in-line
+Scheme evaluation, backslashes in @TeX{}, code.
+
+@strong{WARNING}: the @code{--safe} option has not been reviewed for a
+long time; do not rely on it for automatic invocation (e.g. over the
+web). Volunteers are welcome to do a new audit.
+
+@item -v,--version
+Show version information 
+@item -V,--verbose
+Be verbose: show full paths of all  files read, and give timing
+information.
+
+@item -w,--warranty
+Show the warranty with which GNU LilyPond comes. (It comes with 
+@strong{NO WARRANTY}!)
+@end table
+
+
+When invoked with a filename that has no extension, LilyPond will try to
+add @file{.ly} as an extension first.
+
+When LilyPond processes @file{filename.ly} it will produce
+@file{filename.tex} as output (or @file{filename.ps} for PostScript
+output).  If @file{filename.ly} contains more than one @code{\score}
+block, then LilyPond will output the rest in numbered files, starting
+with @file{filename-1.tex}.  Several files can be specified; they will
+each be processed independently.  @footnote{The status of GUILE is not
+reset across invocations, so be careful not to change any default
+settings from within Scheme .}
+
+@section Environment variables
+
+@table @code
+@item LILYINCLUDE
+additional directories for finding lilypond data.  The
+format is like the format of @file{PATH}.
+@item LILYPONDPREFIX
+This specifies a directory where locale messages and
+data files will be looked up by default. The directory should contain
+subdirectories called @file{ly/}, @file{ps/}, @file{tex/}, etc.
+
+@item LANG
+selects the language for the warning messages of LilyPond.
+@end table
+
+
