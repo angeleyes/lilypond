@@ -3,7 +3,7 @@
 
   source file of the LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include <strstream.h>
@@ -14,13 +14,15 @@
 #include "source-file.hh"
 #include "source.hh"
 #include "debug.hh"
+#include "main.hh"
 
 #ifndef YY_BUF_SIZE
 #define YY_BUF_SIZE 16384
 #endif
 
 #ifndef YY_START
-#define YY_START ((yy_start - 1) / 2)
+#define YY_START\
+ ((yy_start - 1) / 2)
 #define YYSTATE YY_START
 #endif
 
@@ -44,8 +46,10 @@ Includable_lexer::new_input (String s, Sources  * global_sources)
   Source_file * sl = global_sources->get_file_l (s);
   if (!sl)
     {
-      String msg = _f ("can't find file: `%s\'", s);
-      msg += _f ("\nSearch path is `%s'\n", global_sources->path_C_->str ().ch_C());
+      String msg = _f ("can't find file: `%s'", s);
+      msg += "\n";
+      msg += _f ("(search path: `%s')", global_sources->path_C_->str ().ch_C ());
+      msg += "\n";
       LexerError (msg.ch_C ());
 
       return;
@@ -55,7 +59,10 @@ Includable_lexer::new_input (String s, Sources  * global_sources)
   char_count_stack_.push (0);
   if (yy_current_buffer)
     state_stack_.push (yy_current_buffer);
-  *mlog << "[" << s<< flush;
+
+  if (verbose_global_b)
+    progress_indication (String ("[") + s);
+	
   include_stack_.push (sl);
 
   /*
@@ -64,7 +71,7 @@ Includable_lexer::new_input (String s, Sources  * global_sources)
     Whoops. The size argument to yy_create_buffer is not the
     filelength but a BUFFERSIZE. Maybe this is why reading stdin fucks up.
 
-    */
+  */
   yy_switch_to_buffer (yy_create_buffer (sl->istream_l (), YY_BUF_SIZE));
 
 }
@@ -78,7 +85,9 @@ Includable_lexer::new_input (String name, String data, Sources* sources)
   char_count_stack_.push (0);
   if (yy_current_buffer)
     state_stack_.push (yy_current_buffer);
-  *mlog << "[" << name << flush;
+
+  if (verbose_global_b)
+    progress_indication (String ("[") + name);
   include_stack_.push (file);
 
   yy_switch_to_buffer (yy_create_buffer (file->istream_l (), YY_BUF_SIZE));
@@ -91,7 +100,8 @@ Includable_lexer::close_input ()
 {
   include_stack_.pop ();
   char_count_stack_.pop ();
-  *mlog << "]"<<flush;
+  if (verbose_global_b)
+    progress_indication ("]");
   yy_delete_buffer (yy_current_buffer);
   yy_current_buffer = 0;
   if (state_stack_.empty ())
@@ -100,10 +110,10 @@ Includable_lexer::close_input ()
       return false;
     }
   else
-      {
-	yy_switch_to_buffer (state_stack_.pop ());
-	return true;
-      }
+    {
+      yy_switch_to_buffer (state_stack_.pop ());
+      return true;
+    }
 }
 
 char const*

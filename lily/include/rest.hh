@@ -3,23 +3,23 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef REST_HH
 #define REST_HH
 
-#include "rhythmic-head.hh"
+#include "lily-guile.hh"
 
-class  Rest : public Rhythmic_head
+class  Rest
 {
 public:
-  Rest ();
-  void add_dots (Dots*);
-protected:
-  virtual void do_add_processing ();
-  virtual void do_post_processing ();
-  virtual Molecule * do_brew_molecule_p () const;
+  DECLARE_SCHEME_CALLBACK (after_line_breaking, (SCM ));
+  static bool has_interface (Grob*);
+  static String glyph_name (Grob*, int, String); 
+  static SCM brew_internal_molecule (SCM);
+  DECLARE_SCHEME_CALLBACK (extent_callback, (SCM,SCM));
+  DECLARE_SCHEME_CALLBACK (brew_molecule, (SCM ));
 };
 #endif // REST_HH

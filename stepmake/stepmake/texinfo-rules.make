@@ -1,35 +1,31 @@
 # Texinfo_rules.make
 
-.SUFFIXES: .1 .html .texinfo
+.SUFFIXES: .html .info .texi .texinfo
 
-texi2man = $(step-bindir)/out/texi2man $< $@
-texi2html =\
-    rm -f $@.urg;\
-    cat $< | sed "s!@include.*!!" > $@.urg;\
-    $(TEXI2HTML) $@.urg;\
-    rm -f $@.urg;\
-    mv $(@F).urg.html $@;\
-    rm -f $(@F:%.html=%.html.urg_toc.html);\
-    add-URLs $@
+$(outdir)/%.info: $(outdir)/%.texi
+	$(MAKEINFO) -I $(outdir) --output=$@ $<
 
-$(outdir)/%.1: %.texinfo
-	$(texi2man)
+$(outdir)/%.html: $(outdir)/%.texi
+	$(MAKEINFO) -I $(outdir) --output=$@ --html --no-split --no-headers $<
+# we want footers even if website builds (or is built) partly
+	$(footify) $@
 
-$(outdir)/%.info: $(outdir)/%.texinfo
-	$(MAKEINFO) --force -o $@ $<
+# Generic rule not possible?
+$(outdir)/%/%.html: $(outdir)/%.texi
+	$(MAKEINFO) --output=$@ --html $<
+# we want footers even if website builds (or is built) partly
+	$(deep-footify) $(sort $(wildcard $(outdir)/$(*F)/*.html))
 
-# $(outdir)/%.html: %.texinfo
-# 	$(texi2html)
-# 	add-html-footer --index $(depth)/../index.html $@
+$(outdir)/%.dvi: $(outdir)/%.texi
+	cd $(outdir); texi2dvi --batch $(<F)
 
-# texi2html is as broken as pod2html 5004 :-) 
-# we'll have to use pod2html 5003 for now.
-# don't burn your .pod sources!
-#
-$(outdir)/%.html: $(outdir)/%.texinfo
-	$(texi2html)
-	$(PYTHON) $(step-bindir)/add-html-footer.py --package=$(topdir) --index $(depth)/../index.html $@
+$(outdir)/%.txt: $(outdir)/%.texi
+	$(MAKEINFO) -I $(pwd) -I $(outdir) --no-split --no-headers --output $@ $<
 
-$(outdir)/%.1: $(outdir)/%.texinfo
-	-$(texi2man)
+$(outdir)/%.texi: %.texi
+	rm -f $@
+	cp $< $@
+	chmod -w $@
+
+
 
