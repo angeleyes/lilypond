@@ -3,33 +3,27 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #ifndef DOT_COLUMN_HH
 #define DOT_COLUMN_HH
 
-#include "axis-group-item.hh"
-#include "note-head-side.hh"
+#include "lily-guile.hh"
 
 /**
   Group dots.  This is needed because, the dots have to be aligned per voice
  */
-class Dot_column : public Axis_group_item, public Note_head_side
+class Dot_column		// interface
 {
-  Link_array<Dots> dot_l_arr_;
-  static int compare (Dots * const&,Dots * const&);
 public:
-  VIRTUAL_COPY_CONS (Score_element);
-  void add_head (Rhythmic_head*);
-  void add_dots (Dots*);
-  Dot_column ();
-
-protected:
-
-  virtual void do_pre_processing ();
-  virtual void do_post_processing ();
-  virtual void do_substitute_element_pointer (Score_element *o, Score_element*n);
+  static int compare (Grob * const&,Grob * const&);
+  static void add_head (Grob * dotcol, Grob* rh );
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (force_shift_callback, (SCM ,SCM));
+  DECLARE_SCHEME_CALLBACK (side_position, (SCM ,SCM));  
+  static SCM do_shifts (SCM dotlist);
 };
 #endif // DOT_COLUMN_HH

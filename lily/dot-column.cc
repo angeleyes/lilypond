@@ -3,57 +3,59 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "dots.hh"
 #include "dot-column.hh"
 #include "rhythmic-head.hh"
+#include "group-interface.hh"
+#include "staff-symbol-referencer.hh"
+#include "directional-element-interface.hh"
+#include "side-position-interface.hh"
+#include "axis-group-interface.hh"
+#include "stem.hh"
 
 void
-Dot_column::add_dots (Dots *d)
+Dot_column::set_interface (Grob* me)
 {
-  dot_l_arr_.push (d);
-  add_dependency (d);
-  add_element (d);
+}
+MAKE_SCHEME_CALLBACK (Dot_column,force_shift_callback,2);
+SCM
+Dot_column::force_shift_callback (SCM element_smob, SCM axis)
+{
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
+  assert (a == Y_AXIS);
+  me = me->parent_l (X_AXIS);
+  SCM l = me->get_grob_property ("dots");
+  do_shifts (l);
+  return gh_double2scm (0.0);
 }
 
-void
-Dot_column::add_head (Rhythmic_head *r)
+MAKE_SCHEME_CALLBACK(Dot_column,side_position, 2);
+SCM
+Dot_column::side_position (SCM element_smob, SCM axis)
 {
-  if (!r->dots_l_)
-    return ;
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
+  assert (a == X_AXIS);
 
-  add_support (r);
-  add_dots (r->dots_l_);
+  Grob * stem = unsmob_grob (me->get_grob_property ("stem"));
+  if (stem
+      && !Stem::beam_l (stem)
+      && Stem::flag_i (stem))
+    {
+      /*
+	trigger stem end & direction calculation.
+
+	This will add the stem to the support if a flag collision happens.
+       */
+      Stem::stem_end_position (stem); 
+    }
+  return Side_position_interface::aligned_side (element_smob, axis);
 }
 
-void
-Dot_column::do_substitute_element_pointer (Score_element*o,Score_element*n)
-{
-  Note_head_side::do_substitute_element_pointer (o,n);
-  if (Dots * d = dynamic_cast<Dots*> (o))
-    dot_l_arr_.substitute (d, dynamic_cast<Dots*> (n));
-}
-
-int
-Dot_column::compare (Dots * const &d1, Dots * const &d2)
-{
-  return d1->position_i_ - d2->position_i_;
-}
-
-void
-Dot_column::do_pre_processing ()
-{
-  dot_l_arr_.sort (Dot_column::compare);
-  Note_head_side::do_pre_processing ();
-}
-
-Dot_column::Dot_column ()
-{
-  notehead_align_dir_ = RIGHT;
-  set_axes(X_AXIS,X_AXIS);
-}
 
 /*
   Will fuck up in this case.
@@ -70,38 +72,76 @@ Dot_column::Dot_column ()
 
    Should be smarter.
  */
-void
-Dot_column::do_post_processing ()
+SCM
+Dot_column::do_shifts (SCM l)
 {
-  if (dot_l_arr_.size () < 2)
-    return;
+  Link_array<Grob> dots;
+  while (gh_pair_p (l))
+    {
+      dots.push (unsmob_grob (gh_car (l)));
+      l = gh_cdr (l);
+    }
+  
+  dots.sort (compare_position);
+  
+  if (dots.size () < 2)
+    return SCM_UNSPECIFIED;
   Slice s;
   s.set_empty ();
 
   Array<int> taken_posns;
   int conflicts = 0;
-  for (int i=0; i < dot_l_arr_.size (); i++)
+  for (int i=0; i < dots.size (); i++)
     {
+      Real p = Staff_symbol_referencer::position_f (dots[i]);
       for (int j=0; j < taken_posns.size (); j++)
-	if (taken_posns[j] == dot_l_arr_[i]->position_i_)
-	  conflicts++;
-      taken_posns.push (dot_l_arr_[i]->position_i_);
-      s.unite (Slice (dot_l_arr_[i]->position_i_,dot_l_arr_[i]->position_i_));      
+	{
+	  if (taken_posns[j] == (int) p)
+	    conflicts++;
+	}
+      taken_posns.push ((int)p);
+      s.unite (Slice ((int)p,
+ (int)p));      
     }
 
   if (!conflicts)
-    return;
+    return SCM_UNSPECIFIED;
   
   int  middle = s.center ();
   /*
     +1 -> off by one 
    */
-  int pos = middle - dot_l_arr_.size () + 1;
-  if (!(pos % 2))
+  int pos = middle - dots.size () + 1;
+  if (! (pos % 2))
     pos ++;			// center () rounds down.
 
-  for (int i=0; i  <dot_l_arr_.size (); pos += 2, i++)
+  for (int i=0; i < dots.size (); pos += 2, i++)
     {
-      dot_l_arr_[i]->position_i_ = pos;
+      Grob * d = dots[i];
+      Staff_symbol_referencer::set_position (d,pos);
+    }
+
+  return SCM_UNSPECIFIED;
+}
+
+bool
+Dot_column::has_interface (Grob*m)
+{
+  return m && m->has_interface (ly_symbol2scm ("dot-column-interface"));
+}
+
+
+void
+Dot_column::add_head (Grob * me, Grob *rh)
+{
+  Grob * d = unsmob_grob (rh->get_grob_property ("dot"));
+  if (d)
+    {
+      Side_position_interface::add_support (me,rh);
+
+      Pointer_group_interface ::add_element (me, "dots",d);
+      d->add_offset_callback (Dot_column::force_shift_callback_proc , Y_AXIS);
+      Axis_group_interface::add_element (me, d);
     }
 }
+
