@@ -51,7 +51,8 @@ TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
-LANGUAGES = nl
+# Do not publish non-polished or non-finished or outdated translations.
+LANGUAGES = #nl
 
 all: scripts linktree menuify $(LANGUAGES)
 
