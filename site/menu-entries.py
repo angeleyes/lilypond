@@ -4,7 +4,7 @@
  ('index.html', _ ('Home')),
  ('switch', _ ('Introduction')),
  ('about', _ ('About')),
- ('downloads', _ ('Download')),
+ ('install', _ ('Download')),
  ('documentation.html', _ ('Documentation')),
  ('devel', _ ('Development')),
  ]
