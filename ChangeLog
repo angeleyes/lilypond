@@ -1,3 +1,17 @@
+2005-03-23  Graham Percival  <gperlist@shaw.ca>
+
+	* site/switch/tour.html: removed link to Erich
+	Rickheit's page.
+
+2005-03-23  Matthias Kilian  <kili@outback.escape.de>
+
+	* site/about/automated-engraving/benchmarking.html,
+	site/about/automated-engraving/engraving.html,
+	site/about/automated-engraving/formatting-architecture.html,
+	site/about/automated-engraving/implementing-notation.html,
+	site/about/automated-engraving/implementing-typography.html,
+	site/about/automated-engraving/software.html: minor editing.
+
 2005-03-15  Pedro Kroger  <kroeger@pedrokroeger.net>
 
 	* site/download/index.html: Add OpenBSD.
