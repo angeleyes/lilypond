@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c)  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c)  1997--2000 Jan Nieuwenhuizen <janneke@gnu.org>
   
  */
 
@@ -16,7 +16,7 @@
 inline char*
 gettext (char const* s)
 {
-  return s;
+  return (char*)s;
 }
 #else
 #include <libintl.h>
