@@ -3,12 +3,12 @@
   
   source file of the GNU LilyPond music playter
   
-  (c) 1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
   
  */
 #include "grace-performer-group.hh"
 #include "lily-guile.hh"
-#include "ly-symbols.hh"
+
 #include "audio-element.hh"
 
 ADD_THIS_TRANSLATOR (Grace_performer_group);
@@ -39,9 +39,9 @@ Grace_performer_group::finish ()
 }
 
 void
-Grace_performer_group::do_removal_processing ()
+Grace_performer_group::finalize ()
 {
-  Performer_group_performer::do_removal_processing ();
+  Performer_group_performer::finalize ();
 }
 
 void
@@ -51,7 +51,7 @@ Grace_performer_group::announce_element (Audio_element_info info)
   // do not propagate to top
   announce_to_top_.push (info);
 
-  //inf.elem_l_->set_elt_property (grace_scm_sym, SCM_BOOL_T);
+  //inf.elem_l_->set_grob_property ("grace", SCM_BOOL_T);
   info.elem_l_->grace_b_ = true;
 }
 
@@ -62,19 +62,19 @@ Grace_performer_group::play_element (Audio_element*e)
 }
 
 
-Grace_performer_group::Grace_performer_group()
+Grace_performer_group::Grace_performer_group ()
 {
   calling_self_b_ = false;
 }
 
 void
-Grace_performer_group::process ()
+Grace_performer_group::one_time_step ()
 {
   calling_self_b_  = true;
-  process_requests ();
-  do_announces();
-  pre_move_processing();
-  check_removal();
+  // process_music ();
+  announces ();
+  stop_translation_timestep ();
+  check_removal ();
   calling_self_b_ = false;
 }
 
@@ -87,25 +87,14 @@ Grace_performer_group::each (Method_pointer method)
 }
 
 
-void
-Grace_performer_group::each (Const_method_pointer method) const
-{
- if (calling_self_b_)
-    Performer_group_performer::each (method);
-}
+
 
 /*
   don't let the commands trickle up.
  */
 bool
-Grace_performer_group::do_try_music (Music *m)
+Grace_performer_group::try_music (Music *m)
 {
-  bool hebbes_b =false;
-
-  Link_array<Translator> nongroups (nongroup_l_arr ());
-  
-  for (int i =0; !hebbes_b && i < nongroups.size() ; i++)
-    hebbes_b =nongroups[i]->try_music (m);
-
-  return hebbes_b;
+  return try_music_on_nongroup_children (m);
 }
+

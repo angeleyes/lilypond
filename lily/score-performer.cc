@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 1996,  1997--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1996--2001 Jan Nieuwenhuizen <janneke@gnu.org>
  */
 
 #include "score-performer.hh"
@@ -14,11 +14,7 @@
 #include "midi-stream.hh"
 #include "string-convert.hh"
 #include "debug.hh"
-#include "score.hh"
-#include "source-file.hh"
-#include "source.hh"
-#include "audio-staff.hh"
-
+#include "translator-def.hh"
 
 ADD_THIS_TRANSLATOR (Score_performer);
 
@@ -36,7 +32,7 @@ Score_performer::~Score_performer ()
 void
 Score_performer::play_element (Audio_element * p)
 {
-  if  (Audio_item * i=dynamic_cast<Audio_item *> (p)) 
+  if (Audio_item * i=dynamic_cast<Audio_item *> (p)) 
     {
       audio_column_l_->add_audio_item (i);
     }
@@ -47,7 +43,7 @@ void
 Score_performer::announce_element (Audio_element_info info)
 {
   announce_info_arr_.push (info);
-  info.origin_trans_l_arr_.push (this);
+
 
   /*
     huh?
@@ -64,36 +60,37 @@ Score_performer::prepare (Moment m)
   Global_translator::prepare (m);
   audio_column_l_ = new Audio_column (m);
   play_element (audio_column_l_);
-  post_move_processing ();
+  start_translation_timestep ();
 }
 
 
 void 
-Score_performer::process()
+Score_performer::one_time_step ()
 {
-  process_requests();
-  do_announces ();
-  pre_move_processing();
-  check_removal();
+  // fixme: put this back.
+  // process_music ();
+  announces ();
+  stop_translation_timestep ();
+  check_removal ();
 }
 
 void
-Score_performer::start()
+Score_performer::start ()
 {
 }
 
 
 int
-Score_performer::get_tempo_i() const
+Score_performer::get_tempo_i () const
 {
   return performance_p_->midi_l_->get_tempo_i (Moment (1, 4));
 }
 
 void
-Score_performer::finish()
+Score_performer::finish ()
 {
   check_removal ();
-  removal_processing();
+  removal_processing ();
 }
 
 Music_output *
@@ -105,10 +102,12 @@ Score_performer::get_output_p ()
 }
 
 void
-Score_performer::do_add_processing ()
+Score_performer::initialize ()
 {
-  Translator_group::do_add_processing ();
+  unsmob_translator_def (definition_)->apply_property_operations (this);
   assert (dynamic_cast<Midi_def *> (output_def_l_));
   performance_p_ = new Performance;
-  performance_p_->midi_l_ = dynamic_cast<Midi_def*>(output_def_l_); 
+  performance_p_->midi_l_ = dynamic_cast<Midi_def*> (output_def_l_);
+
+  Translator_group::initialize ();
 }

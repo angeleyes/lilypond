@@ -3,50 +3,70 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 
 #include "translator.hh"
 #include "debug.hh"
 #include "translator-group.hh"
+#include "translator-def.hh"
 
-#include "rational.hh"
+#include "moment.hh"
+#include "ly-smobs.icc"
 
 char const*
-Translator::name() const
+Translator::name () const
 {
-  return classname(this);
+  return classname (this);
 }
 
 Translator::~Translator ()
 {
 }
 
+void
+Translator::init ()
+{
+  simple_trans_list_ = SCM_EOL;
+  trans_group_list_ = SCM_EOL;
+  properties_scm_ = SCM_EOL;
+  definition_ = SCM_EOL;
+  daddy_trans_l_ =0;
+}
+
 Translator::Translator ()
 {
-  status = ORPHAN;
-  daddy_trans_l_ = 0;
+  init ();
   output_def_l_ = 0;
+  smobify_self ();
+
 }
 
 Translator::Translator (Translator const &s)
   : Input (s)
 {
-  status = ORPHAN;
-  daddy_trans_l_ =0;
+  init ();
   output_def_l_ = s.output_def_l_;
   type_str_ = s.type_str_;
+
+  smobify_self ();
 }
 
 bool
 Translator::is_alias_b (String s) const
 {
-  return s == type_str_;
+  bool b  = s == type_str_;
+
+  for (SCM a = unsmob_translator_def (definition_)->type_aliases_;
+       !b && gh_pair_p (a); a = gh_cdr (a))
+    b = b || s == ly_scm2string (gh_car (a));
+
+  return b;
 }
 
 bool
-Translator::do_try_music (Music *)
+Translator::try_music (Music *)
 {
   return false;
 }
@@ -59,102 +79,22 @@ Translator::now_mom () const
 }
 
 
-void
-Translator::add_processing ()
-{
-  if (status > ORPHAN)
-    return;
-  
-  do_add_processing ();
-  status = VIRGIN;
-}
-
-void
-Translator::do_add_processing ()
-{
-}
-
-void
-Translator::print () const
-{
-#ifndef NPRINT
-  DOUT << classname (this) << " {";
-  if (classname (this) != type_str_)
-    DOUT << "type = " << type_str_;
-  do_print ();
-  DOUT << "}\n";
-#endif
-}
-
-void
-Translator::do_print () const
-{
-}
 
 
 
-
-void
-Translator::creation_processing ()
-{
-  if (status >= CREATION_INITED)
-    return ;
-  
-  do_creation_processing ();
-  status = CREATION_INITED;
-}
-
-void
-Translator::post_move_processing ()
-{
-  if (status >= MOVE_INITED)
-    return;
-
-  creation_processing ();
-  do_post_move_processing ();
-  status = MOVE_INITED;
-}
 
 void
 Translator::removal_processing ()
 {
-  if (status == ORPHAN)
-    return;
-  creation_processing ();
-  do_removal_processing ();
-  // elegancy ...
-  // status = ORPHAN;
+  finalize ();
 }
 
-
-bool
-Translator::try_music (Music * r)
-{
-  if (status < MOVE_INITED)
-    post_move_processing ();
-
-  return do_try_music (r);
-}
 
 void
-Translator::process_requests ()
+Translator::announces ()
 {
-  if (status < PROCESSED_REQS)
-    post_move_processing ();
-  else if (status >= PROCESSED_REQS)
-    return; 
-  
-  status = PROCESSED_REQS;
-  do_process_requests ();
+  do_announces ();
 }
-
-void
-Translator::pre_move_processing ()
-{
-  do_pre_move_processing ();
-  status = CREATION_INITED;
-}
-
 
 
 Music_output_def *
@@ -163,9 +103,78 @@ Translator::output_def_l () const
   return output_def_l_;
 }
 
-Scalar
-Translator::get_property (String id, Translator_group **where_l) const
+SCM
+Translator::get_property (char const * id) const
 {
-  return daddy_trans_l_->get_property (id, where_l);
+  return daddy_trans_l_->get_property (ly_symbol2scm (id));
 }
 
+SCM
+Translator::get_property (SCM sym) const
+{
+  return daddy_trans_l_->get_property (sym);
+}
+
+void
+Translator:: stop_translation_timestep ()
+{
+}
+
+void
+Translator::start_translation_timestep ()
+{
+}
+
+void
+Translator::do_announces ()
+{
+}
+
+void
+Translator::initialize ()
+{
+}
+
+void
+Translator::finalize ()
+{
+}
+
+
+/*
+
+  SMOBS
+
+*/
+SCM
+Translator::mark_smob (SCM sm)
+{
+  Translator * me = (Translator*) SCM_CELL_WORD_1 (sm);
+  scm_gc_mark (me->simple_trans_list_);
+  scm_gc_mark (me->trans_group_list_);
+  scm_gc_mark (me->definition_);  
+  scm_gc_mark (me->properties_scm_);  
+
+  return me->properties_scm_;
+}
+
+
+int
+Translator::print_smob (SCM s, SCM port, scm_print_state *)
+{
+  Translator *sc = (Translator *) gh_cdr (s);
+     
+  scm_puts ("#<Translator ", port);
+  scm_puts ((char *)sc->name (), port);
+  scm_display (sc->simple_trans_list_, port);
+  /*
+    don't try to print properties, that is too much hassle.
+   */
+  scm_puts (" >", port);
+  
+  return 1;
+}
+
+IMPLEMENT_UNSMOB (Translator, translator);
+IMPLEMENT_SMOBS (Translator);
+IMPLEMENT_DEFAULT_EQUAL_P (Translator);
