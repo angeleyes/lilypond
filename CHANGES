@@ -1,5 +1,15 @@
-1.4.13.jcn1
+1.4.14.jcn1
 ===========
+* scm/chord-name.scm: Remove debug printing.
+
+* backport stepmake/stepmake/generic-vars.make: 
+  make/lilypond-vars.make:
+  GNUmakefile.in (builddir-setup): New setup for builddir run.
+  Fixes LilyPond run from builddir for --srcdir builds.
+
+* backport Documentation/windows/GNUmakefile (OUT_PROFILES): Bugfix for
+  --srcdir build.
+
 * Bugfix: backport .enc file generation.
 
 * Bugfix: Include $(builddir)/mf/out (was $(srcdir)/mf/out.
