@@ -10,7 +10,7 @@ future.
 </p>
 <p>
 Not-preferred messages are marked with `+'.  By convention,
-agrammatical examples are marked with `*'.
+ungrammatical examples are marked with `*'.
 </p>
 <ul>
 <li> Every message to the user should be localised (and thus be marked
@@ -84,10 +84,10 @@ strings.  Numbers are not quoted:
 </pre>
 <li> Think about translation issues.  In a lot of cases, it is better to
 translate a whole message.  The english grammar mustn't be imposed
-on the translator.  So, iso
+on the translator.  So, instead of
 </p>
 <pre>
-          _ ("Stem at ") + moment.str () + _(" doen't fit in beam")
+          _ ("Stem at ") + moment.str () + _(" doesn't fit in beam")
 </pre>
 <p>
 have
