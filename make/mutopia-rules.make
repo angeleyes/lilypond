@@ -5,6 +5,11 @@ $(outdir)/%.gif: $(outdir)/%.ps
 	-mv $(name-stem)-page*.gif $(outdir)/
 	touch $@
 
+$(outdir)/%.png: $(outdir)/%.ps
+	sh $(buildscripts)/ps-to-pngs.sh $<
+	-mv $(name-stem)-page*.png $(outdir)/
+	touch $@
+
 $(outdir)/%.ly.txt: %.ly
 	ln -f $< $@
 
@@ -18,9 +23,9 @@ $(outdir)/%.fly.txt: %.fly
 .PRECIOUS: $(outdir)/%.dvi
 
 $(outdir)/%.dvi: %.ly
-	sh $(depth)/scripts/ly2dvi.sh -S $(topdir) -o $(outdir)  $< 
+	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
 	-mv $(basename $<).midi $(outdir)
 
 $(outdir)/%.dvi: %.fly
-	sh $(depth)/scripts/ly2dvi.sh -S $(topdir) -o $(outdir)  $< 
+	$(PYTHON) $(depth)/scripts/ly2dvi.py -o $(outdir)  $< 
 	-mv $(basename $<).midi $(outdir)

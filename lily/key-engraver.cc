@@ -29,7 +29,7 @@ Key_engraver::create_key ()
       kit_p_ = new Key_item;
       kit_p_->break_priority_i_ = -1; // ugh
       announce_element (Score_element_info (kit_p_,keyreq_l_));
-      kit_p_->read (*this);
+      kit_p_->set (key_.multi_octave_b_, accidental_idx_arr_, old_accidental_idx_arr_);
     }
 }
 
@@ -51,9 +51,12 @@ void
 Key_engraver::acknowledge_element (Score_element_info info)
 {
   Command_req * r_l = info.req_l_->access_Command_req () ;
+
   if (r_l && r_l->access_Clef_change_req ()) 
     {
-      create_key ();
+      int i= get_property ("createKeyOnClefChange").length_i ();
+      if (i)
+	create_key ();
     }
   else if (info.elem_l_->is_type_b (Bar::static_name ())
 	   && accidental_idx_arr_.size ()) 

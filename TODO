@@ -7,9 +7,67 @@ done, or is an idea that I want to think about
 Most of the items are marked in the code as well, with full explanation. 
 grep for TODO and ugh/ugr/urg
 
-	* egcs-1.1a support
 
-	* fix LOCALE settings, and \def\foo{2,000pt} output
+BUGS:
+
+	* document new TeX/mf layout
+
+	* egcs-1.1 -O2 -finline-functions  causes crash
+
+	* formatting of input stuff. 
+
+	* use real RTTI iso access_Stuff.
+
+	* \notes{ a \< b \cr } vs \notes{ a \< b \! }
+
+	* if possible, it might be nice for a warning to appear if someone does
+	\translator with no name and without assigning it to an
+	identifier.  
+
+	* space after bars?
+
+	* [/3 c8 c16 c c c]/1
+  
+	* fix singleStaffBracket
+  
+  	* repeat bars: need distance after ":|" and before "|:"
+
+	* The time signature warnings still remain, will be fixed later.
+
+	Summary of minor spelling irregularities:
+	-  capitalization/use of underscores in property names
+
+	* fix Score.skipBars
+
+	* repeat bars: need distance after ":|" and before "|:"
+
+	* \shape 1st dim skipped? 
+
+	* fix marks/barnumbers/marginal notes
+
+	* broken scripts:
+	lbheel = \script { "bheel" 0 0 -1  0 0 }
+	rbheel = \script { "bheel" 0 0 1 0 0 }
+	lbtoe = \script { "btoe" 0 0 -1 0 0 }
+	rbtoe = \script { "btoe" 0 0 1 0 0 }
+	lfheel = \script { "fheel" 0 0 -1  0 0 }
+	rfheel = \script { "fheel" 0 0 1 0 0 }
+	lftoe = \script { "ftoe" 0 0 -1 0 0 }
+	rftoe = \script { "ftoe" 0 0 1 0 0 }
+	
+	and also
+	
+	portato= \script { "portato" 0 -1 0 1 0 }
+
+	* Align_element::padding  ?
+
+	* uniformise property names.
+
+	* ydirection <-> yDirection
+
+	* typo checks on property names?
+
+	* make engraver hacking robust.
 
 	* use streambufs and iostream
 	to provide IO handling for TeX stream, mudela stream, data-file.
@@ -20,36 +78,27 @@ grep for TODO and ugh/ugr/urg
 
 	* zip target for binary windows dist (JBR)
 
-	* repeat bars: need distance after ":|" and before "|:"
-
-	* text continuationss
+	* text continuations
 
 	* revise documentation
 
 	* abbrev -> tremolo
 
+	* junking \skip req in lyrics
+
 	* Language:
-	- general plet mechanism.
-
-		\plet 2/3 { c8 c8 c8 }
-
-	ie.
-
-		Music: PLET int '/' int Music
-
 	- \type -> \context ?
 	- \translator -> ?
 	- fix \partial 
-	- \melodic -> \notes
 	- \bla {} vs \bla ; 
 	- mix engraver hacking with music ?
 	- \once\property  KEY = VAL
 	- \addtranslator, \removetranslator
 	- junk ^ and _ for scripts
+	- junk _ for lyrics.
+	- abstract grammar.
 
 	* install TeX stuff into tex/generic directory.
-
-	* preformatted .info stuff.
 
 	* percussion note heads
 
@@ -57,15 +106,7 @@ grep for TODO and ugh/ugr/urg
 
 	* include MIDI list 
 
-	* make separate translation property list.
-
 	* make GNU style webpages.
-
-	* There seems to be an install error in lilypond-1.0.0.  Most of the
-	files in the "init" directory don't get installed in the
-	/usr/local/share/lilypond directory.  The files installed are of
-	the form feta*.ly.  In particular init.ly doesn't get installed.
-	I installed the files by hand and then the system seems to work.
 
 	* midi_instrument -> midiInstrument
 
@@ -180,8 +221,6 @@ ydirection and hshift preset
 	  - abbreviation-beam -> (measured/unmeasured) tremolo
 	  - partial -> anacrouse
 
-	* libtoolize flowerlib
-
 	* shared lib
 
 	* robustify Beam (in case of no stems, 32nd notes)
@@ -193,12 +232,7 @@ ydirection and hshift preset
 	* check for groff / troff/ nroff et
 
 	* more intelligent file searching
-	- use kpsepath
-	- make LilyPond fully relocatable
-
-	* use kpsepath to find all TeX dirs
-	- configure.in 
-	- clean-fonts.sh
+	- make LilyPond RPM fully relocatable
 
 	* nicen examples:
 	- break-up heavily-nested score blocks
@@ -229,15 +263,6 @@ ydirection and hshift preset
 
         * clefs (AG): The "8" should appear closer to the actual clef,
           touching it.
-
-	* scoping for properties?
-
-	{	c4
-		\multi 2  < { \stemup .. } { \stemdown .. } >
-		c2 
-	}
-
-	this modifies \stem for the c2
 
 	* put errorlevel in Input class
 
@@ -284,12 +309,6 @@ ydirection and hshift preset
 
 	* redhat (v?) graphical install bomb-out?
 
-	* egcs-1.03 ice: stem.cc:327; should localize bug (mine's still 10K)
-
-	* gcc 2.8.1: see ice and RESIZE_ICE
-
-	* xdvi: PS in magnifying glass.
-
 	* GNU diff 2.7: diff -rN does not see a new directory with empty file
 
 	* GNU patch 2.1: <must find simple example> if patch chokes on a
@@ -305,8 +324,6 @@ ydirection and hshift preset
 3RD PARTY PROJECTS:
 
 	* GNU indent: handle C++
-
-	* GNU make: move hardcoded builtin rules to runtime ?
 
 	* GNU patch 
 	  - 'double-fix' mode: ignore identical fix, rather than suggest 
@@ -441,7 +458,6 @@ PROJECTS
 	- Move all Score_elems, into libmutype.a
 	- SGML
 
- 
 	* Documentation
 	- Doc (C) stuff of sheet music
 	- a better format?  SGML?  TeX?  Info?

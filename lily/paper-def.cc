@@ -13,21 +13,21 @@
 #include "paper-def.hh"
 #include "debug.hh"
 #include "lookup.hh"
-#include "dimension.hh"
+#include "ps-lookup.hh"
+#include "tex-lookup.hh"
 #include "assoc-iter.hh"
 #include "score-engraver.hh"
 #include "p-score.hh"
 #include "identifier.hh"
 #include "main.hh"
 #include "scope.hh"
-#include "assoc.hh"
-#include "assoc-iter.hh"
+#include "dictionary-iter.hh"
 
 Paper_def::Paper_def ()
 {
   lookup_p_assoc_p_ = new Assoc<int, Lookup*>;
-  scope_p_ = new Scope;
 }
+
 
 Paper_def::~Paper_def ()
 {
@@ -36,7 +36,6 @@ Paper_def::~Paper_def ()
       delete ai.val ();
     }
   
-  delete scope_p_;
   delete lookup_p_assoc_p_;
 }
 
@@ -46,18 +45,16 @@ Paper_def::Paper_def (Paper_def const&s)
   lookup_p_assoc_p_ = new Assoc<int, Lookup*>;
   for (Assoc_iter<int, Lookup*> ai(*s.lookup_p_assoc_p_); ai.ok (); ai++)
     {
-      Lookup * l=new Lookup (*ai.val ());
+      Lookup * l = global_lookup_l->lookup_p (*ai.val ());
       l->paper_l_ = this;
       set_lookup (ai.key(), l);
     }
-  
-  scope_p_ = new Scope (*s.scope_p_);
 }
 
 Real
 Paper_def::get_var (String s) const
 {
-  if (!scope_p_->elt_b (s))
+  if (!scope_p_->elem_b (s))
     error (_f ("unknown paper variable: `%s\'", s));
   Real * p = scope_p_->elem (s)->access_Real (false);
   if (!p)
@@ -99,8 +96,6 @@ Paper_def::linewidth_f () const
 Real
 Paper_def::duration_to_dist (Moment d,Real k) const
 {
-  if (get_var ("geometric"))
-    return geometric_spacing (d);
   return arithmetic_spacing (d,k);
 }
 
@@ -136,7 +131,7 @@ Paper_def::geometric_spacing (Moment d) const
 void
 Paper_def::set_lookup (int i, Lookup*l)
 {
-  if (lookup_p_assoc_p_->elt_b (i))
+  if (lookup_p_assoc_p_->elem_b (i))
     {
       delete lookup_p_assoc_p_->elem (i);
     }
@@ -180,7 +175,7 @@ Paper_def::interbeam_f (int multiplicity_i) const
 Real
 Paper_def::internote_f () const
 {
-  return get_var ("internote");
+  return get_var ("interline") /2.0 ;
 }
 
 Real
@@ -202,11 +197,6 @@ Paper_def::print () const
       ai.val ()->print ();
     }
 
-  for (Assoc_iter<String,Identifier*> i (*scope_p_); i.ok (); i++)
-    {
-      DOUT << i.key () << "= ";
-      DOUT << i.val ()->str () << '\n';
-    }
   DOUT << "}\n";
 #endif
 }
@@ -220,10 +210,21 @@ Paper_def::lookup_l (int i) const
 IMPLEMENT_IS_TYPE_B1 (Paper_def, Music_output_def);
 
 String
-Paper_def::TeX_output_settings_str () const
+Paper_def::ps_output_settings_str () const
 {
   String s ("\n ");
-  for (Assoc_iter<String,Identifier*> i (*scope_p_); i.ok (); i++)
+  for (Dictionary_iter<Identifier*> i (*scope_p_); i.ok (); i++)
+    s += String ("/mudelapaper") + i.key () 
+      + "{" + i.val ()->str () + "} bind def\n";
+  s +=  *scope_p_->elem ("pssetting")->access_String ();
+  return s;
+}
+
+String
+Paper_def::tex_output_settings_str () const
+{
+  String s ("\n ");
+  for (Dictionary_iter<Identifier*> i (*scope_p_); i.ok (); i++)
     s += String ("\\def\\mudelapaper") + i.key () 
       + "{" + i.val ()->str () + "}\n";
   s +=  *scope_p_->elem ("texsetting")->access_String ();
@@ -237,4 +238,6 @@ Paper_def::get_next_default_count () const
 {
   return default_count_i_ ++;
 }
+
+
 

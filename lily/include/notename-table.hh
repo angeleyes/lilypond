@@ -1,5 +1,5 @@
 /*
-  notename-table.hh -- declare 
+  notename-table.hh -- declare Notename_table
 
   source file of the GNU LilyPond music typesetter
 
@@ -16,7 +16,7 @@
 #include "dictionary.hh"
 #include "musical-pitch.hh"
 
-class Notename_table :   public Dictionary< Musical_pitch >{
+class Notename_table :   public Dictionary<Musical_pitch>{
 public:
   String get_name (Musical_pitch) const;
 };

@@ -2,9 +2,10 @@
 
 depth = ..
 
-STEPMAKE_TEMPLATES=metafont
+STEPMAKE_TEMPLATES=metafont metapost
 
-EXTRA_DIST_FILES += TODO README
+EXTRA_DIST_FILES += TODO README feta.mp mfmp.ini
+
 
 FET_FILES = $(wildcard feta[0-9]*.mf)
 
@@ -12,6 +13,7 @@ LYTABLES = $(addprefix $(outdir)/, $(FET_FILES:.mf=.ly))
 LOG_FILES = $(addprefix $(outdir)/, $(FET_FILES:.mf=.log))
 TEXTABLES = $(addprefix $(outdir)/, $(FET_FILES:.mf=.tex))
 AFM_FILES = $(addprefix $(outdir)/, $(FET_FILES:.mf=.afm))
+XPM_FONTS = feta20
 
 ALL_GEN_FILES=$(LYTABLES) $(TEXTABLES) $(LOG_FILES) $(AFM_FILES)
 
@@ -27,12 +29,11 @@ $(outdir)/%.afm $(outdir)/%.ly $(outdir)/%.tex $(outdir)/%.dep: $(outdir)/%.log
 
 
 
+TEXINSTALL=$(MAKE) INSTALLATION_OUT_DIR=$(datadir)/tex/ depth=.. INSTALLATION_OUT_FILES="$(TEXTABLES)" -f $(stepdir)/install-outfiles.sub.make $@
 
-TEXINSTALL=$(MAKE) INSTALLATION_OUT_DIR=$(TEXDIR)/lilypond depth=.. INSTALLATION_OUT_FILES="$(TEXTABLES)" -f $(stepdir)/install-outfiles.sub.make $@
+AFMINSTALL=$(MAKE) depth=.. INSTALLATION_OUT_DIR=$(datadir)/afm/ INSTALLATION_OUT_FILES="$(AFM_FILES)" -f $(stepdir)/install-outfiles.sub.make $@
 
-AFMINSTALL=$(MAKE) depth=.. INSTALLATION_OUT_DIR=$(datadir) INSTALLATION_OUT_FILES="$(AFM_FILES)" -f $(stepdir)/install-outfiles.sub.make $@
-
-LYINSTALL=$(MAKE) depth=.. INSTALLATION_OUT_DIR=$(datadir) INSTALLATION_OUT_FILES="$(LYTABLES)" -f $(stepdir)/install-outfiles.sub.make $@
+LYINSTALL=$(MAKE) depth=.. INSTALLATION_OUT_DIR=$(datadir)/ly/ INSTALLATION_OUT_FILES="$(LYTABLES)" -f $(stepdir)/install-outfiles.sub.make $@
 
 localinstall: $(ALL_GEN_FILES)
 	$(TEXINSTALL)
@@ -44,7 +45,7 @@ localuninstall:
 	$(LYINSTALL)
 	$(AFMINSTALL)
 
-INSTALLATION_DIR=$(MFDIR)/public/lilypond
+INSTALLATION_DIR=$(datadir)/mf/
 INSTALLATION_FILES=$(MF_FILES)
 
 include $(stepdir)/installfiles.make
