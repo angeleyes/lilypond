@@ -8,16 +8,21 @@
 # you do make dist 
 #
 
-buildscripts = $(depth)/buildscripts
+
+# using src-depth iso depth is only necessary for broken rules that do
+#     cd $(outdir) && foo $(depth) ...
+buildscript-dir = $(src-depth)/buildscripts
+script-dir = $(src-depth)/scripts
+input-dir = $(src-depth)/input
 
 
-flower-dir = $(depth)/flower
-lib-dir = $(depth)/lib
-lily-dir = $(depth)/lily
-mi2mu-dir = $(depth)/mi2mu
-make-dir = $(depth)/make
-include-lib = $(depth)/lib/include
-include-flower = $(depth)/flower/include
+flower-dir = $(src-depth)/flower
+lib-dir = $(src-depth)/lib
+lily-dir = $(src-depth)/lily
+mi2mu-dir = $(src-depth)/mi2mu
+make-dir = $(src-depth)/make
+include-lib = $(src-depth)/lib/include
+include-flower = $(src-depth)/flower/include
 
 
 
@@ -28,7 +33,7 @@ LILYPOND_INCLUDES = $(include-lib) $(depth)/lib/$(outdir) $(include-flower) $(de
 
 # installed by 'make installextradoc'
 EXTRA_DOC_FILES = \
-  ANNOUNCEMENT ANNOUNCE-0.1 AUTHORS.txt BUGS COPYING DEDICATION INSTALL.txt NEWS PATCHES.txt README.txt TODO \
+  ANNOUNCEMENT ANNOUNCE-0.1 AUTHORS.txt  COPYING DEDICATION INSTALL.txt NEWS PATCHES.txt README.txt TODO \
   Documentation/out/*.txt\
   Documentation/tex/*.doc\
   Documentation/tex/*.bib\
@@ -40,17 +45,17 @@ INSTALLED_EXTRA_DOC_FILES = $(addprefix $(prefix:/%=%)/doc/lilypond/, $(EXTRA_DO
 
 # installed by 'make install'
 INSTALL_DIST_FILES = \
-  bin/convert-mudela\
-  bin/mudela-book\
+  bin/convert-ly\
+  bin/lilypond-book\
   bin/ly2dvi\
-  bin/lilypond$(DOTEXE)\
-  bin/mi2mu$(DOTEXE)\
+  bin/$(program_prefix)lilypond$(program_suffix)\
+  bin/$(program_prefix)mi2mu$(program-suffix)\
   info/lilypond.info\
   man/man1/mi2mu.1\
   man/man1/lilypond.1\
-  man/man1/mudela-book.1\
+  man/man1/lilypond-book.1\
   man/man1/ly2dvi.1\
-  man/man1/convert-mudela.1\
+  man/man1/convert-ly.1\
   lib/texmf/texmf/tex/lilypond\
   lib/texmf/texmf/fonts/source/public/lilypond\
   share/lilypond/\
@@ -58,4 +63,6 @@ INSTALL_DIST_FILES = \
 
 
 INSTALLED_DIST_FILES = $(addprefix $(prefix:/%=%)/, $(INSTALL_DIST_FILES))
+
+
 
