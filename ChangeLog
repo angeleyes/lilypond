@@ -1,5 +1,10 @@
 2003-04-08  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* GNUmakefile (site): Don't generate buttons.
+
+	* format-page.py (button_active_template, button_template): Use
+	non-mangled text and activeness.
+
 	* site/about/menu-entries.py: Add features entry.
 
 	* site/about/features.html: New file.

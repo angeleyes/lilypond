@@ -32,8 +32,8 @@ location_template = '''<DIV class="location">
 </DIV>
 '''
 
-button_template = '''<TD><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(text)s.png" ONMOUSEOVER="this.src='/newweb/out/images/%(text)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(text)s.png'"></A></TD>'''
-button_active_template = '''<TD><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(text)s-hover.png" ONMOUSEOVER="this.src='/newweb/out/images/%(text)s.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(text)s-hover.png'"></A></TD>'''
+button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(name)s.png" ONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
+button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" ONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" ONMOUSEOUT="this.src='/newweb/out/images/%(name)s-active.png'"></A></TD>'''
 
 outdir = '/tmp'
 (options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=']) 
@@ -62,19 +62,25 @@ def one_tab (depth, file):
 	here_label = ''
 	def entry_to_label (x):
 		(file, label) = x
-		label = re.sub ("['! ]", "_", label)
+		name = re.sub ("['! ]", "-", label)
 		active = 1
 		if file == here:
 			active = active and (depth > 0)
  			button = button_active_template % {
 				'url' : '../' * depth + file,
-				'text' : label }
+				'name' : name,
+				'text' : label,
+				'class' : "menu_active" + ("i" * depth),
+				}
 		else:
  			button = button_template % {
 				'url' : '../' * depth + file,
-				'text' : label }
+				'name' : name,
+				'text' : label,
+				'class' : "menu" + ("i" * depth),
+				}
 
-		buttons[label] = 1
+		buttons[name] = label
 		return button
 	
 	labels = map (entry_to_label, menu)
@@ -171,5 +177,5 @@ bfn = outdir + '/buttons'
 sys.stderr.write ('writing: %s...\n' % bfn)
 bf = open (bfn, "w")
 for i in buttons.keys ():
-	bf.write (i + '\n')
+	bf.write ("%s:%s\n" % (i, buttons[i]))
 bf.close ()

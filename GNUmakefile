@@ -4,7 +4,8 @@ SCRIPTS=$(wildcard *.py *.scm)
 
 all: site
 
-site: menuify renderlys buttons
+# no silly buttons
+site: menuify renderlys # buttons
 
 menuify:
 	python format-page.py --outdir out/  `find site -name '*.html'`
