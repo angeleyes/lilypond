@@ -1,53 +1,41 @@
-dnl WARNING WARNING WARNING WARNING
-dnl do not edit! this is aclocal.m4, generated from stepmake/aclocal.m4
-dnl WARNING WARNING WARNING WARNING
-dnl do not edit! this is aclocal.m4, generated from stepmake/aclocal.m4
 dnl aclocal.m4   -*-shell-script-*-
 dnl StepMake subroutines for configure.in
 
+AC_DEFUN(AC_STEPMAKE_BIBTEX2HTML, [
+    AC_CHECK_PROGS(BIBTEX2HTML, bibtex2html bib2html, error)
+    if test "$BIBTEX2HTML" = "bib2html"; then
+	BIBTEX2HTML_FLAGS='$< $(@)'
+    else
+	BIBTEX2HTML_FLAGS='-o $(@D)/$(*F) $<'
+    fi
+    AC_SUBST(BIBTEX2HTML)
+    AC_SUBST(BIBTEX2HTML_FLAGS)
+])
+
+
 AC_DEFUN(AC_STEPMAKE_COMPILE, [
     # -O is necessary to get inlining
-    OPTIMIZE=""
-    CXXFLAGS=${CXXFLAGS:-""}
     CFLAGS=${CFLAGS:-""}
+    CXXFLAGS=${CXXFLAGS:-$CFLAGS}
+    LDFLAGS=${LDFLAGS:-""}
     checking_b=yes
-    optimise_b=no
+    optimise_b=yes
     profile_b=no
     debug_b=yes
 
     AC_ARG_ENABLE(checking,
-    [  enable-checking         set runtime checks (assert calls). Default: on],
+    [  --enable-checking       set runtime checks (assert calls).  Default: on],
     [checking_b=$enableval] )
 
-    # actually, the default is: tja='-O' to get inlining...
-    # off=''  --jcn
-
-    #actually, that sucks.
-    #  tja looks like a typo.  Default is optimisation off. --hwn
-    
-    AC_ARG_ENABLE(optimise,
-    [  enable-optimise         use maximal speed optimisations. Default: off],
-    [optimise_b=$enableval])
-    
-    AC_ARG_ENABLE(profiling, 
-    [  enable-profiling        compile with gprof support. Default: off],
-    [profile_b=$enableval])
-    
     AC_ARG_ENABLE(debugging,
-    [  enable-debugging        set debug info. Default: on],
+    [  --enable-debugging      compile with debugging info.  Default: on],
     [debug_b=$enableval])
 
-    AC_ARG_ENABLE(mingw-prefix,
-    [  enable-mingw-prefix=DIR set the mingw32 directory (standalone windows32 exes)],
-    [MINGWPREFIX=$enableval],
-    [MINGWPREFIX=no])
+    AC_ARG_ENABLE(profiling, 
+    [  --enable-profiling      compile with gprof support.  Default: off],
+    [profile_b=$enableval])
+    
 
-    if test "$printing_b" = no; then
-	# ugh
-	AC_DEFINE(NPRINT)
-	DEFINES="$DEFINES -DNPRINT"
-    fi
-	
     if test "$checking_b" = no; then
 	# ugh
 	AC_DEFINE(NDEBUG)
@@ -58,9 +46,6 @@ AC_DEFUN(AC_STEPMAKE_COMPILE, [
 	OPTIMIZE="-O2 -finline-functions"
     fi
 
-    if test "$optimise_b" = no; then
-	OPTIMIZE=""
-    fi
 
     if test $profile_b = yes; then
 	EXTRA_LIBES="-pg"
@@ -71,11 +56,6 @@ AC_DEFUN(AC_STEPMAKE_COMPILE, [
 	OPTIMIZE="$OPTIMIZE -g"
     fi
 
-    # however, C++ support in mingw32 v 0.1.4 is still flaky
-    if test x$MINGWPREFIX != xno; then 
-	ICFLAGS="-I$MINGWPREFIX/include"
-	ILDFLAGS="-$MINGWPREFIX/lib"
-    fi
 
     AC_PROG_CC
     LD='$(CC)'
@@ -83,6 +63,20 @@ AC_DEFUN(AC_STEPMAKE_COMPILE, [
 
     CFLAGS="$CFLAGS $OPTIMIZE"
     CPPFLAGS=${CPPFLAGS:-""}
+
+    AC_MSG_CHECKING([for IEEE-conformance compiler flags])
+    save_cflags="$CFLAGS"
+    case "$host" in
+        alpha*-*-*)
+	    dnl should do compile test?
+	    AC_MSG_RESULT(-mieee)
+	    CFLAGS="-mieee $CFLAGS"
+	    ;;
+	*)
+	    AC_MSG_RESULT([none])
+	    ;;
+    esac
+    AC_SUBST(cross_compiling)
     AC_SUBST(CFLAGS)
     AC_SUBST(CPPFLAGS)
     AC_SUBST(LDFLAGS)
@@ -101,7 +95,7 @@ AC_DEFUN(AC_STEPMAKE_CXX, [
 
     CPPFLAGS="$CPPFLAGS $DEFINES"
     CXXFLAGS="$CXXFLAGS $OPTIMIZE"
-    LDFLAGS=$EXTRA_LIBES
+    LDFLAGS="$LDFLAGS $EXTRA_LIBES"
 
     AC_SUBST(CXXFLAGS)
     AC_SUBST(CXX)
@@ -133,38 +127,85 @@ AC_DEFUN(AC_STEPMAKE_DATADIR, [
 	    presome=${ac_default_prefix}
     fi
     DIR_DATADIR=`echo ${DIR_DATADIR} | sed "s!\\\${prefix}!$presome!"`
+
     AC_SUBST(datadir)
     AC_SUBST(DIR_DATADIR)
+    
+    dnl yeah, so fuck me gently with a cactus: this doesnt belong here
+    dnl Please take the person responsible for inventing shell-scripts out
+    dnl and shoot him. On behalf of the sane world, thank you.
+    dnl DIR_SHAREDSTATEDIR="foobar"
+    dnl AC_SUBST(DIR_SHAREDSTATEDIR)
+    
     AC_DEFINE_UNQUOTED(DIR_DATADIR, "${DIR_DATADIR}")
 ])
 
 AC_DEFUN(AC_STEPMAKE_END, [
     AC_OUTPUT($CONFIGFILE.make:config.make.in)
 
-    rm -f GNUmakefile
-    cp make/toplevel.make.in ./GNUmakefile
-    chmod 444 GNUmakefile
+    # regular in-place build
+    # test for srcdir_build = yes ?
+    if test "$builddir" = "."; then
+	rm -f $srcdir/GNUmakefile
+	cp $srcdir/GNUmakefile.in $srcdir/GNUmakefile
+	chmod 444 $srcdir/GNUmakefile
+    else # --srcdir build
+        rm -f GNUmakefile
+    	cp $srcdir/make/srcdir.make.in GNUmakefile
+    	chmod 444 GNUmakefile
+    fi
 ])
 
 AC_DEFUN(AC_STEPMAKE_GXX, [
-    # ugh autoconf
-    # urg, egcs: how to check for egcs >= 1.1?
+    AC_MSG_CHECKING("g++ version")
+    cxx_version=`$CXX --version`
+    AC_MSG_RESULT("$cxx_version")
     changequote(<<, >>)dnl
-    if $CXX --version | egrep '2\.[89]' > /dev/null ||
-	$CXX --version | grep 'egcs' > /dev/null
+    # urg, egcs: how to check for egcs >= 1.1?
+    if expr "$cxx_version" : '.*2\.[89]' > /dev/null ||
+	expr "$cxx_version" : '.*egcs' > /dev/null ||
+	expr "$cxx_version" : '3\.0' > /dev/null
     changequote([, ])dnl
     then
 	    true
     else
-	    AC_STEPMAKE_WARN(can\'t find g++ 2.8 or egcs 1.1)
+	    AC_STEPMAKE_WARN(can\'t find g++ 2.8, 2.9, 3.0 or egcs 1.1)
     fi
 ])
 
 AC_DEFUN(AC_STEPMAKE_GUILE, [
-    GUILE_FLAGS
-    if guile-config --version 2>&1 | grep -q 'version 1\.[012]'; then
-       AC_STEPMAKE_WARN(Guile version 1.3 or better needed)
+    ## First, let's just see if we can find Guile at all.
+    AC_MSG_CHECKING("for guile-config")
+    for guile_config in guile-config $target-guile-config $build-guile-config; do
+	AC_MSG_RESULT("$guile_config")
+	if ! $guile_config --version > /dev/null 2>&1 ; then
+	    AC_MSG_WARN("cannot execute $guile_config")
+	    AC_MSG_CHECKING("if we are cross compiling")
+	    guile_config=error
+	else
+	    break
+	fi
+    done
+    if test "$guile_config" = "error"; then
+	AC_MSG_ERROR("cannot find guile-config; is Guile installed?")
+	exit 1
     fi
+    AC_MSG_CHECKING("Guile version")
+    need_guile_version="1.3.4"
+    need_guile_version_numeric=100304
+    guile_version=`$guile_config --version 2>&1 | awk '{print $NF}'`
+    guile_version_numeric=`echo $guile_version | awk -F. '
+{if ([$]3) {last = [$]3}
+else {last =0}}
+{printf "%s%s%s\n",[$]1*100, [$]2*10,last}'`
+    AC_MSG_RESULT("$guile_version")
+    if test $guile_version_numeric -lt $need_guile_version_numeric
+    then
+        AC_STEPMAKE_WARN("Guile version "$need_guile_version" or newer is needed")
+    fi
+    GUILE_FLAGS
+    AC_PATH_PROG(GUILE, guile, error)
+    AC_SUBST(GUILE)
 ])
 
 AC_DEFUN(AC_STEPMAKE_INIT, [
@@ -190,23 +231,66 @@ AC_DEFUN(AC_STEPMAKE_INIT, [
     fi
     stepmake=`echo ${stepmake} | sed "s!\\\${prefix}!$presome!"`
 
+    # urg, how is this supposed to work?
+    if test "$program_prefix" = "NONE"; then
+	  program_prefix=
+    fi
+    if test "$program_suffix" = "NONE"; then
+	  program_suffix=
+    fi
+
     AC_MSG_CHECKING(Package)
     if test "x$PACKAGE" = "xSTEPMAKE"; then
 	AC_MSG_RESULT(Stepmake package!)
-	(cd stepmake; rm -f stepmake; ln -s ../stepmake .)
-	(cd stepmake; rm -f bin; ln -s ../bin .)
+
+	AC_MSG_CHECKING(builddir)
+	if test "$srcdir" = "."; then
+	    builddir=.
+	else
+	    absolute_builddir="`pwd`"
+	    package_absolute_builddir="`dirname $absolute_builddir`"
+	    package_srcdir="`dirname  $srcdir`"
+	    builddir="`dirname $package_srcdir`/`basename $package_absolute_builddir`/`basename $absolute_builddir`"
+	fi
+	AC_MSG_RESULT($builddir)
+
+	(cd stepmake 2>/dev/null || mkdir stepmake)
+	(cd stepmake; rm -f stepmake; ln -s ../$srcdir/stepmake .)
+	(cd stepmake; rm -f bin; ln -s ../$srcdir/bin .)
 	AC_CONFIG_AUX_DIR(bin)
 	stepmake=stepmake
     else
         AC_MSG_RESULT($PACKAGE)
+
+	AC_MSG_CHECKING(builddir)
+	if test "$srcdir" = "."; then
+	    builddir=.
+	    srcdir_build=no
+	else
+	    absolute_builddir="`pwd`"
+#	    builddir="`dirname  $srcdir`/`basename $absolute_builddir`"
+	    builddir="`bash $srcdir/buildscripts/walk.sh \"$srcdir\"`"
+	    srcdir_build=yes
+	fi
+	AC_MSG_RESULT($builddir)
+	if expr "$srcdir" : '/' > /dev/null 2>&1; then
+	    absolute_srcdir=yes
+	    AC_STEPMAKE_WARN(Absolute --srcdir specified: $srcdir)
+	fi
+
 	AC_MSG_CHECKING(for stepmake)
 	# Check for installed stepmake
 	if test -d $stepmake; then
 	    AC_MSG_RESULT($stepmake)
 	else
-	    stepmake='$(depth)'/stepmake
-	    AC_MSG_RESULT(./stepmake  ($datadir/stepmake not found))
+	    if test "$absolute_srcdir" != "yes"; then
+		stepmake='$(depth)'/$srcdir/stepmake
+	    else
+		stepmake=$srcdir/stepmake
+	    fi
+	    AC_MSG_RESULT($srcdir/stepmake  ($datadir/stepmake not found))
 	fi
+
 	AC_CONFIG_AUX_DIR(\
 	  $HOME/usr/local/share/stepmake/bin\
 	  $HOME/usr/local/lib/stepmake/bin\
@@ -217,9 +301,11 @@ AC_DEFUN(AC_STEPMAKE_INIT, [
 	  /usr/share/stepmake/bin\
 	  /usr/lib/stepmake/bin\
 	  stepmake/bin\
+	  $srcdir/stepmake/bin\
 	)
     fi
 
+    AC_SUBST(builddir)
     AC_SUBST(stepmake)
     AC_SUBST(package)
     AC_SUBST(PACKAGE)
@@ -237,25 +323,15 @@ AC_DEFUN(AC_STEPMAKE_INIT, [
 
     AUTOGENERATE="This file was automatically generated by configure"
     AC_SUBST(AUTOGENERATE)
-    absolute_builddir="`pwd`"
-    AC_SUBST(absolute_builddir)
-
-    STATE_VECTOR=`ls make/STATE-VECTOR 2>/dev/null`
-    if test "x$STATE_VECTOR" != "x"; then
-    	STATE_VECTOR="\$(depth)/$STATE_VECTOR"
-    fi
-    AC_SUBST(STATE_VECTOR)
 
     CONFIGSUFFIX=
     AC_ARG_ENABLE(config,
-    [  enable-config=FILE      put configure settings in config-FILE.make],
-    [CONFIGSUFFIX=$enableval])
+    [  --enable-config=CONF    put settings in config-CONF.make and config-CONF.h;
+                            do \`make conf=CONF' to get output in ./out-CONF],
+    [CONFIGURATION=$enableval])
 
-    if test "$CONFIGSUFFIX" != "" ; then
-	CONFIGFILE=config-$CONFIGSUFFIX
-    else
-	CONFIGFILE=config
-    fi
+    test -n "$CONFIGURATION" && CONFIGSUFFIX="-$CONFIGURATION"
+    CONFIGFILE=config$CONFIGSUFFIX
     AC_SUBST(CONFIGSUFFIX)
      
     AC_CANONICAL_HOST
@@ -298,8 +374,9 @@ dnl    fi
 	LN=cp # hard link does not work under cygnus-nt
 	LN_S='cp -r' # symbolic link does not work for native nt
 	ZIP="zip -r -9" #
-	DOTEXE=.exe
+	program_suffix=.exe
 	# urg
+	# ROOTSEP=':'
         # DIRSEP='\\'
  	# PATHSEP=';'
 	#
@@ -322,10 +399,12 @@ dnl    fi
 	# this way, you may have buildscripts/out/lilypond-profile 
 	# 'automatically' sourced from /usr/etc/profile.d/ too.
 	#
+ 	ROOTSEP=':'
         DIRSEP='/'
  	PATHSEP=':'
 	INSTALL="\$(SHELL) \$(stepdir)/../bin/install-dot-exe.sh -c"
     else
+	ROOTSEP=':'
 	DIRSEP='/'
 	PATHSEP=':'
 	LN=ln
@@ -333,7 +412,8 @@ dnl    fi
 	ZIP="zip -r -9"
         INSTALL="\$(SHELL) \$(stepdir)/../bin/install-sh -c"
     fi
-    AC_SUBST(DOTEXE)
+    AC_SUBST(program_prefix)
+    AC_SUBST(program_suffix)
     AC_SUBST(ZIP)
     AC_SUBST(LN)
     AC_SUBST(LN_S)
@@ -343,8 +423,32 @@ dnl    fi
     AC_SUBST(PATHSEP)
     AC_SUBST(DIRSEP)
   
-   
     AC_STEPMAKE_DATADIR
+])
+
+AC_DEFUN(AC_STEPMAKE_KPATHSEA, [
+
+    kpathsea_b=yes
+    AC_ARG_WITH(kpathsea,
+    [  --with-kpathsea         use kpathsea lib.  Default: on],
+    [kpathsea_b=$enableval])
+
+    if test "$kpathsea_b" = "yes"; then	
+	AC_HAVE_HEADERS(kpathsea/kpathsea.h)
+	AC_CHECK_LIB(kpathsea, kpse_find_file)
+	AC_CHECK_FUNCS(kpse_find_file,, AC_ERROR(Cannot find kpathsea functions.  You should install kpathsea; see INSTALL.txt.  Rerun ./configure --without-kpathsea only if kpathsea is not available for your platform.))
+    fi
+    AC_MSG_CHECKING(whether to use kpathsea)
+    if test "$kpathsea_b" = yes; then
+        AC_MSG_RESULT(yes)
+	KPATHSEA=1
+    else
+        AC_MSG_RESULT(no)
+	KPATHSEA=0
+    fi
+
+    AC_SUBST(KPATHSEA)
+    AC_DEFINE_UNQUOTED(KPATHSEA, $KPATHSEA)
 ])
 
 AC_DEFUN(AC_STEPMAKE_LEXYACC, [
@@ -404,12 +508,13 @@ AC_DEFUN(AC_STEPMAKE_LOCALE, [
 
     # with/enable ??
     AC_ARG_WITH(localedir,
-    [  with-localedir=LOCALE   use LOCALE as locale dir. Default: PREFIX/share/locale ],
+    [  --with-localedir=LOCALE use LOCALE as locale dir.  Default:
+                            PREFIX/share/locale ],
     localedir=$with_localedir,
     localedir='${prefix}/share/locale')
 
     AC_ARG_WITH(lang,
-    [  with-lang=LANG          use LANG as language to emit messages],
+    [  --with-lang=LANG        use LANG as language to emit messages],
     language=$with_lang,
     language=English)
 
@@ -447,6 +552,32 @@ AC_DEFUN(AC_STEPMAKE_GETTEXT, [
     AC_CHECK_FUNCS(gettext)
 ])
 
+AC_DEFUN(AC_STEPMAKE_MAKEINFO, [
+    AC_CHECK_PROGS(MAKEINFO, makeinfo, error)
+    if test "$MAKEINFO" != "error"; then
+	AC_MSG_CHECKING(whether makeinfo can split html by @node)
+	mkdir -p out
+	makeinfo --html --output=out/split <<EOF
+\input texinfo
+\input texinfo @c -*-texinfo-*-
+@setfilename split.info
+@settitle split.info
+@bye
+EOF
+	if test -d out/split; then
+	    SPLITTING_MAKEINFO=yes
+	    AC_MSG_RESULT(yes)
+	    rm -rf out/split
+	else
+	    AC_MSG_RESULT(no)
+	    AC_STEPMAKE_WARN(your html documentation will be one large file)
+	    rm -rf out/split
+	fi
+    fi
+    AC_SUBST(SPLITTING_MAKEINFO)
+])
+
+
 AC_DEFUN(AC_STEPMAKE_MAN, [
     AC_CHECK_PROGS(GROFF, groff ditroff, -echo no groff)
     AC_CHECK_PROGS(TROFF, troff, -echo no troff)
@@ -474,17 +605,18 @@ AC_DEFUN(AC_STEPMAKE_MSGFMT, [
 #why has this been dropped?
 AC_DEFUN(XXAC_STEPMAKE_TEXMF_DIRS, [
     AC_ARG_ENABLE(tex-prefix,
-    [  enable-tex-prefix=DIR   set the tex-directory to find TeX subdirectories. (default: PREFIX)],
+    [  --enable-tex-prefix=DIR   set the tex-directory to find TeX
+                               subdirectories.  Default: PREFIX],
     [TEXPREFIX=$enableval],
     [TEXPREFIX=auto] )
     
     AC_ARG_ENABLE(tex-dir,
-    [  enable-tex-dir=DIR      set the directory to put $PACKAGE_NAME TeX files in. ],
+    [  --enable-tex-dir=DIR      set the directory to put $PACKAGE_NAME TeX files in. ],
     [TEXDIR=$enableval],
     [TEXDIR=auto] )
 
     AC_ARG_ENABLE(mf-dir,
-    [  enable-mf-dir=DIR       set the directory to put $PACKAGE_NAME MetaFont files in. ],
+    [  --enable-mf-dir=DIR       set the directory to put $PACKAGE_NAME MetaFont files in. ],
     [MFDIR=$enableval],
     [MFDIR=auto])
 
@@ -507,26 +639,34 @@ AC_DEFUN(XXAC_STEPMAKE_TEXMF_DIRS, [
 ])
 
 AC_DEFUN(AC_STEPMAKE_TEXMF_DIRS, [
-    AC_ARG_ENABLE(tex-tfmdir,
-    [  enable-tex-tfmdir=DIR   set the tex-directory where cmr10.tfm lives (default: use kpsewhich)],
-    [TFMDIR=$enableval],
-    [TFMDIR=auto] )
+    AC_ARG_ENABLE(tfm-path,
+    [  --enable-tfm-path=PATH  set path of tex directories where tfm files live,
+                            esp.: cmr10.tfm.  Default: use kpsewhich],
+    [tfm_path=$enableval],
+    [tfm_path=auto] )
 
     AC_CHECK_PROGS(KPSEWHICH, kpsewhich, no)
-    AC_MSG_CHECKING(for TeX TFM directory)
-    if test "x$TFMDIR" = xauto ; then
-	if test "x$TEX_TFMDIR" = "x" ; then
-	    if test "x$KPSEWHICH" != "xno" ; then
-		CMR10=`kpsewhich tfm cmr10.tfm`
-		TEX_TFMDIR=`dirname $CMR10`
-	    else
-		AC_STEPMAKE_WARN(Please set TEX_TFMDIR (to where cmr10.tfm lives):
-	TEX_TFMDIR=/usr/local/TeX/lib/tex/fonts ./configure)
-	    fi
+    AC_MSG_CHECKING(for tfm path)
+
+    TFM_FONTS="cmr msam"
+
+    if test "x$tfm_path" = xauto ; then
+	if test "x$KPSEWHICH" != "xno" ; then
+	    for i in $TFM_FONTS; do
+		dir=`$KPSEWHICH tfm ${i}10.tfm`
+		TFM_PATH="$TFM_PATH `dirname $dir`"
+	    done
+	else
+	    AC_STEPMAKE_WARN(Please specify where cmr10.tfm lives:
+    ./configure --enable-tfm-path=/usr/local/TeX/lib/tex/fonts)
 	fi
+    else
+         TFM_PATH=$tfm_path
     fi
-    AC_MSG_RESULT($TEX_TFMDIR)
-    AC_SUBST(TEX_TFMDIR)
+
+    TFM_PATH=`echo $TFM_PATH | tr ':' ' '`
+    AC_MSG_RESULT($TFM_PATH)
+    AC_SUBST(TFM_PATH)
 ])
 
 AC_DEFUN(AC_STEPMAKE_TEXMF, [
@@ -565,14 +705,32 @@ AC_DEFUN(AC_STEPMAKE_TEXMF, [
 	    break;
 	fi
     done
-    rm -f mfput.*
     AC_MSG_RESULT($MFMODE)
+
+    AC_MSG_CHECKING(for mfplain.mp)
+    #
+    # For now let people define these in their environments
+    #
+    : ${MFPLAIN_MP=`kpsewhich mp mfplain.mp`}
+    AC_MSG_RESULT($MFPLAIN_MP)
+
+    AC_MSG_CHECKING(for inimetapost flags)
+    if test  ${INIMETAPOST} = "inimp" ; then
+       : ${INIMETAPOST_FLAGS=''}
+    else
+       : ${INIMETAPOST_FLAGS='-interaction=nonstopmode'}
+    fi
+    AC_MSG_RESULT($INIMETAPOST_FLAGS)
+
+    rm -f mfput.*
 
     AC_SUBST(METAFONT)
     AC_SUBST(METAPOST)
     AC_SUBST(MFMODE)
     AC_SUBST(INIMETAFONT)
     AC_SUBST(INIMETAPOST)
+    AC_SUBST(MFPLAIN_MP)
+    AC_SUBST(INIMETAPOST_FLAGS)
 ])
 
 AC_DEFUN(AC_STEPMAKE_WARN, [
@@ -632,7 +790,7 @@ AC_DEFUN(AC_TEX_PREFIX, [
     
     if test "x$find_texpostfix" = x; then
 	find_texpostfix='/lib/texmf/tex'
-	AC_STEPMAKE_WARN(Cannot determine the TeX-directory. Please use --enable-tex-prefix)
+	AC_STEPMAKE_WARN(Cannot determine the TeX-directory.  Please use --enable-tex-prefix)
     fi
 
     find_texprefix="$find_root_prefix/$find_texpostfix"
@@ -660,7 +818,7 @@ AC_DEFUN(AC_FIND_DIR_IN_PREFIX, [
 
     if test "x$find_dirdir" = x; then
        find_dirdir="/$3";
-       AC_STEPMAKE_WARN(Cannot determine $4 subdirectory. Please set from command-line)
+       AC_STEPMAKE_WARN(Cannot determine $4 subdirectory.  Please set from command-line)
 	true
     fi
     $2=$find_dirdir
@@ -730,14 +888,14 @@ dnl             find the libraries.
 
 AC_DEFUN([GUILE_FLAGS],[
 ## The GUILE_FLAGS macro.
-  ## First, let's just see if we can find Guile at all.
   AC_MSG_CHECKING(for Guile)
-  guile-config link > /dev/null || {
-    echo "configure: cannot find guile-config; is Guile installed?" 1>&2
-    exit 1
-  }
-  GUILE_CFLAGS="`guile-config compile`"
-  GUILE_LDFLAGS="`guile-config link`"
+  if ! $guile_config link > /dev/null ; then
+      AC_MSG_RESULT("cannot execute $guile_config")
+      AC_MSG_ERROR("cannot find guile-config; is Guile installed?")
+      exit 1
+  fi
+  GUILE_CFLAGS="`$guile_config compile`"
+  GUILE_LDFLAGS="`$guile_config link`"
   AC_SUBST(GUILE_CFLAGS)
   AC_SUBST(GUILE_LDFLAGS)
   AC_MSG_RESULT(yes)
