@@ -1,3 +1,7 @@
+2005-04-01  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/about/browser-language.html: Fix link.
+
 2005-03-31  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/install: New directory (WAS: download).  Update all links.
