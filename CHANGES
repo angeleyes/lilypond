@@ -6,6 +6,8 @@ threads warning.
 
 * backport small stack fixes from 1.5
 
+* backport lilypond-book.py from 1.5
+
 1.4.14.jcn3
 ===========
 * backport Documentation/topdocs/FAQ.texi (Installation): Add
