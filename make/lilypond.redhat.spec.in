@@ -145,3 +145,5 @@ rm -f /usr/share/lilypond/pfa/fonts.dir
 
 %files documentation
 %doc web/
+%doc input/
+%doc mutopia/
