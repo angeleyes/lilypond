@@ -253,6 +253,8 @@ def do_one_file (in_file_name):
 
 	main = re.sub ('<title>(.*?)</title>', grab_title, main)
 	main = re.sub ('@DEPTH@', depth_str, main)
+	main = re.sub ('@DOC@', os.path.join (depth_str, '../doc/'),
+		       main)
 	main = re.sub ('@IMAGES@', os.path.join (depth_str, 'images/'),
 		       main)
 	
