@@ -1,5 +1,59 @@
 #! /bin/sh
 
+ac_help="$ac_help
+  --with-gtkmm-prefix=PREFIX
+                          Prefix where GTK-- is installed (optional)"
+# Check whether --with-gtkmm-prefix or --without-gtkmm-prefix was given.
+if test "${with_gtkmm_prefix+set}" = set; then
+  withval="$with_gtkmm_prefix"
+  gtkmm_config_prefix="$withval"
+else
+  gtkmm_config_prefix=""
+fi
+
+ac_help="$ac_help
+  --with-gtkmm-exec-prefix=PREFIX
+                          Exec prefix where GTK-- is installed (optional)"
+# Check whether --with-gtkmm-exec-prefix or --without-gtkmm-exec-prefix was given.
+if test "${with_gtkmm_exec_prefix+set}" = set; then
+  withval="$with_gtkmm_exec_prefix"
+  gtkmm_config_exec_prefix="$withval"
+else
+  gtkmm_config_exec_prefix=""
+fi
+
+ac_help="$ac_help
+  --disable-gtkmmtest     Do not try to compile and run a test GTK-- program"
+# Check whether --enable-gtkmmtest or --disable-gtkmmtest was given.
+if test "${enable_gtkmmtest+set}" = set; then
+  enableval="$enable_gtkmmtest"
+  :
+else
+  enable_gtkmmtest=yes
+fi
+
+
+  if test x$gtkmm_config_exec_prefix != x ; then
+     gtkmm_config_args="$gtkmm_config_args --exec-prefix=$gtkmm_config_exec_prefix"
+     if test x${GTKMM_CONFIG+set} != xset ; then
+        GTKMM_CONFIG=$gtkmm_config_exec_prefix/bin/gtkmm-config
+     fi
+  fi
+  if test x$gtkmm_config_prefix != x ; then
+     gtkmm_config_args="$gtkmm_config_args --prefix=$gtkmm_config_prefix"
+     if test x${GTKMM_CONFIG+set} != xset ; then
+        GTKMM_CONFIG=$gtkmm_config_prefix/bin/gtkmm-config
+     fi
+  fi
+
+
+
+
+# Configure paths for GTK--DRAW
+# Derek Quinn Wyatt   98-08-21  (adapted from Jan Nieuwenhuizen's code)
+
+
+
 # Guess values for system-dependent variables and create Makefiles.
 # Generated automatically using autoconf version 2.12 
 # Copyright (C) 1992, 93, 94, 95, 96 Free Software Foundation, Inc.
@@ -26,15 +80,11 @@ ac_help="$ac_help
 ac_help="$ac_help
   enable-printing         turn on debug printing. Default: off"
 ac_help="$ac_help
+  enable-guile            link in GUILE. Default: off"
+ac_help="$ac_help
   with-localedir=LOCALE   use LOCALE as locale dir. Default: PREFIX/share/locale "
 ac_help="$ac_help
   with-lang=LANG          use LANG as language to emit messages"
-ac_help="$ac_help
-  enable-tex-prefix=DIR   set the tex-directory to find TeX subdirectories. (default: PREFIX)"
-ac_help="$ac_help
-  enable-tex-dir=DIR      set the directory to put $PACKAGE_NAME TeX files in. "
-ac_help="$ac_help
-  enable-mf-dir=DIR       set the directory to put $PACKAGE_NAME MetaFont files in. "
 
 # Initialize some variables set by options.
 # The variables have the same names as the options, with
@@ -655,7 +705,7 @@ else { echo "configure: error: can not run $ac_config_sub" 1>&2; exit 1; }
 fi
 
 echo $ac_n "checking host system type""... $ac_c" 1>&6
-echo "configure:659: checking host system type" >&5
+echo "configure:709: checking host system type" >&5
 
 host_alias=$host
 case "$host_alias" in
@@ -680,7 +730,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:684: checking for $ac_word" >&5
+echo "configure:734: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_MAKE'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -714,7 +764,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:718: checking for $ac_word" >&5
+echo "configure:768: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_FIND'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -751,7 +801,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:755: checking for $ac_word" >&5
+echo "configure:805: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_TAR'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -785,7 +835,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:789: checking for $ac_word" >&5
+echo "configure:839: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_BASH'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -815,10 +865,10 @@ done
 test -n "$BASH" || BASH="/bin/sh"
 
 
-    # Extract the first word of "python", so it can be a program name with args.
-set dummy python; ac_word=$2
+    # Extract the first word of "${PYTHON:-python}", so it can be a program name with args.
+set dummy ${PYTHON:-python}; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:822: checking for $ac_word" >&5
+echo "configure:872: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_path_PYTHON'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -901,14 +951,16 @@ fi
     
     
     
-   cat >> confdefs.h <<EOF
+    cat >> confdefs.h <<EOF
 #define DIRSEP '${DIRSEP}'
 EOF
 
-     cat >> confdefs.h <<EOF
+    cat >> confdefs.h <<EOF
 #define PATHSEP '${PATHSEP}'
 EOF
 
+    
+    
   
    
     
@@ -939,6 +991,7 @@ subdirs="stepmake"
     # -O is necessary to get inlining
     OPTIMIZE=""
     CXXFLAGS=${CXXFLAGS:-""}
+    CFLAGS=${CFLAGS:-""}
     checking_b=yes
     optimise_b=no
     profile_b=no
@@ -1031,7 +1084,7 @@ EOF
     # Extract the first word of "gcc", so it can be a program name with args.
 set dummy gcc; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1035: checking for $ac_word" >&5
+echo "configure:1088: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_CC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1060,7 +1113,7 @@ if test -z "$CC"; then
   # Extract the first word of "cc", so it can be a program name with args.
 set dummy cc; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1064: checking for $ac_word" >&5
+echo "configure:1117: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_CC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1108,7 +1161,7 @@ fi
 fi
 
 echo $ac_n "checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works""... $ac_c" 1>&6
-echo "configure:1112: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works" >&5
+echo "configure:1165: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) works" >&5
 
 ac_ext=c
 # CFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
@@ -1118,11 +1171,11 @@ ac_link='${CC-cc} -o conftest $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS 
 cross_compiling=$ac_cv_prog_cc_cross
 
 cat > conftest.$ac_ext <<EOF
-#line 1122 "configure"
+#line 1175 "configure"
 #include "confdefs.h"
 main(){return(0);}
 EOF
-if { (eval echo configure:1126: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:1179: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   ac_cv_prog_cc_works=yes
   # If we can't run a trivial program, we are probably using a cross compiler.
   if (./conftest; exit) 2>/dev/null; then
@@ -1142,12 +1195,12 @@ if test $ac_cv_prog_cc_works = no; then
   { echo "configure: error: installation or configuration problem: C compiler cannot create executables." 1>&2; exit 1; }
 fi
 echo $ac_n "checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler""... $ac_c" 1>&6
-echo "configure:1146: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler" >&5
+echo "configure:1199: checking whether the C compiler ($CC $CFLAGS $LDFLAGS) is a cross-compiler" >&5
 echo "$ac_t""$ac_cv_prog_cc_cross" 1>&6
 cross_compiling=$ac_cv_prog_cc_cross
 
 echo $ac_n "checking whether we are using GNU C""... $ac_c" 1>&6
-echo "configure:1151: checking whether we are using GNU C" >&5
+echo "configure:1204: checking whether we are using GNU C" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_gcc'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1156,7 +1209,7 @@ else
   yes;
 #endif
 EOF
-if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:1160: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
+if { ac_try='${CC-cc} -E conftest.c'; { (eval echo configure:1213: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
   ac_cv_prog_gcc=yes
 else
   ac_cv_prog_gcc=no
@@ -1171,7 +1224,7 @@ if test $ac_cv_prog_gcc = yes; then
   ac_save_CFLAGS="$CFLAGS"
   CFLAGS=
   echo $ac_n "checking whether ${CC-cc} accepts -g""... $ac_c" 1>&6
-echo "configure:1175: checking whether ${CC-cc} accepts -g" >&5
+echo "configure:1228: checking whether ${CC-cc} accepts -g" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_cc_g'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1212,13 +1265,21 @@ fi
 # AC_HAVE_HEADERS(limits.h malloc.h string.h unistd.h values.h)
 
 printing_b=no
+guile_b=no
 # Check whether --enable-printing or --disable-printing was given.
 if test "${enable_printing+set}" = set; then
   enableval="$enable_printing"
   printing_b=$enableval
 fi
 
+# Check whether --enable-guile or --disable-guile was given.
+if test "${enable_guile+set}" = set; then
+  enableval="$enable_guile"
+  guile_b=$enableval
+fi
 
+
+    
 if test "$optimise_b" = yes; then
     DEFINES="$DEFINES -DSTRING_UTILS_INLINED"
     cat >> confdefs.h <<\EOF
@@ -1228,7 +1289,7 @@ EOF
 fi
 
 echo $ac_n "checking how to run the C++ preprocessor""... $ac_c" 1>&6
-echo "configure:1232: checking how to run the C++ preprocessor" >&5
+echo "configure:1293: checking how to run the C++ preprocessor" >&5
 if test -z "$CXXCPP"; then
 if eval "test \"`echo '$''{'ac_cv_prog_CXXCPP'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1241,12 +1302,12 @@ ac_link='${CXX-g++} -o conftest $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $L
 cross_compiling=$ac_cv_prog_cxx_cross
   CXXCPP="${CXX-g++} -E"
   cat > conftest.$ac_ext <<EOF
-#line 1245 "configure"
+#line 1306 "configure"
 #include "confdefs.h"
 #include <stdlib.h>
 EOF
 ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
-{ (eval echo configure:1250: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+{ (eval echo configure:1311: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
 ac_err=`grep -v '^ *+' conftest.out`
 if test -z "$ac_err"; then
   :
@@ -1277,7 +1338,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1281: checking for $ac_word" >&5
+echo "configure:1342: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_CXX'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1308,7 +1369,7 @@ test -n "$CXX" || CXX="gcc"
 
 
 echo $ac_n "checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) works""... $ac_c" 1>&6
-echo "configure:1312: checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) works" >&5
+echo "configure:1373: checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) works" >&5
 
 ac_ext=C
 # CXXFLAGS is not in ac_cpp because -g, -O, etc. are not valid cpp options.
@@ -1318,11 +1379,11 @@ ac_link='${CXX-g++} -o conftest $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $L
 cross_compiling=$ac_cv_prog_cxx_cross
 
 cat > conftest.$ac_ext <<EOF
-#line 1322 "configure"
+#line 1383 "configure"
 #include "confdefs.h"
 main(){return(0);}
 EOF
-if { (eval echo configure:1326: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:1387: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   ac_cv_prog_cxx_works=yes
   # If we can't run a trivial program, we are probably using a cross compiler.
   if (./conftest; exit) 2>/dev/null; then
@@ -1342,12 +1403,12 @@ if test $ac_cv_prog_cxx_works = no; then
   { echo "configure: error: installation or configuration problem: C++ compiler cannot create executables." 1>&2; exit 1; }
 fi
 echo $ac_n "checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) is a cross-compiler""... $ac_c" 1>&6
-echo "configure:1346: checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) is a cross-compiler" >&5
+echo "configure:1407: checking whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) is a cross-compiler" >&5
 echo "$ac_t""$ac_cv_prog_cxx_cross" 1>&6
 cross_compiling=$ac_cv_prog_cxx_cross
 
 echo $ac_n "checking whether we are using GNU C++""... $ac_c" 1>&6
-echo "configure:1351: checking whether we are using GNU C++" >&5
+echo "configure:1412: checking whether we are using GNU C++" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_gxx'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1356,7 +1417,7 @@ else
   yes;
 #endif
 EOF
-if { ac_try='${CXX-g++} -E conftest.C'; { (eval echo configure:1360: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
+if { ac_try='${CXX-g++} -E conftest.C'; { (eval echo configure:1421: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }; } | egrep yes >/dev/null 2>&1; then
   ac_cv_prog_gxx=yes
 else
   ac_cv_prog_gxx=no
@@ -1371,7 +1432,7 @@ if test $ac_cv_prog_gxx = yes; then
   ac_save_CXXFLAGS="$CXXFLAGS"
   CXXFLAGS=
   echo $ac_n "checking whether ${CXX-g++} accepts -g""... $ac_c" 1>&6
-echo "configure:1375: checking whether ${CXX-g++} accepts -g" >&5
+echo "configure:1436: checking whether ${CXX-g++} accepts -g" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_cxx_g'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1401,17 +1462,17 @@ fi
 
     ac_safe=`echo "FlexLexer.h" | sed 'y%./+-%__p_%'`
 echo $ac_n "checking for FlexLexer.h""... $ac_c" 1>&6
-echo "configure:1405: checking for FlexLexer.h" >&5
+echo "configure:1466: checking for FlexLexer.h" >&5
 if eval "test \"`echo '$''{'ac_cv_header_$ac_safe'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 1410 "configure"
+#line 1471 "configure"
 #include "confdefs.h"
 #include <FlexLexer.h>
 EOF
 ac_try="$ac_cpp conftest.$ac_ext >/dev/null 2>conftest.out"
-{ (eval echo configure:1415: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
+{ (eval echo configure:1476: \"$ac_try\") 1>&5; (eval $ac_try) 2>&5; }
 ac_err=`grep -v '^ *+' conftest.out`
 if test -z "$ac_err"; then
   rm -rf conftest*
@@ -1461,12 +1522,12 @@ fi
 
 
     echo $ac_n "checking whether explicit instantiation is needed""... $ac_c" 1>&6
-echo "configure:1465: checking whether explicit instantiation is needed" >&5
+echo "configure:1526: checking whether explicit instantiation is needed" >&5
 if eval "test \"`echo '$''{'lily_cv_need_explicit_instantiation'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 1470 "configure"
+#line 1531 "configure"
 #include "confdefs.h"
 
     template <class T> struct foo { static int baz; };
@@ -1476,7 +1537,7 @@ int main() {
  return foo<int>::baz; 
 ; return 0; }
 EOF
-if { (eval echo configure:1480: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:1541: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   lily_cv_need_explicit_instantiation=no
 else
@@ -1503,7 +1564,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1507: checking for $ac_word" >&5
+echo "configure:1568: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YACC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1545,7 +1606,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1549: checking for $ac_word" >&5
+echo "configure:1610: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_BISON'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1579,7 +1640,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1583: checking for $ac_word" >&5
+echo "configure:1644: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_FLEX'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1646,7 +1707,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1650: checking for $ac_word" >&5
+echo "configure:1711: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_AR'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1678,7 +1739,7 @@ test -n "$AR" || AR="error"
     # Extract the first word of "ranlib", so it can be a program name with args.
 set dummy ranlib; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1682: checking for $ac_word" >&5
+echo "configure:1743: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_RANLIB'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1733,7 +1794,7 @@ fi
 
 
     echo $ac_n "checking language""... $ac_c" 1>&6
-echo "configure:1737: checking language" >&5    
+echo "configure:1798: checking language" >&5    
     case "$language" in
       En* | en* | Am* | am* | US* | us*)
 	    lang=English;;
@@ -1769,7 +1830,7 @@ EOF
 
 
     echo $ac_n "checking for gettext in -lintl""... $ac_c" 1>&6
-echo "configure:1773: checking for gettext in -lintl" >&5
+echo "configure:1834: checking for gettext in -lintl" >&5
 ac_lib_var=`echo intl'_'gettext | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1777,7 +1838,7 @@ else
   ac_save_LIBS="$LIBS"
 LIBS="-lintl  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 1781 "configure"
+#line 1842 "configure"
 #include "confdefs.h"
 /* Override any gcc2 internal prototype to avoid an error.  */
 #ifdef __cplusplus
@@ -1791,7 +1852,7 @@ int main() {
 gettext()
 ; return 0; }
 EOF
-if { (eval echo configure:1795: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:1856: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   eval "ac_cv_lib_$ac_lib_var=yes"
 else
@@ -1821,12 +1882,12 @@ fi
     for ac_func in gettext
 do
 echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
-echo "configure:1825: checking for $ac_func" >&5
+echo "configure:1886: checking for $ac_func" >&5
 if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 1830 "configure"
+#line 1891 "configure"
 #include "confdefs.h"
 /* System header to define __stub macros and hopefully few prototypes,
     which can conflict with char $ac_func(); below.  */
@@ -1852,7 +1913,7 @@ $ac_func();
 
 ; return 0; }
 EOF
-if { (eval echo configure:1856: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:1917: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   eval "ac_cv_func_$ac_func=yes"
 else
@@ -1884,7 +1945,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:1888: checking for $ac_word" >&5
+echo "configure:1949: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_MSGFMT'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1914,7 +1975,7 @@ done
 test -n "$MSGFMT" || MSGFMT="\$(SHELL) \$(step-bindir)/fake-msgfmt.sh "
 
     echo $ac_n "checking whether msgfmt accepts -o""... $ac_c" 1>&6
-echo "configure:1918: checking whether msgfmt accepts -o" >&5
+echo "configure:1979: checking whether msgfmt accepts -o" >&5
     msgfmt_output="`msgfmt -o bla 2>&1 | grep usage`"
     if test "$msgfmt_output" = ""; then
 	echo "$ac_t""yes" 1>&6
@@ -1935,136 +1996,197 @@ echo "configure:1918: checking whether msgfmt accepts -o" >&5
     fi
 
 
-    # Check whether --enable-tex-prefix or --disable-tex-prefix was given.
-if test "${enable_tex_prefix+set}" = set; then
-  enableval="$enable_tex_prefix"
-  TEXPREFIX=$enableval
+    # urg, never know what names these teTeX guys will think up
+    for ac_prog in mf
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:2006: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_prog_METAFONT'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
 else
-  TEXPREFIX=auto 
+  if test -n "$METAFONT"; then
+  ac_cv_prog_METAFONT="$METAFONT" # Let the user override the test.
+else
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_prog_METAFONT="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+fi
+fi
+METAFONT="$ac_cv_prog_METAFONT"
+if test -n "$METAFONT"; then
+  echo "$ac_t""$METAFONT" 1>&6
+else
+  echo "$ac_t""no" 1>&6
 fi
 
-    
-    # Check whether --enable-tex-dir or --disable-tex-dir was given.
-if test "${enable_tex_dir+set}" = set; then
-  enableval="$enable_tex_dir"
-  TEXDIR=$enableval
+test -n "$METAFONT" && break
+done
+test -n "$METAFONT" || METAFONT="no"
+
+    if test "x$METAFONT" = "xno"; then
+	for ac_prog in mfont
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:2041: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_prog_MFONT'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
 else
-  TEXDIR=auto 
+  if test -n "$MFONT"; then
+  ac_cv_prog_MFONT="$MFONT" # Let the user override the test.
+else
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_prog_MFONT="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+fi
+fi
+MFONT="$ac_cv_prog_MFONT"
+if test -n "$MFONT"; then
+  echo "$ac_t""$MFONT" 1>&6
+else
+  echo "$ac_t""no" 1>&6
 fi
 
+test -n "$MFONT" && break
+done
+test -n "$MFONT" || MFONT="-echo no mf or mfont"
 
-    # Check whether --enable-mf-dir or --disable-mf-dir was given.
-if test "${enable_mf_dir+set}" = set; then
-  enableval="$enable_mf_dir"
-  MFDIR=$enableval
+	METAFONT=$MFONT
+    fi
+
+    for ac_prog in mp
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:2078: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_prog_METAPOST'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
 else
-  MFDIR=auto
+  if test -n "$METAPOST"; then
+  ac_cv_prog_METAPOST="$METAPOST" # Let the user override the test.
+else
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_prog_METAPOST="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+fi
+fi
+METAPOST="$ac_cv_prog_METAPOST"
+if test -n "$METAPOST"; then
+  echo "$ac_t""$METAPOST" 1>&6
+else
+  echo "$ac_t""no" 1>&6
 fi
 
+test -n "$METAPOST" && break
+done
+test -n "$METAPOST" || METAPOST="no"
 
-    if test "x$TEXPREFIX" = xauto ; then
-	
-    
-
-    echo $ac_n "checking TeX/MF root dir directory""... $ac_c" 1>&6
-echo "configure:1971: checking TeX/MF root dir directory" >&5    
-
-    find_root_prefix="$prefix"
-    
-
-    test "x$find_root_prefix" = xNONE && find_root_prefix="$ac_default_prefix"
-    find_texpostfix="";
-    for postfix in "/lib/tex/" "/lib/texmf" "/lib" "/tex" "/texmf"; do
-	find_texprefix="$find_root_prefix$postfix"
-	if test -d $find_texprefix; then
-	    find_texpostfix=$postfix
-	    break;
-	fi
-    done
-    
-    if test "x$find_texpostfix" = x; then
-	find_texpostfix='/lib/texmf/tex'
-	
-    echo "configure: warning: Cannot determine the TeX-directory. Please use --enable-tex-prefix" 1>&2
-    warn_b=yes
-
+    if test "x$METAPOST" = "xno"; then
+	for ac_prog in mpost
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:2113: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_prog_MPOST'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  if test -n "$MPOST"; then
+  ac_cv_prog_MPOST="$MPOST" # Let the user override the test.
+else
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_prog_MPOST="$ac_prog"
+      break
     fi
+  done
+  IFS="$ac_save_ifs"
+fi
+fi
+MPOST="$ac_cv_prog_MPOST"
+if test -n "$MPOST"; then
+  echo "$ac_t""$MPOST" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
 
-    find_texprefix="$find_root_prefix/$find_texpostfix"
+test -n "$MPOST" && break
+done
+test -n "$MPOST" || MPOST="-echo no mp or mpost"
 
-    # only assign if variablename not empty
-    if test x != "x$TEXPREFIX"; then
-    	TEXPREFIX='${prefix}'/"$find_texpostfix"
-    fi
-    echo "$ac_t""$find_texprefix" 1>&6
-
-
-    else
-     find_texprefix=$TEXPREFIX
-    fi
-
-    if test "x$MFDIR" = xauto; then
-	
-    
-    
-    echo $ac_n "checking MF input directory""... $ac_c" 1>&6
-echo "configure:2012: checking MF input directory" >&5    
-    find_dirdir=`(cd $find_texprefix; 
-      $FIND ./ -type d -a -name source -print |sort|head -1|sed 's#^\./##')`
-    
-
-    if test "x$find_dirdir" = x; then
-       find_dirdir="/source";
-       
-    echo "configure: warning: Cannot determine MF input subdirectory. Please set from command-line" 1>&2
-    warn_b=yes
-
-	true
-    fi
-    MFDIR=$find_dirdir
-    echo "$ac_t""$find_texprefix/$find_dirdir" 1>&6
-
-    MFDIR="$TEXPREFIX/$MFDIR"
-
-    fi
-	
-    if test "x$TEXDIR" = xauto ; then
-	
-    
-    
-    echo $ac_n "checking TeX input directory""... $ac_c" 1>&6
-echo "configure:2037: checking TeX input directory" >&5    
-    find_dirdir=`(cd $find_texprefix; 
-      $FIND ./ -type d -a -name tex -print |sort|head -1|sed 's#^\./##')`
-    
-
-    if test "x$find_dirdir" = x; then
-       find_dirdir="/tex";
-       
-    echo "configure: warning: Cannot determine TeX input subdirectory. Please set from command-line" 1>&2
-    warn_b=yes
-
-	true
-    fi
-    TEXDIR=$find_dirdir
-    echo "$ac_t""$find_texprefix/$find_dirdir" 1>&6
-
-    TEXDIR="$TEXPREFIX/$TEXDIR"
-
+	METAPOST=$MPOST
     fi
 
     
     
-    
 
+# AC_STEPMAKE_TEXMF_DIRS
 
     if test "x$YODL" = "x"; then 
+	for ac_prog in striproff
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
+echo "configure:2156: checking for $ac_word" >&5
+if eval "test \"`echo '$''{'ac_cv_prog_STRIPROFF'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  if test -n "$STRIPROFF"; then
+  ac_cv_prog_STRIPROFF="$STRIPROFF" # Let the user override the test.
+else
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -f $ac_dir/$ac_word; then
+      ac_cv_prog_STRIPROFF="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+fi
+fi
+STRIPROFF="$ac_cv_prog_STRIPROFF"
+if test -n "$STRIPROFF"; then
+  echo "$ac_t""$STRIPROFF" 1>&6
+else
+  echo "$ac_t""no" 1>&6
+fi
+
+test -n "$STRIPROFF" && break
+done
+test -n "$STRIPROFF" || STRIPROFF="-echo no striproff"
+
 	for ac_prog in yodl
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2068: checking for $ac_word" >&5
+echo "configure:2190: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2098,7 +2220,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2102: checking for $ac_word" >&5
+echo "configure:2224: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2HTML'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2132,7 +2254,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2136: checking for $ac_word" >&5
+echo "configure:2258: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2LATEX'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2165,7 +2287,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2169: checking for $ac_word" >&5
+echo "configure:2291: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2MAN'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2199,7 +2321,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2203: checking for $ac_word" >&5
+echo "configure:2325: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2MSLESS'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2233,7 +2355,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2237: checking for $ac_word" >&5
+echo "configure:2359: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2TEXINFO'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2267,7 +2389,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2271: checking for $ac_word" >&5
+echo "configure:2393: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_YODL2TXT'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2304,7 +2426,8 @@ test -n "$YODL2TXT" || YODL2TXT="-echo no yodl"
 	
 	
 	
-	export YODL YODL2HTML YODL2LATEX YODL2MAN YODL2MSLESS YODL2TEXINFO YODL2TXT
+	
+	export STRIPROFF YODL YODL2HTML YODL2LATEX YODL2MAN YODL2MSLESS YODL2TEXINFO YODL2TXT
     fi
     if test "x$YODL" = "-echo no yodl"; then
 	
@@ -2316,17 +2439,64 @@ test -n "$YODL2TXT" || YODL2TXT="-echo no yodl"
 
 
 
-	result="`echo \"$FIND\" | grep echo`"
-	if test "x$FIND" = "xerror" -o "x$result" != "x"; then
-		
-    echo "configure: warning: can\'t find find. Please use --enable-tex-dir" 1>&2
-    warn_b=yes
+case $guile_b in 
+    yes)
+    echo $ac_n "checking for scm_shell in -lguile""... $ac_c" 1>&6
+echo "configure:2446: checking for scm_shell in -lguile" >&5
+ac_lib_var=`echo guile'_'scm_shell | sed 'y%./+-%__p_%'`
+if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  ac_save_LIBS="$LIBS"
+LIBS="-lguile  $LIBS"
+cat > conftest.$ac_ext <<EOF
+#line 2454 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char scm_shell();
 
-	fi
+int main() {
+scm_shell()
+; return 0; }
+EOF
+if { (eval echo configure:2468: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+  rm -rf conftest*
+  eval "ac_cv_lib_$ac_lib_var=yes"
+else
+  echo "configure: failed program was:" >&5
+  cat conftest.$ac_ext >&5
+  rm -rf conftest*
+  eval "ac_cv_lib_$ac_lib_var=no"
+fi
+rm -f conftest*
+LIBS="$ac_save_LIBS"
+
+fi
+if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+  echo "$ac_t""yes" 1>&6
+    ac_tr_lib=HAVE_LIB`echo guile | sed -e 's/[^a-zA-Z0-9_]/_/g' \
+    -e 'y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/'`
+  cat >> confdefs.h <<EOF
+#define $ac_tr_lib 1
+EOF
+
+  LIBS="-lguile $LIBS"
+
+else
+  echo "$ac_t""no" 1>&6
+fi
 
 
+    ;;
+esac
+    
 echo $ac_n "checking for 8-bit clean memcmp""... $ac_c" 1>&6
-echo "configure:2330: checking for 8-bit clean memcmp" >&5
+echo "configure:2500: checking for 8-bit clean memcmp" >&5
 if eval "test \"`echo '$''{'ac_cv_func_memcmp_clean'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2334,7 +2504,7 @@ else
   ac_cv_func_memcmp_clean=no
 else
   cat > conftest.$ac_ext <<EOF
-#line 2338 "configure"
+#line 2508 "configure"
 #include "confdefs.h"
 #ifdef __cplusplus
 extern "C" void exit(int);
@@ -2347,7 +2517,7 @@ main()
 }
 
 EOF
-if { (eval echo configure:2351: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest && (./conftest; exit) 2>/dev/null
+if { (eval echo configure:2521: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest && (./conftest; exit) 2>/dev/null
 then
   ac_cv_func_memcmp_clean=yes
 else
@@ -2365,12 +2535,12 @@ echo "$ac_t""$ac_cv_func_memcmp_clean" 1>&6
 test $ac_cv_func_memcmp_clean = no && LIBOBJS="$LIBOBJS memcmp.o"
 
 echo $ac_n "checking for vprintf""... $ac_c" 1>&6
-echo "configure:2369: checking for vprintf" >&5
+echo "configure:2539: checking for vprintf" >&5
 if eval "test \"`echo '$''{'ac_cv_func_vprintf'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 2374 "configure"
+#line 2544 "configure"
 #include "confdefs.h"
 /* System header to define __stub macros and hopefully few prototypes,
     which can conflict with char vprintf(); below.  */
@@ -2396,7 +2566,7 @@ vprintf();
 
 ; return 0; }
 EOF
-if { (eval echo configure:2400: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:2570: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   eval "ac_cv_func_vprintf=yes"
 else
@@ -2420,12 +2590,12 @@ fi
 
 if test "$ac_cv_func_vprintf" != yes; then
 echo $ac_n "checking for _doprnt""... $ac_c" 1>&6
-echo "configure:2424: checking for _doprnt" >&5
+echo "configure:2594: checking for _doprnt" >&5
 if eval "test \"`echo '$''{'ac_cv_func__doprnt'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 2429 "configure"
+#line 2599 "configure"
 #include "confdefs.h"
 /* System header to define __stub macros and hopefully few prototypes,
     which can conflict with char _doprnt(); below.  */
@@ -2451,7 +2621,7 @@ _doprnt();
 
 ; return 0; }
 EOF
-if { (eval echo configure:2455: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:2625: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   eval "ac_cv_func__doprnt=yes"
 else
@@ -2478,12 +2648,12 @@ fi
 for ac_func in memmem snprintf vsnprintf gettext
 do
 echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
-echo "configure:2482: checking for $ac_func" >&5
+echo "configure:2652: checking for $ac_func" >&5
 if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
   cat > conftest.$ac_ext <<EOF
-#line 2487 "configure"
+#line 2657 "configure"
 #include "confdefs.h"
 /* System header to define __stub macros and hopefully few prototypes,
     which can conflict with char $ac_func(); below.  */
@@ -2509,7 +2679,7 @@ $ac_func();
 
 ; return 0; }
 EOF
-if { (eval echo configure:2513: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
+if { (eval echo configure:2683: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest; then
   rm -rf conftest*
   eval "ac_cv_func_$ac_func=yes"
 else
@@ -2548,7 +2718,7 @@ do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
-echo "configure:2552: checking for $ac_word" >&5
+echo "configure:2722: checking for $ac_word" >&5
 if eval "test \"`echo '$''{'ac_cv_prog_MAKEINFO'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -2742,6 +2912,8 @@ s%@ZIP@%$ZIP%g
 s%@LN@%$LN%g
 s%@LN_S@%$LN_S%g
 s%@INSTALL@%$INSTALL%g
+s%@PATHSEP@%$PATHSEP%g
+s%@DIRSEP@%$DIRSEP%g
 s%@DIR_DATADIR@%$DIR_DATADIR%g
 s%@subdirs@%$subdirs%g
 s%@CC@%$CC%g
@@ -2760,9 +2932,11 @@ s%@RANLIB@%$RANLIB%g
 s%@localedir@%$localedir%g
 s%@DIR_LOCALEDIR@%$DIR_LOCALEDIR%g
 s%@MSGFMT@%$MSGFMT%g
-s%@TEXPREFIX@%$TEXPREFIX%g
-s%@TEXDIR@%$TEXDIR%g
-s%@MFDIR@%$MFDIR%g
+s%@METAFONT@%$METAFONT%g
+s%@MFONT@%$MFONT%g
+s%@METAPOST@%$METAPOST%g
+s%@MPOST@%$MPOST%g
+s%@STRIPROFF@%$STRIPROFF%g
 s%@YODL@%$YODL%g
 s%@YODL2HTML@%$YODL2HTML%g
 s%@YODL2LATEX@%$YODL2LATEX%g
