@@ -74,7 +74,7 @@ Tie_performer::acknowledge_audio_element (Audio_element_info inf)
 	  Music * left_mus = heads_to_tie_[i].event_;
 
 	  if (right_mus && left_mus
-	      && ly_equal_p (right_mus->get_property ("pitch"),
+	      && gh_equal_p (right_mus->get_property ("pitch"),
 			     left_mus->get_property ("pitch")))
 	    {
 	      an->tie_to (th);
@@ -88,7 +88,7 @@ void
 Tie_performer::start_translation_timestep ()
 {
   daddy_context_->set_property ("tieMelismaBusy",
-			      ly_bool2scm (heads_to_tie_.size ()));
+			      gh_bool2scm (heads_to_tie_.size ()));
       
 }
 
@@ -99,6 +99,7 @@ Tie_performer::stop_translation_timestep ()
     {
       heads_to_tie_.clear ();
       last_event_ = 0;
+      ties_created_ = false;
     }
   
   if (event_)
