@@ -34,8 +34,8 @@ NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
 TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 
-# not yet
-# LANGUAGES = nl
+# not yet?
+LANGUAGES = nl
 
 all: scripts linktree menuify $(LANGUAGES)
 
@@ -63,9 +63,9 @@ new:
 #	$(foreach i, $(HTML), cp -i $(i) $(LANG)/$(i:site/%=%) &&) true
 
 tree:
-	rm -rf out/site/$(LANG)
-	mkdir -p out/site/$(LANG)
-	cd out/site/$(LANG) && mkdir -p $(TREE)
+	rm -rf out/site
+	mkdir -p out/site
+	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --outdir=out $(HTML)
