@@ -4,6 +4,6 @@
  ('faq.html', 'FAQ'),
  ('automated-engraving', 'Essay'),
  ('pubs.html', 'Publications'),
- ('doneet.html', 'Donate'),
+ ('donate.html', 'Donate'),
  ('thanks.html', "Acknowledgements"),
 ]
