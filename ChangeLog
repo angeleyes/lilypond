@@ -1,3 +1,13 @@
+2004-03-13  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/about/index.html: Add note about current mailing list
+	restrictions.  Fix absolute urls.  Tidy, run indent-region.
+
+	* site/devel/participating/index.html: Fix anon CVS location.
+
+	* site/documentation.html: Replace absolute urls with relative
+	ones.  This fixes a local or mirror site.
+
 2004-03-01  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
 	* site/about/faq.html: title bug.
