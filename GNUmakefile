@@ -41,7 +41,7 @@ upload: site
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
 	chmod -R 664 . && \
-	chmod 2775 `find -type d` && \
+	chmod 2775 `find -type d` . && \
 	rsync --delete -go --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
 
 
