@@ -1,9 +1,9 @@
 /*   
-  tfm.cc --  implement Tex_font_metric
+  tfm.cc -- implement Tex_font_metric
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
   
 
   some code shamelessly copied from GNU fontutils-0.6/tfm/tfm_input.c
@@ -18,16 +18,29 @@
 Box
 Tex_font_char_metric::dimensions () const
 {
+  if (!exists_b_)
+    {
+      Box b;
+      b.set_empty ();
+      return b;
+    }
+  
   Real d = -depth_;
-  return Box (Interval (0, width_),Interval ( d <? height_, d >? height_));
+  return Box (Interval (0, width_),Interval (d <? height_, d >? height_));
 }
 
 Tex_font_char_metric::Tex_font_char_metric ()
 {
   exists_b_ = false;
   code_ = 0;;
-  width_ = height_ = depth_ = italic_correction_ = 0;
-  width_fix_ = height_fix_ = depth_fix_ = italic_correction_fix_ = 0;
+  width_ = 0;
+  height_ = 0;
+  depth_ = 0;
+  italic_correction_ = 0;
+  width_fix_ = 0;
+  height_fix_ = 0;
+  depth_fix_ = 0;
+  italic_correction_fix_ = 0;
 }
 
 #define APPEND_CHAR_METRIC_ELT(k)  outstr += to_str (#k) + " "  + to_str (k ## _)  + "; "
@@ -51,26 +64,41 @@ Tex_font_metric::Tex_font_metric ()
 {
 }
 
+
 static Tex_font_char_metric dummy_static_char_metric;
 
-Tex_font_char_metric const &
+Tex_font_char_metric const *
 Tex_font_metric::find_ascii (int ascii, bool warn) const
 {
-  if (ascii < ascii_to_metric_idx_.size() && ascii_to_metric_idx_[ascii] >= 0)
-    return char_metrics_[ascii_to_metric_idx_ [ascii]];
+  if (ascii < ascii_to_metric_idx_.size () && ascii_to_metric_idx_[ascii] >= 0)
+    return & char_metrics_[ascii_to_metric_idx_ [ascii]];
   else if (warn)
-
     {
-      warning (_f ("can't find ascii character `%d'", ascii));
-
+      warning (_f ("can't find ascii character: %d", ascii));
     }
-  return dummy_static_char_metric;  
+  return &dummy_static_char_metric;  
 }
 
-Character_metric const*
-Tex_font_metric::get_char (int a, bool w) const
+
+/*
+  UGH: glyphs need not be consecutive in TFM.
+ */
+int
+Tex_font_metric::count () const
 {
-  return &find_ascii (a, w);
+  for (int i = ascii_to_metric_idx_.size (); i--;)
+    {
+      if (ascii_to_metric_idx_[i] != -1)
+	return i + 1;
+    }
+  return 0;
+}
+
+Box
+Tex_font_metric::get_char (int a) const
+{
+  Box b = find_ascii (a)->dimensions () ;
+  return b;
 }
 
 
@@ -84,17 +112,19 @@ Tex_font_metric::str () const
   return outstr;
 }
 
-void
-Tex_font_metric::clear (int n)
-{
-  for (int i=0; i < n; i++)
-    ascii_to_metric_idx_.push (-1);
-}
 
-void
-Tex_font_metric::read_file (String name)
-{
-  Tex_font_metric_reader tfm_reader (name);
-  *this = tfm_reader.read_tfm ();
-}
 
+
+SCM
+Tex_font_metric::make_tfm (String fn)
+{
+  Tex_font_metric * tfm_p = new Tex_font_metric;
+  Tex_font_metric_reader reader (fn);
+
+  tfm_p->info_ = reader.info_;
+  tfm_p->header_ = reader.header_;
+  tfm_p->char_metrics_ = reader.char_metrics_;
+  tfm_p->ascii_to_metric_idx_ = reader.ascii_to_metric_idx_;
+  
+  return tfm_p->self_scm ();
+}
