@@ -19,7 +19,9 @@ EXT = .jpeg .ly .pdf .png
 HTML_SITE = $(shell find site -name '*.html')
 HTML = $(HTML_SITE:site/%=$(SITE)/%)
 NON_HTML = $(shell cd site && find . -false $(EXT:%=-or -name '*%'))
-TREE = $(shell find $(SITE) -type d -not -name CVS)
+##TREE = $(shell find $(SITE) -type d -not -name CVS)
+TREE_SITE = $(shell find site -type d -not -name CVS)
+TREE = $(TREE_SITE:site/%=$(SITE)/%)
 PY = $(shell find scripts site -name '*.py')
 
 ifneq ($(SITE),site)
@@ -83,9 +85,8 @@ upload: site
 	cd out/site \
 	   && chgrp -R lilypond . \
 	   && chmod -R g+w * \
-	   && chmod 2775 .
-	$$(find . -type d) \
-	      && rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
+	   && chmod 2775 . $$(find . -type d) \
+	   && rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
 
 dist:
 	mkdir $(DISTDIR)
