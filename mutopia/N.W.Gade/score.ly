@@ -56,12 +56,12 @@ copyright =	"Mats Bengtsson, 1999. Free circulation permitted and " +
       \property Staff.instr = "Cor."
       \context Voice = corI <
 	\globalNoKey
-	\stemup \property Voice.dynamicDir = \up 
+	\stemup \property Voice.dynamicDirection = \up 
 	 \property Voice.articulationScriptVerticalDirection = \up 
 	\corI 
       >
       \context Voice = corII { 
-	\stemdown \property Voice.dynamicDir = \down 
+	\stemdown \property Voice.dynamicDirection = \down 
 	 \property Voice.articulationScriptVerticalDirection = \down
 	\corII 
       }
@@ -71,12 +71,12 @@ copyright =	"Mats Bengtsson, 1999. Free circulation permitted and " +
       \property Staff.instr = "Trp."
       \context Voice = trpI <
 	\globalNoKey
-	\stemup \property Voice.dynamicDir = \up 
+	\stemup \property Voice.dynamicDirection = \up 
 	 \property Voice.articulationScriptVerticalDirection = \up 
 	\trpI
       >
       \context Voice = trpII { 
-	\stemdown \property Voice.dynamicDir = \down 
+	\stemdown \property Voice.dynamicDirection = \down 
 	 \property Voice.articulationScriptVerticalDirection = \down
 	\trpII
       }
@@ -135,8 +135,7 @@ copyright =	"Mats Bengtsson, 1999. Free circulation permitted and " +
         markScriptPadding = "20.0";
     }
     \translator { 
-%        \HaraKiriStaffContext % Gives lost bar lines and misplaced marks!!
-        \StaffContext
+        \HaraKiriStaffContext 
 	\consists "Staff_margin_engraver";
         marginScriptPadding = "15.0";
         dynamicPadding = 3.0;
