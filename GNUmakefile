@@ -1,3 +1,5 @@
+.PHONY: site
+
 SCRIPTS=$(wildcard *.py) 
 
 site: menuify renderlys
@@ -16,6 +18,15 @@ VERSION=0.0
 DISTDIR=lily-web-$(VERSION)
 
 FILES=$(SCRIPTS) GNUmakefile `find site -name '*.html' -or -name '*.py' -or -name '*.ly' -or -name '*.png'`
+
+outball=site.tar.gz
+
+out/$(outball): site
+	cd out && tar czvf $(outball) site
+
+upload: out/$(outball)
+	scp out/$(outball) lilypond.org:/var/www/lilypond/newweb/out
+	ssh lilypond.org 'cd /var/www/lilypond/newweb/out; tar vxzf $(outball)'
 
 dist:
 	mkdir $(DISTDIR)
