@@ -42,22 +42,47 @@ menu_template = '''<DIV class="menu">
 </DIV>
 '''
 
-location_template = '''<DIV class="location">
+button_row_template = '''
+<TABLE
+ cellpadding="0"
+ cellspacing="0"
+><TR>%(buttonrow)s</TR></table>'''
+
+button_row_spacer = '''<TABLE width="100%%"
+ cellpadding="1"
+ cellspacing="0">
+<tr><td class=menuactive></td></tr>
+</TABLE>
+<TABLE width="100%%"
+ cellpadding="1"
+ cellspacing="0">
+<tr><td></td></tr>
+</TABLE>
+'''
+
+
+
+location_template = '''<p class="location">
 %s
-</DIV>
+</p>
 '''
 
 # don't use mouseover magic as long as we don't have button images
 
 ## don't break line after > 
-button_template = '''<TD class="%(class)s"><A
-href="%(url)s"
->%(text)s</A>%(suffix)s</TD>'''
+button_template = '''
+<TD class=%(class)sleftedge width=1>
+</td>
+<TD class="%(class)s">
+%(contents)s
+</TD><TD class=%(class)srightedge width=1>
+</td>
+'''
 
 #
 button_active_template = '''<TD class="%(class)s"><A href="%(url)s"
 >
-%(text)s</A>%(suffix)s</TD>'''
+%(text)s</A></TD>'''
 
 
 outdir = '/tmp'
@@ -98,18 +123,24 @@ def one_tab (depth, file):
 			return ('', base)
 	
 	menu = read_menu (menu_file)
+	here_label = filter (lambda x: x[0] == here, menu)
 
-	here_label = ''
+	if not here_label:
+		here_label = ''
+	else:
+		here_label = here_label[0][1]
+
+		
 	def entry_to_label (x):
 		(file, label) = x
 		name = re.sub ("['! ]", "-", label)
 		active = 1
 
+		
 		button_dict =  {
 			'url' : '../' * depth + file,
 			'name' : name,
 			'text' : label,
-			'suffix': '',
 			'root' : '../' * depth
 		}
 		
@@ -121,25 +152,26 @@ def one_tab (depth, file):
 		else:
  			button_dict['class'] =  "menu"
 
-		# ugh.
-		if label == 'Home':
-			button_dict['suffix'] = '</td><td class=menu><b>&gt;</b>'
-		
+		contents = '<A href="%(url)s">%(text)s</A>' % button_dict
+		button_dict['contents'] = contents
+
 		button = button_template % button_dict
-
 		return button
-	
-	labels = map (entry_to_label, menu)
-	here_label = filter (lambda x: x[0] == here, menu)
 
-	if not here_label:
-		here_label = ''
-	else:
-		here_label = here_label[0][1]
+	labels = []
+	toprow = []
+	for m in menu:
+		labels.append (entry_to_label (m))		# ugh.
+		if m[1] == 'Home':
+			labels.append ('<td class="menuunclickable"><b>&gt;</b></td>')
 
 	# FIXME
-	tr_str = '<TR>%s</TR>' % string.join (labels, '')
- 	menu_str = '<TABLE>%s</TABLE>' % tr_str
+	
+	menu_str = button_row_template % {
+		'buttonrow' : string.join (labels, ''),
+	}
+	if depth> 0 or here_label:
+		menu_str = menu_str + button_row_spacer % {} 
 
 	return (menu_str, here_label)
 
@@ -236,8 +268,14 @@ def do_one_file (in_file_name):
 for (o,a) in options:
 	if o == '--outdir':
 		outdir = a
-	if o == '--help':
-		sys.stdout.write ("This script is licensed under GNU GPL")
+	elif o == '--help':
+		sys.stdout.write (r"""
+Usage:
+ format-page --outdir DIRECTORY
+
+This script is licensed under GNU GPL
+""")
+		
 	else:
 		assert unimplemented
 

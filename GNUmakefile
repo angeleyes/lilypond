@@ -13,7 +13,7 @@ site: tree menuify
 menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`
 	for a in `find site -name '*.png' -or -name '*.jpeg' -or -name '*.pdf'` ; do  cp $$a out/$$a  ;done
-	cp newweb.css out/site
+	ln newweb.css out/site
 
 tree:
 	rm -rf out

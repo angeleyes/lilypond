@@ -1,5 +1,7 @@
 2003-08-08  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
+	* site/images/hader-slaan.jpeg: rename.
+
 	* format-page.py (grab_title): (c) notice.
 
 2003-08-07  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
