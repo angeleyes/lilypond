@@ -88,7 +88,8 @@ outdir = '/tmp'
 (options, files) = getopt.getopt (sys.argv[1:], '', ['outdir=', 'help']) 
 
 def read_menu (f):
-	menu = eval (open (f).read ())
+	# {} : be safe, don't leak anything
+	menu = eval (open (f).read (), {}, {})
 	nm = []
 	for (f, l) in menu:
 		if f[-1] == '/':

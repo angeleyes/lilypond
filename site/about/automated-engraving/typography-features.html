@@ -60,7 +60,10 @@ down-stem/up-stems combinations form clumps of notes.
 <h2>Ledger lines</h2>
 
 Ledger lines are typographically difficult. They can easily blot
-together with other signs, such as ledger lines or accidentals.
+together with other signs, such as ledger lines or
+accidentals. Other software prevents these collisions by spacing the
+lines wider (thus taking up more space), or shortening ledger lines
+(which hampers readability.)  
 
 <table align=center><tr><td>
 <img src=@IMAGES@henle-ledger.png>
@@ -79,10 +82,10 @@ together with other signs, such as ledger lines or accidentals.
 </tr>
 </table>
 
-Engravers would adjust the size of a ledger line, depending on what
-symbol where in the neighborhood. LilyPond does the same: ledger are
-shortened so they never collide with neighboring lines, and they are
-shortened when there is an accidental.
+Traditional engravers would adjust the size of a ledger line,
+depending on what symbols were in the neighborhood. LilyPond does the
+same. Ledgers are shortened so they never collide with neighboring
+lines, and they are shortened when there is an accidental.
 
 
 
