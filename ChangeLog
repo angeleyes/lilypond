@@ -1,3 +1,13 @@
+2005-02-14  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/index.html: Add Validation marker.
+
+	* scripts/format-page.py (grab_gettext): Support anchors.
+
+	* scripts/format-page.py (MENU_ITEM_ACTIVE):
+	* site/template.ihtml: 
+	* site/index.html: w3c fixes.
+
 2005-02-04  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/index.html: thank bandwidth sponsor.

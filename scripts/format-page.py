@@ -75,7 +75,7 @@ MENU_ITEM = '''\
 <TD class="%%(css)srightedge" width="1"></TD>
 '''
 MENU_ITEM_INACTIVE = MENU_ITEM \
-		     % '<A class=%(css)s" href="%(url)s">%(name)s</A>'
+		     % '<A class="%(css)s" href="%(url)s">%(name)s</A>'
 MENU_ITEM_ACTIVE = MENU_ITEM \
 		   % '<A class="%(css)s" href="%(url)s">[%(name)s]</A>'
 
@@ -277,6 +277,7 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@MENU@', menu, page)
 	page = re.sub ('@SCRIPT@', script, page)
 	page = re.sub ('@TITLE@', titles[-1], page)
+	page = re.sub ('@FILE_NAME@', file_name, page)
 	page = re.sub ('@ONLOAD@', onload, page)
 	page = re.sub ('@LANG@', slang, page)
 	page = re.sub ('@.LANG@', dot_lang, page)
@@ -291,7 +292,7 @@ def format_page (html, file_name, lang):
 	# No i18n yet.
 	if 0:
 		# Strip .html, .png suffix for auto language selection.
-		page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)[\'"]''',
+		page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)(#[^"\']*)?[\'"]''',
 			       '\\1="\\2"', page)
 
 		# After stripping: no autoselection for language menu.
