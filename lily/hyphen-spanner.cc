@@ -5,92 +5,112 @@
 
   (c) 1999 Glen Prideaux <glenprideaux@iname.com>
 
-  (adapted from extender-spanner)
+ (adapted from lyric-extender)
 */
 
-/*
-  TODO: too complicated implementation.  Why the dx_drul?.
- */
-
 #include <math.h>
+
 #include "box.hh"
-#include "debug.hh"
 #include "lookup.hh"
 #include "molecule.hh"
-#include "paper-column.hh"
 #include "paper-def.hh"
 #include "hyphen-spanner.hh"
+#include "paper-column.hh"
+#include "spanner.hh"
+#include "item.hh"
 
-Hyphen_spanner::Hyphen_spanner ()
-  : Directional_spanner ()
+MAKE_SCHEME_CALLBACK (Hyphen_spanner,brew_molecule,1)
+
+SCM 
+Hyphen_spanner::brew_molecule (SCM smob)
 {
-  dx_f_drul_[LEFT] = dx_f_drul_[RIGHT] = 0.0;
-}
+  Spanner * sp = dynamic_cast<Spanner*> (unsmob_grob (smob));
 
-// UGH - is this even used?
-Offset
-Hyphen_spanner::center () const
-{
-  Real dx = extent (X_AXIS).length ();
-
-  return Offset (dx / 2, 0);
-}
-
-Molecule*
-Hyphen_spanner::do_brew_molecule_p () const
-{
-  Molecule* mol_p = new Molecule;
-
-  Real w = extent (X_AXIS).length ();
-
-  w += (dx_f_drul_[RIGHT] - dx_f_drul_[LEFT]);
-
-  Real th = paper_l ()->get_realvar (hyphen_thickness_scm_sym);
-  Real h = paper_l ()->get_realvar (hyphen_height_scm_sym);
-
-  // UGH. First try: just make the hyphen take 1/3 of the available space  
-  // for length, use a geometric mean of the available space and some minimum
-  Real l = paper_l ()->get_realvar (hyphen_minimum_length_scm_sym);
-  if(l < w)
-    l = sqrt(l*w);
-  Molecule a = lookup_l ()->filledbox ( Box (Interval ((w-l)/2,(w+l)/2), Interval (h,h+th)));
-  a.translate (Offset (dx_f_drul_[LEFT], 0));
-
-  mol_p->add_molecule (a);
-
-  return mol_p;
-}
-
-Interval
-Hyphen_spanner::do_height () const
-{
-  return Interval (0,0);
-}
-
-void
-Hyphen_spanner::do_post_processing ()
-{
-  // UGH
-  Real nw_f = paper_l ()->note_width () * 0.8;
-
+  Grob * common = sp;
   Direction d = LEFT;
   do
     {
-      Item* t = spanned_drul_[d]
-	? spanned_drul_[d] : spanned_drul_[(Direction)-d];
-      if (d == LEFT)
-        dx_f_drul_[d] += t->extent (X_AXIS).length ();
-      else
-	dx_f_drul_[d] -= d * nw_f / 2;
+      common = common->common_refpoint (sp->get_bound (d), X_AXIS);
     }
-  while (flip(&d) != LEFT);
-}
+  while (flip (&d) != LEFT);
+  Interval bounds;
+  
+  do
+    {
+      Interval iv = sp->get_bound (d)->extent (common, X_AXIS);
 
+      bounds[d] = iv.empty_b ()
+	? sp->get_bound (d)->relative_coordinate (common, X_AXIS)
+	: iv[-d];
+    }
+  while (flip (&d) != LEFT);
+  
+  Real lt = sp->paper_l ()->get_var ("stafflinethickness");
+  Real th = gh_scm2double (sp->get_grob_property ("thickness")) * lt ;
+  Real h = gh_scm2double (sp->get_grob_property ("height"));
+
+  // interval?
+  Real l = gh_scm2double (sp->get_grob_property ("minimum-length"));  
+  Real x = gh_scm2double (sp->get_grob_property ("maximum-length"));
+  // The hyphen can exist in the word space of the left lyric ...
+  SCM space =  sp->get_bound (LEFT)->get_grob_property ("word-space");
+  if (gh_number_p (space))
+    {
+      bounds[LEFT] -=  gh_scm2double (space);
+    }
+
+  /*
+    we should probably do something more intelligent when bounds is
+    empty, but at least this doesn't crash.
+  */      
+  Real w  = bounds.empty_b () ? 0 : bounds.length ();
+  
+  /* for length, use a geometric mean of the available space and some minimum
+   */
+  if (l < w)
+    {
+      l = sqrt (l*w);
+      if (l > x)
+	l = x;
+    }
+  else
+    {
+      /* OK, we have a problem. Usually this means that we're on the
+         first column, and we have a long lyric which extends to near
+         the offset for stuff */
+      /* This test for being on the first column has been shamelessly
+         ripped from spanner.cc */
+      Paper_column *sc = dynamic_cast<Paper_column*> (sp->get_bound (LEFT)->column_l ());
+      if (sc != NULL &&
+	  sc->break_status_dir () == RIGHT)
+	{
+	  /* We are on the first column, so it's probably harmless to
+             get the minimum length back by extending leftwards into
+             the space under the clef/key sig/time sig */
+	  bounds[LEFT] = bounds[RIGHT] - l;
+	}
+      else 
+	{
+	  /* We can't get the length desired. Maybe we should warn. */
+	  l = w;
+	}
+    }
+  Box b (Interval (-l/2,l/2), Interval (h,h+th));
+  Molecule mol (Lookup::filledbox (b));
+  Real ct = bounds.empty_b () ? 0 : bounds.center () ;
+  mol.translate_axis (ct -sp->relative_coordinate (common, X_AXIS), X_AXIS);
+  return mol.smobbed_copy ();
+}
   
 void
-Hyphen_spanner::set_textitem (Direction d, Item* textitem_l)
+Hyphen_spanner::set_textitem (Direction d, Grob* b)
 {
-  set_bounds (d, textitem_l);
-  add_dependency (textitem_l);
+  elt_l_->set_bound (d, b);
+  elt_l_->add_dependency (b);
+}
+
+Hyphen_spanner::Hyphen_spanner (Spanner*s)
+{
+  elt_l_ = s;
 }
 
