@@ -236,11 +236,9 @@ stable branch.
 
 <p>
 LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file.
-Then LilyPond is run on it by invoking the <tt>lilypond</tt>, scripts
-which takes run the actual <tt>lilypond-bin</tt> program to format the
-music, and adds titling information and page layout.  The resulting
-PS, PDF and DVI can be viewed with T<sub>E</sub>X's DVI tools or
-standard Postscript/PDF viewers.
+When LilyPond is run on it, the input is transpormed into music
+notation, which can be written to disk as  
+PostScript, PDF,  T<sub>E</sub>X or PNG.
 <p>
 
 
@@ -290,9 +288,8 @@ redefined. LilyPond has a structured input syntax, in the form of an
 context-free grammar. As such, it is less flexible, but it is also
 harder to make entry errors.
 <p>
-LilyPond does make use of TeX: TeX is the default output format, LaTeX
-is used for formatting the titles, and it is possible to enter TeX
-macros in texts (such as lyrics).
+LilyPond can dumping the notation as TeX file, to be processed by
+LaTeX.
 <p>
 
 <h3>LilyPond is about music and is related to TeX, so it is
@@ -304,38 +301,13 @@ OpusTeX, MuTex) for typesetting music. There is no relation between
 LilyPond and any of these packages: they are not needed to run
 LilyPond.
 <p>
-We once have developed MPP, a predecessor to LilyPond, which was a
+We once developed MPP, the predecessor to LilyPond, which was a
 MusiXTeX preprocessor. However, this approach was abandoned in 1996
-when we concluded that good automated typography is impossible to
+when we concluded that good automated formatting is impossible to
 achieve with MusiXTeX.
  
 <p>
 
-<h3>Why are you using TeX for LilyPond?</h3>
-<p>
-There are a couple of reasons:
-
-<ul>
-<li>LilyPond has no  mechanism for handling page breaks. This is
-conveniently provided by TeX
-
-<li>TeX is very powerful when it comes to setting text. The text for
-lyrics or titling is set with TeX, so it allows for a lot of
-formatting options. For example, it is possible to use foreign scripts
-for the lyrics.
-
-</ul>
-
-Of course, the output obtained through TeX can be converted to usable
-PostScript, and PDF which renders nicely on screen. This PostScript
-can be rendered as PNG images for use on webservers.
-
-<! LilyPond is in fact not limited to TeX. The program design allows
-for other output formats. In particular, LilyPond has direct
-PostScript output, but for the reasons listed here, it is not
-practical for real use. >
-
-<p>
 
 <h3>How do I learn the syntax?</h3>
 <p>
