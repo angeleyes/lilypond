@@ -1,5 +1,8 @@
 #!@PYTHON@
 
+
+# TODO: Rewrite this.  The control structure is too hairy.
+
 """
 =======================================================================
 LilyPond to dvi converter
@@ -14,7 +17,7 @@ Output: DVI file
 """
 
 name = 'ly2dvi'
-version = '0.0.13'
+version = '@TOPLEVEL_VERSION@'
 errorlog = ''
 
 import sys
@@ -26,11 +29,14 @@ import time
 import glob
 import tempfile
 
+os.environ['LANG'] = ''		# Can't grep localized msgs
+
+
 
 class Input:
     """
     This class handles all ly2dvi.py input file methods
-
+    
     Public methods:
     
     __init__()  Constructor
@@ -468,7 +474,8 @@ class Properties:
         if os.environ.has_key('TMP'):
             this.__set('tmp',os.environ['TMP'],'environment')
 
-        
+
+    def read_titledefs (this):
 	fd=this.get_texfile_path ('titledefs.tex')
         mudefs=[]    
 
@@ -918,7 +925,7 @@ def writeLilylog(file,contents):
 def getTeXFile(contents):
     texfiles=[]
     for line in string.split(contents,'\n'):
-        m = re.search('^Paper output to (.+)\.\.\.', line)
+        m = re.search('^paper output to (.+)\.\.\.', line)
         if m:
             texfiles.append(m.group(1))
 
@@ -939,7 +946,7 @@ def unc2dos(path):
     
 
 def program_id ():
-    return name + ' ' + version;
+    return 'ly2dvi (GNU lilypond) ' + version;
 
 
 def mailaddress():
@@ -952,32 +959,36 @@ def mailaddress():
 def identify ():
     sys.stderr.write (program_id () + '\n')
 
+def print_version ():
+    sys.stdout.write (program_id () + '\n')
+
 def help ():
-    sys.stderr.write (
-        'Generate dvi file from mudela or lilypond output\n'
-        'Usage: ' + name + ' [OPTION]... [FILE]...\n'
-        '\n'
-        'Options:\n'
-        '  -D,--debug           increase verbosity\n'
-        '  -F,--headers=        name of additional LaTeX headers file\n'
-        '  -H,--Height=         set paper height (points) (see manual page)\n'
-        '  -I,--include=DIR     add DIR to LilyPond\'s search path\n'
-        '  -K,--keeplilypond    keep lilypond output files\n'
-        '  -L,--landscape       set landscape orientation\n'
-        '  -N,--nonumber        switch off page numbering\n'
-        '  -O,--orientation=    set orientation (obsolete - use -L instead)\n'
-        '  -P,--postscript      generate postscript file\n'
-        '  -W,--Width=          set paper width (points) (see manual page)\n'
-        '  -M,--dependencies    tell lilypond make a dependencies file\n'
-        '  -h,--help            this help text\n'
-        '  -k,--keeply2dvi      keep ly2dvi output files\n'
-        '  -l,--language=       give LaTeX language (babel)\n'
-        '  -o,--output=         set output directory\n'
-        '  -p,--papersize=      give LaTeX papersize (eg. a4)\n'
-        '  -s,--separate        run all files separately through LaTeX\n'
-        '\n'
-        'files may be (a mix of) input to or output from lilypond(1)\n'
-        )
+    sys.stdout.write (
+"""Usage: %s [OPTION]... [FILE]...
+
+Generate dvi file from mudela or lilypond output
+
+Options:
+  -D,--debug           increase verbosity
+  -F,--headers=        name of additional LaTeX headers file
+  -H,--Height=         set paper height (points) (see manual page)
+  -I,--include=DIR     add DIR to LilyPond\'s search path
+  -K,--keeplilypond    keep lilypond output files
+  -L,--landscape       set landscape orientation
+  -N,--nonumber        switch off page numbering
+  -O,--orientation=    set orientation (obsolete - use -L instead)
+  -P,--postscript      generate postscript file
+  -W,--Width=          set paper width (points) (see manual page)
+  -M,--dependencies    tell lilypond make a dependencies file
+  -h,--help            this help text
+  -k,--keeply2dvi      keep ly2dvi output files
+  -l,--language=       give LaTeX language (babel)
+  -o,--output=         set output directory
+  -p,--papersize=      give LaTeX papersize (eg. a4)
+  -s,--separate        run all files separately through LaTeX
+
+files may be (a mix of) input to or output from lilypond(1)
+""" % name)
 
 
 
@@ -999,7 +1010,7 @@ def main():
                                        'include=', 'keeplilypond', 'landscape',
                                        'nonumber', 'Width=', 'dependencies',
                                        'help', 'keeply2dvi', 'language=',
-                                       'output=', 'papersize=', 'separate',
+                                       'output=', 'version', 'papersize=', 'separate',
                                        'postscript'])
     for opt in options:
         o = opt[0]
@@ -1024,7 +1035,7 @@ def main():
 	    Props.setDependencies(1,'commandline')
         elif o == '--help' or o == '-h':
             help()
-            return 0
+	    return 0
         elif o == '--keeply2dvi' or o == '-k':
 	    Props.setKeeply2dvi(1,'commandline')
         elif o == '--language' or o == '-l':
@@ -1037,7 +1048,13 @@ def main():
 	    Props.setSeparate(1,'commandline')
         elif o == '--postscript' or o == '-P':
 	    Props.setPostscript(1,'commandline')
-
+	elif o == '--version':
+	    print_version ()
+	    return 0
+	    
+    identify()
+    Props.read_titledefs ()
+    
     if len(files):
         for file in files:
             infile.open(file)
@@ -1132,7 +1149,6 @@ def cleanup():
             os.remove(file)
 
 
-identify()
 Props = Properties()
 
 try:
