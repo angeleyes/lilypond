@@ -1,3 +1,8 @@
+1.4.13.mb1
+==========
+
+* Include lilypond-indent.el in Redhat, SUSE and Debian distr.
+
 lilypond_1_4
 ============
 
