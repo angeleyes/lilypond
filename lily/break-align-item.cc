@@ -1,45 +1,99 @@
 /*
-  break-align-item.cc -- implement Break_align_item
+  break-align-item.cc -- implement Break_align_interface
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "dimension-cache.hh"
+
+#include <math.h>
+#include <libc-extension.hh>	// isinf
+
+#include "side-position-interface.hh"
+#include "axis-group-interface.hh"
+#include "warn.hh"
 #include "lily-guile.hh"
 #include "break-align-item.hh"
 #include "dimensions.hh"
-#include "paper-score.hh"
 #include "paper-def.hh"
 #include "paper-column.hh"
+#include "group-interface.hh"
+#include "align-interface.hh"
 
-/*
-  Handle spacing for prefatory matter. 
+MAKE_SCHEME_CALLBACK (Break_align_interface,before_line_breaking,1);
 
+SCM
+Break_align_interface::before_line_breaking (SCM smob)
+{
+  Grob* me = unsmob_grob (smob);
+  do_alignment (me);
+  return SCM_UNSPECIFIED;
+}
+MAKE_SCHEME_CALLBACK (Break_align_interface,alignment_callback,2);
 
+SCM
+Break_align_interface::alignment_callback (SCM element_smob, SCM axis)
+{
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
 
-  TODO: rewrite this.  It is kludgy
-*/
+  assert (a == X_AXIS);
+  Grob *par = me->parent_l (a);
+  if (par && !to_boolean (par->get_grob_property ("break-alignment-done")))\
+    {
+      par->set_grob_property ("break-alignment-done", SCM_BOOL_T);
+      Break_align_interface::do_alignment (par);
+    }
+    
+  return gh_double2scm (0);
+}
+
+MAKE_SCHEME_CALLBACK (Break_align_interface,self_align_callback,2);
+SCM
+Break_align_interface::self_align_callback (SCM element_smob, SCM axis)
+{
+  Grob *me = unsmob_grob (element_smob);
+  Axis a = (Axis) gh_scm2int (axis);
+  assert (a == X_AXIS);
+  
+  Item* item = dynamic_cast<Item*> (me);
+  Direction bsd = item->break_status_dir ();
+  if (bsd == LEFT)
+    {
+      me->set_grob_property ("self-alignment-X", gh_int2scm (RIGHT));
+    }
+
+  /*
+    Force break alignment itself to be done first, in the case
+   */
+  
+  
+  return Side_position_interface::aligned_on_self (element_smob, axis);  
+}
 
 void
-Break_align_item::do_pre_processing()
+Break_align_interface::add_element (Grob*me, Grob *toadd)
 {
-  if (break_status_dir() == LEFT)
-    align_dir_ = LEFT;
-  else
-    align_dir_ = RIGHT;
+  Axis_group_interface::add_element (me, toadd);
+}
+
+void
+Break_align_interface::do_alignment (Grob *me)
+{
+  Item * item = dynamic_cast<Item*> (me);
+  Item *column = item->column_l ();
+
+  Link_array<Grob> elems;
+  Link_array<Grob> all_elems
+    = Pointer_group_interface__extract_elements (me, (Grob*)0,
+						 "elements");
   
-  flip (&align_dir_);
-  sort_elements ();
-  Real interline= paper_l ()->get_realvar (interline_scm_sym);	
-  
-  Link_array<Score_element> elems;
-  for (int i=0; i < elem_l_arr_.size(); i++) 
+  for (int i=0; i < all_elems.size (); i++) 
     {
-      Interval y = elem_l_arr_[i]->extent(axis ());
-      if (!y.empty_b())
-	elems.push (dynamic_cast<Score_element*> (elem_l_arr_[i]));
+      Interval y = all_elems[i]->extent (all_elems[i], X_AXIS);
+      if (!y.empty_b ())
+	elems.push (dynamic_cast<Grob*> (all_elems[i]));
     }
   
   if (!elems.size ())
@@ -47,10 +101,10 @@ Break_align_item::do_pre_processing()
 
   SCM symbol_list = SCM_EOL;
   Array<Real> dists;
-  SCM current_origin = ly_ch_C_to_scm ("");
+  SCM current_origin = ly_symbol2scm ("none");
   for (int i=0; i <= elems.size (); i++)
     {
-      Score_element *next_elt  = i < elems.size ()
+      Grob *next_elt  = i < elems.size ()
 	? elems[i]
 	: 0 ;
       
@@ -58,129 +112,144 @@ Break_align_item::do_pre_processing()
 
       if (next_elt)
 	{
-	  next_origin = next_elt->get_elt_property (origin_scm_sym);
+	  next_origin = next_elt->get_grob_property ("break-align-symbol");
 	  next_origin =
-	    (next_origin == SCM_BOOL_F)
-	    ? ly_ch_C_to_scm ("")
-	    : SCM_CDR (next_origin);
+	    gh_symbol_p (next_origin)? 
+	    next_origin : ly_symbol2scm ("none")
+;
 	}
       else
-	next_origin = ly_ch_C_to_scm ("begin-of-note");
-      
-      SCM extra_space
-	= scm_eval (scm_listify (ly_symbol ("break-align-spacer"),
-				 current_origin, next_origin, SCM_UNDEFINED)); 
-      SCM symbol = SCM_CAR (extra_space);
-      Real spc = gh_scm2double (SCM_CADR(extra_space));
-      spc *= interline;
+	next_origin = ly_symbol2scm ("begin-of-note");
 
-      dists.push(spc);
+      SCM alist = me->get_grob_property ("space-alist");
+      SCM e = scm_assoc (scm_listify (current_origin,
+				      next_origin,
+				      SCM_UNDEFINED), alist);
+          
+      SCM extra_space;
+      if (e != SCM_BOOL_F)
+	{
+	  extra_space = gh_cdr (e);
+	}
+      else
+	{
+	  warning (_f ("unknown spacing pair `%s', `%s'",
+		       ly_symbol2string (current_origin),
+		       ly_symbol2string (next_origin)));
+	  extra_space = scm_listify (ly_symbol2scm ("minimum-space"), gh_double2scm (0.0), SCM_UNDEFINED);
+	}
+
+      SCM symbol = gh_car (extra_space);
+      Real spc = gh_scm2double (gh_cadr (extra_space));
+
+      dists.push (spc);
       symbol_list = gh_cons (symbol, symbol_list);
       current_origin = next_origin;
     }
 
 
   // skip the first sym.
-  symbol_list  = SCM_CDR (scm_reverse (symbol_list));
-  for (int i=0; i <elems.size()-1; i++)
+  symbol_list  = gh_cdr (scm_reverse (symbol_list));
+  for (int i=0; i <elems.size ()-1; i++)
     {
-      elems[i]->set_elt_property (SCM_CAR (symbol_list),
+      elems[i]->set_grob_property (gh_car (symbol_list),
 				  scm_cons (gh_double2scm (0),
 					    gh_double2scm (dists[i+1])));
 
-      symbol_list = SCM_CDR (symbol_list);
+      symbol_list = gh_cdr (symbol_list);
     }
 
 
   // urg
-  SCM first_pair = elems[0]->get_elt_property (minimum_space_scm_sym);
-  if (first_pair == SCM_BOOL_F)
-    first_pair = gh_cons (gh_double2scm (0.0), gh_double2scm (0.0));
+  SCM first_pair = elems[0]->get_grob_property ("minimum-space");
+  if (gh_pair_p (first_pair))
+    first_pair = first_pair;
   else
-    first_pair = SCM_CDR (first_pair);
+    first_pair = gh_cons (gh_double2scm (0.0), gh_double2scm (0.0));
   
   scm_set_car_x (first_pair, gh_double2scm (-dists[0]));
-  elems[0]->set_elt_property (minimum_space_scm_sym, first_pair);
-  
-  Axis_align_item::do_pre_processing();
+  elems[0]->set_grob_property ("minimum-space", first_pair);
 
+  Direction bsd = item->break_status_dir ();
+  if (bsd == LEFT)
+    {
+      me->set_grob_property ("self-alignment-X", gh_int2scm (RIGHT));
+    }
 
-  Real pre_space = elems[0]->extent (X_AXIS)[LEFT]
-    + elems[0]->relative_coordinate (column_l (), X_AXIS);
-  Real spring_len = elems.top ()->extent (X_AXIS)[RIGHT]
-    + elems.top ()->relative_coordinate (column_l (), X_AXIS);
+  /*
+    Force callbacks for alignment to be called   
+  */
+  Align_interface::align_elements_to_extents (me, X_AXIS);
+
+  Real pre_space = elems[0]->relative_coordinate (column, X_AXIS);
+
+  Real xl = elems[0]->extent (elems[0],X_AXIS)[LEFT];
+  if (!isinf (xl))
+    pre_space += xl;
+  else
+    programming_error ("Infinity reached. ");
+
+  Real xr = elems.top ()->extent (elems.top (), X_AXIS)[RIGHT];
+  Real spring_len = elems.top ()->relative_coordinate (column, X_AXIS);
+  if (!isinf (xr))
+    spring_len += xr;
+  else
+    programming_error ("Infinity reached.");
   
   Real stretch_distance =0.;
   
-  if (SCM_CAR (symbol_list) == extra_space_scm_sym)
+  if (gh_car (symbol_list) == ly_symbol2scm ("extra-space"))
     {
       spring_len += dists.top ();
       stretch_distance = dists.top ();
     }
-  else if (SCM_CAR (symbol_list) == minimum_space_scm_sym)
+  else if (gh_car (symbol_list) == ly_symbol2scm ("minimum-space"))
     {
       spring_len = spring_len >? dists.top ();
       stretch_distance = spring_len;
     }
 
+  
   /*
     Hint the spacing engine how much space to put in.
 
-
     The pairs are in the format of an interval (ie. CAR <  CDR).
   */
-  column_l ()->set_elt_property (extra_space_scm_sym,
-				 scm_cons (gh_double2scm (pre_space),
-					   gh_double2scm (spring_len)));
+  /*
+    UGH UGH UGH
 
-  column_l ()->set_elt_property (stretch_distance_scm_sym,
-				 gh_cons (gh_double2scm (-dists[0]),
-					  gh_double2scm (stretch_distance)));
-				 
+    This is a side effect, and there is no guarantee that this info is
+    computed at a "sane" moment.
+
+ (just spent some time tracking a bug that was caused by this info
+    being written halfway:
+
+    self_alignment_callback (*)
+    -> child->relative_coordinate (self)
+    -> break_alignment
+    -> child->relative_coordinate (column)
+
+    the last call incorporates the value that should've been computed
+    in (*), but--of course-- is not yet.
+
+    The result is that an offsets of align_elements_to_extents () are
+    not compensated for, and spring_len is completely off.
+
+    
+  */
+  column->set_grob_property ("extra-space",
+			    scm_cons (gh_double2scm (pre_space),
+				      gh_double2scm (spring_len)));
+
+  column->set_grob_property ("stretch-distance",
+			    gh_cons (gh_double2scm (-dists[0]),
+				     gh_double2scm (stretch_distance)));
 }
 
-
-
-Break_align_item::Break_align_item ()
-{
-  stacking_dir_ = RIGHT;
-  set_axis (X_AXIS);
-}
 
 void
-Break_align_item::add_breakable_item (Item *it)
+Break_align_interface::set_interface (Grob*me)
 {
-  SCM pr = it->remove_elt_property (break_priority_scm_sym); 
-
-  if (pr == SCM_BOOL_F)
-    return;
-
-  int priority = gh_scm2int (SCM_CDR (pr));
-
-  Score_element * column_l = get_elt_by_priority (priority);
-  Axis_group_item * hg=0;
-  if (column_l)
-    {
-      hg = dynamic_cast<Axis_group_item*> (column_l);
-    }
-  else
-    {
-      hg = new Axis_group_item;
-      hg->set_axes (X_AXIS,X_AXIS);
-
-      /*
-	this is quite ridiculous, but we do this anyway, to ensure that no
-	warning bells about missing Y refpoints go off later on.
-      */
-      hg->set_parent (this, Y_AXIS);
-      hg->set_elt_property (ly_symbol ("origin"), ly_ch_C_to_scm (it->name ()));
-
-      pscore_l_->typeset_element (hg);
-      add_element_priority (hg, priority);
-
-      if (priority == 0)
-	center_l_ = hg;
-    }
-  
-  hg->add_element (it);
+  Align_interface::set_interface (me); 
+  Align_interface::set_axis (me,X_AXIS);
 }
