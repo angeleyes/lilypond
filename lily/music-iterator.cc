@@ -28,6 +28,8 @@
 #include "grace-music.hh"
 #include "lyric-combine-music.hh"
 #include "lyric-combine-music-iterator.hh"
+#include "auto-change-music.hh"
+#include "auto-change-iterator.hh"
 
 void
 Music_iterator::do_print() const
@@ -38,17 +40,17 @@ void
 Music_iterator::print() const
 {
 #ifndef NPRINT
-  if (!check_debug)
+  if (!flower_dstream)
     return ;
-  DOUT << classname(this) << "{";
+  DEBUG_OUT << classname(this) << "{";
   Translator_group *t =     report_to_l();
-  DOUT << "report to " << t->type_str_ << " = " << t->id_str_ << "\n";
+  DEBUG_OUT << "report to " << t->type_str_ << " = " << t->id_str_ << "\n";
   if (ok())
-    DOUT << "next at " << next_moment() << " ";
+    DEBUG_OUT << "next at " << next_moment() << " ";
   else
-    DOUT << "not feeling well today..";
+    DEBUG_OUT << "not feeling well today..";
   do_print();
-  DOUT << "}\n";
+  DEBUG_OUT << "}\n";
 #endif
 }
 
@@ -115,7 +117,9 @@ Music_iterator*
 Music_iterator::static_get_iterator_p (Music const *m)
 {
   Music_iterator * p =0;
-  
+
+  /* It would be nice to do this decentrally, but the order of this is
+     significant.  */
   if (dynamic_cast<Request_chord  const *> (m))
     p = new Request_chord_iterator;
   else if (dynamic_cast<Lyric_combine_music const*> (m))
@@ -131,7 +135,9 @@ Music_iterator::static_get_iterator_p (Music const *m)
   else if (dynamic_cast<Time_scaled_music  const *> (m))
     p = new Time_scaled_music_iterator;
   else if (dynamic_cast<Grace_music const*> (m))
-    p = new Grace_iterator;      
+    p = new Grace_iterator;
+  else if (dynamic_cast<Auto_change_music const*> (m))
+    p = new Auto_change_iterator;
   else if (dynamic_cast<Music_wrapper  const *> (m))
     p = new Music_wrapper_iterator;
   else if (Repeated_music const * n = dynamic_cast<Repeated_music const *> (m))

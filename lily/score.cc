@@ -59,6 +59,7 @@ Score::run_translator (Music_output_def *odef_l)
   *mlog << '\n' << _("Interpreting music...") << flush;
   trans_p->last_mom_ = music_p_->length_mom ();
 
+
   Music_iterator * iter = Music_iterator::static_get_iterator_p (music_p_);
   iter->init_translator(music_p_, trans_p);
 
@@ -67,7 +68,7 @@ Score::run_translator (Music_output_def *odef_l)
   if (! iter->ok())
     {
       delete iter;
-      warning (_("need music in a score"));
+      warning (_("Need music in a score"));
       errorlevel_i_ =1;
       return ;
     }
@@ -80,12 +81,12 @@ Score::run_translator (Music_output_def *odef_l)
   if (errorlevel_i_)
     {
       // should we? hampers debugging.
-      warning (_ ("errors found, /*not processing score*/"));
+      warning (_ ("Errors found/*, not processing score*/"));
     }
 
   Music_output * output = trans_p->get_output_p();
   delete trans_p;
-  *mlog << endl << _f ("time: %.2f seconds",  timer.read ()) << flush;
+  *mlog << endl << _f ("elapsed time: %.2f seconds",  timer.read ()) << flush;
 
   output->header_l_ = header_p_;
   output->origin_str_ =  location_str();
@@ -117,11 +118,11 @@ void
 Score::print() const
 {
 #ifndef NPRINT
-  DOUT << "score {\n";
+  DEBUG_OUT << "score {\n";
   music_p_ -> print ();
   for (int i=0; i < def_p_arr_.size (); i++)
     def_p_arr_[i]->print();
-  DOUT << "}\n";
+  DEBUG_OUT << "}\n";
 #endif
 }
 

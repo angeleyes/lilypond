@@ -142,7 +142,7 @@ Unfolded_repeat_iterator::do_process_and_next (Moment m)
       if (yeah)
 	set_translator (yeah->report_to_l ());
       else
-	music_l_->warning ( _("No one to print a volta bracket"));
+	music_l_->warning ( _("no one to print a volta bracket"));
     }
   while (1)
     {
@@ -165,8 +165,8 @@ void
 Unfolded_repeat_iterator::do_print () const
 {
 #ifndef NPRINT
-  DOUT << "count " << done_count_ << "done time " << done_mom_ << '\n';
-  DOUT << "current: ";
+  DEBUG_OUT << "count " << done_count_ << "done time " << done_mom_ << '\n';
+  DEBUG_OUT << "current: ";
   current_iter_p_->print();
 #endif
 }
