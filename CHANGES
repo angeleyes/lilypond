@@ -1,6 +1,9 @@
 1.4.14.hwjc1
 ============
 
+* backport Workaround for broken Debian gcc version string: 'gcc
+  (GCC) 3.1.1 20020606 (Debian prerelease)'
+
 * glossary: silly bugfix for lilypond-book.
 
 * Documentation/topdocs/INSTALL.texi (Top): Remove generic Guile
