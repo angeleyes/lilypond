@@ -2,6 +2,13 @@
 
 
 
+<!--
+
+NOTE: avoid `HERE' as name for links, use descriptive link names like
+  <a href=>Download LilyPond 2.5.16</a>
+
+!-->
+
 <dt>March 20, 2005</dt>
 <dd>
 LilyPond 2.5.16 is out. This release fixes a few minor but irritating
