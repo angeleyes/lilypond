@@ -19,7 +19,8 @@ The point &amp; shoot method for Windows is documented <a
 href=windows.html>here</a>.
 
 <ul>
-<li>Open a terminal window, and type
+<li>Open a terminal window (Windows users: double click the "Cygwin"
+icon), and type
 
 <pre>
      lilypond --help
@@ -27,20 +28,18 @@ href=windows.html>here</a>.
 in your window.
 You should see something similar to
 <pre>
-     GNU LilyPond 1.8.0
-     Usage: lilypond [OPTION]... FILE...
-     
-     Typeset music and or play MIDI from FILE
-     
-     LilyPond is a music typesetter.  It produces beautiful sheet music
-     using a high level description file as input.  LilyPond is part of
-     the GNU Project.
-     
-     Options:
-       -h,--help             this help
-     [..]
+	Usage: lilypond [OPTIONS]... FILE
+
+	Run LilyPond, add titles, generate printable document.
+
+	Options:
+	  -d, --dependencies             write Makefile dependencies for every input file
+	  -h, --help                     print this help
+	      --debug                    print even more output
+
+	      [..]
 </pre>     
-<p>
+	<p>
 
 If you see this, you have the program installed, and you can run it.
 <li>Start your favorite text editor (Windows users:
@@ -53,11 +52,14 @@ run <tt>notepad</tt>).
 </pre>
 <li>
  
-Save it as <tt>test.ly</tt>. Exit the editor
+Save it as <tt>test.ly</tt>.   Exit the editor.
+
+<p>
+Windows users: make sure it is not saved as <code>test.ly.txt</code>
 
 <li> Run 
 <pre>
-     ly2dvi -p test
+     lilypond test
 </pre>
 
 If everything works well, it  should say
@@ -65,8 +67,12 @@ If everything works well, it  should say
      DVI output `test.dvi'...
      PS output to `test.ps'...
      PDF output to `test.pdf'...
-</pre>     
+</pre>
 
+
+<em>
+NOTE: users of LilyPond 1.8 and earlier say: <tt>ly2dvi -p test</tt>
+</em>
 <li>
 View the PDF file. Try these commands 
 <pre>
@@ -76,11 +82,7 @@ View the PDF file. Try these commands
    acroread test.pdf
    ghostview test.pdf
 </pre>
-(Windows users: double click the "Cygwin" icon)i
 
- (make sure it is not saved as
- <code>test.ly.txt</code>)
- 
 Windows users: go to folder C: -&gt; CYGWIN -&gt; HOME -&gt;
 <em>your-user-name</em>, and double click <tt>test.pdf</tt>.
 
