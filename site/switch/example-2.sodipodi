@@ -33,67 +33,67 @@ t</tspan>
        x="52.9841156"
        y="382.407318"
        sodipodi:role="line"
-       id="tspan603">
+       id="tspan626">
 </tspan>
     <tspan
        x="52.9841156"
        y="410.407318"
        sodipodi:role="line"
-       id="tspan605">
+       id="tspan628">
 \score {</tspan>
     <tspan
        x="52.9841156"
        y="438.407318"
        sodipodi:role="line"
-       id="tspan607">
+       id="tspan630">
 		\notes \relative c''  {</tspan>
     <tspan
        x="52.9841156"
        y="466.407318"
        sodipodi:role="line"
-       id="tspan609">
+       id="tspan632">
 				\key c \minor</tspan>
     <tspan
        x="52.9841156"
        y="494.407318"
        sodipodi:role="line"
-       id="tspan611">
+       id="tspan634">
 				g(</tspan>
     <tspan
        x="52.9841156"
        y="522.407318"
        sodipodi:role="line"
-       id="tspan613">
+       id="tspan636">
 				&lt;ees c'&gt;)</tspan>
     <tspan
        x="52.9841156"
        y="550.407318"
        sodipodi:role="line"
-       id="tspan615">
+       id="tspan638">
 				&lt;d f gis b&gt;-.</tspan>
     <tspan
        x="52.9841156"
        y="578.407318"
        sodipodi:role="line"
-       id="tspan617">
+       id="tspan640">
 				&lt;ees g bes&gt;-.</tspan>
     <tspan
        x="52.9841156"
        y="606.407318"
        sodipodi:role="line"
-       id="tspan619">
+       id="tspan642">
 		}</tspan>
     <tspan
        x="52.9841156"
        y="634.407318"
        sodipodi:role="line"
-       id="tspan621">
+       id="tspan644">
 }</tspan>
     <tspan
        x="52.9841156"
        y="662.407318"
        sodipodi:role="line"
-       id="tspan623">
+       id="tspan646">
 </tspan>
   </text>
   <rect
@@ -208,15 +208,14 @@ t</tspan>
   <text
      style="fill:#00009e;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1.25;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;stroke-dasharray:none;"
      x="402.129059"
-     y="495.375763"
+     y="495.375732"
      id="text694">
     <tspan
        x="402.129059"
-       y="495.375763"
+       y="495.375732"
        sodipodi:role="line"
-       id="tspan709"
-       style="stroke:none;stroke-opacity:1;stroke-width:1.25;stroke-dasharray:none;fill:#00009e;fill-opacity:1;">
-Add articulations with dashes</tspan>
+       id="tspan648">
+Add articulations</tspan>
   </text>
   <text
      style="fill:#00ad00;stroke:none;font-family:Bitstream Charter;font-style:normal;font-weight:normal;font-size:26;fill-opacity:1;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;text-anchor:start;writing-mode:lr;"

@@ -25,46 +25,46 @@
        x="38.8550110"
        y="361.213776"
        sodipodi:role="line"
-       id="tspan1029">
+       id="tspan635">
 \score {</tspan>
     <tspan
        x="38.8550110"
        y="389.213776"
        sodipodi:role="line"
-       id="tspan1031">
+       id="tspan637">
 		\notes {</tspan>
     <tspan
        x="38.8550110"
        y="417.213776"
        sodipodi:role="line"
-       id="tspan1033">
-				\property Score.skipBars = ##t</tspan>
+       id="tspan639">
+				\set Score.skipBars = ##t</tspan>
     <tspan
        x="38.8550110"
        y="445.213776"
        sodipodi:role="line"
-       id="tspan1035">
+       id="tspan641">
 				\transpose f c'  \hornNotes</tspan>
     <tspan
        x="38.8550110"
        y="473.213776"
        sodipodi:role="line"
-       id="tspan1037">
+       id="tspan643">
 		}</tspan>
     <tspan
        x="38.8550110"
        y="501.213776"
        sodipodi:role="line"
-       id="tspan1039">
+       id="tspan645">
 }</tspan>
   </text>
   <rect
      style="font-size:12;fill:#ee9797;fill-opacity:0.73913;fill-rule:evenodd;stroke-width:1pt;"
      id="rect705"
-     width="512.179871"
-     height="30.066224"
-     x="104.790833"
-     y="392.415375" />
+     width="429.679865"
+     height="30.066223"
+     x="104.790831"
+     y="392.415314" />
   <rect
      style="font-size:12;fill:#23e023;fill-opacity:0.49635;fill-rule:evenodd;stroke-width:1pt;"
      id="rect706"
