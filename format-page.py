@@ -60,8 +60,6 @@ button_row_spacer = '''<TABLE width="100%%"
 </TABLE>
 '''
 
-
-
 location_template = '''<p class="location">
 %s
 </p>

@@ -1,5 +1,15 @@
 2003-08-08  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
+	* format-page.py: make the >  for separate entry.
+	
+	* format-page.py (button_row_spacer): surround tabs by spacer
+	lines
+
+	* site/about/automated-engraving/software.html (src): move all
+	next links to right.
+
+	* colors.css (a): add file for colored tab experiment
+
 	* site/images/hader-slaan.jpeg: rename.
 
 	* format-page.py (grab_title): (c) notice.
