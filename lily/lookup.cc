@@ -96,13 +96,13 @@ Lookup::afm_find (String s, bool warn) const
 {
   if (!afm_l_)      
     {
-      Lookup * me =     (Lookup*)(this);
+      Lookup * me = (Lookup*)(this);
       me->afm_l_ = all_fonts_global_p->find_afm (font_name_);
       if (!me->afm_l_)
 	{
-	  warning (_f("Can't open `%s'\n", font_name_));
-	  warning (_f("Search path %s\n", global_path.str ().ch_C()));
-	  error (_f("Aborting"));
+	  warning (_f ("Can't find font: `%s'", font_name_));
+	  warning (_f ("(search path: `%s')", global_path.str ().ch_C()));
+	  error (_ ("Aborting"));
 	}
     }
   Adobe_font_char_metric cm = afm_l_->find_char (s, warn);
@@ -405,7 +405,7 @@ Lookup::text (String style, String text, Paper_def *paper_l) const
   Interval ydims (0,0);
 
   Font_metric* afm_l = all_fonts_global_p->find_font (style);
-  DOUT << "\nChars: ";
+  DEBUG_OUT << "\nChars: ";
 
 
   int brace_count =0;
@@ -424,8 +424,12 @@ Lookup::text (String style, String text, Paper_def *paper_l) const
 	    brace_count ++;
 	  else if (text[i] == '}')
 	    brace_count --;
-          Character_metric *c = (Character_metric*)afm_l->get_char ((unsigned char)text[i],false);
+          Character_metric *c = (Character_metric*)afm_l->
+	    get_char ((unsigned char)text[i],false);
 
+	  // Ugh, use the width of 'x' for unknown characters
+	  if (c->dimensions()[X_AXIS].length () == 0) 
+	    c = (Character_metric*)afm_l->get_char ((unsigned char)'x',false);
 	  w += c->dimensions()[X_AXIS].length ();
 	  ydims.unite (c->dimensions()[Y_AXIS]);
 	}
@@ -433,7 +437,7 @@ Lookup::text (String style, String text, Paper_def *paper_l) const
 
   if(brace_count)
     {
-      warning (_f ("Non-matching braces in text `%s', adding braces.", text.ch_C()));
+      warning (_f ("Non-matching braces in text `%s', adding braces", text.ch_C()));
 
       if (brace_count < 0)
 	{
