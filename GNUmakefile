@@ -43,7 +43,7 @@ scripts:
 	python $(SCRIPTDIR)/big-page.py site/about/automated-engraving
 
 # no silly buttons
-site: tree menuify
+site: all
 
 TAGS:
 	etags $$(find site -name '*.html')
