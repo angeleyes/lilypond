@@ -1,29 +1,45 @@
 /*
   script-engraver.cc -- implement Script_engraver
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
-#include "script-engraver.hh"
 #include "script.hh"
-#include "stem-staff-side.hh"
+#include "side-position-interface.hh"
 #include "musical-request.hh"
 #include "stem.hh"
-#include "staff-symbol.hh"
 #include "rhythmic-head.hh"
-#include "dimension-cache.hh"
+#include "engraver.hh"
 
-Script_engraver::Script_engraver()
+class Script_engraver : public Engraver
 {
-  do_post_move_processing();
+  Link_array<Grob> script_p_arr_;
+  Link_array<Articulation_req> script_req_l_arr_;
+
+public:
+  VIRTUAL_COPY_CONS (Translator);
+
+protected:
+  virtual bool try_music (Music*);
+  virtual void initialize ();
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+  virtual void process_music ();
+  virtual void acknowledge_grob (Grob_info);
+};
+
+void
+Script_engraver::initialize ()
+{
+  script_req_l_arr_.clear ();
 }
 
 bool
-Script_engraver::do_try_music (Music *r_l)
+Script_engraver::try_music (Music *r_l)
 {
   if (Articulation_req *mr = dynamic_cast <Articulation_req *> (r_l))
     {
-      for (int i=0; i < script_req_l_arr_.size(); i++) 
+      for (int i=0; i < script_req_l_arr_.size (); i++) 
 	{
 	  if (script_req_l_arr_[i]->equal_b (mr))
 	    return true;
@@ -35,122 +51,128 @@ Script_engraver::do_try_music (Music *r_l)
 }
 
 void
-Script_engraver::do_process_requests()
+Script_engraver::process_music ()
 {
-  for (int i=0; i < script_req_l_arr_.size(); i++)
+  for (int i=0; i < script_req_l_arr_.size (); i++)
     {
       Articulation_req* l=script_req_l_arr_[i];
 
+      SCM alist = get_property ("scriptDefinitions");
+      SCM art = scm_assoc (l->get_mus_property ("articulation-type"), alist);
 
-      SCM list = ly_ch_C_eval_scm (("(articulation-to-scriptdef \"" + l->articulation_str_ + "\")").ch_C());
-      
-      if (list == SCM_BOOL_F)
+      if (art == SCM_BOOL_F)
 	{
-	  l->warning(_f("don't know how to interpret articulation `%s'\n",
-			l->articulation_str_.ch_C()));
+	  String a = ly_scm2string (l->get_mus_property ("articulation-type"));
+	  l->origin ()->warning (_f ("Don't know how to interpret articulation `%s'", a.ch_C ()));
+			
 	  continue;
 	}
-      Script *p =new Script;
-      Stem_staff_side_item * ss =new Stem_staff_side_item;
-      list = SCM_CDR (list);
-	  
-      p->set_elt_property (molecule_scm_sym,
-			   SCM_CAR(list));
+      // todo -> use result of articulation-to-scriptdef directly as basic prop list.
+      Grob *p =new Item (get_property ("Script"));
+      art = gh_cdr (art);
+      p->set_grob_property ("molecule", gh_car (art));
 
-      list = SCM_CDR(list);
-      bool follow_staff = gh_scm2bool (SCM_CAR(list));
-      list = SCM_CDR(list);
-      int relative_stem_dir = gh_scm2int (SCM_CAR(list));
-      list = SCM_CDR(list);
-      int force_dir =gh_scm2int (SCM_CAR(list));
-      list = SCM_CDR(list);
-      SCM priority = SCM_CAR(list);
+      art = gh_cdr (art);
+      bool follow_staff = gh_scm2bool (gh_car (art));
+      art = gh_cdr (art);
+      SCM relative_stem_dir = gh_car (art);
+      art = gh_cdr (art);
 
-      if (relative_stem_dir)
-	  ss->relative_dir_ = (Direction)relative_stem_dir;
-      else
-	  ss->dir_ = (Direction)force_dir;
-
-      Scalar dir_prop (get_property ("articulationScriptVerticalDirection", 0));
-      if (dir_prop.isnum_b () && (int) dir_prop != CENTER)
-	ss->dir_ = (Direction)(int)dir_prop;
-
-      if (l->dir_)
-	ss->dir_ = l->dir_;
-
-      Real padding = 0.0;
-      Scalar paddingprop = get_property ("articulationScriptPadding", 0);
-      if (paddingprop.length_i() && paddingprop.isnum_b ())
-	{
-	  padding = (Real)paddingprop;
-	}
-
-
-      Scalar axisprop = get_property ("scriptHorizontal",0);
-      if (axisprop.to_bool ())
-	ss->axis_ = X_AXIS;
-
-      if (follow_staff && !axisprop.to_bool ())
-	ss->set_elt_property (no_staff_support_scm_sym, SCM_BOOL_T);
+      SCM force_dir = l->get_mus_property ("direction");
+      if (isdir_b (force_dir) && !to_dir (force_dir))
+	force_dir = gh_car (art);
       
-      p->set_staff_side (ss);
-      ss->set_elt_property (script_priority_scm_sym, priority);
-      if (padding)
-	ss->set_elt_property (padding_scm_sym, gh_double2scm(padding));
+      art = gh_cdr (art);
+      SCM priority = gh_car (art);
+
+      if (isdir_b (force_dir) && to_dir (force_dir))
+	p->set_grob_property ("direction", force_dir);
+      else if (to_dir (relative_stem_dir))
+	p->set_grob_property ("side-relative-direction", relative_stem_dir);
+
+
+      /*
+	FIXME: should figure this out in relation with basic props! 
+       */
+      SCM axisprop = get_property ("scriptHorizontal");
+      bool xaxis = to_boolean (axisprop);
+      Side_position_interface::set_axis (p, xaxis ? X_AXIS : Y_AXIS);
+      
+      if (!follow_staff && ! xaxis)
+	p->set_grob_property ("staff-support", SCM_BOOL_T);
+
+      if (!xaxis && follow_staff)
+	p->add_offset_callback (Side_position_interface::quantised_position_proc, Y_AXIS);
+      
+      
+      p->set_grob_property ("script-priority", priority);
+  
       script_p_arr_.push (p);
-      staff_side_p_arr_.push (ss);
       
-      announce_element (Score_element_info (p, l));
-      announce_element (Score_element_info (ss, l));
+      announce_grob (p, l);
     }
 }
 
 void
-Script_engraver::acknowledge_element (Score_element_info inf)
+Script_engraver::acknowledge_grob (Grob_info inf)
 {
-  if (Stem *s = dynamic_cast<Stem*>(inf.elem_l_))
+  bool them_grace = to_boolean (inf.elem_l_->get_grob_property ("grace"));
+  bool us_grace = to_boolean (get_property ("weAreGraceContext"));
+
+  if (us_grace != them_grace)
+    return;
+  
+  if (Stem::has_interface (inf.elem_l_))
     {
-      for (int i=0; i < staff_side_p_arr_.size(); i++)
-	if (Stem_staff_side_item * ss = dynamic_cast<Stem_staff_side_item*>(staff_side_p_arr_[i]))
-	  {
-	    ss->set_stem (s);
-	    ss->add_support (s);
-	  }
-    }
-  else if (Rhythmic_head * rh = dynamic_cast<Rhythmic_head*>(inf.elem_l_))
-    {
-      for (int i=0; i < staff_side_p_arr_.size(); i++)
+      for (int i=0; i < script_p_arr_.size (); i++)
 	{
-	  Staff_side_item * ss = dynamic_cast<Staff_side_item*>(staff_side_p_arr_[i]);
+	  Grob*e = script_p_arr_[i];
+
+	  e->set_grob_property ("direction-source", inf.elem_l_->self_scm ());
+	  e->add_dependency (inf.elem_l_);
+	  Side_position_interface::add_support (e, inf.elem_l_);
+	}
+    }
+  else if (Rhythmic_head::has_interface (inf.elem_l_))
+    {
+      for (int i=0; i < script_p_arr_.size (); i++)
+	{
+	  Grob *e = script_p_arr_[i];
 	  
-	  if (!ss->parent_l (X_AXIS))
+	  if (!e->parent_l (X_AXIS))
 	    {
-	      ss->set_parent (inf.elem_l_, X_AXIS);
+	      e->set_parent (inf.elem_l_, X_AXIS);
 	    }
-	  ss->add_support (rh);
+	  if (Side_position_interface::get_axis (e) == X_AXIS
+	      && !e->parent_l (Y_AXIS))
+	    e->set_parent (inf.elem_l_, Y_AXIS);
+	  
+	  Side_position_interface::add_support (e,inf.elem_l_);
 	}
     }  
 }
 
 void
-Script_engraver::do_pre_move_processing()
+Script_engraver::stop_translation_timestep ()
 {
-  for (int i=0; i < script_p_arr_.size(); i++) 
+  for (int i=0; i < script_p_arr_.size (); i++) 
     {
-      typeset_element (script_p_arr_[i]);
-      typeset_element (staff_side_p_arr_[i]);
+      Grob * sc = script_p_arr_[i];
+      if (to_boolean (sc->get_grob_property ("staff-support")))
+	{
+	  Side_position_interface::add_staff_support (sc);
+	}
+      typeset_grob (sc);
     }
-  script_p_arr_.clear();
-  staff_side_p_arr_.clear ();
+  script_p_arr_.clear ();
 }
 
 void
-Script_engraver::do_post_move_processing()
+Script_engraver::start_translation_timestep ()
 {
-  script_req_l_arr_.clear();
+  script_req_l_arr_.clear ();
 }
 
+ADD_THIS_TRANSLATOR (Script_engraver);
 
-
-ADD_THIS_TRANSLATOR(Script_engraver);
 

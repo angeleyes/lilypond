@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #include "musical-request.hh"
@@ -11,67 +11,32 @@
 #include "debug.hh"
 #include "music-list.hh"
 
-void
-Span_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << span_dir_;
-#endif
-}
 
 Tremolo_req::Tremolo_req ()
 {
-  type_i_ = 0;
 }
 
 void
-Tremolo_req::do_print () const
+Melodic_req::transpose (Pitch delta)
 {
-#ifndef NPRINT
-  DOUT << "type " << type_i_ << '\n';
-#endif
-}
-
-void
-Melodic_req::transpose (Musical_pitch delta)
-{
-  pitch_.transpose (delta);
+  Pitch p = *unsmob_pitch (get_mus_property ("pitch"));
   
-  if (abs (pitch_.accidental_i_) > 2)
+  p.transpose (delta);
+  
+  if (abs (p.alteration_i_) > 2)
     {
-	warning (_f ("transposition by %s makes accidental larger than two",
+	warning (_f ("Transposition by %s makes accidental larger than two",
 	  delta.str ()));
     }
+
+  set_mus_property ("pitch", p.smobbed_copy ());
 }
-
-
 
 bool
 Melodic_req::do_equal_b (Request const* r) const
 {
   Melodic_req const* m= dynamic_cast <Melodic_req const*> (r);
-  return m&& !compare (*m, *this);
-}
-
-int
-Melodic_req::compare (Melodic_req const &m1 , Melodic_req const&m2)
-{
-  return Musical_pitch::compare (m1.pitch_, m2.pitch_);
-}
-
-void
-Melodic_req::do_print () const
-{
-  pitch_.print ();
-}
-
-
-
-
-int
-Rhythmic_req::compare (Rhythmic_req const &r1, Rhythmic_req const &r2)
-{
-  return (r1.length_mom () - r2.length_mom ());
+  return m; // && !compare (*m, *this);
 }
 
 bool
@@ -79,39 +44,25 @@ Rhythmic_req::do_equal_b (Request const* r) const
 {
   Rhythmic_req const* rh = dynamic_cast <Rhythmic_req const*> (r);
 
-  return rh && !compare (*this, *rh);
+  return rh; // ;  && !compare (*this, *rh);
 }
 
-void
-Rhythmic_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << "duration { " <<duration_.str () << "}";
-#endif
-}
 
 
 Moment
 Rhythmic_req::length_mom () const
 {
-  return duration_.length_mom ();
+  return  unsmob_duration (get_mus_property ("duration"))->length_mom ();
+
 }
 
 void
 Rhythmic_req::compress (Moment m)
 {
-  duration_.compress (m);
-}
+  Duration *d =  unsmob_duration (get_mus_property ("duration"));
 
-void
-Lyric_req::do_print () const
-{
-#ifndef NPRINT
-  Rhythmic_req::do_print ();
-  DOUT <<  "text = " << text_str_;
-#endif
+  set_mus_property ("duration", d ->compressed (m).smobbed_copy ());
 }
-
 
 bool
 Note_req::do_equal_b (Request const* r) const
@@ -123,27 +74,6 @@ Note_req::do_equal_b (Request const* r) const
 
 Note_req::Note_req ()
 {
-  cautionary_b_ = false;
-  forceacc_b_ = false;
-}
-
-
-
-void
-Note_req::do_print () const
-{
-#ifndef NPRINT
-  Melodic_req::do_print ();
-  if (cautionary_b_)
-    {
-	DOUT << " force cautionary accidental\n";
-    }
-  else if (forceacc_b_)
-    {
-	DOUT << " force accidental\n";
-    }
-  Rhythmic_req::do_print ();
-#endif
 }
 
 
@@ -151,45 +81,20 @@ bool
 Span_req::do_equal_b (Request const*r) const
 {
   Span_req const* s = dynamic_cast <Span_req const*> (r);
-  return s && span_dir_ == s->span_dir_;
+  return s && get_span_dir () == s->get_span_dir ();
 }
 
 Span_req::Span_req ()
 {
-  span_dir_ = CENTER;
 }
 
-Chord_tremolo_req::Chord_tremolo_req ()
-{
-  type_i_ = 0;
-}
-
-void
-Chord_tremolo_req::do_print () const
-{
-#ifndef NPRINT
-  DOUT << type_i_;
-#endif
-}
-
-void
-Text_script_req::do_print () const
-{
-  DOUT << "text" << text_str_
-       << ", style = " << style_str_;
-}
 
 bool
 Text_script_req::do_equal_b (Request const* r) const
 {
   Text_script_req const* t  = dynamic_cast<Text_script_req const*> (r);
-  return t && t->text_str_ == text_str_ && t->style_str_ == style_str_;
-}
-
-void
-Articulation_req::do_print () const
-{
-  DOUT << articulation_str_;
+  return t && gh_equal_p (get_mus_property ("text"),
+			  t->get_mus_property ("text"));
 }
 
 bool
@@ -197,11 +102,12 @@ Articulation_req::do_equal_b (Request const* r) const
 {
   Articulation_req const* a = dynamic_cast<Articulation_req const*> (r);
   
-  return a &&  articulation_str_ == a->articulation_str_;
+  return a && gh_equal_p (get_mus_property ("articulation-type"),
+			  r->get_mus_property ("articulation-type"));
 }
 
 
-Script_req::Script_req ()
-{
-  dir_ = CENTER;
-}
+
+
+
+

@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
 
 #ifndef REQUEST_HH
@@ -26,12 +26,12 @@
  */
 class Request : public Music {
 public:
-  virtual ~Request(){}
-  VIRTUAL_COPY_CONS(Music);
+  Request ();
+  VIRTUAL_COPY_CONS (Music);
   bool equal_b (Request const*) const;
 protected:
   virtual bool do_equal_b (Request const*) const;
-  virtual void do_print() const;
+
 };
 
 
@@ -39,8 +39,9 @@ protected:
 class Script_req : public virtual Request
 {
 public:
-  Direction dir_;
-  VIRTUAL_COPY_CONS(Music);
+  void set_direction (Direction d);
+  Direction get_direction () const;
+  VIRTUAL_COPY_CONS (Music);
   Script_req ();
 };
 
@@ -51,15 +52,17 @@ public:
 */
 class Span_req  : public virtual Request  {
 public:
-  /// should the spanner start or stop, or is it unwanted?
-  Direction span_dir_;
-  String span_type_str_;
+  String get_span_type_str () const;
+  void set_span_type_str (String);
+  void set_span_dir (Direction d);
+  Direction get_span_dir () const;  
   
-  Span_req();
+  Span_req ();
 protected:
+  
   virtual bool do_equal_b (Request const*) const;
-  virtual void do_print() const;
-  VIRTUAL_COPY_CONS(Music);
+
+  VIRTUAL_COPY_CONS (Music);
 };
 
 /**
@@ -67,7 +70,7 @@ protected:
  */
 class Tie_req : public Request {
 public:
-  VIRTUAL_COPY_CONS(Music);
+  VIRTUAL_COPY_CONS (Music);
 };
 
 #endif

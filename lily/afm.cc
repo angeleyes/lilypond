@@ -1,157 +1,170 @@
 /*   
   afm.cc --  implement Adobe_font_metric
   
-  source file of the GNU LilyPond music typesetter
+  source file of the Flower Library
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 2000--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
-
 #include "afm.hh"
-#include "box.hh"
-#include "direction.hh"
-#include "debug.hh"
+#include "warn.hh"
+#include "molecule.hh"
 
-Box &
-Adobe_font_char_metric::bbox ()
+Adobe_font_metric::Adobe_font_metric (AFM_Font_info * fi)
 {
-  return B_;
-}
+  checksum_ = 0;
+  font_inf_ = fi;
 
-String &
-Adobe_font_char_metric::name ()
-{
-  return N_;
+  for (int i= 256; i--;)
+    ascii_to_metric_idx_.push (-1);
   
+  for (int i=0; i < fi->numOfChars; i++)
+    {
+      AFM_CharMetricInfo * c = fi->cmi + i;
+
+      /*
+	Some TeX afm files contain code = -1. We don't know why, let's
+	ignore it.
+	
+       */
+      if (c->code >= 0)
+	ascii_to_metric_idx_[c->code] = i;
+      name_to_metric_dict_[c->name] = i;
+    }
 }
 
-int &
-Adobe_font_char_metric::code ()
+
+SCM
+Adobe_font_metric::make_afm (AFM_Font_info *fi, unsigned int checksum)
 {
-  return C_;
+  Adobe_font_metric * fm = new Adobe_font_metric (fi);
+  fm->checksum_ = checksum;
+  return fm->self_scm ();    
 }
 
-Real &
-Adobe_font_char_metric::width ()
+
+AFM_CharMetricInfo const *
+Adobe_font_metric::find_ascii_metric (int a , bool warn) const
 {
-  return WX_;
+  if (ascii_to_metric_idx_[a] >=0)
+    {
+      int code = ascii_to_metric_idx_[a];
+      if (code>=0)
+	{
+	  return font_inf_->cmi + code;
+	}
+    }
+  else if (warn)
+    {
+      warning (_f ("can't find character number: %d", a));
+    }
+
+  return 0;
 }
 
-Adobe_font_char_metric::Adobe_font_char_metric ()
+AFM_CharMetricInfo const *
+Adobe_font_metric::find_char_metric (String nm, bool warn) const
 {
-  B_ = Box( Interval(0,0), Interval (0,0));
-  WX_ = 0.0;
-  C_ = 0;
-  C_ = -1;
+  std::map<String,int>::const_iterator ai = name_to_metric_dict_.find (nm);
+  
+  if (ai == name_to_metric_dict_.end ())
+    {
+      if (warn)
+	{
+	  warning (_f ("can't find character called: `%s'", nm.ch_C ()));
+	}
+      return 0;
+    }
+  else
+    return font_inf_->cmi + (*ai).second;
 }
 
-Adobe_font_metric::Adobe_font_metric ()
+int
+Adobe_font_metric::count () const
 {
-  ItalicAngle_ = 0.0;
-  IsFixedPitch_ = false;
-  UnderlinePosition_ =0.;
-  UnderlineThickness_=0.;
+  return ascii_to_metric_idx_.size ();
 }
-
 
 Box
-Adobe_font_char_metric::dimensions () const
+Adobe_font_metric::get_char (int code) const
 {
-  Box b= B_;
-  
-  b[X_AXIS] *= size_ / 1000.0;
-  b[Y_AXIS] *= size_ / 1000.0;
+  AFM_CharMetricInfo const
+    * c =  find_ascii_metric (code,false);
+  Box b (Interval (0,0),Interval (0,0));
+  if (c)
+    b = afm_bbox_to_box (c->charBBox);			
 
   return b;
 }
 
-
-
-#define APPEND_CHAR_METRIC_ELT(k)  outstr += to_str (#k) + " "  + to_str (k ## _)  + "; "
-
-String
-box_str (Box b)
+SCM
+read_afm_file (String nm)
 {
-  return to_str (b[X_AXIS][SMALLER]) + " " +
-    to_str(b[Y_AXIS][SMALLER]) + " " +
-    to_str (b[X_AXIS][BIGGER]) + " "+
-    to_str (b[Y_AXIS][BIGGER]);
-}
+  FILE *f = fopen (nm.ch_C () , "r");
+  char s[2048];
+  char *check_key = "TfmCheckSum"; 
+  fgets (s, sizeof (s), f);
 
-#define APPEND_BOX(k)  outstr += to_str (#k) + " "  + box_str (k ## _)  + ";"
-
-String
-Adobe_font_char_metric::str () const
-{
-  String outstr ;
-
-  APPEND_CHAR_METRIC_ELT (C);
-  APPEND_CHAR_METRIC_ELT(N);
-  APPEND_CHAR_METRIC_ELT(WX);
-  
-  APPEND_BOX(B);
-  return outstr + "\n";
-}
-
-#define WRITESTRING(k)  outstr += String (#k) + " "  + to_str (k ## _)  + "\n"
-
-String
-Adobe_font_metric::str () const
-{
-  String outstr;
-  WRITESTRING(FontName);
-  WRITESTRING(FullName);
-  WRITESTRING(FamilyName);
-  WRITESTRING(Weight);
-  WRITESTRING(Version);
-  WRITESTRING(Notice);
-  WRITESTRING(EncodingScheme);
-  WRITESTRING(ItalicAngle);
-  WRITESTRING(UnderlineThickness);
-  WRITESTRING(UnderlinePosition);
-  outstr += "FontBBox " +  box_str (FontBBox_) +  "\n";
-
-  for (int i=0; i < char_metrics_.size (); i++)
-    outstr += char_metrics_[i].str ();
-  
-  return outstr;
-}
-
-Adobe_font_char_metric dummy_static_char_metric;
-
-Adobe_font_char_metric const &
-Adobe_font_metric::find_char (String nm, bool warn) const
-{
-  if (!name_to_metric_dict_.elem_b (nm))
+  unsigned int cs = 0;  
+  if (strncmp (s, check_key, strlen (check_key)) == 0)
     {
-      if (warn)
-	{
-	  warning (_f ("can't find character called `%s'", nm.ch_C()));
-	}
-      return dummy_static_char_metric;
+      sscanf (s + strlen (check_key), "%ud", &cs);
+    }
+  else
+    {
+      rewind (f);
+    }
+
+    
+  AFM_Font_info * fi;
+  int ok = AFM_parseFile (f, &fi, ~1);
+
+  if (ok)
+    {
+      error (_f ("Error parsing AFM file: `%s'", nm.ch_C ()));
+      exit (2);
+    }
+  fclose (f);
+
+  return Adobe_font_metric::make_afm (fi, cs);
+}
+
+  
+Box
+afm_bbox_to_box (AFM_BBox bb)
+{
+  return Box (Interval (bb.llx, bb.urx)* (1/1000.0),
+	      Interval (bb.lly, bb.ury)* (1/1000.0));
+
+}
+  
+
+Adobe_font_metric::~Adobe_font_metric ()
+{
+  AFM_free (font_inf_);
+}
+
+/*
+  return a molecule, without fontification 
+ */
+Molecule
+Adobe_font_metric::find_by_name (String s) const
+{
+  AFM_CharMetricInfo const *cm = find_char_metric (s, false);
+
+  if (!cm)
+    {
+      Molecule m;
+      m.set_empty (false);
+      return m;
     }
   
-  return char_metrics_[name_to_metric_dict_ [nm]];
-}
+  SCM at = (gh_list (ly_symbol2scm ("char"),
+		      gh_int2scm (cm->code),
+		      SCM_UNDEFINED));
+  
+  //  at= fontify_atom ((Font_metric*)this, at);
+  Box b = afm_bbox_to_box (cm->charBBox);
 
-
-Character_metric const *
-Adobe_font_metric::get_char (int code, bool warn) const
-{
-  return &find_ascii (code,warn);
-}
-
-Adobe_font_char_metric const &
-Adobe_font_metric::find_ascii (int a , bool warn) const
-{
-  int  code = ascii_to_metric_idx_[a];
-  if (code>=0)
-    {
-      return char_metrics_[code];
-    }
-  else if (warn )
-    {
-      warning (_f ("can't find character number %d", a));
-    }
-  return dummy_static_char_metric;
+  return Molecule (b, at);
 }
