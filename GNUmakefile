@@ -38,8 +38,7 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 	-convert -crop 0x0 $@- $@ && rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
-#out/site/graphics/%.$(LANG).png: $(LANG)/graphics/%.png
-	cp $< $@
+	-cp $< $@
 
 endif
 
