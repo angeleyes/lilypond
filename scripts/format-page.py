@@ -260,11 +260,14 @@ def format_page (html, file_name, lang):
 	if dir != lang and os.path.isfile (f):
 		page_template = open (f).read ()
 
-	slang = ''
-	dot_lang = ''
 	if lang != 'site':
 		slang = lang
 		dot_lang = '.' + lang
+		iso_lang = lang
+	else:
+		slang = ''
+		dot_lang = ''
+		iso_lang = 'en'
 
 	# Do @AT@ substitution.
 
@@ -279,6 +282,7 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@TITLE@', titles[-1], page)
 	page = re.sub ('@FILE_NAME@', file_name, page)
 	page = re.sub ('@ONLOAD@', onload, page)
+	page = re.sub ('@ISO_LANG@', iso_lang, page)
 	page = re.sub ('@LANG@', slang, page)
 	page = re.sub ('@.LANG@', dot_lang, page)
 
