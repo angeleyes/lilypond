@@ -17,7 +17,7 @@ Notes for this script.
 
 header = '''<HTML>
 <HEAD>
-<TITLE>NO TITLE</TITLE>
+<TITLE>%(title)s</TITLE>
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(depth)snewweb.css">
 </HEAD>
 <BODY> 
@@ -46,12 +46,15 @@ location_template = '''<DIV class="location">
 '''
 
 # don't use mouseover magic as long as we don't have button images
-button_template = '''<TD class="%(class)s"><A href="%(url)s">
-%(text)s</A>%(suffix)s</TD>'''
+
+## don't break line after > 
+button_template = '''<TD class="%(class)s"><A
+href="%(url)s"
+>%(text)s</A>%(suffix)s</TD>'''
 
 #
-button_active_template = '''
-<TD class="%(class)s"><A href="%(url)s">
+button_active_template = '''<TD class="%(class)s"><A href="%(url)s"
+>
 %(text)s</A>%(suffix)s</TD>'''
 
 
@@ -89,7 +92,8 @@ def one_tab (depth, file):
 		if re.search ('index.html$', file):
 			return ('', '')
 		else:
-			return ('', '?')
+			base = os.path.splitext (here)[0]
+			return ('', base)
 	
 	menu = read_menu (menu_file)
 
@@ -117,7 +121,7 @@ def one_tab (depth, file):
 
 		# ugh.
 		if label == 'Home':
-			button_dict['suffix'] = ' &nbsp;<b>&gt;</b> '
+			button_dict['suffix'] = '</td><td class=menu><b>&gt;</b>'
 		
 		button = button_template % button_dict
 
@@ -130,7 +134,6 @@ def one_tab (depth, file):
 		here_label = ''
 	else:
 		here_label = here_label[0][1]
-
 
 	# FIXME
 	tr_str = '<TR>%s</TR>' % string.join (labels, '')
@@ -177,9 +180,13 @@ def do_one_file (in_file_name):
 	tabs.reverse ()
 	locations.reverse()
 
-	locations = ['Home'] + locations
+	# UGH.
+	if locations <> ['Home']:
+		locations = ['Home'] + locations
+
 	nav_elts = []
 	d = len (locations) - 1
+	
 	for l in locations:
 		if d == 0:
 			l = '[<b>%s</b>]' % l
@@ -191,10 +198,12 @@ def do_one_file (in_file_name):
 			loc = './'
 		elif d > 1:
 			loc = '../' * (d-1)
+
 		nav_elts.append ("<a href=%s>%s</a>" % (loc, l))
 		d -= 1
 	
 	nav_str = string.join (nav_elts, ' &gt; ')		
+	nav_title = 'LilyPond - ' + string.join (locations[1:], ' - ')
 	
 	menu = menu_template % string.join (tabs)
 	nav_str = location_template % nav_str
@@ -202,11 +211,22 @@ def do_one_file (in_file_name):
 	depth_str = ('../' * (depth-1))
 
 	## AT substitutions.
+
+	titles = [nav_title]
+	
+	def grab_title (match):
+		titles.append (match.group (1))
+		return ''
+
+	main = re.sub ('<title>(.*?)</title>', grab_title, main)
 	main = re.sub ('@DEPTH@', depth_str, main)
 	main = re.sub ('@IMAGES@', os.path.join (depth_str, 'images/'),
 		       main)
 	
-	page = header % {'depth': depth_str} +menu + main + nav_str + footer
+	page = header % {'depth': depth_str,
+			 'title': titles[-1], 
+
+			 } +menu + main + nav_str + footer
 	
 	open (os.path.join (outdir, in_file_name), 'w').write (page)
 

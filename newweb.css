@@ -18,7 +18,7 @@ body {
 music fragments.
 */
 
-    background: #fffff;
+    background: #ffffff;
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -42,56 +42,24 @@ a:hover {
     text-decoration: underline;
 }
 
+#location {
+}
+
+td.menu {
+//  background: #eeeeee; 
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+}
+
+td.menuactive {
+//    background: #edeaaf;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+}
+
 table {
     margin-left: auto;
     margin-right: auto;
 }
-
-td {
-    padding-left: 1em;
-    padding-top: 0.5em;
-}
-
-#location {
-}
-
-#menu {
-  background: #eeeeee;
-
-}
-
-#menuactive {
-  background: #edeaaf;
-}
-
-
-
-/*
- NOT currently defined in HTML
-
-#footer {
-    / * fixme: bottom of page, not bottom of screen * /
-    background: #e8e8ff;
-}
-
-#header {
-    position: absolute;
-    text-align: right;
-    left: 160px;
-    top: 0px;
-    padding-top: 10px;
-    width: 84%;
-    background: #e8ffe8;
-}
-
-#main {
-    width: 85%;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    vertical-align: top; 
-}
-*/
-
-
-
