@@ -1,3 +1,7 @@
+* backport stepmake/aclocal.m4: Append $FULL_VERSION to datadir.
+
+* backport lilypond-mode.el (LilyPond-xdvi-command): Default to plain xdvi.
+
 1.4.13.mb2
 ==========
 
