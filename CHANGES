@@ -1,3 +1,58 @@
+1.4.8.moh2
+==========
+
+* More flexible lyric alignment:
+  - new properties "alignment", "ignore-length-mismatch", "begin-alignment" an\d "end-alignment" to control non-centered lyric alignment
+
+
+1.4.8.hwn2
+==========
+
+* Bugfix: neutral direction of Beam
+
+* Makefile rules for pktrace.
+
+* logout message for redhat spec
+
+* links from refman to internal doco.
+
+* search link on the webpage.
+
+* Fast pixmap crop for lilypond-book.
+
+* Add Percent_repeat_engraver description.
+
+* Guile 1.5.4 compatibility now working.
+
+* ly2dvi.py: resource import.
+
+* Mats' fixes for Miktex and PS output.
+
+* Bugfix for scriptHorizontal.
+
+* Change default duration behavior: copy duration fraction fields as
+well. Incompatible change: \tempo doesn't set default duration
+
+* Updates from 1.5 for ly2dvi, etf2ly, abc2ly, emacs, rest/skip documentation
+
+* Bugfix: be strict about slur dimensions. 
+
+* Bugfix: insert extra margin around pixmaps in lilpyond-book.
+
+* lilypond-book: magnification option for EPS
+
+1.4.8.jcn3
+==========
+
+* Dropped-in fixed c++ midi2ly from 1.5.
+  
+* Backported more guile > 1.4 compatibility stuff.
+
+* Danish and Swedish .po files
+
+1.4.8
+=====
+
 1.4.7.jcn2
 ==========
 
@@ -25,7 +80,7 @@
 
 * Backported compatibility fixes for GUILE 1.5
 
-* default-neutral-direction -> neutral-direction
+* Change default-neutral-direction to neutral-direction everywhere.
 
 * Danish .po file.
 
