@@ -44,13 +44,18 @@ Score_element::Score_element()
   pscore_l_=0;
   lookup_l_ =0;
   status_i_ = 0;
+  self_scm_ = SCM_EOL;
   original_l_ = 0;
   element_property_alist_ = scm_protect_object (gh_cons (gh_cons (void_scm_sym, SCM_BOOL_T) , SCM_EOL));
+
+  smobify_self ();
 }
 
 Score_element::Score_element (Score_element const&s)
   : Graphical_element (s)
 {
+  
+  self_scm_ = SCM_EOL;
   used_b_ = true;
   original_l_ =(Score_element*) &s;
   element_property_alist_ = scm_protect_object (scm_list_copy (s.element_property_alist_));
@@ -59,11 +64,13 @@ Score_element::Score_element (Score_element const&s)
   status_i_ = s.status_i_;
   lookup_l_ = s.lookup_l_;
   pscore_l_ = s.pscore_l_;
+
+  smobify_self ();
 }
 
 Score_element::~Score_element()
 {
-  delete output_p_; 
+  assert (!output_p_);
   assert (status_i_ >=0);
   status_i_  = -1;
 }
@@ -137,16 +144,16 @@ void
 Score_element::print() const
 {
 #ifndef NPRINT
-  DOUT << classname(this) << "{\n";
-  if (check_debug && !monitor->silent_b ("Score_element"))
+  DEBUG_OUT << classname(this) << "{\n";
+  if (flower_dstream && !flower_dstream->silent_b ("Score_element"))
     ly_display_scm (element_property_alist_);
-  DOUT << "dependencies: " << dependency_size();
+  DEBUG_OUT << "dependencies: " << dependency_size();
   if (original_l_)
-    DOUT << "Copy ";
+    DEBUG_OUT << "Copy ";
   Graphical_element::do_print ();
   do_print();
   
-  DOUT <<  "}\n";
+  DEBUG_OUT <<  "}\n";
 #endif
 }
 
@@ -223,6 +230,9 @@ Score_element::output_processing ()
   pscore_l_->outputter_l_->output_molecule (output_p_,
 					    o,
 					    classname(this));
+
+  delete output_p_;
+  output_p_ =0;
 }
 
 /*
@@ -282,22 +292,6 @@ Score_element::line_l() const
   return 0;
 }
 
-/*
-  
-  DEPENDENCIES
-
-  */
-
-void
-Score_element::remove_dependency (Score_element*e)
-{
-  int i;
-  while ((i = dependency_arr_.find_i (e)) >=0 )
-    dependency_arr_.unordered_del (i);
-
-  substitute_dependency (e, 0);
-}
-
 void
 Score_element::add_dependency (Score_element*e)
 {
@@ -324,37 +318,26 @@ Score_element::handle_broken_dependencies()
   if (!line)
     return;
 
-  Link_array<Score_element> remove_us_arr;
+  do_substitute_arrays ();
+
+  Link_array<Score_element> new_deps;
+
   for (int i=0; i < dependency_size(); i++) 
     {
       Score_element * elt = dependency (i);
       if (elt->line_l() != line)
 	{
-	  if (Spanner *sp = dynamic_cast<Spanner *> (elt)) 
-	    {
-	      Spanner * broken = sp->find_broken_piece (line);
-	      substitute_dependency (sp, broken);
-
-	      if (broken)
-		add_dependency (broken);
-	    }
-	  else if (Item *original = dynamic_cast <Item *> (elt))
-	    {
-	      Item * my_item = original->find_prebroken_piece (line);
-		
-	      substitute_dependency (elt, my_item);
-	      if (my_item)
-		add_dependency (my_item);
-	    }
-	  remove_us_arr.push (elt);
+	  Score_element * broken = elt->find_broken_piece (line);
+	  substitute_dependency (elt, broken);
+	  elt  = broken ;
 	}
+      if (elt)
+	new_deps.push (elt);
     }
+  dependency_arr_ = new_deps;
 
-  remove_us_arr.default_sort();
-  remove_us_arr.uniq();
-  for (int i=0;  i <remove_us_arr.size(); i++)
-    remove_dependency (remove_us_arr[i]);
 }
+
 
 /*
   This sux.
@@ -368,6 +351,9 @@ Score_element::handle_broken_dependencies()
   span: item1 item2 item3
 
   How to let span (a derived class) know that this happened?
+
+
+  TODO: cleanify.
  */
 void
 Score_element::handle_prebroken_dependencies()
@@ -385,7 +371,7 @@ Score_element::handle_prebroken_dependencies()
       if (it_l && it_l->broken_original_b ())
 	if (Item *me = dynamic_cast<Item*> (this) )
 	  {
-	    Score_element *new_l = it_l->find_prebroken_piece (me->break_status_dir ());
+	    Score_element *new_l = it_l->find_broken_piece (me->break_status_dir ());
 	    if (new_l != elt) 
 	      {
 		new_arr.push (new_l);
@@ -397,7 +383,7 @@ Score_element::handle_prebroken_dependencies()
 	    Direction d = LEFT;
 	    do {
 	      old_arr.push (0);
-	      new_arr.push (it_l->find_prebroken_piece (d));
+	      new_arr.push (it_l->find_broken_piece (d));
 	    } while (flip(&d)!= LEFT);
 	  }
     }
@@ -435,4 +421,96 @@ Score_element::linked_b() const
 void
 Score_element::do_print () const
 {
+}
+
+void
+Score_element::do_substitute_arrays ()
+{
+}
+
+
+Score_element*
+Score_element::find_broken_piece (Line_of_score*) const
+{
+  return 0;
+}
+
+static scm_smobfuns score_elt_funs = {
+ Score_element::mark_smob, Score_element::free_smob,
+ Score_element::print_smob, 0,
+};
+
+
+SCM
+Score_element::smobify_self ()
+{
+  if (self_scm_ != SCM_EOL)
+    return self_scm_;
+
+  /*
+    This is local. We don't assign to self_scm_ directly, to assure
+    that S isn't GC-ed from under us.
+   */
+  SCM s;
+
+  SCM_NEWCELL(s);
+  self_scm_ = s;
+
+  SCM_SETCAR(s,smob_tag);
+  void * me_p = this; 
+  SCM_SETCDR(s,me_p);
+  scm_protect_object (s);
+
+  scm_unprotect_object (element_property_alist_); // ugh
+  return s;
+}
+
+SCM
+Score_element::mark_smob (SCM ses)
+{
+  void * mp = (void*) SCM_CDR(ses);
+  Score_element * s = (Score_element*) mp;
+
+  if (s->self_scm_ != ses)
+    {
+      programming_error ("Score_element::mark_smob(): self_scm_ != ses; this will probably crash");
+      cout << "ses == " << ses << endl;
+      cout << "name == " << s->name() << endl;
+      gh_display (s->element_property_alist_);
+      gh_newline ();
+    }
+  return s->element_property_alist_;
+}
+
+scm_sizet
+Score_element::free_smob (SCM ses)
+{
+  Score_element * s = (Score_element*) SCM_CDR(ses);
+  delete s;
+  return 0;
+}
+
+int
+Score_element::print_smob (SCM s, SCM port, scm_print_state *)
+{
+  Score_element *sc = (Score_element *) SCM_CDR (s);
+     
+  scm_puts ("#<Score_element ", port);
+  scm_puts ((char *)sc->name (), port);
+  scm_puts (" >", port);
+  return 1;
+}
+
+long Score_element::smob_tag;
+
+void
+Score_element::init_smobs ()
+{
+  smob_tag = scm_newsmob (&score_elt_funs);
+}
+
+void
+init_smobs()
+{
+  Score_element::init_smobs ();
 }
