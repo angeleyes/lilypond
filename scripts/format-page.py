@@ -294,8 +294,11 @@ def format_page (html, file_name, lang):
 		page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)[\'"]''',
 			       '\\1="\\2"', page)
 
-		# No autoselection for automatic language menu.
+		# After stripping: no autoselection for language menu.
 		page = re.sub ('@LANGUAGE_MENU@', languages, page)
+
+	
+	page = re.sub ('@LANGUAGE_MENU@', '', page)
 
 	return page
 
