@@ -4,7 +4,7 @@
 
   source file of the flowerlib
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2000 Han-Wen Nienhuys <hanwen@cs.uu.nl>
          Jan Nieuwenhuizen <janneke@gnu.org>
 */
 
@@ -48,7 +48,7 @@ strnupr (char* start_l, int n)
   Manual v1.15, but it is with /usr/include/string.h   */
 
 Byte *
-memmem (Byte const *haystack, int haystack_len,
+_memmem (Byte const *haystack, int haystack_len,
 	Byte const *needle,int needle_len)
 {
   Byte const * end_haystack = haystack + haystack_len - needle_len + 1;
@@ -70,6 +70,15 @@ memmem (Byte const *haystack, int haystack_len,
 	haystack++;
     }
   return 0;
+}
+
+void *
+memmem (void const *haystack, int haystack_len,
+	void const *needle,int needle_len)
+{
+  Byte const* haystack_byte_c_l = (Byte const*)haystack;
+  Byte const* needle_byte_c_l = (Byte const*)needle;
+  return _memmem (haystack_byte_c_l, haystack_len, needle_byte_c_l, needle_len);
 }
 
 #endif
@@ -132,3 +141,12 @@ vsnprintf (char *str, size_t, char const *format, va_list args)
 }
 #endif
 
+
+#if !HAVE_ISINF
+int
+isinf (double x)
+{
+  return x && ( x == x/ 2) ;
+}
+
+#endif
