@@ -1,0 +1,121 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename lilypond.info
+@settitle GNU LilyPond
+
+
+@dircategory GNU music project
+@direntry
+@c    ;; prepend GNU for dir, must be unique
+* GNU LilyPond: (lilypond).          The GNU music typesetter.
+@c * install-info: (texinfo)Invoking install-info. Update info/dir entries.
+@c * texi2dvi: (texinfo)Format with texi2dvi.      Print Texinfo documents.
+@end direntry
+
+
+@titlepage
+@title GNU LilyPond
+@subtitle The music typesetter
+@author    
+
+
+Copyright @copyright{} 1999--2001 by the authors
+
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.1
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections.
+  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+
+
+@end titlepage
+
+@ifinfo
+This file documents GNU LilyPond.
+
+Copyright 1999 Han-Wen Nienhuys, Jan Nieuwenhuizen, Adrian Mariano
+Tom Cato Amundsen.
+
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.1
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections.
+  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+
+@end ifinfo
+
+@ifnottex
+@node Top
+@top
+
+@ifhtml
+This document is also available as a @uref{../lilypond.ps.gz,gzipped
+postscript file}.
+@end ifhtml
+
+@chapter GNU LilyPond --- The music typesetter
+
+LilyPond produces sheet music from input files.  This document describes
+how to use LilyPond.
+
+@cindex web site
+
+A further source of information is the website, which can be found at
+@uref{http://www.lilypond.org/}.  The website contains on-line copies of
+this and other documentation.
+
+@mbinclude dedication.itely
+
+@menu
+* Preface::                        Preface.
+* Tutorial::                       A tutorial introduction to LilyPond.
+* Reference Manual::               Reference Manual.
+* Invoking LilyPond::              Operation.
+* Bug reports::                    Where to report bugs.
+* ly2dvi::                         Generating nice output with titles.
+* convert-ly::                     Upgrading input files.
+* Conversion tools::               Converting to lilypond source format.
+* lilypond-book::                  Interleaving text with music.
+* Internals::                      How it all works.
+* Literature::                     Additional reading
+* Index of internals:(lilypond-internals).  Auto generated detailed documentation.
+* Index::                          Unified index.
+* Function Index::                 Function index.
+* Refman appendix::
+* GNU Free Documentation License::     FDL.
+@end menu
+@end ifnottex
+
+
+@contents
+
+@mbinclude macros.itexi
+@mbinclude preface.itely
+@mbinclude tutorial.itely
+@mbinclude refman.itely
+@mbinclude internals.itely
+@mbinclude invoking.itexi
+@mbinclude bugs.itexi
+@mbinclude ly2dvi.itexi
+@mbinclude convert-ly.itexi
+@mbinclude lilypond-book.itely
+@mbinclude converters.itely
+@mbinclude literature.itely
+
+
+@c FIXME: Index has two alphabetically sorted lists @code vs plain?
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@node Function Index
+@unnumbered Function Index
+
+@printindex fn
+
+@mbinclude appendices.itely
+@mbinclude fdl.itexi
+
+@bye
