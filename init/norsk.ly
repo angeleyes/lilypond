@@ -1,5 +1,5 @@
 
-% 	$Id: norsk.ly,v 1.7 1998/09/15 17:22:43 fred Exp $	
+% 	$Id: norsk.ly,v 1.7.2.1 1998/09/15 17:22:43 fred Exp $	
 
 %{
 
