@@ -73,7 +73,7 @@ msgstr "Download"
 
 #: site/menu-entries.py:8
 msgid "Documentation"
-msgstr "Dokumentatie"
+msgstr "Documentatie"
 
 #: site/menu-entries.py:9
 msgid "Development"

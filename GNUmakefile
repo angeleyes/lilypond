@@ -33,8 +33,10 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 # no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
 
+INKSCAPE = inkscape
+
 %.png: %.svg GNUmakefile
-	-inkscape --export-png=$@- --export-background-opacity=0 $<
+	-$(INKSCAPE) --export-png=$@- --export-background-opacity=0 $<
 	-convert -crop 0x0 $@- $@ && rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
