@@ -1,42 +1,39 @@
 \header {
-  filename =    "wtk1-fugue2.ly";
-  title =       "Fuga II";
-  subtitle =    "\\`a 3 voci";
-  description = "Das Wohltemperierte Clavier I, Fuga II (c-minor)";
-  opus =        "BWV 847-Fuga";
-  source =      "Henle's Urtext";
-  composer =    "Johann Sebastian Bach (1685-1750)";
-  enteredby =   "hwn, wl, jcn";
-  copyright =   "Public Domain";
+  title =       "Fuga a 3 voci"
+  opus =        "BWV 847-Fuga"
+  source =      "Henle's Urtext"
+  composer =    "Johann Sebastian Bach (1685-1750)"
+  enteredby =   "hwn, wl, jcn"
+
+  % mutopia headers.
+  mutopiatitle = "Das Wohltemperierte Clavier I, Fuga II (c-minor)"
+  mutopiacomposer = "J. S. Bach (1685-1750)"
+  mutopiainstrument = "Piano"
+  mutopiaopus = "BWV847"
+  style = "baroque"
+  copyright = "Public Domain"
+  maintainer = "hanwen@cs.uu.nl"
+  mutopiapublicdomain = "\\parbox{\\hsize}{\\thefooter\\quad\\small
+    \\\\This music is part of the Mutopia project,
+    \\texttt{http://www.mutopiaproject.org/}\\\\It has been typeset
+    and placed in the public domain by " + \maintainer +
+    ".\\\\Unrestricted modification and redistribution is permitted
+    and encouraged---copy this music and share it.}"
+  tagline = \mutopiapublicdomain
+  lastupdated = "2000/Feb/14"
 }
 
-%{
- Tested Features: 
-   * stem direction 
-   * multivoice, 
-   * forced accidentals
-   * cross-staff beaming
-   * auto beaming
-%}
 
-\version "1.2.0";
+% It would be nice to squeeze this onto two pages, but I am not sure
+% if it would work with US paper.
 
-\include "nederlands.ly"                 % for correct parsing of note names
+\version "1.3.146"
 
-global = \notes {
-  \key c \minor;
-  \time 4/4;
-  \property Staff.timeSignatureStyle = "C"
-  \skip 1*31;
-  \bar "|."; |
-}
   
-dux = \context Voice=two \notes \relative c''{
-  \voicetwo
-  \clef violin;
+dux =  \context Voice=two \notes \relative c''{
+  \voiceTwo
+  \clef violin
 
-  \property Voice.verticalDirection = "-1"
-  
   r8 c16 b c8 g as c16 b c8 d |
   g, c16 b c8 d f,16 g as4 g16 f |
   es c' b a g f! es d c8 es' d c |
@@ -52,21 +49,28 @@ dux = \context Voice=two \notes \relative c''{
   as4 r8 a bes bes16 a bes8 f |
   g4 r8 g as as g f |
   r8 
-  \translator Staff = bass \stemup 
+  \translator Staff = bass \stemUp 
   as, bes c r8 as16 g as8 f8 |
   bes8 c bes as bes g f es |
   f des' c bes c as g f |
 %%15
   g8
   g'16 fis g8 c, 
-  es \translator Staff = treble \stemdown g16 fis! g8 a |
+  es \translator Staff = treble
+  \stemBoth
+  \stemDown
+  g16 fis! g8 a |
   d, g16 fis g8 a! c,16 d es4 d16 c |  % forced accident!
   bes8 r8 r16 d e fis g a bes8 ~ bes16 e, f g |
   a bes c8 ~ c16 fis,16 g a bes8 es,!16 d es8 g, |
   as f'16 es f8 a,8 bes g'16 f g8 b, |
 %%20
-  c16 f \translator Staff = bass \stemup es d c bes! as g 
-  f8 \translator Staff = treble \stemdown as' g f |
+  c16 f \translator Staff = bass
+  \stemBoth \stemUp
+     es d c bes! as g 
+  f8 \translator Staff = treble
+  \stemBoth \stemDown
+  as' g f |
   es d es f b, c d b |
   c4 r8 e8 f f16 e f8 c |
   d4 r8 d8 es8 es16 d es8 bes |
@@ -83,8 +87,8 @@ dux = \context Voice=two \notes \relative c''{
 }
 
 
-comes = \context Voice=one \notes \relative c'' {
-  \voiceone
+comes =  \context Voice=one \notes \relative c'' {
+  \voiceOne
   R1 |
   R1 |
   r8 g'16 fis g8 c, es g16 fis g8 a |
@@ -99,10 +103,10 @@ comes = \context Voice=one \notes \relative c'' {
   f f16 e f8 c8 d4 r8 d |
   es8 es16 d es8 bes c es16 d es8 f |
   bes, es16 d es8 f as,16 bes c4 bes16 as |
-  \stemboth g16 es f g as bes c d es d c d es f g a |
+  \stemBoth g16 es f g as bes c d es d c d es f g a |
   bes f, g as bes c d e f es d es f g a b |
 %%15
-  \stemup c8 b16 a g f! es d c8 es d c |
+  \stemUp c8 b16 a g f! es d c8 es d c |
   bes a bes c fis,! g a fis |    % forced accident
   g8 d'16 c d8 r8 r8 e16 d e8 r8 |
   r fis16 e fis8 r r g,16 f g8 r8 |
@@ -124,8 +128,8 @@ comes = \context Voice=one \notes \relative c'' {
   f,16 g as4 g16 f e2 |
 }
 
-bassdux = \context Voice=three \notes \relative c' {
-  \clef bass;
+bassdux =  \context Voice=three \notes \relative c' {
+  \clef bass
   R1 |
   R |
   R |
@@ -151,7 +155,7 @@ bassdux = \context Voice=three \notes \relative c' {
   c16 d es8~ es16 a, bes c d es f8~ f16 b, c d |
 %%20 
 % es8 r r e f f, es! d |     % -> \classic_accidentals
-  es8 r r e \stemdown f f, es! d \stemboth |
+  es8 r r e \stemBoth \stemDown f f, es! d \stemBoth |
   r as' g f g f16 es f8 g |
   c16 d es d c bes as g f bes' as g f es d c |
   bes c d c bes as g f es as' g f es d c bes |
@@ -164,38 +168,37 @@ bassdux = \context Voice=three \notes \relative c' {
   d c g' g, 
 %%30
   \context Staff=bass <
-    {\stemup c2 ~ | c1 ~ | c1 }
-    \context Voice=four {\stemdown c,2 ~ | c1 ~ | c1 }
+    {\stemUp c2 ~ | c1 ~ | c1 }
+    \context Voice=four {\stemDown c,2 ~ | c1 ~ | c1 }
   >
 }
 
 \score {
  
-    \context PianoStaff < 
-	\context Staff = treble < 
-	    \global 
+    \notes \context PianoStaff < 
+        \property Score.TimeSignature \override #'style = #'C
+	\context Staff = treble <
+	    \key c \minor
+%	\key es \major
 	    \dux
-	    \comes 
+	    { \comes \bar "|." }
+	      \time 4/4
 	  >
 	\context Staff = bass <
-	    \global
+	    \key c \minor
 	    \bassdux
 	>
     >
 
     \paper {
-	gourlay_maxmeasures = 4.;
-	indent = 8.\mm;
-	textheight = 295.\mm;
-
-	\translator{ \OrchestralScoreContext }
+        linewidth = 18.0 \cm
     }
     \header{
-	opus = "BWV 847";
+	opus = "BWV 847"
     }
 
     \midi {
-	\tempo 4 =84;
+	\tempo 4 =84
     }
 }
 

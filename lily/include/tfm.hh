@@ -3,12 +3,16 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1999--2001 Jan Nieuwenhuizen <janneke@gnu.org>
 
 
   revamped code from GNU Fontutils-0.6
 
  */
+
+/*
+  TODO: aren't there standard libs?  Ideally it is better to just link
+  to a C-library.  */
 
 #ifndef TFM_HH
 #define TFM_HH
@@ -125,7 +129,7 @@ struct Tfm_kern
   Real kern;
 };
 
-struct Tex_font_char_metric : Character_metric
+struct Tex_font_char_metric
 {
   bool exists_b_;
   Char_code code_;
@@ -144,18 +148,22 @@ struct Tex_font_char_metric : Character_metric
 class Tex_font_metric : public Font_metric
 {
 public:
-  Tex_font_metric ();
+  static  SCM make_tfm (String filename);
 
-  void clear (int n);
-  Character_metric const *get_char (int, bool) const;
-  Tex_font_char_metric const &find_ascii (int ascii, bool warn=true) const;
-  void read_file (String name);
+  virtual int count () const;
+  virtual Box get_char (int) const;
+  Tex_font_char_metric const *find_ascii (int ascii, bool warn=true) const;
+
   String str () const;
 
+
+  
   Tfm_info info_;
   Tfm_header header_;
   Array<Tex_font_char_metric> char_metrics_;
   Array<int> ascii_to_metric_idx_;
+private:
+  Tex_font_metric ();
 };
 
 

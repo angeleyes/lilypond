@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1999--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -11,26 +11,30 @@
 #define FONT_METRIC_HH
 
 #include "box.hh"
-/*
-  sigh.  
-
-  signature -> Internal compiler error
-*/
-
-struct Character_metric
-{
-  virtual Box dimensions () const=0;
-  virtual ~Character_metric () {}
-};
+#include "lily-guile.hh"
+#include "smobs.hh"
+#include "lily-proto.hh"
+#include "string.hh"
 
 struct Font_metric
 {
-  virtual Character_metric const *get_char (int ascii, bool warn) const=0;
-  virtual ~Font_metric () {}
+public:
+  SCM description_;
+  String path_;
+  
+  virtual int count () const;
+  virtual Box get_char (int ascii) const;
+  virtual Box text_dimension (String)  const;
+  virtual Molecule find_by_name (String) const;
+
+  DECLARE_SMOBS (Font_metric,);
+private:
+  Font_metric (Font_metric const&); // no copy.
+protected:
+  Font_metric ();
 };
 
-
-
+Font_metric * unsmob_metrics (SCM s);
 
 #endif /* FONT_METRIC_HH */
 
