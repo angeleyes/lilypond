@@ -1,26 +1,26 @@
 \header{
-	enteredby = "Tom Cato Amundsen";
-	copyright = "Public Domain";
-	piece = "Allemande";
+	enteredby = "Tom Cato Amundsen"
+	copyright = "Public Domain"
+	piece = "Allemande"
 }
 
-\version "1.2.0";
+\version "1.3.146"
 
-global = \notes{
-	\time 4/4;
-	\partial 8*3;
-	\key es;
-	\skip 1*15;
-	\skip 4*3;
-	\skip 16*4;
-	\bar ":|:";
-	\skip 16*3;
-	\skip 1*16;
-	\bar ":|";
+global =  \notes{
+	\time 4/4
+	\partial 8*3
+	\key es \major
+	\skip 1*15
+	\skip 4*3
+	\skip 16*4
+	\bar ":|:"
+	\skip 16*3
+	\skip 1*16
+	\bar ":|"
 }
 
-hoyreEn = \notes\relative c'''{
-%	\partial 4.; 
+hoyreEn =  \notes\relative c'''{
+%	\partial 4. 
 	[as16 g f] |
 	[g16 d es b][c f es d][es b c g][as d c b] |
 	[c g as es][f es' d c][b8. a16][g8 b] |
@@ -28,14 +28,14 @@ hoyreEn = \notes\relative c'''{
 	[es16 f g8][as,16 g' f es][f g as8][b,16  as' g f] |
 %5
 	\context Staff < { 
-		\stemup es4~ [es8. c16] d4~ [d8. b16] |
+		\stemUp es4~ [es8. c16] d4~ [d8. b16] |
 		c4.~ [c16 b] c4~ [c16 c bes as] |
-		\stemboth [g c32 d es16 c][g8 as] \stemup bes4~ [bes8 g'~] |
-		\stemboth [g16 c,32 d es16 c][a f' c32 d es16] \stemup d4~ [d8 d] |
+		\stemBoth [g c32 d es16 c][g8 as] \stemUp bes4~ [bes8 g'~] |
+		\stemBoth [g16 c,32 d es16 c][a f' c32 d es16] \stemUp d4~ [d8 d] |
 		[d8 c] r16 [fis g a][es8 d] r16 [g a bes] |
 		[f8 e] r16 [a bes c][g8 fis] r16 [es d c] |
 	} {
-		\stemdown r16 [b c g][as es f8] r16 [g as f][g d es8~] |
+		\stemDown r16 [b c g][as es f8] r16 [g as f][g d es8~] |
 %TODO når du får tak i en til urtekst må denne og neste takt sammenliknes.
 		[es16 f32 g as16 f][d f8.~][f16 f es d][es8 f] |
 		s4 r4 r16 [f g d] es8 r |
@@ -50,9 +50,9 @@ hoyreEn = \notes\relative c'''{
 	[d fis g bes~][bes fis g d][es fis g bes~][bes fis g bes] |
 	[e a, bes fis][g bes a g][fis d es bes][c es d c] |
 	\context Staff <
-		{ \stemup [bes8 d'][bes a16 g] g4~ g16 }
-		{ \stemup s2 s16 d8.~ d16 }
-		{ \stemdown r8 <g d> <[g d><fis c>] r16 [d16 b8~] b16 }
+		{ \stemUp [bes8 d'][bes a16 g] g4~ g16 }
+		{ \stemUp s2 s16 d8.~ d16 }
+		{ \stemDown r8 <g d> <[g d><fis c>] r16 [d16 b8~] b16 }
 	>
 	[es'16 d c] |
 %17
@@ -74,27 +74,27 @@ hoyreEn = \notes\relative c'''{
 	[es g'( as, )g][f as'16( g][as g fis )g] |
 	fis4.~ [fis16 e32 fis][g16 d f es][d c b a] |
 	\context Staff <
-		{ \stemup [g8 g'][es d16 c] c4. }
-		{ \stemdown r8 <g c es> <[g c> <f b>] <es4. g> } 
+		{ \stemUp [g8 g'][es d16 c] c4. }
+		{ \stemDown r8 <g c es> <[g c> <f b>] <es4. g> } 
 	>	s8
 }
 
-venstreEn = \notes\relative c{
-	\clef bass; 
-%	\partial 4.; 
+venstreEn =  \notes\relative c{
+	\clef bass 
+%	\partial 4. 
 	r16 r8 |
-	[c8 c,] \clef treble; r16 [as''' g f][g d es b][c f es d] |
-	\clef bass; [es b c g][as8 f][g g,~][g16 f' es d] |
+	[c8 c,] \clef treble r16 [as''' g f][g d es b][c f es d] |
+	\clef bass [es b c g][as8 f][g g,~][g16 f' es d] |
 	[es b c g][as g' f es][f c d a][bes as' g f] |
 	[g d es b][c bes' as g][as es f c][d8 b'] |
 %5
 	[c8 es][f, as][b, d][es, g] |
 	[as f][g g'][c, g']
 	\context Staff <
-		{ \stemup [c8 d] | es4 }
-		{ \stemdown c4 ~ | [c8. g32 f] }
+		{ \stemUp [c8 d] | es4 }
+		{ \stemDown c4 ~ | [c8. g32 f] }
 	>
-	\stemboth [es, f g16 c,32 d es16][g,8. bes32 as][g as bes16 es,32 f g16] |
+	\stemBoth [es, f g16 c,32 d es16][g,8. bes32 as][g as bes16 es,32 f g16] |
 %8
 	[a,8 c][f a][bes8. f''32 es][d es f16 bes,32 c d16] |
 	[es, g a bes][c d es c][fis, a bes c][d e fis d] |
@@ -108,8 +108,8 @@ venstreEn = \notes\relative c{
 %16
 	[g16 a bes c][d8 d,]
 	\context Staff <
-		{ \stemup r8 r16 d' g }
-		{ \stemdown g,4~ g16 }
+		{ \stemUp r8 r16 d' g }
+		{ \stemDown g,4~ g16 }
 	>
 	r16 r8 |
 %17

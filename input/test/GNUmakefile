@@ -1,8 +1,10 @@
 # input/test/Makefile
 
 depth = ../..
-examples=font20 slur-interstaff sleur hara-kiri grace
-LOCALSTEPMAKE_TEMPLATES=mutopia
+examples=  font20  
+LOCALSTEPMAKE_TEMPLATES=ly mutopia
+
+EXTRA_DISTFILES=features.abc
 
 include $(depth)/make/stepmake.make 
 

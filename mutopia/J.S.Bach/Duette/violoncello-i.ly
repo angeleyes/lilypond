@@ -1,17 +1,20 @@
 \header{
-filename =	"violoncello-i.ly";
-title =		"Vier Duette";
-description =	"Four duets for Violino and Violoncello (Viola)";
-opus = 		"BWV";
-composer =	"Johann Sebastian Bach (1685-1750)";
-enteredby =	"jcn";
-copyright =	"Public Domain";
+filename = 	"violoncello-i.ly"
+title = 		"Vier Duette"
+description = 	"Four duets for Violino and Violoncello (Viola)"
+opus =  		"BWV"
+composer = 	"Johann Sebastian Bach (1685-1750)"
+enteredby = 	"jcn"
+copyright = 	"Public Domain"
 }
 
-\version "1.2.0";
+\version "1.3.146"
 
-$violoncello_i = \notes\relative c{
-  \property Voice.beamAutoEnd = "3/8"
+violoncelloI =  \notes\relative c{
+  \property Voice.autoBeamSettings \override #'(end * * * *) = #(make-moment 3 8)
+  % too many [c8 c c] stuff here some manual beaming
+  %\property Voice.autoBeamSettings \override #'(end 1 8 * *) = #(make-moment 1 16)
+
   g8()a d, g b()g d()fis a d a()fis |
   g()d b' g b()c b()e fis g d()d, |
   g r r [d'16(b a )g] e'8 d r r [c16(b a )b] g'8 |
@@ -19,7 +22,7 @@ $violoncello_i = \notes\relative c{
 %5
   d8 d'()a b16 c(d)b g b c,8 c'()g a16 b(c)a fis a |
   b,8()b' fis g a()e fis g()d e fis()d |
-  g r r g,16(fis e)d b'8 a r r g16(fis e )d c'8 |
+  g r r [g,16(fis e)d] b'8 a r r [g16(fis e )d] c'8 |
   b r r d16 b(a)g e' c d b(a)g c a c b(a)g a fis |
   g d( e fis g a )b d(c b c )a b g(a b c b )e g( fis e d cis |
 %10
@@ -56,16 +59,17 @@ $violoncello_i = \notes\relative c{
   d a'(b cis d)e fis8 [g,16( fis e)d] g8()e c a d()d,|
   g r r r16 d''(e)f b,(d)g, b(c)d g,(b)d, f(g)a d,(f|
   )b, d(e)f b,(d)g,8 a()b c16 d(e f g a)b d(c b a)g|
+  % FIXME?
   fis [a(g)fis e d] g8()e c g'8 b, e c d d, |
   g1.|
-  \bar "|.";
+  \bar "|."
 }
 
 \include "global-i.ly"
 
-$violoncello_i_staff = \context Staff = violoncello <
+violoncelloIStaff =  \context Staff = violoncello <
   \property Staff.instrument = "cello"
-  \$violoncello_i
-  \clef bass;
-  \$global_i
+  \violoncelloI
+  \clef bass
+  \globalI
 >

@@ -2,11 +2,11 @@
 
 depth = ../..
 
-SUBDIRS = Petites-Preludes Solo-Cello-Suites Cembalo-Partitas Duette
+SUBDIRS = Petites-Preludes Cembalo-Partitas Duette
 EXTRA_DIST_FILES=
 
 
-LOCALSTEPMAKE_TEMPLATES=mutopia
+LOCALSTEPMAKE_TEMPLATES=ly mutopia
 examples=wtk1-fugue2
 
 include $(depth)/make/stepmake.make

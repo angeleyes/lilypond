@@ -1,7 +1,7 @@
 \header{
-	enteredby = "Tom Cato Amundsen";
-	copyright = "Public Domain";
-	piece = "Capriccio";
+	enteredby = "Tom Cato Amundsen"
+	copyright = "Public Domain"
+	piece = "Capriccio"
 }
 
 %% I takt 22 foretar jeg et stemmekryss mellom stemme en og to, pga at den 
@@ -10,18 +10,18 @@
 %% 
 %% Noe liknende skjer også i mellom andre og tredje stemme i takt 28
 
-\version "1.2.0";
+\version "1.3.146"
 
-global = \notes{
-	\time 2/4;
-	\key es;
+global =  \notes{
+	\time 2/4
+	\key es \major
 	s2*48
-	\bar ":|:";
+	\bar ":|:"
 	s2*48
-	\bar "|.";
+	\bar "|."
 }
 
-vOne = \context Voice = voiceOne \notes\relative c''{
+vOne =  \context Voice = voiceOne \notes\relative c''{
 	r8 g c4~ |	
 	[c8 d16 c][b a g f] |
 	[es8 g' d, f'] |
@@ -142,7 +142,7 @@ vOne = \context Voice = voiceOne \notes\relative c''{
 	<c2 g es>
 }
 
-vTwo = \context Voice = voiceTwo \notes\relative c{
+vTwo =  \context Voice = voiceTwo \notes\relative c{
 	es4 r8 es |
 	f4 r8 bes |
 	c4. b8 |
@@ -263,8 +263,8 @@ vTwo = \context Voice = voiceTwo \notes\relative c{
 	\property Voice.horizontalNoteShift = 0
 	c4 b8 |
 }
-vThree = \context Voice = voiceThree \notes\relative c{
-	\stemdown
+vThree =  \context Voice = voiceThree \notes\relative c{
+	\stemDown
 	c4 r8 c |
 	d4 r |
 	r8 [es f g] |
@@ -386,94 +386,94 @@ vThree = \context Voice = voiceThree \notes\relative c{
 	<c2 c,>
 }
 
-vOneSwitch = \context Voice = voiceOne \notes{
+vOneSwitch =  \context Voice = voiceOne \notes{
 	s2*4
 %5
-	\stemup	s2*17
+	\stemUp	s2*17
 %22
-	\stemdown s16*1
-	\stemboth s16*7
+	\stemDown s16*1
+	\stemBoth s16*7
 %23
 	s2*12 
 %35
-	s4 \stemup s4 
+	s4 \stemUp s4 
 	s2*3
 %39
-	\stemboth s2*2
+	\stemBoth s2*2
 %41
-	\stemup s2*8
+	\stemUp s2*8
 %49
-	\stemboth s2*3
+	\stemBoth s2*3
 %52
-	\stemup s2*8
+	\stemUp s2*8
 %60
-	\stemboth s2
+	\stemBoth s2
 %61
-	\stemup s2*35
+	\stemUp s2*35
 %96
-	\stemboth
+	\stemBoth
 }
 
-vTwoSwitch = \context Voice = voiceTwo \notes{
-	\stemup	s2*4 
+vTwoSwitch =  \context Voice = voiceTwo \notes{
+	\stemUp	s2*4 
 %5
-	\stemdown \translator Staff = treble s2*17
+	\stemDown \translator Staff = treble s2*17
 %22
-	\stemup
+	\stemUp
 	s2*6
 %28
 	\translator Staff = bass s2*7
 %35
-	s4 \translator Staff = treble \stemdown s4
+	s4 \translator Staff = treble \stemDown s4
 	s2*3
 %39	
-	\translator Staff = bass \stemup s2*2
+	\translator Staff = bass \stemUp s2*2
 %41
-	s4 \translator Staff = treble \stemdown s4
+	s4 \translator Staff = treble \stemDown s4
 %42
-	s8 \translator Staff = bass \stemup s8*3 
+	s8 \translator Staff = bass \stemUp s8*3 
 %43
-	s4 \translator Staff = treble \stemdown s4
+	s4 \translator Staff = treble \stemDown s4
 %44
-	s8 \translator Staff = bass \stemup s8*3
+	s8 \translator Staff = bass \stemUp s8*3
 %45
-	\translator Staff = treble \stemdown s2*4
+	\translator Staff = treble \stemDown s2*4
 %49
-	\stemup \translator Staff = bass s2*3
+	\stemUp \translator Staff = bass s2*3
 %52
-	s8*1 \stemdown \translator Staff = treble \stemdown s8*3
+	s8*1 \stemDown \translator Staff = treble \stemDown s8*3
 	s2*7
 %60
-	\stemup \translator Staff = bass s2
+	\stemUp \translator Staff = bass s2
 %61
-	\translator Staff = treble \stemdown s2*35
+	\translator Staff = treble \stemDown s2*35
 }
 
-vThreeSwitch = \context Voice = voiceThree \notes{
-	\stemdown s2*6
+vThreeSwitch =  \context Voice = voiceThree \notes{
+	\stemDown s2*6
 %7
-	\stemboth s2*21
+	\stemBoth s2*21
 %28
-	\stemdown s2*7
+	\stemDown s2*7
 %35
-	s4 \stemboth s4
+	s4 \stemBoth s4
 %36
 	s2*3
 %39
-	\stemdown s2*7
+	\stemDown s2*7
 %46
-	\stemboth s2*3
+	\stemBoth s2*3
 %49
-	\stemdown s2*3
+	\stemDown s2*3
 %52
-	s4 \stemboth s4
+	s4 \stemBoth s4
 	s2
 %54
 	s2*2 %HACK evt endre her, sammenlikne med Henle	
 %56
 	s2*4
 %60
-	\stemdown 
+	\stemDown 
 }
 
 \score{
@@ -484,7 +484,7 @@ vThreeSwitch = \context Voice = voiceThree \notes{
 			\vOne
 		>
 		\context Staff = bass <			
-			\clef bass;
+			\clef bass
 			\global
 			\vTwoSwitch
 			\vTwo
@@ -494,5 +494,5 @@ vThreeSwitch = \context Voice = voiceThree \notes{
 	>
 	\paper{
 	}
-	\midi{\tempo 4 =60;}
+	\midi{\tempo 4 =60}
 }

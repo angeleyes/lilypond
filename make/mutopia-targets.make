@@ -1,15 +1,55 @@
 
+include $(stepdir)/www-targets.make
+
+
+.PHONY: download mutopia png ps scores tar
+
+.PRECIOUS: $(outdir)/%.ps $(outdir)/%-book.ps
+.PRECIOUS: $(outdir)-letter/%.dvi $(outdir)-letter/%.ps
+
 
 all: $(OUT_FILES)
 
-
 local-WWW: $(ly_examples) $(fly_examples) $(ps_examples) $(png_examples)
-	(cd $(outdir); $(PYTHON) ../$(buildscripts)/mutopia-index.py --package=$(topdir) --prefix=../ --suffix=/$(outdir) $(html_subdirs) $(all_examples))
-	$(PYTHON) $(step-bindir)/add-html-footer.py --package=$(topdir) --index=$(depth)/$(outdir)/index.html $(outdir)/index.html
-	echo $^ > $(depth)/wwwlist
 
-convert-mudela: local-convert-mudela
+tar:
+	mkdir -p $(outdir)/$(tarball)
+	cp -p *.ly $(outdir)/$(tarball)
+	cd $(outdir) && tar czf $(tarball).tar.gz $(tarball)
+	rm -rf $(outdir)/$(tarball)
+
+png: $(png_examples)
+
+ps: $(ps_examples)
+
+scores: $(score_ps)
+	$(MAKE) ps_examples="$<" ps
+
+local-mutopia:
+	$(MAKE) examples="$(mutopia-examples)" PAPERSIZE=letter local-WWW $(mutopia-letter)
+
+mutopia: local-mutopia
 	$(LOOP)
 
-local-convert-mudela:
-	$(PYTHON) $(depth)/scripts/convert-mudela.py -e *ly
+mutopia-letter=$(mutopia-examples:%=out-letter/%.ps.gz)
+
+local-clean: local-letter-clean
+
+local-letter-clean:
+	rm -f $(outdir)-letter/*
+
+
+local-help: local-mutopia-help
+
+local-mutopia-help:
+	@echo -e "\
+  <NAME>      update $(outdir)/<NAME>.ps\n\
+  <NAME>-book update booklet $(outdir)/<NAME>-book.ps\n\
+  mutopia     update PNGs, PostScript a4 and letter of all mutopia-examples\n\
+  png         update PNGs of all examples\n\
+  ps          update PostScript of all examples\n\
+  scores      update PostScript of all scores\n\
+"\
+#
+
+
