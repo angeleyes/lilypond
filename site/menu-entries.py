@@ -1,7 +1,6 @@
 
 # this list should be as short as possible.
 [
-## TODO: should have a separator 
 	('index.html', 'Home'),
 
 ## switch is the first: newbie path.
@@ -11,7 +10,8 @@
  ('about', 'About'),
 
  ## 
- ## don't know exactly where to put this.
+ ## don't know exactly where to put this, probably under
+ ## about, maybe in switch ?
  ## let it be here for now. -hwn
 	
  ('background/', 'Why LilyPond?'),

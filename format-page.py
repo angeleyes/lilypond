@@ -47,11 +47,12 @@ location_template = '''<DIV class="location">
 
 # don't use mouseover magic as long as we don't have button images
 button_template = '''<TD class="%(class)s"><A href="%(url)s">
-%(text)s</A></TD>'''
+%(text)s</A>%(suffix)s</TD>'''
 
+#
 button_active_template = '''
 <TD class="%(class)s"><A href="%(url)s">
-%(text)s</A></TD>'''
+%(text)s</A>%(suffix)s</TD>'''
 
 
 outdir = '/tmp'
@@ -102,6 +103,7 @@ def one_tab (depth, file):
 			'url' : '../' * depth + file,
 			'name' : name,
 			'text' : label,
+			'suffix': '',
 			'root' : '../' * depth
 		}
 		
@@ -113,18 +115,23 @@ def one_tab (depth, file):
 		else:
  			button_dict['class'] =  "menu"
 
-		button = button_template % button_dict
-		buttons[name] = label
+		# ugh.
+		if label == 'Home':
+			button_dict['suffix'] = ' &nbsp;<b>&gt;</b> '
 		
+		button = button_template % button_dict
+
 		return button
 	
 	labels = map (entry_to_label, menu)
 	here_label = filter (lambda x: x[0] == here, menu)
+
 	if not here_label:
 		here_label = ''
 	else:
 		here_label = here_label[0][1]
-		
+
+
 	# FIXME
 	tr_str = '<TR>%s</TR>' % string.join (labels, '')
  	menu_str = '<TABLE>%s</TABLE>' % tr_str
@@ -209,15 +216,8 @@ for (o,a) in options:
 	else:
 		assert unimplemented
 
-buttons = {}
 
 for f in files:
 	sys.stderr.write ('%s...\n' % f) 
 	do_one_file (f)
 
-bfn = outdir + '/buttons'
-sys.stderr.write ('writing: %s...\n' % bfn)
-bf = open (bfn, "w")
-for i in buttons.keys ():
-	bf.write ("%s:%s\n" % (i, buttons[i]))
-bf.close ()
