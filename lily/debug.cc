@@ -21,57 +21,21 @@
 #include "misc.hh"
 #include "main.hh"
 
-Dstream *monitor=0;
-ostream * nulldev =0;
-
-
-// ugh
-struct _Dinit {
-  _Dinit()
-    {
-	nulldev = new ofstream ("/dev/null");
-	monitor = new Dstream (&cout,".dstreamrc");
-    }
-  ~_Dinit()
-    {
-	delete nulldev;
-	delete monitor;
-    }
-} dinit;
-
-
-
-/*
-  want to do a stacktrace .
-  */
-void
-mynewhandler()
-{
-  assert (false);
-}
+Dstream *my_monitor=0;
 
 void
 float_handler (int)
 {
-  cerr << _ ("Floating point exception") << endl;
+  cerr << _ ("floating point exception") << endl;
   assert (false);
 }
-
 
 void
 debug_init()
 {
-#ifndef NDEBUG
-  // libg++ 2.8.0 doesn't have set_new_handler
-  // set_new_handler (&mynewhandler);
-#endif
-  set_flower_debug (*monitor, check_debug);
-
+  my_monitor = new Dstream (&cout, ".dstreamrc");
   signal (SIGFPE, float_handler);
 }
-
-bool check_debug=false;
-
 
 bool check_malloc_b = false;
 
@@ -131,12 +95,15 @@ operator delete (void *p)
 void
 set_debug (bool b)
 {
-  check_debug =b;
-  set_flower_debug (*monitor, check_debug);
+  if (b)
+    flower_dstream = my_monitor;
+  else
+    flower_dstream = 0;
+  
 #ifdef MEMORY_PARANOID
   if (check_malloc_b)
     if (mcheck (0))
-      warning (_ ("can't set mem-checking") + "!");
+      warning (_ ("Can't set mem-checking!"));
 #endif
 }
 

@@ -21,6 +21,7 @@
 #include "input.hh"
 
 static Keyword_ent the_key_tab[]={
+  {"autochange", AUTOCHANGE},
   {"spanrequest", SPANREQUEST},
   {"simultaneous", SIMULTANEOUS},
   {"sequential", SEQUENTIAL},
@@ -109,9 +110,9 @@ My_lily_lexer::lookup_identifier (String s)
 void
 My_lily_lexer::start_main_input ()
 {  
-  if (!monitor->silent_b ("InitDeclarations") && check_debug)
+  if (flower_dstream && !flower_dstream->silent_b ("InitDeclarations") && flower_dstream)
     print_declarations (true);
-  if (!monitor->silent_b ("InitLexer") && check_debug)
+  if (flower_dstream && !flower_dstream->silent_b ("InitLexer") && flower_dstream)
     set_debug (1);
 
 
@@ -134,13 +135,13 @@ My_lily_lexer::set_identifier (String name_str, Identifier* i, bool )
     {
 #if 0
       if (unique_b)
-	old->warning(_f ("redeclaration of `\\%s\'", name_str));
+	old->warning(_f ("redeclaration of `\\%s'", name_str));
 #endif
       delete old;
     }
   if (lookup_keyword (name_str) >= 0)
     {
-      warning (  _f ("Identifier name is a keyword (`%s')", name_str));
+      warning (  _f ("Identifier name is a keyword: `%s'", name_str));
     }
   
   scope_l_arr_.top ()->elem (name_str) = i;
@@ -159,7 +160,7 @@ My_lily_lexer::print_declarations (bool ) const
 {
   for (int i=scope_l_arr_.size (); i--; )
     {
-      DOUT << "Scope no. " << i << '\n';
+      DEBUG_OUT << "Scope no. " << i << '\n';
       scope_l_arr_[i]->print ();
     }
 }

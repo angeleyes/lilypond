@@ -26,7 +26,7 @@ Midi_stream::~Midi_stream ()
   *os_p_ << flush;		// ugh. Share with tex_stream.
   if (!*os_p_)
     {
-      warning (_ ("error syncing file (disk full?)"));
+      warning (_ ("Error syncing file (disk full?)"));
       exit_status_i_ = 1;
     }
   delete os_p_;
@@ -44,7 +44,7 @@ Midi_stream::operator << (Midi_item const& midi_c_r)
 {
 //    *this <<midi_c_r.str (); 
   String str = midi_c_r.str ();
-  if (check_debug && !monitor->silent_b ("Midistrings")) 
+  if (flower_dstream && !flower_dstream->silent_b ("Midistrings")) 
     {
     str = String_convert::bin2hex_str (str) + "\n";
     // ugh, should have separate debugging output with Midi*::print routines
@@ -74,5 +74,5 @@ Midi_stream::open ()
 {
   os_p_ = new ofstream (filename_str_.ch_C (),ios::out|ios::bin);
   if (!*os_p_)
-    error (_f ("can't open file: `%s\'", filename_str_));
+    error (_f ("Can't open file: `%s'", filename_str_));
 }

@@ -21,7 +21,7 @@ void
 Octave_key::print () const
 {
   for (int i= 0; i < 7 ; i++)
-    DOUT << "note " << i << " acc: " << accidental_i_arr_[i] << '\n';
+    DEBUG_OUT << "note " << i << " acc: " << accidental_i_arr_[i] << '\n';
 }
 
 
@@ -51,12 +51,12 @@ Key::octave_to_index (int o) const
   int i = o + ZEROOCTAVE;
   if (i < 0)
     {
-      warning ("Don't have that many octaves (" + to_str (o) + ")");
+      warning (_f ("Don't have that many octaves (%s)", to_str (o)));
       i = 0;
     }
   if (i >= NUMBER_OF_OCTAVES)
     {
-      warning ("Don't have that many octaves (" + to_str (o) + ")");
+      warning (_f ("Don't have that many octaves (%s)", to_str (o)));
       i = NUMBER_OF_OCTAVES -1;
     }
   return i;
@@ -74,12 +74,12 @@ Octave_key::set (int i, int a)
 {
   if (a <= -3)
     {
-      warning ("Underdone accidentals (" + to_str (a) + ")");
+      warning (_f ("underdone accidentals (%s)", to_str (a)));
       a = -2;
     }
   if (a >= 3)
     {
-      warning ("Overdone accidentals (" + to_str (a) + ")");
+      warning (_f ("overdone accidentals (%s)", to_str (a)));
       a = 2;
     }
   accidental_i_arr_[i]=a;
@@ -109,9 +109,9 @@ Key::print () const
 {
   for (int i= 0; i < NUMBER_OF_OCTAVES ; i++)
     {
-      DOUT << "octave " << i - ZEROOCTAVE << " Octave_key { ";
+      DEBUG_OUT << "octave " << i - ZEROOCTAVE << " Octave_key { ";
       octaves_[i].print ();
-      DOUT << "}\n";
+      DEBUG_OUT << "}\n";
     }
 }
 

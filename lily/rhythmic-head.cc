@@ -30,7 +30,7 @@ Rhythmic_head::do_post_processing ()
 {
   if (dots_l_)
     {
-      dots_l_->position_i_ = position_i ();
+      dots_l_->position_i_ = int (position_f ());
     }
 }
 
@@ -41,10 +41,10 @@ Rhythmic_head::do_pre_processing ()
   position_i_ = 0;
 }
 
-int
-Rhythmic_head::position_i () const
+Real
+Rhythmic_head::position_f () const
 {
-  return position_i_ +  Staff_symbol_referencer::position_i ();
+  return position_i_ +  Staff_symbol_referencer::position_f ();
 }
 
 
@@ -78,7 +78,7 @@ void
 Rhythmic_head::do_print () const
 {
 #ifndef NPRINT
-  DOUT << "balltype = "<< balltype_i_ << "dots = " << dots_i ();
+  DEBUG_OUT << "balltype = "<< balltype_i_ << "dots = " << dots_i ();
 #endif
 }
 

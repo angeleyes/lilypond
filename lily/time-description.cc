@@ -27,7 +27,7 @@ void
 Time_description::print() const
 {
 #ifndef NPRINT
-  DOUT << str ();
+  DEBUG_OUT << str ();
 #endif
 }
 
@@ -103,7 +103,7 @@ String
 Time_description::try_set_partial_str (Moment p) const
 {
   if (p<Moment (0))
-    return (_ ("partial measure must be non-negative"));
+    return (_ ("Partial measure must be non-negative"));
   if (p > whole_per_measure_)
     return (_ ("partial measure too large"));
   return "";

@@ -61,11 +61,11 @@ Rest_collision::do_pre_processing()
     {
       if (rest_l_arr_.size () > 1)
 	{
-	  warning (_("Too many colliding rests."));
+	  warning (_("too many colliding rests"));
 	}
       if (ncol_l_arr_.size () > 1)
 	{
-	  warning (_("Too many notes for rest collision."));
+	  warning (_("too many notes for rest collision"));
 	}
       Note_column * rcol = rest_l_arr_[0];
 
@@ -119,8 +119,8 @@ void
 Rest_collision::do_print() const
 {
 #ifndef NPRINT
-  DOUT << "rests: " << rest_l_arr_.size() << ", ";
-  DOUT << "cols: " << ncol_l_arr_.size();
+  DEBUG_OUT << "rests: " << rest_l_arr_.size() << ", ";
+  DEBUG_OUT << "cols: " << ncol_l_arr_.size();
 #endif
 }
 

@@ -43,9 +43,7 @@ Identifier::~Identifier()
 void
 Identifier::error (String expect) const
 {
-  String e (_("Wrong identifier type: "));
-  e += _f ("%s expected", expect);
-  ::error (e);
+  ::error (_f ("wrong identifier type, expected: `%s'", expect));
 }
 
 String
@@ -63,7 +61,7 @@ Identifier::do_str () const
 void
 Identifier::print () const
 {
-  DOUT << "identifier ";
+  DEBUG_OUT << "identifier ";
   do_print ();
 }
 void
@@ -109,7 +107,7 @@ DUMMY_STR(Duration);
 void \
 Class ## _identifier::do_print () const\
 {\
-  DOUT << do_str () << '\n';\
+  DEBUG_OUT << do_str () << '\n';\
 }\
 
 

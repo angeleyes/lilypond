@@ -80,7 +80,7 @@ Music_output_def::get_global_translator_p ()
 {
   Translator * t = find_translator_l ("Score");
   if (!t)
-    error (_("Can't find Score context"));
+    error (_f ("Can't find `%s' context", "Score"));
   t = t->clone ();
   Global_translator *g = dynamic_cast <Global_translator *> (t);
   t->add_processing ();
@@ -92,9 +92,9 @@ void
 Music_output_def::print () const
 {
 #ifndef NPRINT
-  DOUT << "Translators: \n";
+  DEBUG_OUT << "Translators: \n";
   translator_p_dict_p_->print ();
-  DOUT << "Other definitions.\n";
+  DEBUG_OUT << "Other definitions.\n";
   scope_p_->print( );
 #endif
 }

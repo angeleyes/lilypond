@@ -21,7 +21,7 @@ void
 Musical_pitch::print () const
 {
 #ifndef NPRINT
-  DOUT << str ();
+  DEBUG_OUT << str ();
 #endif
 }
 
@@ -99,7 +99,7 @@ Musical_pitch::str () const
     {
       int o = octave_i_ + 1;
       while (o--)
-	s += to_str ('\'');
+	s += "'";
     }
   else if (octave_i_ <0)
     {
