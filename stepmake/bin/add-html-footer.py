@@ -1,139 +1,205 @@
 #!@PYTHON@
 
 """
-Print a nice footer.  add the top of the NEWS file (up to the ********)
+Print a nice footer.  add the top of the ChangeLog file (up to the ********)
 """
-
-program_name = 'add-html-footer'
-version = '0.1'
-
+import re
 import sys
 import os
 import time
 import string 
 import getopt
-import __main__
 
-fullname = "unknown"
-news_file = ''
+gcos = "unknown"
+index_url=''
+top_url=''
+changelog_file=''
+package_name = ''
+package_version = ''
 
-index_file=''
-banner_file = ''
-news_file=''
-news =''
-footer = '\n<hr>Please take me <a href=%s>back to the index</a>\n\
-of %s<!%s%s>\n'
-builtstr = '\n<hr><font size=-1>\n\
-This page was built from %s-%s by\
-<address><br>%s &lt<a href=mailto:%s>%s</a>&gt, at %s.</address><p></font>' 
+mail_address = '(address unknown)'
+try:
+	mail_address= os.environ['MAILADDRESS']
+except KeyError:
+	pass
 
-(options, files) = getopt.getopt(sys.argv[1:], 'hp:', ['help', 'news=', 'index=', 'package=']) 
+webmaster= mail_address
+try:
+	webmaster= os.environ['WEBMASTER']
+except KeyError:
+	pass
 
-def gulp_file (fn):
-	f = open (fn)
-	return f.read ()
+header_file = ''
+footer_file = ''
+default_header = r"""
+"""
+
+default_footer = r"""<hr>Please take me <a href=@INDEX@>back to the index</a>
+of @PACKAGE_NAME@
+"""
+
+built = r"""<hr>
+<p><font size="-1">
+This page was built from @PACKAGE_NAME@-@PACKAGE_VERSION@ by<br>
+</font>
+<address><font size="-1">@GCOS@ &lt;<a href="mailto:%s">@MAIL_ADDRESS@</a>&gt;,
+@LOCALTIME@.</font></address>"""
+
+
+def gulp_file (f):
+	try:
+		i = open(f)
+		i.seek (0, 2)
+		n = i.tell ()
+		i.seek (0,0)
+	except:
+		sys.stderr.write ("can't open file: %s\n" % f)
+		return ''
+	s = i.read (n)
+	if len (s) <= 0:
+		sys.stderr.write ("gulped empty file: %s\n" % f)
+	i.close ()
+	return s
 
 def help ():
-    sys.stdout.write (r"""Usage: add-html-footer [OPTION]... HTML-FILE
-Add a nice footer, add the top of the NEWS file (up to the ********)
+	sys.stdout.write (r"""Usage: add-html-footer [OPTION]... HTML-FILE
+Add header, footer and top of ChangLog file (up to the ********) to HTML-FILE
+
 Options:
-  -h, --help             print this help
-  -p, --package          package name (ugh. Junkme.)
-  """)
-    sys.exit (0)
+  --changelog=FILE          use FILE as ChangeLog [ChangeLog]
+  --footer=FILE             use FILE as footer
+  --header=FILE             use FILE as header
+  -h, --help                print this help
+  --index=URL               set homepage to URL
+  --name=NAME               set package_name to NAME
+  --version=VERSION         set package version to VERSION
+""")
+	sys.exit (0)
+
+(options, files) = getopt.getopt(sys.argv[1:], 'h', [
+	'changelog=', 'footer=', 'header=', 'help', 'index=',
+	'name=', 'version=']) 
 
 for opt in options:
-    o = opt[0]
-    a = opt[1]
-    if o == '--news':
-	news_file = a
-    elif o == '--index':
-	index_file = a
-    elif o == '-h' or o == '--help':
-    	help ()
-    elif o == '-p' or o == '--package':
-	topdir = a
-
-sys.path.append (topdir + '/stepmake/bin')
-from packagepython import *
-package = Package (topdir)
-packager = Packager ()
-
-if package.NAME == 'LILYPOND':
-    package.Name = 'GNU LilyPond'
-
-def set_vars():
-    os.environ["CONFIGSUFFIX"] = 'www';
-    if os.name == 'nt':
-        import ntpwd
-        pw = ntpwd.getpwname(os.environ['USERNAME'])
-    else:
-        import pwd
-        pw = pwd.getpwuid (os.getuid());
-
-    __main__.fullname=pw[4]
-
-set_vars ()
-
-def footstr(index):
-    try:
-    	footer = gulp_file (package.topdir + '/Documentation/footer.html.in')
-    except:
-        pass
-    s = footer % (index, package.Name, packager.webmaster, packager.webmaster)
-    s = s + builtstr % (package.Name, 
-    			version_tuple_to_str (package.version), fullname,
-		        packager.mail, packager.mail, 
-			time.strftime ('%c %Z', time.localtime (time.time ())))
-    return s
-
-banner = footstr (index_file)
-banner_id = '<! banner_id >'
-
-
-if news_file:
-    news = gulp_file (news_file)
-    i = regex.search ('^\*\*', news)
-    news = news[:i]
-    
-def check_tag (tag, sub, s, bottom):
-    tag = string.lower (tag)
-    TAG = string.upper (tag)
-    s = regsub.sub (tag, TAG, s)
-    i = regex.search (TAG, s)
-    if i < 0:
-        if bottom:
-	    s = s + sub + '\n'
+	o = opt[0]
+	a = opt[1]
+	if o == '--changelog':
+		changelog_file = a
+	elif o == '--footer':
+		footer_file = a
+	elif o == '--header':
+		header_file = a
+	elif o == '-h' or o == '--help':
+		help ()
+	# urg, this is top!
+	elif o == '--index':
+		index_url = a
+	elif o == '--name':
+		package_name = a
+	elif o == '--version':
+		package_version = a
 	else:
-	    s = sub + '\n' + s
-    return s
-    
+		raise 'unknown opt ', o
+
+#burp?
+def set_gcos ():
+	global gcos
+	os.environ["CONFIGSUFFIX"] = 'www';
+	if os.name == 'nt':
+		import ntpwd
+		pw = ntpwd.getpwname(os.environ['USERNAME'])
+	else:
+		import pwd
+		if os.environ.has_key('FAKEROOTKEY'):
+			pw = pwd.getpwnam (os.environ['LOGNAME'])
+		else:
+			pw = pwd.getpwuid (os.getuid())
+
+	f = pw[4]
+	f = string.split (f, ',')[0]
+	gcos = f 
+
+def compose (default, file):
+	s = default
+	if file:
+		s = gulp_file (file)
+	return s
+
+set_gcos ()
+localtime = time.strftime ('%c %Z', time.localtime (time.time ()))
+
+if os.path.basename (index_url) != "index.html":
+	index_url = os.path.join (index_url , "index.html")
+top_url = os.path.dirname (index_url) + "/"
+
+header = compose (default_header, header_file)
+footer = compose (default_footer, footer_file) + built
+header_tag = '<!-- header_tag -->'
+footer_tag = '<!-- footer_tag -->'
+
+def do_file (f):
+	s = gulp_file (f)
+
+	if changelog_file:
+		changes = gulp_file (changelog_file)
+		# urg?
+		#m = re.search ('^\\\\*\\\\*', changes)
+		m = re.search (r'\*\*\*', changes)
+		if m:
+			changes = changes[:m.start (0)]
+		s = re.sub ('top_of_ChangeLog', '<pre>\n'+ changes  + '\n</pre>\n', s)
+
+	if re.search (header_tag, s) == None:
+		body = '<BODY BGCOLOR=WHITE TEXT=BLACK>'
+		s = re.sub ('(?i)<body>', body, s)
+		if re.search ('(?i)<BODY', s):
+			s = re.sub ('(?i)<body[^>]*>', body + header, s, 1)
+		elif re.search ('(?i)<html', s):		
+			s = re.sub ('(?i)<html>', '<HTML>' + header, s, 1)
+		else:
+			s = header + s
+
+		s = header_tag + '\n' + s
+
+		if re.search ('(?i)<!DOCTYPE', s) == None:
+			doctype = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n'
+			s = doctype + s
+
+	if re.search (footer_tag, s) == None:
+		s = s + footer_tag + '\n'
+
+		if re.search ('(?i)</body', s):
+			s = re.sub ('(?i)</body>', footer + '</BODY>', s, 1)
+		elif re.search ('(?i)</html', s):		
+			s = re.sub ('(?i)</html>', footer + '</HTML>', s, 1)
+		else:
+			s = s + footer
+
+	#URUGRGOUSNGUOUNRIU
+	index = index_url
+	top = top_url
+	if os.path.basename (f) == "index.html":
+		cwd = os.getcwd ()
+		if os.path.basename (cwd) == "topdocs":
+			index = "index.html"
+			top = ""
+
+		# don't cause ///////index.html entries in log files.
+		#	index = "./index.html"
+		#	top = "./"
+
+	s = re.sub ('@INDEX@', index, s)
+	s = re.sub ('@TOP@', top, s)
+	s = re.sub ('@PACKAGE_NAME@', package_name, s)
+	s = re.sub ('@PACKAGE_VERSION@', package_version, s)
+	s = re.sub ('@WEBMASTER@', webmaster, s)
+	s = re.sub ('@GCOS@', gcos, s)
+	s = re.sub ('@LOCALTIME@', localtime, s)
+	s = re.sub ('@MAIL_ADDRESS@', mail_address, s)
+
+	open (f, 'w').write (s)
+
+
 for f in files:
-    s = gulp_file (f)
-
-    if news_file:
-	s = regsub.sub ('top_of_NEWS', '<XMP>\n'+ news  + '\n</XMP>\n', s)
-
-    s = check_tag ('<body', '', s, 0)
-    if regex.search ('<BODY', s) == -1:
-	s = '<BODY>\n' + s
-    s = regsub.sub ('<BODY>', '<BODY BGCOLOR=WHITE><FONT COLOR=BLACK>', s)
-    if regex.search (banner_id, s) == -1:
-	s = regsub.sub ('</body>', '</BODY>', s)
-	s = regsub.sub ('</BODY>', banner_id  + banner + '</BODY>', s)
-    else:
-	s = check_tag ('</body>', '</BODY>', s, 1)
-
-    title = '<HEAD><TITLE>' \
-	+ package.Name + ' -- ' + os.path.basename (os.path.splitext(f)[0]) \
-	+ '</TITLE></HEAD>'
-    s = check_tag ('<title>', title, s, 0)
-
-    s = check_tag ('<html', '', s, 0)
-    if regex.search ('<HTML', s) == -1:
-	s = '<HTML>\n' + s
-    s = check_tag ('</html>', '</HTML>', s, 1)
-
-    dump_file (f, s)
-
+	do_file (f)
 
