@@ -1,3 +1,7 @@
+2004-10-30  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/devel/packaging.html (href): Update Cygwin description.
+
 2004-10-30  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/devel/participating/editors.html: new page.
@@ -8,7 +12,6 @@
 	* site/devel/participating/call-for-help.html: revise, split out
 	tasks.
 	
-
 2004-10-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/switch/advantages.html (src): revise.

@@ -86,59 +86,25 @@ For Debian 3.0:
 <h3>Requirements</h3>
 
 <p>To build LilyPond for Windows, you need to install
-<code>the GNU + Cygnus tools, 1.5.5 or newer<code>.
-Check out the <a href="http://cygwin.com">Cygwin webpage</a>. 
-You can get the latest version of the GNU + Cygnus tools from a Cygwin
-<a href="http://cygwin.com/mirrors.html">mirror site</a>.
-
-<p>
-Currently, LilyPond packages for Cygwin are built on a Debian GNU/Linux host,
-see the section cross compiling below.
-
+the <code>Cygwin</code> tools. out the <a
+href="http://cygwin.com">Cygwin webpage</a>.
 
 <h4>Native compiling</h4>
 
-We just had a first <a href="http://mail.gnu.org/archive/html/lilypond-devel/2003-08/msg00118.html">success report</a>
-
-from Józsa Márton, who compiled LilyPond 1.9.0 on cygwin-1.3.22.  (Note
-that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
-
 <ul>
-  <li>Install Cygwin packages required for building:<br>
-  autoconf (for builds from CVS)
-  bash
-  binutils
-  bison
-  cvs
-  cygwin
-  fileutils
-  flex
-  gcc
-  ghostscript
-  guile-devel
-  libguile12
-  libkpathsea3
-  libreadline5
-  perl
-  python
-  sed
-  sh-utils
-  tetex-bin
-  tetex-devel
-  tetex-tiny
-  texinfo
+  <li>Install Cygwin packages required for running and building as
+    suggested by <code>cygwin/README.in</code>.
   </li>
   <li>Install additional packages for building the documentation:
     <ul>
       <li>autotrace</li>
       <li>t1utils</li>
       <li>mftrace</li>
-      <li>pfaedit</li>
+      <li>fontforge</li>
     </ul>
     The packages autotrace, t1utils and mftrace are not included in
-    Cygwin, but compile out of the box.  pfaedit for Cygwin can be
-    <a href="http://pfaedit.sourceforge.net/pfaedit_cygwin-030827.tgz">
-      downloaded</a> from <a href="http://pfaedit.sf.net">pfaedit's
+    Cygwin, but compile out of the box.  fontforge for Cygwin can be
+    downloaded from <a href="http://fontforge.sourceforge.net/">fontforge's
       sourceforge page</a>.
     </li>
   <li>Tell Cygwin to circumvent DOS/Windows command line restrictions:
@@ -157,10 +123,10 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
     <pre>
    mkdir -p /netrel/src && cd /netrel/src
    mkdir -p old
-   wget -P/tmp http://lilypond.org/download/v1.9/lilypond-1.9.9.tar.gz
+   wget -P/tmp http://lilypond.org/download/v2.3/lilypond-2.3.25.tar.gz
    PATH=/netrel/bin:$PATH pimport lilypond</pre>
     You can also pull from CVS, but the important thing is to
-    have lilypond 1.9.9 or newer, and just one directory named
+    have lilypond 2.3.25 or newer, and just one directory named
     `lilypond-x.y.z-r'.
   </li>
   <li>If you build from CVS, you must generate the configure script, do: <pre>
@@ -168,15 +134,14 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
   </pre></li>
   <li>Build the package:
     <pre>
-      cp lilypond-1.9.9-1/cygwin/mknetrel /netrel/extra/lilypond
-      /netrel/bin/mknetrel -xX lilypond
+      cp lilypond-2.3.25-1/cygwin/mknetrel /netrel/extra/lilypond
+      /netrel/bin/mknetrel lilypond
   </pre></li>
 </ul>
 
 <h4>Cross compiling</h4>
 
-Current LilyPond releases are cross compiled on a GNU/Linux box.  To
-cross compile for Cygwin:
+To cross compile for Cygwin:
 
 <ul>
   <li>Make sure you can build LilyPond for your build host, including
@@ -193,7 +158,7 @@ cross compile for Cygwin:
     </pre>
   </li>
   <li>
-  Setup a binary Cygwin environment.  There is a bare bones
+  Setup a binary Cygwin environment.  There is a handy command line
   
   <a href="http://lilypond.org/cygwin/cyg-apt">cyg-apt</a> script that
   can set it up and help keep it up to date.  Do something like:  <pre>
@@ -211,10 +176,10 @@ cross compile for Cygwin:
     Create a Cygwin cross building environment.
     You can get
 
-    <a href="http://lilypond.org/debian/dists/unstable">precompiled toolchain
+    <a href="http://lilypond.org/cygwin/dists/unstable">precompiled toolchain
       gcc-i686-cygwin binaries for Debian GNU/Linux i386</a>.  Add to your
       /etc/apt/sources.list: <pre>
-      deb http://lilypond.org/download/binaries/debian unstable .
+      deb http://lilypond.org/cygwin/debian unstable .
     </pre> Do: <pre>
       apt-get update
       apt-get install binutils-i686-cygwin gcc-i686-cygwin
