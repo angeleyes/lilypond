@@ -36,7 +36,9 @@ $(LANG)/%.svg: site/%.svg $(mo)
 .PRECIOUS: %.png %.svg
 
 %.png: %.svg
-	inkscape --export-png=$@ $<
+	inkscape --export-png=$@- $<
+	pngtopnm $@- | pnmcrop | pnmtopng > $@
+	rm $@-
 
 out/site/%.$(LANG).png: $(LANG)/%.png
 #out/site/graphics/%.$(LANG).png: $(LANG)/graphics/%.png
