@@ -4,10 +4,21 @@ import sys
 import string
 import os
 
+doco = """
+
+Notes for this script.
+
+
+* Do not use absolute URL locations. They will break local installs of
+  the website. Rather, use '../' * depth to get to the root.
+
+"""
+
+
 header = '''<HTML>
 <HEAD>
 <TITLE>NO TITLE</TITLE>
-<LINK REL="stylesheet" TYPE="text/css" HREF="/newweb/out/site/newweb.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="%(depth)snewweb.css">
 </HEAD>
 '''
 
@@ -33,8 +44,8 @@ location_template = '''<DIV class="location">
 '''
 
 # don't use mouseover magic as long as we don't have button images
-button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="/newweb/out/images/%(name)s.png" XONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
-button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" XONMOUSEOVER="this.src='/newweb/out/images/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s-active.png'"></A></TD>'''
+button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="%(root)simages/%(name)s.png" XONMOUSEOVER="this.src='%(root)simages/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
+button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" XONMOUSEOVER="this.src='%(root)simages/%(name)s-hover.png'" XONMOUSEOUT="this.src='%(root)simages/%(name)s-active.png'"></A></TD>'''
 
 
 outdir = '/tmp'
@@ -66,23 +77,25 @@ def one_tab (depth, file):
 		(file, label) = x
 		name = re.sub ("['! ]", "-", label)
 		active = 1
+
+		button_dict =  {
+			'url' : '../' * depth + file,
+			'name' : name,
+			'text' : label,
+			'root' : '../' * depth
+		}
+		
 		if file == here:
 			active = active and (depth > 0)
- 			button = button_active_template % {
-				'url' : '../' * depth + file,
-				'name' : name,
-				'text' : label,
-				'class' : "menu_active" + ("i" * depth),
-				}
-		else:
- 			button = button_template % {
-				'url' : '../' * depth + file,
-				'name' : name,
-				'text' : label,
-				'class' : "menu" + ("i" * depth),
-				}
 
+			button_dict['class'] =  "menu_active" + ("i" * depth)
+		else:
+ 			button_dict['class'] =  "menu" + ("i" * depth)
+
+
+		button = button_template % button_dict
 		buttons[name] = label
+		
 		return button
 	
 	labels = map (entry_to_label, menu)
@@ -159,7 +172,8 @@ def do_one_file (in_file_name):
 	menu = menu_template % string.join (tabs)
 	nav_str = location_template % nav_str
 	main = main_template % html
-	page = header + menu + main + nav_str + footer
+	page = header % {'depth': ('../' * (depth-1)) }  \
+	       +menu + main + nav_str + footer
 	
 	open (os.path.join (outdir, in_file_name), 'w').write (page)
 

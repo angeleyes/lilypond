@@ -123,6 +123,10 @@ By default, gcc on OpenBSD doesn't include
 paths.  Depending upon where/how you installed kpathsea and other
 libraries, you may need to refer to the section "Linking to
 kpathsea".
+<p>
+The stack-protection feature of OpenBSD seems to have caused problems
+in the past. Compile LilyPond without stack-protection, by adding
+<tt>-fno-stack-protector</tt> to <tt>CXXFLAGS</tt>.
 
 <h4><a name="TOC30"></a>NetBSD</h4>
 

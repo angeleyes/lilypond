@@ -1,0 +1,397 @@
+
+<title>Frequently asked questions</title>
+<h1>Frequently asked questions</h2>
+
+
+<h2>Introduction</h2>
+
+<h3>What is LilyPond?</h3>
+<p>
+We like to call LilyPond an "automated engraving system." It will
+format music notation beautifully without requiring typographical
+expertise of its users.
+
+<p>
+
+
+<h3>Automatic notation, so that means I can play the music, and then
+it rolls out of the printer?</h3>
+<p>
+
+No.  Our system assumes that the input data is available in an exact,
+abstract form.  Printing music is difficult enough as it is, so we do
+not wish to add another problem.  Translating what a human plays to
+exact form is hard. Even if you get the correct pitch data from a MIDI
+keyboard (as opposed to a sound recording), one has to get the rhythms
+correct. For example, how is a computer supposed to distinguish
+between a staccato quarter note and an eighth note?  Moreover, how
+would you print a piece that you cannot play in such a system?
+
+<p>
+
+<h3>There are other program that do notation. What's so special about
+yours?</h3>
+
+<p>
+Yes, there are many other programs that "do" notation.  However,
+anyone who plays both from recent editions and old (pre 1970) can
+attest that modern computer printouts do not look nice: they have a
+bland, mechanical look.  By contrast, we try to mimick traditional
+plate engraving in the general impression, layout algorithms, and
+the font design. Consequently, our output often beats our competitors
+when it comes to good looks.
+<p>
+
+<h3>What is wrong with other computer printed scores?</h3>
+<p>
+Computer printed scores often lack subtle variations in spacing, which
+results in mechanical look. To prevent clashes between different
+symbols, they are spaced very widely, which leads to an "airy"
+look. The heaviness of the layout is matched to that airy look: the
+symbols are usually too light, and the lines are too thin.  The wide
+spacing also causes a piece of music to take up more pages. Beams
+often do not cover stafflines entirely, while slurs and ties do touch
+them, leading to distracting clusters of black and wedges of white
+around these places.
+<p>
+
+<h3>How can I tell?</h3>
+<p>
+Normally, one notices these details only subconsiously. The best way
+to become conscious of these differences is to compare a traditionally
+printed and a computer printed edition of the same piece, preferably
+with a magnifying glass.  If you are not sure: traditional engraving
+is photographically reproduced hand-work, and can recognized by a
+slightly irregularities in symbol placement, and small blotches due to
+the reproduction process.
+
+<p>
+
+<h3>What is engraving?</h3>
+<p>
+Originally, music was printed by stamping and engraving symbols
+mirrored into metal plates. The plates were inked, and paper was
+pressed to it, yielding a left-to-right printing.  Hence, professional
+music typography is now known as engraving, even when it is done with
+computers today. People who do this are called engravers or copyists.
+
+<p>
+
+<h3>Why do you care about engraving?</h3>
+<p>
+We think that beautiful music deserves to be printed with a beautiful
+layout.
+<p>
+
+<h3>Why would I care about engraving?</h3>
+<p>
+Typography is art, but is foremost a "useful art": good engraving
+helps to read the music, making it is easier to play from.  For
+example, if the layout reflects the character of a piece, then it is
+easier to interpret.  If it is tightly spaced, it will take less
+pages, reducing the number of page-turns. If a system (a `line') has a
+unique horizontal layout, then it is more easily found back after
+looking away at the conductor. A part which is printed with heavy
+symbols and thick lines will be easier to read from a distance.
+<p>
+
+<p>
+<h3>You say your program is special; you must be trying to sell
+it?</h3>
+
+<p>
+No.  We are giving the program away for free. You can download it <a
+href=../download/>here</a>. 
+
+<h3>Then you give it away for free now, but will start charging in the
+future?</h3>
+
+<p>
+No.  We do only give it away for free, but we also deliver it with
+full source code, and permission to distribute, modify, sell or
+mutilate it.  In other words, LilyPond is libre software; it is part
+of the GNU project, and distributed under the terms GNU GPL.
+<p>
+
+<h3>How do you make a living?</h3>
+
+<p>
+Good question. We started LilyPond in 1996, and we always did it as an
+unpaid hobby. We would like to change that.  Since we are not selling
+the program, we sell our expertise. Practically speaking, you can pay
+us for implementing features, or you can hire us engraving music or
+doing typography research. Contact us privately if you are interested.
+<p>
+Of course, if you like LilyPond, feel free to give us <a
+href="donate.html">a small donation</a>.
+<p>
+
+<h3>Who are you guys anyway?</h3>
+
+<p>
+We are Jan and Han-Wen, from the Netherlands. We met in a youth
+orchestra, where Jan was tinkering with MusicTeX preprocessors. When
+Han-Wen joined in it was decided that we should start afresh. What we
+created is now known as LilyPond.
+<p>
+
+<h2>About the program.</h2>
+
+<h3>It's open source, so I should compile it from source?</h3>
+<p>
+No. Building LilyPond is a rather involved process. Unless you really
+know what you are doing, it is better to use a binary package.
+<p>
+
+<h3>Which version should I use?</h3>
+<p>
+We use the version numbering scheme that is also used for the Linux
+kernel. This means that even minor versions (1.4, 1.6, etc.) are
+stable, and active development is done on the uneven minor versions
+(1.5, 1.7).  Unless you have special needs, it is best to stick to the
+stable branch.
+<p>
+
+<h3>How is LilyPond used?</h3>
+
+<p>
+LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file.
+Then LilyPond is run on it by invoking the <tt>ly2dvi</tt>, which
+takes run the actual <tt>lilypond</tt> program to format the music,
+and adds titling information and page layout.  The resulting DVI can
+be viewed with T<sub>E</sub>X's DVI tools.
+<p>
+
+
+<h3>What is the input format?</h3>
+<p>
+We have designed our own input format, the <tt>.ly</tt> format.  It is
+a language that encodes music using expressions. These music
+expressions are composed of simpler music expressions, where the
+simplest expressions are notes and rests. This is analogous to how
+arithmetical expressions can be broken down in simpler expressions,
+where the simplest expressions are numbers, operators.
+<p>
+
+
+<h3>There are lots of good formats, why not use ABC, MusicXML or
+NIFF or DARMS?</h3>
+
+<p>
+We have the following requirements:
+<ul>
+<li>
+ the format must use ASCII,
+ <li>it must be
+concise enough to type by hand,
+<li> it must have a  concise formal
+specification,
+<li> it must be expressive enough to support many types of notation and
+printed formats.
+</ul>
+
+We believe that none of the existing formats address all these
+requirements. For example, MusicXML cannot be typed by hand, DARMS is
+limited in its application, ABC has no strict formal definition, and
+NIFF is binary.  Nevertheless, this does not restrict you for using
+those formats: there are filters that convert from various formats to
+<tt>.ly</tt>.
+
+<p>
+
+<h3>LilyPond input has backslashes and braces, so it is TeX,
+right?</h3>
+
+<p>
+No. The syntax is completely different. TeX is a macro language, where
+the meaning of each command and each character can be
+redefined. LilyPond has a structured input syntax, in the form of an
+context-free grammar. As such, it is less flexible, but it is also
+harder to make entry errors.
+<p>
+LilyPond does make use of TeX: TeX is the default output format, the
+ly2dvi program uses LaTeX for formatting, and it is possible to enter
+TeX macros in texts (such as lyrics).
+<p>
+
+<h3>LilyPond is about music and is related to TeX, so it is
+MusicTeX?</h3>
+
+<p>
+No. There is a family of TeX macro packages (MusicTeX, MusixTeX,
+OpusTeX, MuTex) for typesetting music. There is no relation between
+LilyPond and any of these packages: they are not needed to run
+LilyPond.
+<p>
+
+<h3>Why are you using TeX for LilyPond?</h3>
+<p>
+There are a couple of reasons:
+
+<ul>
+<li>LilyPond has no  mechanism for handling page breaks. This is
+conveniently provided by TeX
+
+<li>TeX is very powerful when it comes to setting text. The text for
+lyrics or titling is set with TeX, so it allows for a lot of
+formatting options. For example, it is possible to use foreign scripts
+for the lyrics.
+
+</ul>
+
+LilyPond is in fact not limited to TeX. The program design allows for
+other output formats. In particular, LilyPond has direct PostScript
+output, but for the reasons listed here, it is not practical for real
+use.
+<p>
+
+<h3>How do I learn the syntax?</h3>
+<p>
+For many applications, it is possible to learn the syntax by simply
+looking at example files. Unfortunately, we have the impression that
+this does not work well for LilyPond. For learning the language, you
+are advised to work through the tutorial, which is included in the
+user manual. It is pretty short, and chopped in easily digestible
+chunks, and we've spent a lot of time polishing it. Please make us
+happy by also using it.
+<p>
+
+<h3>Please add parameters to the input macros</h3>
+
+<p>
+LilyPond input does not have macros. It does support identifiers:
+parts of the input can be given a name, and when referencing that name
+contents of the identifier are substituted. However this is not a
+textual substitution, rather the internal representation of that
+object is pasted into the contents being parsed.
+<p>
+
+<h3>Please add macro's to the syntax.</h3>
+<p>
+No, we won't. Programming with text substitution (macros) lead to
+horrible syntax problems. A macro programming interface is extremely
+sensitive to irrelevant naming and formatting details.
+<p>
+
+<h3>
+But I only need macros for simple repetitive tasks.
+</h3>
+<p>
+Perhaps, but remember that you will probably spend more time reading
+the .ly than writing. Often, a little verbosity is not such a bad
+idea.  If it is only for simple things, you could just as well use
+simple existing preprocessors such as CPP or M4.
+<p>
+Alternatively, you can use the <tt>\apply</tt> feature. This lets you
+manipulate music expressions in its internal representation using the
+built-in Scheme programming language.
+<p>
+
+<h3>Stop changing the syntax all the time!</h3>
+<p>
+We try to make LilyPond as good as possible, and that implies that we
+continually improve the input format. We change the syntax whenever we
+feel that it will simplify the language as a whole, or ease the
+learning curve.  Keep in mind that the syntax is as great as it is now
+because we also did this in the past.
+<p>
+Most of the language changes can be handled
+running 
+the program
+<tt>convert-ly</tt>, which is supplied with LilyPond.  However, 
+<tt>convert-ly</tt>  can only do its job if it knows what version the
+original file was written for. Therefore, it is important to add
+<code>version</code> statements to your files like this:
+<xmp>
+\version "1.3.17"
+</xmp>
+<p>
+Changes that cannot be handled by simple edits are marked by a bump in
+the major version number: converting 1.8 to 2.0 files needs
+overseeing.
+
+
+<h3>I don't want to learn another syntax. Now what?</h3>
+<p>
+There are other options: it is possible to create the music in another
+format, such as ABC, ETF (From Finale) or MIDI, and then convert it to
+ly format. Another option is to use a Graphical User Interface.
+<p>
+
+<h3>I want to have an intuitive User Interface!</h3>
+<p>
+Don't we all? We think our language is pretty intuitive once you get
+the hang of it. We have not got the time to create a graphical user
+interface, our task is difficult enough as it is. Luckily, other
+people have filled the gap. The graphical programs NoteEdit and
+RoseGarden have competent LilyPond export functions and are actively
+being developed.
+
+<p>
+
+<h2>Support</h2>
+
+<p>
+<h3>Help, I can't get it to install or compile. Where do I get help?</h3>
+<p>
+If you have a binary package which does not install correctly, or if
+you have trouble while following the instructions, then send a full
+bug-report to <a href="bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
+Of course you can also write to the <a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">lilypond-user</a>
+list for help.
+
+<p>
+
+<h3>Help, I can't get it to do something. Where do I get help?</h3>
+<p>
+You can write to the lilypond-user mailing list (which is at <a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>.
+It is also a good idea to check the archives of the mailing list,
+which are available from <a
+href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a>.
+<p>
+
+
+<h3>I think I  have found a bug.</h3>
+<p>
+If you have input that results in a crash or an erroneous output, then
+that is a bug. We try respond to bug-reports promptly, and fix them as
+soon as possible. For this, we need to replicate and isolate the
+problem. Please help us by sending good bug-report: an input file that
+will reproduce the problem.  Please make it small, so we can easily
+isolate the problem. Don't forget to tell which version you use, and
+on which platform you run it.
+<p>
+
+
+<h3>Could you add this feature for me?</h3>
+<p>
+
+ We will definitely read your request and think about it, 
+but we set our own priorities for implementing features. If you
+want us to give more attention to your request, it helps to explain
+why you need it, why it is such a good idea, and to give us a
+donation. <! If you really need a feature, you can also pay us to
+implement it. Contact us privately for a quote.>
+
+<p>
+<h3>But it is very easy, just extend the syntax like this...</h3>
+<p>
+
+It is a tempting to think that inventing the syntax solves the
+problem. In practice, less than 10% of the program is involved with
+handling input and the syntax.  Almost always, adding features
+involves a lot more than syntax, and is also more complicated.
+
+
+<p>
+  <p>
+
+<! TODO:
+
+  hoeveel tijd voor 1 blz.
+  
+  hoe snel?
+  
+>

@@ -2,7 +2,10 @@
 
 SCRIPTS=$(wildcard *.py *.scm) 
 
-all: site
+LILYPONDDIR=$(HOME)/usr/src/lilypond
+LY2DVI=python $(LILYPONDDIR)/scripts/ly2dvi.py
+
+all: menuify
 
 # no silly buttons
 site: menuify renderlys # buttons
@@ -16,7 +19,7 @@ menuify:
 renderlys:
 	$(foreach  a, $(shell find site -name '*.ly'), \
 		cp $(a) out/$(a) && \
-		(cd  $(dir out/$(a) ) ; ly2dvi --preview --html --png --pdf $(notdir $(a))) && ) true
+		(cd  $(dir out/$(a) ) ; $(LY2DVI) --preview --html --png --pdf $(notdir $(a))) && ) true
 
 VERSION=0.0
 DISTDIR=lily-web-$(VERSION)
