@@ -1,3 +1,13 @@
+2005-02-23  Graham Percival  <gperlist@shaw.ca>
+
+	* site/devel/participating/documentation-adding.html: new page,
+
+	* site/devel/participating/index.html: removed info about adding
+	to docs; made link to documentation-adding.html.
+
+	* site/devel/participating/call-for-help.html: added link to
+	documentation-adding.html
+
 2005-02-17  Graham Percival  <gperlist@shaw.ca>
 
 	* site/download/index.html: changed MacOSX version from 2.5.9
