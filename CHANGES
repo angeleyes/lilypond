@@ -1,5 +1,9 @@
 1.4.14.jcn3
 ===========
+* backport Documentation/topdocs/FAQ.texi (Installation): Add
+ lilypond-devel list.  Add faq about font removal.  Fix faq about
+ generating and running ./configure.  Typo fixes.  Fix wiki url.
+
 * backport cvs/lilypond-1.4/ly/engraver.ly (RhythmicStaffContext): Resurrect
   bar lines.
 
