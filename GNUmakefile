@@ -40,7 +40,7 @@ out/$(outball): site
 
 WEBSERVER=base.lilypond.org
 upload: site
-#	cvs commit -m 'upload commit'   
+	cvs commit -m 'upload commit'   
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
 	chmod -R g+w * && \
