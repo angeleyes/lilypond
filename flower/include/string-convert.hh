@@ -8,17 +8,18 @@
 #define STRING_CONVERT_HH
 
 #include <stdarg.h>
-#include "fproto.hh"
+#include "flower-proto.hh"
 #include "string.hh"
 
 
 /** The functor String_convert handles all conversions to/from String
-	(some time, anyway).  The class is quite empty from data view.  */
+ (some time, anyway).  The class is quite empty from data view.  */
 class String_convert {
   static int hex2bin_i (String hex_str, String& bin_str_r);
   static int hex2nibble_i (Byte byte);
   static Byte nibble2hex_byte (Byte byte);
 public:
+  static String pad_to (String s, int length);
   static String bool_str (bool b);
   static String bin2dec_str (String bin_str);
   static String bin2hex_str (String bin_str);
