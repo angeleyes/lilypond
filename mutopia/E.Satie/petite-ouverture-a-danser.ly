@@ -1,45 +1,45 @@
 \header {
-  filename =    "petite-ouverture-a-danser.ly";
-  title =       "Petite Ouverture \\`a danser";
-  subtitle =	"4";
-  source =      "";
-  composer =    "Erik Satie (1866-1925)";
-  enteredby =   "jcn";
-  copyright =   "Public Domain";
+  filename =    "petite-ouverture-a-danser.ly"
+  title =       "Petite Ouverture \\`a danser"
+  subtitle =	"4"
+  source =      ""
+  composer =    "Erik Satie (1866-1925)"
+  enteredby =   "jcn"
+  copyright =   "Public Domain"
 }
 
 %{
  Tested Features:
 %}
 
-\version "1.2.0";
+\version "1.3.146"
 
 \include "nederlands.ly"
 
-global = \notes {
-  \key a \minor;
-  \time 2/4;
+global =  \notes {
+  \key a \minor
+  \time 2/4
   s2*10
-  \bar "||";
+  \bar "||"
   s2*11
-  \bar "||";
-  \time 3/4;
+  \bar "||"
+  \time 3/4
   s2.
-  \bar "||";
-  \time 2/4;
+  \bar "||"
+  \time 2/4
   s2*4
-  \bar "||";
-  \time 3/4;
+  \bar "||"
+  \time 3/4
   s2.*2
-  \bar "||";
-  \time 2/4;
+  \bar "||"
+  \time 2/4
   s2*18
-  \bar ".|";
+  \bar "|."
 }
   
-i = \context Staff \notes\relative c''{
+i =  \context Staff \notes\relative c''{
   \context Voice=i
-  \stemup
+  \voiceOne
 
   c8.( es16 bes4 ~ | )bes8 r c8.( bes16 | des4 c8. bes16 | c4 ~ ) c8 r |
   c4( f,8. as16 | bes4 ~ )bes8 r | f8.( es16 f4 | es )f |
@@ -65,9 +65,9 @@ i = \context Staff \notes\relative c''{
   
 }
 
-ii = \context Staff \notes\relative c'{
+ii =  \context Staff \notes\relative c'{
   \context Voice=ii
-  \stemdown
+  \voiceTwo
 
   r8 <es as> r <des f> | r <es g> r <es as> | r <f as> r <f as> |
   r <es g> r <es g> | r <es as> r <as, des> | r <des f> r <des f> |
@@ -85,9 +85,9 @@ ii = \context Staff \notes\relative c'{
   r <cis e> r <cis e> | r <b d> r <a d> | r <g b> r <a cis> |
   r <a cis> r <a cis> |
 
-  \translator Staff=bass\stemup
+  \translator Staff=bass\voiceOne
   r <g b> r <fis a> r <fis a> | r <g bes>
-  \translator Staff=treble\stemdown
+  \translator Staff=treble\voiceTwo
   r <a c> r <a d> |
 
   r <bes d> r <bes d> | r <g c> r <bes d> | r <c es> r <d g> |
@@ -103,7 +103,7 @@ ii = \context Staff \notes\relative c'{
  
 }
 
-lower = \context Staff \notes \relative c{
+lower =  \context Staff \notes \relative c{
   \context Voice=iii
 
   <as4 as'> <es es'> | r <as as'> | <des, des'> <f f'> | <c c'> r |
@@ -132,32 +132,32 @@ lower = \context Staff \notes \relative c{
 }
 
 \score {
-    \context GrandStaff < 
+    \context GrandStaff <
       \context Staff = treble < 
         \global 
-        \clef violin;
+        \clef violin
 	\i
 	\ii
       >
       \context Staff = bass <
         \global
-	\clef bass;
+	\clef bass
         \lower
       >
     >
 
   \paper {
-    gourlay_maxmeasures = 5.;
-    textheight = 295.\mm;
+    textheight = 295.\mm
     \translator{ \OrchestralScoreContext }
     \translator{
 	    \VoiceContext
-	    beamAutoEnd_8 = "1/4";
-	    beamAutoEnd_16 = "1/4";
+	    Slur \override #'attachment = #'(stem . stem)
+	    autoBeamSettings \override #'(end 1 8 * *) = #(make-moment 1 4)
+	    autoBeamSettings \override #'(end 1 16 * *) = #(make-moment 1 4)
     }
   }
   \midi {
-    \tempo 4 = 60;
+    \tempo 4 = 60
   }
 }
 
