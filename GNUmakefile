@@ -54,7 +54,7 @@ po/newweb.pot: dummy
 	xgettext --default-domain=newweb --output-dir=po $(PY)
 #	mv po/newweb.po $@
 
-nl: all
+nl: dummy
 	$(MAKE) LANG=nl menuify
 
 new:
@@ -68,7 +68,7 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --outdir=out $(HTML)
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --verbose --outdir=out $(HTML)
 
 linktree: tree
 	$(foreach i, $(NON_HTML), ln $i out/$i &&) true
