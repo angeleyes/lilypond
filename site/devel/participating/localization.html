@@ -1,7 +1,12 @@
-This document provides some guidelines for uniformising user
-messages.  In the absence of other standards, we'll be using these
-rules when coding  for <a href="http://lilypond.org/wiki/?LilyPond">LilyPond</a>.  Hopefully, this can be replaced by
-general GNU guidelines in the future.
+<h1> Localization guidelines</h1>
+
+This document provides some guidelines
+To help translations, user messages must be uniformized.
+Follow these rules when coding  for <a
+href="http://lilypond.org/wiki/?LilyPond">LilyPond</a>.
+
+Hopefully, this can be replaced by general GNU guidelines in the
+future.
 </p>
 <p>
 Not-preferred messages are marked with `+'.  By convention,
@@ -10,13 +15,8 @@ agrammatical examples are marked with `*'.
 <ul>
 <li> Every message to the user should be localised (and thus be marked
 for localisation).  This includes warning and error messages.
-</ul>
-<p>
-</p>
 
-<ul>
 <li> Don't localise/gettextify:
-</ul>
 <p>
 - `programming_error ()'s
 </p>
@@ -30,10 +30,7 @@ for localisation).  This includes warning and error messages.
 - output strings (<a href="http://lilypond.org/wiki/?PostScript">PostScript</a>, TeX)
 
 </p>
-<ul>
 <li> Messages to be localised must be encapsulated in `_ (STRING)' or
-</ul>
-<p>
 `_f (FORMAT, ...)'.  Eg:
 </p>
 <pre>
@@ -65,14 +62,9 @@ macro is a no-op, it only serves as a marker for `xgettext'.
 <p>
 See also `flower/getopt-long.cc' and `lily/main.cc'.
 </p>
-<ul>
 <li> Don't use leading or trailing whitespace in messages.
-</ul>
-<ul>
 <li> Messages containing a final verb, or a gerund (`-ing'-form) always
 
-</ul>
-<p>
 start with a capital.  Other (simpler) messages start with a
 lowercase letter:
 </p>
@@ -81,9 +73,7 @@ lowercase letter:
           `foo': not declared.
           Not declaring: `foo'.
 </pre>
-<ul>
 <li> To avoid having a number of different messages for the same
-</ul>
 <p>
 situation, we'll use quoting like this `"message: `%s'"' for all
 strings.  Numbers are not quoted:
@@ -93,9 +83,7 @@ strings.  Numbers are not quoted:
           _f ("Can't find charater number: %d", i)
 
 </pre>
-<ul>
 <li> Think about translation issues.  In a lot of cases, it is better to
-</ul>
 <p>
 translate a whole message.  The english grammar mustn't be imposed
 on the translator.  So, iso
@@ -110,9 +98,7 @@ have
           _f ("Stem at %s doen't fit in beam", moment.str ())
 
 </pre>
-<ul>
 <li> Split up multi-sentence messages, whenever possible.  Instead of
-</ul>
 <pre>
           warning (_f ("out of tune!  Can't find: `%s', "Key_engraver"));
           warning (_f ("Can't find font `%s', loading default",
@@ -128,9 +114,7 @@ rather say:
           warning (_f ("Can't find font: `%s', font_name));
           warning (_f ("Loading default font"));
 </pre>
-<ul>
 <li> If you must have multiple-sentence messages, use full punctuation.
-</ul>
 <p>
 Use two spaces after end of sentence punctuation.  No punctuation
 (esp. period) is used at the end of simple messages.
@@ -141,17 +125,11 @@ Use two spaces after end of sentence punctuation.  No punctuation
              _f ("Huh?  Not a Request: `%s'.  Ignoring.", request)
 
 </pre>
-<ul>
 <li> Don't modularise too much; a lot of words cannot be translated
-</ul>
-<p>
 without context.  It's probably safe to treat most occurences of
 words like stem, beam, crescendo as separately translatable words.
 </p>
-<ul>
 <li> When translating, it is preferrable to put interesting information
-</ul>
-<p>
 at the end of the message, rather than embedded in the middle.
 This especially applies to frequently used messages, even if this
 would mean sacrificing a bit of eloquency.  This holds for original
@@ -169,6 +147,6 @@ The first nl message, although gramatically and stylishly correct,
 is not friendly for parsing by humans (even if they speak dutch).
 I guess we'd prefer something like (2) or (3).
 </p>
-<ul>
 <li> Please don't run make po/po-update with GNU gettext &lt; 0.10.35
+
 </ul>

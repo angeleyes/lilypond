@@ -1,5 +1,6 @@
+<h1>Coding standards</h1>
 
-CodingStandards
+
 <p>
    As a general rule, you should always try to continue computations,
    even if there is some kind of error. When the program stops, it is
@@ -12,14 +13,14 @@ CodingStandards
    but report a programming_error and try to carry on.
 <p>
 
-Languages
+<h2>Languages</h2>
 <p>
 
    C++ and Python are preferred.  Python code should be idented using
    using TAB characters.
 <p>
 
-Filenames
+<h2>Filenames</h2>
 <p>
 
    Definitions of classes that are only accessed via pointers (*) or
@@ -53,7 +54,7 @@ Filenames
    The class Class_name is coded in `class-name.*'
 <p>
 
-Indentation
+<h2>Indentation</h2>
 <p>
 
    Standard GNU coding style is used.   In emacs:
@@ -77,7 +78,7 @@ Indentation
                     ))
 </pre>
 
-Classes and Types
+<h2>Classes and Types</h2>
 <p>
 <pre>
 
@@ -85,7 +86,7 @@ Classes and Types
 </pre>
 <p>
 
-Members
+<h2>Members</h2>
 <p>
 
    Member variable names end with an underscore:
@@ -96,31 +97,26 @@ Members
 </pre>
 <p>
 
-Macros
+<h2>Macros</h2>
 <p>
 
    Macro names should be written in uppercase completely.
 
-Broken code
+<h2>Broken code</h2>
 <p>
 
-   Try not to write broken code. This includes hardwired dependencies,
-   hardwired constants, slow algorithms and obvious limitations. If you can
-   not avoid it, mark the place clearly, and add a comment explaining
-   shortcomings of the code.
+Do not to write broken code. This includes hardwired dependencies,
+hardwired constants, slow algorithms and obvious limitations. If
+you can not avoid it, mark the place clearly, and add a comment
+explaining shortcomings of the code.
+<p>
+We reject broken-in-advance on principle.
 
-Naming
+<h2>Naming</h2>
 <p>
 
-   We used to adhere loosely on an almost bearable HungarianNotation
-   variant, but we saw the light, and deprecated that.
+<h2>Messages</h2>
 <p>
 
-   You may still find some remains of it in the code, but you're
-   encouraged not to use silly names.
-
-Messages
-<p>
-
-   Messages need to follow <a href=localization.html>LocalisationGuideLines</a>
+   Messages need to follow <a href=localization.html>Localization guidelines</a>
 <p>

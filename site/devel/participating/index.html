@@ -1,22 +1,52 @@
-
-	
-Development is discussed on the mailing development mailing list
-(lilypond-devel@gnu.org).  Do keep in touch through the mailing list
-about what you do, as we have rather high standards for code
-contributions.
+<h1>Participating in LilyPond development</h1>
 
 
-Keep following in mind:
-<ul>
-<li> scratch  your  own itch
-<li> don't ask questions, but dive into the code first
-</ul>
- 
+<h2>Mailing lists</h2>
+
+Development is discussed on
+
+<blockquote>
 <a
-href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">lilypond-devel
-@gnu.org</a> This list is for discussions concerning the development
-release of LilyPond.
+href="http://mail.gnu.org/mailman/listinfo/lilypond-devel"
+>lilypond-devel@gnu.org</a>.
+</blockquote>
+<p>
+Browse the archives <a
+href="http://mail.gnu.org/pipermail/lilypond-devel">here</a>.
 
-<p>Searchable archives are available from <a
-href="http://mail.gnu.org/pipermail/lilypond-devel">http://www.mail-archive.com/lilypond-devel@gnu.org</a>.
 
+<h2>Brilliant hackers</h2>
+
+We want our patches cooked as follows:
+
+<ul>
+<li>Use neat, tight code. Find some hints in the <a
+href=standards.html>coding standards.</a>.
+
+<li>No complete files, only diffs
+<li>Unified diff (<tt>diff -u</tt>). 
+<li>ChangeLog entries
+<li>patches for Documentation/topdocs/AUTHORS.texi and THANKS, if
+appropriate
+</ul>
+
+
+Our entry point is in <tt>main()</tt> (<tt>lily/main.cc</tt>). Good
+luck. 
+
+<h2>Less brilliant hackers</h2>
+
+Not all hope is lost if you are not brilliant. There are other
+tasks open:
+
+<ul>
+<li>
+ Help translating. See
+ <a
+ href="http://www2.iro.umontreal.ca/~pinard/po/registry.cgi?domain=lilypond">
+  http://www2.iro.umontreal.ca/~pinard/po/registry.cgi?domain=lilypond</a>
+<li>
+ Pick out something from our <a href=todo.html>TODO </a> list
+<li>
+ Help <a href=../packaging.html>Packaging</a>.
+</ul>

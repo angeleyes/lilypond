@@ -1,6 +1,6 @@
-[('compile', 'Compile'),
+[
  ('participating', 'Participate'),
- ('packaging', 'Packaging'),
+ ('packaging.html', 'Packaging'),
  ('notation', 'Music notation'),
  ('misc' ,'Miscellaneous bits'),
  ]
