@@ -3,9 +3,9 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 */
-#include "dimension-cache.hh"
+
 
 #include "paper-score.hh"
 #include "debug.hh"
@@ -13,205 +13,116 @@
 #include "paper-column.hh"
 #include "spanner.hh"
 #include "lily-guile.hh"
+#include "line-of-score.hh"
 
-Item::Item ()
+Item::Item (SCM s)
+  : Grob (s)
 {
   broken_to_drul_[LEFT] = broken_to_drul_[RIGHT]=0;
 }
 
-bool
-Item::breakable_b () const
-{
-  if (original_l_ )
-    return false;
-  
-  Item * i  =dynamic_cast<Item*> (parent_l (X_AXIS));
-  return (i) ?  i->breakable_b () : get_elt_property( breakable_scm_sym) != SCM_BOOL_F;
-}
-
-void
-Item::do_print() const
-{
-}
-
-
-Real 
-Item::hpos_f() const
-{
-  return relative_coordinate (0, X_AXIS);
-}
-
-Line_of_score *
-Item::line_l() const
-{
-  Graphical_element *g = parent_l (X_AXIS);
-  if (!g)
-    return 0;
-  return dynamic_cast<Score_element *> (g)-> line_l ();
-}
-
-
-void
-Item::copy_breakable_items()
-{
-  if (broken_to_drul_[LEFT] || broken_to_drul_[RIGHT]
-      || !breakable_b ())
-    return ;
-
-  Drul_array<Item *> new_copies;
-  Direction  i=LEFT;
-  do 
-    {
-      Score_element * dolly = clone();
-      Item * item_p = dynamic_cast<Item*>(dolly);
-      pscore_l_->typeset_element (item_p);
-      new_copies[i] =item_p;
-    }
-  while (flip(&i) != LEFT);
-  broken_to_drul_= new_copies;
-
-  do 
-    {
-       broken_to_drul_[i]->handle_prebroken_dependencies();
-       broken_to_drul_[i]->try_visibility_lambda();
-    }
-  while (flip(&i) != LEFT);
-  try_visibility_lambda ();
-}
-
-void
-Item::try_visibility_lambda ()
-{
-  SCM vis = remove_elt_property (visibility_lambda_scm_sym);
-  if (vis != SCM_BOOL_F)
-    {
-      SCM args = scm_listify (gh_int2scm (break_status_dir ()), SCM_UNDEFINED);
-      SCM result = gh_apply ( SCM_CDR(vis), args);
-      int trans = gh_scm2bool (gh_car (result));
-      int empty = gh_scm2bool (gh_cdr (result));
-
-      if (empty)
-	set_empty (true, X_AXIS, Y_AXIS);
-      if (trans)
-	set_elt_property (transparent_scm_sym, SCM_BOOL_T);
-    }
-}
-
-void
-Item::do_break ()
-{
-  copy_breakable_items();
-  handle_prebroken_dependencies();
-  
-  /*
-    Otherwise the broken items won't be pre_process()'ed.
-  */
-  add_dependency (broken_to_drul_[LEFT]);
-  add_dependency (broken_to_drul_[RIGHT]);
-}
-
-void
-Item::do_breakable_col_processing()
-{
-  if (breakable_b ())
-    do_break ();
-  else
-    try_visibility_lambda ();
-}
-Item*
-Item::find_prebroken_piece (Line_of_score*l) const
-{
-  if (line_l() == l) 
-    return (Item*)(this);
-  else if (broken_to_drul_[LEFT] && broken_to_drul_[LEFT]->line_l() == l)
-    return broken_to_drul_[LEFT];
-  else if (broken_to_drul_[RIGHT] && broken_to_drul_[RIGHT]->line_l() == l)
-    return broken_to_drul_[RIGHT];
-
-  return 0;
-}
-
-Item*
-Item::find_prebroken_piece (Direction d) const
-{
-  if (!d)
-    return (Item *) (this);	// ugh
-  else
-    return dynamic_cast<Item*> (broken_to_drul_[d]);
-}
-
-void
-Item::handle_prebroken_dependencies()
-{
-  if (original_l_)
-    Score_element::handle_prebroken_dependencies();
-}
-
-bool
-Item::broken_original_b () const
-{
-  return broken_to_drul_[LEFT] || broken_to_drul_[RIGHT];
-}
-
-int
-Item::left_right_compare(Item const *l, Item const *r)
-{
-  Paper_column *p1 = l->column_l ();
-  Paper_column* p2 = r->column_l ();
-  return p1->rank_i () - p2->rank_i ();
-}
-
-Paper_column *
-Item::column_l () const
-{
-  return dynamic_cast<Item*> (parent_l (X_AXIS))->column_l ();
-}
-
+/**
+   Item copy ctor.  Copy nothing: everything should be a elt property
+   or a special purpose pointer (such as broken_to_drul_[]) */
 Item::Item (Item const &s)
-  : Score_element (s)
+  : Grob (s)
 {
   broken_to_drul_[LEFT] = broken_to_drul_[RIGHT] =0;
 }
 
 
-void
-Item::handle_prebroken_dependents ()
+bool
+Item::breakable_b (Grob*me) 
 {
-  Item * parent =  dynamic_cast<Item*> (parent_l (X_AXIS));
-  if (breakable_b () && parent)
-    {
-       if(!(broken_to_drul_[LEFT] || broken_to_drul_[RIGHT]))
-	do_break ();
+  if (me->original_l_)
+    return false;
 
-      Direction d = LEFT;
-      do
-	{
-	  Item * broken_self = find_prebroken_piece (d);
-	  Item * broken_parent = parent->find_prebroken_piece (d);
-
-	  broken_self->set_parent (broken_parent, X_AXIS);
-
-	  /*
-	    ugh. Should do this is after breaking?
-	   */
-	  if (!broken_self->parent_l (Y_AXIS))
-	    {
-	      Score_element * yparent =dynamic_cast<Score_element*>(parent_l (Y_AXIS));
-	      Item *yparenti = dynamic_cast<Item*> (yparent);
-	      Item *broken_yparent = yparenti ?
-		yparenti->find_prebroken_piece (d) : 0;
-	      
-	      if (!yparent)
-		programming_error ("Vertical refpoint lost!");
-	      else if (yparenti)
-		{
-		  broken_self->set_parent (broken_yparent, Y_AXIS);
-		}
-	    }
-	}
-      while ((flip (&d))!=LEFT);
-    }
+  if (!dynamic_cast<Item*> (me))
+    programming_error ("only items can be breakable.");
+  
+  Item * i  =dynamic_cast<Item*> (me->parent_l (X_AXIS));
+  return (i) ?  Item::breakable_b (i) : to_boolean (me->get_grob_property ("breakable"));
 }
+
+Paper_column *
+Item::column_l () const
+{
+  Item *parent = dynamic_cast<Item*> (parent_l (X_AXIS));
+  return parent ? parent->column_l () : 0;
+}
+
+Line_of_score *
+Item::line_l () const
+{
+  Grob *g = parent_l (X_AXIS);
+  return g ?  g->line_l () : 0;
+}
+
+
+void
+Item::copy_breakable_items ()
+{
+  Drul_array<Item *> new_copies;
+  Direction  i=LEFT;
+  do 
+    {
+      Grob * dolly = clone ();
+      Item * item_p = dynamic_cast<Item*> (dolly);
+      pscore_l_->line_l_->typeset_grob (item_p);
+      new_copies[i] =item_p;
+    }
+  while (flip (&i) != LEFT);
+  broken_to_drul_= new_copies;
+}
+
+
+bool
+Item::broken_b () const
+{
+  return broken_to_drul_[LEFT] || broken_to_drul_[RIGHT];
+}
+
+
+/*
+  Generate items for begin and end-of line.
+ */
+void
+Item::discretionary_processing ()
+{
+  if (broken_b ())
+    return;
+
+  if (Item::breakable_b (this))
+    copy_breakable_items ();
+}
+
+Grob*
+Item::find_broken_piece (Line_of_score*l) const
+{
+  if (line_l () == l) 
+    return (Item*) (this);
+
+  Direction d = LEFT;
+  do {
+    Grob *s = broken_to_drul_[d];
+    if (s && s->line_l () == l)
+      return s;
+  }
+  while (flip (&d) != LEFT);
+
+  return 0;
+}
+
+
+Item*
+Item::find_prebroken_piece (Direction d) const
+{
+  Item * me = (Item *) (this);	
+  if (!d)
+    return me;
+  return dynamic_cast<Item*> (broken_to_drul_[d]);
+}
+
 
 Direction
 Item::break_status_dir () const
@@ -224,4 +135,54 @@ Item::break_status_dir () const
     }
   else
     return CENTER;
+}
+
+void
+Item::handle_prebroken_dependencies ()
+{
+  if (original_l_)
+    {
+      mutable_property_alist_
+	= handle_broken_grobs(original_l_->mutable_property_alist_,
+			       gh_int2scm (break_status_dir ()));
+    }
+  
+  /*
+    Can't do this earlier, because try_visibility_lambda () might set
+    the elt property transparent, which would then be copied.
+
+    TODO:
+
+    handle visibility-lambda the item itself iso. breakstatusdir, so
+    the function can do more complicated things.
+    
+  */
+  SCM vis = get_grob_property ("visibility-lambda");
+  if (gh_procedure_p (vis))
+    {
+      SCM args = scm_listify (gh_int2scm (break_status_dir ()), SCM_UNDEFINED);
+      SCM result = gh_apply (vis, args);
+      bool trans = gh_scm2bool (gh_car (result));
+      bool empty = gh_scm2bool (gh_cdr (result));
+      
+      if (empty && trans)
+	suicide ();
+      else if (empty)
+	{
+	  set_extent_callback (SCM_EOL, X_AXIS);
+	  set_extent_callback (SCM_EOL, Y_AXIS);
+	}
+      else if (trans)
+	set_grob_property ("molecule-callback", SCM_BOOL_T);
+    }
+}
+
+SCM
+Item::do_derived_mark ()
+{
+  if (broken_to_drul_[LEFT])
+    scm_gc_mark (broken_to_drul_[LEFT]->self_scm ());
+  if (broken_to_drul_[RIGHT])
+    scm_gc_mark (broken_to_drul_[RIGHT]->self_scm ());
+  return SCM_EOL;
 }

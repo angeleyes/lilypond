@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Jan Nieuwenhuizen <janneke@gnu.org>
+  (c) 1998--2001 Jan Nieuwenhuizen <janneke@gnu.org>
   
  */
 
@@ -11,55 +11,117 @@
 #include "debug.hh"
 #include "paper-def.hh"
 #include "paper-column.hh" // urg
-#include "bar.hh"
-#include "lookup.hh"
+#include "font-interface.hh"
 #include "rest.hh"
 #include "molecule.hh"
 #include "misc.hh"
+#include "group-interface.hh"
+#include "spanner.hh"
+#include "staff-symbol-referencer.hh"
+#include "text-item.hh"
+#include "percent-repeat-item.hh"
 
-
-Multi_measure_rest::Multi_measure_rest ()
-{
-  measures_i_ = 0;
-}
 
 void
-Multi_measure_rest::do_print () const
+Multi_measure_rest::set_interface (Grob*me)
 {
-#ifndef NPRINT
-  DOUT << "measures_i_ " << measures_i_;
-#endif
+  me->set_interface (ly_symbol2scm ("multi-measure-rest-interface"));
 }
 
-
-
-/*
-   [TODO]                                          17
- * variable-sized multi-measure rest symbol: |====| ??
- 
- * build 3, 5, 6, 7, 8 symbols (how far, property?)
-       from whole, brevis and longa rests
-
-*/
-Molecule*
-Multi_measure_rest::do_brew_molecule_p () const
+bool
+Multi_measure_rest::has_interface (Grob*me)
 {
+  return me->has_interface (ly_symbol2scm ("multi-measure-rest-interface"));
+}
+
+MAKE_SCHEME_CALLBACK (Multi_measure_rest,percent,1);
+SCM
+Multi_measure_rest::percent (SCM smob)
+{
+  
+  Grob *me = unsmob_grob (smob);
+  Spanner *sp = dynamic_cast<Spanner*> (me);
+  
+  Molecule r = Percent_repeat_item_interface::x_percent (me, 1,  0.75, 1.6);
+
+  // ugh copy & paste.
+  
   Interval sp_iv;
   Direction d = LEFT;
   do
     {
-      Item * col = spanned_drul_[d]->column_l ();
+      Item * col = sp->get_bound (d)->column_l ();
 
-      Interval coldim = col->extent (X_AXIS)
-	+ col->relative_coordinate (0, X_AXIS);
+      Interval coldim = col->extent (0, X_AXIS);
 
       sp_iv[d] = coldim[-d]  ;
     }
   while ((flip (&d)) != LEFT);
-  Molecule *mol_p  = new Molecule;
   Real x_off = 0.0;
 
-  Real rx  = spanned_drul_[LEFT]->relative_coordinate (0, X_AXIS);
+  Real rx  = sp->get_bound (LEFT)->relative_coordinate (0, X_AXIS);
+  /*
+    we gotta stay clear of sp_iv, so move a bit to the right if
+    needed.
+   */
+  x_off += (sp_iv[LEFT] -  rx) >? 0;
+
+  /*
+    center between stuff.
+   */
+  x_off += sp_iv.length ()/ 2;
+
+  r.translate_axis (x_off,X_AXIS);
+
+  
+  return r.smobbed_copy ();
+}
+
+
+/*
+   [TODO]                                      17
+   variable-sized multi-measure rest symbol: |====| ??
+*/
+MAKE_SCHEME_CALLBACK (Multi_measure_rest,brew_molecule,1);
+SCM
+Multi_measure_rest::brew_molecule (SCM smob) 
+{
+  Grob *me = unsmob_grob (smob);
+  if (to_boolean (me->get_grob_property ("skip-timestep")))
+    {
+      me->set_grob_property ("skip-timestep", SCM_EOL);
+      return SCM_EOL;
+    }
+  
+  Spanner * sp = dynamic_cast<Spanner*> (me);
+
+  SCM alist_chain = Font_interface::font_alist_chain (me);
+
+  
+  SCM style_chain =
+    Font_interface::add_style (me, ly_symbol2scm ("mmrest-symbol"),
+			       alist_chain);
+
+  Font_metric *musfont
+    = Font_interface::get_font (me,style_chain);
+			
+  Real staff_space = Staff_symbol_referencer::staff_space (me);
+
+  Interval sp_iv;
+  Direction d = LEFT;
+  do
+    {
+      Item * col = sp->get_bound (d)->column_l ();
+
+      Interval coldim = col->extent (0, X_AXIS);
+
+      sp_iv[d] = coldim[-d]  ;
+    }
+  while ((flip (&d)) != LEFT);
+  Molecule mol;
+  Real x_off = 0.0;
+
+  Real rx  = sp->get_bound (LEFT)->relative_coordinate (0, X_AXIS);
   /*
     we gotta stay clear of sp_iv, so move a bit to the right if
     needed.
@@ -73,90 +135,121 @@ Multi_measure_rest::do_brew_molecule_p () const
 
   
   Molecule s;
-  bool rest_symbol=true;
-  SCM alt_symbol_sym =get_elt_property (alt_symbol_scm_sym);
-  if (alt_symbol_sym != SCM_BOOL_F)
+
+  int measures = 0;
+  SCM m (me->get_grob_property ("measure-count"));
+  if (gh_number_p (m))
     {
-      s = lookup_l () -> afm_find (ly_scm2string (SCM_CDR(alt_symbol_sym)));
-      rest_symbol = false;
+      measures = gh_scm2int (m);
     }
-  else if (measures_i_ == 1 || measures_i_ == 2 || measures_i_ == 4) 
+  
+
+  SCM limit = me->get_grob_property ("expand-limit");
+  if (measures <= 0)
+    return SCM_EOL;
+  if (measures == 1)
     {
-      s = lookup_l ()->rest (- intlog2(measures_i_), 0, "");
-      s.translate_axis (-s.extent ()[X_AXIS].length () / 2, X_AXIS);
+      s = musfont->find_by_name (Rest::glyph_name (me, 0, ""));
+
+      /*
+	ugh.
+       */
+      if (Staff_symbol_referencer::position_f (me) == 0.0)
+	s.translate_axis (Staff_symbol_referencer::staff_space (me), Y_AXIS);
+    }
+  else if (measures <= gh_scm2int (limit))
+    {
+      /*
+	Build a rest from smaller parts. Distances inbetween are
+	really variable, see Wanske pp. 125 */
+
+      int l = measures;
+      while (l)
+	{
+	  int k;
+	  if (l >= 4)
+	    {
+	      l-=4;
+	      k = -2;
+	    }
+	  else if (l>= 2)
+	    {
+	      l -= 2;
+	      k = -1;
+	    }
+	  else
+	    {
+	      k = 0;
+	      l --;
+	    }
+
+	  Real pad = s.empty_b ()
+	    ? 0.0 : gh_scm2double (me->get_grob_property ("padding")) * staff_space;
+
+	  Molecule r (musfont->find_by_name ("rests-" + to_str (k)));
+	  if (k == 0)
+	    r.translate_axis (staff_space, Y_AXIS);
+	  
+	  s.add_at_edge (X_AXIS, RIGHT, r, pad);
+	}
+
+
+      s.align_to (X_AXIS, CENTER);
     }
   else 
     {
-      s = lookup_l ()->rest (-4, 0, "");
+      String idx = ("rests-") + to_str (-4);
+      s = musfont->find_by_name (idx);
     }
-  mol_p->add_molecule (s);
-  Real interline_f = staff_line_leading_f ();
-  if (measures_i_ == 1 && rest_symbol)
+  
+  mol.add_molecule (s);
+
+  if (measures > 1)
     {
-      mol_p->translate_axis (interline_f, Y_AXIS);
-    }
-  else if (measures_i_ > 1)
-    {
-      Molecule s ( lookup_l ()->text ("number", to_str (measures_i_), paper_l ()));
+      Molecule s = Text_item::text2molecule (me,
+					     ly_str02scm (to_str (measures).ch_C ()),
+					     alist_chain);
       s.align_to (X_AXIS, CENTER);
-      s.translate_axis (3.0 * interline_f, Y_AXIS);
-      mol_p->add_molecule (s);
+      s.translate_axis (3.0 * staff_space, Y_AXIS);
+      mol.add_molecule (s);
     }
-  mol_p->translate_axis (x_off, X_AXIS);
-  return mol_p;
+  mol.translate_axis (x_off, X_AXIS);
+  return mol.smobbed_copy ();
 }
 
+/*
+  UGH. JUNKME elt prop "columns" isn't really needed. 
+ */
 void
-Multi_measure_rest::do_add_processing ()
+Multi_measure_rest::add_column (Grob*me,Item* c)
 {
-  if (column_arr_.size ())
-    {
-      set_bounds (LEFT, column_arr_[0 >? column_arr_.size () - 2]);
-      set_bounds (RIGHT, column_arr_[column_arr_.size () - 1]);
-    }
-}
-  
-void
-Multi_measure_rest::do_post_processing ()
-{
-  if (!column_arr_.size ())
-    set_elt_property (transparent_scm_sym, SCM_BOOL_T);
+  Pointer_group_interface::add_element (me, "columns",c);
+
+  add_bound_item (dynamic_cast<Spanner*> (me),c);
 }
 
 
-void
-Multi_measure_rest::do_substitute_element_pointer (Score_element* o, Score_element* n)
-{
-  Staff_symbol_referencer::do_substitute_element_pointer (o,n);
-  if (Item* c = dynamic_cast <Item*> (o))
-    column_arr_.substitute (c, dynamic_cast<Item*> (n));
-}
-  
-void
-Multi_measure_rest::add_column (Item* c)
-{
-  column_arr_.push (c);
-  add_dependency (c);
-}
+MAKE_SCHEME_CALLBACK (Multi_measure_rest, set_spacing_rods,1);
 
-
-Array<Rod>
-Multi_measure_rest::get_rods () const
+SCM
+Multi_measure_rest::set_spacing_rods (SCM smob)
 {
-  Array<Rod> a;
+  Grob*me = unsmob_grob (smob);
 
-  if (!(spanned_drul_[LEFT] && spanned_drul_[RIGHT]))
+  Spanner*sp = dynamic_cast<Spanner*> (me);
+  if (! (sp->get_bound (LEFT) && sp->get_bound (RIGHT)))
     {
       programming_error ("Multi_measure_rest::get_rods (): I am not spanned!");
-      return a;
+      return SCM_UNSPECIFIED;
     }
 
-  Item * l = spanned_drul_[LEFT]->column_l ();
-  Item * r = spanned_drul_[RIGHT]->column_l ();
+  Item * l = sp->get_bound (LEFT)->column_l ();
+  Item * r = sp->get_bound (RIGHT)->column_l ();
   Item * lb = l->find_prebroken_piece (RIGHT);
   Item * rb = r->find_prebroken_piece (LEFT);      
   
   Item* combinations[4][2]={{l,r}, {lb,r}, {l,rb},{lb,rb}};
+  Real staff_space = Staff_symbol_referencer::staff_space (me);
   for (int i=0; i < 4; i++)
     {
       Item * l =  combinations[i][0];
@@ -172,11 +265,11 @@ Multi_measure_rest::get_rods () const
 	/*
 	  should do something more advanced.
 	 */
-      rod.distance_f_ = l->extent (X_AXIS)[BIGGER] - r->extent (X_AXIS)[SMALLER]
-	+ paper_l ()->get_var ("mmrest_x_minimum");
+      rod.distance_f_ = l->extent (l, X_AXIS)[BIGGER] - r->extent (r, X_AXIS)[SMALLER]
+	+ gh_scm2double (me->get_grob_property ("minimum-width")) * staff_space;
   
-      a.push (rod);
+      rod.add_to_cols ();
     }
-  
-  return a;
+  return SCM_UNSPECIFIED;
 }
+
