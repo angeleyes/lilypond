@@ -16,7 +16,7 @@
 #include "musical-pitch.hh"
 
 /** Request which are  assumed to be "happening" before the
-  musical requests. */
+  musical requests.  Not coupled to a note or rest. */
 class Command_req  : public virtual Request  {
 public:
   REQUESTMETHODS(Command_req);
@@ -32,6 +32,7 @@ public:
     DEFAULTACCESSOR(Command_script_req)
     DEFAULTACCESSOR(Break_req)
     DEFAULTACCESSOR(Mark_req)
+  DEFAULTACCESSOR(Bracket_req)
 };
 
 
@@ -168,6 +169,12 @@ public:
   String clef_str_;
   Clef_change_req (String);
   REQUESTMETHODS(Clef_change_req);
+};
+
+class Bracket_req :  public Span_req, public Command_req {
+
+public:
+  REQUESTMETHODS(Bracket_req);
 };
 
 #endif // COMMANDREQUEST_HH

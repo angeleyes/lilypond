@@ -20,25 +20,21 @@
 #define DEFAULTACCESSOR(T)  virtual T *access_ ## T () { return 0; }
 
 
-/**
-   An atom of musical information .
- Hungarian postfix: req
- @see lilygut manpage
+/** An atom of musical information.  This is an abstract class for any
+  piece of music that does not contain other Music.
+  
+  Hungarian postfix: req
+
  */
 class Request : public Music {
 
 public:
     
-  /* *************** */
-
   virtual ~Request(){}
 
   DECLARE_MY_RUNTIME_TYPEINFO;
   VIRTUAL_COPY_CONS(Request,Music);
     
-  virtual MInterval time_int() const;
-  virtual Moment duration() const { return 0; }
-
   /*  accessors for children
       maybe checkout RTTI
   */
@@ -82,5 +78,22 @@ public:
   Script_req (Script_req const&);
 };
 
-    
+
+/**
+  Requests to start or stop something.
+ This type of request typically results in the creation of a #Spanner#
+*/
+class Span_req  : public virtual Request  {
+public:
+  /// should the spanner start or stop, or is it unwanted?
+  enum Spantype {
+    NOSPAN, START, STOP
+  } spantype;
+  bool do_equal_b (Request*) const;
+  REQUESTMETHODS(Span_req);
+
+  Span_req();
+};
+
+
 #endif
