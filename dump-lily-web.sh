@@ -6,4 +6,4 @@ if test ! -f newweb.css; then
 fi
 
 cd out/site
-rsync --delete --stats --progress -lavu -e ssh --exclude '*~' . x:/var/www/lilypond/newweb/
+rsync --delete --stats --progress -lavu -e ssh --exclude '*~' . x:/var/www/lilypond/web/
