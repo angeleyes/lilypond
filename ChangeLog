@@ -1,3 +1,7 @@
+2003-08-28  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
+
+	* GNUmakefile (upload): commit automatically on upload.
+
 2003-08-27  Han-Wen Nienhuys  <hanwen@cs.uu.nl>
 
 	* site/about/automated-engraving/index.html: spice up toc.
