@@ -107,21 +107,27 @@ UPDATE A TRANSLATION
 Open the HTML source file and translate all plain text, leaving markup
 and URLs in tact.  Tracking changes is much easier, that way.
 
-The best choice for non-destructive editing HTML source is probably
-Mozilla Composer (the new Mozilla Firefox/Thunderbird suite does not
-include an HTML editor yet).  You get to see the result and the HTML
-markup codes in different TABs.  *NOTE*: be sure to tell Mozilla
-Composer to leave the original markup in tact, setting
-
-    Edit/Preferences/Composer: (X) Retain original source formatting
-
-Of course, if you are comfortable with a texteditor (ie, not a word
-processor) such as Emacs, VI, jEDIT, please use that and check the
-result in your favorite browser.
+The best choice for non-destructive editing of HTML source is probably
+a simple text editor with syntax coloring such as jEdit or Gedit.  You
+may view and check the result in your favorite browser.  Do not use a
+word processor, that will probably mess with the markup.
 
 If you think the original text should be changed or fixed, please do
 so first, but share your suggestion before changing CVS.  Typos may be
 fixed right away.
+
+Do not use mozilla composer, at least until it is clear how to
+let it really preserve markup.
+
+#The best choice for non-destructive editing HTML source is probably
+#NOT Mozilla Composer (the new Mozilla Firefox/Thunderbird suite does not
+#include an HTML editor yet).  You get to see the result and the HTML
+#markup codes in different TABs.  *NOTE*: be sure to tell Mozilla
+#Composer to leave the original markup in tact, setting
+#
+#    Edit/Preferences/Composer: (X) Retain original source formatting
+#
+
 
 
 SUBMIT TO CVS
