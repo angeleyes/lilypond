@@ -3,17 +3,20 @@
 depth = ..
 
 NAME = debian
-BLURBS = BLURB
-AT_FILES = $(BLURBS) # 
 at-dir = $(outdir)/
 at-ext =
 
-EXTRA_DIST_FILES = README.Debian TODO $(CONF_FILES) $(OUT_DIST_FILES) control.foka
-CONF_FILES = changelog copyright doc-base preinst postinst postrm prerm rules watch 
+CONF_FILES = changelog control copyright emacsen-startup \
+	preinst postinst postrm prerm rules watch
+EXTRA_DIST_FILES = README.Debian $(CONF_FILES) \
+	control.foka control.potato \
+	lilypond.dirs lilypond.doc-base lilypond.links \
+	lilypond-doc.dirs lilypond-doc.doc-base lilypond-doc.README.Debian \
+	lilypond1.3.copyright
 #OUTCONF_FILES = $(addprefix $(outdir)/, $(basename $(CONF_FILES))) $(OUTIN_FILES)
 OUTCONF_FILES = $(OUTIN_FILES)
 OUT_DIST_FILES = $(OUTIN_FILES)
 
-STEPMAKE_TEMPLATES = yolily-debian
+STEPMAKE_TEMPLATES = debian
 include $(depth)/make/stepmake.make 
 

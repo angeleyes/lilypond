@@ -1,10 +1,10 @@
 Source: lilypond
-Build-Depends: debhelper (>= 3.0.5), python-base (>= 1.5.2-4), libguile-dev (>= 1:1.4-9), tetex-bin, libkpathsea-dev, tetex-extra, flex, bison, texinfo (>= 4.0-1), groff, m4, gettext (>= 0.10.36-1)
-Build-Depends-Indep: bibtex2html, gs | gs-aladdin, netpbm (>= 2:9.10-1)
+Build-Depends: debhelper (>= 2.0.72), python-base (>= 1.5.2-4), libguile6-dev, tetex-bin, tetex-lib, tetex-extra, flex, bison, texinfo (>= 4.0-4), groff, m4, gettext (>= 0.10.35-13)
+Build-Depends-Indep: gs | gs-aladdin, netpbm, pnmtopng
 Section: tex
 Priority: optional
 Maintainer: Anthony Fok <foka@debian.org>
-Standards-Version: 3.5.4
+Standards-Version: 3.1.1
 
 Package: lilypond
 Architecture: any
@@ -30,8 +30,8 @@ Section: doc
 Architecture: all
 Suggests: lilypond (>= 1.4.1-1)
 Suggests: postscript-viewer, www-browser
-Description: LilyPond Documentation in HTML and PS formats
- This package contains the HTML and PostScript documentation for the
+Description: LilyPond Documentation in HTML, PS and DVI formats
+ This package contains the HTML, PostScript and DVI documentation for the
  LilyPond music typestting software.
 
 Package: lilypond1.3
