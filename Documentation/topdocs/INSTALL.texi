@@ -135,14 +135,6 @@ It is available at
 FTP directory for @code{geometry}}. This package is normally included
 with the @TeX{} distribution.
 
-@item MetaPost, needed for generating PostScript fonts. Please
-note that tetex-0.4pl8 (included with Red Hat 5.x) does not include
-@file{mfplain.mp}, which is needed for producing the scalable font
-files.
-
-If you don't have MetaPost and don't want to use PostScript output, then
-edit @file{mf/GNUmakefile}, removing the line saying @code{PFA_FILES=}.
-
 @item kpathsea, a library for searching (@TeX{}) files.  @code{kpathsea} is
 usually included with your installation of @TeX{}.  You may need to install
 a tetex-devel or tetex-dev package too.
@@ -306,7 +298,7 @@ automatically loaded, so you need not modify your @code{~/.emacs} file.
 
 @subsection Red Hat Linux
 
-Red Hat 7.0 i386 RPMS are available from
+Red Hat 7.x i386 RPMS are available from
 @uref{ftp://ftp.cs.uu.nl/pub/GNU/LilyPond/binaries/}.
 
 You can also compile them yourself.  A spec file is in

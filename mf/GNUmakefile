@@ -57,20 +57,24 @@ PFA_FILES = $(addprefix $(outdir)/, $(FONT_FILES:.mf=.pfa))
 
 ifdef MAKE_PFA_FILES
 
-ALL_GEN_FILES += $(PFA_FILES) $(outdir)/lilypond.map
+ALL_GEN_FILES += $(PFA_FILES) $(outdir)/lilypond.map $(outdir)/fonts.scale
 INSTALLATION_OUT_DIR4=$(datadir)/pfa
-INSTALLATION_OUT_FILES4=$(PFA_FILES)
+INSTALLATION_OUT_FILES4=$(PFA_FILES) $(outdir)/fonts.scale
 
 INSTALLATION_OUT_DIR5=$(datadir)/dvips/
 INSTALLATION_OUT_FILES5=$(outdir)/lilypond.map
 
-pfa: $(PFA_FILES)
+pfa: $(PFA_FILES) $(outdir)/fonts.scale
+
 
 endif
 
 $(outdir)/lilypond.map: 
 	echo $(FONT_FILES:.mf=) | tr ' ' '\n' | \
 		sed 's/\(.*\)/\1 \1 <\1.pfa/' > $@
+
+$(outdir)/fonts.scale:
+	echo $(FONT_FILES:.mf=.pfa) | $(PYTHON) $(topdir)/buildscripts/make-font-dir.py  > $@
 
 
 export MFINPUTS:=.:$(MFINPUTS)
