@@ -103,12 +103,15 @@ This will process the file, and show the result in a PDF viewer.
 <h4>Windows 98</h4>
 
 <p>
-  On Windows <strong>95, 98 and ME</strong> there are problems with the Cygwin
-  Python package, which may hamper the operation of LilyPond (see <a
-								     href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
-    fails testsuite</a>).  Unfortunately, these problems are outside
-  control of the LilyPond development team.  Windows NT, 2000 and XP are
-  not affected.
+  On Windows <strong>95, 98 and ME</strong> there are problems with
+  the Cygwin Python package, which <em>may</em> hamper the
+  unencumbered operation of LilyPond (see <a
+  href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
+  fails testsuite</a>).  LilyPond itself should be usable, but
+  clicking on a <tt>.ly</tt> file to produce a PDF, lilypond-book, and
+  midi2ly <em>may</em> not work.  Unfortunately, these problems are
+  outside control of the LilyPond development team.  Windows NT, 2000
+  and XP are not affected.
 </p>
 
 <h4>But I have no <tt>test.log</tt></h4>
@@ -126,6 +129,7 @@ This will process the file, and show the result in a PDF viewer.
   <li>
     By brute force:
     remove <code>C:\CYGWIN</code>.
+    <p>
     <em>This also removes your Cygwin <code>/home/</code> directory,
       so 
       copy important files to somewhere else first</em>.
