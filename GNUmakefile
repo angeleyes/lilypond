@@ -15,7 +15,7 @@ site: tree menuify
 
 menuify: tree
 	python format-page.py --outdir out/  `find site -name '*.html'`
-	for a in `find site -name '*.png' -or -name '*.jpeg' -or -name '*.pdf'` ; do   ln $$a out/$$a  ;done
+	for a in `find site -name '*.ly' -or -name '*.png' -or -name '*.jpeg' -or -name '*.pdf'` ; do   ln $$a out/$$a  ;done
 	ln newweb.css out/site
 
 tree:
@@ -40,9 +40,9 @@ upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && 	\
 	chgrp -R lilypond .  && \
-	chmod 664 `find -type f` && \
+	chmod -R 664 . && \
 	chmod 2775 `find -type d` && \
-	rsync --delete --group --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
+	rsync --delete -go --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
 
 
 dist:

@@ -2,73 +2,73 @@
 
 <h1>LilyPond on MS Windows</h1>
 
-<h2>Installation</h2>
+<h2>1. Installation</h2>
 
 <ul>
 <li>
-Click <a href="http://cygwin.com/setup.exe">Install Lily
-now</a>,
+Download  <tt>setup.exe</tt> by clicking <a
+href="http://cygwin.com/setup.exe">here</a>,
+
 <li>For NT, 2000 and XP: become administrator
-<li>Run the installer (<code>setup.exe</code>)
+
+<li>Run <code>setup.exe</code>.
+
 <img src=@IMAGES@cygwin-shot.png align=right> 
+
 <li> Keep clicking "Next" until 
+
 <li> in 
  the <b>Package View</b> dialogue, select LilyPond, found in the
 <b>Publishing</b> section.
+
 </ul>
 <p>
 
 If you are not 100% exactly sure of what you're doing, then just click
-<b>Next</b>,
-<b>don't</b> change the default install directory (c:/cygwin).
+"Next".
+<b>Don't</b> change the default install directory
+(<code>c:/cygwin</code>), and
 <b>don't</b> change the default text type (UNIX).
 
-
-
-<h2>Testing the install</h2>
+<h2>2. Testing</h2>
 
 <p>
-If you are using version 1.8.2-1 or newer, try this first.
+Shift-click href="test.ly">here</a> to download a test.  Save it on
+your desktop, and make sure it's called <tt>test.ly</tt> (<b>not</b>
+<tt>.TXT</tt>).  Double-click the file. This will process the file,
+and show it in a PDF viewer.
 
-Download this first .ly example:<br><blockquote>
-<a href="http://savannah.gnu.org/cgi-bin/viewcvs/lilypond/lilypond/input/example-1.ly?rev=HEAD&content-type=application/x-lilypond">example-1.ly</a>
-</blockquote>
+<h3>Yay, it works!</h3>
+<p>
 
-<!--
-Better Include example-1.ly in website?  But how to set mime type?
+Good! Then go onto <a href="using.html">Using LilyPond</a>
 
-text/plain opens in browser; we want: save to disk
-
-<a href="http://savannah.gnu.org/cgi-bin/viewcvs/lilypond/lilypond/input/example-1.ly?rev=HEAD&content-type=text/plain">example-1.ly</a>
-
-<a href="http://savannah.gnu.org/cgi-bin/viewcvs/lilypond/lilypond/input/example-1.ly?rev=HEAD&content-type=application/octet-stream">example-1.ly</a>
-
-<a href="http://lilypond.org/doc/v1.8/input/example-1.ly">example-1.ly</a>
-!-->
-
-to your desktop.  It should be called: 'example-1.ly' (not
-example-1.ly.TXT).  Double-click on the .ly file on your desktop.
-LilyPond should generate the file and open your favourite PDF viewer.
+<h3>Umm, I'm not sure what to do. Help me!</h3>
 
 <p>
-See <a href="getting-started.html">getting started</a> for more
-information and how to create your first LilyPond .ly music file.
 
-<!-- Copy the appropriate example:
+For questions and support, send mail to <a
+href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
 
-<dl>
- <dt>for LilyPond 1.8: </dt><dd><a href="/doc/v1.8/input/example-1.ly">example-1.ly</a></dd>
- <dt>for LilyPond 1.9: </dt><dd><a href="/doc/v1.9/input/example-1.ly">example-1.ly</a></dd>
-</dl>
-
+<h3>Darn, it doesn't work</h3>
 <p>
-Go <a href="getting-started.html">here</a> to test your
-installation.
 
-!-->
+Whoops, something went astray, so you have to send a <a href
+href="../about/faq.html#bugreport">bugreport</a>.  Run the cywgin
+terminal (double click the Cygwin icon), and run 
+
+<pre>
+   sh -x /usr/bin/bug-lilypond-cygwin >& bug.txt
+</pre>
+
+Attach the resulting <tt>bug.txt</tt> file to your bug-report, and
+send it to <a
+href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
+<p>
 
 
-<h2>Uninstalling</h2>
+
+<h2>3. Uninstalling</h2>
 
 <ul>
 <li>
