@@ -1,5 +1,7 @@
 lilypond_1_4
 ============
+* scripts/lilypond-book.py: fix by Mats. Try to import pre if available.
+
 * scripts/lilypond-book.py (re_dict): remove all *? regexps.
 
 * Documentation/windows/setup.hint (requires): Add gsview dependency.
