@@ -3,39 +3,39 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #ifndef SCOPE_HH
 #define SCOPE_HH
 
-#include "dictionary.hh"
 #include "lily-proto.hh"
 #include "lily-guile.hh"
-#include "dictionary-iter.hh"
-#include "protected-scm.hh"
 
-class Scope : private Hash_table<Protected_scm,Identifier*> {
+class Scheme_hash_table;
+
+/*
+ Junk this almost-void class. 
+ */
+class Scope {
+  Scheme_hash_table *id_dict_;
+  Scope (Scope const &);
 public:
-  void print () const;
+  SCM to_alist () const; 
   bool elem_b (String ) const;
   bool elem_b (SCM s) const;
-  Identifier *&elem (String);
-  Identifier *&elem (SCM s);  
-  Scope ();
+
+  bool try_retrieve (SCM key, SCM *val) const;
   
-  Scope (Scope const &);
-  ~Scope ();
+  SCM scm_elem (String) const;
+  SCM scm_elem (SCM) const;
+
+
+  void set (String, SCM);  
+  Scope (Scheme_hash_table*);
+  
   friend class Scope_iter;
 };
-
-class Scope_iter : public Hash_table_iter<Protected_scm,Identifier*> {
-public:
-  Scope_iter(Scope const&);
-  String key () const;
-  SCM scm_key () const;
-};
-
 #endif /* SCOPE_HH */
 

@@ -1,7 +1,12 @@
-/* @configure_input@ */
+/* @AUTOGENERATE@ */
 
 /* Hmm */
 #define PACKAGE "@package@"
+
+/* define if bla bla /var and the like. */
+#define DIR_SHAREDSTATEDIR "@DIR_SHAREDSTATEDIR@"
+
+#define DIR_DATADIR "@DIR_DATADIR@"
 
 /* default lilypond init and input dir */
 #define  DIR_DATADIR "@DIR_DATADIR@"
@@ -21,6 +26,21 @@
 /* define if you have gettext */
 #define HAVE_GETTEXT 0
 
+/* define if you have isinf */
+#define HAVE_ISINF 0
+
+/* define if you want KPATHSEA */
+#define KPATHSEA @KPATHSEA@
+
+/* define if you have kpatsea header */
+#define HAVE_KPATHSEA_KPATHSEA_H 0
+
+/* define if you have kpse_find_file */
+#define HAVE_KPSE_FIND_FILE 0
+
+/* define if you have kpse_find_tfm */
+#define HAVE_KPSE_FIND_TFM 0
+
 /* define if explicit instantiation is needed */
 #undef NEED_EXPLICIT_INSTANTIATION
 
@@ -28,5 +48,11 @@
 #define DIRSEP '@DIRSEP@'
 #define PATHSEP '@PATHSEP@'
 
-/* define GUILE-ification */
-#undef HAVE_LIBGUILE 
+/* define if you have assert */
+#define HAVE_ASSERT_H 0
+
+/* define if you have sys/stat.h */
+#define HAVE_SYS_STAT_H 0
+
+/* define if you have sys/stat.h */
+#define STAT_MACROS_BROKEN 0
