@@ -1,17 +1,34 @@
 /*   
-  separating-line-group-grav.cc --  implement Separating_line_group_engraver
+'  separating-line-group-engraver.cc --  implement Separating_line_group_engraver
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
-#include "separating-line-group-engraver.hh"
 #include "separating-group-spanner.hh"
-#include "single-malt-grouping-item.hh"
+#include "separation-item.hh"
 #include "paper-column.hh"
 #include "paper-def.hh"
+#include "engraver.hh"
+#include "axis-group-interface.hh"
+
+class Separating_line_group_engraver : public Engraver
+{
+protected:
+  Item * break_malt_p_;
+  Item * nobreak_malt_p_;
+  Spanner * sep_span_p_;
+  
+  virtual void acknowledge_grob (Grob_info);
+  virtual void initialize ();
+  virtual void finalize ();
+  virtual void stop_translation_timestep ();
+public:
+  Separating_line_group_engraver ();
+  VIRTUAL_COPY_CONS (Translator);
+};
 
 Separating_line_group_engraver::Separating_line_group_engraver ()
 {
@@ -21,70 +38,69 @@ Separating_line_group_engraver::Separating_line_group_engraver ()
 }
 
 void
-Separating_line_group_engraver::do_creation_processing ()
+Separating_line_group_engraver::initialize ()
 {
-  sep_span_p_ = new Separating_group_spanner;
-  announce_element (Score_element_info (sep_span_p_, 0));
-  sep_span_p_->set_bounds (LEFT, get_staff_info ().command_pcol_l ());
+  sep_span_p_ = new Spanner (get_property ("SeparatingGroupSpanner"));
+
+  announce_grob (sep_span_p_, 0);
+  sep_span_p_->set_bound (LEFT, unsmob_grob (get_property ("currentCommandColumn")));
 }
 
 void
-Separating_line_group_engraver::do_removal_processing ()
+Separating_line_group_engraver::finalize ()
 {
-  Scalar sz (get_property ("postBreakPadding", 0));
-  if (!sz.empty_b () && sz.isnum_b ())
-    {
-      sep_span_p_->padding_f_ = Real(sz);
-    }
-  else
-    {
-      sep_span_p_->padding_f_ = paper_l ()->get_realvar (ly_symbol ("postBreakPadding"));
-    }
-
-  sep_span_p_->set_bounds (RIGHT, get_staff_info ().command_pcol_l ());
-  typeset_element (sep_span_p_);
+  sep_span_p_->set_bound (RIGHT, unsmob_grob (get_property ("currentCommandColumn")));
+  typeset_grob (sep_span_p_);
   sep_span_p_ =0;
 }
 
 void
-Separating_line_group_engraver::acknowledge_element (Score_element_info i)
+Separating_line_group_engraver::acknowledge_grob (Grob_info i)
 {
   Item * it = dynamic_cast <Item *> (i.elem_l_);
-  if (it && !it->parent_l (X_AXIS))
-    {
-      bool ib =it->breakable_b ();
-      Single_malt_grouping_item *&p_ref_ (ib ? break_malt_p_
-					  : nobreak_malt_p_);
+  if (!it)
+    return;
+  if (it->parent_l (X_AXIS)
+      && it->parent_l (X_AXIS)->has_extent_callback_b
+ (Axis_group_interface::group_extent_callback_proc, X_AXIS))
+    return;
 
-      if (!p_ref_)
-	{
-	  p_ref_ = new Single_malt_grouping_item;
-	  if (ib)
-	    p_ref_->set_elt_property (breakable_scm_sym, SCM_BOOL_T);
-	  announce_element (Score_element_info (p_ref_, 0));
-	}
-      p_ref_->add_item (it);
+  
+  bool ib =Item::breakable_b (it);
+  Item *&p_ref_ (ib ? break_malt_p_
+		 : nobreak_malt_p_);
+
+  if (!p_ref_)
+    {
+      p_ref_ = new Item
+ (get_property ("SeparationItem"));
+	  
+      if (ib)
+	p_ref_->set_grob_property ("breakable", SCM_BOOL_T);
+      announce_grob (p_ref_, 0);
     }
+  Separation_item::add_item (p_ref_,it);
 }
 
 void
-Separating_line_group_engraver::do_pre_move_processing ()
+Separating_line_group_engraver::stop_translation_timestep ()
 {
   if (break_malt_p_)
     {
-      sep_span_p_->add_spacing_unit (break_malt_p_);
+      Separating_group_spanner::add_spacing_unit (sep_span_p_, break_malt_p_);
       
-      typeset_element (break_malt_p_);
+      typeset_grob (break_malt_p_);
       break_malt_p_ =0;
     }
   if (nobreak_malt_p_)
     {
-      sep_span_p_->add_spacing_unit (nobreak_malt_p_);
-      typeset_element (nobreak_malt_p_);
+      Separating_group_spanner::add_spacing_unit (sep_span_p_, nobreak_malt_p_);
+      typeset_grob (nobreak_malt_p_);
       nobreak_malt_p_ =0;
     }
 }
 
 
 
-ADD_THIS_TRANSLATOR( Separating_line_group_engraver);
+ADD_THIS_TRANSLATOR (Separating_line_group_engraver);
+

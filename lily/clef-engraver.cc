@@ -1,253 +1,218 @@
 /*
-  clef.cc -- implement Clef_engraver
+  clef-engraver.cc -- implement Clef_engraver
 
   source file of the GNU LilyPond music typesetter
 
-  (c)  1997--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>,
+  (c)  1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>,
 
   Mats Bengtsson <matsb@s3.kth.se>
 */
 
 #include <ctype.h>
-#include "bar.hh"
-#include "clef-engraver.hh"
-#include "clef-item.hh"
-#include "debug.hh"
-#include "command-request.hh"
-#include "time-description.hh"
-#include "note-head.hh"
+
+#include "translator-group.hh"
 #include "key-item.hh"
-#include "local-key-item.hh"
+#include "bar.hh"
+#include "staff-symbol-referencer.hh"
+#include "debug.hh"
+#include "engraver.hh"
+#include "direction.hh"
+#include "side-position-interface.hh"
+#include "item.hh"
 
-Clef_engraver::Clef_engraver()
+
+class Clef_engraver : public  Engraver
 {
-  clef_p_ = 0;
-  clef_req_l_ = 0;
-  clef_type_str_ = "";
-  c0_position_i_ = 0;
-  clef_position_i_ = 0;
-  octave_dir_ = CENTER;
-  create_default_b_ = true;
-}
+public:
+  VIRTUAL_COPY_CONS (Translator);
+  Clef_engraver ();
 
-/*
-  PUT THIS IN GUILE!
- */
-struct Clef_settings {
-  char const *name;
-  char const *cleftype;
-  int position;
-} clef_settings[] = {
-  {"treble", "treble", -2},
-  {"violin", "treble", -2},
-  {"G", "treble", -2},
-  {"G2", "treble", -2},  
-  {"french", "treble",-4 },
-  {"soprano", "alto",-4 },
-  {"mezzosoprano", "alto",-2 },
-  {"alto", "alto",0 },
-  {"tenor", "alto",2 },
-  {"baritone", "alto",4 },
-  {"varbaritone", "bass",0 },
-  {"bass" , "bass",2 },
-  {"F", "bass", 2},
-  {"subbass", "bass",4},
-  {0,0,0}
+  Direction octave_dir_;
+
+protected:
+  virtual void stop_translation_timestep ();
+  virtual void start_translation_timestep ();
+  virtual void process_music ();
+  virtual void acknowledge_grob (Grob_info);
+  virtual void do_creation_processing ();
+private:
+  Item * clef_p_;
+  Item * octavate_p_;
+
+  SCM prev_glyph_;
+  SCM prev_cpos_;
+  SCM prev_octavation_;
+  void create_clef ();
+  void set_glyph ();
+  void inspect_clef_properties ();
 };
 
-bool
-Clef_engraver::set_type (String s)
+Clef_engraver::Clef_engraver ()
 {
-  if (s.right_str(2) == "_8") // Down one octave
-    {
-      octave_dir_ = DOWN;
-      s = s.left_str(s.length_i() - 2);
-    }
-  else if (s.right_str(2) == "^8") // Up one octave
-    {
-      octave_dir_ = UP;
-      s = s.left_str(s.length_i() - 2);
-    }
-  else
-    octave_dir_ = CENTER;
+  clef_p_ = 0;
+  octave_dir_ = CENTER;
+  octavate_p_ = 0;
 
-  bool found = 0;
-  for (Clef_settings *c = clef_settings; !found && c->name; c++)
-    {
-      if (c->name == s)
-	{
-	  clef_type_str_ = c->cleftype;
-	  clef_position_i_ = c->position;
-	  found = 1;
-	}
-      }
-
-  if (!found)
-    {
-      switch(toupper (s[0]))
-	{
-	case 'F': 
-	  clef_type_str_ = "bass";
-	  break;
-	case  'G':
-	  clef_type_str_ = "treble";
-	  break;
-	case 'C': 
-	  clef_type_str_ = "alto";
-	  break;
-	default:
-	  return false;
-	}
-      clef_position_i_ = 2 * (s[1] - '0') - 6;
-    }
-
-  if (clef_type_str_ == "treble")
-    c0_position_i_ = clef_position_i_ - 4;
-  else if (clef_type_str_ == "alto")
-    c0_position_i_ = clef_position_i_;
-  else if (clef_type_str_ == "bass")
-    c0_position_i_ = clef_position_i_ + 4;
-  else
-    assert (false);
-      
-  c0_position_i_ -= (int) octave_dir_ * 7;
-  
-  return true;
+  /*
+    will trigger a clef at the start since #f != ' ()
+   */
+  prev_cpos_ = prev_glyph_ = SCM_BOOL_F;
 }
 
+void
+Clef_engraver::set_glyph ()
+{
+  SCM glyph_sym = ly_symbol2scm ("glyph-name");
+  SCM glyph = get_property ("clefGlyph");
+
+  SCM basic = ly_symbol2scm ("Clef");
+  
+  daddy_trans_l_->execute_single_pushpop_property (basic, glyph_sym, SCM_UNDEFINED);
+  daddy_trans_l_->execute_single_pushpop_property (basic, glyph_sym, glyph);
+}
 
 /** 
   Generate a clef at the start of a measure. (when you see a Bar,
   ie. a breakpoint) 
   */
 void
-Clef_engraver::acknowledge_element (Score_element_info info)
+Clef_engraver::acknowledge_grob (Grob_info info)
 {
-  if (dynamic_cast<Bar*>(info.elem_l_)
-      && clef_type_str_.length_i())
+  Item * item =dynamic_cast <Item *> (info.elem_l_);
+  if (item)
     {
-      bool def = !clef_p_;
-      create_clef();
-      if(def)
-	clef_p_->set_elt_property(visibility_lambda_scm_sym,
-				  ly_ch_C_eval_scm ("postbreak_only_visibility"));
-    }
+      if (Bar::has_interface (info.elem_l_)
+	  && gh_string_p (get_property ("clefGlyph")))
+	create_clef ();
 
-  /* ugh; should make Clef_referenced baseclass */
-  Item * it_l =dynamic_cast <Item *> (info.elem_l_);
-  if (it_l)
-    {
-      if (Note_head * h = dynamic_cast<Note_head*>(it_l))
+      if (Key_item::has_interface (item))
 	{
-	  //	  h->position_i_ += c0_position_i_;
-	  h->position_i_ += c0_position_i_;
-	}
-      else if (Local_key_item *i = dynamic_cast<Local_key_item*> (it_l))
-	{
-	  i->c0_position_i_ =c0_position_i_;
-	}
-      else if (Key_item *k = dynamic_cast<Key_item*>(it_l))
-	{
-	  k-> set_c_position (c0_position_i_);
+	  /*
+	    Key_item adapts its formatting to make sure that the
+	    accidentals stay in the upper half of the staff. It needs
+	    to know c0-pos for this. (?)
+	  */
+
+	  item->set_grob_property ("c0-position", get_property ("centralCPosition"));
 	}
     } 
 }
 
 void
-Clef_engraver::do_creation_processing()
-{
-  create_default_b_ = true;	// should read property.
-  Scalar def = get_property ("createInitdefaultClef", 0);
-  if (def.to_bool ()) // egcs: Scalar to bool is ambiguous
-    set_type (def);
-  
-  if (clef_type_str_.length_i ())
-    { 
-      create_clef();
-      clef_p_->set_elt_property (non_default_scm_sym, SCM_BOOL_T);
-    }
-}
-
-bool
-Clef_engraver::do_try_music (Music * r_l)
-{
-  if (Clef_change_req *cl = dynamic_cast <Clef_change_req *> (r_l))
-    {
-      clef_req_l_ = cl;
-      if (!set_type (cl->clef_str_))
-	cl->error (_ ("unknown clef type "));
-
-      return true;
-    }
-  else
-    return false;
-
-}
-
-void
-Clef_engraver::create_clef()
+Clef_engraver::create_clef ()
 {
   if (!clef_p_)
     {
-      Clef_item *c= new Clef_item;
-      c->set_elt_property (break_priority_scm_sym, gh_int2scm (-2)); // ugh
-      String clefstyle = get_property ("clefStyle", 0);
-      if (clefstyle.length_i ())
-	c->set_elt_property (style_scm_sym,
-			     ly_ch_C_to_scm (clefstyle.ch_C()));
+      Item *c= new Item (get_property ("Clef"));
+      announce_grob (c, 0);
+
+      Staff_symbol_referencer::set_interface (c);
       
-      announce_element (Score_element_info (c, clef_req_l_));
       clef_p_ = c;
     }
-  
-  clef_p_->symbol_ = clef_type_str_;
-  clef_p_->y_position_i_ = clef_position_i_;
-  if (octave_dir_)
+  Staff_symbol_referencer::set_position (clef_p_,
+					 gh_scm2int (get_property ("clefPosition")));
+
+  SCM oct =  get_property ("clefOctavation");
+  if (gh_number_p (oct) && gh_scm2int (oct))
     {
-      clef_p_->set_elt_property (octave_dir_scm_sym, gh_int2scm (octave_dir_));
+      Item * g = new Item (get_property ("OctavateEight"));
+
+      Side_position_interface::add_support (g,clef_p_);      
+
+      g->set_parent (clef_p_, Y_AXIS);
+      g->set_parent (clef_p_, X_AXIS);
+
+      g->set_grob_property ("direction", gh_int2scm (sign (gh_scm2int (oct))));
+      octavate_p_ = g;
+      announce_grob (octavate_p_, 0);
     }
 }
 
-
 void
-Clef_engraver::do_process_requests()
+Clef_engraver::process_music ()
 {
-  if (clef_req_l_)
-    {
-      create_clef();
-    }
-  else if (create_default_b_)
-    {
-      String type = get_property ("defaultClef", 0);
-      set_type (type.length_i () ? type : "treble");
-      create_clef ();
-      create_default_b_ =0;
-    }
+  inspect_clef_properties ();
+}
+
+/*
+  this must be done in creation_proc() since grace notes will be
+  processed before Clef_engraver::prcoess_music()
+
+  Grace notes and clef changes are still broken.
+*/
+void
+Clef_engraver::do_creation_processing ()
+{
+  inspect_clef_properties ();
 }
 
 void
-Clef_engraver::do_pre_move_processing()
+Clef_engraver::inspect_clef_properties ()
+{
+  SCM glyph = get_property ("clefGlyph");
+  SCM clefpos = get_property ("clefPosition");
+  SCM octavation = get_property ("clefOctavation");
+  SCM force_clef = get_property ("forceClef");
+  
+  if (clefpos == SCM_EOL
+      || scm_equal_p (glyph, prev_glyph_) == SCM_BOOL_F
+      || scm_equal_p (clefpos, prev_cpos_) == SCM_BOOL_F
+      || scm_equal_p (octavation, prev_octavation_) == SCM_BOOL_F
+      || to_boolean (force_clef)
+)
+    {
+      set_glyph ();
+      create_clef ();
+
+      clef_p_->set_grob_property ("non-default", SCM_BOOL_T);
+
+       prev_cpos_ = clefpos;
+       prev_glyph_ = glyph;
+       prev_octavation_ = octavation;
+
+    }
+
+  if (to_boolean (force_clef))
+    {
+      Translator_group * w = daddy_trans_l_->where_defined (ly_symbol2scm ("forceClef"));
+      w->set_property ("forceClef", SCM_EOL);
+    }
+}
+
+
+void
+Clef_engraver::stop_translation_timestep ()
 {
   if (clef_p_)
     {
-      typeset_element (clef_p_);
+      SCM vis = 0; 
+      if (to_boolean (clef_p_->get_grob_property ("non-default")))
+	{
+	  vis = get_property ("explicitClefVisibility");
+	}
+
+      if (vis)
+	{
+	  clef_p_->set_grob_property ("visibility-lambda", vis);
+	  if (octavate_p_)
+	    octavate_p_->set_grob_property ("visibility-lambda", vis);
+	}
+      
+      typeset_grob (clef_p_);
       clef_p_ =0;
+
+      if (octavate_p_)
+	typeset_grob (octavate_p_);
+
+      octavate_p_ = 0;
     }
-  create_default_b_ = false;
 }
 
 void
-Clef_engraver::do_post_move_processing()
+Clef_engraver::start_translation_timestep ()
 {
-  clef_req_l_ = 0;
 }
 
-void
-Clef_engraver::do_removal_processing()
-{
-  assert (!clef_p_);
-}
+ADD_THIS_TRANSLATOR (Clef_engraver);
 
-
-
-ADD_THIS_TRANSLATOR(Clef_engraver);

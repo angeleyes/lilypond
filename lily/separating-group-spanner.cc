@@ -3,93 +3,131 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
 #include "separating-group-spanner.hh"
-#include "single-malt-grouping-item.hh"
+#include "separation-item.hh"
 #include "paper-column.hh"
 #include "paper-def.hh"
 #include "dimensions.hh"
+#include "group-interface.hh"
 
-static Rod
-make_rod (Single_malt_grouping_item *l, Single_malt_grouping_item *r)
+void
+Separating_group_spanner::find_rods (Item * r, SCM next)
 {
-  Rod rod;
-  rod.item_l_drul_[LEFT] =l;
-  rod.item_l_drul_[RIGHT]=r;
+  Interval ri (Separation_item::my_width (r));
+  if (ri.empty_b ())
+    return;
 
-  Interval li (l->my_width ());
-  Interval ri (r->my_width ());
-  
-  if (li.empty_b () || ri.empty_b ())
-    rod.distance_f_ = 0;
-  else
-    rod.distance_f_ = li[RIGHT] - ri[LEFT];
-
-  return rod;
-}
-  
-
-Array<Rod>
-Separating_group_spanner::get_rods () const
-{
-  Array<Rod> a;
-  
-  for (int i=0; i < spacing_unit_l_arr_.size () -1; i++)
+  /*
+    This is an inner loop, however, in most cases, the interesting L
+    will just be the first entry of NEXT, making it linear in most of
+    the cases.  */
+  for(; gh_pair_p (next); next = gh_cdr (next))
     {
-      Single_malt_grouping_item *l =spacing_unit_l_arr_[i];
-      Single_malt_grouping_item *lb
-	= dynamic_cast<Single_malt_grouping_item*>(l->find_prebroken_piece (RIGHT));
-      Single_malt_grouping_item *r = spacing_unit_l_arr_[i+1];
-      Single_malt_grouping_item *rb
-	= dynamic_cast<Single_malt_grouping_item*>(r->find_prebroken_piece (LEFT));
-      
-      a.push (make_rod(spacing_unit_l_arr_[i], spacing_unit_l_arr_[i+1]));
+      Item *l = dynamic_cast<Item*> (unsmob_grob (gh_car( next)));
+      Item *lb = l->find_prebroken_piece (RIGHT);
+
       if (lb)
 	{
-	  Rod rod(make_rod (lb, r));
-	  rod.distance_f_ += padding_f_;
-	  a.push (rod);
+	  Interval li (Separation_item::my_width (lb));
+
+	  if (!li.empty_b ())
+	    {
+	      Rod rod;
+
+	      rod.item_l_drul_[LEFT] = lb;
+	      rod.item_l_drul_[RIGHT] = r;
+
+	      rod.distance_f_ = li[RIGHT] - ri[LEFT];
+	
+	      rod.columnize ();
+	      rod.add_to_cols ();
+	    }
 	}
-      
-      if (rb)
+
+      Interval li (Separation_item::my_width (l));
+      if (!li.empty_b ())
 	{
-	  a.push (make_rod (l, rb));
+	  Rod rod;
+
+	  rod.item_l_drul_[LEFT] =l;
+	  rod.item_l_drul_[RIGHT]=r;
+
+	  rod.distance_f_ = li[RIGHT] - ri[LEFT];
+	
+	  rod.columnize ();
+	  rod.add_to_cols ();
+
+	  break;
 	}
-      
-      if (lb && rb)
-	{
-	  Rod rod(make_rod (lb, rb));
-	  rod.distance_f_ += padding_f_;
-	  a.push (rod);
-	}
+      else
+	/*
+	  this grob doesn't cause a constraint. We look further until we
+	  find one that does.  */
+	;
     }
-      
-  return a;
 }
 
-void
-Separating_group_spanner::add_spacing_unit (Single_malt_grouping_item*i)
+MAKE_SCHEME_CALLBACK (Separating_group_spanner,set_spacing_rods,1);
+SCM
+Separating_group_spanner::set_spacing_rods (SCM smob)
 {
-  spacing_unit_l_arr_.push (i);
-  add_dependency (i);
-}
-
-void
-Separating_group_spanner::do_substitute_element_pointer (Score_element*o,
-							 Score_element*n)
-{
-  if (dynamic_cast<Single_malt_grouping_item *> (o))
+  Grob*me = unsmob_grob (smob);
+  
+  for (SCM s = me->get_grob_property ("elements"); gh_pair_p (s) && gh_pair_p (gh_cdr (s)); s = gh_cdr (s))
     {
-      Single_malt_grouping_item*ns = dynamic_cast<Single_malt_grouping_item *> (n);
-      spacing_unit_l_arr_.substitute (dynamic_cast<Single_malt_grouping_item *> (o), ns);
+      /*
+	Order of elements is reversed!
+       */
+      SCM elt = gh_car (s);
+      Item *r = dynamic_cast<Item*> (unsmob_grob (elt));
+
+      if (!r)
+	continue;
+
+      Item *rb
+	= dynamic_cast<Item*> (r->find_prebroken_piece (LEFT));
+      
+      find_rods (r, gh_cdr (s));
+      if (rb)
+	find_rods (rb, gh_cdr (s));
     }
+
+  /*
+    We've done our job, so we get lost. 
+   */
+  for (SCM s = me->get_grob_property ("elements"); gh_pair_p (s); s = gh_cdr (s))
+    {
+      Item * it =dynamic_cast<Item*> (unsmob_grob (gh_car (s)));
+      if (it && it->broken_b ())
+	{
+	  it->find_prebroken_piece (LEFT) ->suicide ();
+	  it->find_prebroken_piece (RIGHT)->suicide ();
+	}
+      it->suicide ();
+    }
+  me->suicide ();
+  return SCM_UNSPECIFIED ;
 }
 
-Separating_group_spanner::Separating_group_spanner()
+void
+Separating_group_spanner::add_spacing_unit (Grob* me ,Item*i)
 {
-  set_elt_property (break_helper_only_scm_sym, SCM_BOOL_T);
-  padding_f_ =0.0;
+  Pointer_group_interface::add_element (me, "elements",i);
+  me->add_dependency (i);
+}
+
+
+void
+Separating_group_spanner::set_interface (Grob*)
+{
+}
+
+bool
+Separating_group_spanner::has_interface (Grob*)
+{//todo
+  assert (false);
 }

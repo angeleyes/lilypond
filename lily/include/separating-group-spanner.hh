@@ -3,7 +3,7 @@
   
   source file of the GNU LilyPond music typesetter
   
-  (c) 1998--1999 Han-Wen Nienhuys <hanwen@cs.uu.nl>
+  (c) 1998--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
   
  */
 
@@ -12,21 +12,14 @@
 
 #include "spanner.hh"
 
-
-class Separating_group_spanner : public Spanner
+class Separating_group_spanner
 {
-  Link_array<Single_malt_grouping_item> spacing_unit_l_arr_;
 public:
-  /**
-     extra space to add after  postbreak. (FIXME).
-   */
-  Real padding_f_ ;
-  Separating_group_spanner ();
-  void add_spacing_unit (Single_malt_grouping_item*);
-protected:
-  VIRTUAL_COPY_CONS(Score_element);
-  virtual Array<Rod> get_rods () const;
-  virtual void do_substitute_element_pointer (Score_element*,Score_element*);
+  static void add_spacing_unit (Grob*me, Item*);
+  static void find_rods (Item*, SCM);
+  static void set_interface (Grob*);
+  static bool has_interface (Grob*);
+  DECLARE_SCHEME_CALLBACK (set_spacing_rods, (SCM ));
 };
 
 #endif /* SEPARATING_GROUP_SPANNER_HH */
