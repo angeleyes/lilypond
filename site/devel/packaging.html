@@ -147,11 +147,10 @@ that cygwin-1.3.x is no longer supported; upgrade to cygwin-1.5.5 or newer.)
     </pre></li>
   <li>Get and setup LilyPond source:
     <pre>
-   wget -P/var/tmp ftp://lilypond.org/pub/LilyPond/v1.9/lilypond-1.9.9.tar.gz
    mkdir -p /netrel/src && cd /netrel/src
-   rm -rf /netrel/src/lilypond-*
-   tar xzf /var/tmp/lilypond-*
-   mv lilypond-1.9.9 lilypond-1.9.9-1
+   mkdir -p old
+   wget -P/tmp ftp://lilypond.org/pub/LilyPond/v1.9/lilypond-1.9.9.tar.gz
+   PATH=/netrel/bin:$PATH pimport lilypond
    </pre></li>
     <li>Build the package:
       <pre>
@@ -174,8 +173,9 @@ cross compile for Cygwin:
     To get and install it, do something like: <pre>
       sudo mkdir -p /netrel
       sudo chown $USER /netrel
+      cd /
       cvs -d:pserver:anoncvs@sources.redhat.com:/cvs/cygwin-apps \
-      co -d /netrel mknetrel
+        co -d netrel mknetrel
     </pre>
   </li>
   <li>
@@ -184,12 +184,13 @@ cross compile for Cygwin:
   <a href="http://lilypond.org/cygwin/cyg-apt">cyg-apt</a> script that
   can set it up and help keep it up to date.  Do something like:  <pre>
     wget -P ~/bin http://lilypond.org/cygwin/cyg-apt
+    chmod +x ~/bin/cyg-apt
     sudo mkdir -p /cygwin
     sudo chown $USER /cygwin
     cyg-apt setup
     cyg-apt update
-    cyg-apt --no-deps install cygwin gettext guile-devel libguile12 libiconv2 \
-    libintl2 libkpathsea3 libreadline5 python readline tetex-devel w32api
+    cyg-apt --no-deps install cygwin flex gettext guile-devel libguile12 \
+        libintl2 libkpathsea3 python tetex-devel w32api
   </pre>
   </li>
   <li>
@@ -201,6 +202,7 @@ cross compile for Cygwin:
       /etc/apt/sources.list: <pre>
       deb ftp://ftp.lilypond.org/pub/LilyPond/binaries/debian unstable .
     </pre> Do: <pre>
+      apt-get update
       apt-get install binutils-i686-cygwin gcc-i686-cygwin
     </pre>
   </li>
