@@ -1,5 +1,12 @@
 <dl>
 
+<dt>February 26, 2005</dt>
+
+<dd> The <a href="http://lsr.dsi.unimi.it/">Lilypond Snippet
+Repository (LSR)</a> is a searchable database of Lilypond code
+snippets.  You can add snippets too, so join the LSR project, and
+contribute creative ideas for using Lilypond.  </dd>
+
   <dt>February 21, 2005</dt>
   <dd>LilyPond 2.5.12 is out. The big news is that this release
   supports TrueType fonts. This means that it is now possible to
@@ -24,11 +31,6 @@ sports as new EPS backend, based on the PS backend. This backend is
 used in the new and improved lilypond-book script. Download <a
 href="download/#2.5">here</a>!  </dd>
 
-  <dt>January 26, 2005</dt>
-  <dd>LilyPond 2.5.9 is out. This release fixes a couple of annoying
-bugs in the direct PS output for piano braces.  Download <a
-href="download/#2.5">here</a>!
-  </dd>
 
 </dl>
 
