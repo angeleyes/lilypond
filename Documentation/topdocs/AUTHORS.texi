@@ -1,0 +1,83 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename AUTHORS.info
+@settitle AUTHORS - who did what on GNU LilyPond-
+
+@node Top
+@top
+@menu
+* AUTHORS::                     
+@end menu
+
+@node AUTHORS
+@chapter AUTHORS
+
+
+This file lists authors of GNU LilyPond, and what they wrote.  This
+list is alphabetically ordered.
+
+@itemize @bullet
+@item @email{tca@@gnu.org, Tom Cato Amundsen},
+    cembalo-partita in lilypond, accordion symbols, some lilypond-book.py
+@item @email{matsb@@s3.kth.se, Mats Bengtsson},
+    @uref{http://www.s3.kth.se/~matsb/}
+    lots of testing, fixes, general comments and contributions.
+@item @email{eric@@aut.ee.ethz.ch, Eric Bullinger},
+    accidental transposition.
+@item Laura Conrad (lconrad@@world.std.com)
+    fixes to abc2ly
+@item @email{Jan.A.Fagertun@@energy.sintef.no, Jan Arne Fagertun},
+    @TeX{} titling and lytodvi.sh
+@item @email{foka@@debian.org, Anthony Fok}, 
+    Debian package: debian/*
+@item @email{jlhamm@@pacificnet.net, James Hammons},
+    American chord names, gnu-windows testing
+@item @email{bjoern.jacke@@gmx.de, Bjoern Jacke}
+    German glossary stuff.
+@item @email{nj104@@cus.cam.ac.uk, Neil Jerram}. 
+    parts of Documentation/Vocab*
+@item Donald Ervin Knuth,  @uref{http://www-cs-staff.stanford.edu/~knuth/}
+    mf/ital-*.mf (these were taken from the CM fonts)
+@item @email{m.krause@@tu-harburg.de, Michael Krause},
+    breathing signs
+@item @email{dlatt@@datenrat.de, Dirk Lattermann},
+	minor improvements on accidentals/ties/multi measure rests
+@item @email{wl@@gnu.org, Werner Lemberg},
+    misc bugfixes, some Beam and Stem code. 
+@item @email{drl@@vuse.vanderbilt.edu, David R. Linn},
+    Mailing list maintenance.
+@item @email{,Adrian Mariano}
+    Reference manual, tutorial fixes, glossary.
+@item @email{scancm@@biobase.dk,Christian Mondrup}
+    Glossary.
+@item @email{hanwen@@cs.uu.nl, Han-Wen Nienhuys}, 
+    @uref{http://www.cs.uu.nl/~hanwen/}
+    Main author (initials: HWN).
+@item @email{janneke@@gnu.org, Jan Nieuwenhuizen}, 
+    @uref{http://www.xs4all.nl/~jantien/}
+    Main author (initials: JCN).
+@item @email{oliva@@dcc.unicamp.br, Alexandre Oliva}, 
+    @uref{http://sunsite.unicamp.br/~oliva/}
+    testing
+@item @email{pinard@@iro.umontreal.ca, Francois Pinard},
+    @uref{http://www.iro.umontreal.ca/~pinard/}
+    parts of Documentation/Vocab*, started internationalization stuff
+@c urg: @c,{} in @email{} barfs.
+@item @email{portnoy@@ai.mit.edu,Stephen Peters},
+    pdf@TeX{} support
+@item @email{glenprideaux@@iname.com, Glen Prideaux},
+    minor bug fixes, lyric-phrasing.
+@item @email{Roy.Rankin@@alcatel.com.au, Roy R. Rankin},
+    major extension, fixes to abc2ly, lilypond bug fixes
+@item @email{reuterj@@ira.uka.de, Juergen Reuter}
+        Custos support.
+@item @email{daboys@@austin.rr.com, Jeffrey B. Reed},
+    Windows-NT support.
+@item Shay Rojanski
+    Some lilypond input.
+@item @email{august@@infran.ru, August S.Sigov}
+    Russian translation
+@item @email{rune@@zedeler.dk, Rune Zedeler}
+    Drum notation
+@end itemize
+
+@bye

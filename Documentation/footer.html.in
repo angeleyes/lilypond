@@ -1,8 +1,21 @@
-<!if this file ./Documentation/footer.html.in is present, it is included>
-<!automatically by add-html-footer, and replaces the simple standard footer>
-<!substitutions: package.Name, package.Name, ENV:WEBMASTER, ENV:WEBMASTER>
-<hr>
-Return to <a href=%s>%s's home page</a>.
+<!--
+
+If this file ./Documentation/footer.html.in is present,
+it is included automatically by add-html-footer.py,
+which substitutes some @AT_VARIABLES@ as well.
+
+!-->
+
+<!-- Layout shamelessly inspired by Franc,ois Pinard's TP pages -->
+
+    </td>
+  </tr>
+
+  <tr align=left valign=bottom>
+   <td align=left valign=middle colspan=3 width="100%" bgcolor="#e8e8ff">
+
+Go <a href="@INDEX@">back</a> to index of LilyPond.
+
 <p>
 Please send GNU LilyPond questions and comments to 
 
@@ -11,17 +24,17 @@ Please send GNU LilyPond questions and comments to
 <p>
 
 Please send comments on these web pages to 
+<a href="mailto:@MAIL_ADDRESS@"><em>@MAIL_ADDRESS@</em></a>
 
-<a href="mailto:%s"><em>%s</em></a>,
-send other FSF &amp; GNU inquiries and questions to 
+<p>
 
-<a href="mailto:gnu@gnu.org"><amp>gnu@gnu.org</em></a>.<p>
+Copyright (c) 1997--2001 Han-Wen Nienhuys and Jan Nieuwenhuizen.
+
 <p>
-<!Copyright (C) 1998 Free Software Foundation, Inc.,
-59 Temple Place - Suite 330, Boston, MA  02111,  USA>
-<!hmm, is this ok?>
-Copyright (c) 1997, 1998, 1999 Han-Wen Nienhuys and Jan Nieuwenhuizen.
-<p>
+
 Verbatim copying and distribution of this entire article is 
-permitted in any medium, provided this notice is preserved.<p>
+permitted in any medium, provided this notice is preserved.</p>
 
+   </td>
+  </tr>
+</table>
