@@ -24,7 +24,7 @@ FILES=$(SCRIPTS) GNUmakefile newweb.css `find site -name '*.html' -or -name '*.p
 
 outball=site.tar.gz
 
-buttons:
+silly-buttons:
 	mkdir -p out/images
 	cd out/images && \
 		cat ../buttons | \
@@ -36,6 +36,13 @@ buttons:
 					'(gimp-quit 0)'; \
 			fi \
 		done
+
+BUTTONS = $(shell cat out/buttons | sed -e s/^/\"/ -e s/$$/\"/)
+
+buttons:
+	mkdir -p out/images
+	cd out/images && \
+		gimp -c -s -b '(lily-buttons (list $(BUTTONS)))' '(gimp-quit 0)'
 
 out/$(outball): site
 	cd out && tar czvf $(outball) site images

@@ -17,7 +17,8 @@
 ; --------------------------------------------------------------------
 ;   - Changelog -
 ;;; version 0.7 Tue Apr  1 2003 janneke@gnu.org
-;;;   Resize button to image
+;;;   (script-fu-aqua-pill-button): Resize button to image
+;;;   (script-fu-aqua-pill-button): Return image
 ; version 0.1  2001/03/06 Iccii <iccii@hotmail.com>
 ;     - Initial relase
 ; version 0.2  2001/03/08 Iccii <iccii@hotmail.com>
@@ -435,7 +436,7 @@
 	(gimp-palette-set-background old-base-color)
 	(gimp-undo-push-group-end img)
 	(gimp-displays-flush)
-	))
+	img))
 
 (script-fu-register "script-fu-aqua-pill-button"
 		    _"<Toolbox>/Xtns/Script-Fu/Web Page Themes/Aqua Pill/Button..."

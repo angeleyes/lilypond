@@ -5,6 +5,7 @@
 
 (define (lily-button text hover)
   (let* ((hover? (not (= 0 hover)))
+	 (filename (string-append text (if hover? "-hover" "") ".png"))
 	 (font "-adobe-helvetica-bold-r-normal-*-30-*-*-*-p-*-*-*")
 	 (font-size 20)
 	 (text-color (if hover? '(224 224 224) '(0 0 0)))
@@ -17,33 +18,32 @@
 	 (shadow 0)
 	 (glow 0)
 	 (anti-alias 1)
-	 (flatten 0))
+	 (flatten 0)
+	 (image (script-fu-aqua-pill-button
+		 text
+		 font-size
+		 font
+		 text-color
+		 base-color
+		 background-color
+		 padding-x
+		 padding-y
+		 ratio
+		 blur
+		 shadow
+		 glow
+		 anti-alias
+		 flatten)))
 
-    (script-fu-aqua-pill-button text
-				font-size
-				font
-				text-color
-				base-color
-				background-color
-				padding-x
-				padding-y
-				ratio
-				blur
-				shadow
-				glow
-				anti-alias
-				flatten)
-
-    (let ((filename (string-append text (if hover? "-hover" "") ".png"))
-	  (image 0))
-      (gimp-image-merge-visible-layers image CLIP-TO-IMAGE)
-      ;;(gimp-image-resize image width height (/ width 2) (/ height 2))
-      (file-png-save 1 image (car (gimp-image-active-drawable image))
-		     filename "" 0 9 0 0 0 0 0)))
-  (gimp-displays-flush))
+    (gimp-image-merge-visible-layers image CLIP-TO-IMAGE)
+    ;;(gimp-image-resize image width height (/ width 2) (/ height 2))
+    (file-png-save 1 image (car (gimp-image-active-drawable image))
+		   filename "" 0 9 0 0 0 0 0)
+  (gimp-displays-flush)
+  image))
 
 (script-fu-register "lily-button"
-                    "<Toolbox>/Xtns/Script-Fu/Web page themes/LilyPond/Button"
+                    "<Toolbox>/Xtns/Script-Fu/Web Page Themes/LilyPond/Button"
                     "GNU LilyPond Link"
                     "Janneke Nieuwenhuizen janneke@gnu.org"
                     "Janneke"
@@ -57,7 +57,7 @@
   (map (lambda (x) (lily-button x 0) (lily-button x 1)) buttons))
 
 (script-fu-register "lily-buttons"
-                    "<Toolbox>/Xtns/Script-Fu/Web page themes/LilyPond/Buttons"
+                    "<Toolbox>/Xtns/Script-Fu/Web Page Themes/LilyPond/Buttons"
                     "GNU LilyPond Link"
                     "Janneke Nieuwenhuizen janneke@gnu.org"
                     "Janneke"
@@ -70,7 +70,4 @@
 ;;gimp -s -b '(lily-button "about" 0)' '(gimp-quit 0)'
 ;;gimp -s -b '(lily-button "about" 1)' '(gimp-quit 0)'
 
-
-;; URG: does not work
-;; LibGimp-WARNING **: script-fu: wire_read: unexpected EOF
-;;gimp -i -s -b '(lily-buttons (list "about" "use" "download"))' '(gimp-quit 0)'
+;;gimp -c -s -b '(lily-buttons (list "about" "use" "download"))' '(gimp-quit 0)'
