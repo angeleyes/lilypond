@@ -23,8 +23,6 @@ tree:
 	mkdir out
 	for a in `find site -type d -not -name CVS `; do mkdir out/$$a; done 
 
-
-
 VERSION=1.0
 DISTDIR=lily-web-$(VERSION)
 
@@ -37,7 +35,7 @@ out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
 
-WEBSERVER=lilypond.org
+WEBSERVER=base.lilypond.org
 upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && 	\
