@@ -178,7 +178,7 @@
        y="435.54965"
        sodipodi:role="line"
        id="tspan648">
-Add articulations</tspan></text>
+_("Add articulations")</tspan></text>
   <text
      style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#00ad00;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
      x="360.02643"
@@ -188,7 +188,7 @@ Add articulations</tspan></text>
        y="575.85645"
        sodipodi:role="line"
        id="tspan707">
-Add -es for flat, -is for sharp</tspan></text>
+_("Add -es for flat, -is for sharp")</tspan></text>
   <text
      style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#a60000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
      x="168.54550"
@@ -198,7 +198,7 @@ Add -es for flat, -is for sharp</tspan></text>
        y="644.53925"
        sodipodi:role="line"
        id="tspan625">
-Enclose pitches in &lt; &gt; for chords</tspan></text>
+_("Enclose pitches in &lt; &gt; for chords")</tspan></text>
   <metadata
      id="metadata56">
     <rdf:RDF

@@ -157,7 +157,7 @@
        y="468.35452"
        sodipodi:role="line"
        id="tspan672">
-Enter chord names</tspan></text>
+_("Enter chord names")</tspan></text>
   <text
      style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#00b700;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
      x="476.40811"
@@ -167,14 +167,14 @@ Enter chord names</tspan></text>
        y="559.27612"
        sodipodi:role="line"
        id="tspan679">
-Enter melody</tspan></text>
+_("Enter melody")</tspan></text>
   <text
      style="font-size:26.000000;font-style:normal;font-weight:normal;fill:#0000ad;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
      x="411.24332"
      y="719.38397"
      id="text681"><tspan
        id="tspan682">
-Enter lyrics</tspan></text>
+_("Enter lyrics")</tspan></text>
   <rect
      style="font-size:12.000000;fill:#b25ed5;fill-opacity:0.64347798;fill-rule:evenodd;stroke-width:1.0000000pt;"
      id="rect686"
@@ -193,7 +193,7 @@ Enter lyrics</tspan></text>
      y="794.27051"
      id="text688"><tspan
        id="tspan689">
-Combine melody and lyrics</tspan></text>
+_("Combine melody and lyrics")</tspan></text>
   <metadata
      id="metadata77">
     <rdf:RDF

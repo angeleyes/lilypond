@@ -192,7 +192,7 @@
        y="401.54031"
        sodipodi:role="line"
        id="tspan800">
-Commands start with \</tspan></text>
+_("Commands start with \\")</tspan></text>
   <text
      style="font-size:28.000000;font-style:normal;font-weight:normal;fill:#008f00;fill-opacity:1.0000000;stroke:#00d500;stroke-width:0.0000000;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Charter;text-anchor:start;writing-mode:lr;"
      x="323.05475"
@@ -202,7 +202,7 @@ Commands start with \</tspan></text>
        y="454.98016"
        sodipodi:role="line"
        id="tspan806">
-Letters are notes</tspan></text>
+_("Letters are notes")</tspan></text>
   <path
      style="fill:none;fill-rule:evenodd;stroke:#0000af;stroke-opacity:1;stroke-width:1.875;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"
      d="M 262.30989,573.38170 C 233.76782,572.36234 213.27992,562.25728 232.13807,506.19251"
@@ -224,7 +224,7 @@ Letters are notes</tspan></text>
        y="582.76678"
        sodipodi:role="line"
        id="tspan802">
-Numbers are durations</tspan><tspan
+_("Numbers are durations")</tspan><tspan
        x="167.61949"
        y="610.76678"
        sodipodi:role="line"
