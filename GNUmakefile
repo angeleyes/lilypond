@@ -73,7 +73,7 @@ menuify: $(mo)
 linktree: tree
 	$(foreach i, $(NON_HTML), ln $i out/$i &&) true
 	cd out && touch .xvpics && rm -rf $$(find -name .xvpics)
-	ln newweb.css out/site/
+	ln newweb.css out/site
 
 out/$(outball): site
 	cd out && tar czvf $(outball) site 
