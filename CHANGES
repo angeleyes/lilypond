@@ -1,3 +1,8 @@
+lilypond_1_4
+============
+
+* lilypond-indent.el: New file, from HEAD.  Fixes lilypond-mode.
+
 1.4.12.uu1
 ==========
 
