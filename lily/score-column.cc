@@ -13,7 +13,6 @@
 
 Score_column::Score_column (Moment w)
 {
-  break_penalty_i_ = 0;
   when_ = w;
 }
 
@@ -21,11 +20,8 @@ void
 Score_column::do_print() const
 {
 #ifndef NPRINT
-  DOUT << " at " <<  when_ << '\n';
-  if (break_penalty_i_ >= Break_req::FORCE)
-    DOUT << "Break forced";
-
-  DOUT << "Shortest playing: " <<  shortest_playing_mom_ << " shortest starter: " << shortest_starter_mom_;
+  DEBUG_OUT << " at " <<  when_ << '\n';
+  DEBUG_OUT << "Shortest playing: " <<  shortest_playing_mom_ << " shortest starter: " << shortest_starter_mom_;
   Paper_column::do_print();
 #endif
 }

@@ -35,8 +35,6 @@ Boolean (true iff defined)
 
 */
 class Score_element : public virtual Graphical_element {
-
-  friend class Paper_score;
   /**
      properties specific for this element. Destructor will not call
      scm_unprotect, so as to allow more flexible GC arrangements.  The
@@ -82,7 +80,6 @@ public:
   Paper_def *paper_l () const;
   Lookup const *lookup_l () const;
 
-  virtual ~Score_element ();
   void add_processing ();
 
   void substitute_dependency (Score_element*,Score_element*);
@@ -105,14 +102,23 @@ public:
    */
   void calculate_dependencies (int final, int busy, Score_element_method_pointer funcptr);
 
+
+  virtual Score_element *find_broken_piece (Line_of_score*) const;
 protected:
+
+  /**
+    Junk score element. This is protected because this is supposed to
+    be handled by GUILE gc.  */
+  virtual ~Score_element ();
+  
   Score_element* dependency (int) const;
   int dependency_size () const;
   
   virtual void output_processing ();
   virtual Interval do_height () const;
   virtual Interval do_width () const;
-    
+
+
   /// do printing of derived info.
   virtual void do_print () const;
   /// generate the molecule    
@@ -124,6 +130,9 @@ protected:
 
   /// generate rods & springs
   virtual void do_space_processing ();
+
+  /// do postbreak substs on array of pointers.
+  virtual void do_substitute_arrays ();
 
   virtual void do_breakable_col_processing ();
   /// do calculations after determining horizontal spacing
@@ -138,7 +147,36 @@ protected:
   virtual Link_array<Score_element> get_extra_dependencies () const;
 
   static Interval dim_cache_callback (Dimension_cache*);
+public:
+  SCM smobify_self ();
+  static SCM mark_smob (SCM);
+  static scm_sizet free_smob (SCM s);
+  static int print_smob (SCM s, SCM p, scm_print_state*);
+  static long smob_tag;
+  static void init_smobs();
+  SCM self_scm_;
 };
+
+
+template<class T>
+void
+substitute_element_array (Link_array<T> &arr, Line_of_score * to)
+{
+  Link_array<T> newarr;
+  for (int i =0; i < arr.size (); i++)
+    {
+      T * t = arr[i];
+      if (t->line_l () != to)
+	{
+	  t = dynamic_cast<T*> (t->find_broken_piece (to));
+	}
+      
+      if (t)
+	newarr.push (t);
+    }
+  arr = newarr;
+}
+
 
 
 #endif // STAFFELEM_HH

@@ -39,7 +39,7 @@ Beam_engraver::do_try_music (Music *m)
 
       if (d == STOP && !beam_p_)
 	{
-	  m->warning (_ ("No Beam to end"));
+	  m->warning (_ ("no beam to end"));
 	  return false;
 	}
       reqs_drul_[d ] = c;
@@ -55,7 +55,7 @@ Beam_engraver::do_process_requests ()
   if (reqs_drul_[STOP])
     {
       if (!beam_p_)
-	reqs_drul_[STOP]->warning (_("No beam to end"));
+	reqs_drul_[STOP]->warning (_("no beam to end"));
       prev_start_req_ =0;
       finished_beam_p_ = beam_p_;
       finished_beam_info_p_ = beam_info_p_;
@@ -98,11 +98,19 @@ Beam_engraver::do_process_requests ()
       beam_info_p_ = new Beaming_info_list;
       
       
-
+      /* urg, must copy to Auto_beam_engraver too */
       Scalar prop = get_property ("beamslopedamping", 0);
       if (prop.isnum_b ()) 
 	beam_p_->set_elt_property (damping_scm_sym, gh_int2scm( prop));
       
+      prop = get_property ("autoKneeGap", 0);
+      if (prop.isnum_b ()) 
+	beam_p_->set_elt_property (auto_knee_gap_scm_sym, gh_int2scm( prop));
+      
+      prop = get_property ("autoInterstaffKneeGap", 0);
+      if (prop.isnum_b ()) 
+	beam_p_->set_elt_property (auto_interstaff_knee_gap_scm_sym, gh_int2scm( prop));
+
       prop = get_property ("beamquantisation", 0);
       if (prop.isnum_b ()) 
 	beam_p_->quantisation_ = (Beam::Quantisation)(int)prop;
@@ -146,7 +154,7 @@ Beam_engraver::do_removal_processing ()
   typeset_beam ();
   if (beam_p_)
     {
-      prev_start_req_->warning (_ ("Unfinished beam"));
+      prev_start_req_->warning (_ ("unfinished beam"));
       finished_beam_p_ = beam_p_;
       finished_beam_info_p_ = beam_info_p_;
       typeset_beam ();
@@ -171,7 +179,7 @@ Beam_engraver::acknowledge_element (Score_element_info info)
       Rhythmic_req *rhythmic_req = dynamic_cast <Rhythmic_req *> (info.req_l_);
       if (!rhythmic_req)
 	{
-	  String s = _ ("Stem must have Rhythmic structure.");
+	  String s = _ ("Stem must have Rhythmic structure");
 	  if (info.req_l_)
 	    info.req_l_->warning (s);
 	  else
@@ -182,8 +190,8 @@ Beam_engraver::acknowledge_element (Score_element_info info)
       
       if (rhythmic_req->duration_.durlog_i_<= 2)
 	{
-	  rhythmic_req->warning (_ ("stem doesn't fit in beam"));
-	  prev_start_req_->warning (_ ("beam was started here"));
+	  rhythmic_req->warning (_ ("Stem doesn't fit in beam"));
+	  prev_start_req_->warning (_ ("Beam was started here"));
 	  return;
 	}
 

@@ -120,12 +120,72 @@ Beam::center () const
 		 si.stem_l_->staff_line_leading_f ()/2);
 }
 
+/*
+  Simplistic auto-knees; only consider vertical gap between two
+  adjacent chords
+ */
+bool
+Beam::auto_knee (SCM gap, bool interstaff_b)
+{
+  bool knee = false;
+  int knee_y = 0;
+  Real internote_f = stems_[0]->staff_line_leading_f ()/2;
+  if (gap != SCM_BOOL_F)
+    {
+      int auto_gap_i = gh_scm2int (SCM_CDR (gap));
+      for (int i=1; i < stems_.size (); i++)
+        {
+	  bool is_b = (bool)(sinfo_[i].interstaff_f_ - sinfo_[i-1].interstaff_f_);
+	  int l_y = (int)(stems_[i-1]->chord_start_f () / internote_f)
+	    + (int)sinfo_[i-1].interstaff_f_;
+	  int r_y = (int)(stems_[i]->chord_start_f () / internote_f)
+	    + (int)sinfo_[i].interstaff_f_;
+	  int gap_i = r_y - l_y;
+
+	  /*
+	    Forced stem directions are ignored.  If you don't want auto-knees,
+	    don't set, or unset autoKneeGap/autoInterstaffKneeGap.
+	   */
+	  if ((abs (gap_i) >= auto_gap_i) && (!interstaff_b || is_b))
+	    {
+	      knee_y = (r_y + l_y) / 2;
+	      knee = true;
+	      break;
+	    }
+	}
+    }
+  if (knee)
+    {
+      for (int i=0; i < stems_.size (); i++)
+        {
+	  int y = (int)(stems_[i]->chord_start_f () / internote_f)
+	    + (int)sinfo_[i].interstaff_f_;
+	  stems_[i]->dir_ = y < knee_y ? UP : DOWN;
+	  stems_[i]->set_elt_property (dir_forced_scm_sym, SCM_BOOL_T);
+	}
+    }
+  return knee;
+}
+
+bool
+Beam::auto_knees ()
+{
+  if (auto_knee (get_elt_property (auto_interstaff_knee_gap_scm_sym), true))
+    return true;
+  
+  return auto_knee (get_elt_property (auto_knee_gap_scm_sym), false);
+}
+
+
 void
 Beam::do_pre_processing ()
 {
+  /*
+    urg: it seems that info on whether beam (voice) dir was forced
+         is being junked here?
+  */
   if (!dir_)
     dir_ = get_default_dir ();
-  
   
   set_direction (dir_);
 }
@@ -134,7 +194,7 @@ void
 Beam::do_print () const
 {
 #ifndef NPRINT
-  DOUT << "slope_f_ " << slope_f_ << "left ypos " << left_y_;
+  DEBUG_OUT << "slope_f_ " << slope_f_ << "left ypos " << left_y_;
   Spanner::do_print ();
 #endif
 }
@@ -146,7 +206,25 @@ Beam::do_post_processing ()
     {
       warning (_ ("beam with less than two stems"));
       set_elt_property (transparent_scm_sym, SCM_BOOL_T);
-      return ;
+      return;
+    }
+  set_steminfo ();
+  if (auto_knees ())
+    {
+      /*
+	if auto-knee did its work, most probably stem directions
+	have changed, so we must recalculate all.
+       */
+      dir_ = get_default_dir ();
+      set_direction (dir_);
+
+      /* auto-knees used to only work for slope = 0
+	 anyway, should be able to set slope per beam
+         set_elt_property (damping_scm_sym, gh_int2scm(1000));
+      */
+
+      sinfo_.clear ();
+      set_steminfo ();
     }
   calculate_slope ();
   set_stemlens ();
@@ -195,13 +273,12 @@ Beam::get_default_dir () const
      [Ross] states that the majority of the notes dictates the
      direction (and not the mean of "center distance")
 
-     But is that because it really looks better, or because he
-     wants to provide some real simple hands-on rules.
+     But is that because it really looks better, or because he wants
+     to provide some real simple hands-on rules?
      
      We have our doubts, so we simply provide all sensible alternatives.
 
-     If dir is not determined: up (see stem::get_default_dir ())
-  */
+     If dir is not determined: up (see stem::get_default_dir ()) */
 
   Direction beam_dir;
   Direction neutral_dir = (Direction)(int)paper_l ()->get_var ("stem_default_neutral_direction");
@@ -260,7 +337,6 @@ void
 Beam::solve_slope ()
 {
   assert (sinfo_.size () > 1);
-  DOUT << "Beam::solve_slope: \n";
 
   Least_squares l;
   for (int i=0; i < sinfo_.size (); i++)
@@ -279,8 +355,8 @@ Beam::check_stemlengths_f (bool set_b)
 {
   Real interbeam_f = paper_l ()->interbeam_f (multiple_i_);
 
-  Real beam_f = paper_l ()->beam_thickness_f ();
-  Real staffline_f = paper_l ()->rule_thickness ();
+  Real beam_f = paper_l ()->get_realvar (beam_thickness_scm_sym);;
+  Real staffline_f = paper_l ()-> get_var ("stafflinethickness");
   Real epsilon_f = staffline_f / 8;
   Real dy_f = 0.0;
   for (int i=0; i < sinfo_.size (); i++)
@@ -309,8 +385,8 @@ Beam::check_stemlengths_f (bool set_b)
 	{ 
 	  // when all too short, normal stems win..
 	  if (dy_f < -epsilon_f)
-	    warning (_ ("weird beam shift, check your knees"));
-	  dy_f = dy_f >? sinfo_[i].miny_f_ - y;
+	    warning (_ ("weird beam vertical offset"));
+	  dy_f = dy_f >? sinfo_[i].miny_f_ - y; 
 	}
     }
   return dy_f;
@@ -323,6 +399,7 @@ Beam::set_steminfo ()
     return;
   
   assert (multiple_i_);
+
   int total_count_i = 0;
   int forced_count_i = 0;
   for (int i=0; i < stems_.size (); i++)
@@ -374,7 +451,6 @@ Beam::set_steminfo ()
 void
 Beam::calculate_slope ()
 {
-  set_steminfo ();
   if (!sinfo_.size ())
     slope_f_ = left_y_ = 0;
   else if (sinfo_[0].idealy_f_ == sinfo_.top ().idealy_f_)
@@ -446,8 +522,8 @@ Beam::quantise_dy ()
 
   Real interline_f = stems_[0]->staff_line_leading_f ();
   Real internote_f = interline_f / 2;
-  Real staffline_f = paper_l ()->rule_thickness ();
-  Real beam_f = paper_l ()->beam_thickness_f ();
+  Real staffline_f = paper_l ()->get_var ("stafflinethickness");
+  Real beam_f = paper_l ()->get_realvar (beam_thickness_scm_sym);;
 
   Real dx_f = stems_.top ()->hpos_f () - stems_[0]->hpos_f ();
 
@@ -472,9 +548,6 @@ Beam::quantise_dy ()
   slope_f_ = (quanty_f / dx_f) / internote_f * sign (slope_f_);
 }
 
-static int test_pos = 0;
-
-
 /*
   
   Prevent interference from stafflines and beams.  See Documentation/tex/fonts.doc
@@ -488,7 +561,7 @@ Beam::quantise_left_y (bool extend_b)
    if extend_b then stems must *not* get shorter
    */
 
-  if (quantisation_ <= NONE)
+  if (quantisation_ == NONE)
     return;
 
   /*
@@ -504,8 +577,8 @@ Beam::quantise_left_y (bool extend_b)
 
   Real space = stems_[0]->staff_line_leading_f ();
   Real internote_f = space /2;
-  Real staffline_f = paper_l ()->rule_thickness ();
-  Real beam_f = paper_l ()->beam_thickness_f ();
+  Real staffline_f = paper_l ()->get_var ("stafflinethickness");
+  Real beam_f = paper_l ()->get_realvar (beam_thickness_scm_sym);;
 
   /*
     [TODO]
@@ -515,7 +588,6 @@ Beam::quantise_left_y (bool extend_b)
 
   Real straddle = 0;
   Real sit = beam_f / 2 - staffline_f / 2;
-  Real inter = space / 2;
   Real hang = space - beam_f / 2 + staffline_f / 2;
 
   /*
@@ -526,7 +598,8 @@ Beam::quantise_left_y (bool extend_b)
     For simplicity, we'll assume dir = UP and correct if 
     dir = DOWN afterwards.
    */
-
+  // isn't this asymmetric ? --hwn
+  
   // dim(left_y_) = internote
   Real dy_f = dir_ * left_y_ * internote_f;
 
@@ -534,50 +607,25 @@ Beam::quantise_left_y (bool extend_b)
   Real beamdy_f = beamdx_f * slope_f_ * internote_f;
 
   Array<Real> allowed_position;
-  if (quantisation_ != TEST)
+  if (quantisation_ <= NORMAL) 
     {
-      if (quantisation_ <= NORMAL) 
-	{
-	  if ((multiple_i_ <= 2) || (abs (beamdy_f) >= staffline_f / 2))
-	    allowed_position.push (straddle);
-	  if ((multiple_i_ <= 1) || (abs (beamdy_f) >= staffline_f / 2))
-	    allowed_position.push (sit);
-	  allowed_position.push (hang);
-	}
-      else
-        // TODO: check and fix TRADITIONAL
-	{
-	  if ((multiple_i_ <= 2) || (abs (beamdy_f) >= staffline_f / 2))
-	    allowed_position.push (straddle);
-	  if ((multiple_i_ <= 1) && (beamdy_f <= staffline_f / 2))
-	    allowed_position.push (sit);
-	  if (beamdy_f >= -staffline_f / 2)
-	    allowed_position.push (hang);
-	}
+      if ((multiple_i_ <= 2) || (abs (beamdy_f) >= staffline_f / 2))
+	allowed_position.push (straddle);
+      if ((multiple_i_ <= 1) || (abs (beamdy_f) >= staffline_f / 2))
+	allowed_position.push (sit);
+      allowed_position.push (hang);
     }
   else
+    // TODO: check and fix TRADITIONAL
     {
-      if (test_pos == 0)
-        {
-	allowed_position.push (hang);
-	cout << "hang" << hang << "\n";
-	}
-      else if (test_pos==1)
-        {
+      if ((multiple_i_ <= 2) || (abs (beamdy_f) >= staffline_f / 2))
 	allowed_position.push (straddle);
-	cout << "straddle" << straddle << endl;
-	}
-      else if (test_pos==2)
-        {
+      if ((multiple_i_ <= 1) && (beamdy_f <= staffline_f / 2))
 	allowed_position.push (sit);
-	cout << "sit" << sit << endl;
-	}
-      else if (test_pos==3)
-        {
-	allowed_position.push (inter);
-	cout << "inter" << inter << endl;
-	}
+      if (beamdy_f >= -staffline_f / 2)
+	allowed_position.push (hang);
     }
+
 
   Interval iv = quantise_iv (allowed_position, space, dy_f);
 
@@ -592,14 +640,14 @@ Beam::quantise_left_y (bool extend_b)
 void
 Beam::set_stemlens ()
 {
-  Real staffline_f = paper_l ()->rule_thickness ();
+  Real staffline_f = paper_l ()->get_var ("stafflinethickness");
   // enge floots
   Real epsilon_f = staffline_f / 8;
 
 
   // je bent zelf eng --hwn.
   Real dy_f = check_stemlengths_f (false);
-  for (int i = 0; i < 2; i++)
+  for (int i = 0; i < 2; i++)	// 2 ?
     { 
       left_y_ += dy_f * dir_;
       quantise_left_y (dy_f);
@@ -609,9 +657,6 @@ Beam::set_stemlens ()
 	  break;
 	}
     }
-
-  test_pos++;
-  test_pos %= 4;
 }
 
 void
@@ -652,6 +697,8 @@ Beam::do_add_processing ()
 
 /*
   beams to go with one stem.
+
+  clean  me up.
   */
 Molecule
 Beam::stem_beams (Stem *here, Stem *next, Stem *prev) const
@@ -660,16 +707,15 @@ Beam::stem_beams (Stem *here, Stem *next, Stem *prev) const
       (prev && !(prev->hpos_f () < here->hpos_f ())))
       programming_error ("Beams are not left-to-right");
 
-  Real staffline_f = paper_l ()->rule_thickness ();
+  Real staffline_f = paper_l ()->get_var ("stafflinethickness");
   Real interbeam_f = paper_l ()->interbeam_f (multiple_i_);
 
   Real internote_f = here->staff_line_leading_f ()/2;
-  Real beam_f = paper_l ()->beam_thickness_f ();
+  Real beam_f = paper_l ()->get_realvar (beam_thickness_scm_sym);;
 
   Real dy = interbeam_f;
   Real stemdx = staffline_f;
   Real sl = slope_f_* internote_f;
-  lookup_l ()->beam (sl, 20 PT, 1 PT);
 
   Molecule leftbeams;
   Molecule rightbeams;
@@ -681,7 +727,7 @@ Beam::stem_beams (Stem *here, Stem *next, Stem *prev) const
   else if (here->type_i ()== 1)
     nw_f = paper_l ()->get_var ("wholewidth");
   else if (here->type_i () == 2)
-    nw_f = paper_l ()->note_width () * 0.8;
+    nw_f = paper_l ()->get_var ("notewidth") * 0.8;
   else
     nw_f = paper_l ()->get_var ("quartwidth");
 

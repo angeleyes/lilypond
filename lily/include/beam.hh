@@ -31,7 +31,7 @@ public:
     The beams should be prevented to conflict with the stafflines, 
     especially at small slopes.
     */
-  enum Quantisation { NONE, NORMAL, TRADITIONAL, TEST };
+  enum Quantisation { NONE, NORMAL, TRADITIONAL };
   enum Dir_algorithm { /* DOWN=-1, UP=1, */ MAJORITY=2, MEAN, MEDIAN };
 
   Link_array<Stem> stems_;
@@ -69,6 +69,8 @@ protected:
   Direction get_default_dir () const;
   void set_direction (Direction);
   void set_steminfo ();
+  bool auto_knee (SCM gap, bool interstaff_b);
+  bool auto_knees ();
   
   virtual void do_pre_processing ();
   virtual void do_post_processing ();

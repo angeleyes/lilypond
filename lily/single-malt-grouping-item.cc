@@ -13,7 +13,6 @@
 
 Single_malt_grouping_item ::Single_malt_grouping_item()
 {
-  set_elt_property (break_helper_only_scm_sym, SCM_BOOL_T);
   set_elt_property (transparent_scm_sym, SCM_BOOL_T);
 
   // this is weird! , but needed!
@@ -40,7 +39,7 @@ Single_malt_grouping_item::my_width () const
       if (pc != il->column_l ())
 	{
 	  /* this shouldn't happen, but let's continue anyway. */
-	  programming_error (_("Single_malt_grouping_item: I've been drinking too much"));
+	  programming_error (_("Single_malt_grouping_item:  I've been drinking too much"));
 	  continue;		/*UGH UGH*/ 
 	}
 
@@ -75,7 +74,7 @@ Single_malt_grouping_item::do_print () const
 #ifndef NDEBUG
   for (int i=0; i < item_l_arr_.size (); i++)
     {
-      DOUT << classname (item_l_arr_[i]) << ", ";
+      DEBUG_OUT << classname (item_l_arr_[i]) << ", ";
     }
 #endif
 }

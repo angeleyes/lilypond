@@ -92,7 +92,7 @@ Real
 Paper_def::get_realvar (SCM s) const
 {
   if (!scope_p_->elem_b (s))
-    error (_f ("unknown paper variable: `%s\'", symbol_to_string (s)));
+    error (_f ("unknown paper variable: `%s'", symbol_to_string (s)));
   Real * p = scope_p_->elem (s)->access_content_Real (false);
   if (!p)
     {
@@ -108,10 +108,10 @@ Paper_def::line_dimensions_int (int n) const
 {
   if (!shape_int_a_.size ())
     {
-      if (n)
-	return Interval (0, linewidth_f ());
-      else
-	return Interval (get_var ("indent"), linewidth_f ());
+      Real lw =  get_realvar (linewidth_scm_sym);
+      Real ind = n? 0.0:get_var ("indent");
+
+      return Interval (ind, lw);
     }
   
   if (n >= shape_int_a_.size ())
@@ -120,17 +120,6 @@ Paper_def::line_dimensions_int (int n) const
   return shape_int_a_[n];
 }
 
-Real
-Paper_def::beam_thickness_f () const
-{
-  return get_realvar (beam_thickness_scm_sym);
-}
-
-Real
-Paper_def::linewidth_f () const
-{
-  return get_realvar (linewidth_scm_sym);
-}
 
 Real
 Paper_def::length_mom_to_dist (Moment d,Real k) const
@@ -172,24 +161,6 @@ Paper_def::set_lookup (int i, Lookup*l)
 
 
 Real
-Paper_def::rule_thickness () const
-{
-  return get_realvar (rulethickness_scm_sym);
-}
-
-Real
-Paper_def::staffline_f () const
-{
-  return get_realvar (rulethickness_scm_sym);
-    }
-
-Real
-Paper_def::staffheight_f () const
-{
-  return get_realvar (staffheight_scm_sym);
-    }
-
-Real
 Paper_def::interbeam_f (int multiplicity_i) const
 {
   if (multiplicity_i <= 3)
@@ -198,25 +169,20 @@ Paper_def::interbeam_f (int multiplicity_i) const
     return get_realvar (interbeam4_scm_sym);
 }
 
-Real
-Paper_def::note_width () const
-{
-  return get_realvar (notewidth_scm_sym);
-}
 
 void
 Paper_def::print () const
 {
 #ifndef NPRINT
   Music_output_def::print ();
-  DOUT << "Paper {";
+  DEBUG_OUT << "Paper {";
 
   for (Hash_table_iter<int, Lookup*> ai(*lookup_p_tab_p_); ai.ok (); ai++)
     {
-      DOUT << "Lookup: " << ai.key () << " = " << ai.val ()->font_name_ << '\n';
+      DEBUG_OUT << "Lookup: " << ai.key () << " = " << ai.val ()->font_name_ << '\n';
     }
 
-  DOUT << "}\n";
+  DEBUG_OUT << "}\n";
 #endif
 }
 
@@ -248,7 +214,7 @@ Paper_def::paper_outputter_p (Paper_stream* os_p, Header* header_l, String origi
   Paper_outputter* p = new Paper_outputter (os_p);
 
   // for now; breaks -fscm output
-  p->output_comment (_ ("outputting Score, defined at: "));
+  p->output_comment (_ ("Outputting Score, defined at: "));
   p->output_comment (origin_str);
 
   p->output_version();
@@ -277,7 +243,7 @@ Paper_def::paper_stream_p () const
 
   if (outname != "-")
     outname += String (".") + output_global_ch;
-  *mlog << _f ("Paper output to %s...", 
+  *mlog << _f ("paper output to %s...", 
 	       outname == "-" ? String ("<stdout>") : outname) << endl;
 
   target_str_global_array.push (outname);

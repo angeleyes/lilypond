@@ -33,7 +33,7 @@ Collision::do_pre_processing()
   Array<Shift_tup> hand (forced_shift ());
   Link_array<Note_column> done;
   
-  Real wid = paper_l ()->note_width ();
+  Real wid = paper_l ()->get_var ("collision_note_width");
   for (int i=0; i < hand.size (); i++)
     {
       hand[i].e1_->translate_axis (hand[i].e2_ *wid, X_AXIS);
@@ -92,7 +92,7 @@ Collision::automatic_shift ()
 	{
 	  if (shift[i-1] == shift[i])
 	    {
-	      warning (_ ("Too many clashing notecolumns. Ignoring them."));
+	      warning (_ ("Too many clashing notecolumns.  Ignoring them."));
 	      return tups;
 	    }
 	}

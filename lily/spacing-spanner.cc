@@ -17,7 +17,6 @@
 
 Spacing_spanner::Spacing_spanner ()
 {
-  set_elt_property (break_helper_only_scm_sym, SCM_BOOL_T);
   set_elt_property (transparent_scm_sym, SCM_BOOL_T);
 }
 
@@ -74,8 +73,8 @@ Spacing_spanner::do_measure (int col1, int col2) const
     {
       Item * l = scol(i);
       Item * r = scol(i+1);
-      Item * lb = l->find_prebroken_piece (RIGHT);
-      Item * rb = r->find_prebroken_piece (LEFT);      
+      Item * lb = l->find_broken_piece (RIGHT);
+      Item * rb = r->find_broken_piece (LEFT);      
 
       Item* combinations[4][2]={{l,r}, {lb,r}, {l,rb},{lb,rb}};
 
@@ -215,14 +214,13 @@ Spacing_spanner::note_spacing (Score_column *lc, Score_column *rc, Moment shorte
   Moment shortest_playing_len = lc->shortest_playing_mom_;
   if (! shortest_playing_len)
     {
-      warning (_f ("can't find a ruling note at %s", 
-		   lc->when_mom ().str ()));
+      programming_error ("Can't find a ruling note at " + lc->when_mom ().str ());
       shortest_playing_len = 1;
     }
+  
   if (! shortest)
     {
-      warning (_f ("no minimum in measure at %s", 
-		   lc->when_mom ().str ()));
+      programming_error ("no minimum in measure at " + lc->when_mom ().str ());
       shortest = 1;
     }
   Moment delta_t = rc->when_mom () - lc->when_mom ();

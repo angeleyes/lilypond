@@ -66,17 +66,13 @@ voicefour =
 % ugh, cluttering global namespace...
 
 % ugh2. 
-none=0
-free=0
-normal=1
-traditional=2
 infinity=10000
 
 beamslopeproportional = 
-	\property Score.beamslopedamping = \none
+	\property Score.beamslopedamping = 0
 
 beamslopedamped = 
-	\property Score.beamslopedamping = \normal
+	\property Score.beamslopedamping = 1
 
 
 beamslopezero = 
@@ -86,15 +82,15 @@ beamslopezero =
 % this sucks, you'd want to pass an array, at least
 % (or embedded code: you still can't dictate the slope / stemlength)
 beamposfree = 
-	\property Score.beamquantisation = \none
+	\property Score.beamquantisation = 0
 
 
 beamposnormal = 
-	\property Score.beamquantisation = \normal
+	\property Score.beamquantisation = 1
 
 
 beampostraditional = 
-	\property Score.beamquantisation = \traditional
+	\property Score.beamquantisation = 2
 
 
 slurnormal = 
@@ -139,4 +135,8 @@ endincipit = \notes{
 }
 
 autoBeamOff = \property Voice.noAutoBeaming = "1"
-autoBeamOn = \property Voice.noAutoBeaming = ""  
+autoBeamOn = \property Voice.noAutoBeaming = ""
+
+
+emptyText = \property Voice.textEmptyDimension = "1"
+fatText = \property Voice.textEmptyDimension = ""
