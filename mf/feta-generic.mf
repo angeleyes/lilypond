@@ -5,7 +5,7 @@
 % source file of the Feta (defintively not an abbreviation for Font-En-Tja)
 % music font
 % 
-% (c) 1997, 1998 Han-Wen Nienhuys <hanwen@stack.nl>
+% (c) 1997--2001 Han-Wen Nienhuys <hanwen@cs.uu.nl>
 % 
 
 
@@ -22,8 +22,7 @@ make_pen_stack;
 make_picture_stack;
 input feta-params;
 
-
-
+font_x_height  staff_space#;
 
 if test = 0: 
 	input feta-eindelijk;
@@ -34,13 +33,18 @@ if test = 0:
 	input feta-banier;
 	input feta-klef;
 	input feta-timesig;
+	input feta-pendaal;
+	input feta-accordion;
+	input feta-custodes;	
 else:
-%	input feta-bolletjes;	
-%	input feta-banier;
-% 	input feta-eindelijk;
+	input feta-bolletjes;	
+	input feta-banier;
+%	input feta-eindelijk;
 %	input feta-klef;
 %	input feta-toevallig;
 %	input feta-schrift;
 %	input feta-haak;
-%	input feta-timesig;
+	%input feta-timesig;
+%	input feta-pendaal;
+%	input feta-accordion;
 fi
