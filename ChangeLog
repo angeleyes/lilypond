@@ -1,6 +1,7 @@
 2003-04-01  Jan Nieuwenhuizen  <janneke@gnu.org>
 
-	* GNUmakefile (buttons): New target.
+	* GNUmakefile (buttons):
+	(all): New target.
 
 	* format-page.py: Further development.
 

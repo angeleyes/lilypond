@@ -2,6 +2,8 @@
 
 SCRIPTS=$(wildcard *.py *.scm) 
 
+all: site
+
 site: menuify renderlys buttons
 
 menuify:
