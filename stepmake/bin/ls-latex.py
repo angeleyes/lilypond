@@ -8,217 +8,205 @@ version = '0.1'
 import sys
 import os
 import string
-
-def gulp_file (fn):
-	f = open (fn)
-	return f.read ()
-
 import __main__
 import glob
-import regex
+import re
 
-latex_author_re = regex.compile(r'\\author{\([^}]+\)}')
-latex_title_re = regex.compile(r'\\title{\([^}]+\)}')
+format_names  = {'ps.gz': 'Compressed PostScript',
+				 'html' : 'HTML'
+				 }
+
+def gulp_file(f):
+	try:
+		i = open(f)
+		i.seek (0, 2)
+		n = i.tell ()
+		i.seek (0,0)
+	except:
+		sys.stderr.write ("can't open file: %s\n" % f)
+		return ''
+	s = i.read (n)
+	if len (s) <= 0:
+		sys.stderr.write ("gulped empty file: %s\n" % f)
+	i.close ()
+	return s
 
 class Latex_head:
-    def __init__ (self):
-	self.author = ''
-	self.title = ''
-	self.date = ''
-	self.format = ''
+	def __init__ (self):
+		self.author = ''
+		self.title = ''
+		self.date = ''
+		self.format = ''
+		
+def read_latex_header (s):
+	header = Latex_head()
+	m = re.search(r'\\author{([^}]+)}', s)
+	if m:
+		header.author = m.group (1)
 
+	m = re.search (r'\\title{([^}]+)}',s )
+	if m:
+		header.title = m.group (1)
+
+	header.formats = ['ps.gz']
+	return  header
+
+
+def read_bib_header (s):
+	m = re.search ('% *AUTHOR *= *(.*)\n',s)
+
+	header = Latex_head()
+
+	if m:
+		header.author = m.group (1)
+
+	m = re.search ('% *TITLE *= *(.*)\n',s )
+	if m:
+		header.title = m.group (1)
+
+	header.formats = ['html']
+	return header
+
+
+def read_pod_header (s):
+	header = Latex_head ()
+
+	i = re.search( '[^\n \t]', s)
+	s = s[i:]
+	i = re.search( '\n\n', s)
+	s = s[i+2:]	
+	i = re.search( '\n\n', s)
+	header.title = s[:i]
+
+	header.formats = ['html']
+	return  header
+
+def read_texinfo_header (s):
+	header = Latex_head ()
+
+	m = re.search( '@settitle (.*)\n', s)
+	if m:
+		header.title = m.group (1)
+	m = re.search( '@author (.*)\n', s)
+	if m:
+		header.author = m.group (1)
 	
-def read_latex_header (fn):
-    s = gulp_file (fn)
-    i = regex.search( '\\\\begin{document}', s)
-
-    if i < 0:
-	sys.stderr.write( 'Huh? empty file?')
-	s = '\\author{(unknown)}\\title{(unknown)}'
-	
-    s = s[:i]
-    s = regsub.gsub('%.*$', '', s)
-    s = regsub.gsub('\n', ' ', s)
-
-    header = Latex_head()
-    header.filename= fn;
-
-    if latex_author_re.search (s) == -1 :
-	sys.stderr.write( 'huh? No author?')
-	header.author = 'unknown'
-    else:
-        header.author = latex_author_re.group (1)
-    if latex_title_re.search (s) == -1:
-	sys.stderr.write( 'huh?  No title?')
-	header.title = 'unknown'
-    else:
-	    header.title = latex_title_re.group (1)
-    header.outfile = fn
-    header.outfile = regsub.gsub ('\.latex$', '.ps.gz', header.outfile)
-    header.outfile = regsub.gsub ('\.tex$', '.ps.gz', header.outfile)
-    header.outfile = regsub.gsub ('\.doc$', '.ps.gz', header.outfile)
-    header.format = 'gzipped postscript'
-    return  header
-
-
-bib_author_re = regex.compile('% *AUTHOR *= *\(.*\)$')
-bib_title_re = regex.compile('% *TITLE *= *\(.*\)$')
-
-def bib_header (fn):
-    s = gulp_file (fn)
-    if bib_author_re.search (s) == -1 :
-	sys.stderr.write ('gulped file: ' + fn + '\n')
-	raise 'huh?'
-
-    header = Latex_head()
-    header.filename= fn;
-    header.author = bib_author_re.group (1)
-    if bib_title_re.search (s) == -1:
-	sys.stderr.write ('gulped file: ' + fn + '\n')
-	raise 'huh?'    
-    header.title = bib_title_re.group (1)
-    header.outfile = regsub.gsub ( '\.bib$', '.html' , fn)
-    header.format = 'HTML'    
-    return header
-
-
-def read_pod_header (fn):
-    header = Latex_head ()
-    s = gulp_file (fn)
-    i = regex.search( '[^\n \t]', s)
-    s = s[i:]
-    i = regex.search( '\n\n', s)
-    s = s[i+2:]    
-    if i < 0:
-	sys.stderr.write ('gulped file: ' + fn + '\n')
-	raise 'huh?'
-    i = regex.search( '\n\n', s)
-    header.title = s[:i]
-    header.filename = fn
-    header.outfile = regsub.gsub ('\.pod$', '.html', fn)
-    return  header
-
-def read_texinfo_header (fn):
-    header = Latex_head ()
-    s = gulp_file (fn)
-    i = regex.search( '@node ', s)
-    s = s[i+5:]
-    i = regex.search( ',', s)
-    if i < 0:
-	sys.stderr.write ('gulped file: ' + fn + '\n')
-	raise 'huh?'
-    header.title = s[:i]
-    header.filename = fn
-    header.outfile = regsub.gsub ('\.texinfo$', '.html', fn)
-    header.format = 'HTML'
-    return  header
-
-def read_tely_header (fn):
-    header = Latex_head ()
-    s = gulp_file (fn)
-    i = regex.search( '@settitle', s)
-    s = s[i+10:]
-    i = regex.search( '\n', s)
-    if i < 0:
-	sys.stderr.write ('gulped file: ' + fn + '\n')
-	raise 'huh?'
-    header.title = s[:i]
-    header.filename = fn
-    header.outfile = regsub.gsub ('\.tely', '.html', fn)
-    header.format = 'HTML'
-    return  header
+	header.formats = ['html', 'ps.gz']
+	return header
 
 # urg
-# should make a 'next_parens'
-yo_article_re = regex.compile('article(\\([^)]*\\))[ \t\n]*(\\([^)]*\\))')
-yo_report_re = regex.compile('report(\\([^)]*\\))[\t\n ]*(\\([^)]*\\))')
-yo_sect_re  =  regex.compile('sect(\\([^)]*\\))')
-yo_chap_re  =  regex.compile('sect(\\([^)]*\\))')
+# should make a 'next_parens '
+yo_article_re = re.compile ('article(\\([^)]*\\))[ \t\n]*(\\([^)]*\\))')
+yo_report_re = re.compile ('report(\\([^)]*\\))[\t\n ]*(\\([^)]*\\))')
+yo_sect_re  =  re.compile ('sect(\\([^)]*\\))')
+yo_chapter_re  =  re.compile ('chapter(\\([^)]*\\))')
 
-def read_yo_header (fn):
-    header = Latex_head ()
-    s = gulp_file (fn)
-    if 0:
-	    pass
-    elif yo_report_re.search (s) <> -1:
-	    header.author = yo_report_re.group(2)
-	    header.title = yo_report_re.group(1)
-    elif yo_article_re.search (s) <> -1:
-	    header.author = yo_article_re.group(2)
-	    header.title = yo_article_re.group(1)
-    elif yo_chap_re.search (s) <> -1:
-	    header.title = yo_chap_re.group (1)
-    elif yo_sect_re.search (s) <> -1:
-	    header.title = yo_sect_re.group (1)
-    header.filename = fn
-    header.outfile = regsub.gsub ('\.yo$', '.html', fn)
-    header.format = 'HTML'
-    return  header
+def read_yodl_header (s):
+	header = Latex_head ()
+	report = yo_report_re.search (s)
+	article = 0
+	sect = 0
+	chapter = 0
+	if report:
+		header.author = report.group (2)
+		header.title = yo_report_re.group (1)
+	else:
+		article = yo_article_re.search (s)
+		if article:
+			header.author = article.group (2)
+			header.title = article.group (1)
+		else:
+			chapter = yo_chapter_re.search (s)
+			if chapter:
+				header.title = chapter.group (1)
+			else:
+				sect = yo_sect_re.search (s)
+				if sect:
+					header.title = sect.group (1)
+
+	header.formats = ['html']
+	return  header
+
 
 def print_html_head (l,o,h):
-    pre =o
+	pre =o
+	
+	fn = pre + h.basename
 
-    l.write ('<li><a href=%s>%s (%s)</a>' % (pre + h.outfile, h.title, h.format ))
-    if h.author:
-	l.write ('<p>by %s</p>' % h.author)
-    l.write ('</li>\n')
+	t = h.filename 
+	if h.title :
+		t = t + ': '+ h.title
+
+	l.write ('<li>%s </a>' % t)
+
+	if h.author:
+		l.write ('<p>by %s</p>' % h.author)
+
+	for f in h.formats:
+		l.write ('(<a href=%s.%s>%s</a>)' % (fn, f, format_names [f]))
+	l.write ('</li>\n')
 
 def help ():
-    sys.stdout.write ("Usage: ls-latex [OPTION]... FILE...\n"
-		 "Generate html index file for FILE...\n\n"
-		 + "Options:\n"
-		 + "  -h, --help             print this help\n"
-		 + "  -p, --package=DIR      specify package\n"
-		      )
-    sys.exit (0)
+	sys.stdout.write (r"""Usage: ls-latex [OPTION]... FILE...
+Generate html index file for FILE...
+
+Options:
+-h, --help                print this help
+""")
+	sys.exit (0)
 
 import getopt
 
 (options, files) = getopt.getopt(sys.argv[1:], 
-    'e:hp:', ['help', 'prefix=', 'package=', 'title='])
+	'e:h', ['help', 'prefix=',  'title='])
 
 tex = ''
 output =''
 pre = ''
 title = ''
 for opt in options:
-    o = opt[0]
-    a = opt[1]
-    if o == '--prefix':
-	pre = a
-    elif o == '--title':
-	title = a  
-    elif o == '-h' or o == '--help':
-    	help ()
-    elif o == '-p' or o == '--package':
-	topdir = a
+	o = opt[0]
+	a = opt[1]
+	if o == '--prefix':
+		pre = a
+	elif o == '--title':
+		title = a  
+	elif o == '-h' or o == '--help':
+			help ()
 
-sys.path.append (topdir + '/stepmake/bin')
-from packagepython import *
-package = Package (topdir)
-packager = Packager ()
 
 l = sys.stdout
 
-l.write ('<html><title>%s</title><h1> %s</h1><ul>\n' % (title, title))
+l.write (r"""<html><title>%s</title>
+<body>
+<h1> %s</h1><ul>
+""" % (title, title))
+
+
+read_header_funcs = {
+	'pod' : read_pod_header,
+	'tex' : read_latex_header,
+	'doc' : read_latex_header,
+	'bib': read_bib_header, 
+	'latex' : read_latex_header,
+	'tely' : read_texinfo_header,
+	'texi': read_texinfo_header,
+	'yo': read_yodl_header, 
+}	
 
 
 for x in files:
-    if regex.search ('\\.bib$', x) <> -1:
-	head = bib_header (x)
-    elif regex.search ('\\.pod$', x) <> -1:
-	head = read_pod_header (x)
-    elif regex.search ('\\.texinfo$', x) <> -1:
-	head = read_texinfo_header (x)
-    elif regex.search ('\\.tely$', x) <> -1:
-	head = read_tely_header (x)
-    elif regex.search ('\\.yo$', x) <> -1:
-	head = read_yo_header (x)
-    else:
-	head = read_latex_header (x)
-    if head.title == '':
-	head.title = head.filename
-    print_html_head (l, pre, head)
+	m = re.search ('\\.([^.]*)$', x)
+	if m == None:
+		continue
 
-l.write ('</ul></html>')
+	s = gulp_file (x)
+	head = read_header_funcs [m.group(1)] (s)
+
+	head.filename = x
+	head.basename = re.sub ("\\.[^.]+", '', x)
+	
+	print_html_head (l, pre, head)
+
+l.write ('</ul></body></html>')
 
