@@ -1,5 +1,28 @@
 <dl>
 
+<dt>March 7, 2005</dt>
+
+
+<dd>
+LilyPond 2.5.14 is out. It is now possible (and in fact, encouraged),
+to build LilyPond either without the Kpathsea TeX library or with the
+Kpathsea dynamically loaded, but only for the -btex backend.  This
+means that packages do not have to depend on TeX anymore. With this,
+the Windows download size will go down significantly. Take a look at
+the <a
+href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+file and download <a href="download/#2.5">here</a>!
+</dd>
+
+<dt>March 7, 2005</dt>
+
+<dd>
+
+LilyPond 2.4.5 is out. This release backports the tieWaitForNote
+feature and has support for tetex-3.0. Download <a
+href="download/#2.4">here</a>!
+</dd>
+
 <dt>February 28, 2005</dt>
 
 <dd>
@@ -12,34 +35,6 @@ the gimp-print package. You may install it with --nodeps. Use at your
 own risk.
 </dd>
 
-<dt>February 28, 2005</dt>
-
-<dd>
-LilyPond 2.5.13 is out. This release has Point and click support for
-PDF output. You can read more about it <a
-href="http://lilypond.org/doc/v2.5/Documentation/user/out-www/lilypond/Point-and-click.html">here</a>.
-Take a look at the <a
-href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
-file and download <a href="download/#2.5">here</a>!
-</dd>
-
-<dt>February 26, 2005</dt>
-
-<dd> The <a href="http://lsr.dsi.unimi.it/">Lilypond Snippet
-Repository (LSR)</a> is a searchable database of Lilypond code
-snippets.  You can add snippets too, so join the LSR project, and
-contribute creative ideas for using Lilypond.  </dd>
-
-<dt>February 21, 2005</dt>
-
-<dd>LilyPond 2.5.12 is out. The big news is that this release supports
-  TrueType fonts. This means that it is now possible to use <b>all</b>
-  fonts available via FontConfig. Also, arpeggios may be written out
-  using ties and individual objects may have colors!  Take a look at
-  the <a
-  href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
-  file and download <a href="download/#2.5">here</a>!
-</dd>
 
 
 </dl>
