@@ -1,3 +1,12 @@
+2004-08-26  Han-Wen Nienhuys   <hanwen@xs4all.nl>
+
+	* site/switch/testimonials.html: add Orm's quote
+	(href): continue with tour link.
+
+	* site/switch/howto.html: language fix.
+
+	* site/download/index.html: use & characters.
+
 2004-08-03  Han-Wen Nienhuys   <hanwen@xs4all.nl>
 
 	* scripts/big-page.py: take directory as argument.
