@@ -1,8 +1,8 @@
 
 [('index.html', 'Home &gt;'),
-	('switch/', 'Switch'),
- ('background/', 'Why LilyPond?'),
  ('about', 'About'),
+ ('switch/', 'Switch'),
  ('download', 'Download'),
+ ('use', 'Help'),
  ('devel', 'Develop'),
  ]
