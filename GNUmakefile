@@ -36,7 +36,7 @@ outball=site.tar.gz
 out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
-upload: menuify
+upload: site
 	cvs commit -m 'upload commit'   
 	cd out/site && \
 	rsync --delete --stats --progress -rltvu -e ssh . lilypond.org:/var/www/lilypond/web/
