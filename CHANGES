@@ -1,6 +1,9 @@
 lilypond_1_4
 ============
 
+* Documentation/user/tutorial.itely (Running LilyPond): Backport
+windows doco fix.
+	
 * Documentation/windows/gs-profile.sh:
 * Documentation/windows/gsview-profile.sh: Remove.
 
