@@ -1,5 +1,24 @@
 1.4.14.jcn1
 ===========
+* backport GNUmakefile.in (short-examples):
+ (long-examples): Bugfix for --srcdir build.
+
+* backport stepmake/bin/config.sub: 
+  stepmake/bin/config.guess: Update from latest autotools.
+
+* aclocal.m4:
+  autogen.sh: Regenerate.
+	
+* configure.in: 
+  stepmake/configure.in: 
+  stepmake/aclocal.m4: Run autoupdate.  Creating ./configure now
+  requires autoconf >= 2.50.
+
+* backport stepmake/autogen.sh: Check for autoconf >= 2.50.
+
+* backport stepmake/stepmake/GNUmakefile (INSTALLATION_DIR): Bugfix: Adapt
+  to new $datadir convention (<package>/<version>).
+
 * backport stepmake/GNUmakefile.in: Don't install stepmake.  This breaks
   the use of make/ly.make for use as an external makefile.  Probably
   noone except for myself ever used this anyway.
