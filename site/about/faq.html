@@ -55,15 +55,13 @@ them, leading to distracting clusters of black and wedges of white
 around these places.
 <p>
 
-<h3>How can I tell?</h3>
-<p>
-Normally, one notices these details only subconsiously. The best way
-to become conscious of these differences is to compare a traditionally
-printed and a computer printed edition of the same piece, preferably
-with a magnifying glass.  If you are not sure: traditional engraving
-is photographically reproduced hand-work, and can recognized by a
-slightly irregularities in symbol placement, and small blotches due to
-the reproduction process.
+<! How can I tell?> Normally, one notices these details only
+subconsiously. The best way to become conscious of these differences
+is to compare a traditionally printed and a computer printed edition
+of the same piece, preferably with a magnifying glass.  If you are not
+sure: traditional engraving is photographically reproduced hand-work,
+and can be recognized by slightly irregularities in symbol
+placement, and small blotches due to the reproduction process.
 
 <p>
 
@@ -100,17 +98,23 @@ symbols and thick lines will be easier to read from a distance.
 it?</h3>
 
 <p>
-No.  We are giving the program away for free. You can download it <a
-href=../download/>here</a>. 
+No.  We give it away for free. You can download it <a
+href=../download/>here</a>.
 
-<h3>Then you give it away for free now, but will start charging in the
-future?</h3>
+<h3>It's free now, but then you will start charging in the future?</h3>
 
 <p>
-No.  We do only give it away for free, but we also deliver it with
+No.  Not only do we give it away for free, but we also deliver it with
 full source code, and permission to distribute, modify, sell or
 mutilate it.  In other words, LilyPond is libre software; it is part
 of the GNU project, and distributed under the terms GNU GPL.
+<p>
+In fact we think that this is much more important than cost. It means
+that you have the freedom to fix, modify and extend the program, or
+you can pay someone else to do so. We will not force you to upgrade
+when your system is abandoned, and you are not lost when we abandon
+the program.
+
 <p>
 
 <h3>How do you make a living?</h3>
@@ -131,11 +135,23 @@ href="donate.html">a small donation</a>.
 <p>
 We are Jan and Han-Wen, from the Netherlands. We met in a youth
 orchestra, where Jan was tinkering with MusicTeX preprocessors. When
-Han-Wen joined in it was decided that we should start afresh. What we
-created is now known as LilyPond.
+Han-Wen joined in it was decided that we should start afresh with a
+completely different approach. What we created is now known as
+LilyPond.
+<p>
+Jan is currently working as a programmer developing
+web-applications. Han-Wen just finished his PhD. and is currently
+looking for a LilyPond related job.
 <p>
 
 <h2>About the program.</h2>
+
+<h3> Will run on my computer? </h3>
+<p>
+LilyPond is written for Unix, so it should run on any modern Unix
+variant, including Linux/GNU and MacOS X. There is also a MS Windows
+port, which uses the Cygwin environment. 
+<p>
 
 <h3>It's open source, so I should compile it from source?</h3>
 <p>
@@ -223,6 +239,12 @@ OpusTeX, MuTex) for typesetting music. There is no relation between
 LilyPond and any of these packages: they are not needed to run
 LilyPond.
 <p>
+We once have developed MPP, a predecessor to LilyPond, which was a
+MusiXTeX preprocessor. However, this approach was abandoned in 1996
+when we concluded that good automated typography is impossible to
+achieve with MusiXTeX.
+ 
+<p>
 
 <h3>Why are you using TeX for LilyPond?</h3>
 <p>
@@ -239,10 +261,15 @@ for the lyrics.
 
 </ul>
 
-LilyPond is in fact not limited to TeX. The program design allows for
-other output formats. In particular, LilyPond has direct PostScript
-output, but for the reasons listed here, it is not practical for real
-use.
+Of course, the output obtained through TeX can be converted to usable
+PostScript, and PDF which renders nicely on screen. This PostScript
+can be rendered as a PNG images for use on webservers.
+
+<! LilyPond is in fact not limited to TeX. The program design allows
+for other output formats. In particular, LilyPond has direct
+PostScript output, but for the reasons listed here, it is not
+practical for real use. >
+
 <p>
 
 <h3>How do I learn the syntax?</h3>
@@ -266,7 +293,7 @@ textual substitution, rather the internal representation of that
 object is pasted into the contents being parsed.
 <p>
 
-<h3>Please add macro's to the syntax.</h3>
+<h3>Please add macros to the syntax.</h3>
 <p>
 No, we won't. Programming with text substitution (macros) lead to
 horrible syntax problems. A macro programming interface is extremely
@@ -309,7 +336,19 @@ original file was written for. Therefore, it is important to add
 Changes that cannot be handled by simple edits are marked by a bump in
 the major version number: converting 1.8 to 2.0 files needs
 overseeing.
+<p>
 
+<h3>How quick is entering music with LilyPond?</h3>
+
+<p>
+There is no single answer to this, as the time spent depends on the
+complexity of the music, and your fluency in LilyPond. Music with
+complicated constructs (cross-staff beaming, collisions) takes longer
+to enter than simple monophonic music.  Experienced users have
+reported average times of 3.5 pages per hour for typing
+straightforward music monophonic with an editor only. This time
+includes corrections and minor layout tweaks.
+<p>
 
 <h3>I don't want to learn another syntax. Now what?</h3>
 <p>
@@ -353,27 +392,27 @@ href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archi
 <p>
 
 
-<h3>I think I  have found a bug.</h3>
+<h3>I think I have found a bug.</h3>
 <p>
 If you have input that results in a crash or an erroneous output, then
 that is a bug. We try respond to bug-reports promptly, and fix them as
 soon as possible. For this, we need to replicate and isolate the
-problem. Please help us by sending good bug-report: an input file that
-will reproduce the problem.  Please make it small, so we can easily
-isolate the problem. Don't forget to tell which version you use, and
-on which platform you run it.
-<p>
+problem. Please help us by sending a good bug-report: an input file
+that will reproduce the problem.  Please make it small, so we can
+easily isolate the problem. Don't forget to tell which version you
+use, and on which platform you run it.
 
+<p>
 
 <h3>Could you add this feature for me?</h3>
 <p>
 
- We will definitely read your request and think about it, 
+We will definitely read your request and think about it, 
 but we set our own priorities for implementing features. If you
 want us to give more attention to your request, it helps to explain
 why you need it, why it is such a good idea, and to give us a
 donation. <! If you really need a feature, you can also pay us to
-implement it. Contact us privately for a quote.>
+implement it. Contact us privately for more information.>
 
 <p>
 <h3>But it is very easy, just extend the syntax like this...</h3>
@@ -382,15 +421,14 @@ implement it. Contact us privately for a quote.>
 It is a tempting to think that inventing the syntax solves the
 problem. In practice, less than 10% of the program is involved with
 handling input and the syntax.  Almost always, adding features
-involves a lot more than syntax, and is also more complicated.
-
+involves a lot more than syntax, and is also much more complicated.
+<p>
 
 <p>
   <p>
 
 <! TODO:
 
-  hoeveel tijd voor 1 blz.
   
   hoe snel?
   

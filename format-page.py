@@ -20,6 +20,7 @@ header = '''<HTML>
 <TITLE>NO TITLE</TITLE>
 <LINK REL="stylesheet" TYPE="text/css" HREF="%(depth)snewweb.css">
 </HEAD>
+<BODY> 
 '''
 
 main_template = '''<DIV class="main">
@@ -44,8 +45,12 @@ location_template = '''<DIV class="location">
 '''
 
 # don't use mouseover magic as long as we don't have button images
-button_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="%(text)s" SRC="%(root)simages/%(name)s.png" XONMOUSEOVER="this.src='%(root)simages/%(name)s-hover.png'" XONMOUSEOUT="this.src='/newweb/out/images/%(name)s.png'"></A></TD>'''
-button_active_template = '''<TD class="%(class)s"><A href="%(url)s"><IMG ALT="[%(text)s]" SRC="/newweb/out/images/%(name)s-active.png" XONMOUSEOVER="this.src='%(root)simages/%(name)s-hover.png'" XONMOUSEOUT="this.src='%(root)simages/%(name)s-active.png'"></A></TD>'''
+button_template = '''<TD class="%(class)s"><A href="%(url)s">
+%(text)s</A></TD>'''
+
+button_active_template = '''
+<TD class="%(class)s"><A href="%(url)s">
+%(text)s</A></TD>'''
 
 
 outdir = '/tmp'
@@ -88,10 +93,10 @@ def one_tab (depth, file):
 		if file == here:
 			active = active and (depth > 0)
 
-			button_dict['class'] =  "menu_active" + ("i" * depth)
+			button_dict['class'] =  "menuactive"
+			button_dict['text'] = '[<b>%s</b>]' % button_dict['text']
 		else:
- 			button_dict['class'] =  "menu" + ("i" * depth)
-
+ 			button_dict['class'] =  "menu"
 
 		button = button_template % button_dict
 		buttons[name] = label

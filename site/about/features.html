@@ -1,22 +1,168 @@
+<title>Features of LilyPond</title>
 
-<h2>LilyPond's features</h2>
 
-This list is <em>incomplete</em>.  See the
-<a href="/manual">user manual</a> for more information.
+<h1>Features of LilyPond</h1>
 
 <ul>
-<li>Free Software
-<li>Beautiful printed music
-<li>Runs on GNU/Linux, MacOS X, and all non-prerelease flavours of
-Microsoft Windows (thanks to Cygwin).
-<li>PDF output, PostScript output
-<li>Open, portable input format
-<li>Active user community
-<li>Printing text with music by seamless integration with LaTeX
-<li>GUI support by Denemo, NoteEdit, Rosegarden (experimental)
-<li>Simple MIDI output
-<li>Full control through GUILE scripting
-<li>XML output
-<li>Scalable music font
-<li>ABC input filter
-</ul>
+
+  <li>Music language input.
+
+<p>
+ The  input is done in the form of a textual music language. This has
+ the following benefits:
+ 
+ <ul>
+ <li> Entry may be done with the text editor of your choice, and using
+ the national language of your choice.
+ <li>The ASCII input language can integrate with TeX, HTML and
+ Texinfo, thus allowing musicological treatises to be written from a
+ single source.
+</ul><p>
+
+
+<li>  Separation of form and content.
+
+The music language ensures that content (the music) and the layout are
+strictly separated. This paradigm has the following advantages
+<p>
+<ul>
+<li> Parts and scores can be generated from the same source:
+changes  always take effect in both places
+
+ <li> Parts in different styles and keys may be printed from the same
+ source. Changes in the source always take effect in all versions.
+
+ <li>The output can be improved by upgrading the program.
+  </ul>
+<p>
+
+  <li> Automated formatting.
+<p>
+ Formatting of collisions, accidentals, beams, slurs, ties, note head
+ and polyphonic chord collisions, spacing, line breaking is
+ automated. This has numerous benefits:
+   
+  <ul>
+  <li>
+   Users don't need  typographical expertise to produce good notation.
+   
+  <li>No user interaction necessary during running
+  
+  <li> Running the program can be automated, which is convenient for
+  mass converting  databases of digitized music, and printing
+  algorithmic compositions.
+  
+  </ul><p>
+
+
+  <li>Libre Software
+<p>
+  LilyPond is available under the GNU GPL. This means that it is
+  available at no cost. More importantly, you have the freedom to fix,
+  modify and extend the program, or you can pay someone else to do so.
+  
+  
+ <li> Scheme scripting interface.
+<p>
+
+ Users can extend the program by using the builting Scheme
+ interpreter.  Such Scheme functions provide a plug-in functionality,
+ and they can be as powerful as the built-in functionality.
+
+ <li> Extensible style sheet support.
+
+ <p>
+
+ All formatting parameters are in a style sheet. This style sheet can
+ be globally changed, or for a single piece, or even single measures
+ or notes. All these overrides are subsumed in a single framework for
+ tuning the style-sheet.  The style sheet contains all fixed distances
+ and line thicknesses.
+
+ <li> Custom font.
+<p>
+ The Feta font has been tailored especially for LilyPond, and was
+ designed carefully mimicking the finest hand-engraved scores.
+ It is available as a scalable font, but also as a Metafont.
+    
+ <li> Support for many notation constructs.
+<p>
+LilyPond supports many different forms of music notation
+
+<ul>
+
+<li>
+Chord names. Chord names can be printed in different styles, for
+example with German note names, and may be transposed to other keys.
+
+<li> Drum notation  support.
+ <li> Figured bass support.
+ <li> Grace notes.
+
+ <li> Basic support for tablature notation.  Fret numbers are
+  determined automatically, and the string tuning and number of
+  strings may be adjusted.
+
+  <li>Modern notation. Lilypond provides cluster notation and rhythmic
+  grouping.
+
+   <li> Tremolos, both for single notes and chords.
+  <li> Tuplets in arbitrary ratios, which can be nested.
+
+<!* lyrics in verschillende talen (checken!)>
+
+</ul><p>
+
+  <li> PostScript output.
+
+PostScript output is generated via the TeX typesetting system. The
+output can be postprocessed to produce PDF, or images for use on the
+web.
+   
+ <li>Conforms to the GNU Coding standards.
+<p>
+
+ There are no arbitrary limits on the number of staves, voices,
+ measures, lengths of texts,  etc.
+<li>Runs on Unix.
+<p>
+
+LilyPond runs on all major platforms: All Unix variants including
+Linux and MacOS X, as well as MS Windows, using the Cygwin environment.
+
+<li>
+Extensive documentation.
+<p>
+LilyPond is accompanied by a 170 page manual, 400 small examples.  The
+Mutopia project provides over 300 larger examples, including opera
+scores and piano albums.  The program internals are automatically
+documented in a special reference manual.
+
+
+<li>
+Active user community.
+
+<p>
+LilyPond is supported through mailing lists which have fostered an
+active community of users that help new users with their problems.
+The developers monitor these lists to assist with difficult questions
+and to stay in touch with the wishes of the user-community.
+
+<li>
+Instant bugfixes
+<p>
+The developers have a policy of promptly and actively responding to
+bugreports. LilyPond should be "bug free."
+
+<li>
+Support by and for third party programs.
+<p>
+LilyPond is exported from the RoseGarden and NoteEdit GUIs. LilyPond
+can import ABC, ETF and MIDI. 
+
+</Ul>
+
+
+
+
+

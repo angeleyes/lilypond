@@ -1,7 +1,10 @@
 /* http://www.w3.org/TR/REC-CSS2 */
 
 {
-    background: #ffffff;
+/*
+huh  ?what's this for? 
+*/
+    background: #ff0000;
     border-style: none;
     padding-left: 5%;
     padding-right: 5%;
@@ -13,10 +16,15 @@ p {
     padding-right: 5%;
 }
 body {
+
+/* other colors would be nice, but they don't look too well with white
+music fragments.
+*/
+
+    background: #fffff;
     padding-left: 5%;
     padding-right: 5%;
 }
-
 
 img {
     border-style: none;
@@ -48,13 +56,21 @@ td {
 }
 
 #menu {
+  background: #eeeeee;
+
 }
+
+#menuactive {
+  background: #edeaaf;
+}
+
+
 
 /*
  NOT currently defined in HTML
 
 #footer {
-    /* fixme: bottom of page, not bottom of screen */
+    / * fixme: bottom of page, not bottom of screen * /
     background: #e8e8ff;
 }
 
