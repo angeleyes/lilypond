@@ -13,7 +13,7 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 <dd>
 2.5.17 is out. This release features many small bugfixes. In addition,
 it has support for string number notation for guitar. This feature was
-sponsored by Gunther Strube. Download <a href="install/#2.5">Download
+sponsored by Gunther Strube. <a href="install/#2.5">Download
 LilyPond 2.5.17</a>.
 </dd>
 

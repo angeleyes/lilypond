@@ -1,3 +1,13 @@
+2005-04-05  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/documentation.html: idem.
+
+	* site/about/index.html: use contact.ihtml
+
+	* site/contact.ihtml: new file.
+
+	* site/about/index.html: use <dl>
+
 2005-04-05  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/search-noscript.html: 
@@ -19,6 +29,8 @@
 	* site: More /download link fixes.
 
 2005-04-01  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/switch/howto.html: add .html to link.
 
 	* site/switch/index.html: fix link. 
 
