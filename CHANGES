@@ -54,7 +54,7 @@
 
 * Backport: Documentation/windows/GNUmakefile: Avoid collapsed directory
   constructs '//'.
-	
+
 * Backport: stepmake/bin/install-dot-exe.sh: Filter collapsed directory
   constructs '//' from arguments.
 
