@@ -1,3 +1,8 @@
+2005-04-07  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* scripts/format-page.py (grab_ihtml): Do first.  Fixes @DOC@
+	links in contact.ihtml.
+
 2005-04-06  Jan Nieuwenhuizen  <jan.nieuwenhuizen@aspiratie.nl>
 
 	* site/about/automated-engraving/schubert.html (href): Fix link.

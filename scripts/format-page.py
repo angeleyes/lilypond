@@ -271,6 +271,7 @@ def format_page (html, file_name, lang):
 	i = string.index (page_template, '@MAIN@')
 	page = page_template[:i] + main + page_template[i+6:]
 
+	page = re.sub ('@([-A-Za-z]*.ihtml)@', grab_ihtml, page)
 	page = re.sub ('@LOCATION@', location, page)
 	page = re.sub ('@MENU@', menu, page)
 	page = re.sub ('@SCRIPT@', script, page)
@@ -284,7 +285,6 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
 	page = re.sub ('@IMAGES@', os.path.join (root_url, 'images/'), page)
-	page = re.sub ('@([-A-Za-z]*.ihtml)@', grab_ihtml, page)
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
