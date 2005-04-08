@@ -403,7 +403,6 @@ output_dict= {
 		'output-default-post': "\\def\postLilyPondExample{}\n",
 		'output-default-pre': "\\def\preLilyPondExample{}\n",
 		'usepackage-graphics': '\\usepackage{graphics}\n',
-		'output-eps': '\\noindent\includegraphics{%(fn)s}', 
 		'output-noinline': r'''
 %% generated: %(fn)s.eps
 ''',
@@ -1161,8 +1160,6 @@ def format_lilypond_block (chunk):
 	elif format == 'latex':
 		if 'quote' in opts:
 			s = 'output-latex-quoted'
-		elif 'eps' in opts:
-			s = 'output-eps'
 		else:
 			s = 'output-latex-noquote'
 	elif format == 'texi':
@@ -1409,7 +1406,7 @@ def compile_all_files (chunks):
 		cmd = '(( %s  >&2 ) >&- )' % cmd
 		
 		ly.system (cmd)
-		ly.system ("dvips -Ppdf -u+lilypond.map -E -o %s.eps %s" % (file, file))
+		ly.system ("dvips -E -o %s.eps %s" % (file, file))
 	map (to_eps, eps)
 
 	map (ly.make_ps_images, map (lambda x: x + '.eps', png))
@@ -1564,7 +1561,7 @@ try:
 	
 except getopt.error, msg:
 	sys.stderr.write ('\n')
-	ly.error (_ ("getopt says: `%s\'" % s))
+	ly.error (_ ("getopt says: `%s\'" % msg))
 	sys.stderr.write ('\n')
 	ly.help ()
 	ly.exit (2)
