@@ -1,3 +1,8 @@
+2005-04-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/older-versions.html: remove 1.8 RH9 lilypond.org
+	and ccrma links
+
 2005-04-07  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* scripts/format-page.py (grab_ihtml): Do first.  Fixes @DOC@
