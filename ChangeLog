@@ -1,3 +1,8 @@
+2005-04-14  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/older-versions.html: remove versions no longer
+	available.
+
 2005-04-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/older-versions.html: remove 1.8 RH9 lilypond.org
