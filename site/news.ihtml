@@ -9,13 +9,23 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 
 !-->
 
+<dt>April 15, 2005</dt>
+<dd>
+LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
+     of EPS graphics into markup texts and the music function
+     `\musicDisplay' will display a music expression as indented
+     Scheme code. Take a look at
+     the <a
+     href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+     file and <a href="install/#2.5">Download LilyPond 2.5.19</a>.
+</dd>
+
 <dt>April 6, 2005</dt>
 <dd>
 2.5.18 is a bugfix release. It has many small cleanups in the
 web-based documentation, and many small cleanups all over the
 place. <a href="install/#2.5">Download LilyPond 2.5.18</a>.
 </dd>
-
 
 <dt>March 31, 2005</dt>
 <dd>
