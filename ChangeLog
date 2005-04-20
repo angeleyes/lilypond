@@ -1,6 +1,7 @@
 2005-04-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
-	* site/devel/packaging.html: tweak.
+	* site/devel/packaging.html: scratch mentioning Fedora. Other
+	distros go into their own sections.
 
 	* site/install/index.html (href): update to .20
 
