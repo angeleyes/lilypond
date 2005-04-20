@@ -1,3 +1,8 @@
+2005-04-20  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/devel/packaging.html: Update package dependencies.  Add yum
+	for Fedora.
+
 2005-04-18  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/switch/index.html: 9 years ago already.

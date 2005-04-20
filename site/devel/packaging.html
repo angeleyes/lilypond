@@ -1,21 +1,22 @@
 <h1> Packaging instructions</h1>
 
-Please help us by compiling and packing up Lily, and we will link to
+Please help by compiling and packing up LilyPond, and we will link to
 your site.
 
 <h2>Debian</h2>
 
 <p>
-  To ensure the creation of the lilypond deb is trouble-free, we
-  recommend that you first install the following packages by running
+  To ensure the creation of the lilypond deb is trouble-free, it is
+  recommended that you first install the following packages by running
   apt-get as root before building the package
 
   <pre>
     apt-get install\
-    bison flex fontforge g++ gettext groff gs guile-1.6-dev imagemagick\
-    libc6-dev libfontconfig1-dev libfreetype6-dev libkpathsea-dev\
-    libpango1.0-dev m4 mftrace netpbm potrace python t1utils tetex-bin\
-    tetex-extra texinfo
+    bison flex fontforge g++ gettext groff gs guile-1.6-dev\
+    imagemagick libc6-dev libfontconfig1-dev libfontconfig1-dev\
+    libfreetype6-dev libfreetype6-dev libgtk2.0-dev libkpathsea-dev\
+    libpango1.0-dev libpango1.0-dev m4 mftrace netpbm potrace python\
+    t1utils tetex-bin tetex-extra texinfo
   </pre>
 </p>
 
@@ -69,9 +70,19 @@ your site.
 
 <p>
   For compilation on a Fedora system you need these packages, in
-  addition to the those needed for running: glibc-devel, gcc-c++,
-  libstdc++-devel, guile-devel, flex, bison, texinfo, groff, mftrace,
-  netpbm-progs, autotrace, t1utils.
+  addition to the those needed for running.  Nowadays, there is no
+  need anymore to hunt down and resolve dependencies by hand.  It is
+  recommended to run yum as root
+  <pre>
+    yum install\
+    autotrace bison flex gcc-c++ glibc-devel groff guile-devel\
+    libstdc++-devel mftrace netpbm-progs t1utils texinfo\
+    pango-1.6.0-devel fontconfig-devel
+  </pre>
+  Optionally, for the gnome backend
+  <pre>
+    yum install gtk2-devel
+  </pre>
 </p>
 
 
