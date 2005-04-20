@@ -1,5 +1,7 @@
 2005-04-20  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* GNUmakefile (WEBSERVER): That's now lilypond.org.
+
 	* site/devel/packaging.html: Update package dependencies.  Add yum
 	for Fedora.
 

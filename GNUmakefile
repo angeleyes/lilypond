@@ -98,7 +98,7 @@ out/$(outball): site
 	cd out && tar czvf $(outball) site 
 
 
-WEBSERVER=base.lilypond.org:
+WEBSERVER=lilypond.org:
 upload: site
 	cvs commit -m 'upload commit'  
 	cd out/site \
