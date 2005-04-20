@@ -1,5 +1,9 @@
 2005-04-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/devel/packaging.html: tweak.
+
+	* site/install/index.html (href): update to .20
+
 	* site/news.ihtml (NOTE): announce 2.5.20
 
 2005-04-20  Jan Nieuwenhuizen  <janneke@gnu.org>

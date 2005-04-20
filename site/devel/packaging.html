@@ -57,15 +57,13 @@ your site.
 </p>
 
 <p>
-  Note:
-  <br>
-  use a sensible topdir, e.g., in <code>~/.rpmmacros</code> set
+  For building as non-root user, add the following to <code>~/.rpmmacros</code>,
   <pre>
     %_topdir %(eval echo $HOME)/usr/src/rpm
   </pre>
-  to avoid building as root,
-  <br>
-  use rpmbuild --nodeps when building on non-Fedora systems.
+
+  <!-- we have other spec files for non fedora systems.-->
+
 </p>
 
 <p>
