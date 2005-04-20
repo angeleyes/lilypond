@@ -67,17 +67,19 @@ your site.
 </p>
 
 <p>
-  For compilation on a Fedora system you need these packages, in
-  addition to the those needed for running.  Nowadays, there is no
-  need anymore to hunt down and resolve dependencies by hand.  It is
-  recommended to run yum as root
+  For compilation you need these packages, in addition to the those
+  needed for running.  Run the following command as root
+  to install them
+  
   <pre>
     yum install\
-    autotrace bison flex gcc-c++ glibc-devel groff guile-devel\
-    libstdc++-devel mftrace netpbm-progs t1utils texinfo\
-    pango-1.6.0-devel fontconfig-devel
+      autotrace bison flex gcc-c++ glibc-devel groff guile-devel\
+      libstdc++-devel mftrace netpbm-progs t1utils texinfo\
+      pango-devel fontconfig-devel
   </pre>
+
   Optionally, for the gnome backend
+
   <pre>
     yum install gtk2-devel
   </pre>
