@@ -9,6 +9,19 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 
 !-->
 
+<dt>April 18, 2005</dt>
+<dd>
+
+LilyPond 2.5.20 has lots of bugfixes, in particular, MIDI files of
+multi-movement pieces don't overwrite each other.  Version 2.5.20 also
+supports putting arrows on lines, such as glissandi.
+More details are in the 
+     the <a
+     href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+     file, or go straight to <a href="install/#2.5">downloading LilyPond 2.5.20</a>.
+</dd>
+
+
 <dt>April 15, 2005</dt>
 <dd>
 LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
@@ -25,21 +38,6 @@ LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
 2.5.18 is a bugfix release. It has many small cleanups in the
 web-based documentation, and many small cleanups all over the
 place. <a href="install/#2.5">Download LilyPond 2.5.18</a>.
-</dd>
-
-<dt>March 31, 2005</dt>
-<dd>
-2.5.17 is out. This release features many small bugfixes. In addition,
-it has support for string number notation for guitar. This feature was
-sponsored by Gunther Strube. <a href="install/#2.5">Download
-LilyPond 2.5.17</a>.
-</dd>
-
-<dt>March 20, 2005</dt>
-<dd>
-LilyPond 2.5.16 is out. This release fixes a few minor but irritating
-errors. A Fedora Core 3 binary is also available. Download <a
-href="install/#2.5">here</a>!
 </dd>
 
 </dl>
