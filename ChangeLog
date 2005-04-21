@@ -1,3 +1,9 @@
+2005-04-20  Pedro Kroger  <kroeger@pedrokroeger.net>
+
+	* site/install/index.html: add official debian package for
+	2.4.5. remove kroger's package for 2.4.* series. comment Wagner's
+	package for 2.4.2 (website is down).
+
 2005-04-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/devel/packaging.html: scratch mentioning Fedora. Other
