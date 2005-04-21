@@ -1,0 +1,151 @@
+<!--
+    Translation of CVS Revision: 1.11
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>LilyPond - aan de slag</title>
+
+<h1>Aan de slag</h1>
+<p>
+  Je hebt de allernieuwste versie van LilyPond net geïnstalleerd en je kunt niet wachten
+  om aan de slag te gaan met het zetten van muziek. Hier volgen een paar aanwijzingen.
+</p>
+
+<p align="right">
+  <em>Klik om te vergroten</em>
+  <a href="@IMAGES@terminal-shot.png">
+    <img src="@IMAGES@terminal-shot.png" width="400" align="right">
+  </a>
+</p>
+
+<h2>LilyPond testen</h2>
+<p>
+  Hier volgen de instructies voor Unix and Windows voor de commandoregel.
+  Windows-gebruikers wordt geadviseerd om de
+  <a href="windows.html">quickstart-methode voor Windows</a> te raadplegen.
+</p>
+
+<ul>
+  <li>Open een terminal window en typ
+
+    <blockquote>
+      <pre>
+	lilypond --help
+      </pre>
+    </blockquote>
+    in het window.
+    Op het scherm zou het volgende moeten verschijnen
+    <blockquote>
+      <pre>
+	Usage: lilypond [OPTION]... FILE...
+
+	Typeset music and/or produce MIDI from FILE.
+
+	LilyPond produces beautiful music notation.
+	For more information, see http://lilypond.org
+
+	Options:
+	-b, --backend=EXT     select backend to use
+	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
+	-f, --formats=EXTs    list of formats to dump
+	-h, --help            print this help
+	[..]
+      </pre>
+    </blockquote>
+    <p>
+      Is dat het geval, dan is het programma geïnstalleerd en kun je het opstarten.
+    </p>
+  </li>
+  <li>Start je favoriete teksteditor op. 
+  </li>
+  <li> Enter
+    <blockquote>
+      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
+	{
+	c4( c)
+	}
+      </pre>
+    </blockquote>
+    
+    <strong>OPMERKING:</strong> gebruikers van LilyPond versie 2.2 of ouder moeten
+    de bovenstaande voorbeeldtekst intypen in
+    <code>\notes{}</code> <em>and</em> <code>\score {}</code> blocks.
+    
+  </li>
+  <li>Opslaan als <tt>test.ly</tt>. Verlaat de teksteditor.
+  <li>Run
+    <blockquote>
+      <pre>
+	lilypond test
+      </pre>
+    </blockquote>
+
+    Als alles goed is, moet de volgende tekst verschijnen
+    <blockquote>
+      <pre>
+	DVI output `test.dvi'...
+	PS output to `test.ps'...
+	PDF output to `test.pdf'...
+      </pre>
+    </blockquote>
+  </li>
+  <li>
+    Bekijk de PDF-file. Probeer de volgende commando's
+    <blockquote>
+      <pre>
+	ggv test.pdf
+	gv test.pdf
+	kgv test.pdf
+	acroread test.pdf
+	xpdf test.pdf
+	ghostview test.pdf
+      </pre>
+    </blockquote>
+  </li>
+
+  <li>
+    De gemakkelijkste oplossing voor Windows-gebruikers is de
+    <a href="windows.html">drag &amp; drop approach</a>.  Als je liever met
+    het toetsenboard werkt, kun je de bovenstaande procedure proberen, met behulp
+    van de volgende punten:
+    <ul>
+
+      <li>Open a shell by  double clicking the "Cygwin"
+	icon
+      </li>
+
+      <li> Start a text editor by running <tt>notepad</tt>.  Be sure 
+	that your files are not saved as <code>test.ly.txt</code>
+      </li>
+
+      <li> The PDF file is left in C: -&gt; CYGWIN -&gt; HOME -&gt;
+	<em>your-user-name</em>.
+      </li>
+    </ul>
+  </li>
+
+</ul>
+
+<h2>Yay, it works!</h2>
+<p>
+  Good! Then go onto <a href="using.html">Using LilyPond</a>
+</p>
+
+<h2>Umm, I'm not sure what to do. Help me!</h2>
+
+<p>
+  For questions and support, send mail to <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h2>Darn, it doesn't work</h2>
+<p>
+  Whoops, something went astray, so you have to send a bugreport. The
+  directions for bugreports are in the
+  <a href="../about/faq.html#bugreport">FAQ</a>.  If your download was not
+  packaged by the LilyPond team, CC your report to the packager listed
+  in the "Courtesy" column <a href="index.html">on the download page</a>
+</p>
