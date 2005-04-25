@@ -9,20 +9,22 @@ NOTE:
 * avoid `HERE' as name for links, use descriptive link names like
   <a href=>Download LilyPond 2.5.16</a>
 
-* avoid puttign links in running text. They make text harder to read.
+* avoid putting links in running text. They make text harder to read.
+Preferably: (<a href= .. >..</a>, etc. )
 
+* use a descriptive title in <dt>
 
 !-->
 
-<dt>April 25, 2005</dt>
+<dt>April 25, 2005 - 2.5.21 released!</dt>
 <dd>
 
-LilyPond 2.5.21 has more bugfixes. It also has support for "grid
+2.5.21 has more bugfixes. It also has support for "grid
 lines", bar like vertical line, which are aligned with the notes. The
 auto-beam engraver was rewritten, so it also works with irregular time
 signatures like 5/8.
 (<a
-href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">Changes</a>
+href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.5">Download</a>)
 </dd>
 
@@ -49,13 +51,6 @@ LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
      the <a
      href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
      file and <a href="install/#2.5">Download LilyPond 2.5.19</a>.
-</dd>
-
-<dt>April 6, 2005</dt>
-<dd>
-2.5.18 is a bugfix release. It has many small cleanups in the
-web-based documentation, and many small cleanups all over the
-place. <a href="install/#2.5">Download LilyPond 2.5.18</a>.
 </dd>
 
 </dl>
