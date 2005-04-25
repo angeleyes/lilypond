@@ -87,6 +87,7 @@ your site.
   and run
   <pre>
   rpmbuild -tb mftrace-X.Y.Z.tar.gz
+  sudo rpm -U $(rpm --eval=%_rpmdir)/i386/mftrace-X.Y.Z-1.i386.rpm
   </pre>
   
   <li>potrace, which is a faster  alternative to autotrace.  Download

@@ -4,8 +4,13 @@
 
 <!--
 
-NOTE: avoid `HERE' as name for links, use descriptive link names like
+NOTE:
+
+* avoid `HERE' as name for links, use descriptive link names like
   <a href=>Download LilyPond 2.5.16</a>
+
+* avoid puttign links in running text. They make text harder to read.
+
 
 !-->
 
@@ -15,11 +20,10 @@ NOTE: avoid `HERE' as name for links, use descriptive link names like
 LilyPond 2.5.21 has more bugfixes. It also has support for "grid
 lines", bar like vertical line, which are aligned with the notes. The
 auto-beam engraver was rewritten, so it also works with irregular time
-signatures like 5/8. More details are in the
-the <a
-href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
-file, or go straight to <a href="install/#2.5">downloading LilyPond
-2.5.21</a>.
+signatures like 5/8.
+(<a
+href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">Changes</a>
+<a href="install/#2.5">Download</a>)
 </dd>
 
 

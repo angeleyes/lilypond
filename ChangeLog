@@ -1,3 +1,9 @@
+2005-04-26  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/news.ihtml (NOTE): edit.
+
+	* site/install/index.html (href): update GS
+
 2005-04-21  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* nl: Initial bare translations by Tineke <tdm@dds.nl>.  Not for
