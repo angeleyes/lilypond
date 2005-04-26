@@ -10,6 +10,8 @@ The initial delivery of a translation for LILYPOND.ORG is about 3000 words.
 Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 
 1 index.html  --  http://lilypond.org/web/index.html
+1 contact.ihtml  --  in http://lilypond.org/web/about/index.html and
+                     in http://lilypond.org/web/documentation.html
 
 1 switch/index.html  --  http://lilypond.org/web/switch/index.html
 1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
@@ -37,16 +39,17 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 1 install/windows.html  --  http://lilypond.org/web/install/windows.html
 
 
-$ wc $(grep ^1 TODO | cut -f 2)
-  161   284  3294 site/index.html
-   54   214  1604 site/switch/index.html
-  100   456  3561 site/switch/advantages.html
-   92   405  3080 site/switch/tour.html
-  101   281  2505 site/switch/howto.html
-  106   276  3883 site/about/index.html
-  133   414  3310 site/install/getting-started.html
-   28    85   900 site/install/macos.html
-   56   115  1131 site/install/using.html
-  135   380  3001 site/install/windows.html
-  966  2910 26269 total
-
+LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
+  184   331  3865 site/index.html
+   70   147  2163 site/contact.ihtml
+   54   216  1618 site/switch/index.html
+   99   457  3591 site/switch/advantages.html
+  124   466  3561 site/switch/tour.html
+  109   295  2840 site/switch/howto.html
+   76   202  2076 site/about/index.html
+  151   470  3700 site/install/getting-started.html
+   30    93   862 site/install/macos.html
+   71   159  1579 site/install/using.html
+  170   470  4000 site/install/windows.html
+ 1138  3306 29855 totaal
+ 
