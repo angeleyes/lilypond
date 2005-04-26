@@ -1,0 +1,166 @@
+<!--
+    Translation of CVS Revision: 1.1
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>LilyPond - op Microsoft Windows</title>
+
+<h1>LilyPond op Microsoft Windows</h1>
+
+
+<a name="installing"></a>
+<h2>Installatie</h2>
+
+<img src="@IMAGES@cygwin-shot.png" align="right">
+
+<ul>
+  <li>
+    Download <tt>setup.exe</tt> door Shift in te drukken en tegelijkertijd
+    <a href="http://cygwin.com/setup.exe">hier</a> te klikken,
+  </li>
+  <li>
+    Voor Windows NT, 2000 en XP is het noodzakelijk om vanuit een beheerdersaccount te werken,
+  </li>
+
+  <li>
+    Start <code>setup.exe</code>,
+  </li>
+
+  <li>
+    Klik steeds op "Volgende" totdat...
+  </li>
+
+  <li>
+    de window <strong>Package View</strong> verschijnt.  Selecteer
+    LilyPond, te vinden in de
+    <strong>Publishing</strong> sectie.
+  </li>
+
+  <li>
+    LilyPond wordt nu geïnstalleerd samen met de benodigde ondersteuningsprogramma's.
+    Het downloadpakket is 66 MB en voor de installatie is 260 MB vrije schijfruimte 
+    nodig.
+  </li>
+
+</ul>
+
+<p>
+  Als je niet 100 % zeker bent van wat een vraag in setup.exe betekent, verander de
+  standaard antwoorden dan niet. Verander de standaard installatiemap
+   (<code>c:/cygwin</code>) <strong>niet</strong>, en
+   verander ook het standaard lettertype <strong>niet</strong> (het UNIX-type moet
+  worden gebruikt).
+</p>
+
+
+<h2>Testen</h2>
+
+<ul>
+  <li>
+    Druk op Shift en klik tegelijkertijd <a href="test.ly">hier</a> om een test te downloaden.
+  </li>
+
+  <li>
+    Sla het op je bureaublad op als <tt>test.ly</tt> (zorg ervoor dat het
+    <strong>niet</strong> wordt opgeslagen als
+    <tt>test.ly<em>.TXT</em></tt>).
+  </li>
+
+  <li>
+    Dubbelklik op het bestand.
+  </li>
+</ul>
+
+Hierdoor wordt het bestand verwerkt en wordt het resultaat weergegeven in een PDF-viewer.
+
+<h4>Yes, het werkt!</h4>
+
+<p>
+  Fantastisch!  Ga naar <a href="using.html">LilyPond gebruiken</a>.
+</p>
+
+<h4>Ojee, ik weet niet wat ik moet doen. Help!</h4>
+
+<p>
+  Voor vragen en ondersteuning, kun je een e-mail sturen naar <a
+                                             href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h4>Verdraaid, het werkt niet</h4>
+
+<p>
+  Ojee, er ging iets mis, je moet een bugreport opsturen.  Er is
+  een bestand <tt>test.log</tt> te vinden in dezelfde map met <tt>test.ly</tt>.
+  Stuur dit bestand naar <a
+                       href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> met een
+  beschrijving van je probleem.
+</p>
+
+<h4>Windows 98</h4>
+
+<p>
+  Op Windows <strong>95, 98 en ME</strong> zijn er problemen met het Cygwin
+  Python pakket, die de werking van Lilypond kan belemmeren (zie <a
+                                                                     href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
+    fails testsuite</a>).  Helaas vallen deze problemen buiten het bereik van 
+  het ontwikkelingsteam van Lilypond. In Windows NT, 2000 en XP doen
+  deze problemen zich niet voor.
+</p>
+
+<h4>Ik heb geen <tt>test.log</tt></h4>
+<p>
+  Het LilyPond-pakket is niet correct geïnstalleerd.  Ga terug naar
+  <a href="#installing">Installatie</a> en controleer nogmaals of je
+  de procedure op de juiste wijze hebt uitgevoerd.  Als je twijfelt, stuur dan een e-mail naar
+  <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+
+<h2>Het programma verwijderen</h2>
+
+<ul>
+  <li>
+    De brute methode:
+    verwijder <code>C:\CYGWIN</code>.
+    <em>Hierdoor wordt ook de Cygwin <code>/home/</code> directory,
+      verwijderd dus kopieer belangrijke bestanden eerst naar 
+      een andere plaats</em>.
+  </li>
+
+  <li>
+    De officiële methode:
+    <ul>
+      <li>
+        <p>Start <code>setup.exe</code>,
+          <li>
+            Klik op Volgende.
+          </li>
+          <li>
+            Selecteer <strong>Install from
+              Local Directory</strong>.
+          </li>
+
+          <li>
+            Klik op Volgende totdat je <strong>Select
+              packages to install</strong> bereikt.
+          </li>
+
+          <li>
+            Klik <strong>Bekijken</strong>.
+          </li>
+
+          <li>
+            Voor elk pakket dat je wilt verwijderen geldt:
+            klik op het prullenbak-icoontje totdat de boodschap <strong>Verwijderen</strong> verschijnt.
+          </li>
+
+          <li>
+            Klik op <strong>Volgende</strong>.
+          </li>
+    </ul>
+  </li>
+</ul>
