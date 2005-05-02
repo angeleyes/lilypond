@@ -1,3 +1,23 @@
+2005-05-02  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/getting-started.html: .ly.txt clarification
+
+	* site/install/macos.html: language fixes.
+
+	* site/switch/tour.html: print database: language fix.
+
+	* site/install/getting-started.html: bug report: language fix.
+
+	* site/switch/tour.html: intro: language fix
+
+	* site/switch/howto.html: part extraction: language fix.
+
+	* site/switch/tour.html: mutopia: language fix. 
+
+	* site/old-news.html (href): fix link.
+
+	* site/switch/advantages.html: rewrite some sentences.
+
 2005-05-02  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* GNUmakefile (LANGUAGES): Enable nl.
