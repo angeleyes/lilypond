@@ -1,5 +1,7 @@
 2005-05-02  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* GNUmakefile (LANGUAGES): Enable nl.
+
 	* scripts/format-page.py (grab_gettext): Enable i18n.
 
 	* nl/: Translation updates <tdm@dds.nl>.

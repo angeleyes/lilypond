@@ -52,7 +52,7 @@ PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
 # Do not publish non-polished or non-finished or outdated translations.
-LANGUAGES = #nl
+LANGUAGES = nl
 
 all: scripts linktree menuify $(LANGUAGES)
 
