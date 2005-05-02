@@ -1,0 +1,70 @@
+<!--
+    Translation of CVS Revision: 1.2
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<dl>
+  <dt>Vragen of opmerkingen?</dt>
+  <dd>
+    Stuur een e-mail naar <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
+    (mailinglijst
+    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">info</a>,
+    doorzoek
+    <a href="http://mail.gnu.org/archive/html/lilypond-user/">mailarchief/a>)
+    <br>
+  </dd>
+
+  <dt>Bug report?</dt>
+  <dd>
+    Stuur een e-mail naar 
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+    (mailinglijst
+    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+    doorzoek
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">mailarchief</a>)
+    <br>
+  </dd>
+
+  <dt>Wil je op de hoogte worden gebracht van nieuwe versies?</dt>
+  <dd>Abonneer je op
+    <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
+    (mailinglijst
+    <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">info</a>,
+    doorzoek
+    <a href="http://mail.gnu.org/archive/html/info-lilypond/">mailarchief</a>)
+  </dd>
+
+  
+  <dt>Opmerkingen over deze internetpagina's?</dt>
+  <dd>Stuur een e-mail naar  
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+    (mailinglijst
+    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+    doorzoek
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">mailarchief</a>)
+  </dd>
+
+  
+  <dt>Wil je communiceren met de ontwikkelaars?<dt>
+  <dd>Abonneer je op
+    <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
+    (mailinglijst 
+    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">info</a>,
+    doorzoek
+    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">mailarchief</a>)
+  </dd>
+
+  <dt>
+    Direct contact opnemen met de auteurs?</dt>
+    <dd>
+    Kijk op
+    <a href="@DOC@v2.4/Documentation/topdocs/out-www/AUTHORS.html">de
+      auteurlijst</a>.
+    (<em>Neem uitsluitend contact op met de auteurs voor persoonlijke
+      zaken</em>)
+  </dd>
+</dl>

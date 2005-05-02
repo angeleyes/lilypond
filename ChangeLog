@@ -1,3 +1,7 @@
+2005-05-02  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* nl/contact.ihtml: New file.
+
 2005-04-26  Graham Percival  <gperlist@shaw.ca>
 
 	* site/install/windows.html: suggest that people run setup.exe
