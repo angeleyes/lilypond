@@ -288,8 +288,8 @@ def format_page (html, file_name, lang):
 	page = re.sub ('_@([^@]*)@', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
-	# No i18n yet.
-	if 0:
+	# Use 0 to switch i18n off.
+	if 1:
 		# Strip .html, .png suffix for auto language selection.
 		page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)(#[^"\']*)?[\'"]''',
 			       '\\1="\\2"', page)

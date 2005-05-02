@@ -1,5 +1,11 @@
 2005-05-02  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* scripts/format-page.py (grab_gettext): Enable i18n.
+
+	* nl/: Translation updates <tdm@dds.nl>.
+	
+	* nl/install/windows.html: Update.
+
 	* nl/contact.ihtml: New file.
 
 2005-04-26  Graham Percival  <gperlist@shaw.ca>

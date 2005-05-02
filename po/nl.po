@@ -19,7 +19,7 @@ msgstr ""
 #: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
 #: site/menu-entries.py:4
 msgid "Home"
-msgstr "Thuis"
+msgstr "Startpagina"
 
 #: scripts/format-page.py:87
 #, python-format
@@ -33,7 +33,7 @@ msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
 #: site/about/menu-entries.py:2
 msgid "Features"
-msgstr "Mogelijkheden"
+msgstr "Eigenschappen"
 
 #: site/about/menu-entries.py:3
 msgid "FAQ"
@@ -49,15 +49,15 @@ msgstr "Publicaties"
 
 #: site/about/menu-entries.py:6
 msgid "Donate"
-msgstr "Steun"
+msgstr "Donaties"
 
 #: site/about/menu-entries.py:7
 msgid "Acknowledgements"
-msgstr ""
+msgstr "Dankbetuigingen"
 
 #: site/about/news/menu-entries.py:2
 msgid "Older news"
-msgstr "Ouder nieuws"
+msgstr "Oud nieuws"
 
 #: site/menu-entries.py:5
 msgid "Introduction"
@@ -65,7 +65,7 @@ msgstr "Introductie"
 
 #: site/menu-entries.py:6
 msgid "About"
-msgstr "Over"
+msgstr "Over LilyPond"
 
 #: site/menu-entries.py:7
 msgid "Download"
@@ -81,7 +81,7 @@ msgstr "Ontwikkeling"
 
 #: site/devel/menu-entries.py:2
 msgid "Participate"
-msgstr "Doe mee"
+msgstr "Help mee"
 
 #: site/devel/menu-entries.py:3
 msgid "Packaging"
@@ -97,7 +97,7 @@ msgstr "Relevante conferenties voor LilyPond"
 
 #: site/devel/misc/menu-entries.py:4
 msgid "Related online resources"
-msgstr "Verwante webzijden"
+msgstr "Verwante websites"
 
 #: site/devel/notation/menu-entries.py:2
 msgid "appogiatura"
@@ -121,7 +121,7 @@ msgstr "Hulp gevraagd!"
 
 #: site/devel/participating/menu-entries.py:3
 msgid "Localization"
-msgstr "Vertalen"
+msgstr "Vertalingen"
 
 #: site/devel/participating/menu-entries.py:4
 msgid "Standards"
@@ -133,7 +133,7 @@ msgstr "Cygwin"
 
 #: site/download/windows/menu-entries.py:3
 msgid "Troubleshooting"
-msgstr "Probleemoplossingen"
+msgstr "Probleemoplossing"
 
 #: site/download/menu-entries.py:2
 msgid "MacOS X"
@@ -153,19 +153,19 @@ msgstr "Gebruikershulp"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
-msgstr "Waarom LilyPond gebruiken?"
+msgstr "Waarom LilyPond?"
 
 #: site/switch/menu-entries.py:3
 msgid "Testimonials"
-msgstr "Bekentenissen"
+msgstr "Dankbetuigingen"
 
 #: site/switch/menu-entries.py:4
 msgid "A short tour"
-msgstr "Een korte rondleiding"
+msgstr "Korte rondleiding"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
-msgstr "Stoomcursus"
+msgstr "Snelcursus"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
@@ -177,7 +177,7 @@ msgstr "Letters zijn noten"
 
 #: site/graphics/annotate-example-1.svg:227
 msgid "Numbers are durations"
-msgstr "Getallen zijn nootwaarden"
+msgstr "Getallen zijn nootlengtes"
 
 #: site/graphics/annotate-example-2.svg:181
 msgid "Add articulations"
@@ -205,11 +205,11 @@ msgstr "Voer liedtekst in"
 
 #: site/graphics/annotate-example-lead.svg:196
 msgid "Combine melody and lyrics"
-msgstr "Combineer melodie en liedtekt"
+msgstr "Combineer melodie en liedtekst"
 
 #: site/graphics/annotate-example-parts.svg:165
 msgid "Enter multi-rest"
-msgstr "Voer multi-rust in"
+msgstr "Voer meermaatse rust in"
 
 #: site/graphics/annotate-example-parts.svg:178
 msgid "Store notes in variable"
@@ -225,11 +225,11 @@ msgstr "Combineer notenbalken parallel"
 
 #: site/graphics/annotate-example-single-part.svg:120
 msgid "Condense multi-rests"
-msgstr "Voeg lange rusten samen"
+msgstr "Voeg meermaatse rusten samen"
 
 #: site/graphics/annotate-example-single-part.svg:134
 msgid "Transpose for F instrument"
-msgstr "Transponeer voor F instrument"
+msgstr "Transponeer voor F-instrument"
 
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse identifier"
