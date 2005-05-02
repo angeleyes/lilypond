@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-30 10:10+0100\n"
+"POT-Creation-Date: 2005-05-02 16:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
-#: site/menu-entries.py:4
+#: site/menu-entries.py:4 scripts/format-page.py:216
 msgid "Home"
 msgstr "Startpagina"
 
-#: scripts/format-page.py:87
+#: scripts/format-page.py:87 scripts/format-page.py:82
 #, python-format
 msgid "Other languages: %s."
 msgstr "Andere talen: %s."
 
-#: scripts/format-page.py:88
+#: scripts/format-page.py:88 scripts/format-page.py:83
 #, python-format
 msgid "Using <A HREF='%s'>automatic language selection</A>."
 msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
@@ -71,7 +71,7 @@ msgstr "Over LilyPond"
 msgid "Download"
 msgstr "Download"
 
-#: site/menu-entries.py:8
+#: site/menu-entries.py:8 site/devel/participating/menu-entries.py:3
 msgid "Documentation"
 msgstr "Documentatie"
 
@@ -120,10 +120,12 @@ msgid "Help wanted!"
 msgstr "Hulp gevraagd!"
 
 #: site/devel/participating/menu-entries.py:3
+#: site/devel/participating/menu-entries.py:4
 msgid "Localization"
 msgstr "Vertalingen"
 
 #: site/devel/participating/menu-entries.py:4
+#: site/devel/participating/menu-entries.py:5
 msgid "Standards"
 msgstr "Standaarden"
 
@@ -135,19 +137,19 @@ msgstr "Cygwin"
 msgid "Troubleshooting"
 msgstr "Probleemoplossing"
 
-#: site/download/menu-entries.py:2
+#: site/download/menu-entries.py:2 site/install/menu-entries.py:2
 msgid "MacOS X"
 msgstr "MacOS X"
 
-#: site/download/menu-entries.py:3
+#: site/download/menu-entries.py:3 site/install/menu-entries.py:3
 msgid "Windows"
 msgstr "Windows"
 
-#: site/download/menu-entries.py:4
+#: site/download/menu-entries.py:4 site/install/menu-entries.py:4
 msgid "First use"
 msgstr "Eerste gebruik"
 
-#: site/download/menu-entries.py:5
+#: site/download/menu-entries.py:5 site/install/menu-entries.py:5
 msgid "User help"
 msgstr "Gebruikershulp"
 
