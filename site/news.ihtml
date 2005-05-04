@@ -1,7 +1,5 @@
 <dl>
 
-
-
 <!--
 
 NOTE:
@@ -36,7 +34,7 @@ lines", bar like vertical line, which are aligned with the notes. The
 auto-beam engraver was rewritten, so it also works with irregular time
 signatures like 5/8.
 (<a
-href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+href="@DOC@v2.5/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.5">Download</a>)
 </dd>
 
@@ -49,7 +47,7 @@ multi-movement pieces don't overwrite each other.  Version 2.5.20 also
 supports putting arrows on lines, such as glissandi.
 More details are in the 
      the <a
-     href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+     href="@DOC@v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
      file, or go straight to <a href="install/#2.5">downloading LilyPond 2.5.20</a>.
 </dd>
 
@@ -61,7 +59,7 @@ LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
      `\musicDisplay' will display a music expression as indented
      Scheme code. Take a look at
      the <a
-     href="../doc/v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+     href="@DOC@v2.5/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
      file and <a href="install/#2.5">Download LilyPond 2.5.19</a>.
 </dd>
 
