@@ -14,7 +14,19 @@ Preferably: (<a href= .. >..</a>, etc. )
 
 * use a descriptive title in <dt>
 
+
 !-->
+
+<dt>2.5.22 released - <em>May 3, 2005</em></dt>
+<dd>
+
+2.5.22 is a bugfix
+release. The most visible improvement is in the PDF : this release
+will produce smaller PDF files, with symbols that look better on
+screen.
+(<a href="install/#2.5">Download</a>)
+
+</dd>
 
 <dt>April 25, 2005 - 2.5.21 released!</dt>
 <dd>
