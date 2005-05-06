@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# nl.po -- LilyPond Dutch website language file
+# Copyright (C) 2005 Jan Nieuwenhuizen <janneke@gnu.org>, Tineke de munnik <tdm@dds.nl>.
+# Jan Nieuwenhuizen <janneke@gnu.org>, 2005.
+# This file is distributed under the same license as the LilyPond package.
 #
 #, fuzzy
 msgid ""
@@ -9,11 +9,11 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-05-02 16:48+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2005-05-06 10:37+0200\n"
+"Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
@@ -167,7 +167,7 @@ msgstr "Korte rondleiding"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
-msgstr "Snelcursus"
+msgstr "Spoedcursus"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
