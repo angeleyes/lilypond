@@ -80,7 +80,7 @@ LOCATION_SEP = ' &gt; '
 LOCATION_TITLE = 'LilyPond - %s'
 
 language_available = _ ("Other languages: %s.") % "%(language_menu)s"
-browser_language = _ ("Using <A HREF='%s'>automatic language selection</A>.") \
+browser_language = _ ("About <A HREF='%s'>automatic language selection</A>.") \
 		      % "%(root_url)sabout/browser-language"
 
 LANGUAGES_TEMPLATE = '''\
