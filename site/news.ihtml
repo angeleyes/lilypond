@@ -24,10 +24,15 @@ Preferably: (<a href= .. >..</a>, etc. )
 
 !-->
 
+<dt>2.5.25 released - <em>May 20, 2005</em></dt>
+<dd>
+This release has many small bugfixes and updates to the
+documentation. (<a href="install/#2.5">Download</a>)
+</dd>
+
+
 <dt>2.5.24 released - <em>May 12, 2005</em></dt>
 <dd>
-
-
 2.5.24 fixes a bunch of bugs; in particular, chord symbols (such as
 slashed o) should now work on all platforms. This release has a new
 feature: it is now possible to make staves appear in a different order
@@ -36,7 +41,6 @@ from the order that they were defined. (<a href="install/#2.5">Download</a>)
 
 <dt>2.5.23 released - <em>May 6, 2005</em></dt>
 <dd>
-
 This release has a couple of small bugfixes, and a new feature. It is
 now possible to start and stop the StaffSymbol, during a piece of
 music, by doing \stopStaff \startStaff. This can be used to produce
