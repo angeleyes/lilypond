@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-02 16:48+0200\n"
+"POT-Creation-Date: 2005-05-22 10:03-0300\n"
 "PO-Revision-Date: 2005-05-06 10:37+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,3 +236,8 @@ msgstr "Transponeer voor F-instrument"
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse identifier"
 msgstr "Hergebruik variabele"
+
+#: scripts/format-page.py:83
+#, fuzzy, python-format
+msgid "About <A HREF='%s'>automatic language selection</A>."
+msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
