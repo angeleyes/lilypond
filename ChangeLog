@@ -1,5 +1,9 @@
 2005-05-26  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/install/index.html (href): opps, fink is at 2.5.23
+
+	* site/images/cygwin.png (Module): add cygwin logo.
+
 	* site/install/index.html (href): add Mac binary. 
 
 	* site/images/fink.png (Module): separate logo for Fink
