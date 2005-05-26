@@ -46,6 +46,7 @@ endif
 
 EXT = .jpeg .ly .pdf .png
 HTML = $(shell find $(SITE) -name '*.html')
+IHTML = $(shell find site -name '*.ihtml')
 NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
 TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
@@ -75,8 +76,9 @@ site: all
 TAGS:
 	etags $$(find scripts site -name '*.html' -o -name '.py')
 
-po/newweb.pot: $(PY) $(SVG)
-	xgettext --default-domain=newweb --language=python --join --output=$@ $(PY) $(SVG)
+po/newweb.pot: $(PY) $(SVG) $(IHTML)
+	xgettext --default-domain=newweb --language=python --keyword=_ --join --output=$@ $(PY) $(SVG)
+	xgettext --default-domain=newweb --language=c --keyword=_ --keyword=_@ --join --output=$@  $(IHTML)
 
 nl:
 	$(MAKE) LANG=$@ png menuify
@@ -128,3 +130,5 @@ dist:
 clean:
 	rm -rf out
 
+foe:
+	echo $(IHTML)

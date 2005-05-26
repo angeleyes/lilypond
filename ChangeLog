@@ -2,7 +2,13 @@
 
 	* site/install/devel.ihtml: 
 	* site/install/old.ihtml: 
-	* site/install/stable.ihtml: Factor out.
+	* site/install/stable.ihtml: Factor out.  Gettextize.
+
+	* scripts/format-page.py (grab_ihtml): Bugfix: also read from
+	original site dir.
+	(grab_gettext): Remove @@, match plain _("").
+
+	* GNUmakefile (po/newweb.pot): Run xgettext on .IHTMLs too.
 
 	* site/install/index.html: Include.
 

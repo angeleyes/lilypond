@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-25 22:42+0200\n"
+"POT-Creation-Date: 2005-05-26 21:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,10 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: site/menu-entries.py:7
+#: site/menu-entries.py:7 site/install/devel.ihtml:36
+#: site/install/devel.ihtml:81 site/install/devel.ihtml:127
+#: site/install/stable.ihtml:152 site/install/stable.ihtml:253
+#: site/install/old.ihtml:114 site/install/old.ihtml:218
 msgid "Download"
 msgstr ""
 
@@ -240,4 +243,56 @@ msgstr ""
 #: scripts/format-page.py:83
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
+msgstr ""
+
+#: site/install/devel.ihtml:58 site/install/stable.ihtml:168
+#: site/install/old.ihtml:158
+msgid "Other"
+msgstr ""
+
+#: site/install/devel.ihtml:100 site/install/stable.ihtml:61
+#: site/install/stable.ihtml:189 site/install/stable.ihtml:201
+#: site/install/old.ihtml:47 site/install/old.ihtml:62
+#: site/install/old.ihtml:170 site/install/old.ihtml:182
+#: site/install/old.ihtml:202 site/install/old.ihtml:204
+msgid "Go"
+msgstr ""
+
+#: site/install/devel.ihtml:100 site/install/devel.ihtml:116
+#: site/install/stable.ihtml:61 site/install/stable.ihtml:189
+#: site/install/stable.ihtml:203 site/install/stable.ihtml:219
+#: site/install/stable.ihtml:237 site/install/stable.ihtml:239
+#: site/install/old.ihtml:47 site/install/old.ihtml:62
+#: site/install/old.ihtml:170 site/install/old.ihtml:184
+#: site/install/old.ihtml:202 site/install/old.ihtml:204
+msgid "here"
+msgstr ""
+
+#: site/install/devel.ihtml:116
+msgid "Download the installer"
+msgstr ""
+
+#: site/install/devel.ihtml:119 site/install/devel.ihtml:134
+#: site/install/stable.ihtml:159 site/install/old.ihtml:227
+msgid "LilyPond development team"
+msgstr ""
+
+#: site/install/devel.ihtml:125 site/install/stable.ihtml:251
+#: site/install/old.ihtml:216
+msgid "Source"
+msgstr ""
+
+#: site/install/devel.ihtml:129 site/install/stable.ihtml:255
+#: site/install/old.ihtml:115 site/install/old.ihtml:220
+msgid "tarball"
+msgstr ""
+
+#: site/install/devel.ihtml:130
+msgid "warning"
+msgstr ""
+
+#: site/install/stable.ihtml:75 site/install/stable.ihtml:94
+#: site/install/stable.ihtml:113 site/install/old.ihtml:78
+#: site/install/old.ihtml:96
+msgid "Go to"
 msgstr ""

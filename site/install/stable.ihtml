@@ -58,7 +58,7 @@
     <td>
       Woody
     </td>
-    <td><strong>Go <a href="http://tac.ki.iif.hu/lilypond.html">here</a></strong>
+    <td><strong>_("Go") <a href="http://tac.ki.iif.hu/lilypond.html">_("here")</a></strong>
     </td>
     <td>2.4.6</td>
     <td><a href="mailto:wferiATafavant.elte.hu">Ferenc Wagner</a></td>
@@ -72,7 +72,7 @@
     <td>
       1, 2, 3
     </td>
-    <td> <strong>Go to <a href="http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html#lilypond">
+    <td> <strong>_("Go to") <a href="http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html#lilypond">
 	  Planet CCRMA</a></strong>
     </td>
     <td>2.4.5</td>
@@ -91,7 +91,7 @@
       8, 9
     </td>
     <td>
-      <strong>Go to
+      <strong>_("Go to")
 	<a href="http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html#lilypond">Planet CCRMA</a>
       </strong>
     </td>
@@ -110,7 +110,7 @@
       10.1
     </td>
     <td>
-      <strong>Go to <a href="http://rpm.nyvalls.se/sound10.1.html">
+      <strong>_("Go to") <a href="http://rpm.nyvalls.se/sound10.1.html">
 	        Thac's RPMs for mandrake</a>
       </strong>
       (<a href="#mandrake-notes">NOTE</a>)
@@ -149,14 +149,14 @@
     <td>
       3
     </td>
-    <td><strong>Download 
+    <td><strong>_("Download") 
 	<a href="http://lilypond.org/download/binaries/Fedora-3/lilypond-2.4.6-1.i386.rpm">lilypond</a>,
 	<a
 	   href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.4.6-1.i386.rpm">documentation</a></strong>
       (<a href="#ec-fonts">NOTE</a>)
     </td>
     <td>2.4.6</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">LilyPond development team</a></td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
 
@@ -165,7 +165,7 @@
     </td>
     
     <td>
-      <font size="+1"><strong>Other</strong></font>
+      <font size="+1"><strong>_("Other")</strong></font>
     </td>
     <td>
     </td>
@@ -186,7 +186,7 @@
       <tt>current-unstable</tt>
     </td>
     <td>
-      <strong>  Go <a href="macos.html">here</a></strong>
+      <strong>_("Go") <a href="macos.html">_("here")</a></strong>
     </td>
     <td>2.4.6</td>  
     <td>
@@ -198,9 +198,9 @@
     <td><img src="@IMAGES@daemon.png" alt="FreeBSD daemon"></td>
     <td>FreeBSD</td>
     <td>4, 5</td>
-    <td><strong>Go
+    <td><strong>_("Go")
 	<a
-	   href="http://foo42.de/devel/lilypond-freebsd/">here</a>
+	   href="http://foo42.de/devel/lilypond-freebsd/">_("here")</a>
       </strong>
     </td>
     <td>
@@ -216,7 +216,7 @@
     <td></td>
     <td><strong>Go
 	<a
-	   href="http://openbsd.dead-parrot.de/lilyport/">here</a>
+	   href="http://openbsd.dead-parrot.de/lilyport/">_("here")</a>
       </strong>
     </td>
     <td>
@@ -234,9 +234,9 @@
     </td>
     <td>
       <!-- Bertalan's site
-	  <strong>Go <a href="http://www.inf.bme.hu/~berti/lilypond/">here</a></strong>
+	  <strong>Go <a href="http://www.inf.bme.hu/~berti/lilypond/">_("here")</a></strong>
 	  !-->
-      <strong>Go <a href="windows.html">here</a></strong>
+      <strong>Go <a href="windows.html">_("here")</a></strong>
     </td>
     <td>2.4.2</td>
     <td>
@@ -248,11 +248,11 @@
 
   <tr>
     <td></td>
-    <td>Source</td>
+    <td>_("Source")</td>
     <td></td>
-    <td><strong>Download 
+    <td><strong>_("Download") 
 	<a
-	   href="http://lilypond.org/download/v2.4/lilypond-2.4.5.tar.gz">tarball</a>
+	   href="http://lilypond.org/download/v2.4/lilypond-2.4.5.tar.gz">_("tarball")</a>
 	(<a href="../devel/#warning">warning</a>)
       </strong>
     </td>

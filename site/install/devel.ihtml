@@ -33,7 +33,7 @@
       </p>
     </td>
     <td>
-      Fedora Core </td> <td> 3 </td> <td><strong>Download <a
+      Fedora Core </td> <td> 3 </td> <td><strong>_("Download") <a
     href="http://lilypond.org/download/binaries/Fedora-3/lilypond-2.5.26-1.i386.rpm">lilypond</a>,
     <a
     href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.5.26-1.i386.rpm">documentation</a>,
@@ -55,7 +55,7 @@
     </td>
     
     <td>
-      <font size="+1"><strong>Other</strong></font>
+      <font size="+1"><strong>_("Other")</strong></font>
     </td>
     <td>
     </td>
@@ -78,7 +78,7 @@
     <td>
     
       <strong>
-      Download <a
+      _("Download") <a
     href="http://lilypond.org/download/binaries/MacOS/lilypond-2.5.26.zip">
     lilypond</a></strong>
     </td>
@@ -97,7 +97,7 @@
       <tt>current-unstable</tt>
     </td>
     <td>
-      <strong>  Go <a href="macos.html">here</a></strong>
+      <strong>_("Go") <a href="macos.html">_("here")</a></strong>
     </td>
     <td>2.5.23</td>  
     <td>
@@ -113,23 +113,23 @@
       <!--  Curr--> 
     </td>
     <td>
-      <strong>Download the installer <a href=" http://lilypond.org/mingw/setup.exe">here</a></strong>
+      <strong>_("Download the installer") <a href=" http://lilypond.org/mingw/setup.exe">_("here")</a></strong>
     </td>
     <td>2.5.26</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">LilyPond development team</a></td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
     </td>
   </tr>
 
   <tr>
     <td></td>
-    <td>Source</td>
+    <td>_("Source")</td>
     <td></td>
-    <td><strong>Download 
+    <td><strong>_("Download") 
 	<a
-	   href="http://lilypond.org/download/v2.5/lilypond-2.5.26.tar.gz">tarball</a>
-	(<a href="../devel/#warning">warning</a>)
+	   href="http://lilypond.org/download/v2.5/lilypond-2.5.26.tar.gz">_("tarball")</a>
+	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
     <td>2.5.26</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">LilyPond development team</a></td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>

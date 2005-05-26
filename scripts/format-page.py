@@ -181,7 +181,7 @@ def format_page (html, file_name, lang):
 
 	def grab_ihtml (match):
 		s = match.group (1)
-		for d in (dir, lang, C):
+		for d in (dir, dir_lang (dir, lang), dir_lang (dir, C)):
 			n = os.path.join (d, s)
 			if os.path.exists (n):
 				return open (n).read ()
@@ -285,7 +285,7 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@DEPTH@', root_url, page)
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
 	page = re.sub ('@IMAGES@', os.path.join (root_url, 'images/'), page)
-	page = re.sub ('_@([^@]*)@', grab_gettext, page)
+	page = re.sub ('_ *\("([^"]*)"\)', grab_gettext, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
 	# Use 0 to switch i18n off.

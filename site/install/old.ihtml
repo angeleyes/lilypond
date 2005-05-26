@@ -44,7 +44,7 @@
     <td>
       Woody
     </td>
-    <td><strong>Go <a href="http://afavant.elte.hu/~wferi/lilypond/">here</a></strong>
+    <td><strong>_("Go") <a href="http://afavant.elte.hu/~wferi/lilypond/">_("here")</a></strong>
     </td>
     <td>2.2.5</td>
     <td><a href="mailto:wferiATafavant.elte.hu">Ferenc Wagner</a></td>
@@ -59,7 +59,7 @@
       
     </td>
     <td>
-      <strong>Go <a href="http://packages.gentoo.org/packages/?category=media-sound;name=lilypond">here</a>.
+      <strong>_("Go") <a href="http://packages.gentoo.org/packages/?category=media-sound;name=lilypond">_("here")</a>
       </strong>
     </td>
     <td>2.2.2</td>
@@ -75,7 +75,7 @@
       10.0
     </td>
     <td>
-      <strong>Go to <a href="http://rpm.nyvalls.se/sound10.0.html">
+      <strong>_("Go to") <a href="http://rpm.nyvalls.se/sound10.0.html">
 	        Thac's RPMs for mandrake</a>
       </strong>
       (<a href="#mandrake-notes">NOTE</a>)
@@ -93,7 +93,7 @@
       7.3
     </td>
     <td>
-      <strong>Go to
+      <strong>_("Go to")
 	<a href="http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html#lilypond">Planet CCRMA</a>
       </strong>
     </td>
@@ -111,8 +111,8 @@
       9
     </td>
     <td>
-      <strong>Download
-	<a href="ftp://ftp.connection.com.br/linux/slackware-9/lilypond/lilypond-2.2.0-i386-1.tgz">tarball</a></strong>
+      <strong>_("Download")
+	<a href="ftp://ftp.connection.com.br/linux/slackware-9/lilypond/lilypond-2.2.0-i386-1.tgz">_("tarball")</a></strong>
     </td>
     <td>2.2.0</td>
     <td><a href="mailto:hoffmannATuninetDOTcomDOTbr">Ricardo Hoffmann</a></td>
@@ -155,7 +155,7 @@
   </tr>
       
   <tr bgcolor="#e8ffe8" >
-    <td></td><td colspan=6><h3>Other</h3></td>
+    <td></td><td colspan=6><h3>_("Other")</h3></td>
   </tr>
   
   <tr>
@@ -167,7 +167,7 @@
       <tt>current-unstable</tt>
     </td>
     <td>
-      <strong>  Go <a href="macos.html">here</a></strong>
+      <strong>  _("Go") <a href="macos.html">_("here")</a></strong>
     </td>
     <td>2.2.6</td>  
     <td>
@@ -179,9 +179,9 @@
     <td><img src="@IMAGES@daemon.png" alt="FreeBSD daemon"></td>
     <td>FreeBSD</td>
     <td>4, 5</td>
-    <td><strong>Go
+    <td><strong>_("Go")
 	<a
-	   href="http://foo42.de/devel/lilypond-freebsd/">here</a>
+	   href="http://foo42.de/devel/lilypond-freebsd/">_("here")</a>
       </strong>
     </td>
     <td>
@@ -199,9 +199,9 @@
     </td>
     <td>
       <!-- Bertalan's site
-	  <strong>Go <a href="http://www.inf.bme.hu/~berti/lilypond/">here</a></strong>
+	  <strong>_("Go") <a href="http://www.inf.bme.hu/~berti/lilypond/">_("here")</a></strong>
 	  !-->
-      <strong>Go <a href="windows.html">here</a></strong>
+      <strong>_("Go") <a href="windows.html">_("here")</a></strong>
     </td>
     <td>2.2.5</td>
     <td>
@@ -213,17 +213,16 @@
   
   <tr>
     <td></td>
-    <td>Source</td>
+    <td>_("Source")</td>
     <td></td>
-    <td><strong>Download 
+    <td><strong>_("Download") 
 	<a
-	   href="http://lilypond.org/download/v2.2/lilypond-2.2.6.tar.gz">tarball</a>
+	   href="http://lilypond.org/download/v2.2/lilypond-2.2.6.tar.gz">_("tarball")</a>
 	(<a href="../devel/#warning">warning</a>)
       </strong>
     </td>
     <td>
       2.2.6
     </td>
-    <td><a href="mailto:bug-lilypond@gnu.org">LilyPond development
-	team</a></td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
