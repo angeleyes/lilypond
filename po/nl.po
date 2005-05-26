@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-26 21:20+0200\n"
-"PO-Revision-Date: 2005-05-26 21:20+0200\n"
+"POT-Creation-Date: 2005-05-26 22:40+0200\n"
+"PO-Revision-Date: 2005-05-26 22:41+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -236,12 +236,8 @@ msgstr "Voeg meermaatse rusten samen"
 msgid "Transpose for F instrument"
 msgstr "Transponeer voor F-instrument"
 
-#: site/graphics/annotate-example-single-part.svg:145
-msgid "Reuse identifier"
-msgstr "Hergebruik variabele"
-
 #: scripts/format-page.py:83
-#, fuzzy, python-format
+#, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
@@ -296,3 +292,17 @@ msgstr "waarschuwing"
 #: site/install/old.ihtml:96
 msgid "Go to"
 msgstr "Ga naar"
+
+#: site/graphics/annotate-example-parts.svg:44
+#: site/graphics/annotate-example-score.svg:50
+msgid "hornNotes"
+msgstr "hoornNoten"
+
+#: site/graphics/annotate-example-parts.svg:72
+#: site/graphics/annotate-example-score.svg:54
+msgid "bassoonNotes"
+msgstr "fagotNoten"
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse variable"
+msgstr "Hergebruik variabele"

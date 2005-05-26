@@ -47,11 +47,11 @@
      x="21.182615"
      y="151.72841"
      sodipodi:role="line"
-     id="tspan1180">  \new Staff \hornNotes</tspan><tspan
+     id="tspan1180">  \new Staff \_("hornNotes")</tspan><tspan
      x="21.182615"
      y="177.72841"
      sodipodi:role="line"
-     id="tspan1182">  \new Staff \bassoonNotes</tspan><tspan
+     id="tspan1182">  \new Staff \_("bassoonNotes")</tspan><tspan
      x="21.182615"
      y="203.72841"
      sodipodi:role="line"

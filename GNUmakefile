@@ -66,6 +66,11 @@ apache-1.3.x-fixup:
 		b=$$(basename $$i .html);\
 		ln -sf $$b.html $$(dirname $$i)/$$b.en.html;\
 	done;
+	rm -f $$(find out/site -name '*.en.png')
+	for i in $$(find out/site -name '*.png' | grep -v '\...\.png'); do\
+		b=$$(basename $$i .png);\
+		ln -sf $$b.html $$(dirname $$i)/$$b.en.png;\
+	done;
 
 scripts:
 	python $(SCRIPTDIR)/big-page.py site/about/automated-engraving

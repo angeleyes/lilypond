@@ -51,7 +51,7 @@
      x="38.855011"
      y="417.21378"
      sodipodi:role="line"
-     id="tspan1164">  \transpose f c'  \hornNotes</tspan><tspan
+     id="tspan1164">  \transpose f c'  \_("hornNotes")</tspan><tspan
      x="38.855011"
      y="445.21378"
      sodipodi:role="line"
@@ -142,7 +142,7 @@ _("Transpose for F instrument")</tspan>
    id="text723">
     <tspan
    id="tspan724">
-_("Reuse identifier")</tspan>
+_("Reuse variable")</tspan>
   </text>
 
 

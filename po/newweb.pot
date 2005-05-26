@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-26 21:24+0200\n"
+"POT-Creation-Date: 2005-05-26 22:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -295,4 +295,18 @@ msgstr ""
 #: site/install/stable.ihtml:113 site/install/old.ihtml:78
 #: site/install/old.ihtml:96
 msgid "Go to"
+msgstr ""
+
+#: site/graphics/annotate-example-parts.svg:44
+#: site/graphics/annotate-example-score.svg:50
+msgid "hornNotes"
+msgstr ""
+
+#: site/graphics/annotate-example-parts.svg:72
+#: site/graphics/annotate-example-score.svg:54
+msgid "bassoonNotes"
+msgstr ""
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse variable"
 msgstr ""
