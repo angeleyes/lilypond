@@ -69,7 +69,7 @@ apache-1.3.x-fixup:
 	rm -f $$(find out/site -name '*.en.png')
 	for i in $$(find out/site -name '*.png' | grep -v '\...\.png'); do\
 		b=$$(basename $$i .png);\
-		ln -sf $$b.html $$(dirname $$i)/$$b.en.png;\
+		ln -sf $$b.png $$(dirname $$i)/$$b.en.png;\
 	done;
 
 scripts:
