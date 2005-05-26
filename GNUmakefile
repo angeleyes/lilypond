@@ -54,7 +54,17 @@ SVG = $(shell find site -name '*.svg')
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = nl
 
-all: scripts linktree menuify $(LANGUAGES)
+all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
+
+# In Apache 1.3.x, .nl always has a higher LanguagePriority than the
+# empty content-language, everyone will see the Dutch pages.
+# Adding .en pages links fixes that.
+apache-1.3.x-fixup:
+	rm -f $$(find out/site -name '*.en.html')
+	for i in $$(find out/site -name '*.html' | grep -v '\...\.html'); do\
+		b=$$(basename $$i .html);\
+		ln -sf $$b.html $$(dirname $$i)/$$b.en.html;\
+	done;
 
 scripts:
 	python $(SCRIPTDIR)/big-page.py site/about/automated-engraving
