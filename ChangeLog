@@ -1,6 +1,7 @@
 2005-05-26  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/index.html (href): opps, fink is at 2.5.23
+	(href): add link to GS compat libraries.
 
 	* site/images/cygwin.png (Module): add cygwin logo.
 
