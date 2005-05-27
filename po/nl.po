@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-26 22:40+0200\n"
+"POT-Creation-Date: 2005-05-27 16:32+0200\n"
 "PO-Revision-Date: 2005-05-26 22:41+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,6 +235,10 @@ msgstr "Voeg meermaatse rusten samen"
 #: site/graphics/annotate-example-single-part.svg:134
 msgid "Transpose for F instrument"
 msgstr "Transponeer voor F-instrument"
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse identifier"
+msgstr ""
 
 #: scripts/format-page.py:83
 #, python-format
