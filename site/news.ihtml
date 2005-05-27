@@ -21,18 +21,23 @@ Preferably: (<a href= .. >..</a>, etc. )
 
 * use a descriptive title in <dt>
 
+* Split news items in small chunks. It's OK to have more than 1 item
+on one day.
+
 
 !-->
 
+<dt>Windows and MacOS installers available <em>May 26, 2005</em></dt>
+
+<dd> There are now a native, standalone installers for Windows and
+MacOS.  They support for PDF point & click. (<a
+href="install/#2.5">Download</a>) </dd> 
+
 <dt>2.5.26 released - <em>May 26, 2005</em></dt>
 <dd>
-This release has a couple of small bugfixes. There is now a native,
-standalone installer for Windows. It includes PDF point & click
-support, if you install a PDF viewer (like adobe acrobat) yourself. A
-new MacOS X installer is also available, with drag & drop, and
-ClickEdit, a simple editor for PDF point & click
-support. (<a href="install/#2.5">Download</a>)
+This release has a couple of small bugfixes.
 </dd>
+
 
 <dt>2.5.25 released - <em>May 20, 2005</em></dt>
 <dd>
