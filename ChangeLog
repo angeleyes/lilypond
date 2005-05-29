@@ -1,3 +1,7 @@
+2005-05-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* GNUmakefile (upload): encapsulate CVS upload by CVS_COMMIT variable.
+
 2005-05-27  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: version no. for MacOS installer.

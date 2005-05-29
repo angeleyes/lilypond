@@ -117,7 +117,7 @@ out/$(outball): site
 
 WEBSERVER=lilypond.org:
 upload: site
-	cvs commit -m 'upload commit'  
+	$(if $(CVS_COMMIT), cvs commit -m 'upload commit', true)   
 	cd out/site \
 	   && chgrp -R lilypond . \
 	   && chmod -R g+w * \
