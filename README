@@ -87,17 +87,26 @@ TRANSLATION
 Get or update the sources.  See the top of README.
 
 
+STARTING A NEW LANGUAGE
+
+Type
+
+    make new LANG=<MY-LANGUAGE>
+
+eg. <MY-LANGUAGE> "nl" is Dutch, "de" German and "fr" French.
+
+
 TRANSLATE A PAGE
 
 Copy the file from site into your language tree
 
-    cp site/about/index.html nl/about/index.html
+    cp site/about/index.html <MY-LANGUAGE>/about/index.html
 
 Translate it, see UPDATE a TRANSLATION
 
 Add the page to CVS
 
-    cvs add nl/about/index.html
+    cvs add <MY-LANGUAGE>/about/index.html
 
 or send it to your CVS translation sponsor.
 
@@ -128,27 +137,23 @@ let it really preserve markup.
 #    Edit/Preferences/Composer: (X) Retain original source formatting
 #
 
+
 CHECK STATE OF TRANSLATION
 
 Running
 
-    make LANG=nl check-translation
+    make LANG=<MY-LANGUAGE> check-translation
 
 presents a diff of the original pages since the most recent revision
 of the translation.  To check a single page, run
 
-    scripts/check-translation.py nl/index.html
+    scripts/check-translation.py <MY-LANGUAGE>/index.html
 
 
 SUBMIT TO CVS
 
-    cvs ci -m 'translation update' nl/about/index.html
+    cvs ci -m 'translation update' <MY-LANGUAGE>/
 
 If you do not have CVS write access, send your translated page to your
 CVS translation sponsor, or the the lilypond-user list.
 
-
-STARTING A NEW LANGUAGE
-
-Type
-    make new LANG=nl

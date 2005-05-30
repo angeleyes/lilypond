@@ -1,3 +1,7 @@
+2005-05-31  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* README: reorganize a bit, use <MY-LANGUAGE> for nl.
+
 2005-05-30  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* scripts/format-page.py (grab_gettext*): New functions.
