@@ -188,7 +188,22 @@ def format_page (html, file_name, lang):
 		return match.group (0)
 
 	def grab_gettext (match):
+		print "gettext: %s " % match.group (0)
 		return gettext.gettext (match.group (1))
+
+	def grab_gettext1 (match):
+		s = gettext.gettext (match.group (1))
+		return s % match.group (2)
+	def grab_gettext2 (match):
+		s = gettext.gettext (match.group (1))
+		return s % (match.group (3), match.group (4))
+	def grab_gettext3 (match):
+		s = gettext.gettext (match.group (1))
+		return s % (match.group (3), match.group (4), match.group (5))
+	def grab_gettext4 (match):
+		s = gettext.gettext (match.group (1))
+		return s % (match.group (3), match.group (4),
+			    match.group (5), match.group (6))
 
 	dir = os.path.dirname (file_name)
 	dir_split = rreverse (string.split (dir, '/'))
@@ -286,6 +301,14 @@ def format_page (html, file_name, lang):
 	page = re.sub ('@DOC@', os.path.join (root_url, '../doc/'), page)
 	page = re.sub ('@IMAGES@', os.path.join (root_url, 'images/'), page)
 	page = re.sub ('_ *\("([^"]*)"\)', grab_gettext, page)
+	page = re.sub ('_ *\("([^"]*%s[^"]*)",\s*"([^"]*)"\)',
+		       grab_gettext1, page)
+	page = re.sub ('_ *\("(([^"]*%s[^"]*){2})",\s*"([^"]*)",\s*"([^"]*)"\)',
+		       grab_gettext2, page)
+	page = re.sub ('_ *\("(([^"]*%s[^"]*){3})",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)"\)',
+		       grab_gettext3, page)
+	page = re.sub ('_ *\("(([^"]*%s[^"]*){4})",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)"\)',
+		       grab_gettext4, page)
 	page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
 	# Use 0 to switch i18n off.
