@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-27 16:32+0200\n"
+"POT-Creation-Date: 2005-05-30 20:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,9 @@ msgstr ""
 
 #: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
 #: site/menu-entries.py:4 scripts/format-page.py:216
+#: scripts/format-page.py:230 scripts/format-page.py:234
+#: scripts/format-page.py:235 scripts/format-page.py:240
+#: scripts/format-page.py:231
 msgid "Home"
 msgstr ""
 
@@ -71,6 +74,12 @@ msgstr ""
 #: site/install/devel.ihtml:81 site/install/devel.ihtml:127
 #: site/install/stable.ihtml:152 site/install/stable.ihtml:253
 #: site/install/old.ihtml:114 site/install/old.ihtml:218
+#: site/install/devel.ihtml:116 site/install/stable.ihtml:150
+#: site/install/stable.ihtml:251 site/install/old.ihtml:216
+#: site/install/old.ihtml:219 site/install/devel.ihtml:85
+#: site/install/stable.ihtml:151 site/install/stable.ihtml:252
+#: site/install/old.ihtml:231 site/install/old.ihtml:232
+#: site/install/old.ihtml:235
 msgid "Download"
 msgstr ""
 
@@ -245,56 +254,29 @@ msgstr ""
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr ""
 
-#: site/install/devel.ihtml:58 site/install/stable.ihtml:168
-#: site/install/old.ihtml:158
+#: site/install/devel.ihtml:60 site/install/stable.ihtml:180
+#: site/install/old.ihtml:171 site/install/devel.ihtml:48
+#: site/install/stable.ihtml:168 site/install/old.ihtml:183
+#: site/install/old.ihtml:179
 msgid "Other"
 msgstr ""
 
-#: site/install/devel.ihtml:100 site/install/stable.ihtml:61
-#: site/install/stable.ihtml:189 site/install/stable.ihtml:201
-#: site/install/old.ihtml:47 site/install/old.ihtml:62
-#: site/install/old.ihtml:170 site/install/old.ihtml:182
-#: site/install/old.ihtml:202 site/install/old.ihtml:204
-msgid "Go"
-msgstr ""
-
-#: site/install/devel.ihtml:100 site/install/devel.ihtml:116
-#: site/install/stable.ihtml:61 site/install/stable.ihtml:189
-#: site/install/stable.ihtml:203 site/install/stable.ihtml:219
-#: site/install/stable.ihtml:237 site/install/stable.ihtml:239
-#: site/install/old.ihtml:47 site/install/old.ihtml:62
-#: site/install/old.ihtml:170 site/install/old.ihtml:184
-#: site/install/old.ihtml:202 site/install/old.ihtml:204
-msgid "here"
-msgstr ""
-
-#: site/install/devel.ihtml:116
-msgid "Download the installer"
-msgstr ""
-
-#: site/install/devel.ihtml:119 site/install/devel.ihtml:134
-#: site/install/stable.ihtml:159 site/install/old.ihtml:227
+#: site/install/devel.ihtml:52 site/install/devel.ihtml:89
+#: site/install/devel.ihtml:123 site/install/devel.ihtml:139
+#: site/install/stable.ihtml:172 site/install/stable.ihtml:274
+#: site/install/old.ihtml:246 site/install/devel.ihtml:42
+#: site/install/devel.ihtml:69 site/install/devel.ihtml:103
+#: site/install/devel.ihtml:119 site/install/stable.ihtml:162
+#: site/install/stable.ihtml:254 site/install/old.ihtml:259
+#: site/install/old.ihtml:255
 msgid "LilyPond development team"
 msgstr ""
 
-#: site/install/devel.ihtml:125 site/install/stable.ihtml:251
-#: site/install/old.ihtml:216
-msgid "Source"
-msgstr ""
-
-#: site/install/devel.ihtml:129 site/install/stable.ihtml:255
-#: site/install/old.ihtml:115 site/install/old.ihtml:220
-msgid "tarball"
-msgstr ""
-
-#: site/install/devel.ihtml:130
+#: site/install/devel.ihtml:135 site/install/stable.ihtml:268
+#: site/install/old.ihtml:240 site/install/devel.ihtml:115
+#: site/install/stable.ihtml:248 site/install/old.ihtml:253
+#: site/install/old.ihtml:249
 msgid "warning"
-msgstr ""
-
-#: site/install/stable.ihtml:75 site/install/stable.ihtml:94
-#: site/install/stable.ihtml:113 site/install/old.ihtml:78
-#: site/install/old.ihtml:96
-msgid "Go to"
 msgstr ""
 
 #: site/graphics/annotate-example-parts.svg:44
@@ -309,4 +291,98 @@ msgstr ""
 
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse variable"
+msgstr ""
+
+#: site/install/devel.ihtml:46 site/install/devel.ihtml:51
+#: site/install/devel.ihtml:49 site/install/stable.ihtml:169
+#: site/install/old.ihtml:86 site/install/old.ihtml:89
+#: site/install/devel.ihtml:39 site/install/stable.ihtml:159
+#: site/install/old.ihtml:96 site/install/old.ihtml:92
+msgid "NOTE"
+msgstr ""
+
+#: site/install/stable.ihtml:43 site/install/old.ihtml:30
+#: site/install/old.ihtml:164 site/install/stable.ihtml:33
+#: site/install/old.ihtml:37 site/install/old.ihtml:33
+msgid "Included with distribution"
+msgstr ""
+
+#: site/install/devel.ihtml:129 site/install/stable.ihtml:264
+#: site/install/old.ihtml:234 site/install/devel.ihtml:109
+#: site/install/stable.ihtml:244 site/install/old.ihtml:247
+#: site/install/old.ihtml:243
+msgid "Source code"
+msgstr ""
+
+#: site/install/devel.ihtml:78 site/install/devel.ihtml:58
+#, c-format
+msgid "%s and newer"
+msgstr ""
+
+#: site/install/devel.ihtml:133 site/install/stable.ihtml:266
+#: site/install/old.ihtml:125 site/install/old.ihtml:238
+#: site/install/devel.ihtml:113 site/install/stable.ihtml:246
+#: site/install/old.ihtml:132 site/install/old.ihtml:251
+#: site/install/old.ihtml:128 site/install/old.ihtml:247
+#, c-format
+msgid "Download <a href='%s'>tarball</a>"
+msgstr ""
+
+#: site/install/devel.ihtml:102 site/install/stable.ihtml:64
+#: site/install/stable.ihtml:201 site/install/stable.ihtml:214
+#: site/install/stable.ihtml:231 site/install/stable.ihtml:250
+#: site/install/stable.ihtml:252 site/install/old.ihtml:49
+#: site/install/old.ihtml:67 site/install/old.ihtml:184
+#: site/install/old.ihtml:197 site/install/old.ihtml:219
+#: site/install/old.ihtml:221 site/install/devel.ihtml:82
+#: site/install/stable.ihtml:54 site/install/stable.ihtml:181
+#: site/install/stable.ihtml:194 site/install/stable.ihtml:211
+#: site/install/stable.ihtml:230 site/install/stable.ihtml:232
+#: site/install/old.ihtml:56 site/install/old.ihtml:74
+#: site/install/old.ihtml:210 site/install/old.ihtml:232
+#: site/install/old.ihtml:234 site/install/old.ihtml:52
+#: site/install/old.ihtml:70 site/install/old.ihtml:193
+#: site/install/old.ihtml:206 site/install/old.ihtml:228
+#: site/install/old.ihtml:230
+#, c-format
+msgid "Go <a href='%s'>here</a>"
+msgstr ""
+
+#: site/install/stable.ihtml:144 site/install/old.ihtml:143
+#: site/install/stable.ihtml:134 site/install/old.ihtml:150
+#: site/install/old.ihtml:172 site/install/old.ihtml:146
+#: site/install/old.ihtml:168
+#, c-format
+msgid "Included <a href='%s'>with distribution</a>"
+msgstr ""
+
+#: site/install/devel.ihtml:42 site/install/devel.ihtml:82
+#: site/install/stable.ihtml:164 site/install/devel.ihtml:32
+#: site/install/devel.ihtml:62 site/install/stable.ihtml:154
+#, c-format
+msgid "Download <a href='%s'>%s</a>"
+msgstr ""
+
+#: site/install/devel.ihtml:45 site/install/stable.ihtml:167
+#: site/install/devel.ihtml:35 site/install/stable.ihtml:157
+msgid "documentation"
+msgstr ""
+
+#: site/install/devel.ihtml:118 site/install/devel.ihtml:98
+#, c-format
+msgid "Download the installer <a href='%s'>here</a>"
+msgstr ""
+
+#: site/install/stable.ihtml:81 site/install/stable.ihtml:103
+#: site/install/stable.ihtml:124 site/install/old.ihtml:85
+#: site/install/old.ihtml:105 site/install/stable.ihtml:71
+#: site/install/stable.ihtml:93 site/install/stable.ihtml:114
+#: site/install/old.ihtml:92 site/install/old.ihtml:112
+#: site/install/old.ihtml:88 site/install/old.ihtml:108
+#, c-format
+msgid "Go to <a href='%s'>%s</a>"
+msgstr ""
+
+#: site/install/devel.ihtml:47 site/install/devel.ihtml:37
+msgid "compatibility libraries"
 msgstr ""

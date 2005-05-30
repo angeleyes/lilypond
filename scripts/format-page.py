@@ -188,7 +188,6 @@ def format_page (html, file_name, lang):
 		return match.group (0)
 
 	def grab_gettext (match):
-		print "gettext: %s " % match.group (0)
 		return gettext.gettext (match.group (1))
 
 	def grab_gettext1 (match):

@@ -1,3 +1,4 @@
+<!-- -*-html-*- !-->
 <!-- use this as template for new entry
   <tr>
     <th></th>
@@ -9,20 +10,10 @@
   </tr>
 !-->
  
-  <tr bgcolor="#e8ffe8">
-    <td>
-    </td>
-    
-    <td>
-      <font size="+1"><strong>GNU/Linux</strong></font>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
+  <tr bgcolor="#e8ffe8" >
+    <td></td>
+    <td colspan="6">
+      <h3>GNU/Linux</h3>
     </td>
   </tr>
 
@@ -33,37 +24,28 @@
       </p>
     </td>
     <td>
-      Fedora Core </td> <td> 3 </td> <td><strong>_("Download") <a
-    href="http://lilypond.org/download/binaries/Fedora-3/lilypond-2.5.26-1.i386.rpm">lilypond</a>,
-    <a
-    href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.5.26-1.i386.rpm">documentation</a>,
-    <a
-    href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-8.15rc3-0.i386.rpm">ghostscript</a>,
-
-        <a
-    href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-libs-7.07-41.i386.rpm">compatibility libraries</a>
-	   	   </strong>
-      (<a href="#gs815">NOTE</a>)
+      Fedora Core
+    </td>
+    <td>3</td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>%s</a>",
+	"http://lilypond.org/download/binaries/Fedora-3/lilypond-2.5.26-1.i386.rpm",
+	"LilyPond"),
+	<a href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.5.26-1.i386.rpm">_("documentation")</a>,
+	<a href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-8.15rc3-0.i386.rpm">Ghostscript</a>,
+	<a href="http://lilypond.org/download/binaries/Fedora-3/ghostscript-libs-7.07-41.i386.rpm">_("compatibility libraries")</a>
+      </strong>
+      (<a href="#gs815">_("NOTE")</a>)
     </td>
     <td>2.5.26</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">LilyPond development team</a></td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
-
-  <tr bgcolor="#e8ffe8">
-    <td>
-    </td>
-    
-    <td>
-      <font size="+1"><strong>_("Other")</strong></font>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
-    </td>
-    <td>
+  <tr bgcolor="#e8ffe8" >
+    <td></td>
+    <td colspan="6">
+      <h3>_("Other")</h3>
     </td>
   </tr>
   
@@ -73,18 +55,18 @@
       MacOS X
     </td>
     <td>
-      10.3 and later
+      _("%s and newer", "10.3")
     </td>
     <td>
-    
       <strong>
-      _("Download") <a
-    href="http://lilypond.org/download/binaries/MacOS/lilypond-2.5.26.zip">
-    lilypond</a></strong>
+	_("Download <a href='%s'>%s</a>",
+	"http://lilypond.org/download/binaries/MacOS/lilypond-2.5.26.zip",
+	"LilyPond")
+      </strong>
     </td>
     <td>2.5.26</td>  
     <td>
-          <a href="mailto:bug-lilypond@gnu.org">LilyPond development team</a>
+      <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
   </tr>
 
@@ -97,7 +79,7 @@
       <tt>current-unstable</tt>
     </td>
     <td>
-      <strong>_("Go") <a href="macos.html">_("here")</a></strong>
+      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
     </td>
     <td>2.5.23</td>  
     <td>
@@ -105,15 +87,17 @@
     </td> 
   </tr>
 
-  
   <tr>
     <td><p align="center"><img src="@IMAGES@windows.png"></p></td>
-    <td>MS Windows</td>
+    <td>Microsoft Windows</td>
     <td>
-      <!--  Curr--> 
+      NT, 98, 2000, ME, XP
     </td>
     <td>
-      <strong>_("Download the installer") <a href=" http://lilypond.org/mingw/setup.exe">_("here")</a></strong>
+      <strong>
+	_("Download the installer <a href='%s'>here</a>",
+	"http://lilypond.org/mingw/setup.exe")
+      </strong>
     </td>
     <td>2.5.26</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
@@ -122,11 +106,12 @@
 
   <tr>
     <td></td>
-    <td>_("Source")</td>
+    <td>_("Source code")</td>
     <td></td>
-    <td><strong>_("Download") 
-	<a
-	   href="http://lilypond.org/download/v2.5/lilypond-2.5.26.tar.gz">_("tarball")</a>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/v2.5/lilypond-2.5.26.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
