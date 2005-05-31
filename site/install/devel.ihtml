@@ -96,7 +96,7 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/mingw/setup.exe")
+	"http://lilypond.org/mingw/setup.exe",
 	"http://lilypond.org/mingw/upgrade.exe")
       </strong>
     </td>
