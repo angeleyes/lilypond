@@ -1,7 +1,7 @@
 <!--
     Translation of CVS $Revision$
     
-    Translators must leave this comment in tact, but remove any dollar
+    Translators must leave this comment intact, but remove any dollar
     signs ($) from the CVS Revision indicator.
 
     When revising a translation, copy the CVS Revision number from the
@@ -26,6 +26,14 @@ on one day.
 
 
 !-->
+
+<dt>2.5.27 released - <em>May 31, 2005</em></dt>
+<dd>
+It has a big bunch of minor bugfixes.  This is another release
+candidate for version 2.6, which should be released within the next 2
+weeks. Please send bug report if you find a critical problem with this
+release. (<a href="install/#2.5">Download</a>)
+</dd>
 
 <dt>Windows and MacOS installers available - <em>May 26, 2005</em></dt>
 

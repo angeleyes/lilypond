@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-31 21:53+0200\n"
+"POT-Creation-Date: 2005-05-31 18:47-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,7 +269,7 @@ msgstr ""
 #: site/install/devel.ihtml:119 site/install/stable.ihtml:162
 #: site/install/stable.ihtml:254 site/install/old.ihtml:259
 #: site/install/old.ihtml:255 site/install/devel.ihtml:104
-#: site/install/devel.ihtml:120
+#: site/install/devel.ihtml:120 site/install/devel.ihtml:88
 msgid "LilyPond development team"
 msgstr ""
 
@@ -277,6 +277,7 @@ msgstr ""
 #: site/install/old.ihtml:240 site/install/devel.ihtml:115
 #: site/install/stable.ihtml:248 site/install/old.ihtml:253
 #: site/install/old.ihtml:249 site/install/devel.ihtml:116
+#: site/install/devel.ihtml:119
 msgid "warning"
 msgstr ""
 
@@ -312,6 +313,7 @@ msgstr ""
 #: site/install/old.ihtml:234 site/install/devel.ihtml:109
 #: site/install/stable.ihtml:244 site/install/old.ihtml:247
 #: site/install/old.ihtml:243 site/install/devel.ihtml:110
+#: site/install/devel.ihtml:113
 msgid "Source code"
 msgstr ""
 
@@ -325,7 +327,7 @@ msgstr ""
 #: site/install/devel.ihtml:113 site/install/stable.ihtml:246
 #: site/install/old.ihtml:132 site/install/old.ihtml:251
 #: site/install/old.ihtml:128 site/install/old.ihtml:247
-#: site/install/devel.ihtml:114
+#: site/install/devel.ihtml:114 site/install/devel.ihtml:117
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr ""
@@ -345,7 +347,7 @@ msgstr ""
 #: site/install/old.ihtml:234 site/install/old.ihtml:52
 #: site/install/old.ihtml:70 site/install/old.ihtml:193
 #: site/install/old.ihtml:206 site/install/old.ihtml:228
-#: site/install/old.ihtml:230
+#: site/install/old.ihtml:230 site/install/devel.ihtml:101
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr ""
@@ -397,7 +399,7 @@ msgstr ""
 msgid "Cygwin"
 msgstr ""
 
-#: site/install/devel.ihtml:98
+#: site/install/devel.ihtml:98 site/install/devel.ihtml:82
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 msgstr ""
