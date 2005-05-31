@@ -95,8 +95,9 @@
     </td>
     <td>
       <strong>
-	_("Download the installer <a href='%s'>here</a>",
+	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
 	"http://lilypond.org/mingw/setup.exe")
+	"http://lilypond.org/mingw/upgrade.exe")
       </strong>
     </td>
     <td>2.5.26</td>
