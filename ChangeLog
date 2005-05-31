@@ -1,5 +1,9 @@
 2005-05-31  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/install/windows.html: mention Cygwin.
+
+	* site/install/macos.html:  mention Fink.
+
 	* site/install/menu-entries.py: change entry names. to Fink/Cygwin. 
 
 	* site/install/devel.ihtml: change to .dmg 
