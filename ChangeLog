@@ -1,3 +1,9 @@
+2005-05-31  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/menu-entries.py: change entry names. to Fink/Cygwin. 
+
+	* site/install/devel.ihtml: change to .dmg 
+
 2005-05-31  Graham Percival  <gperlist@shaw.ca>
 
 	* site/documentation.html: add link to LSR.

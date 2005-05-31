@@ -1,6 +1,6 @@
 [
-  ("macos.html", _ ("MacOS X")),
-  ("windows.html", _ ("Windows")),
+  ("macos.html", _ ("Fink")),
+  ("windows.html", _ ("Cygwin")),
   ("getting-started.html", _ ("First use")),
   ("using.html", _ ("User help")),
   ]
