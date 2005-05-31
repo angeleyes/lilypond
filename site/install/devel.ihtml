@@ -70,22 +70,6 @@
     </td> 
   </tr>
 
-  <tr>
-    <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
-    <td>
-      MacOS X/Fink
-    </td>
-    <td>
-      <tt>current-unstable</tt>
-    </td>
-    <td>
-      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
-    </td>
-    <td>2.5.23</td>  
-    <td>
-      <a href="http://homepage.mac.com/neeracher/contact.html">Matthias Neeracher</a>
-    </td> 
-  </tr>
 
   <tr>
     <td><p align="center"><img src="@IMAGES@windows.png"></p></td>
@@ -103,6 +87,25 @@
     <td>2.5.26</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
     </td>
+  </tr>
+
+  <tr>
+    <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
+    <td>
+      MacOS X/Fink
+    </td>
+    <td>
+      <tt>current-unstable</tt>
+    </td>
+    <td>
+      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
+    </td>
+    <td>2.5.23</td>  
+    <td>
+      <a
+    href="http://homepage.mac.com/neeracher/contact.html">Matthias
+    Neeracher</a>
+    </td> 
   </tr>
 
   <tr>
