@@ -181,7 +181,7 @@ def format_page (html, file_name, lang):
 
 	def grab_ihtml (match):
 		s = match.group (1)
-		for d in (dir, dir_lang (dir, lang), dir_lang (dir, C)):
+		for d in (dir, dir_lang (dir, lang), dir_lang (dir, C), lang, C):
 			n = os.path.join (d, s)
 			if os.path.exists (n):
 				return open (n).read ()
