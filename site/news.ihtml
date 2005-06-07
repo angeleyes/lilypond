@@ -27,6 +27,14 @@ on one day.
 
 !-->
 
+<dt>2.5.29 released - <em>June 7, 2005</em></dt>
+<dd>
+In this release the documentation also has pictures. In addition, the
+Mac version can also read native mac fonts (.dfonts and fonts in
+resource forks). (<a href="install/#2.5">Download</a>)
+</dd>
+
+
 <dt>2.5.27 released - <em>May 31, 2005</em></dt>
 <dd>
 It has a big bunch of minor bugfixes.  This is another release
@@ -36,22 +44,10 @@ release. (<a href="install/#2.5">Download</a>)
 </dd>
 
 <dt>Windows and MacOS installers available - <em>May 26, 2005</em></dt>
-
 <dd> There are now a native, standalone installers for Windows and
 MacOS.  They also support PDF point & click. (<a
 href="install/#2.5">Download</a>) </dd>
 
-<dt>2.5.26 released - <em>May 26, 2005</em></dt>
-<dd>
-This release has a couple of small bugfixes.
-</dd>
-
-
-<dt>2.5.25 released - <em>May 20, 2005</em></dt>
-<dd>
-This release has many small bugfixes and updates to the
-documentation. (<a href="install/#2.5">Download</a>)
-</dd>
 
 
 </dl>
