@@ -1,3 +1,11 @@
+2005-06-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* GNUmakefile (upload): separate rule for permissions.
+	
+2005-06-07  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/news.ihtml (Preferably): typo.
+
 2005-06-04  Graham Percival  <gperlist@shaw.ca>
 
 	* site/devel/participating/documentation-adding.html: update

@@ -118,10 +118,11 @@ out/$(outball): site
 WEBSERVER=lilypond.org:
 upload: site
 	$(if $(CVS_COMMIT), cvs commit -m 'upload commit', true)   
-	cd out/site \
+	-cd out/site \
 	   && chgrp -R lilypond . \
 	   && chmod -R g+w * \
-	   && chmod 2775 . $$(find . -type d) \
+	   && chmod 2775 . $$(find . -type d)
+	cd out/site \
 	   && rsync -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
 # do not --delete, lilypond.org has no inkscape, transated pngs will be removed
 #	   && rsync --delete -go --stats --progress -rltvu . $(WEBSERVER)/var/www/lilypond/web/
