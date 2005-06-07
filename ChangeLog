@@ -1,5 +1,7 @@
 2005-06-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/install/devel.ihtml: announce .29 for mac too.
+
 	* GNUmakefile (upload): separate rule for permissions.
 	
 2005-06-07  Han-Wen Nienhuys  <hanwen@xs4all.nl>
