@@ -94,6 +94,10 @@ Type
     make new LANG=<MY-LANGUAGE>
 
 eg. <MY-LANGUAGE> "nl" is Dutch, "de" German and "fr" French.
+Add <MY-LANGUAGE> to
+
+  * scripts/translate.py
+  * scripts/format-page.py
 
 
 TRANSLATE A PAGE

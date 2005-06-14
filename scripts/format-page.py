@@ -16,6 +16,7 @@ C = 'site'
 LANGUAGES = (
 	(C, 'English'),
 	('nl', 'Nederlands'),
+	('fr', 'Fran&ccedil;ais')
 	)
 
 localedir = 'out/locale'
@@ -258,6 +259,8 @@ def format_page (html, file_name, lang):
 	language_menu = ''
 	for (prefix, name) in available:
 		lang_file = file_lang (base_name, prefix)
+		if language_menu <> '':
+			language_menu += ', '
 		language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
 
 	languages = ''

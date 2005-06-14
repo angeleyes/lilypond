@@ -1,3 +1,10 @@
+2005-06-14  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* scripts/format-page.py (LANGUAGES): add french
+	(grab_gettext4): add comma's between languages. 
+
+	* GNUmakefile: use foreach template for language targets.
+
 2005-06-10  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml (Module): announce .30

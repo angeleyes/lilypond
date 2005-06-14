@@ -1,5 +1,9 @@
 # -*-makefile-*-
-.PHONY: all clean dist menuify nl out scripts site TAGS tree
+
+# Do not publish non-polished or non-finished or outdated translations.
+LANGUAGES = nl fr
+
+.PHONY: all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
 
 PYTHON = python
 SCRIPTS = $(wildcard *.py *.scm) 
@@ -9,6 +13,7 @@ VERSION = 1.0
 DISTDIR = lily-web-$(VERSION)
 
 FILES = GNUmakefile newweb.css $(HTML) $(NON_HTML) $(SCRIPTS) 
+MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify
 
 outball = site.tar.gz
 
@@ -52,9 +57,6 @@ TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
-# Do not publish non-polished or non-finished or outdated translations.
-LANGUAGES = nl
-
 all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
 
 # In Apache 1.3.x, .nl always has a higher LanguagePriority than the
@@ -85,8 +87,14 @@ po/newweb.pot: $(PY) $(SVG) $(IHTML)
 	xgettext --default-domain=newweb --language=python --keyword=_ --join --output=$@ $(PY) $(SVG)
 	xgettext --default-domain=newweb --language=c --keyword=_ --keyword=_@ --join --output=$@  $(IHTML)
 
-nl:
-	$(MAKE) LANG=$@ png menuify
+
+
+define LANGUAGE_template
+$(1):
+	$(MAKE) LANG=$(1) png menuify
+endef
+
+$(foreach lang,$(LANGUAGES),$(eval $(call LANGUAGE_template,$(lang))))
 
 check-translation:
 	python $(SCRIPTDIR)/check-translation.py $(HTML)

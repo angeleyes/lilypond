@@ -9,6 +9,8 @@ import sys
 
 LANGUAGES = (
 	'nl',
+	'fr',
+	
 	)
 
 outdir = '/tmp'
