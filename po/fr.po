@@ -1,0 +1,406 @@
+# fr.po -- LilyPond French website language.
+# Copyright (C) 2005 Jean-Charles Malahieude <lilyfan@wanadoo.fr>,
+#  John Mandereau <john.mandereau@free.fr>.
+# This file is distributed under the same license as the LilyPond package.
+# Jean-Charles Malahieude <lilyfan@wanadoo.fr>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-06-14 12:54+0200\n"
+"PO-Revision-Date: 2005-06-12 19:39+0200\n"
+"Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
+#: site/menu-entries.py:4 scripts/format-page.py:216
+#: scripts/format-page.py:230 scripts/format-page.py:234
+#: scripts/format-page.py:235 scripts/format-page.py:240
+#: scripts/format-page.py:231
+msgid "Home"
+msgstr "Accueil"
+
+#: scripts/format-page.py:87 scripts/format-page.py:82
+#: scripts/format-page.py:83
+#, python-format
+msgid "Other languages: %s."
+msgstr "Autres langues : %s."
+
+#: scripts/format-page.py:88 scripts/format-page.py:83
+#, python-format
+msgid "Using <A HREF='%s'>automatic language selection</A>."
+msgstr "Utiliser la <A HREF='%s'>sélection automatique de la langue</A>."
+
+#: site/about/menu-entries.py:2
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: site/about/menu-entries.py:3
+msgid "FAQ"
+msgstr "Foire aux questions"
+
+#: site/about/menu-entries.py:4
+msgid "Essay"
+msgstr "Essai"
+
+#: site/about/menu-entries.py:5
+msgid "Publications"
+msgstr "Publications"
+
+#: site/about/menu-entries.py:6
+msgid "Donate"
+msgstr "Faire un don"
+
+#: site/about/menu-entries.py:7
+msgid "Acknowledgements"
+msgstr "Remerciements"
+
+#: site/about/news/menu-entries.py:2
+msgid "Older news"
+msgstr "Annonces précédentes"
+
+#: site/menu-entries.py:5
+msgid "Introduction"
+msgstr "Introduction"
+
+#: site/menu-entries.py:6
+msgid "About"
+msgstr "À propos"
+
+#: site/menu-entries.py:7 site/install/devel.ihtml:36
+#: site/install/devel.ihtml:81 site/install/devel.ihtml:127
+#: site/install/stable.ihtml:152 site/install/stable.ihtml:253
+#: site/install/old.ihtml:114 site/install/old.ihtml:218
+#: site/install/devel.ihtml:116 site/install/stable.ihtml:150
+#: site/install/stable.ihtml:251 site/install/old.ihtml:216
+#: site/install/old.ihtml:219 site/install/devel.ihtml:85
+#: site/install/stable.ihtml:151 site/install/stable.ihtml:252
+#: site/install/old.ihtml:231 site/install/old.ihtml:232
+#: site/install/old.ihtml:235
+msgid "Download"
+msgstr "Téléchargement"
+
+#: site/menu-entries.py:8 site/devel/participating/menu-entries.py:3
+msgid "Documentation"
+msgstr "Documentation"
+
+#: site/menu-entries.py:9
+msgid "Development"
+msgstr "Développement"
+
+#: site/devel/menu-entries.py:2
+msgid "Participate"
+msgstr "Participer"
+
+#: site/devel/menu-entries.py:3
+msgid "Packaging"
+msgstr "Empaqueter"
+
+#: site/devel/misc/menu-entries.py:2
+msgid "Finale ETF format"
+msgstr "Format Finale ETF"
+
+#: site/devel/misc/menu-entries.py:3
+msgid "Conferences relevant to LilyPond"
+msgstr "Conférences en relation avec LilyPond"
+
+#: site/devel/misc/menu-entries.py:4
+msgid "Related online resources"
+msgstr "Ressources en ligne"
+
+#: site/devel/notation/menu-entries.py:2
+msgid "appogiatura"
+msgstr "appogiature"
+
+#: site/devel/notation/menu-entries.py:3
+msgid "Basso Continuo"
+msgstr "Basse Continue"
+
+#: site/devel/notation/menu-entries.py:4
+msgid "Color"
+msgstr "Couleur"
+
+#: site/devel/notation/menu-entries.py:5
+msgid "Ligature"
+msgstr "Ligature"
+
+#: site/devel/participating/menu-entries.py:2
+msgid "Help wanted!"
+msgstr "À l'aide !"
+
+#: site/devel/participating/menu-entries.py:3
+#: site/devel/participating/menu-entries.py:4
+msgid "Localization"
+msgstr "Localisation"
+
+#: site/devel/participating/menu-entries.py:4
+#: site/devel/participating/menu-entries.py:5
+msgid "Standards"
+msgstr "Standards"
+
+#: site/download/windows/menu-entries.py:2
+msgid " Cygwin"
+msgstr "Cygwin"
+
+#: site/download/windows/menu-entries.py:3
+msgid "Troubleshooting"
+msgstr "Résolution de problèmes"
+
+#: site/download/menu-entries.py:2 site/install/menu-entries.py:2
+msgid "MacOS X"
+msgstr "MacOS X"
+
+#: site/download/menu-entries.py:3 site/install/menu-entries.py:3
+msgid "Windows"
+msgstr "Windows"
+
+#: site/download/menu-entries.py:4 site/install/menu-entries.py:4
+msgid "First use"
+msgstr "Première utilisation"
+
+#: site/download/menu-entries.py:5 site/install/menu-entries.py:5
+msgid "User help"
+msgstr "Aide pour l'utilisateur"
+
+#: site/switch/menu-entries.py:2
+msgid "Why use LilyPond?"
+msgstr "Pourquoi utiliser LilyPond ?"
+
+#: site/switch/menu-entries.py:3
+msgid "Testimonials"
+msgstr "Témoignages"
+
+#: site/switch/menu-entries.py:4
+msgid "A short tour"
+msgstr "Un rapide coup d'oeil"
+
+#: site/switch/menu-entries.py:5
+msgid "Crash course"
+msgstr "Cours express"
+
+#: site/graphics/annotate-example-1.svg:195
+msgid "Commands start with \\"
+msgstr "Les commandes sont précédées d'un \\"
+
+#: site/graphics/annotate-example-1.svg:205
+msgid "Letters are notes"
+msgstr "Les lettres représentent les notes"
+
+#: site/graphics/annotate-example-1.svg:227
+msgid "Numbers are durations"
+msgstr "Les chiffres annoncent la durée"
+
+#: site/graphics/annotate-example-2.svg:181
+msgid "Add articulations"
+msgstr "Ajouter des articulations"
+
+#: site/graphics/annotate-example-2.svg:191
+msgid "Add -es for flat, -is for sharp"
+msgstr "Ajouter -es pour un bémol, -is pour un dièse"
+
+#: site/graphics/annotate-example-2.svg:201
+msgid "Enclose pitches in &lt; &gt; for chords"
+msgstr "Inclure les notes entre &lt; &gt; pour des accords"
+
+#: site/graphics/annotate-example-lead.svg:160
+msgid "Enter chord names"
+msgstr "Entrer le nom des accords"
+
+#: site/graphics/annotate-example-lead.svg:170
+msgid "Enter melody"
+msgstr "Entrer la mélodie"
+
+#: site/graphics/annotate-example-lead.svg:177
+msgid "Enter lyrics"
+msgstr "Entrer les paroles"
+
+#: site/graphics/annotate-example-lead.svg:196
+msgid "Combine melody and lyrics"
+msgstr "Combiner la mélodie et les paroles"
+
+#: site/graphics/annotate-example-parts.svg:165
+msgid "Enter multi-rest"
+msgstr "Entrer des mesures à compter"
+
+#: site/graphics/annotate-example-parts.svg:178
+msgid "Store notes in variable"
+msgstr "Stocker des notes sous forme de variable"
+
+#: site/graphics/annotate-example-score.svg:115
+msgid "Create staff"
+msgstr "Créer une portée"
+
+#: site/graphics/annotate-example-score.svg:126
+msgid "Combine staffs in parallel"
+msgstr "Regrouper des portées dans un système"
+
+#: site/graphics/annotate-example-single-part.svg:120
+msgid "Condense multi-rests"
+msgstr "Condenser les mesures à compter"
+
+#: site/graphics/annotate-example-single-part.svg:134
+msgid "Transpose for F instrument"
+msgstr "Transposer pour un instrument en fa"
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse identifier"
+msgstr "Réutiliser un identificateur"
+
+#: scripts/format-page.py:83 scripts/format-page.py:84
+#, python-format
+msgid "About <A HREF='%s'>automatic language selection</A>."
+msgstr "À propos de la <HREF='%s'>séléction automatique de la langue</A>."
+
+#: site/install/devel.ihtml:60 site/install/stable.ihtml:180
+#: site/install/old.ihtml:171 site/install/devel.ihtml:48
+#: site/install/stable.ihtml:168 site/install/old.ihtml:183
+#: site/install/old.ihtml:179
+msgid "Other"
+msgstr "Autre"
+
+#: site/install/devel.ihtml:52 site/install/devel.ihtml:89
+#: site/install/devel.ihtml:123 site/install/devel.ihtml:139
+#: site/install/stable.ihtml:172 site/install/stable.ihtml:274
+#: site/install/old.ihtml:246 site/install/devel.ihtml:42
+#: site/install/devel.ihtml:69 site/install/devel.ihtml:103
+#: site/install/devel.ihtml:119 site/install/stable.ihtml:162
+#: site/install/stable.ihtml:254 site/install/old.ihtml:259
+#: site/install/old.ihtml:255 site/install/devel.ihtml:104
+#: site/install/devel.ihtml:120 site/install/devel.ihtml:88
+msgid "LilyPond development team"
+msgstr "Équipe de développement de LilyPond"
+
+#: site/install/devel.ihtml:135 site/install/stable.ihtml:268
+#: site/install/old.ihtml:240 site/install/devel.ihtml:115
+#: site/install/stable.ihtml:248 site/install/old.ihtml:253
+#: site/install/old.ihtml:249 site/install/devel.ihtml:116
+#: site/install/devel.ihtml:119
+msgid "warning"
+msgstr "avertissement"
+
+#: site/graphics/annotate-example-parts.svg:44
+#: site/graphics/annotate-example-score.svg:50
+msgid "hornNotes"
+msgstr "notesCor"
+
+#: site/graphics/annotate-example-parts.svg:72
+#: site/graphics/annotate-example-score.svg:54
+msgid "bassoonNotes"
+msgstr "notesBasson"
+
+#: site/graphics/annotate-example-single-part.svg:145
+msgid "Reuse variable"
+msgstr "Réutiliser une variable"
+
+#: site/install/devel.ihtml:46 site/install/devel.ihtml:51
+#: site/install/devel.ihtml:49 site/install/stable.ihtml:169
+#: site/install/old.ihtml:86 site/install/old.ihtml:89
+#: site/install/devel.ihtml:39 site/install/stable.ihtml:159
+#: site/install/old.ihtml:96 site/install/old.ihtml:92
+msgid "NOTE"
+msgstr "NOTE"
+
+#: site/install/stable.ihtml:43 site/install/old.ihtml:30
+#: site/install/old.ihtml:164 site/install/stable.ihtml:33
+#: site/install/old.ihtml:37 site/install/old.ihtml:33
+msgid "Included with distribution"
+msgstr "Inclus dans la distribution"
+
+#: site/install/devel.ihtml:129 site/install/stable.ihtml:264
+#: site/install/old.ihtml:234 site/install/devel.ihtml:109
+#: site/install/stable.ihtml:244 site/install/old.ihtml:247
+#: site/install/old.ihtml:243 site/install/devel.ihtml:110
+#: site/install/devel.ihtml:113
+msgid "Source code"
+msgstr "Code source"
+
+#: site/install/devel.ihtml:78 site/install/devel.ihtml:58
+#, c-format
+msgid "%s and newer"
+msgstr "%s et plus récent"
+
+#: site/install/devel.ihtml:133 site/install/stable.ihtml:266
+#: site/install/old.ihtml:125 site/install/old.ihtml:238
+#: site/install/devel.ihtml:113 site/install/stable.ihtml:246
+#: site/install/old.ihtml:132 site/install/old.ihtml:251
+#: site/install/old.ihtml:128 site/install/old.ihtml:247
+#: site/install/devel.ihtml:114 site/install/devel.ihtml:117
+#, c-format
+msgid "Download <a href='%s'>tarball</a>"
+msgstr "Télécharger <a href='%s'>l'archive</a>"
+
+#: site/install/devel.ihtml:102 site/install/stable.ihtml:64
+#: site/install/stable.ihtml:201 site/install/stable.ihtml:214
+#: site/install/stable.ihtml:231 site/install/stable.ihtml:250
+#: site/install/stable.ihtml:252 site/install/old.ihtml:49
+#: site/install/old.ihtml:67 site/install/old.ihtml:184
+#: site/install/old.ihtml:197 site/install/old.ihtml:219
+#: site/install/old.ihtml:221 site/install/devel.ihtml:82
+#: site/install/stable.ihtml:54 site/install/stable.ihtml:181
+#: site/install/stable.ihtml:194 site/install/stable.ihtml:211
+#: site/install/stable.ihtml:230 site/install/stable.ihtml:232
+#: site/install/old.ihtml:56 site/install/old.ihtml:74
+#: site/install/old.ihtml:210 site/install/old.ihtml:232
+#: site/install/old.ihtml:234 site/install/old.ihtml:52
+#: site/install/old.ihtml:70 site/install/old.ihtml:193
+#: site/install/old.ihtml:206 site/install/old.ihtml:228
+#: site/install/old.ihtml:230 site/install/devel.ihtml:101
+#, c-format
+msgid "Go <a href='%s'>here</a>"
+msgstr "Aller <a href='s'>là</a>"
+
+#: site/install/stable.ihtml:144 site/install/old.ihtml:143
+#: site/install/stable.ihtml:134 site/install/old.ihtml:150
+#: site/install/old.ihtml:172 site/install/old.ihtml:146
+#: site/install/old.ihtml:168
+#, c-format
+msgid "Included <a href='%s'>with distribution</a>"
+msgstr "Inclus dans <a href='%s'>la distribution</a>"
+
+#: site/install/devel.ihtml:42 site/install/devel.ihtml:82
+#: site/install/stable.ihtml:164 site/install/devel.ihtml:32
+#: site/install/devel.ihtml:62 site/install/stable.ihtml:154
+#, c-format
+msgid "Download <a href='%s'>%s</a>"
+msgstr "Télécharger <a href='%s'>%s</a>"
+
+#: site/install/devel.ihtml:45 site/install/stable.ihtml:167
+#: site/install/devel.ihtml:35 site/install/stable.ihtml:157
+msgid "documentation"
+msgstr "documentation"
+
+#: site/install/devel.ihtml:118 site/install/devel.ihtml:98
+#, c-format
+msgid "Download the installer <a href='%s'>here</a>"
+msgstr "Télécharger l'installateur <a href='%s'>ici</a>"
+
+#: site/install/stable.ihtml:81 site/install/stable.ihtml:103
+#: site/install/stable.ihtml:124 site/install/old.ihtml:85
+#: site/install/old.ihtml:105 site/install/stable.ihtml:71
+#: site/install/stable.ihtml:93 site/install/stable.ihtml:114
+#: site/install/old.ihtml:92 site/install/old.ihtml:112
+#: site/install/old.ihtml:88 site/install/old.ihtml:108
+#, c-format
+msgid "Go to <a href='%s'>%s</a>"
+msgstr "Aller à <a href='%s'>%s</a>"
+
+#: site/install/devel.ihtml:47 site/install/devel.ihtml:37
+msgid "compatibility libraries"
+msgstr "bibliothèques de compatibilité"
+
+#: site/install/menu-entries.py:2
+msgid "Fink"
+msgstr "Fink"
+
+#: site/install/menu-entries.py:3
+msgid "Cygwin"
+msgstr "Cygwin"
+
+#: site/install/devel.ihtml:98 site/install/devel.ihtml:82
+#, c-format
+msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
+msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"

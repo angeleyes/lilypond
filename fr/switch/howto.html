@@ -1,0 +1,116 @@
+<!--
+    Translation of CVS Revision: 1.22
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<h1>Un cours express sur LilyPond</h1>
+
+<h2>Capture d'&eacute;cran</h2> 
+
+<p>
+  LilyPond est un syst&egrave;me <em>batch (traitement par
+  lot)</em>&nbsp;: il op&egrave;re sur un fichier texte contenant
+  les notes. Le r&eacute;sultat produit en sortie  peut &ecirc;tre
+  vu &agrave; l'&eacute;cran ou imprim&eacute;. Une capture
+  d'&eacute;cran d'un usage pratique pourrait ressembler &agrave;
+</p>
+
+<p align="center">
+  <a href="@IMAGES@nereid-shot.png">
+    <img width="650" src="@IMAGES@nereid-shot-small.png" alt="nereid-shot">
+  </a>
+</p>
+<p align="center">
+  <em>(cliquez pour agrandir)</em>
+</p>
+
+
+<h2>C'est simple comme bonjour</h2>
+
+Les notes sont cod&eacute;es sous forme de lettres et de nombres.
+Les commandes
+sp&eacute;ciales commencent par un antislash.
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png"
+       alt="annotate-example-1">
+  <br>
+  <img src="@IMAGES@example-1.png" alt="example-1"> 
+
+<p>
+  Les alt&eacute;rations sont obtenues avec diff&eacute;rents suffixes&nbsp;: -is
+  pour di&egrave;se, -es pour b&eacute;mol &ndash; ce sont des noms de note
+  hollandais, d'autres langues sont disponibles. LilyPond comprend
+  o&ugrave; placer les alt&eacute;rations.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-2@.LANG@.png"
+       alt="annotate-example-2">
+  <br>
+  <img src="@IMAGES@example-2@.LANG@.png" alt="exemple-2">
+</p>
+
+<h2>Musique pop</h2>
+
+<p>
+ Ajoutez des accords et des paroles pour obtenir une chanson&nbsp;:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-lead@.LANG@.png"
+       alt="annotate-example-lead">
+  <br>
+  <img src="@IMAGES@example-lead.png" alt="exemple-pop">
+</p>
+
+<h2>Pi&egrave;ces orchestrales</h2>
+
+<p>
+  <a name="orchestral"></a> Le fichier source contient les notes de la
+   pi&egrave;ce. Le conducteur et les parties s&eacute;par&eacute;es peuvent &ecirc;tre r&eacute;alis&eacute;es
+   &agrave; partir de la m&ecirc;me source. Ainsi, la modification d'une note se
+   r&eacute;percute toujours &agrave; la fois sur les parties et le conducteur. Pour
+   pouvoir partager les notes, celles-ci sont stock&eacute;es dans une
+   variable&nbsp;:
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-parts@.LANG@.png"
+       alt="annotate-example-parts">
+  <br>
+</p>
+
+<p>
+  Cette variable est ensuite utilis&eacute;e dans une partie s&eacute;par&eacute;e &ndash;
+  ici transpos&eacute;e, avec les mesures de silence condens&eacute;es&nbsp;:
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-single-part@.LANG@.png"
+       alt="annotate-example-single-part">
+  <br>
+  <img src="@IMAGES@example-singlepart.png" alt="example-singlepart">
+</p>
+
+<p>
+  La m&ecirc;me variable est utilis&eacute;e dans le conducteur
+  &ndash; ici en tonalit&eacute r&eacute;elle&nbsp;:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-score@.LANG@.png"
+       alt="annotate-example-score">
+  <br>
+  <img src="@IMAGES@example-score.png" alt="example-score">
+</p>
+
+
+<h2>En savoir plus</h2>
+
+<a href="../install">T&eacute;l&eacute;chargez</a> LilyPond et lancez-vous avec le
+<a href="@DOC@v2.4/Documentation/user/out-www/lilypond/Tutorial">tutoriel</a>.

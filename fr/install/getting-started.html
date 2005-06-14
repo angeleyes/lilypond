@@ -1,0 +1,153 @@
+<!--
+    Translation of CVS Revision: 1.3
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<title>LilyPond - D&eacute;buter</title>
+
+<h1>D&eacute;buter</h1>
+<p>
+  Vous venez d'installer votre tout nouveau LilyPond, et &ecirc;tes impatient de cr&eacute;er
+  votre premi&egrave;re partition. Voici quelques conseils.
+</p>
+
+<p align="right">
+  <em>Cliquez pour agrandir</em>
+  <a href="@IMAGES@terminal-shot.png">
+    <img src="@IMAGES@terminal-shot.png" width="400" align="right">
+  </a>
+</p>
+
+<h2>Tester LilyPond</h2>
+<p>
+  Voici les instructions en ligne de commandes, sous Windows et Unix.
+  Les utilisateurs de Windows peuvent jeter un oeil au
+  <a href="windows.html">guide de d&eacute;marrage pour Windows</a>.
+</p>
+
+<ul>
+  <li>Ouvrez un terminal et tapez
+
+    <blockquote>
+      <pre>
+	lilypond --help
+      </pre>
+    </blockquote>
+    dans la fen&ecirc;tre.
+    Vous devriez voir quelque chose comme
+    <blockquote>
+      <pre>
+	Usage: lilypond [OPTION]... FILE...
+
+	Typeset music and/or produce MIDI from FILE.
+
+	LilyPond produces beautiful music notation.
+	For more information, see http://lilypond.org
+
+	Options:
+	-b, --backend=EXT     select backend to use
+	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
+	-f, --formats=EXTs    list of formats to dump
+	-h, --help            print this help
+	[..]
+      </pre>
+    </blockquote>
+    <p>
+      Si vous voyez &ccedil;a, le programme et install&eacute;, vous pouvez l'utiliser.
+    </p>
+  </li>
+  <li>D&eacute;marrez votre &eacute;diteur de texte favori. 
+  </li>
+  <li> Entrez
+    <blockquote>
+      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
+	{
+	c4( c)
+	}
+      </pre>
+    </blockquote>
+    
+    <strong>NOTE&nbsp;:</strong> Avec LilyPond 2.2 et pr&eacute;c&eacute;dents, encadrez
+    l'exemple ci-dessus avec les blocs
+    <code>\notes{}</code> <em>et</em> <code>\score {}</code>.
+    
+  </li>
+  <li>Enregistrez le fichier sous <tt>test.ly</tt>. Quittez l'&eacute;diteur.
+  <li>Ex&eacute;cutez
+    <blockquote>
+      <pre>
+	lilypond test
+      </pre>
+    </blockquote>
+
+    Si tout va bien, vous devriez voir
+    <blockquote>
+      <pre>
+	DVI output `test.dvi'...
+	PS output to `test.ps'...
+	PDF output to `test.pdf'...
+      </pre>
+    </blockquote>
+  </li>
+  <li>
+    Ouvrez le fichier PDF pour voir le r&eacute;sultat. Essayez ces commandes&nbsp;:
+    <blockquote>
+      <pre>
+	ggv test.pdf
+	gv test.pdf
+	kgv test.pdf
+	acroread test.pdf
+	xpdf test.pdf
+	ghostview test.pdf
+      </pre>
+    </blockquote>
+  </li>
+
+  <li>
+    Les utilisateurs de Windows peuvent se servir du
+    <a href="windows.html">glisser / d&eacute;poser</a>.  Si vous
+    pr&eacute;f&eacute;rez le clavier, essayez la proc&eacute;dure ci-dessus, en
+    y ajoutant ces notes&nbsp;:
+    <ul>
+
+      <li>Ouvrez un terminal en double-cliquant sur l'icone "Cygwin"</li>
+
+      <li> D&eacute;marrez l'&eacute;diteur de texte <tt>notepad</tt>.  Enregistrez
+	le r&eacute;sultat sous <code>test.ly</code> en vous assurant que Notepad n'ajoute pas
+	l'extension <code>.txt</code> au nom.
+
+</li>
+
+      <li> le fichier PDF se trouve dans C: -&gt; CYGWIN -&gt; HOME -&gt;
+	<em>votre-identifiant</em>.
+      </li>
+    </ul>
+  </li>
+
+</ul>
+
+<h2>G&eacute;nial, &ccedil;a marche&nbsp;!</h2>
+<p>
+  Bien&nbsp;! Rendez-vous sur <a href="using.html">Utiliser LilyPond</a>.
+</p>
+
+<h2>Hum, je ne sais pas trop quoi faire. &Agrave; l'aide&nbsp;!</h2>
+
+<p>
+  Pour les questions et l'aide, envoyer un courriel &agrave; <a
+					     href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h2>Mince, &ccedil;a ne fonctionne pas&nbsp;!</h2>
+<p>
+ Quelque chose n'a pas fonctionn&eacute;. Envoyez un rapport de bug, afin de nous aider
+ &agrave; r&eacute;soudre votre probl&egrave;me. Rendez-vous sur la <a
+ href="../about/faq.html#bugreport">FAQ</a> pour savoir comment faire. Si vous avez
+ t&eacute;l&eacute;charg&eacute; un paquet autre que ceux fournis par l'&eacute;quipe de
+ LilyPond, envoyez une copie de votre courriel au cr&eacute;ateur du paquetage, list&eacute; dans la colonne
+ "Courtesy" de <a href="index.html">la page de t&eacute;l&eacute;chargement</a>.
+</p>
