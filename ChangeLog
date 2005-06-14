@@ -1,5 +1,13 @@
 2005-06-14  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/about/thanks.html: add Tineke de Munnik, French translators.  
+
+	* fr/index.html: add French translation.
+
+	* site/about/thanks.html: add Jean-Charles Malahieude
+	<lilyfan@wanadoo.fr>, Gauvain Pocentek <gauvainpocentek@yahoo.fr>
+	and John Mandereau <john.mandereau@free.fr>.
+
 	* scripts/format-page.py (LANGUAGES): add french
 	(grab_gettext4): add comma's between languages. 
 
