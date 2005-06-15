@@ -20,7 +20,7 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@officiallogo-nd-50.png">
+	<img src="@IMAGES@debian-logo.png">
       </p>
     </td>
     <td>
@@ -40,7 +40,7 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@openlogo-nd-50.png">
+	<img src="@IMAGES@deb-logo.png">
       </p>
     </td>
     <td>
