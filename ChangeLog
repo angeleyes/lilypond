@@ -1,3 +1,7 @@
+2005-06-15  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* po/fr.po: Bugfix.
+
 2005-06-15  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* po/fr.po: patch by John Mandereau.

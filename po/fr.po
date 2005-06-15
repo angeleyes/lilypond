@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-06-15 15:05+0200\n"
-"PO-Revision-Date: 2005-06-12 19:39+0200\n"
+"PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -257,7 +257,7 @@ msgstr "Réutiliser un identificateur"
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "À propos de la <HREF='%s'>sélection automatique de la langue</A>."
+msgstr "À propos de la <A HREF='%s'>sélection automatique de la langue</A>."
 
 #: site/install/devel.ihtml:60 site/install/stable.ihtml:180
 #: site/install/old.ihtml:171 site/install/devel.ihtml:48
