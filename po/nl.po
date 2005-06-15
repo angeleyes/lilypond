@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-14 12:54+0200\n"
+"POT-Creation-Date: 2005-06-15 15:01+0200\n"
 "PO-Revision-Date: 2005-05-30 19:59+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,10 +223,12 @@ msgid "Combine melody and lyrics"
 msgstr "Combineer melodie en liedtekst"
 
 #: site/graphics/annotate-example-parts.svg:165
+#: site/graphics/annotate-example-parts.svg:163
 msgid "Enter multi-rest"
 msgstr "Voer meermaatse rust in"
 
 #: site/graphics/annotate-example-parts.svg:178
+#: site/graphics/annotate-example-parts.svg:175
 msgid "Store notes in variable"
 msgstr "Bewaar noten in variabele"
 
@@ -284,11 +286,13 @@ msgstr "waarschuwing"
 
 #: site/graphics/annotate-example-parts.svg:44
 #: site/graphics/annotate-example-score.svg:50
+#: site/graphics/annotate-example-parts.svg:42
 msgid "hornNotes"
 msgstr "hoornNoten"
 
 #: site/graphics/annotate-example-parts.svg:72
 #: site/graphics/annotate-example-score.svg:54
+#: site/graphics/annotate-example-parts.svg:70
 msgid "bassoonNotes"
 msgstr "fagotNoten"
 

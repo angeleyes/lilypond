@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-14 12:54+0200\n"
+"POT-Creation-Date: 2005-06-15 14:59+0200\n"
 "PO-Revision-Date: 2005-06-12 19:39+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -223,10 +223,12 @@ msgid "Combine melody and lyrics"
 msgstr "Combiner la mélodie et les paroles"
 
 #: site/graphics/annotate-example-parts.svg:165
+#: site/graphics/annotate-example-parts.svg:163
 msgid "Enter multi-rest"
 msgstr "Entrer des mesures à compter"
 
 #: site/graphics/annotate-example-parts.svg:178
+#: site/graphics/annotate-example-parts.svg:175
 msgid "Store notes in variable"
 msgstr "Stocker des notes sous forme de variable"
 

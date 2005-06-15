@@ -41,8 +41,7 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 INKSCAPE = inkscape
 
 %.png: %.svg GNUmakefile
-	-$(INKSCAPE) --export-png=$@- --export-background-opacity=0 $<
-	-convert -crop 0x0 $@- $@ && rm $@-
+	-$(INKSCAPE) --export-area-drawing --export-png=$@ --export-background-opacity=0 $<
 
 out/site/%.$(LANG).png: $(LANG)/%.png
 	-cp $< $@
