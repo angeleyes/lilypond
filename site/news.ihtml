@@ -27,6 +27,14 @@ on one day.
 
 !-->
 
+<dt>2.5.31 released - <em>June 15, 2005</em></dt>
+<dd>
+This release has a few bugfixes. In the MacOS X version, ClickEdit has
+been renamed to LilyPond, and you can now upgrade your files and
+compile them directly from
+LilyPond. (<a href="install/#2.5">Download</a>)
+</dd>
+
 <dt>2.5.30 released - <em>June 10, 2005</em></dt>
 <dd>
 This is (hopefully) the last Release Candidate before 2.6. Give it a
@@ -39,22 +47,6 @@ In this release the documentation also has pictures. In addition, the
 Mac version can also read native mac fonts (.dfonts and fonts in
 resource forks). (<a href="install/#2.5">Download</a>)
 </dd>
-
-
-<dt>2.5.27 released - <em>May 31, 2005</em></dt>
-<dd>
-It has a big bunch of minor bugfixes.  This is another release
-candidate for version 2.6, which should be released within the next 2
-weeks. Please send a bug report if you find a critical problem with this
-release. (<a href="install/#2.5">Download</a>)
-</dd>
-
-<dt>Windows and MacOS installers available - <em>May 26, 2005</em></dt>
-<dd> There are now a native, standalone installers for Windows and
-MacOS.  They also support PDF point & click. (<a
-href="install/#2.5">Download</a>) </dd>
-
-
 
 </dl>
 
