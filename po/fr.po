@@ -257,7 +257,7 @@ msgstr "Réutiliser un identificateur"
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "À propos de la <HREF='%s'>séléction automatique de la langue</A>."
+msgstr "À propos de la <HREF='%s'>sélection automatique de la langue</A>."
 
 #: site/install/devel.ihtml:60 site/install/stable.ihtml:180
 #: site/install/old.ihtml:171 site/install/devel.ihtml:48
@@ -358,7 +358,7 @@ msgstr "Télécharger <a href='%s'>l'archive</a>"
 #: site/install/old.ihtml:230 site/install/devel.ihtml:101
 #, c-format
 msgid "Go <a href='%s'>here</a>"
-msgstr "Aller <a href='s'>là</a>"
+msgstr "Aller <a href='%s'>ici</a>"
 
 #: site/install/stable.ihtml:144 site/install/old.ihtml:143
 #: site/install/stable.ihtml:134 site/install/old.ihtml:150
@@ -411,3 +411,4 @@ msgstr "Cygwin"
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
+
