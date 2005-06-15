@@ -59,7 +59,7 @@
   </tr>
 
   <tr>
-    <td><p align="center"><img src="@IMAGES@red-fedora.png"></p></td>
+    <td><p align="center"><img src="@IMAGES@fedora-logo.png"></p></td>
     <td>
       Fedora Core 
     </td>
@@ -102,7 +102,7 @@
 
     
   <tr>
-    <td><p align="center"><img src="@IMAGES@mandrake-logo.jpeg"></p></td>
+    <td><p align="center"><img src="@IMAGES@mandrake-logo.png"></p></td>
     <td>
       Mandrake
     </td>
@@ -142,7 +142,7 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@red-fedora.png">
+	<img src="@IMAGES@fedora-logo.png">
       </p>
     </td>
     <td>
@@ -220,7 +220,7 @@
   </tr>
 
   <tr>
-    <td><p align="center"><img src="@IMAGES@windows.png">/<img src="@IMAGES@cygwin.png"></p></td>
+    <td><p align="center"><img src="@IMAGES@windows-logo.png">/<img src="@IMAGES@cygwin.png"></p></td>
     <td>Microsoft&nbsp;Windows/<br>Cygwin</td>
     <td>
       NT, 98, 2000, ME, XP
