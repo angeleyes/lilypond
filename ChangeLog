@@ -1,5 +1,7 @@
 2005-06-15  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* po/fr.po: patch by John Mandereau.
+
 	* site/news.ihtml (Preferably): annonce de la Traduction
 	Francaise. (Thanks John!)
 	announce windows version.
