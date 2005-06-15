@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-15 15:01+0200\n"
+"POT-Creation-Date: 2005-06-15 15:04+0200\n"
 "PO-Revision-Date: 2005-05-30 19:59+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,10 +241,12 @@ msgid "Combine staffs in parallel"
 msgstr "Combineer notenbalken parallel"
 
 #: site/graphics/annotate-example-single-part.svg:120
+#: site/graphics/annotate-example-single-part.svg:119
 msgid "Condense multi-rests"
 msgstr "Voeg meermaatse rusten samen"
 
 #: site/graphics/annotate-example-single-part.svg:134
+#: site/graphics/annotate-example-single-part.svg:132
 msgid "Transpose for F instrument"
 msgstr "Transponeer voor F-instrument"
 
@@ -297,6 +299,7 @@ msgid "bassoonNotes"
 msgstr "fagotNoten"
 
 #: site/graphics/annotate-example-single-part.svg:145
+#: site/graphics/annotate-example-single-part.svg:142
 msgid "Reuse variable"
 msgstr "Hergebruik variabele"
 

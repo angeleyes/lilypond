@@ -1,5 +1,9 @@
 2005-06-15  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/news.ihtml (Preferably): annonce de la Traduction
+	Francaise. (Thanks John!)
+	announce windows version.
+
 	* site/graphics/annotate-example-parts.svg: clean up text placement.
 
 	* GNUmakefile: use --export-area-drawing iso. convert -crop.

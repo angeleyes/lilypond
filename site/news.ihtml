@@ -27,6 +27,24 @@ on one day.
 
 !-->
 
+
+<dt>2.5.31 for Windows and MacOS - <em>June 15, 2005</em></dt>
+
+<dd>
+2.5.31 is now available for both Windows and MacOS X. The Windows
+version should now work with embedding TTF fonts, and the MacOS X has
+better help functionality.
+ (<a href="install/#2.5">Download</a>)
+</dd>
+
+
+<dt>Traduction du site de LilyPond - <em>15 juin 2005</em></dt>
+<dd>
+<a href=about/thanks#website>L'équipe des traducteurs</a> vous présente
+le site de LilyPond en français. Nous travaillons sur la traduction des
+pages encore non traduites. Bon surf !
+</dd>
+
 <dt>2.5.31 released - <em>June 15, 2005</em></dt>
 <dd>
 This release has a few bugfixes. In the MacOS X version, ClickEdit has

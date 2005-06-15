@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-15 14:59+0200\n"
+"POT-Creation-Date: 2005-06-15 15:05+0200\n"
 "PO-Revision-Date: 2005-06-12 19:39+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,10 +241,12 @@ msgid "Combine staffs in parallel"
 msgstr "Regrouper des portées dans un système"
 
 #: site/graphics/annotate-example-single-part.svg:120
+#: site/graphics/annotate-example-single-part.svg:119
 msgid "Condense multi-rests"
 msgstr "Condenser les mesures à compter"
 
 #: site/graphics/annotate-example-single-part.svg:134
+#: site/graphics/annotate-example-single-part.svg:132
 msgid "Transpose for F instrument"
 msgstr "Transposer pour un instrument en fa"
 
@@ -286,15 +288,18 @@ msgstr "avertissement"
 
 #: site/graphics/annotate-example-parts.svg:44
 #: site/graphics/annotate-example-score.svg:50
+#: site/graphics/annotate-example-parts.svg:42
 msgid "hornNotes"
 msgstr "notesCor"
 
 #: site/graphics/annotate-example-parts.svg:72
 #: site/graphics/annotate-example-score.svg:54
+#: site/graphics/annotate-example-parts.svg:70
 msgid "bassoonNotes"
 msgstr "notesBasson"
 
 #: site/graphics/annotate-example-single-part.svg:145
+#: site/graphics/annotate-example-single-part.svg:142
 msgid "Reuse variable"
 msgstr "Réutiliser une variable"
 
