@@ -5,6 +5,9 @@ NEW TRANSLATIONS
 A new translation will be made available on LILYPOND.ORG as soon as a
 useful part of the site has been translated, and is of good quality.
 
+Note that contact.ihtml is the only .i[nclude]html to be translated,
+news.ihtml and install/*.ihtml change too frequently.
+
 The initial delivery of a translation for LILYPOND.ORG is about 3000 words.
 
 Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
@@ -32,24 +35,23 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 4 site/devel
 
 1 install/getting-started.html  --  http://lilypond.org/web/install/getting-started.html
-4 install/index.html  --  http://lilypond.org/web/install/index.html
+1 install/index.html  --  http://lilypond.org/web/install/index.html
 1 install/macos.html  --  http://lilypond.org/web/install/macos.html
 4 install/slackware.html  --  http://lilypond.org/web/install/slackware.html
 1 install/using.html  --  http://lilypond.org/web/install/using.html
 1 install/windows.html  --  http://lilypond.org/web/install/windows.html
 
-
 LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
   184   331  3865 site/index.html
    70   147  2163 site/contact.ihtml
    54   216  1618 site/switch/index.html
-   99   457  3591 site/switch/advantages.html
-  124   466  3561 site/switch/tour.html
-  109   295  2840 site/switch/howto.html
-   76   202  2076 site/about/index.html
-  151   470  3700 site/install/getting-started.html
-   30    93   862 site/install/macos.html
+  102   459  3588 site/switch/advantages.html
+  123   459  3539 site/switch/tour.html
+  109   302  2855 site/switch/howto.html
+   77   200  2065 site/about/index.html
+  156   482  3768 site/install/getting-started.html
+  114   262  2438 site/install/index.html
+   31    97   914 site/install/macos.html
    71   159  1579 site/install/using.html
-  170   470  4000 site/install/windows.html
- 1138  3306 29855 totaal
- 
+  176   515  4271 site/install/windows.html
+ 1267  3629 32663 total
