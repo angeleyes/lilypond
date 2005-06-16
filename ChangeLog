@@ -1,5 +1,13 @@
 2005-06-16  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/images/directions-updown.png (Module): update.
+
+	* site/images/directions-page1.png (Module): remove.
+
+	* site/images/directions.ly: update to 2.5.25
+
+	* site/switch/index.html: use double lily image.
+
 	* fr/switch/howto.html: remove @LANG@
 
 	* site/switch/advantages.html: add screenshot of Mac version.
