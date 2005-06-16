@@ -50,14 +50,14 @@
       </p>
     </td>
     <td>
-      Any
+      Any x86
     </td>
     <td>-</td>
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.5.31.package",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.5.31-upgrade.package")
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.5.31.x86.package",
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.5.31-upgrade.x86.package")
       </strong>
     </td>
     <td>2.5.31</td>
