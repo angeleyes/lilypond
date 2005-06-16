@@ -1,5 +1,7 @@
 2005-06-16  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/about/thanks.html (href): add Krista Scott
+
 	* site/images/macosx-logo.png (Module): use MacOS logo from
 	apple.com
 
