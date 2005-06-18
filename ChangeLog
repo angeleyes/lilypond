@@ -1,3 +1,11 @@
+2005-06-19  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: update macos.
+
+2005-06-17  John Mandereau  <john.mandereau@free.fr>
+
+	* fr/: update translations.
+
 2005-06-16  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/images/baer-flat-gray.png (Module): gray scale scans.

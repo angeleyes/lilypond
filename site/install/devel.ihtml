@@ -82,11 +82,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/MacOS/lilypond-2.5.31-6.dmg",
+	"http://lilypond.org/download/binaries/MacOS/lilypond-2.5.31-7.dmg",
 	"LilyPond")
       </strong>
     </td>
-    <td>2.5.31-6</td>  
+    <td>2.5.31-7</td>  
     <td>
       <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
