@@ -1,5 +1,7 @@
 2005-06-19  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/menu-entries.py: remove .html from index
+
 	* site/install/devel.ihtml: update macos.
 
 2005-06-17  John Mandereau  <john.mandereau@free.fr>

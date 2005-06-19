@@ -1,7 +1,7 @@
 
 # This is the toplevel menu.  Keep it short.
 [
- ('index.html', _ ('Home')),
+ ('index', _ ('Home')),
  ('switch', _ ('Introduction')),
  ('about', _ ('About')),
  ('install', _ ('Download')),
