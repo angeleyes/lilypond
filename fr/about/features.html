@@ -1,0 +1,138 @@
+<!--
+    Translation of CVS Revision: 1.10
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<h1>Fonctionnalit&eacute;s de LilyPond</h1>
+
+<h2>Langage musical source</h2>
+<p>
+  La saisie se fait sous la forme d'un langage musical en texte brut.
+</p>
+
+<ul>
+  <li>
+    La saisie peut &ecirc;tre faite avec l'&eacute;diteur de texte de votre choix,
+    en utilisant la langue de votre choix.
+  </li>
+  <li>
+    Le format de saisie ASCII, compatible avec TeX, HTML et Texinfo
+    permet l'&eacute;dition de documents musicologiques avec un fichier source unique.
+  </li>
+  <li>
+    Musique et mise en page &eacute;tant strictement distinctes, le conducteur
+    et les parties s&eacute;par&eacute;es (pouvant &ecirc;tre dans des styles ou tonalit&eacute;s diff&eacute;rents)
+    peuvent &ecirc;tre g&eacute;n&eacute;r&eacute;s depuis la m&ecirc;me source, les changements prenant
+    toujours effet dans chacune des partitions.
+  </li>
+  <li>
+    La sortie peut &ecirc;tre am&eacute;lior&eacute;e en mettant &agrave; jour le logiciel.
+  </li>
+  <li>
+    Les &oelig;uvres peuvent &ecirc;tre &eacute;dit&eacute;es dans diff&eacute;rents
+    styles (typographiques) personalis&eacute;s, ou selon certaines normes de notation.
+  </li>
+</ul>
+
+<h2>Mise en page automatis&eacute;e de haute qualit&eacute;</h2>
+
+<ul>
+  <li>
+    Espacement, sauts de ligne et de page automatiques.
+  </li>
+  <li>
+    Gestion des collisions polyphoniques pour les notes, points et silences.
+  </li>
+  <li>
+    Placement automatique des alt&eacute;rations, liaisons, barres.
+  </li>
+  <li>
+    Aucune connaissance typographique n'est n&eacute;cessaire pour les utilisateurs.
+  </li>
+  <li>
+    Aucune intervention de l'utilisateur n'est n&eacute;cessaire durant l'ex&eacute;cution du programme.
+    Celle-ci peut &ecirc;tre automatis&eacute;e, permettant ainsi la conversion de masse
+    d'une base de donn&eacute;es de musique num&eacute;rique, et l'impression de compositions algorithmiques.
+  </li>
+  <li>
+    La police Feta a &eacute;t&eacute; sp&eacute;cialement travaill&eacute;e pour LilyPond, en imitant
+    du mieux possible l'aspect des partitions grav&eacute;es &agrave; la main. Elle est disponible
+    comme police vectorielle, mais aussi comme police Metafont.
+      </li>
+  <li>
+    Support de nombreuses structures de notation.
+  </li>
+</ul>
+
+<h2>Notations sp&eacute;ciales</h2>  
+<ul>
+  <!-- todo: add links-->
+  <li>Accords sous forme de lettres.</li>
+  <li>Notation pour percussions.</li>
+  <li>Basse chiffr&eacute;e.</li>
+  <li>Appoggiatures.</li>
+  <li>Diagrammes d'accords.</li>
+  <li>Tablatures.</li>
+  <li>Clusters et signes de groupements rythmiques.</li>
+  <li>Tremolos, sur notes et accords.</li>
+  <li>&ldquo;Tuplets&rdquo; (duolet, triolet, nolet, etc) de toutes sortes.</li>
+  <li>Notation polym&eacute;trique (mesures irréguli&egrave;res).</li>
+  <li>Notation mensurale.</li>
+  <li>R&eacute;pliques automatiques.</li>
+  <li>Cr&eacute;ation automatique d'un conducteur d'orchestre.</li>
+  <li>Alt&eacute;rations en quart de ton.</li>
+  <li>Ambitus.</li>
+  <li>Indications m&eacute;tronomiques.</li>
+  <li>Harmoniques.</li>
+  <li>R&eacute;p&eacute;titions de mesures (style &ldquo;%&rdquo;).</li>
+  <li>Changement des t&ecirc;tes de notes.</li>
+  <li>Masquage d'&eacute;l&eacute;ments de notation.</li>
+  <li>Signes d'arp&egrave;ge.</li>
+  <li>Octaviation.</li>
+  <li>Crochets d'analyse imbriqu&eacute;s.</li>
+  <li>P&eacute;dales de piano.</li>
+</ul>
+
+
+<h2>Conception robuste</h2>
+
+<ul>
+  <li>
+    Paroles dans toutes les langues &ndash; y compris <a
+				   href="http://lists.gnu.org/archive/html/lilypond-devel/2004-07/msg00071.html">en
+      chinois</a>.
+  </li>
+  <li>
+    Sortie aux formats PostScript, PDF, PNG, MIDI et TeX.
+  </li>
+
+  <li>
+    Aucune limite au nombre de port&eacute;es, voix, mesures,
+    longueur de texte, etc.
+  </li>
+  <li>
+    Extensible avec l'interpr&eacute;teur LISP int&eacute;gr&eacute;.
+  </li>
+</ul>
+
+<h2>Excellent support</h2>
+<ul>
+  <li>Fonctionne sous Unix.</li>
+  <li>Communaut&eacute; d'utilisateurs active.</li>
+  <li>Documentation &eacute;volutive.</li>
+  <li>Support&eacute; par de nombreux autres logiciels,</li>
+  <a href="http://www.rosegardenmusic.com">RoseGarden</a> 
+  <a href="http://noteedit.berlios.de/">NoteEdit</a>
+  <a href="http://jelmer.vernstok.nl/oss/ptabtool">PowerTab</a>
+  et
+  <a href="http://denemo.sourceforge.net/">Denemo</a>.
+</li>
+<li>
+  Importe les formats <a href="http://abc.sourceforge.net/">ABC</a>,
+  <a href="http://www.finalemusic.com/finale/">ETF</a> et MIDI.
+</li>
+</ul>

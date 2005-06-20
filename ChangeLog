@@ -1,3 +1,13 @@
+2005-06-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* fr/about/features.html: new file. (Gauvain Pocentek).
+
+	* fr/about/thanks.html: new file. (Gauvain Pocentek)
+
+2005-06-19  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+	* site/fr/index.html: Updates.
+
 2005-06-19  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/menu-entries.py: remove .html from index
