@@ -15,9 +15,9 @@
 
 <h3>What is LilyPond?</h3>
 <p>
-  We like to call LilyPond an "automated engraving system." It will
-  format music notation beautifully without requiring typographical
-  expertise of its users.
+   LilyPond is an "automated engraving system." It will format music
+  notation beautifully without requiring typographical expertise of
+  its users.
 </p>
 
 
@@ -38,27 +38,32 @@
 <h3>There are other program that do notation.  What's so special about
   yours?</h3>
 
-<p>
-  Yes, there are many other programs that "do" notation.  However,
-  anyone who plays both from recent editions and old (pre 1970) can
-  attest that modern computer printouts do not look nice: they have a
-  bland, mechanical look.  By contrast, we try to mimic traditional
-  plate engraving in the general impression, layout algorithms, and
-  the font design.  Consequently, our output often beats our competitors
-  when it comes to good looks.
+<p>  
+ modern computer printouts do not look nice: they have a bland,
+  mechanical look.  By contrast, we try to mimic traditional plate
+  engraving in the general impression, layout algorithms, and the font
+  design.  Consequently, our output often beats our competitors when
+  it comes to good looks.
 </p>
 
 <h3>What is wrong with other computer printed scores?</h3>
 <p>
+<ul>
+<li>
   Computer printed scores often lack subtle variations in spacing, which
-  results in mechanical appearance.  To prevent clashes between different
+  results in mechanical appearance.
+  <li>To prevent clashes between different
   symbols, they are spaced very widely, which leads to an "airy"
-  look.  The heaviness of the layout is matched to that airy look: the
-  symbols are usually too light, and the lines are too thin.  The wide
-  spacing also causes a piece of music to take up more pages.  Beams
+  look.
+  <li>  The heaviness of the layout is matched to that airy look: the
+  symbols are usually too light, and the lines are too thin.
+  <li>The wide
+  spacing also causes a piece of music to take up more pages.
+  <li>Beams
   often do not cover stafflines entirely, while slurs and ties do touch
   them, leading to distracting clusters of black and wedges of white
   around these places.
+  </ul>
 </p>
 
 <p>
@@ -88,14 +93,14 @@
 
 <h3>Why would I care about engraving?</h3>
 <p>
-  Typography is art, but is foremost a "useful art": good engraving
-  helps to read the music, making it is easier to play from.  For
-  example, if the layout reflects the character of a piece, then it is
-  easier to interpret.  If it is tightly spaced, it will take less
-  pages, reducing the number of page-turns.  If a system (a &ldquo;line&rdquo) has a
-  unique horizontal layout, then it is more easily found back after
-  looking away at the conductor.  A part which is printed with heavy
-  symbols and thick lines will be easier to read from a distance.
+  Good engraving helps to read the music, making it is easier to play
+  from.  For example, if the layout reflects the character of a piece,
+  then it is easier to interpret.  If it is tightly spaced, it will
+  take less pages, reducing the number of page-turns.  If a system (a
+  &ldquo;line&rdquo) has a unique horizontal layout, then it is more
+  easily found back after looking away at the conductor.  A part which
+  is printed with heavy symbols and thick lines will be easier to read
+  from a distance.
 </p>
 
 <p>
@@ -103,8 +108,7 @@
     it?</h3>
 
 <p>
-  No.  We give it away for free.  Go to the <a
-					       href="../install">download page</a>.
+  No.  We give it away for free.  Go to the <a href="../install">download page</a>.
 </p>
 
 <h3>It's free now, but then you will start charging in the future?</h3>
@@ -119,9 +123,9 @@
 </p>
 
 <p>
-  In fact we think that this is much more important than cost.  It means
-  that you have the freedom to fix, modify and extend the program, or
-  you can pay someone else to do so.  We will not force you to upgrade
+  We think that this is much more important than cost.  It means that
+  you have the freedom to fix, modify and extend the program, or you
+  can pay someone else to do so.  We will not force you to upgrade
   when your system is abandoned, and you are not lost when we abandon
   the program.
 </p>
@@ -193,18 +197,18 @@ You can do several things
 </p>
 
 <p>
-  At the time, Jan was dating Roos (Dutch for &lsquo;Rose&rsquo; -- she
-  also played the cello).  I also knew about about a package Rosegarden
-  (a GUI MIDI sequencer and notation editor).  When I found out that
-  &lsquo;Susan&rsquo; is Hebrew for &lsquo;lily&rsquo;, I decided that
-  calling the package &lsquo;LilyPond&rsquo; would match make the
-  nomenclature of the rest of my life perfectly.
+  At the time, Jan was dating Roos (Dutch for &lsquo;Rose&rsquo; --
+  she also played the cello).  I also knew about about a package
+  Rosegarden (a GUI MIDI sequencer and notation editor).  When I found
+  out that &lsquo;Susan&rsquo; is Hebrew for &lsquo;lily&rsquo;, I
+  decided that calling the package &lsquo;LilyPond&rsquo; would match
+  the nomenclature of the rest of my life perfectly.
 </p>
 
 <p>
-  Some things don't last---the two girls, the cellos and the orchestra,
-  all have disappeared from our lives.  LilyPond however has survived
-  over time.  It is a big, mature program with a healthy user-base and
+  Some things don't last---the two girls, the cellos and the
+  orchestra, all have disappeared from our lives.  LilyPond however,
+  has survived.  It is a mature package with a healthy user-base and
   good prospects.  Best of all is, that we still have a good time
   hacking on it
 </p>
@@ -217,8 +221,8 @@ You can do several things
 
 <p>
   LilyPond is written for Unix, so it should run on any modern Unix
-  variant, including Linux/GNU and MacOS X.  There is also a MS Windows
-  port, which uses the Cygwin environment. 
+  variant, including Linux/GNU, MacOS X and the Cygwin environment.
+  There is also a MS Windows port.
 </p>
 
 <h3>It's open source, so I should compile it from source?</h3>
@@ -241,8 +245,8 @@ You can do several things
 <p>
   LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file.
   When LilyPond is run on it, the input is transpormed into music
-  notation, which can be written to disk as  
-  PostScript, PDF,  T<sub>E</sub>X or PNG.
+  notation, which is written to disk as PostScript or SVG, and
+  postprocessed to PDF and PNG.
 </p>
 
 <h3>What is the input format?</h3>
@@ -294,10 +298,6 @@ We have the following requirements.  It must
   redefined.  LilyPond has a structured input syntax, in the form of an
   context-free grammar.  As such, it is less flexible, but it is also
   harder to make entry errors.
-</p>
-<p>
-  LilyPond can dumping the notation as TeX file, to be processed by
-  LaTeX.
 </p>
 
 <h3>LilyPond is about music and is related to TeX, so it is
@@ -351,7 +351,7 @@ We have the following requirements.  It must
   idea.  If it is only for simple things, you could just as well use
   simple existing preprocessors such as CPP or M4.
 <p>
-  Alternatively, you can use the <tt>\apply</tt> feature.  This lets you
+  Alternatively, you can use the <tt>\applyMusic</tt> feature.  This lets you
   manipulate music expressions in their internal representation using the
   built-in Scheme programming language.
 </p>
@@ -446,14 +446,15 @@ Try the following:
 
   <li>
     NoteWorthy.  Mike Wiering's <a
-				   href="http://nwc2ly.sourceforge.net/">nwc2ly</a> will convert NWC
-    format to LilyPond.
-  </li>
+    href="http://nwc2ly.sourceforge.net/">nwc2ly</a> will convert NWC
+    format to LilyPond.  </li>
 
   <li>Band In A Box.  Alain Brenzikofer's <a
-					     href="http://people.ee.ethz.ch/~brenzala/builder.php?content=projects_biabconverter&lang=en">biabconverter</a>
-    will convert Band-in-a-box files to LilyPond.
-  </li>
+     href="http://people.ee.ethz.ch/~brenzala/builder.php?content=projects_biabconverter&lang=en">biabconverter</a>
+     will convert Band-in-a-box files to LilyPond.
+
+     </li>
+
 </ul>
 
 
@@ -493,19 +494,20 @@ There are also different, non-graphical interfaces:
 <p>
   If you have a binary package which does not install correctly, or if
   you have trouble while following the instructions, then send a full
-  bug-report to <a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
-  Of course you can also write to the <a
-					 href="http://mail.gnu.org/mailman/listinfo/lilypond-user">lilypond-user</a>
+  bug-report to <a
+  href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.  Of
+  course you can also write to the <a
+  href="http://mail.gnu.org/mailman/listinfo/lilypond-user">lilypond-user</a>
   list for help.
 </p>
 
 <h3>Help, I can't get it to do something.  Where do I get help?</h3>
 <p>
   You can write to the lilypond-user mailing list (which is at <a
-								  href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>).
-  It is also a good idea to check the archives of the mailing list,
-  which are at <a
-		  href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a>.
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>).
+It is also a good idea to check the archives of the mailing list,
+which are at <a
+href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a>.
 </p>
 
 <a name="bugreport"></a>
@@ -513,28 +515,21 @@ There are also different, non-graphical interfaces:
 <h3>I found a bug.</h3>
 
 <p>
-  If you have input that results in a crash or an erroneous output, then
-  that is a bug.  We try respond to bug-reports promptly, and fix them as
-  soon as possible.  For this, we need to replicate and isolate the
-  problem.  Please help us by sending a good bug-report: an input file
-  that will reproduce the problem.  Please make it small, so we can
-  easily isolate the problem.  Don't forget to tell which version you
-  use, and on which platform you run it.  Send your report to <a
-								 href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
+  If you have input that results in a crash or erroneous output, then
+  that is a bug.  Please help us by sending a good bug-report: an
+  input file that will reproduce the problem.  Please make it small,
+  so we can easily isolate the problem.  Don't forget to tell which
+  version you use, and on which platform you run it.  Send your report
+  to <a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>.
 </p>
 
 <h3>Could you add this feature for me?</h3>
 
 <p>
-  We will definitely read your request and think about it, 
-  but we set our own priorities for implementing features.  If you
-  want us to give more attention to your request, it helps to explain
-  why you need it, why it is such a good idea.
-</p>
-
-<p>
-  If you really need something, you can also hire one of the developers
-  to implement it.
+  We will definitely read your request and think about it, but we set
+  our own priorities for implementing features.  If you want us to
+  give more attention to your request, <a
+  href="doneet.html">donate</a> to development.  
 </p>
 
 <h3>But it is very easy, just extend the syntax like this...</h3>
