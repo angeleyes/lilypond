@@ -27,6 +27,14 @@ on one day.
 
 !-->
 
+<dt>2.5.31 released - <em>June 22, 2005</em></dt>
+<dd>
+LilyPond 2.5.32 is now available for download (binaries for Fedora +
+MacOS only). It has a few very minor bugfixes, and a rewrite of the
+TTF embedding code, which should be a lot more robust now.
+(<a href="install/#2.5">Download</a>)
+</dd>
+
 
 <dt>2.5.31 for Windows and MacOS - <em>June 15, 2005</em></dt>
 
