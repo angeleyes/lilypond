@@ -1,5 +1,23 @@
 2005-06-22  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* newweb.css: add p.boxout{left,right}
+
+	* nl/switch/advantages.html: "Geen gepriegel" rewrite, based on en
+	original rewrite.  
+
+	* site/images/lilypond-book-small.png (Module): smaller image for
+	better paragraph flow.
+
+	* site/switch/testimonials.html: floating images for darius,
+	carter and orm.
+
+	* site/switch/advantages.html: use computer!totaal quote; we do
+	have docs of that.
+ 
+	* newweb.css (a): darker links.
+
+	* site/about/screenshots.html: remove file.
+
 	* site/about/faq.html (href): small updates.
 
 	* site/about/features.html: edit.

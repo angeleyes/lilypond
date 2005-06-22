@@ -26,6 +26,45 @@ body {
     padding-right: 5%;
 }
 
+p.sidebar {
+	padding-left: 20px;  
+	padding-right: 20px;  
+	border: 1px solid #bbb;
+	background-color: #FFECCC;
+	color: #000;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+p.boxout {
+    width: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-width: medium;
+    border-color: #ffe8a5;
+    border-style: solid;
+    align: center;
+    -moz-border-radius: 5px;
+    font-style: normal;
+    font-weight: medium;
+    font-family: serif;
+}
+
+/* ugh: how to inherit? */
+
+p.boxoutright {
+    margin-left: 12px;
+    float: right;
+}
+p.boxoutleft {
+    float: left;
+    margin-right: 12px;
+}
+
 img {
     border-style: none;
 }
@@ -35,7 +74,7 @@ a {
 }
 
 a:link {
-    color: #a0a0ff;
+    color: #3C3C90;
 }
 
 a:visited {
