@@ -48,7 +48,8 @@ p.boxout {
     border-color: #ffe8a5;
     border-style: solid;
     align: center;
-    -moz-border-radius: 5px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
     font-style: normal;
     font-weight: medium;
     font-family: serif;
