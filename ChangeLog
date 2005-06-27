@@ -1,5 +1,7 @@
 2005-06-27  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/news.ihtml (href): add THANKS
+
 	* nl/index.html: update links.
 
 	* site/about/faq.html: link to v2.6 docs.
