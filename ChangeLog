@@ -1,3 +1,29 @@
+2005-06-27  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* nl/index.html: update links.
+
+	* site/about/faq.html: link to v2.6 docs.
+
+	* site/install/index.html: new file.
+
+	* site/install/using.html: link v2.6 docs.
+
+	* site/news.ihtml (Preferably): announce 2.6
+
+	* site/index.html (Module): add 2.6 to quicklinks.
+
+	* site/documentation.html (Module): set 2.6 as default.
+
+	* site/install/stable.ihtml (Module): change to 2.6
+
+	* site/install/older-versions.html (Module): add 2.2
+
+	* site/install/old.ihtml (Module): change to 2.4
+
+	* site/install/devel.ihtml (Module): -> empty
+
+	* site/  add
+
 2005-06-25  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/news.ihtml: Typo.

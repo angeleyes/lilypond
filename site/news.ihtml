@@ -30,7 +30,8 @@ on one day.
 <dt><b>LilyPond 2.6 released</b> - <em>June 27, 2005</em></dt>
 
 
-<dd> Version 2.6 is the latest stable release of LilyPond.  It now
+<dd> Version 2.6 is the latest stable release of LilyPond.  <p>
+It now
 installs in a snap on Windows, MacOS X, and any version of Linux.
 <b>Get up and running in minutes!</b> Pango text formatting lets you
 print <b>Unicode </b> lyrics in your favorite script and font.  Create
@@ -38,7 +39,7 @@ print <b>Unicode </b> lyrics in your favorite script and font.  Create
 
  (<a href="announce-v2.6.html">Announcement</a>, <a
 href="install/#2.6">Download</a>, <a
-href="href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
+href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
 
 </dd>
 
