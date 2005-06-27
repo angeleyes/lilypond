@@ -27,38 +27,32 @@ on one day.
 
 !-->
 
-<dt>2.5.32 released - <em>June 22, 2005</em></dt>
-<dd>
-LilyPond 2.5.32 is now available for download (binaries for Fedora +
-MacOS only). It has a few very minor bugfixes, and a rewrite of the
-TTF embedding code, which should be a lot more robust now.
-(<a href="install/#2.5">Download</a>)
+<dt><b>LilyPond 2.6 released</b> - <em>June 27, 2005</em></dt>
+
+
+<dd> Version 2.6 is the latest stable release of LilyPond.  It now
+installs in a snap on Windows, MacOS X, and any version of Linux.
+<b>Get up and running in minutes!</b> Pango text formatting lets you
+print <b>Unicode </b> lyrics in your favorite script and font.  Create
+<b>SVG</b> files, and edit them in Inkscape.
+
+ (<a href="announce-v2.6.html">Announcement</a>, <a
+href="install/#2.6">Download</a>, <a
+href="href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
+
 </dd>
 
 
-<dt>2.5.31 for Windows and MacOS - <em>June 15, 2005</em></dt>
 
-<dd>
-2.5.31 is now available for both Windows and MacOS X. The Windows
-version should now work with embedding TTF fonts, and the MacOS X has
-better help functionality.
- (<a href="install/#2.5">Download</a>)
+
+
 </dd>
-
 
 <dt>Traduction du site de LilyPond - <em>15 juin 2005</em></dt>
 <dd>
 <a href=about/thanks#website>L'équipe des traducteurs</a> vous présente
 le site de LilyPond en français. Nous travaillons sur la traduction des
 pages encore non traduites. Bon surf !
-</dd>
-
-<dt>2.5.31 released - <em>June 15, 2005</em></dt>
-<dd>
-This release has a few bugfixes. In the MacOS X version, ClickEdit has
-been renamed to LilyPond, and you can now upgrade your files and
-compile them directly from
-LilyPond. (<a href="install/#2.5">Download</a>)
 </dd>
 
 </dl>
