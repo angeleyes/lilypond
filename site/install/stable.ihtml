@@ -138,7 +138,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.5/lilypond-2.6.0.tar.gz")
+	"http://lilypond.org/download/v2.6/lilypond-2.6.0.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
