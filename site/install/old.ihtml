@@ -27,14 +27,15 @@
       Debian
     </td>
     <td>
-      Sid/sarge
+      Sid
     </td>
     <td>
       <em>_("Included with distribution")</em>
     </td>
-    <td>2.2.6</td>
+    <td>2.4.5</td>
     <td></td>
   </tr>
+
 
   <tr>
     <td>
@@ -48,60 +49,22 @@
     <td>
       Woody
     </td>
-    <td><strong>
-	_("Go <a href='%s'>here</a>",
-	"http://afavant.elte.hu/~wferi/lilypond/")
+    <td>
+      <strong>
+	_("Go <a href='%s'>here</a>", "http://tac.ki.iif.hu/lilypond.html")
       </strong>
     </td>
-    <td>2.2.5</td>
+    <td>2.4.6</td>
     <td><a href="mailto:wferiATafavant.elte.hu">Ferenc Wagner</a></td>
   </tr>
 
   <tr>
-    <td><p align="center"><img src="@IMAGES@gentoo-logo.png"></p></td>
+    <td><p align="center"><img src="@IMAGES@fedora-logo.png"></p></td>
     <td>
-      Gentoo
+      Fedora Core 
     </td>
     <td>
-      testing
-    </td>
-    <td>
-      <strong>
-	_("Go <a href='%s'>here</a>",
-	"http://packages.gentoo.org/packages/?category=media-sound;name=lilypond")
-      </strong>
-    </td>
-    <td>2.2.2</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <td><p align="center"><img src="@IMAGES@mandrake-logo.png"></p></td>
-    <td>
-      Mandrake
-    </td>
-    <td>
-      10.0
-    </td>
-    <td>
-      <strong>
-	_("Go to <a href='%s'>%s</a>",
-	"http://rpm.nyvalls.se/sound10.0.html",
-	"Thac's Mandrake RPMs")
-      </strong>
-      (<a href="#mandrake-notes">_("NOTE")</a>)
-    </td>
-    <td>2.2.5</td>
-    <td><a href="mailto:tobbeATnyvallsDOTse">Torbj&ouml;rn Turpeinen</a></td>
-  </tr>
-
-  <tr>
-    <td><p align="center"><img src="@IMAGES@redhat-logo.png"></p></td>
-    <td>
-      Red Hat 
-    </td>
-    <td>
-      7.3
+      1, 2, 3
     </td>
     <td>
       <strong>
@@ -110,27 +73,52 @@
 	"Planet CCRMA")
       </strong>
     </td>
-    <td>2.2.6</td>
+    <td>2.4.5</td>
+    <td>
+      <a href="mailto:planetccrma@ccrma.stanford.edu">
+	PlanetCCRMA</a></td>
+  </tr>
+
+
+  <tr>
+    <td><p align="center"><img src="@IMAGES@redhat-logo.png"></p></td>
+    <td>
+      Red Hat 
+    </td>
+    <td>
+      8, 9
+    </td>
+    <td>
+      <strong>
+	_("Go to <a href='%s'>%s</a>",
+	"http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html#lilypond",
+	"Planet CCRMA")
+      </strong>
+    </td>
+    <td>2.4.5</td>
     <td>
       <a href="mailto:planetccrma@ccrma.stanford.edu">PlanetCCRMA</a></td>
   </tr>
 
+    
   <tr>
-    <td><p align="center"><img src="@IMAGES@slackware-logo.png"></p></td>
+    <td><p align="center"><img src="@IMAGES@mandrake-logo.png"></p></td>
     <td>
-      Slackware 
+      Mandrake
     </td>
     <td>
-      9
+      10.1
     </td>
     <td>
       <strong>
-	_("Download <a href='%s'>tarball</a>",
-	"ftp://ftp.connection.com.br/linux/slackware-9/lilypond/lilypond-2.2.0-i386-1.tgz")
+	_("Go to <a href='%s'>%s</a>",
+	"http://rpm.nyvalls.se/sound10.1.html",
+	"Thac's RPMs for mandrake")
       </strong>
+      (<a href="#mandrake-notes">NOTE</a>)
     </td>
-    <td>2.2.0</td>
-    <td><a href="mailto:hoffmannATuninetDOTcomDOTbr">Ricardo Hoffmann</a></td>
+    <td>2.4.2</td>
+    <td><a href="mailto:tobbeATnyvallsDOTse">Torbj&ouml;rn Turpeinen</a></td>
   </tr>
 
   <tr>
@@ -139,40 +127,41 @@
       SUSE
     </td>
     <td>
-      9.2
+      9.3
     </td>
     <td>
       <em>
 	_("Included <a href='%s'>with distribution</a>",
-	"ftp://ftp.suse.com/pub/suse/i386/9.2/suse/src/")
+	"ftp://ftp.suse.com/pub/suse/i386/9.3/suse/src/")
       </em>
     </td>
-    <td>2.2.6</td>
+    <td>2.4.4</td>
     <td><a href="http://www.suse.com">SUSE</a></td>
   </tr>
-
+  
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@ubuntu.png">
+	<img src="@IMAGES@fedora-logo.png">
       </p>
     </td>
     <td>
-      ubuntu
+      Fedora Core
     </td>
     <td>
-      Hoary/universe
+      3
     </td>
-    <td>
-      <em>
-	_("Included <a href='%s'>with distribution</a>",
-	"ftp://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
-      </em>
+    <td><strong>_("Download <a href='%s'>%s</a>",
+	"http://lilypond.org/download/binaries/Fedora-3/lilypond-2.4.6-1.i386.rpm",
+	"LilyPond"),
+	<a href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.4.6-1.i386.rpm">_("documentation")</a>
+      </strong>
+      (<a href="#ec-fonts">_("NOTE")</a>)
     </td>
-    <td>2.2.6</td>
-    <td><a href="http://ubuntulinux.org">ubuntulinux</a></td>
+    <td>2.4.6</td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
-      
+
   <tr bgcolor="#e8ffe8" >
     <td></td>
     <td colspan="6">
@@ -189,11 +178,9 @@
       <tt>current-unstable</tt>
     </td>
     <td>
-      <strong>
-	_("Go <a href='%s'>here</a>", "macos.html")
-      </strong>
+      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
     </td>
-    <td>2.2.6</td>  
+    <td>2.4.6</td>  
     <td>
       <a href="http://homepage.mac.com/neeracher/contact.html">Matthias Neeracher</a>
     </td> 
@@ -203,54 +190,66 @@
     <td><img src="@IMAGES@daemon.png" alt="FreeBSD daemon"></td>
     <td>FreeBSD</td>
     <td>4, 5</td>
-    <td><strong>_("Go <a href='%s'>here</a>",
+    <td>
+      <strong>_("Go <a href='%s'>here</a>",
 	"http://foo42.de/devel/lilypond-freebsd/")
       </strong>
     </td>
     <td>
-      2.2.2
+      2.3.4
     </td>
     <td><a href="mailto:atamaniuk-ports@frobs.net">Patrick Atamaniuk
     </a></td>
   </tr>
 
-  <!--
-  no 2.2 available from cygwin
   <tr>
-    <td><p align="center"><img src="@IMAGES@windows.png">/<img src="@IMAGES@cygwin.png"></p></td>
-    <td>Cygwin<br>MS Windows</td>
+    <td><img src="@IMAGES@openbsd-logo.png" alt="OpenBSD logo"></td>
+    <td>OpenBSD</td>
+    <td></td>
     <td>
-      < !--  Curr !-- >
+      <strong>
+	_("Go <a href='%s'>here</a>",
+	"http://openbsd.dead-parrot.de/lilyport/")
+      </strong>
     </td>
     <td>
-      < !-- Bertalan's site
-	  <strong>
-	    _("Go <a href='%s'>here</a>", "http://www.inf.bme.hu/~berti/lilypond/")</strong>
-	  !-- >
+      2.4.6
+    </td>
+    <td><a href="mailto:kili@outback.escape.de">Matthias Kilian
+    </a></td>
+  </tr>
+
+  <tr>
+    <td><p align="center"><img src="@IMAGES@windows-logo.png">/<img src="@IMAGES@cygwin.png"></p></td>
+    <td>Microsoft&nbsp;Windows/<br>Cygwin</td>
+    <td>
+      NT, 98, 2000, ME, XP
+    </td>
+    <td>
+      <!-- Bertalan's site
+	  <strong>_("Go <a href='%s'>here</a>", "http://www.inf.bme.hu/~berti/lilypond/")
+	  !-->
       <strong>_("Go <a href='%s'>here</a>", "windows.html")</strong>
     </td>
-    <td>2.2.5</td>
+    <td>2.4.2</td>
     <td>
       <a href="mailto:bug-lilypond@gnu.org">Bertalan Fodor -
 	M&aacute;rton J&oacute;zsa
       </a>
     </td>
   </tr>
-  !-->
-  
+
   <tr>
     <td></td>
     <td>_("Source code")</td>
     <td></td>
-    <td>
-      <strong>
-	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.2/lilypond-2.2.6.tar.gz")
+    <td><strong>_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/v2.4/lilypond-2.4.5.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
     <td>
-      2.2.6
+      2.4.5
     </td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
