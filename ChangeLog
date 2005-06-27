@@ -6,6 +6,8 @@
 	
 2005-06-27  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/announce-v2.6.html: rephrasing.
+
 	* site/news.ihtml (href): add THANKS
 
 	* nl/index.html: update links.
