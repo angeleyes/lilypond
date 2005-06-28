@@ -32,7 +32,7 @@ on one day.
 
 <dd> Version 2.6 is the latest stable release of LilyPond.  <p>
 It now
-installs in a snap on Windows, MacOS X, and any version of Linux.
+installs in a snap on Windows, MacOS X, and any version of Linux (x86).
 <b>Get up and running in minutes!</b> Pango text formatting lets you
 print <b>Unicode </b> lyrics in your favorite script and font.  Create
 <b>SVG</b> files, and edit them in Inkscape.
@@ -44,11 +44,6 @@ href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
 
 </dd>
 
-
-
-
-
-</dd>
 
 <dt>Traduction du site de LilyPond - <em>15 juin 2005</em></dt>
 <dd>
