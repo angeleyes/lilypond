@@ -102,6 +102,27 @@
 	PlanetCCRMA</a></td>
   </tr>
 
+    
+  <tr>
+    <td><p align="center"><img src="@IMAGES@mandrake-logo.png"></p></td>
+    <td>
+      Mandrake
+    </td>
+    <td>
+      10.1
+    </td>
+    <td>
+      <strong>
+	_("Go to <a href='%s'>%s</a>",
+	"http://rpm.nyvalls.se/sound10.1.html",
+	"Thac's RPMs for mandrake")
+      </strong>
+      (<a href="#mandrake-notes">NOTE</a>)
+    </td>
+    <td>2.4.2</td>
+    <td><a href="mailto:tobbeATnyvallsDOTse">Torbj&ouml;rn Turpeinen</a></td>
+  </tr>
+
 
   <tr>
     <td><p align="center"><img src="@IMAGES@redhat-logo.png"></p></td>
@@ -123,26 +144,6 @@
       <a href="mailto:planetccrma@ccrma.stanford.edu">PlanetCCRMA</a></td>
   </tr>
 
-    
-  <tr>
-    <td><p align="center"><img src="@IMAGES@mandrake-logo.png"></p></td>
-    <td>
-      Mandrake
-    </td>
-    <td>
-      10.1
-    </td>
-    <td>
-      <strong>
-	_("Go to <a href='%s'>%s</a>",
-	"http://rpm.nyvalls.se/sound10.1.html",
-	"Thac's RPMs for mandrake")
-      </strong>
-      (<a href="#mandrake-notes">NOTE</a>)
-    </td>
-    <td>2.4.2</td>
-    <td><a href="mailto:tobbeATnyvallsDOTse">Torbj&ouml;rn Turpeinen</a></td>
-  </tr>
 
   <tr>
     <td><p align="center"><img src="@IMAGES@suse-logo.png"></p></td>
@@ -192,23 +193,6 @@
   </tr>
   
   <tr>
-    <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
-    <td>
-      MacOS X/Fink
-    </td>
-    <td>
-      <tt>current-unstable</tt>
-    </td>
-    <td>
-      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
-    </td>
-    <td>2.4.6</td>  
-    <td>
-      <a href="http://homepage.mac.com/neeracher/contact.html">Matthias Neeracher</a>
-    </td> 
-  </tr>
-
-  <tr>
     <td><img src="@IMAGES@daemon.png" alt="FreeBSD daemon"></td>
     <td>FreeBSD</td>
     <td>4, 5</td>
@@ -225,20 +209,20 @@
   </tr>
 
   <tr>
-    <td><img src="@IMAGES@openbsd-logo.png" alt="OpenBSD logo"></td>
-    <td>OpenBSD</td>
-    <td></td>
+    <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
     <td>
-      <strong>
-	_("Go <a href='%s'>here</a>",
-	"http://openbsd.dead-parrot.de/lilyport/")
-      </strong>
+      MacOS X/Fink
     </td>
     <td>
-      2.4.6
+      <tt>current-unstable</tt>
     </td>
-    <td><a href="mailto:kili@outback.escape.de">Matthias Kilian
-    </a></td>
+    <td>
+      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
+    </td>
+    <td>2.4.6</td>  
+    <td>
+      <a href="http://homepage.mac.com/neeracher/contact.html">Matthias Neeracher</a>
+    </td> 
   </tr>
 
   <tr>
@@ -259,6 +243,23 @@
 	M&aacute;rton J&oacute;zsa
       </a>
     </td>
+  </tr>
+
+  <tr>
+    <td><img src="@IMAGES@openbsd-logo.png" alt="OpenBSD logo"></td>
+    <td>OpenBSD</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Go <a href='%s'>here</a>",
+	"http://openbsd.dead-parrot.de/lilyport/")
+      </strong>
+    </td>
+    <td>
+      2.4.6
+    </td>
+    <td><a href="mailto:kili@outback.escape.de">Matthias Kilian
+    </a></td>
   </tr>
 
   <tr>
