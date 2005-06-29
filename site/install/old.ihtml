@@ -59,6 +59,29 @@
   </tr>
 
   <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@fedora-logo.png">
+      </p>
+    </td>
+    <td>
+      Fedora Core
+    </td>
+    <td>
+      3
+    </td>
+    <td><strong>_("Download <a href='%s'>%s</a>",
+	"http://lilypond.org/download/binaries/Fedora-3/lilypond-2.4.6-1.i386.rpm",
+	"LilyPond"),
+	<a href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.4.6-1.i386.rpm">_("documentation")</a>
+      </strong>
+      (<a href="#ec-fonts">_("NOTE")</a>)
+    </td>
+    <td>2.4.6</td>
+    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+  </tr>
+
+  <tr>
     <td><p align="center"><img src="@IMAGES@fedora-logo.png"></p></td>
     <td>
       Fedora Core 
@@ -142,26 +165,25 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@fedora-logo.png">
+	<img src="@IMAGES@ubuntu.png">
       </p>
     </td>
     <td>
-      Fedora Core
+      ubuntu
     </td>
     <td>
-      3
+      Hoary/universe
     </td>
-    <td><strong>_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/Fedora-3/lilypond-2.4.6-1.i386.rpm",
-	"LilyPond"),
-	<a href="http://lilypond.org/download/binaries/Fedora-3/lilypond-documentation-2.4.6-1.i386.rpm">_("documentation")</a>
-      </strong>
-      (<a href="#ec-fonts">_("NOTE")</a>)
+    <td>
+      <em>
+	_("Included <a href='%s'>with distribution</a>",
+	"ftp://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
+      </em>
     </td>
-    <td>2.4.6</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+    <td>2.4.5</td>
+    <td><a href="http://ubuntulinux.org">ubuntulinux</a></td>
   </tr>
-
+      
   <tr bgcolor="#e8ffe8" >
     <td></td>
     <td colspan="6">
