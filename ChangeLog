@@ -1,9 +1,13 @@
+2005-06-30  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* nl/index.html: Use old=oud, ancient=antiek.
+
 2005-06-29  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/install/older-versions.html: Fix: Warty iso Hoary 2.2.6.
 
-	* site/install/old.ihtml: Add Hoary: 2.4.5.  Move Fedora to
-	alphabetic place.
+	* site/install/old.ihtml: Add Hoary: 2.4.5.  Move Fedora and Red
+	Hat into alphabetic order.
 
 	* site/news.ihtml (href): Typo.
 
