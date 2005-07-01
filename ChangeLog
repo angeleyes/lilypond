@@ -1,54 +1,19 @@
-2005-06-30  Jan Nieuwenhuizen  <janneke@gnu.org>
+2005-07-01  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* python/lilylib.py: remove set_environment()
+
+	* lily/ly-module.cc (ly_make_anonymous_module): define
+	%module-public-interface of module. (backportme)
 
 	* cygwin/GNUmakefile ($(outdir)/%.sh): Bugfix: use TAB (Bertalan
 	Fodor).  (backportme).
-
-2005-06-30  Graham Percival  <gperlist@shaw.ca>
-
-	* Documentation/topdocs/AUTHORS.texi: update personal web address.
-
-	* documentation/user/examples.itely, lilypond-book.itely:
-	change \RequirePackage to \usepackage.
-
-2005-06-30  Han-Wen Nienhuys  <hanwen@xs4all.nl>
-
-	* Documentation/user/basic-notation.itely (Transpose): remove link
-	to nonexistent UntransposableMusic.
-
-	* scm/output-svg.scm: remove old definitions (backportme).
+	
+	* scm/output-svg.scm: remove old definitions.
 
 	* scripts/lilypond-book.py (do_file): search for kpsewhich before
 	invoking.
 
 	* python/lilylib.py (search_exe_path): new function.
-
-2005-06-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
-
-	* python/lilylib.py (mkdir_p): remove setup_environment()
-	(backportme)
-
-	* buildscripts/mutopia-index.py (headertext): trim text.
-
-	* Documentation/topdocs/NEWS.tely (Top): refresh.
-
-	* scm/define-markup-commands.scm (wordwrap-string): new function:
-	split string in paras and words.
-	(wordwrap-markups): new function.
-	(wordwrap-stencils): new function. 
-	(justify): use it.
-	(wordwrap): use it.
-	(wordwrap-string): use it
-	(justify-string): use it.
-
-	* scm/lily-library.scm (regexp-split): new function.
-
-	* scm/define-markup-commands.scm: remove encoded-simple. 
-	remove font-markup.
-	(fontsize): remove old version  of fontsize.
-	(wordwrap): new markup function. Wrap into paragraphs.
-
-	* VERSION: Branch lilypond_2_6
-	(MINOR_VERSION): go to 2.7.0
 
 2005-06-28  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
