@@ -1,3 +1,7 @@
+2005-07-03  Pedro Kroger  <kroeger@pedrokroeger.net>
+
+	* site/install/stable.ihtml: Add Slackware.
+
 2005-06-30  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* nl/index.html: Use old=oud, ancient=antiek.

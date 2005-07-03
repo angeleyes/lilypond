@@ -18,6 +18,7 @@
     </td>
   </tr>
 
+
   <tr>
     <td>
       <p align="center">
@@ -41,6 +42,23 @@
     </td>
     <td>2.6.0</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+  </tr>
+
+  <tr>
+    <td><p align="center"><img src="@IMAGES@slackware-logo.png"></p></td>
+    <td>
+      Slackware 
+    </td>
+    <td>
+      10
+    </td>
+    <td>
+      <strong>_("Go <a href='%s'>here</a>",
+      "http://www.lost-shoe-films.de/johnny/lilypondslackware/")
+</strong>
+    </td>
+    <td>2.6.0</td>
+    <td><a href="mailto:johnnyweb-1.0@lost-shoe-films.de">Ricardo Hoffmann</a></td>
   </tr>
 
   <tr>
