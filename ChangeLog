@@ -1,3 +1,15 @@
+2005-07-09  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/news.ihtml (href): announce 2.7.0
+
+	* site/index.html: add 2.7 table.
+
+	* site/install/devel.ihtml: add 2.7
+
+2005-06-29  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/documentation.html: add 2.7
+
 2005-07-03  Pedro Kroger  <kroeger@pedrokroeger.net>
 
 	* site/install/stable.ihtml: Add Slackware.
@@ -20,6 +32,8 @@
 	* site/news.ihtml (href): Bugfix: Linux (x86).  Remove stray </dd>
 
 2005-06-28  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/index.html: remove ghostscript notice.
 
 	* site/install/stable.ihtml: 2.6.0-2.dmg.
 

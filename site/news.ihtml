@@ -27,6 +27,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7 is out</b> - <em>July 9, 2005</em></dt>
+
+<dd> LilyPond 2.7.0 is out. It has support for paragraph text and
+pitched trill notation. (<a
+href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+
+</dd>
+
 <dt><b>LilyPond 2.6 released</b> - <em>June 27, 2005</em></dt>
 
 
