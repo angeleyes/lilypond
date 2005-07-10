@@ -1,3 +1,7 @@
+2005-07-10  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: url fix.
+
 2005-07-09  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml (href): announce 2.7.0
