@@ -74,11 +74,11 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.6.0.x86.package",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.6.0-upgrade.x86.package")
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.6.1.x86.package",
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.6.1-upgrade.x86.package")
       </strong>
     </td>
-    <td>2.6.0</td>
+    <td>2.6.1</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
@@ -100,7 +100,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/MacOS/lilypond-2.6.0-2.dmg",
+	"http://lilypond.org/download/binaries/MacOS/lilypond-2.6.1-1.dmg",
 	"LilyPond")
       </strong>
     </td>

@@ -1,3 +1,7 @@
+2005-07-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: 2.6.1 for macos and autopackage.
+
 2005-07-10  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: url fix.
