@@ -1,3 +1,9 @@
+2005-07-18  Jean-Charles Malahieude <lilyfan@wanadoo.fr>
+
+	* fr/index.html : upate to rev. 1.233
+	* fr/install/index.html : update to rev. 1.38
+	* fr/about/faq.html : new translated file
+
 2005-07-20  Heikki Junes <hjunes@cc.hut.fi>
 
 	* newweb.css: optimize for a 800x600 screen, increases printability 
