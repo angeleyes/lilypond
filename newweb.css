@@ -22,8 +22,11 @@ body {
     /* other colors would be nice, but they don't look too well with white
        music fragments.  */
     background: #ffffff;
-    padding-left: 5%;
-    padding-right: 5%;
+    /* optimize for a 800x600 screen, increases printability when 
+       'fit to page' is not set and readability in wide screens (HJ: mine) */
+    width: 760 px;
+    padding-left: 1 %;
+    padding-right: 1 %;
 }
 
 p.sidebar {
