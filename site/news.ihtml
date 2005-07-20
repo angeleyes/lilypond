@@ -30,9 +30,9 @@ on one day.
 <dt><b>LilyPond 2.6.1 is out</b> - <em>July 11, 2005</em></dt>
 
 <dd> This version fixes a few minor bugs found in
-2.6.0. (<a
+2.6.0, and also works on DOS-based Windows versions.  (<a
 href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
+<a href="install/#2.6">Download</a>)
 
 </dd>
 
