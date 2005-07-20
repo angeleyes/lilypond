@@ -23,7 +23,7 @@ body {
        music fragments.  */
     background: #ffffff;
     /* optimize for a 800x600 screen, increases printability when 
-       'fit to page' is not set and readability in wide screens (HJ: mine) */
+       'fit to page' is not set and readability in wide screens */
     width: 760 px;
     padding-left: 1 %;
     padding-right: 1 %;
