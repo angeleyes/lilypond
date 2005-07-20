@@ -24,9 +24,9 @@ body {
     background: #ffffff;
     /* optimize for a 800x600 screen, increases printability when 
        'fit to page' is not set and readability in wide screens */
-    width: 760 px;
-    padding-left: 1 %;
-    padding-right: 1 %;
+    width: 760px;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 p.sidebar {
