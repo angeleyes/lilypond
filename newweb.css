@@ -22,9 +22,11 @@ body {
     /* other colors would be nice, but they don't look too well with white
        music fragments.  */
     background: #ffffff;
-    /* optimize for a 800x600 screen, increases printability when 
-       'fit to page' is not set and readability in wide screens */
-    width: 760px;
+    /* limit width slightly, prevents the appearance of horizontal scrollbar */
+    width: 96%;
+    /* center */
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 1%;
     padding-right: 1%;
 }
