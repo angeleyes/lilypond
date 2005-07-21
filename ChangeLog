@@ -1,3 +1,11 @@
+2005-07-21  John Mandereau  <john.mandereau@free.fr>
+
+	* TRANSLATION: add about/browser-language
+
+	* fr/faq.html: translation correction
+
+	* fr/about/browser-language.html: new translated file
+
 2005-07-21  Heikki Junes <hjunes@cc.hut.fi>
 
 	* newweb.css: revert 800x600 change, center instead and decrease

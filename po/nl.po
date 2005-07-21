@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-05 10:29-0300\n"
+"POT-Creation-Date: 2005-07-20 01:39+0200\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -265,6 +265,7 @@ msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 #: site/install/old.ihtml:179 site/install/devel.ihtml:70
 #: site/install/old.ihtml:168 site/install/stable.ihtml:71
 #: site/install/old.ihtml:191 site/install/stable.ihtml:89
+#: site/install/devel.ihtml:65 site/install/stable.ihtml:88
 msgid "Other"
 msgstr "Overige"
 
@@ -286,7 +287,11 @@ msgstr "Overige"
 #: site/install/old.ihtml:277 site/install/stable.ihtml:61
 #: site/install/stable.ihtml:83 site/install/stable.ihtml:110
 #: site/install/stable.ihtml:129 site/install/stable.ihtml:164
-#: site/install/stable.ihtml:44
+#: site/install/stable.ihtml:44 site/install/devel.ihtml:37
+#: site/install/devel.ihtml:59 site/install/devel.ihtml:86
+#: site/install/devel.ihtml:105 site/install/stable.ihtml:82
+#: site/install/stable.ihtml:109 site/install/stable.ihtml:128
+#: site/install/stable.ihtml:163
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -297,6 +302,7 @@ msgstr "LilyPond ontwikkelteam"
 #: site/install/devel.ihtml:119 site/install/devel.ihtml:141
 #: site/install/old.ihtml:248 site/install/stable.ihtml:142
 #: site/install/old.ihtml:271 site/install/stable.ihtml:160
+#: site/install/devel.ihtml:101 site/install/stable.ihtml:159
 msgid "warning"
 msgstr "waarschuwing"
 
@@ -324,7 +330,7 @@ msgstr "Hergebruik variabele"
 #: site/install/old.ihtml:96 site/install/old.ihtml:92
 #: site/install/old.ihtml:159 site/install/stable.ihtml:40
 #: site/install/old.ihtml:78 site/install/stable.ihtml:58
-#: site/install/stable.ihtml:41
+#: site/install/stable.ihtml:41 site/install/devel.ihtml:34
 msgid "NOTE"
 msgstr "LET OP"
 
@@ -341,12 +347,14 @@ msgstr "Onderdeel van distributie"
 #: site/install/devel.ihtml:113 site/install/devel.ihtml:135
 #: site/install/old.ihtml:244 site/install/stable.ihtml:136
 #: site/install/old.ihtml:267 site/install/stable.ihtml:154
+#: site/install/devel.ihtml:95 site/install/stable.ihtml:153
 msgid "Source code"
 msgstr "Broncode"
 
 #: site/install/devel.ihtml:78 site/install/devel.ihtml:58
 #: site/install/devel.ihtml:80 site/install/stable.ihtml:81
-#: site/install/stable.ihtml:99
+#: site/install/stable.ihtml:99 site/install/devel.ihtml:75
+#: site/install/stable.ihtml:98
 #, c-format
 msgid "%s and newer"
 msgstr "%s en nieuwer"
@@ -359,7 +367,8 @@ msgstr "%s en nieuwer"
 #: site/install/devel.ihtml:114 site/install/devel.ihtml:117
 #: site/install/devel.ihtml:139 site/install/old.ihtml:246
 #: site/install/stable.ihtml:140 site/install/old.ihtml:269
-#: site/install/stable.ihtml:158
+#: site/install/stable.ihtml:158 site/install/devel.ihtml:99
+#: site/install/stable.ihtml:157
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -387,6 +396,7 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/old.ihtml:236 site/install/old.ihtml:238
 #: site/install/old.ihtml:254 site/install/stable.ihtml:31
 #: site/install/stable.ihtml:142 site/install/stable.ihtml:56
+#: site/install/stable.ihtml:141
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Ga <a href='%s'>hierheen</a>"
@@ -407,6 +417,8 @@ msgstr "Onderdeel <a href='%s'>van distributie</a>"
 #: site/install/stable.ihtml:33 site/install/stable.ihtml:85
 #: site/install/old.ihtml:73 site/install/stable.ihtml:51
 #: site/install/stable.ihtml:103 site/install/stable.ihtml:34
+#: site/install/devel.ihtml:29 site/install/devel.ihtml:79
+#: site/install/stable.ihtml:102
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Download <a href='%s'>%s</a>"
@@ -415,7 +427,7 @@ msgstr "Download <a href='%s'>%s</a>"
 #: site/install/devel.ihtml:35 site/install/stable.ihtml:157
 #: site/install/old.ihtml:157 site/install/stable.ihtml:36
 #: site/install/old.ihtml:76 site/install/stable.ihtml:54
-#: site/install/stable.ihtml:37
+#: site/install/stable.ihtml:37 site/install/devel.ihtml:32
 msgid "documentation"
 msgstr "documentatie"
 
@@ -456,6 +468,8 @@ msgstr "Cygwin"
 #: site/install/devel.ihtml:58 site/install/devel.ihtml:104
 #: site/install/stable.ihtml:59 site/install/stable.ihtml:105
 #: site/install/stable.ihtml:77 site/install/stable.ihtml:123
+#: site/install/devel.ihtml:53 site/install/stable.ihtml:76
+#: site/install/stable.ihtml:122
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 msgstr "Download het installeerprograma <a href='%s'>hier</a>"

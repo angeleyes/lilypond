@@ -29,6 +29,7 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
 2 about/features.html  --  http://lilypond.org/web/about/features.html
 2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
+2 about/browser-language.html -- http://lilypond.org/web/about/browser-language.html
 
 4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
 3 site/about/automated-engraving/
