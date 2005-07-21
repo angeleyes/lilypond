@@ -92,6 +92,10 @@ a:hover {
 }
 
 /* Plain text MENU.  */
+div.menu {
+    text-align: center;
+}
+
 td.menuleftedge {
 }
 
