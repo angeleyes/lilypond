@@ -27,13 +27,13 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/Fedora-4/lilypond-2.7.0-1.i386.rpm",
+	"http://lilypond.org/download/binaries/Fedora-4/lilypond-2.7.2-1.i386.rpm",
 	"LilyPond"),
-	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.0-1.i386.rpm">_("documentation")</a>
+	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.2-1.i386.rpm">_("documentation")</a>
       </strong>
       (<a href="#gs815">_("NOTE")</a>)
     </td>
-    <td>2.7.0</td>
+    <td>2.7.2</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
@@ -51,11 +51,11 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.0.x86.package",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.0-upgrade.x86.package")
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.2.x86.package",
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.2-upgrade.x86.package")
       </strong>
     </td>
-    <td>2.7.0</td>
+    <td>2.7.2</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
@@ -77,11 +77,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.0-1.dmg",
+	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.2-1.dmg",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.0-1</td>  
+    <td>2.7.2-1</td>  
     <td>
       <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
@@ -97,11 +97,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.7/lilypond-2.7.0.tar.gz")
+	"http://lilypond.org/download/v2.7/lilypond-2.7.2.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.7.0</td>
+    <td>2.7.2</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 

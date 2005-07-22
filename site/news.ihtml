@@ -27,23 +27,15 @@ on one day.
 
 !-->
 
-<dt><b>LilyPond 2.6.1 is out</b> - <em>July 11, 2005</em></dt>
 
-<dd> This version fixes a few minor bugs found in
-2.6.0, and also works on DOS-based Windows versions.  (<a
-href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.6">Download</a>)
+<dt><b>LilyPond 2.7.2 is out</b> - <em>July 21, 2005</em></dt>
 
-</dd>
-
-<dt><b>LilyPond 2.7 is out</b> - <em>July 9, 2005</em></dt>
-
-<dd> LilyPond 2.7.0 is out. It has support for paragraph text and
-pitched trill notation. (<a
+<dd> LilyPond 2.7.2 has support for suggested accidentals for musica
+ficta notation, easy entry for lyric melismata and improvements for
+quicker entry of scores.  (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
+<a href="install/#2.7">Download</a>) </dd>
 
-</dd>
 
 <dt><b>LilyPond 2.6 released</b> - <em>June 27, 2005</em></dt>
 
@@ -60,14 +52,6 @@ href="@DOC@v2.6/Documentation/out-www/THANKS.html">Thank
 Yous</a>, <a href="install/#2.6">Download</a>, <a
 href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
 
-</dd>
-
-
-<dt>Traduction du site de LilyPond - <em>15 juin 2005</em></dt>
-<dd>
-<a href=about/thanks#website>L'équipe des traducteurs</a> vous présente
-le site de LilyPond en français. Nous travaillons sur la traduction des
-pages encore non traduites. Bon surf !
 </dd>
 
 </dl>
