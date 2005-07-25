@@ -1,3 +1,9 @@
+2005-07-25  John Mandereau  <john.mandereau@free.fr>
+
+	* fr/: update documentation links to 2.6/2.7
+
+	* fr/index.html: update to 2.7.3
+
 2005-07-24  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* patch by John Mandereau: update 2.4 links to 2.6
