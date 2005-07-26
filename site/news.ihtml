@@ -27,6 +27,16 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.3 is out</b> - <em>July 25, 2005</em></dt>
+
+<dd>
+LilyPond 2.7.3 has improvements in performance which should result in
+faster operations (15 to 20 percent). It also contains the new
+"\displayLilyMusic" function.
+(<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 
 <dt><b>LilyPond 2.7.2 is out</b> - <em>July 21, 2005</em></dt>
 
