@@ -1,3 +1,7 @@
+2005-07-26  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/install/devel.ihtml: Add 2.7.3 for windows.
+
 2005-07-25  John Mandereau  <john.mandereau@free.fr>
 
 	* fr/: update documentation links to 2.6/2.7
