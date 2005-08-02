@@ -27,6 +27,17 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.6.2 is out</b> - <em>August 2, 2005</em></dt>
+
+<dd>
+This release has a few bugfixes, among them: the autopackage will run
+in more plataforms, LilyPond will be much quicker for large
+lilypond-book documents, and the up and down Fa note heads for shaped
+heads have been
+swapped. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.3 is out</b> - <em>July 25, 2005</em></dt>
 
 <dd>
@@ -37,32 +48,6 @@ faster operations (15 to 20 percent). It also contains the new
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
-
-<dt><b>LilyPond 2.7.2 is out</b> - <em>July 21, 2005</em></dt>
-
-<dd> LilyPond 2.7.2 has support for suggested accidentals for musica
-ficta notation, easy entry for lyric melismata and improvements for
-quicker entry of scores.  (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-
-<dt><b>LilyPond 2.6 released</b> - <em>June 27, 2005</em></dt>
-
-
-<dd> Version 2.6 is the latest stable release of LilyPond.  <p>
-It now
-installs in a snap on Windows, MacOS X, and any version of Linux (x86).
-<b>Get up and running in minutes!</b> Pango text formatting lets you
-print <b>Unicode </b> lyrics in your favorite script and font.  Create
-<b>SVG</b> files, and edit them in Inkscape.
-
- (<a href="announce-v2.6.html">Announcement</a>, <a
-href="@DOC@v2.6/Documentation/out-www/THANKS.html">Thank
-Yous</a>, <a href="install/#2.6">Download</a>, <a
-href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>)
-
-</dd>
 
 </dl>
 

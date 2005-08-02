@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-20 01:39+0200\n"
+"POT-Creation-Date: 2005-08-02 19:40-0300\n"
 "PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,6 +266,7 @@ msgstr "À propos de la <A HREF='%s'>sélection automatique de la langue</A>."
 #: site/install/old.ihtml:168 site/install/stable.ihtml:71
 #: site/install/old.ihtml:191 site/install/stable.ihtml:89
 #: site/install/devel.ihtml:65 site/install/stable.ihtml:88
+#: site/install/devel.ihtml:67
 msgid "Other"
 msgstr "Autre"
 
@@ -291,7 +292,9 @@ msgstr "Autre"
 #: site/install/devel.ihtml:59 site/install/devel.ihtml:86
 #: site/install/devel.ihtml:105 site/install/stable.ihtml:82
 #: site/install/stable.ihtml:109 site/install/stable.ihtml:128
-#: site/install/stable.ihtml:163
+#: site/install/stable.ihtml:163 site/install/devel.ihtml:39
+#: site/install/devel.ihtml:61 site/install/devel.ihtml:106
+#: site/install/devel.ihtml:125
 msgid "LilyPond development team"
 msgstr "Équipe de développement de LilyPond"
 
@@ -303,6 +306,7 @@ msgstr "Équipe de développement de LilyPond"
 #: site/install/old.ihtml:248 site/install/stable.ihtml:142
 #: site/install/old.ihtml:271 site/install/stable.ihtml:160
 #: site/install/devel.ihtml:101 site/install/stable.ihtml:159
+#: site/install/devel.ihtml:121
 msgid "warning"
 msgstr "avertissement"
 
@@ -331,6 +335,7 @@ msgstr "Réutiliser une variable"
 #: site/install/old.ihtml:159 site/install/stable.ihtml:40
 #: site/install/old.ihtml:78 site/install/stable.ihtml:58
 #: site/install/stable.ihtml:41 site/install/devel.ihtml:34
+#: site/install/devel.ihtml:36
 msgid "NOTE"
 msgstr "NOTE"
 
@@ -348,13 +353,14 @@ msgstr "Inclus dans la distribution"
 #: site/install/old.ihtml:244 site/install/stable.ihtml:136
 #: site/install/old.ihtml:267 site/install/stable.ihtml:154
 #: site/install/devel.ihtml:95 site/install/stable.ihtml:153
+#: site/install/devel.ihtml:115
 msgid "Source code"
 msgstr "Code source"
 
 #: site/install/devel.ihtml:78 site/install/devel.ihtml:58
 #: site/install/devel.ihtml:80 site/install/stable.ihtml:81
 #: site/install/stable.ihtml:99 site/install/devel.ihtml:75
-#: site/install/stable.ihtml:98
+#: site/install/stable.ihtml:98 site/install/devel.ihtml:77
 #, c-format
 msgid "%s and newer"
 msgstr "%s et plus récent"
@@ -368,7 +374,7 @@ msgstr "%s et plus récent"
 #: site/install/devel.ihtml:139 site/install/old.ihtml:246
 #: site/install/stable.ihtml:140 site/install/old.ihtml:269
 #: site/install/stable.ihtml:158 site/install/devel.ihtml:99
-#: site/install/stable.ihtml:157
+#: site/install/stable.ihtml:157 site/install/devel.ihtml:119
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Télécharger <a href='%s'>l'archive</a>"
@@ -418,7 +424,8 @@ msgstr "Inclus dans <a href='%s'>la distribution</a>"
 #: site/install/old.ihtml:73 site/install/stable.ihtml:51
 #: site/install/stable.ihtml:103 site/install/stable.ihtml:34
 #: site/install/devel.ihtml:29 site/install/devel.ihtml:79
-#: site/install/stable.ihtml:102
+#: site/install/stable.ihtml:102 site/install/devel.ihtml:31
+#: site/install/devel.ihtml:81
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Télécharger <a href='%s'>%s</a>"
@@ -428,6 +435,7 @@ msgstr "Télécharger <a href='%s'>%s</a>"
 #: site/install/old.ihtml:157 site/install/stable.ihtml:36
 #: site/install/old.ihtml:76 site/install/stable.ihtml:54
 #: site/install/stable.ihtml:37 site/install/devel.ihtml:32
+#: site/install/devel.ihtml:34
 msgid "documentation"
 msgstr "documentation"
 
@@ -468,7 +476,8 @@ msgstr "Cygwin"
 #: site/install/stable.ihtml:59 site/install/stable.ihtml:105
 #: site/install/stable.ihtml:77 site/install/stable.ihtml:123
 #: site/install/devel.ihtml:53 site/install/stable.ihtml:76
-#: site/install/stable.ihtml:122
+#: site/install/stable.ihtml:122 site/install/devel.ihtml:55
+#: site/install/devel.ihtml:100
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
