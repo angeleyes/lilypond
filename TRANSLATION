@@ -12,35 +12,34 @@ The initial delivery of a translation for LILYPOND.ORG is about 3000 words.
 
 Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated
 
-1 index.html  --  http://lilypond.org/web/index.html
-1 contact.ihtml  --  in http://lilypond.org/web/about/index.html and
-                     in http://lilypond.org/web/documentation.html
-
-1 switch/index.html  --  http://lilypond.org/web/switch/index.html
-1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
-2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
-1 switch/tour.html  --  http://lilypond.org/web/switch/tour.html
-1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
-4 documentation.html  --  http://lilypond.org/web/documentation.html
-
 1 about/index.html  --  http://lilypond.org/web/about/index.html
-4 about/doneet.html  --  http://lilypond.org/web/about/doneet.html
-3 about/faq.html  --  http://lilypond.org/web/about/faq.html
-3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
-2 about/features.html  --  http://lilypond.org/web/about/features.html
-2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
-2 about/browser-language.html -- http://lilypond.org/web/about/browser-language.html
-
-4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
-3 site/about/automated-engraving/
-4 site/devel
-
+1 contact.ihtml  --  in http://lilypond.org/web/about/index.html and in http://lilypond.org/web/documentation.html
+1 index.html  --  http://lilypond.org/web/index.html
 1 install/getting-started.html  --  http://lilypond.org/web/install/getting-started.html
 1 install/index.html  --  http://lilypond.org/web/install/index.html
 1 install/macos.html  --  http://lilypond.org/web/install/macos.html
-4 install/slackware.html  --  http://lilypond.org/web/install/slackware.html
 1 install/using.html  --  http://lilypond.org/web/install/using.html
 1 install/windows.html  --  http://lilypond.org/web/install/windows.html
+1 po/LANGUAGE.po  -- menus and http://lilypond.org/web/switch/howto.html
+1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
+1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
+1 switch/index.html  --  http://lilypond.org/web/switch/index.html
+1 switch/tour.html  --  http://lilypond.org/web/switch/tour.html
+
+2 about/browser-language.html -- http://lilypond.org/web/about/browser-language.html
+2 about/features.html  --  http://lilypond.org/web/about/features.html
+2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
+2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
+
+3 about/faq.html  --  http://lilypond.org/web/about/faq.html
+3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
+3 site/about/automated-engraving/
+
+4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
+4 about/doneet.html  --  http://lilypond.org/web/about/doneet.html
+4 documentation.html  --  http://lilypond.org/web/documentation.html
+4 install/slackware.html  --  http://lilypond.org/web/install/slackware.html
+4 site/devel
 
 LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
   184   331  3865 site/index.html

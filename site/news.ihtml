@@ -39,7 +39,7 @@ This release fixes a memory corruption bug that was triggered by
 
 <dd>
 This release has a few bugfixes, among them: the autopackage will run
-in more plataforms, LilyPond will be much quicker for large
+in more platforms, LilyPond will be much quicker for large
 lilypond-book documents, and the up and down Fa note heads for shaped
 heads have been
 swapped. (<a
