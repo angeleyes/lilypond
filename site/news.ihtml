@@ -1,3 +1,4 @@
+<!-- -*- html -*- -->
 <!--
     Translation of CVS $Revision$
     
@@ -26,6 +27,13 @@ on one day.
 
 
 !-->
+
+<dt><b>LilyPond 2.6.3 is out</b> - <em>August 4, 2005</em></dt>
+
+<dd>
+This release fixes a memory corruption bug that was triggered by
+\override'ing Beam settings. (<a href="install/#2.7">Download</a>)
+</dd>
 
 <dt><b>LilyPond 2.6.2 is out</b> - <em>August 2, 2005</em></dt>
 
