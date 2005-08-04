@@ -33,7 +33,6 @@
 	"LilyPond"),
 	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.3-1.i386.rpm">_("documentation")</a>
       </strong>
-      (<a href="#gs815">_("NOTE")</a>)
     </td>
     <td>2.7.3</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
