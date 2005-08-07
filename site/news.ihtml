@@ -28,6 +28,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.4 is out</b> - <em>August 7, 2005</em></dt>
+
+<dd>
+LilyPond 2.7.4 has support for proportional notation, where the space
+for a note is proportional to the time it
+takes. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.6.3 is out</b> - <em>August 4, 2005</em></dt>
 
 <dd>
