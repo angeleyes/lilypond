@@ -1,3 +1,7 @@
+2005-08-08  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* nl/switch/howto.html: Update.
+
 2005-08-05  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: set links for 2.7.4
