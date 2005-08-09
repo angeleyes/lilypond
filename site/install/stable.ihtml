@@ -129,6 +129,24 @@
   </tr>
 
   <tr>
+    <td><p align="center"><img src="@IMAGES@windows-logo.png">/<img src="@IMAGES@cygwin.png"></p></td>
+    <td>Microsoft&nbsp;Windows/<br>Cygwin</td>
+    <td>
+      NT, 98, 2000, ME, XP
+    </td>
+    <td>
+      <!-- Bertalan's site
+	  <strong>_("Go <a href='%s'>here</a>", "http://www.inf.bme.hu/~berti/lilypond/")
+	  !-->
+      <strong>_("Go <a href='%s'>here</a>", "windows.html")</strong>
+    </td>
+    <td>2.6.0</td>
+    <td>
+      <a href="mailto:bug-lilypond@gnu.org">Bertalan Fodor</a>
+    </td>
+  </tr>
+
+  <tr>
     <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
     <td>
       MacOS X/Fink

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-07 12:35-0300\n"
+"POT-Creation-Date: 2005-08-08 21:35-0300\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -299,6 +299,7 @@ msgstr "Overige"
 #: site/install/devel.ihtml:60 site/install/devel.ihtml:87
 #: site/install/devel.ihtml:124 site/install/stable.ihtml:81
 #: site/install/stable.ihtml:108 site/install/stable.ihtml:127
+#: site/install/stable.ihtml:182
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -311,7 +312,7 @@ msgstr "LilyPond ontwikkelteam"
 #: site/install/old.ihtml:271 site/install/stable.ihtml:160
 #: site/install/devel.ihtml:101 site/install/stable.ihtml:159
 #: site/install/devel.ihtml:121 site/install/devel.ihtml:120
-#: site/install/stable.ihtml:158
+#: site/install/stable.ihtml:158 site/install/stable.ihtml:178
 msgid "warning"
 msgstr "waarschuwing"
 
@@ -359,7 +360,7 @@ msgstr "Onderdeel van distributie"
 #: site/install/old.ihtml:267 site/install/stable.ihtml:154
 #: site/install/devel.ihtml:95 site/install/stable.ihtml:153
 #: site/install/devel.ihtml:115 site/install/devel.ihtml:114
-#: site/install/stable.ihtml:152
+#: site/install/stable.ihtml:152 site/install/stable.ihtml:172
 msgid "Source code"
 msgstr "Broncode"
 
@@ -383,6 +384,7 @@ msgstr "%s en nieuwer"
 #: site/install/stable.ihtml:158 site/install/devel.ihtml:99
 #: site/install/stable.ihtml:157 site/install/devel.ihtml:119
 #: site/install/devel.ihtml:118 site/install/stable.ihtml:156
+#: site/install/stable.ihtml:176
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -411,7 +413,8 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/old.ihtml:254 site/install/stable.ihtml:31
 #: site/install/stable.ihtml:142 site/install/stable.ihtml:56
 #: site/install/stable.ihtml:141 site/install/stable.ihtml:55
-#: site/install/stable.ihtml:140
+#: site/install/stable.ihtml:140 site/install/stable.ihtml:139
+#: site/install/stable.ihtml:160
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Ga <a href='%s'>hierheen</a>"
