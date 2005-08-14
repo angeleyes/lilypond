@@ -1,13 +1,15 @@
 <!-- -*-html-*- !-->
 
+<!-- use this as template for new entry
   <tr>
-    <td></td>
-    <td>Platform</td>
-    <td>Version</td>
-    <td>Go here</td>
-    <td>LilyPond version</td>
-    <td>Packager</td>
+    <th></th>
+    <th>Platform</th>
+    <th>Version</th>
+    <th>Go here</th>
+    <th>LilyPond version</th>
+    <th>Packager</th>
   </tr>
+!-->
 
   <tr bgcolor="#e8ffe8" >
     <td></td>
