@@ -1,5 +1,7 @@
 2005-08-16  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/devel/index.html: update sca.uwaterloo.ca link to http
+
 	* site/install/stable.ihtml: make URLs relative. 
 
 2005-08-15  Han-Wen Nienhuys  <hanwen@xs4all.nl>
