@@ -1,3 +1,7 @@
+2005-08-16  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+	* fr/: update download link to 2.7.4
+	
 2005-08-14  Pedro Kroger  <kroeger@pedrokroeger.net>
 
 	* site/install/devel.ihtml: shouldn't have a header (index.html)
