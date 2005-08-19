@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-16 10:11-0300\n"
+"POT-Creation-Date: 2005-08-19 22:13+0200\n"
 "PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,10 +207,12 @@ msgid "Enclose pitches in &lt; &gt; for chords"
 msgstr "Inclure les notes entre &lt; &gt; pour des accords"
 
 #: site/graphics/annotate-example-lead.svg:160
+#: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
 msgstr "Entrer le nom des accords"
 
 #: site/graphics/annotate-example-lead.svg:170
+#: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
 msgstr "Entrer la mélodie"
 
@@ -219,6 +221,7 @@ msgid "Enter lyrics"
 msgstr "Entrer les paroles"
 
 #: site/graphics/annotate-example-lead.svg:196
+#: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
 msgstr "Combiner la mélodie et les paroles"
 

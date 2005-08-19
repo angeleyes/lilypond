@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-16 22:00+0200\n"
+"POT-Creation-Date: 2005-08-19 22:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,10 +207,12 @@ msgid "Enclose pitches in &lt; &gt; for chords"
 msgstr ""
 
 #: site/graphics/annotate-example-lead.svg:160
+#: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
 msgstr ""
 
 #: site/graphics/annotate-example-lead.svg:170
+#: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
 msgstr ""
 
@@ -219,6 +221,7 @@ msgid "Enter lyrics"
 msgstr ""
 
 #: site/graphics/annotate-example-lead.svg:196
+#: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
 msgstr ""
 
