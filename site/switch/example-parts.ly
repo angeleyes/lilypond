@@ -1,6 +1,8 @@
 
 
-\paper {raggedright= ##t }
+\paper {
+  raggedright= ##t
+}
 
 hornNotes = \notes \relative c {
 		\time 2/4
