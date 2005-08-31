@@ -54,8 +54,8 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.7.x86.package",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.7-upgrade.x86.package")
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.8.x86.package",
+	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.8-upgrade.x86.package")
       </strong>
     </td>
     <td>2.7.7</td>
@@ -99,8 +99,8 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.7-1.exe",
-	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.7-1-upgrade.exe")
+	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.8-1.exe",
+	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.8-1-upgrade.exe")
       </strong>
     </td>
     <td>2.7.7</td>
