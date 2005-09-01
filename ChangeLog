@@ -1,3 +1,7 @@
+2005-09-01  John Mandereau  <john.mandereau@free.fr>
+
+	* site/about/pubs.html: add linuxfr.org article link
+
 2005-08-31  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/install: update package links.
