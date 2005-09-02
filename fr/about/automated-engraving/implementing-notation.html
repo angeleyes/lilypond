@@ -1,0 +1,116 @@
+<!--
+    Translation of CVS Revision: 1.6 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="implementing-notation"></a>
+
+<h2>Notation musicale</h2>
+
+<p>
+La notation musicale couvre cinq si&egrave;cles de musique, allant de la
+simple monodie &agrave; de gigantesques contrepoints orchestraux. Comment
+int&eacute;grer un tel monstre aux si nombreux visages&nbsp;? Notre solution
+est de clairement distinguer la notation &ndash; <em>quels</em> symboles
+utiliser &ndash; de la gravure &ndash; <em>o&ugrave;</em> les placer. Pour appr&eacute;hender la
+notation, nous l'avons diss&eacute;qu&eacute;e en &eacute;l&eacute;ments simples (et programmables) 
+&nbsp;: chaque type de symbole est g&eacute;r&eacute; par un module
+diff&eacute;rent. Tous ces modules coop&egrave;rent par le biais de l'architecture
+de LilyPond. Ils sont enti&egrave;rement configurables et ind&eacute;pendants,
+chacun pouvant &ecirc;tre d&eacute;velopp&eacute; et am&eacute;lior&eacute; s&eacute;par&eacute;ment.
+</p>
+
+<p>
+<ul>
+<li>Le module le plus basique cr&eacute;e les t&ecirc;tes de notes&nbsp;:
+
+<p align="center"> 
+<img src="@IMAGES@engraver-noteheads.png">
+<p>
+Ce module cr&eacute;e des objets graphiques &agrave; partir d'&eacute;l&eacute;ments musicaux.
+Par r&eacute;f&eacute;rence aux graveurs (<em>engravers</em> en anglais), professionels qui
+mettent en forme graphiquement les id&eacute;es musicales, ce module s'appelle
+<tt>Note_head_engraver</tt>.
+
+<li> Le module <tt>Staff_symbol_engraver</tt> g&eacute;n&egrave;re les objets
+repr&eacute;sentant les lignes de port&eacute;e&nbsp;:
+
+<p align="center"> <img
+src="@IMAGES@engraver-staff.png">
+
+<li>
+Le module <tt>Clef_engraver</tt> fournit &agrave; <tt>Note_head_engraver</tt>
+la hauteur &agrave; laquelle doit &ecirc;tre plac&eacute;e chaque t&ecirc;te de note&nbsp;:
+
+<p align="center"> 
+<img src="@IMAGES@engraver-clef.png">
+
+<li>
+Les hampes et leurs crochets sont g&eacute;r&eacute;s par le module
+<tt>Stem_engraver</tt>&nbsp;:
+<p align="center"> 
+<img src="@IMAGES@engraver-stem.png">
+<p>
+Ce module est appel&eacute; d&egrave;s qu'une t&ecirc;te de note est utilis&eacute;e. Pour chaque
+note rencontr&eacute;e &ndash; ou groupe de notes pour les accords &ndash;, un objet hampe
+est cr&eacute;&eacute; et attach&eacute; &agrave; la t&ecirc;te de note.
+
+<li>
+Liens, liaisons et accents sont g&eacute;r&eacute;s par des graveurs diff&eacute;rents. De m&ecirc;me
+que le <tt>Stem_engraver</tt>, ils cr&eacute;ent des objets et les attachent
+aux hampes, t&ecirc;tes de notes, etc.&nbsp;:
+
+<p align="center"> <img src="@IMAGES@engraver-slur.png">
+
+<li>
+Les alt&eacute;rations, barres de mesures, chiffrages de mesure et armures
+poss&egrave;dent chacun un graveur d&eacute;di&eacute;&nbsp;:
+<p align="center">
+<img src="@IMAGES@engraver-acc.png">
+
+<p>
+Le module <tt>Accidental_engraver</tt> est le plus complexe&nbsp;:
+il doit prendre en compte l'armure, les hauteurs de notes, les liaisons
+de prolongation et les barres de mesures, afin de d&eacute;cider quand imprimer
+une alt&eacute;ration.
+</p>
+
+</ul>
+
+
+<h2>Notation polyphonique</h2>
+
+<p>
+Le principe d&eacute;crit plus haut fonctionne tr&egrave;s bien pour de la musique
+monophonique, mais qu'en est-il de la polyphonie&nbsp;? Dans ce cas,
+plusieurs voix peuvent partager la m&ecirc;me port&eacute;e&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@engraver-final.png">
+</p>
+
+<p>
+Ici, la port&eacute;e et les alt&eacute;rations sont partag&eacute;es mais les hampes,
+liaisons, liens, etc. d&eacute;pendent de chaque voix. De plus, les graveurs
+doivent &ecirc;tre regroup&eacute;s. Les graveurs de t&ecirc;tes de notes, hampes, liaisons,
+etc. sont donc inclus dans un groupe appel&eacute; &laquo;&nbsp;Voice context&nbsp;&raquo;
+(<em>contexte de voix</em>),  alors que l'armure, les alt&eacute;rations,
+les barres de mesures, etc. sont plac&eacute;es dans un groupe &laquo;&nbsp;Staff
+context&nbsp;&raquo; (<em>contexte de port&eacute;e</em>). Dans le cas d'une
+polyphonie, un contexte de port&eacute;e contient plusieurs contextes
+de voix. De m&ecirc;me, plusieurs contextes de port&eacute;es peuvent &ecirc;tre assembl&eacute;s dans un
+contexte de partition (&laquo;&nbsp;score context&nbsp;&raquo;)&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@engraver-score.png">
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="engraving.html">L'art de la gravure</a>&nbsp;:
+<em>comment</em> gravaient-ils la musique manuellement&nbsp;? </p>

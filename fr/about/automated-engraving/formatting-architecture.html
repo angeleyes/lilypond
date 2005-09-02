@@ -1,0 +1,64 @@
+<!--
+    Translation of CVS Revision: 1.6 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="formatting-architecture"></a>
+
+<h2>Une architecture de programme flexible</h2>
+
+<p>
+Vous souvenez-vous du probl&egrave;me de la notation musicale&nbsp;? Sa solution
+nous apporte un ensemble d'objets. L'architecture du programme est
+bas&eacute;e sur ces objets. &Agrave; chacun de ces objets sont associ&eacute;es des variables&nbsp;:
+</p>
+
+<ul>
+<li> La mise en page d&eacute;pend des variables. Par exemple, la variable
+<tt>direction</tt>, d&eacute;finie pour de nombreux objets, encode le choix
+entre haut et bas (ou gauche et droite). L'image qui suit pr&eacute;sente
+deux accords, accentu&eacute;s et arp&eacute;g&eacute;s. Pour le premier accord, la direction
+de chaque objet est vers le bas (ou la gauche). Les objets sont dirig&eacute;s
+vers le haut (ou la droite) pour le second.
+
+<p align="center">
+<img src="@IMAGES@directions-updown.png">
+<p>
+Le processus de mise en forme d'une partition consiste &agrave; lire et
+&eacute;crire des variables d'objets.</li>
+
+
+<li> Certaines variables one valeur pr&eacute;d&eacute;finie. Par exemple,
+l'&eacute;paisseur de nombreuses lignes &ndash; caract&eacute;ristiques d'un style
+typographique &ndash; est pr&eacute;&eacute;tablie. La changer entra&icirc;ne un
+changement du style typographique.
+
+ <p align="center">
+ <img src="@IMAGES@thickness-tweaks.png">
+ <p>
+</li>
+
+<li> Les valeurs pr&eacute;d&eacute;finies de certaines variables font aussi partie
+des r&egrave;gles de formatage. Chaque objet poss&egrave;de des variables contenant
+des proc&eacute;dures. Ces proc&eacute;dures r&eacute;alisent le formatage pr&eacute;d&eacute;fini, dont
+l'apparence peut &ecirc;tre chang&eacute;e en rempla&ccedil;ant ces proc&eacute;dures par d'autres.
+Dans l'exemple suivant, la r&egrave;gle permettant &agrave; l'objet
+&laquo;&nbsp;t&ecirc;te de note&nbsp;&raquo;
+de dessiner son symbole est modifi&eacute;e au cours de l'extrait musical&nbsp;:
+
+<p align="center">
+<img src="@IMAGES@mc-squared.png">
+<p>
+</li>
+
+</ul>
+
+<p align="right">
+Suite&nbsp;: <a href="benchmarking.html">L'homme est la mesure de
+toute chose</a>&nbsp;: peut-on se contenter d'une architecture
+flexible&nbsp;?
+</p>

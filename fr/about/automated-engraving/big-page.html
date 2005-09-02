@@ -1,0 +1,1060 @@
+<!--
+    Translation of CVS Revision: 1.7 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<!-- hmm, the one big page is too big, but it was really inviting to
+    read.  this is not.  maybe just scrap this menu and introduction
+    to index?  !-->
+
+<h1>&ldquo;L'obsession du papier encr&eacute;&rdquo;</h1>
+<a name="index"></a>
+
+<h2>Qu'est-ce qui se cache derri&egrave;re LilyPond&nbsp;?</h2>
+
+
+<img src="@IMAGES@hader-collage.jpeg" align=right>
+
+
+<p>
+LilyPond n'est pas le seul &agrave; faire de la notation musicale&nbsp;: 
+il existe de nombreux programmes qui impriment de la musique, et
+la majorit&eacute; des &eacute;ditions r&eacute;centes est g&eacute;n&eacute;r&eacute;e par
+ordinateur. Cependant, n'importe quel musicien classique vous fera
+remarquer que les partitions d'aujourd'hui ne sont pas aussi jolies
+que les anciennes.
+</p>
+<p>
+Qu'est-ce qui diff&eacute;rencie le travail de l'homme de celui de la
+machine, &agrave; quoi cela tient-il&nbsp;? Comment pouvons-nous am&eacute;liorer cette
+situation&nbsp;? Cet essai aborde les probl&egrave;mes relatifs aux
+programmes de notation musicale et notre approche pour les r&eacute;soudre. 
+</p>
+
+
+
+
+<h2>Table des mati&egrave;res</h2>
+
+<ul>
+<li><a href="#introduction">Introduction</a>&nbsp;: ce qui
+cloche dans la notation musicale informatis&eacute;e</li>
+
+<li><a href="#software">Ce qui ne va pas avec les logiciels</a>,
+ou pourquoi Finale n'est pas la panac&eacute;e en terme d'informatique
+musicale&nbsp;;</li>
+
+<li><a href="#problem-statement">Une meilleure approche</a>
+de la mani&egrave;re d'imprimer la musique&nbsp;;</li>
+
+<li><a href="#implementing-notation">Impressionnant, mais que
+se passe-t-il en th&eacute;orie</a>&nbsp;? Une approche pratique pour
+ma&icirc;triser la notation&nbsp;;</li>
+
+<li><a href="#engraving">Graver la musique</a>, ou l'art d'imprimer
+des partitions&nbsp;;</li>
+
+<li><a href="#implementing-typography">Impl&eacute;mentation de
+typographie</a>&nbsp;: les <em>hackers</em> s'attaquent aux probl&egrave;mes
+de la gravure&nbsp;;</li>
+
+<li><a href="#formatting-architecture">Une architecture de programme
+flexible</a> nous permet d'&eacute;crire un logiciel de gravure&nbsp;;</li>
+
+<li><a href="#benchmarking">&Eacute;valuation des performances</a>&nbsp;: peut-on
+se contenter d'une architecture flexible&nbsp;?</li>
+
+<li><a href="#typography-features">Fonctionnalit&eacute;s
+typographiques</a> propres &agrave; LilyPond&nbsp;;</li>
+
+<li><a href="#input-format">Format source</a>&nbsp;: comment saisir
+la musique&nbsp;;</li>
+
+<li><a href="#conclusion">Conclusion</a>.</li>
+
+</ul>
+
+<p>
+Cet essai est aussi disponible en <a href="#big-page">une seule
+page</a>.
+</p>
+<!--
+    Translation of CVS Revision: 1.7 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="introduction"></a>
+
+<h2>Qu'est ce qui cloche dans la notation musicale informatis&eacute;e&nbsp;?</h2>
+
+<p>
+Nous aimons qualifier LilyPond de &laquo;&nbsp;syst&egrave;me de gravure
+automatis&eacute;e&nbsp;&raquo;. Il
+mettra joliment en forme la notation musicale sans que
+l'utilisateur n'ait besoin d'&ecirc;tre un expert en typographie.
+</p>
+
+<p>
+LilyPond n'est pas le seul &agrave; r&eacute;aliser de la notation musicale&nbsp;:
+il existe de nombreux programmes qui impriment de la musique, et de
+nos jours la majorit&eacute; de la musique nouvellement imprim&eacute;e sort d'un ordinateur. 
+Malheureusement, ceci a une cons&eacute;quence&nbsp;: n'importe quel musicien
+jouant de la musique classique vous dira que les nouvelles partitions ne sont pas
+aussi belles que les anciennes &ndash;&nbsp;disons, celles d'avant 1970&nbsp;&ndash;
+celles d'aujourd'hui ont un aspect terne et m&eacute;canique. Elles sont
+vraiment d&eacute;sagr&eacute;ables &agrave; lire.
+</p>
+<p>
+Pour illustrer ces propos, consid&eacute;rons les exemples suivants. Toutes
+deux sont des &eacute;ditions de la 1<sup>&egrave;re</sup> Suite pour violoncelle de
+J.S.&nbsp;Bach. Celle de gauche offre une tr&egrave;s jolie &eacute;dition de 1950 grav&eacute;e
+&agrave; la main, alors qu'&agrave; droite se trouve un produit typique de
+l'informatique contemporaine. Arr&ecirc;tez-vous quelques secondes sur
+chacune de ces pages pour bien vous impr&eacute;gner de leur aspect. Laquelle
+pr&eacute;f&eacute;rez-vous, et pourquoi&nbsp;?
+</p>
+<p>
+<table>
+<tr><td align="center">
+<img src="@IMAGES@baer-suite1-fullpage.png">
+</td><td align="center">
+<img src="@IMAGES@henle-suite1-fullpage.png">
+</td></tr>
+<tr><td align="center">B&auml;renreiter (BA 350, (c) 1950)</td>
+<td align="center">Henle (nr. 666 (c) 2000)</td>
+ </tr>
+</table>
+</p>
+<p>
+
+L'image de gauche est jolie&nbsp;: ses lignes sont fluides et il y a
+du mouvement. C'est de la musique, et c'est vivant. Passons maintenant
+&agrave; l'image de droite, qui nous offre la m&ecirc;me musique &eacute;crite par Bach,
+assur&eacute;ment pleine de vie et de fluidit&eacute;... N&eacute;anmoins, la partition n'en
+laisse rien transpara&icirc;tre&nbsp;: elle a l'air rigide et
+m&eacute;canique. Afin de mieux comprendre de quoi il retourne, examinons de
+plus pr&egrave;s un extrait de ces deux pi&egrave;ces&nbsp;:
+</p>
+<p align="center">
+
+<img src="@IMAGES@baer-suite1-line.png">
+</p>
+<p align="center"> fait &agrave; la main
+<p><br>
+
+<p align="center">
+
+<img src="@IMAGES@henle-suite1-line.png">
+</p>
+<p align="center"> fait par ordinateur
+</p>
+<p>
+
+L'emplacement des barres de mesure est assez r&eacute;v&eacute;lateur. Dans la
+nouvelle &eacute;dition, les deux barres de mesure sont
+exactement align&eacute;es horizontalement. Il en va de m&ecirc;me pour les notes. Si l'on revient
+&agrave; l'int&eacute;gralit&eacute; de la page, il est &eacute;vident que presque toutes les
+barres de mesure sont align&eacute;es horizontalement, tout
+comme la plupart des notes. L'ensemble para&icirc;t espac&eacute; 
+comme si tout &eacute;tait plac&eacute; sur un quadrillage, provoquant cette
+impression m&eacute;canique.
+</p>
+
+<p>
+Ce n'est pas la seule erreur de cet exemple et, de plus, cette pi&egrave;ce
+n'est pas la seule &agrave; comporter des erreurs
+typographiques. Malheureusement, presque toute la musique imprim&eacute;e de
+nos jours est truff&eacute;e de grossi&egrave;res fautes de typographie.
+</p>
+
+<p>
+Les musiciens sont normalement plus concentr&eacute;s sur la mani&egrave;re dont ils
+jouent la musique que sur son apparence, aussi ces pinailleries sur
+des d&eacute;tails de typographie peuvent para&icirc;tre acad&eacute;miques. Ce n'est pas
+justifi&eacute;. Cette pi&egrave;ce-ci a un rythme monotone. Si toutes les lignes
+se ressemblent, elles finissent par former un labyrinthe. Si le
+musicien la quitte des yeux ou se d&eacute;concentre un instant, il ne saura
+plus o&ugrave; il en est dans la page.
+</p>
+
+<p>
+En g&eacute;n&eacute;ral, c'est une caract&eacute;ristique commune de la typographie. La
+pr&eacute;sentation devrait &ecirc;tre soign&eacute;e, non seulement pour l'amour de
+l'art, mais plus sp&eacute;cialement parce qu'elle vient en aide au lecteur
+dans sa t&acirc;che. Pour du mat&eacute;riel d'interpr&eacute;tation tel que les
+partitions de musique, ceci est doublement important&nbsp;: les
+musiciens sont limit&eacute;s dans leur attention. Au moins leur attention se
+porte sur la lecture, au plus ils peuvent se concentrer sur
+l'ex&eacute;cution. En d'autres termes, une meilleure typographie se traduit
+par une meilleure interpr&eacute;tation.
+</p>
+
+<p align="right">
+
+Suite&nbsp;: <a href="#software">Ce qui ne va pas avec les
+logiciels</a>, ou pourquoi Finale n'est pas la panac&eacute;e en terme de
+logiciel de musique.
+</p><!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="software"></a>
+<h2>Ce qui ne va pas dans les logiciels de notation musicale</h2>
+
+<p>
+Les ordinateurs ont rendu l'impression de la musique accessible au
+grand public, mais sont plut&ocirc;t m&eacute;diocres pour ce qui est de la
+typographie. Selon toute vraisemblance, les programmeurs ont fait un
+travail b&acirc;cl&eacute; pour les logiciels de notation. Pour illustrer ceci,
+nous avons demand&eacute; &agrave; un utilisateur amateur de saisir un morceau de
+musique avec l'un des plus populaires programmes
+&laquo;&nbsp;professionnels&nbsp;&raquo; de notation vendus aujourd'hui, Finale
+2003. Les r&eacute;glages par d&eacute;faut ont &eacute;t&eacute; utilis&eacute;s.
+La musique est extraite de la Sarabande de la 2<sup>e</sup> Suite
+pour violoncelle de J.S. Bach.
+
+<p>
+<em>
+(Finale est une marque d&eacute;pos&eacute;e par MakeMusic! Inc.)
+</em>
+
+
+<p align="center" >
+
+<img align="center"  src="@IMAGES@finale-sarabande-full.png">
+
+<p> 
+Cet exemple surpasse de loin ce que nous avons d&eacute;j&agrave; vu en mati&egrave;re
+d'erreurs de mise en forme&nbsp;: en fait, des erreurs cons&eacute;quentes sont pr&eacute;sentes &agrave; 
+<em>chaque</em> mesure. Ces erreurs sont de tout acabit&nbsp;: une
+faute monumentale est l ' e s p a c e m e n t&nbsp;&nbsp;d &eacute; m e s u r &eacute;
+de la derni&egrave;re ligne. Une autre, moins importante, est le b&eacute;mol de la
+mesure 13 recouvert par la note qui le pr&eacute;c&egrave;de. Voici un
+agrandissement de cette mesure&nbsp;: <p align="center" > <img align="center"
+src="@IMAGES@finale-flat-detail.png">
+<p>
+Les erreurs se retrouvent jusque dans les plus infimes d&eacute;tails&nbsp;:
+ci-dessous un agrandissement du lien de cette mesure. Bien entendu
+les r&egrave;gles de bonne typographie voudraient que ce lien ne d&eacute;borde
+pas de la hampe, et les cannelures mettent en &eacute;vidence la ma&icirc;trise
+(ou son absence) des principes de la technologie PostScript par les programmeurs
+de Coda Music Technology.
+
+<p align="center" >
+<img src="@IMAGES@finale-beam-detail.png">
+<p>
+
+Bien s&ucirc;r, on peut r&eacute;futer que Finale dispose d'une interface
+graphique, qu'il vous permet de d&eacute;placer les &eacute;l&eacute;ments pour corriger
+des erreurs ou d'utiliser des greffons (<i>plug-in</i>) qui s'en
+chargeront. C'est certainement vrai&nbsp;: en fait, un bon graveur
+professionnel qui utilise Finale passera en r&eacute;alit&eacute; la plupart de son
+temps &agrave; corriger les fautes produites par Finale. Mais seriez-vous
+pr&ecirc;t &agrave; corriger des erreurs flagrantes &agrave; longueur de temps&nbsp;? Pour
+ce qui est de la ligne &agrave; l'espacement d&eacute;mesur&eacute;, c'est faisable, mais
+imaginons qu'il faille corriger chaque partie de lien qui d&eacute;borde
+d'une hampe... manuellement&nbsp;?
+
+<p>
+Il y a une autre raison, moins &eacute;vidente, pour laquelle corriger &agrave; la
+main n'est pas une si bonne id&eacute;e. Revenons &agrave; cette mesure 13. Le b&eacute;mol
+mal plac&eacute; saute aux yeux, mais avez-vous remarqu&eacute; quelque chose &agrave;
+propos de la barre de reprise&nbsp;?  Ses lignes sont trop
+espac&eacute;es. Avez-vous vu que le demi-soupir est bien trop bas,
+et que la hampe de la derni&egrave;re croche est trop longue&nbsp;?
+
+<p align="center" >
+<img src="@IMAGES@finale-flat-correct.png">
+<p>
+&Agrave; moins d'&ecirc;tre un expert, les fautes de typographie vous empoisonnent
+la vie sans vous sauter aux yeux. Nombre d'entre elles ne seront pas
+corrig&eacute;es et subsiteront dans l'&eacute;dition d&eacute;finitive.
+
+<p>
+Cet exemple peut sembler quelque peu exag&eacute;r&eacute;, mais en r&eacute;alit&eacute; ce n'est
+pas le cas. Tous les grands producteurs de logiciel de notation
+pr&eacute;tendent se conformer au standards de la gravure, mais aucun d'eux
+n'en ma&icirc;trise correctement les bases, et tous font des erreurs
+flagrantes. Pour juger du r&eacute;sultat de votre logiciel pr&eacute;f&eacute;r&eacute;,
+procurez-vous une partition convenable &eacute;dit&eacute;e par une bonne vieille
+maison, copiez-en une page, puis comparez-les&nbsp;:
+
+<ul>
+<li>
+Qu'en est-il de l'aspect g&eacute;n&eacute;ral de la page&nbsp;? La plupart du temps,
+les partitions informatis&eacute;es ont un espacement plus large, de telle
+sorte  qu'elles tiennent sur plus de pages et par voie de cons&eacute;quence
+plus de tournes.
+
+<li>
+Qu'en est-il de l'espacement&nbsp;? Est-ce aussi vivant et fluide que
+la partition grav&eacute;e &agrave; la main&nbsp;? En cas de doute, il suffit de
+mesurer &agrave; la r&egrave;gle.
+
+<li>
+Posons chacun des exemplaires sur un pupitre &agrave; un m&egrave;tre, comme pour
+jouer en concert. Les deux sont-il parfaitement lisibles&nbsp;?
+Pratiquement toutes les partitions informatis&eacute;es ont l'air p&acirc;le&nbsp;:
+les lignes sont trop fines et les symboles trop clairs. C'est ce qui
+les rend difficiles &agrave; lire de loin. Si le doute persiste, il suffit de
+regarder &agrave; la loupe.
+
+</ul>
+
+
+
+<p align="right">
+Suite&nbsp;: <a href="#problem-statement">Ce &agrave; quoi nous aspirons,
+mais dont nous ne disposions pas jusqu'alors</a>&nbsp;: un logiciel de
+notation musicale plus performant.</p>
+
+<!--
+    Translation of CVS Revision: 1.5
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<a name="problem-statement"></a>
+<h2>Am&eacute;liorer les logiciels d'&eacute;dition musicale</h2>
+<p>
+La plupart des logiciels d'&eacute;dition ne produisent un r&eacute;sultat
+acceptable qu'au prix de nombreux efforts. Nous pensons que c'est le
+r&ocirc;le de l'ordinateur de g&eacute;rer tout le &laquo;&nbsp;bricolage&nbsp;&raquo;.
+</p>
+
+<p>
+Notre but avec <em>LilyPond</em> est de cr&eacute;er un <em>syst&egrave;me de
+gravure automatis&eacute;e</em>&nbsp;: un syst&egrave;me produisant de la belle
+musique &ndash; &laquo;&nbsp;grav&eacute;e&nbsp;&raquo; &ndash, automatiquement. Le
+concept en est simple&nbsp;: l'objectif d'un tel syst&egrave;me est de g&eacute;n&eacute;rer
+des partitions pr&ecirc;tes &agrave; imprimer. Celles-ci contiennent de la
+musique&nbsp;: des hauteurs et des dur&eacute;es. Nous voulons que la forme imprim&eacute;e
+soit g&eacute;n&eacute;r&eacute;e automatiquement &agrave; partir de son contenu. Sch&eacute;matiquement,
+le programme peut &ecirc;tre repr&eacute;sent&eacute; comme ceci&nbsp;:
+</p>
+
+<table>
+<tr>
+<td align="center">
+<img src="@IMAGES@simple-notation.png">
+</td>
+<td align="center">
+&lt;--
+</td>
+<td align="center">
+<tt>\notes { c'4 d'8 }</tt>
+</td>
+</tr>
+<tr>
+<td align="center">
+forme
+</td>
+<td align="center">
+LilyPond
+</td>
+<td align="center">
+contenu
+</td>
+</tr>
+</table>
+
+<p align="right">
+Suite&nbsp;: <a href="#implementing-notation">Impressionnant, mais
+que se passe-t-il en th&eacute;orie</a>&nbsp;? Une approche pratique pour
+ma&icirc;triser la notation.</p>
+<!--
+    Translation of CVS Revision: 1.6 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="implementing-notation"></a>
+
+<h2>Notation musicale</h2>
+
+<p>
+La notation musicale couvre cinq si&egrave;cles de musique, allant de la
+simple monodie &agrave; de gigantesques contrepoints orchestraux. Comment
+int&eacute;grer un tel monstre aux si nombreux visages&nbsp;? Notre solution
+est de clairement distinguer la notation &ndash; <em>quels</em> symboles
+utiliser &ndash; de la gravure &ndash; <em>o&ugrave;</em> les placer. Pour appr&eacute;hender la
+notation, nous l'avons diss&eacute;qu&eacute;e en &eacute;l&eacute;ments simples (et programmables) 
+&nbsp;: chaque type de symbole est g&eacute;r&eacute; par un module
+diff&eacute;rent. Tous ces modules coop&egrave;rent par le biais de l'architecture
+de LilyPond. Ils sont enti&egrave;rement configurables et ind&eacute;pendants,
+chacun pouvant &ecirc;tre d&eacute;velopp&eacute; et am&eacute;lior&eacute; s&eacute;par&eacute;ment.
+</p>
+
+<p>
+<ul>
+<li>Le module le plus basique cr&eacute;e les t&ecirc;tes de notes&nbsp;:
+
+<p align="center"> 
+<img src="@IMAGES@engraver-noteheads.png">
+<p>
+Ce module cr&eacute;e des objets graphiques &agrave; partir d'&eacute;l&eacute;ments musicaux.
+Par r&eacute;f&eacute;rence aux graveurs (<em>engravers</em> en anglais), professionels qui
+mettent en forme graphiquement les id&eacute;es musicales, ce module s'appelle
+<tt>Note_head_engraver</tt>.
+
+<li> Le module <tt>Staff_symbol_engraver</tt> g&eacute;n&egrave;re les objets
+repr&eacute;sentant les lignes de port&eacute;e&nbsp;:
+
+<p align="center"> <img
+src="@IMAGES@engraver-staff.png">
+
+<li>
+Le module <tt>Clef_engraver</tt> fournit &agrave; <tt>Note_head_engraver</tt>
+la hauteur &agrave; laquelle doit &ecirc;tre plac&eacute;e chaque t&ecirc;te de note&nbsp;:
+
+<p align="center"> 
+<img src="@IMAGES@engraver-clef.png">
+
+<li>
+Les hampes et leurs crochets sont g&eacute;r&eacute;s par le module
+<tt>Stem_engraver</tt>&nbsp;:
+<p align="center"> 
+<img src="@IMAGES@engraver-stem.png">
+<p>
+Ce module est appel&eacute; d&egrave;s qu'une t&ecirc;te de note est utilis&eacute;e. Pour chaque
+note rencontr&eacute;e &ndash; ou groupe de notes pour les accords &ndash;, un objet hampe
+est cr&eacute;&eacute; et attach&eacute; &agrave; la t&ecirc;te de note.
+
+<li>
+Liens, liaisons et accents sont g&eacute;r&eacute;s par des graveurs diff&eacute;rents. De m&ecirc;me
+que le <tt>Stem_engraver</tt>, ils cr&eacute;ent des objets et les attachent
+aux hampes, t&ecirc;tes de notes, etc.&nbsp;:
+
+<p align="center"> <img src="@IMAGES@engraver-slur.png">
+
+<li>
+Les alt&eacute;rations, barres de mesures, chiffrages de mesure et armures
+poss&egrave;dent chacun un graveur d&eacute;di&eacute;&nbsp;:
+<p align="center">
+<img src="@IMAGES@engraver-acc.png">
+
+<p>
+Le module <tt>Accidental_engraver</tt> est le plus complexe&nbsp;:
+il doit prendre en compte l'armure, les hauteurs de notes, les liaisons
+de prolongation et les barres de mesures, afin de d&eacute;cider quand imprimer
+une alt&eacute;ration.
+</p>
+
+</ul>
+
+
+<h2>Notation polyphonique</h2>
+
+<p>
+Le principe d&eacute;crit plus haut fonctionne tr&egrave;s bien pour de la musique
+monophonique, mais qu'en est-il de la polyphonie&nbsp;? Dans ce cas,
+plusieurs voix peuvent partager la m&ecirc;me port&eacute;e&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@engraver-final.png">
+</p>
+
+<p>
+Ici, la port&eacute;e et les alt&eacute;rations sont partag&eacute;es mais les hampes,
+liaisons, liens, etc. d&eacute;pendent de chaque voix. De plus, les graveurs
+doivent &ecirc;tre regroup&eacute;s. Les graveurs de t&ecirc;tes de notes, hampes, liaisons,
+etc. sont donc inclus dans un groupe appel&eacute; &laquo;&nbsp;Voice context&nbsp;&raquo;
+(<em>contexte de voix</em>),  alors que l'armure, les alt&eacute;rations,
+les barres de mesures, etc. sont plac&eacute;es dans un groupe &laquo;&nbsp;Staff
+context&nbsp;&raquo; (<em>contexte de port&eacute;e</em>). Dans le cas d'une
+polyphonie, un contexte de port&eacute;e contient plusieurs contextes
+de voix. De m&ecirc;me, plusieurs contextes de port&eacute;es peuvent &ecirc;tre assembl&eacute;s dans un
+contexte de partition (&laquo;&nbsp;score context&nbsp;&raquo;)&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@engraver-score.png">
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="#engraving">L'art de la gravure</a>&nbsp;:
+<em>comment</em> gravaient-ils la musique manuellement&nbsp;? </p>
+<!--
+    Translation of CVS Revision: 1.7 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<a name="engraving"></a>
+
+
+<img src="@IMAGES@hader-slaan.jpeg" align="right">
+
+<h2>Gravure musicale</h2>
+
+<p>
+Lorsque le symbole &agrave; imprimer est d&eacute;fini, il reste &agrave; d&eacute;cider o&ugrave; il
+sera plac&eacute; pour obtenir un r&eacute;sultat agr&eacute;able. Cet art est celui de la
+<em>gravure musicale</em>. Ce terme vient du proc&eacute;d&eacute; traditionnel
+de l'impression musicale. Il y a encore quelques d&eacute;cennies, les 
+partitions &eacute;taient faites en taillant et ciselant la musique
+dans des plaques de zinc ou d'&eacute;tain, en inverse, comme dans un mirroir.
+Ces plaques &eacute;taient encr&eacute;es et les reliefs cr&eacute;&eacute;s par les poin&ccedil;ons et
+les d&eacute;coupes retenaient l'encre. La partition &eacute;tait alors r&eacute;alis&eacute;e
+en pressant le papier contre la plaque. D&eacute;coupes et poin&ccedil;ons &eacute;taient
+enti&egrave;rement faits &agrave; la main. Dans la mesure o&ugrave; les corrections &eacute;taient
+presque irr&eacute;alisables, la gravure devait &ecirc;tre correcte d&egrave;s le premier 
+essai. Cela demande &eacute;videmment une tr&egrave;s grande habilet&eacute;.
+</p>
+<ul>
+<li> La gravure musicale est un m&eacute;tier d'artisan, appris sur le tas.
+Un graveur ne devenait un ma&icirc;tre accompli qu'apr&egrave;s une dizaine d'ann&eacute;es de pratique.</li>
+
+<li> La plupart des connaissances se transmet de ma&icirc;tre &agrave; &eacute;l&egrave;ve,
+par la pratique. De ce fait, peu de choses ont &eacute;t&eacute; &eacute;crites sur les r&egrave;gles
+d'une gravure de qualit&eacute;.</li>
+
+<li> Enfin, la gravure est une question de choix de dimensions et de
+noirceur des partitions. <img align=right src="@IMAGES@stone-distance.png">
+La qualit&eacute; du r&eacute;sultat final doit &ecirc;tre jug&eacute;e visuellement.
+Il est quasiment impossible de la formaliser avec des r&egrave;gles strictes.</li>
+
+</ul>
+
+<br clear="all">
+<p align="right">
+Suite&nbsp;: <a href="#implementing-typography">Encrer les
+&eacute;crans</a>&nbsp;? Les programmeurs s'attaquent aux probl&egrave;mes
+de la gravure.
+</p>
+<!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<a name="implementing-typography"></a>
+
+
+<h2>Impl&eacute;menter la typographie</h2>
+
+
+<p>
+Comment nous en sortir avec le traitement typographique&nbsp;? La solution
+au probl&egrave;me de la &laquo;&nbsp;notation musicale&nbsp;&raquo; implique
+le traitement de nombreux objets repr&eacute;sentant les t&ecirc;tes de notes, port&eacute;es,
+hampes, etc.
+</p>
+
+<p>
+Si dix ans sont n&eacute;cessaires pour devenir un ma&icirc;tre graveur, comment les
+simples programmeurs que nous sommes pourraient-ils int&eacute;grer leur m&eacute;tier&nbsp;?
+</p>
+
+<p>
+La r&eacute;ponse est simple&nbsp;: nous ne le pouvons pas&nbsp;! La typographie
+relevant d'un jugement humain, les personnes ne peuvent &ecirc;tre remplac&eacute;es.
+Beaucoup de t&acirc;ches p&eacute;nibles peuvent cependant &ecirc;tre automatis&eacute;es&nbsp;: si LilyPond
+parvenait &agrave; g&eacute;rer la plupart des situations usuelles correctement, ce 
+serait un grand pas en avant pour l'&eacute;dition informatis&eacute;e. Les cas
+particuliers peuvent &ecirc;tre trait&eacute;s manuellement. Au fil du temps, le
+logiciel pourra &ecirc;tre r&eacute;vis&eacute; afin d'automatiser de plus en plus d'actions,
+de sorte que les ajustements manuels seront de moins en moins n&eacute;cessaires.
+</p>
+
+<p>
+Comment avons-nous construit un tel syst&egrave;me&nbsp;? Nous avons tout d'abord 
+&eacute;crit le programme en C++. Cela signifie que nous, d&eacute;veloppeurs, avons
+fig&eacute; ses fonctionnalit&eacute;s dans le code. Cela est vite apparu
+insatisfaisant&nbsp;:
+</p>
+
+<ul>
+<li> Si certains &eacute;l&eacute;ments doivent &ecirc;tre trait&eacute;s manuellement, les
+utilisateurs doivent se servir du moteur de formatage. Par cons&eacute;quent,
+les r&egrave;gles et param&egrave;tres ne peuvent &ecirc;tre fix&eacute;s lors de la compilation,
+mais doivent &ecirc;tre accessibles lors de l'ex&eacute;cution.</li>
+
+<li> Graver est une affaire de jugement visuel, donc une affaire de go&ucirc;t.
+Nous savons que les utilisateurs peuvent ne pas &ecirc;tre d'accord
+avec nous. Ils faut donc qu'il aient acc&egrave;s aux d&eacute;finitions des
+styles typographiques.</li>
+
+<li> Enfin, nous red&eacute;finissons continuellement les r&egrave;gles de formatage,
+et avons donc besoin d'une approche souple des r&egrave;gles. Le C++ implique
+une m&eacute;thode de groupement des r&egrave;gles qui ne correspond pas au
+fonctionnement de la notation musicale.</li>
+</ul>
+
+<p>
+Une architecture flexible est &eacute;videmment n&eacute;cessaire. Celle-ci doit
+prendre en compte les r&egrave;gles de formatage, le style typographique et
+les d&eacute;cisions de formatage individuelles.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="#formatting-architecture">Architecture de programme flexible,
+votre alli&eacute;e</a> pour r&eacute;gler, triturer, et d&eacute;velopper
+les r&egrave;gles de formatage.</p>
+<!--
+    Translation of CVS Revision: 1.6 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="formatting-architecture"></a>
+
+<h2>Une architecture de programme flexible</h2>
+
+<p>
+Vous souvenez-vous du probl&egrave;me de la notation musicale&nbsp;? Sa solution
+nous apporte un ensemble d'objets. L'architecture du programme est
+bas&eacute;e sur ces objets. &Agrave; chacun de ces objets sont associ&eacute;es des variables&nbsp;:
+</p>
+
+<ul>
+<li> La mise en page d&eacute;pend des variables. Par exemple, la variable
+<tt>direction</tt>, d&eacute;finie pour de nombreux objets, encode le choix
+entre haut et bas (ou gauche et droite). L'image qui suit pr&eacute;sente
+deux accords, accentu&eacute;s et arp&eacute;g&eacute;s. Pour le premier accord, la direction
+de chaque objet est vers le bas (ou la gauche). Les objets sont dirig&eacute;s
+vers le haut (ou la droite) pour le second.
+
+<p align="center">
+<img src="@IMAGES@directions-updown.png">
+<p>
+Le processus de mise en forme d'une partition consiste &agrave; lire et
+&eacute;crire des variables d'objets.</li>
+
+
+<li> Certaines variables one valeur pr&eacute;d&eacute;finie. Par exemple,
+l'&eacute;paisseur de nombreuses lignes &ndash; caract&eacute;ristiques d'un style
+typographique &ndash; est pr&eacute;&eacute;tablie. La changer entra&icirc;ne un
+changement du style typographique.
+
+ <p align="center">
+ <img src="@IMAGES@thickness-tweaks.png">
+ <p>
+</li>
+
+<li> Les valeurs pr&eacute;d&eacute;finies de certaines variables font aussi partie
+des r&egrave;gles de formatage. Chaque objet poss&egrave;de des variables contenant
+des proc&eacute;dures. Ces proc&eacute;dures r&eacute;alisent le formatage pr&eacute;d&eacute;fini, dont
+l'apparence peut &ecirc;tre chang&eacute;e en rempla&ccedil;ant ces proc&eacute;dures par d'autres.
+Dans l'exemple suivant, la r&egrave;gle permettant &agrave; l'objet
+&laquo;&nbsp;t&ecirc;te de note&nbsp;&raquo;
+de dessiner son symbole est modifi&eacute;e au cours de l'extrait musical&nbsp;:
+
+<p align="center">
+<img src="@IMAGES@mc-squared.png">
+<p>
+</li>
+
+</ul>
+
+<p align="right">
+Suite&nbsp;: <a href="#benchmarking">L'homme est la mesure de
+toute chose</a>&nbsp;: peut-on se contenter d'une architecture
+flexible&nbsp;?
+</p>
+<!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="benchmarking"></a>
+
+<h2>&Eacute;valuation des performances</h2>
+
+<p>
+Une bonne mise en page n&eacute;cessite une architecture souple. Ce n'est
+malheureusement pas suffisant. Seule une comparaison attentive avec
+du mat&eacute;riel imprim&eacute; peut permettre un r&eacute;sultat satisfaisant.
+Nous avons sugg&eacute;r&eacute; dans l'introduction de comparer &eacute;ditions informatis&eacute;es
+et gravures &agrave; la main. C'est exactement cette technique que nous avons
+employ&eacute;e pour perfectionner LilyPond. D'une certaine fa&ccedil;on, il s'agit d'une
+technique d'&eacute;valuation des performances&nbsp;: les performances du
+programme, en terme de qualit&eacute;, s'&eacute;tablissent par rapport &agrave; une quantit&eacute; connue.
+</p>
+
+<p>
+Voici des extraits compar&eacute;s d'une m&ecirc;me pi&egrave;ce. En haut l'&eacute;dition de
+r&eacute;f&eacute;rence (B&auml;renreiter BA 350), en bas ce que LilyPond 1.4 a
+g&eacute;n&eacute;r&eacute;&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@baer-sarabande.png">
+</p>
+
+<p align="center">
+B&auml;renreiter
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily14-sarabande.png">
+</p>
+
+<p align="center">
+LilyPond 1.4
+</p>
+
+<p>
+La sortie LilyPond est certes lisible, et acceptable pour beaucoup de gens.
+Cependant, une comparaison minutieuse avec une &eacute;dition grav&eacute;e &agrave; la main
+r&eacute;v&egrave;le de nombreuses erreurs de formatage&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily14-sarabande-correct.png">
+</p>
+
+<!--<p align=center>-->
+
+<ul>
+<li>De nombreux symboles &eacute;taient d&eacute;s&eacute;quilibr&eacute;s. Le trille en particulier
+&eacute;tait trop grand.</li>
+
+<li>Les hampes et liens de croches &eacute;taient d&eacute;fectueux&nbsp;: les hampes
+&eacute;taient trop longues, et les liens auraient d&ucirc; &ecirc;tre inclin&eacute;s 
+de fa&ccedil;on &agrave; couvrir les lignes de port&eacute;e. Les liens &eacute;taient &eacute;galement trop fins.</li>
+
+<li>L'espacement &eacute;tait irr&eacute;gulier&nbsp;: certaines mesures &eacute;taient trop serr&eacute;es,
+d'autres trop espac&eacute;es.</li>
+</ul>
+
+<p>
+(Et des notes manquent dans la version de LilyPond.)
+</p>
+
+<p>
+En ajustant les algorithmes, param&egrave;tres et polices concern&eacute;s, nous avons
+pu am&eacute;liorer le r&eacute;sultat. L'extrait ci-dessous a &eacute;t&eacute; g&eacute;n&eacute;r&eacute; par LilyPond 1.8.
+Sans &ecirc;tre un clone de l'&eacute;dition de r&eacute;f&eacute;rence, cette sortie est proche d'une
+qualit&eacute; de publication.
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily17-sarabande.png">
+</p>
+<p align="center">
+LilyPond 1.8
+</p>
+
+<p align="center">
+<img src="@IMAGES@baer-sarabande.png">
+</p>
+<p align="center">
+B&auml;renreiter
+</p>
+
+<p>
+Un autre exemple d'&eacute;valuation des performances est celui de notre projet
+pour les versions 2.1, une <a href="schubert">m&eacute;lodie de Schubert</a>.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="#typography-features">Fonctionnalit&eacute;s sympathiques</a>,
+des casses-t&ecirc;tes typographiques que nous avons r&eacute;solus.</p>
+<!--
+    Translation of CVS Revision: 1.11 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="typography-features"></a>
+
+<h2>Cr&eacute;ation de polices</h2>
+
+<p>
+L'aspect traditionnel des sorties de LilyPond est tr&egrave;s largement d&ucirc;
+&agrave; la densit&eacute; des pages produites. Des lignes de port&eacute;e &eacute;paisses, et
+une police qui leur correspond donnent plus de poids &agrave; l'aspect
+g&eacute;n&eacute;ral. Ceci est tr&egrave;s clair dans les exemples suivants&nbsp;:
+</p>
+
+<table align="center"><tr><td>
+<img src="@IMAGES@henle-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@baer-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@lily-flat-bw.png"></td>
+</tr><tr>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2003)</td>
+</tr>
+</table>
+
+<p>
+Un autre aspect typique de la gravure &agrave; la main est l'aspect g&eacute;n&eacute;ral
+des symboles. Ils n'ont quasiment jamais d'angle tranchant. Ceci s'explique
+par la fragilit&eacute; des poin&ccedil;ons, qui s'&eacute;moussent rapidement lors du
+martellement et de la ciselure. L'aspect arrondi des symboles musicaux est &eacute;galement pr&eacute;sent
+dans tous les &eacute;l&eacute;ments de notre police &laquo;&nbsp;Feta&nbsp;&raquo;.
+</p>
+
+<h2>Espacement</h2>
+
+<p>
+L'un des probl&egrave;mes que pose la pi&egrave;ce de Bach vue pr&eacute;c&eacute;demment nous a amen&eacute; 
+&agrave; travailler sur le moteur d'espacement. L'une de ses caract&eacute;ristique r&eacute;side
+dans l'espacement visuel, montr&eacute; dans cet exemple&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@spacing-with-corr.png">
+</p>
+
+<p align="center">
+<img src="@IMAGES@spacing-no-corr.png">
+</p>
+
+<p>
+Seules des noires sont utilis&eacute;es ici&nbsp;: elles sont jou&eacute;es de
+mani&egrave;re &eacute;gale. L'espacement devrait le refl&eacute;ter. Malheureusement nos
+yeux nous trompent&nbsp;: non seulement la distance entre les t&ecirc;tes de
+notes est prise en compte, mais celle entre les hampes cons&eacute;cutives
+aussi. Ainsi, dans un encha&icirc;nement hampe vers le haut puis hampe vers
+le bas, les notes doivent &ecirc;tre davantage &eacute;loign&eacute;es, et
+inversement. L'espacement d&eacute;pend &eacute;galement du positionnement vertical
+des notes. Le fragment du haut est imprim&eacute; avec cette correction, au
+contraire de celui du bas. Dans ce dernier, les combinaisons de notes
+avec hampe vers le haut&nbsp;/&nbsp;hampe vers le bas forment des
+blocs.
+</p>
+
+<h2>Lignes suppl&eacute;mentaires</h2>
+
+<p>
+Les lignes suppl&eacute;mentaires pr&eacute;sentent des difficult&eacute;s typographiques.
+Des surcharges avec d'autres signes &ndash; d'autres lignes ou des alt&eacute;rations)
+sont vite arriv&eacute;es. Les autres logiciels &eacute;vitent ces collisions en
+espa&ccedil;ant davantage les lignes, ce qui occupe plus de place, ou en
+raccourcissant les lignes suppl&eacute;mentaires, au d&eacute;triment de la lisibilit&eacute;.
+</p>
+
+<table align="center"><tr><td>
+<img src="@IMAGES@henle-ledger.png">
+&nbsp;
+</td>
+<td>
+<img src="@IMAGES@baer-ledger.png">&nbsp;
+
+</td>
+<td>
+<img src="@IMAGES@lily-ledger.png"></td>
+</tr><tr>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2004)</td>
+</tr>
+</table>
+
+<p>
+Les graveurs traditionnels ajustent la taille d'une ligne suppl&eacute;mentaire
+en tenant compte des symboles se trouvant &agrave;
+proximit&eacute;. LilyPond agit de la m&ecirc;me mani&egrave;re.
+Les lignes suppl&eacute;mentaires sont &eacute;court&eacute;es afin d'&eacute;viter les collisions
+avec les lignes proches, et sont d'autant plus r&eacute;duites en pr&eacute;sence
+d'une alt&eacute;ration.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="#input-format">Utilise la Source, Luke</a>, ou&nbsp;:
+ce que LilyPond traite en entr&eacute;e.
+</p>
+<!--
+    Translation of CVS Revision: 1.7 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="input-format"></a>
+
+<h2>Format de saisie</h2>
+<p>
+Comme nous l'avons dit plus t&ocirc;t, le format id&eacute;al pour un syst&egrave;me de gravure musicale
+est le contenu&nbsp;: la musique elle-m&ecirc;me. Cela pose un &eacute;norme probl&egrave;me&nbsp;:
+comment d&eacute;finir <em>ce qu'est</em> la musique&nbsp;? Pour r&eacute;soudre ce
+probl&egrave;me, nous l'avons invers&eacute;. Au lieu de d&eacute;finir ce qu'est la musique,
+notre programme sert de d&eacute;finition&nbsp;: nous avons &eacute;crit un programme
+capable de produire des partitions, et avons ajust&eacute; son format de saisie pour
+&ecirc;tre aussi l&eacute;ger que possible. Lorsque le format ne peut plus &ecirc;tre
+simplifi&eacute;, nous avons par d&eacute;finition atteint le contenu m&ecirc;me.
+</p>
+
+<p>
+La syntaxe est &eacute;galement celle de l'interface utilisateur de LilyPond,
+puisqu'elle peut &ecirc;tre facilement tap&eacute;e au clavier&nbsp;:
+
+<pre>
+  c'4 d'8
+</pre>
+sont un do noire et un r&eacute; croche, comme dans cet exemple&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@simple-notation.png">
+</p>
+
+<p>
+&Agrave; petite &eacute;chelle, une telle syntaxe est pratique. &Agrave; plus grande &eacute;chelle,
+une structuration est n&eacute;cessaire. Sans cela, comment saisir des pi&egrave;ces
+aussi complexes qu'un op&eacute;ra ou une symphonie&nbsp;? La structure est
+construite selon le m&ecirc;me concept que les expressions musicales&nbsp;:
+c'est en combinant de petits fragments qu'une musique plus complexe
+peut &ecirc;tre repr&eacute;sent&eacute;e. Par exemple&nbsp;:
+</p>
+
+<table>
+<td align="center">
+c4</td>
+<td>
+<img src="@IMAGES@simultaneous-0.png">
+</td></tr></table>
+
+<p>
+Combinez ceci simultan&eacute;ment avec deux autres notes, en les ins&eacute;rant entre
+&lt;&lt; et &gt;&gt;&nbsp;:
+</p>
+
+<table>
+<tr>
+<td align="center">
+<pre>
+  &lt;&lt;c4 d4 e4&gt;&gt;
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-1.png">
+</td>
+</tr></table>
+
+Cette expression est int&eacute;gr&eacute;e dans une s&eacute;quence, ins&eacute;r&eacute;e entre
+accolades&nbsp;:
+
+<table>
+<tr>
+<td align="center"><pre>
+   { &lt;&lt;c4 d4 e4&gt;&gt; f4  }</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-2.png">
+</td>
+</tr></table>
+
+L'exemple ci-dessus est une autre expression, qui est ci-dessous combin&eacute;e
+avec une expression simultan&eacute;e (en l'occurence une blanche)&nbsp;:
+
+<table>
+<tr>
+<td align="center">
+<pre>
+&lt;&lt; { &lt;&lt;c4 d4 e4&gt;&gt; f4 } g2 &gt;&gt; 
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-3.png">
+</td>
+</tr>
+</table>
+<p>
+De telles structures r&eacute;cursives peuvent &ecirc;tre d&eacute;finies formellement et
+de mani&egrave;re ordonn&eacute;e avec une <em>grammaire libre de tout contexte</em>.
+Le code d'analyse de la saisie est &eacute;galement g&eacute;n&eacute;r&eacute; depuis cette grammaire.
+Autrement dit, la d&eacute;finition de la syntaxe de LilyPond est claire et
+sans ambigu&iuml;t&eacute;.
+</p>
+
+<p>
+Ce sont la syntaxe et l'interface utilisteur qui concernent les utilisateurs.
+Elles sont sujettes &agrave; discussion, puisque relatives aux go&ucirc;ts de chacun.
+Bien que ces discussions soient int&eacute;ressantes, elles ne sont pas
+productives. &Agrave; l'&eacute;chelle de LilyPond, l'importance du format de saisie
+est minime&nbsp;: inventer une syntaxe claire est bien plus facile
+qu'&eacute;crire un code de mise en page d&eacute;cent. Ceci est d'ailleurs
+illustr&eacute; par le nombre de lignes de code de ces composants respectifs&nbsp;:
+l'analyse du texte de saisie et sa repr&eacute;sentation p&egrave;sent moins
+de 10% du code.
+</p>
+
+<table>
+<tr><th>Analyse et repr&eacute;sentation</th><th>Total</th></tr>
+<tr>
+<td>6000 lignes en C++</td>
+<td>61500 lignes en C++</td></tr>
+</table>
+
+<! todo :
+
+  blurbs about lilypond today
+
+  future?
+  >
+
+
+<p align="right">
+Suite&nbsp;: <a href="#conclusion">Pour finir</a>, la conclusion.
+</p>
+<!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="conclusion"></a>
+
+<h2>Conclusion</h2>
+
+Nous vous avons montr&eacute; ce que devrait &ecirc;tre la gravure musicale, et comment
+nous avons construit notre logiciel pour imiter cette apparence. Nous 
+nous sommes &eacute;norm&eacute;ment investis dans cette construction. En guise de 
+r&eacute;compense pour ce long travail, vous pouvez &agrave; votre tour <a
+href="@DEPTH@switch/tour.html">utiliser le programme pour imprimer votre musique</a>.
+
+
+<p align="right">
+Retour &agrave; l'<a href="index">index</a>.
+</p>

@@ -1,0 +1,111 @@
+<!--
+    Translation of CVS Revision: 1.11 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="typography-features"></a>
+
+<h2>Cr&eacute;ation de polices</h2>
+
+<p>
+L'aspect traditionnel des sorties de LilyPond est tr&egrave;s largement d&ucirc;
+&agrave; la densit&eacute; des pages produites. Des lignes de port&eacute;e &eacute;paisses, et
+une police qui leur correspond donnent plus de poids &agrave; l'aspect
+g&eacute;n&eacute;ral. Ceci est tr&egrave;s clair dans les exemples suivants&nbsp;:
+</p>
+
+<table align="center"><tr><td>
+<img src="@IMAGES@henle-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@baer-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@lily-flat-bw.png"></td>
+</tr><tr>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2003)</td>
+</tr>
+</table>
+
+<p>
+Un autre aspect typique de la gravure &agrave; la main est l'aspect g&eacute;n&eacute;ral
+des symboles. Ils n'ont quasiment jamais d'angle tranchant. Ceci s'explique
+par la fragilit&eacute; des poin&ccedil;ons, qui s'&eacute;moussent rapidement lors du
+martellement et de la ciselure. L'aspect arrondi des symboles musicaux est &eacute;galement pr&eacute;sent
+dans tous les &eacute;l&eacute;ments de notre police &laquo;&nbsp;Feta&nbsp;&raquo;.
+</p>
+
+<h2>Espacement</h2>
+
+<p>
+L'un des probl&egrave;mes que pose la pi&egrave;ce de Bach vue pr&eacute;c&eacute;demment nous a amen&eacute; 
+&agrave; travailler sur le moteur d'espacement. L'une de ses caract&eacute;ristique r&eacute;side
+dans l'espacement visuel, montr&eacute; dans cet exemple&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@spacing-with-corr.png">
+</p>
+
+<p align="center">
+<img src="@IMAGES@spacing-no-corr.png">
+</p>
+
+<p>
+Seules des noires sont utilis&eacute;es ici&nbsp;: elles sont jou&eacute;es de
+mani&egrave;re &eacute;gale. L'espacement devrait le refl&eacute;ter. Malheureusement nos
+yeux nous trompent&nbsp;: non seulement la distance entre les t&ecirc;tes de
+notes est prise en compte, mais celle entre les hampes cons&eacute;cutives
+aussi. Ainsi, dans un encha&icirc;nement hampe vers le haut puis hampe vers
+le bas, les notes doivent &ecirc;tre davantage &eacute;loign&eacute;es, et
+inversement. L'espacement d&eacute;pend &eacute;galement du positionnement vertical
+des notes. Le fragment du haut est imprim&eacute; avec cette correction, au
+contraire de celui du bas. Dans ce dernier, les combinaisons de notes
+avec hampe vers le haut&nbsp;/&nbsp;hampe vers le bas forment des
+blocs.
+</p>
+
+<h2>Lignes suppl&eacute;mentaires</h2>
+
+<p>
+Les lignes suppl&eacute;mentaires pr&eacute;sentent des difficult&eacute;s typographiques.
+Des surcharges avec d'autres signes &ndash; d'autres lignes ou des alt&eacute;rations)
+sont vite arriv&eacute;es. Les autres logiciels &eacute;vitent ces collisions en
+espa&ccedil;ant davantage les lignes, ce qui occupe plus de place, ou en
+raccourcissant les lignes suppl&eacute;mentaires, au d&eacute;triment de la lisibilit&eacute;.
+</p>
+
+<table align="center"><tr><td>
+<img src="@IMAGES@henle-ledger.png">
+&nbsp;
+</td>
+<td>
+<img src="@IMAGES@baer-ledger.png">&nbsp;
+
+</td>
+<td>
+<img src="@IMAGES@lily-ledger.png"></td>
+</tr><tr>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2004)</td>
+</tr>
+</table>
+
+<p>
+Les graveurs traditionnels ajustent la taille d'une ligne suppl&eacute;mentaire
+en tenant compte des symboles se trouvant &agrave;
+proximit&eacute;. LilyPond agit de la m&ecirc;me mani&egrave;re.
+Les lignes suppl&eacute;mentaires sont &eacute;court&eacute;es afin d'&eacute;viter les collisions
+avec les lignes proches, et sont d'autant plus r&eacute;duites en pr&eacute;sence
+d'une alt&eacute;ration.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="input-format.html">Utilise la Source, Luke</a>, ou&nbsp;:
+ce que LilyPond traite en entr&eacute;e.
+</p>

@@ -1,0 +1,136 @@
+<!--
+    Translation of CVS Revision: 1.7 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="input-format"></a>
+
+<h2>Format de saisie</h2>
+<p>
+Comme nous l'avons dit plus t&ocirc;t, le format id&eacute;al pour un syst&egrave;me de gravure musicale
+est le contenu&nbsp;: la musique elle-m&ecirc;me. Cela pose un &eacute;norme probl&egrave;me&nbsp;:
+comment d&eacute;finir <em>ce qu'est</em> la musique&nbsp;? Pour r&eacute;soudre ce
+probl&egrave;me, nous l'avons invers&eacute;. Au lieu de d&eacute;finir ce qu'est la musique,
+notre programme sert de d&eacute;finition&nbsp;: nous avons &eacute;crit un programme
+capable de produire des partitions, et avons ajust&eacute; son format de saisie pour
+&ecirc;tre aussi l&eacute;ger que possible. Lorsque le format ne peut plus &ecirc;tre
+simplifi&eacute;, nous avons par d&eacute;finition atteint le contenu m&ecirc;me.
+</p>
+
+<p>
+La syntaxe est &eacute;galement celle de l'interface utilisateur de LilyPond,
+puisqu'elle peut &ecirc;tre facilement tap&eacute;e au clavier&nbsp;:
+
+<pre>
+  c'4 d'8
+</pre>
+sont un do noire et un r&eacute; croche, comme dans cet exemple&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@simple-notation.png">
+</p>
+
+<p>
+&Agrave; petite &eacute;chelle, une telle syntaxe est pratique. &Agrave; plus grande &eacute;chelle,
+une structuration est n&eacute;cessaire. Sans cela, comment saisir des pi&egrave;ces
+aussi complexes qu'un op&eacute;ra ou une symphonie&nbsp;? La structure est
+construite selon le m&ecirc;me concept que les expressions musicales&nbsp;:
+c'est en combinant de petits fragments qu'une musique plus complexe
+peut &ecirc;tre repr&eacute;sent&eacute;e. Par exemple&nbsp;:
+</p>
+
+<table>
+<td align="center">
+c4</td>
+<td>
+<img src="@IMAGES@simultaneous-0.png">
+</td></tr></table>
+
+<p>
+Combinez ceci simultan&eacute;ment avec deux autres notes, en les ins&eacute;rant entre
+&lt;&lt; et &gt;&gt;&nbsp;:
+</p>
+
+<table>
+<tr>
+<td align="center">
+<pre>
+  &lt;&lt;c4 d4 e4&gt;&gt;
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-1.png">
+</td>
+</tr></table>
+
+Cette expression est int&eacute;gr&eacute;e dans une s&eacute;quence, ins&eacute;r&eacute;e entre
+accolades&nbsp;:
+
+<table>
+<tr>
+<td align="center"><pre>
+   { &lt;&lt;c4 d4 e4&gt;&gt; f4  }</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-2.png">
+</td>
+</tr></table>
+
+L'exemple ci-dessus est une autre expression, qui est ci-dessous combin&eacute;e
+avec une expression simultan&eacute;e (en l'occurence une blanche)&nbsp;:
+
+<table>
+<tr>
+<td align="center">
+<pre>
+&lt;&lt; { &lt;&lt;c4 d4 e4&gt;&gt; f4 } g2 &gt;&gt; 
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-3.png">
+</td>
+</tr>
+</table>
+<p>
+De telles structures r&eacute;cursives peuvent &ecirc;tre d&eacute;finies formellement et
+de mani&egrave;re ordonn&eacute;e avec une <em>grammaire libre de tout contexte</em>.
+Le code d'analyse de la saisie est &eacute;galement g&eacute;n&eacute;r&eacute; depuis cette grammaire.
+Autrement dit, la d&eacute;finition de la syntaxe de LilyPond est claire et
+sans ambigu&iuml;t&eacute;.
+</p>
+
+<p>
+Ce sont la syntaxe et l'interface utilisteur qui concernent les utilisateurs.
+Elles sont sujettes &agrave; discussion, puisque relatives aux go&ucirc;ts de chacun.
+Bien que ces discussions soient int&eacute;ressantes, elles ne sont pas
+productives. &Agrave; l'&eacute;chelle de LilyPond, l'importance du format de saisie
+est minime&nbsp;: inventer une syntaxe claire est bien plus facile
+qu'&eacute;crire un code de mise en page d&eacute;cent. Ceci est d'ailleurs
+illustr&eacute; par le nombre de lignes de code de ces composants respectifs&nbsp;:
+l'analyse du texte de saisie et sa repr&eacute;sentation p&egrave;sent moins
+de 10% du code.
+</p>
+
+<table>
+<tr><th>Analyse et repr&eacute;sentation</th><th>Total</th></tr>
+<tr>
+<td>6000 lignes en C++</td>
+<td>61500 lignes en C++</td></tr>
+</table>
+
+<! todo :
+
+  blurbs about lilypond today
+
+  future?
+  >
+
+
+<p align="right">
+Suite&nbsp;: <a href="conclusion.html">Pour finir</a>, la conclusion.
+</p>

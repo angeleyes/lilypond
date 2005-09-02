@@ -1,0 +1,103 @@
+<!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<a name="benchmarking"></a>
+
+<h2>&Eacute;valuation des performances</h2>
+
+<p>
+Une bonne mise en page n&eacute;cessite une architecture souple. Ce n'est
+malheureusement pas suffisant. Seule une comparaison attentive avec
+du mat&eacute;riel imprim&eacute; peut permettre un r&eacute;sultat satisfaisant.
+Nous avons sugg&eacute;r&eacute; dans l'introduction de comparer &eacute;ditions informatis&eacute;es
+et gravures &agrave; la main. C'est exactement cette technique que nous avons
+employ&eacute;e pour perfectionner LilyPond. D'une certaine fa&ccedil;on, il s'agit d'une
+technique d'&eacute;valuation des performances&nbsp;: les performances du
+programme, en terme de qualit&eacute;, s'&eacute;tablissent par rapport &agrave; une quantit&eacute; connue.
+</p>
+
+<p>
+Voici des extraits compar&eacute;s d'une m&ecirc;me pi&egrave;ce. En haut l'&eacute;dition de
+r&eacute;f&eacute;rence (B&auml;renreiter BA 350), en bas ce que LilyPond 1.4 a
+g&eacute;n&eacute;r&eacute;&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@baer-sarabande.png">
+</p>
+
+<p align="center">
+B&auml;renreiter
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily14-sarabande.png">
+</p>
+
+<p align="center">
+LilyPond 1.4
+</p>
+
+<p>
+La sortie LilyPond est certes lisible, et acceptable pour beaucoup de gens.
+Cependant, une comparaison minutieuse avec une &eacute;dition grav&eacute;e &agrave; la main
+r&eacute;v&egrave;le de nombreuses erreurs de formatage&nbsp;:
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily14-sarabande-correct.png">
+</p>
+
+<!--<p align=center>-->
+
+<ul>
+<li>De nombreux symboles &eacute;taient d&eacute;s&eacute;quilibr&eacute;s. Le trille en particulier
+&eacute;tait trop grand.</li>
+
+<li>Les hampes et liens de croches &eacute;taient d&eacute;fectueux&nbsp;: les hampes
+&eacute;taient trop longues, et les liens auraient d&ucirc; &ecirc;tre inclin&eacute;s 
+de fa&ccedil;on &agrave; couvrir les lignes de port&eacute;e. Les liens &eacute;taient &eacute;galement trop fins.</li>
+
+<li>L'espacement &eacute;tait irr&eacute;gulier&nbsp;: certaines mesures &eacute;taient trop serr&eacute;es,
+d'autres trop espac&eacute;es.</li>
+</ul>
+
+<p>
+(Et des notes manquent dans la version de LilyPond.)
+</p>
+
+<p>
+En ajustant les algorithmes, param&egrave;tres et polices concern&eacute;s, nous avons
+pu am&eacute;liorer le r&eacute;sultat. L'extrait ci-dessous a &eacute;t&eacute; g&eacute;n&eacute;r&eacute; par LilyPond 1.8.
+Sans &ecirc;tre un clone de l'&eacute;dition de r&eacute;f&eacute;rence, cette sortie est proche d'une
+qualit&eacute; de publication.
+</p>
+
+<p align="center">
+<img src="@IMAGES@lily17-sarabande.png">
+</p>
+<p align="center">
+LilyPond 1.8
+</p>
+
+<p align="center">
+<img src="@IMAGES@baer-sarabande.png">
+</p>
+<p align="center">
+B&auml;renreiter
+</p>
+
+<p>
+Un autre exemple d'&eacute;valuation des performances est celui de notre projet
+pour les versions 2.1, une <a href="schubert">m&eacute;lodie de Schubert</a>.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="typography-features.html">Fonctionnalit&eacute;s sympathiques</a>,
+des casses-t&ecirc;tes typographiques que nous avons r&eacute;solus.</p>

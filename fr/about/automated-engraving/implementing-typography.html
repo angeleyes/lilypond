@@ -1,0 +1,73 @@
+<!--
+    Translation of CVS Revision: 1.8 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<a name="implementing-typography"></a>
+
+
+<h2>Impl&eacute;menter la typographie</h2>
+
+
+<p>
+Comment nous en sortir avec le traitement typographique&nbsp;? La solution
+au probl&egrave;me de la &laquo;&nbsp;notation musicale&nbsp;&raquo; implique
+le traitement de nombreux objets repr&eacute;sentant les t&ecirc;tes de notes, port&eacute;es,
+hampes, etc.
+</p>
+
+<p>
+Si dix ans sont n&eacute;cessaires pour devenir un ma&icirc;tre graveur, comment les
+simples programmeurs que nous sommes pourraient-ils int&eacute;grer leur m&eacute;tier&nbsp;?
+</p>
+
+<p>
+La r&eacute;ponse est simple&nbsp;: nous ne le pouvons pas&nbsp;! La typographie
+relevant d'un jugement humain, les personnes ne peuvent &ecirc;tre remplac&eacute;es.
+Beaucoup de t&acirc;ches p&eacute;nibles peuvent cependant &ecirc;tre automatis&eacute;es&nbsp;: si LilyPond
+parvenait &agrave; g&eacute;rer la plupart des situations usuelles correctement, ce 
+serait un grand pas en avant pour l'&eacute;dition informatis&eacute;e. Les cas
+particuliers peuvent &ecirc;tre trait&eacute;s manuellement. Au fil du temps, le
+logiciel pourra &ecirc;tre r&eacute;vis&eacute; afin d'automatiser de plus en plus d'actions,
+de sorte que les ajustements manuels seront de moins en moins n&eacute;cessaires.
+</p>
+
+<p>
+Comment avons-nous construit un tel syst&egrave;me&nbsp;? Nous avons tout d'abord 
+&eacute;crit le programme en C++. Cela signifie que nous, d&eacute;veloppeurs, avons
+fig&eacute; ses fonctionnalit&eacute;s dans le code. Cela est vite apparu
+insatisfaisant&nbsp;:
+</p>
+
+<ul>
+<li> Si certains &eacute;l&eacute;ments doivent &ecirc;tre trait&eacute;s manuellement, les
+utilisateurs doivent se servir du moteur de formatage. Par cons&eacute;quent,
+les r&egrave;gles et param&egrave;tres ne peuvent &ecirc;tre fix&eacute;s lors de la compilation,
+mais doivent &ecirc;tre accessibles lors de l'ex&eacute;cution.</li>
+
+<li> Graver est une affaire de jugement visuel, donc une affaire de go&ucirc;t.
+Nous savons que les utilisateurs peuvent ne pas &ecirc;tre d'accord
+avec nous. Ils faut donc qu'il aient acc&egrave;s aux d&eacute;finitions des
+styles typographiques.</li>
+
+<li> Enfin, nous red&eacute;finissons continuellement les r&egrave;gles de formatage,
+et avons donc besoin d'une approche souple des r&egrave;gles. Le C++ implique
+une m&eacute;thode de groupement des r&egrave;gles qui ne correspond pas au
+fonctionnement de la notation musicale.</li>
+</ul>
+
+<p>
+Une architecture flexible est &eacute;videmment n&eacute;cessaire. Celle-ci doit
+prendre en compte les r&egrave;gles de formatage, le style typographique et
+les d&eacute;cisions de formatage individuelles.
+</p>
+
+<p align="right">
+Suite&nbsp;: <a href="formatting-architecture.html">Architecture de programme flexible,
+votre alli&eacute;e</a> pour r&eacute;gler, triturer, et d&eacute;velopper
+les r&egrave;gles de formatage.</p>
