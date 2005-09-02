@@ -1,3 +1,8 @@
+2005-09-02  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/about/automated-engraving/menu-entries.py: New file.  (John
+	Mandereau)
+
 2005-09-02  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
         * fr/about/automated-engraving/: all pages translated
