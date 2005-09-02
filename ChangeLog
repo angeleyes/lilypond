@@ -1,3 +1,13 @@
+2005-09-02  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+        * fr/about/automated-engraving/: all pages translated
+        (with Jean-Charles Malahieude <lilyfan@wanadoo.fr>)
+        * fr/about/pubs.html: new translated page
+
+2005-09-02  John Mandereau  <john.mandereau@free.fr>
+
+        * GNUmakefile: add french essay big page generation
+
 2005-09-01  John Mandereau  <john.mandereau@free.fr>
 
 	* site/about/pubs.html: add linuxfr.org article link

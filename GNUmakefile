@@ -75,6 +75,7 @@ apache-1.3.x-fixup:
 
 scripts:
 	python $(SCRIPTDIR)/big-page.py site/about/automated-engraving
+	python $(SCRIPTDIR)/big-page.py fr/about/automated-engraving
 
 # no silly buttons
 site: all
