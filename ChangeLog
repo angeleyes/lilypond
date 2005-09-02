@@ -3,6 +3,11 @@
 	* site/about/automated-engraving/menu-entries.py: New file.  (John
 	Mandereau)
 
+2005-09-02  John Mandereau  <john.mandereau@free.fr>
+
+	* site/about/automated-engraving/: fix minor navigation bugs which
+	appeared on big-page.
+
 2005-09-02  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
         * fr/about/automated-engraving/: all pages translated
