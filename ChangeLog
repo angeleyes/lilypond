@@ -1,3 +1,8 @@
+2005-09-03  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+	* fr/: minor corrections
+	* news.ihtml: french translation announcement added
+
 2005-09-02  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/about/automated-engraving/menu-entries.py: New file.  (John
