@@ -1,3 +1,8 @@
+2005-09-03  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* TRANSLATION (LANG): Move documentation.html to category 3,
+	optional.
+
 2005-09-03  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
 	* fr/: minor corrections
