@@ -27,7 +27,13 @@ on one day.
 
 
 !-->
+<dt><b>LilyPond 2.7.9 is out</b> - <em>September 5, 2005</em></dt>
 
+<dd>
+This is mainly a bugfix
+release. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
 
 <dt><b>Traduction fran&ccedil;aise du site</b> - <em>September 03, 2005</em></dt>
 <dd>
