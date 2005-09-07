@@ -1,3 +1,7 @@
+2005-09-07  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: fix URL of upgrade package.
+
 2005-09-04  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml (href): trim

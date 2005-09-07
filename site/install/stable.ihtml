@@ -74,7 +74,7 @@
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
 	"../../download/binaries/autopackage/lilypond-2.6.3.1.x86.package",
-	"../../download/binaries/autopackage/lilypond-2.6.3.1.upgrade.x86.package")
+	"../../download/binaries/autopackage/lilypond-2.6.3.1-upgrade.x86.package")
       </strong>
     </td>
     <td>2.6.3</td>
