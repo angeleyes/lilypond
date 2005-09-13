@@ -27,8 +27,17 @@ on one day.
 
 
 !-->
-<dt><b>LilyPond 2.7.9 is out</b> - <em>September 5, 2005</em></dt>
+<dt><b>LilyPond 2.7.10 is out</b> - <em>September 13, 2005</em></dt>
 
+<dd>
+This version adds proper support for "laissez vibrer ties", just enter
+\laissezVibrer after a chord. This feature was sponsored by Henrik
+Frisk. It also has a couple of minor
+bugfixes. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
+<dt><b>LilyPond 2.7.9 is out</b> - <em>September 5, 2005</em></dt>
 <dd>
 This is mainly a bugfix
 release. (<a
@@ -42,27 +51,6 @@ de nombreuses pages du site sont maintenant disponibles en fran&ccedil;ais,
 notamment l'<a href="about/automated-engraving/index.fr.html">essai sur
 la gravure musicale</a>.
 </dd>
-
-<dt><b>LilyPond 2.7.8 is out</b> - <em>August 29, 2005</em></dt>
-
-<dd>
-This release has support for right-to-left text formatting in markup
-commands (sponsored by Aaron Mehl). In addition, it fixes a great
-number of bugs, among others, support for writing MIDI files.  (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-
-<dt><b>Article in `De Standaard'</b> - <em>August 20, 2005</em></dt>
-<dd>
-  The Belgian newspaper <em>De Standaard</em> investigates what drives
-  Free Software authors in an article titled <em>Delen van KENNIS
-  zonder WINSTBEJAG</em> <font size=-1>(Non-profit sharing of
-  knowlegde)</font> using LilyPond as an example.  This marks
-  LilyPond's first appearance in mainstream printed press.
-</dd>
-
-
 
 </dl>
 
