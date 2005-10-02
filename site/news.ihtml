@@ -25,8 +25,19 @@ Preferably: (<a href= .. >..</a>, etc. )
 * Split news items in small chunks. It's OK to have more than 1 item
 on one day.
 
-
 !-->
+<dt><b>LilyPond 2.7.11 is out</b> - <em>October 02, 2005</em></dt>
+
+<dd>
+Vertical spacing for page layout can now be tuned for each system
+individually (feature sponsored by Trevor Baca and Nicolas
+Sceaux). The slope of a stem-tremolo may be set manually (feature
+sponsored by Sven Axelsson). There are a number of cleanups in the
+handling and representation of systems, among other features and bug
+fixes. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.10 is out</b> - <em>September 13, 2005</em></dt>
 
 <dd>
