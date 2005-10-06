@@ -1,3 +1,9 @@
+2005-10-06  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/about/faq.html:
+	* site/about/features.html: Typos (Mark weber).  Remove some
+	commas.
+
 2005-09-17  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* site/install/devel.ihtml: Update.
