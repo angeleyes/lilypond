@@ -26,6 +26,19 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.12 is out</b> - <em>October 07, 2005</em></dt>
+
+<dd>
+It features more annotations for the page layout engine and some more
+sponsored features. Beamlets may stick out of the side of beams
+(feature sponsored by Trevor Baca); new support for figured bass
+with support for continuation lines and tuning of figures, brackets,
+and alignments; vertical alignments of staves can now be tuned easily
+for individual systems (feature sponsored by Nicolas
+Sceaux). (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.11 is out</b> - <em>October 02, 2005</em></dt>
 
 <dd>
@@ -37,31 +50,6 @@ handling and representation of systems, among other features and bug
 fixes. (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.10 is out</b> - <em>September 13, 2005</em></dt>
-
-<dd>
-This version adds proper support for "laissez vibrer ties", just enter
-\laissezVibrer after a chord. This feature was sponsored by Henrik
-Frisk. It also has a couple of minor
-bugfixes. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.9 is out</b> - <em>September 5, 2005</em></dt>
-<dd>
-This is mainly a bugfix
-release. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>Traduction fran&ccedil;aise du site</b> - <em>September 03, 2005</em></dt>
-<dd>
-Grâce à <a href=about/thanks#website>l'équipe des traducteurs</a>,
-de nombreuses pages du site sont maintenant disponibles en fran&ccedil;ais,
-notamment l'<a href="about/automated-engraving/index.fr.html">essai sur
-la gravure musicale</a>.
-</dd>
 
 </dl>
 
