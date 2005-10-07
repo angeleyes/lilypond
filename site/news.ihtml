@@ -31,10 +31,11 @@ on one day.
 <dd>
 It features more annotations for the page layout engine and some more
 sponsored features. Beamlets may stick out of the side of beams
-(feature sponsored by Trevor Baca); new support for figured bass
-with support for continuation lines and tuning of figures, brackets,
-and alignments; vertical alignments of staves can now be tuned easily
-for individual systems (feature sponsored by Nicolas
+(feature sponsored by Trevor Baca); new support for figured bass with
+support for continuation lines and tuning of figures, brackets, and
+alignments (feature sponsored by Trent Johnston); vertical alignments
+of staves can now be tuned easily for individual systems (feature
+sponsored by Nicolas
 Sceaux). (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
