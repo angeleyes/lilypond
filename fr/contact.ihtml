@@ -8,6 +8,21 @@
     original source file.  !-->
 
 <dl>
+  <dt>Contacter les traducteurs et utilisateurs francophones&nbsp;?</dt>
+  <dd>
+    Envoyez un courriel &agrave; <tt><a href="mailto:lilypond-user-fr@gnu.org">lilypond-user-fr@gnu.org</a></tt>
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user-fr/">info</a>
+    sur la liste, 
+    <a href="http://mail.gnu.org/archive/html/lilypond-user-fr/">archives</a>).
+    <br><em>Concernant des sujets tr&egrave;s pointus ou techniques comme les
+    rapports de bogue ou les discussions sur le d&eacute;veloppement,
+    adressez-vous de pr&eacute;f&eacute;rence aux listes de diffusion ci-dessous :
+    vous pourrez y contacter directement les d&eacute;veloppeurs.</em>
+    <br>
+  </dd>
+
+  <p>Les listes suivantes sont exclusivement <em>anglophones</em>.
+
   <dt>Des questions ou des commentaires&nbsp;?</dt>
   <dd>
     Envoyez un courriel &agrave; <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
