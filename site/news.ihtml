@@ -26,6 +26,14 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.6.4 is out</b> - <em>October 11, 2005</em></dt>
+
+<dd>
+This release fixes a few minor problems with the stable
+series. (<a
+href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.6">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.12 is out</b> - <em>October 07, 2005</em></dt>
 
 <dd>

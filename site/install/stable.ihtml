@@ -32,14 +32,14 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/Fedora-4/lilypond-2.6.3-1.i386.rpm",
+	"../../download/binaries/Fedora-4/lilypond-2.6.4-1.i386.rpm",
 	"LilyPond"),
-	<a href="../../download/binaries/Fedora-4/lilypond-documentation-2.6.3-1.i386.rpm">_("documentation")</a>,
+	<a href="../../download/binaries/Fedora-4/lilypond-documentation-2.6.4-1.i386.rpm">_("documentation")</a>,
 	<a href="../../download/binaries/Fedora-3/ghostscript-8.15rc3-0.i386.rpm">Ghostscript</a>,
 	<a href="../../download/binaries/Fedora-3/ghostscript-libs-7.07-41.i386.rpm">_("compatibility libraries")</a>
       </strong>
     </td>
-    <td>2.6.3</td>
+    <td>2.6.4</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
@@ -99,11 +99,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/MacOS/lilypond-2.6.3-1.dmg",
+	"../../download/binaries/MacOS/lilypond-2.6.4-1.dmg",
 	"LilyPond")
       </strong>
     </td>
-    <td>2.6.3-1</td>  
+    <td>2.6.4-1</td>  
     <td>
       <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
@@ -172,10 +172,10 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"../../download/v2.6/lilypond-2.6.3.tar.gz")
+	"../../download/v2.6/lilypond-2.6.4.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.6.3</td>
+    <td>2.6.4</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
