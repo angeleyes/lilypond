@@ -1,3 +1,7 @@
+2005-10-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: move macos back to 2.6.3
+
 2005-10-10  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: update macos download.
