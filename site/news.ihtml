@@ -26,6 +26,18 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.13 is out</b> - <em>October 18, 2005</em></dt>
+<dd>
+This release features slashed numerals, plus signs and interruptible
+extender lines for figured bass. Merging of Figured bass lines has
+been made switchable with the figuredBassCenterContinuations
+property. For each grob, a subproperty in `callbacks' property defines
+the procedure which computes it. This is major internal cleanup, which
+also provides advanced tweakability for power
+users. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.6.4 is out</b> - <em>October 11, 2005</em></dt>
 
 <dd>
@@ -35,7 +47,6 @@ href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.6">Download</a>) </dd>
 
 <dt><b>LilyPond 2.7.12 is out</b> - <em>October 07, 2005</em></dt>
-
 <dd>
 It features more annotations for the page layout engine and some more
 sponsored features. Beamlets may stick out of the side of beams
@@ -45,18 +56,6 @@ alignments (feature sponsored by Trent Johnston); vertical alignments
 of staves can now be tuned easily for individual systems (feature
 sponsored by Nicolas
 Sceaux). (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.11 is out</b> - <em>October 02, 2005</em></dt>
-
-<dd>
-Vertical spacing for page layout can now be tuned for each system
-individually (feature sponsored by Trevor Baca and Nicolas
-Sceaux). The slope of a stem-tremolo may be set manually (feature
-sponsored by Sven Axelsson). There are a number of cleanups in the
-handling and representation of systems, among other features and bug
-fixes. (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
