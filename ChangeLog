@@ -1,3 +1,7 @@
+2005-10-20  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* site/install/stable.ihtml: Update mingw and autopackage.
+
 2005-10-16  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
 	* fr/install/index.html: note about ghoscript translated
