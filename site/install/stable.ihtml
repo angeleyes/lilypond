@@ -119,8 +119,8 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"../../download/binaries/mingw/lilypond-2.6.3-1.exe",
-	"../../download/binaries/mingw/lilypond-2.6.3-1-upgrade.exe")
+	"../../download/binaries/mingw/lilypond-2.6.4-2.exe",
+	"../../download/binaries/mingw/lilypond-2.6.4-2-upgrade.exe")
       </strong>
     </td>
     <td>2.6.4</td>
