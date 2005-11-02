@@ -40,7 +40,7 @@
       </strong>
     </td>
     <td>2.6.4</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
   <tr>
@@ -78,7 +78,7 @@
       </strong>
     </td>
     <td>2.6.4</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
   <tr bgcolor="#e8ffe8" >
@@ -99,13 +99,13 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/MacOS/lilypond-2.6.3-1.dmg",
+	"../../download/binaries/MacOS/lilypond-2.6.4-1.dmg",
 	"LilyPond")
       </strong>
     </td>
-    <td>2.6.3-1</td>  
+    <td>2.6.4-1</td>  
     <td>
-      <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
   </tr>
 
@@ -124,7 +124,7 @@
       </strong>
     </td>
     <td>2.6.4</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
   </tr>
 
@@ -142,7 +142,7 @@
     </td>
     <td>2.6.0</td>
     <td>
-      <a href="mailto:bug-lilypond@gnu.org">Bertalan Fodor</a>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Bertalan Fodor</a>
     </td>
   </tr>
 
@@ -177,5 +177,5 @@
       </strong>
     </td>
     <td>2.6.4</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
