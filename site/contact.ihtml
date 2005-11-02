@@ -10,46 +10,55 @@
 <dl>
   <dt>Questions or comments?</dt>
   <dd>
-    Send mail to <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
-    (mailing list
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">info</a>,
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">Post</a> your comment.
+<p> This is the
+ <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt> mailing list.
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">info</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-user/">archive</a>)
     <br>
   </dd>
 
   <dt>Bug report?</dt>
   <dd>
-    Send mail to 
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Post</a> your bugreport.
+<p>
+This is the mailing list 
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (mailing list
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archive</a>)
     <br>
   </dd>
 
   <dt>Get notified of new releases?</dt>
-  <dd>Subscribe to
-    <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
-    (mailing list
-    <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">info</a>,
+  <dd>
+<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">
+Subscribe</a> to our announcements.
+
+<p>This is the 
+<tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
+mailing list (<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">info</a>,
     <a href="http://mail.gnu.org/archive/html/info-lilypond/">archive</a>)
   </dd>
 
   
   <dt>Comments on these pages?</dt>
-  <dd>Send mail to  
+  <dd>
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Post</a> your bugreport.
+<p>
+This is the 
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (mailing list
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+ mailing list
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archive</a>)
   </dd>
 
   
   <dt>Contact the developers?<dt>
-  <dd>Subscribe to
-    <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
-    (mailing list 
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">info</a>,
+  <dd><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">Post</a> your remark
+<p>
+This is the 
+<tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt> mailing list.
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">info</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-devel/">archive</a>)
   </dd>
 
