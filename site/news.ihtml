@@ -26,6 +26,17 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.15 is out</b> - <em>November 3, 2005</em></dt>
+<dd>
+This release has another massive cleanup of the backend.  Each grob
+property may also be a "grob closure". This means that it is possible
+to combine functions. Calculation of extent and offset of grob is now
+controlled via the `X-extent', `Y-extent', `X-offset' and `Y-offset'
+properties. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
+
 <dt><b>LilyPond 2.7.14 is out</b> - <em>October 23, 2005</em></dt>
 <dd>
 This release has more cleanup in the layout-engine. Now,
@@ -37,40 +48,6 @@ that compute said property, i.e.
   (if (> (random 10) 5) UP DOWN))
 </pre>
 will set  a random direction for beams. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-
-<dt><b>LilyPond 2.7.13 is out</b> - <em>October 18, 2005</em></dt>
-<dd>
-This release features slashed numerals, plus signs and interruptible
-extender lines for figured bass. Merging of Figured bass lines has
-been made switchable with the figuredBassCenterContinuations
-property. For each grob, a subproperty in `callbacks' property defines
-the procedure which computes it. This is major internal cleanup, which
-also provides advanced tweakability for power
-users. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.6.4 is out</b> - <em>October 11, 2005</em></dt>
-
-<dd>
-This release fixes a few minor problems with the stable
-series. (<a
-href="@DOC@v2.6/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.6">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.12 is out</b> - <em>October 07, 2005</em></dt>
-<dd>
-It features more annotations for the page layout engine and some more
-sponsored features. Beamlets may stick out of the side of beams
-(feature sponsored by Trevor Baca); new support for figured bass with
-support for continuation lines and tuning of figures, brackets, and
-alignments (feature sponsored by Trent Johnston); vertical alignments
-of staves can now be tuned easily for individual systems (feature
-sponsored by Nicolas
-Sceaux). (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
