@@ -10,9 +10,11 @@
 <dl>
   <dt>Vragen of opmerkingen?</dt>
   <dd>
-    Stuur een e-mail naar <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
-    (mailinglijst
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">info</a>,
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">
+Stuur een bericht</a>
+<p>
+Dit is de <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt> mailinglijst
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">info</a>,
     doorzoek
     <a href="http://mail.gnu.org/archive/html/lilypond-user/">mailarchief</a>)
     <br>
@@ -20,16 +22,20 @@
 
   <dt>Bug report?</dt>
   <dd>
-    Stuur een e-mail naar 
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">
+Stuur een bericht</a>
+
+<p>
+Dit is de 
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (mailinglijst
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+mailinglijst
+(<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
     doorzoek
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">mailarchief</a>)
     <br>
   </dd>
 
-  <dt>Wil je op de hoogte worden gebracht van nieuwe versies?</dt>
+  <dt>Op de hoogte blijven?</dt>
   <dd>Abonneer je op
     <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
     (mailinglijst
@@ -40,10 +46,17 @@
 
   
   <dt>Opmerkingen over deze internetpagina's?</dt>
-  <dd>Stuur een e-mail naar  
+
+
+  <dd>
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">
+Stuur een bericht</a>
+
+<p>
+Dit is de 
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (mailinglijst
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
+    mailinglijst
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
     doorzoek
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">mailarchief</a>)
     <br>
@@ -53,10 +66,16 @@
 
   
   <dt>Wil je communiceren met de ontwikkelaars?<dt>
-  <dd>Abonneer je op
+
+
+  <dd>
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">
+Stuur een bericht</a>
+<p>
+Dit is de 
     <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
-    (mailinglijst 
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">info</a>,
+    mailinglijst 
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">info</a>,
     doorzoek
     <a href="http://mail.gnu.org/archive/html/lilypond-devel/">mailarchief</a>)
   </dd>
