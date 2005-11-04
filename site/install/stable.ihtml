@@ -119,11 +119,11 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"../../download/binaries/mingw/lilypond-2.6.4-4.exe",
-	"../../download/binaries/mingw/lilypond-2.6.4-4-upgrade.exe")
+	"../../download/binaries/mingw/lilypond-2.6.4-5.exe",
+	"../../download/binaries/mingw/lilypond-2.6.4-5-upgrade.exe")
       </strong>
     </td>
-    <td>2.6.4-4</td>
+    <td>2.6.4-5</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
   </tr>
