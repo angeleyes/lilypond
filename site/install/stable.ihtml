@@ -99,11 +99,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/MacOS/lilypond-2.6.4-1.dmg",
+	"../../download/binaries/MacOS/lilypond-2.6.4-2.dmg",
 	"LilyPond")
       </strong>
     </td>
-    <td>2.6.4-1</td>  
+    <td>2.6.4-2</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
