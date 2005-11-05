@@ -27,13 +27,16 @@
       Debian
     </td>
     <td>
-      Etch/Sid (testing/unstable)
+      Etch (testing)
     </td>
     <td>
-      <em>_("Included with distribution")</em>
+      <em>
+	_("Included <a href='%s'>with distribution</a>",
+	"http://ftp.debian.org/debian/pool/main/l/lilypond/")
+      </em>
     </td>
     <td>2.4.5</td>
-    <td></td>
+    <td><a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?which=pkg&data=lilypond&dist=testing">Thomas Bushnell, BSG</a></td>
   </tr>
 
 
@@ -178,7 +181,7 @@
     <td>
       <em>
 	_("Included <a href='%s'>with distribution</a>",
-	"ftp://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
+	"http://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
       </em>
     </td>
     <td>2.4.5</td>

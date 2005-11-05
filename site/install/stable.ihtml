@@ -22,6 +22,28 @@
   <tr>
     <td>
       <p align="center">
+	<img src="@IMAGES@debian-logo.png">
+      </p>
+    </td>
+    <td>
+      Debian
+    </td>
+    <td>
+      Sid (unstable)
+    </td>
+    <td>
+      <em>
+	_("Included <a href='%s'>with distribution</a>",
+	"http://ftp.debian.org/debian/pool/main/l/lilypond/")
+      </em>
+    </td>
+    <td>2.6.3</td>
+    <td><a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?which=pkg&data=lilypond&dist=unstable">Thomas Bushnell, BSG</a></td>
+  </tr>
+
+  <tr>
+    <td>
+      <p align="center">
 	<img src="@IMAGES@fedora-logo.png">
       </p>
     </td>
@@ -57,6 +79,28 @@
     </td>
     <td>2.6.3</td>
     <td><a href="mailto:johnnyweb-1.0@lost-shoe-films.de">Johannes Sch&ouml;pfer</a></td>
+  </tr>
+
+  <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@ubuntu.png">
+      </p>
+    </td>
+    <td>
+      ubuntu
+    </td>
+    <td>
+      Dapper/universe
+    </td>
+    <td>
+      <em>
+	_("Included <a href='%s'>with distribution</a>",
+	"http://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
+      </em>
+    </td>
+    <td>2.6.3</td>
+    <td><a href="http://ubuntulinux.org">ubuntulinux</a></td>
   </tr>
 
   <tr>
@@ -135,14 +179,11 @@
       NT, 98, 2000, ME, XP
     </td>
     <td>
-      <!-- Bertalan's site
-	  <strong>_("Go <a href='%s'>here</a>", "http://www.inf.bme.hu/~berti/lilypond/")
-	  !-->
       <strong>_("Go <a href='%s'>here</a>", "windows.html")</strong>
     </td>
-    <td>2.6.0</td>
+    <td>2.6.4</td>
     <td>
-      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Bertalan Fodor</a>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td>
   </tr>
 
