@@ -131,51 +131,6 @@
 </p>
 
 
-<h3>How can I thank you for LilyPond?</h3>
-
-You can do several things
-<ul>
-  <li>
-    <p>
-      Tell us how much you like LilyPond, we always appreciate hearing
-      it: send us e-mail, or send a postcard
-    </p>
-    <blockquote>
-      Jan &amp; Han-Wen<br>
-      p/a Han-Wen Nienhuys<br>
-      Spinozaweg 68<br>
-      3532 SH Utrecht,<br>
-      The Netherlands
-    </blockquote>
-    <p>
-      We also warmly welcome samples of the beverage or music of your choice
-      :-).
-    </p>
-  </li>
-  <li>
-    Support development directly by giving us a
-    <a href="doneet.html">donation</a>.
-  </li>
-  <li>
-    Tell others how much you like LilyPond: promotion means more
-    users, and more users is always better.  So,
-    
-    <ul>
-      <li>
-	tell your friends about LilyPond,
-      </li>
-      <li>
-	do not remove the "Engraved by LilyPond" tagline, and
-      </li>
-      <li>
-	mention LilyPond if you use it in theses and books, or cite us
-	in papers.
-      </li>
-    </ul>
-  </li>
-  
-</ul>
-
 <h3>Who are you guys anyway?</h3>
 
 <p>
@@ -325,35 +280,6 @@ We have the following requirements.  It must
   and we've spent a lot of time polishing it.
   If you like to learn by fiddling around, then you can get input
   examples, by clicking the music images in the tutorial.
-</p>
-
-<h3>Please add parameters to the input macros</h3>
-
-<p>
-  LilyPond input does not have macros.  It does support identifiers:
-  parts of the input can be given a name, and when referencing that name
-  contents of the identifier are substituted.  However this is not a
-  textual substitution, rather the internal representation of that
-  object is pasted into the contents being parsed.
-</p>
-
-<h3>Please add macros to the syntax.</h3>
-<p>
-  No, we won't.  Programming with text substitution (macros) lead to
-  horrible syntax problems.  A macro programming interface is extremely
-  sensitive to irrelevant naming and formatting details.
-</p>
-
-<h3>But I only need macros for simple repetitive tasks.</h3>
-<p>
-  Perhaps, but remember that you will probably spend more time reading
-  the .ly than writing.  Often, a little verbosity is not such a bad
-  idea.  If it is only for simple things, you could just as well use
-  simple existing preprocessors such as CPP or M4.
-<p>
-  Alternatively, you can use the <tt>\applyMusic</tt> feature.  This lets you
-  manipulate music expressions in their internal representation using the
-  built-in Scheme programming language.
 </p>
 
 <h3>Stop changing the syntax all the time!</h3>

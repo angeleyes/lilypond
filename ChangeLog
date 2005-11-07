@@ -1,5 +1,8 @@
 2005-11-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/about/faq.html: remove "how to thank question"
+	remove macro drivel.
+
 	* site/sponsor/options.html (Module): new file.
 
 	* site/sponsor/natura.html (Module): new file
