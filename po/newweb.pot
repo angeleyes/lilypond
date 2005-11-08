@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-07 16:35+0100\n"
+"POT-Creation-Date: 2005-11-08 00:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: site/about/menu-entries.py:7
+#: site/about/menu-entries.py:7 site/about/menu-entries.py:6
 msgid "Acknowledgements"
 msgstr ""
 
@@ -527,4 +527,16 @@ msgstr ""
 #: site/install/stable.ihtml:165
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
+msgstr ""
+
+#: site/sponsor/menu-entries.py:2
+msgid "Options"
+msgstr ""
+
+#: site/sponsor/menu-entries.py:3
+msgid "In natura"
+msgstr ""
+
+#: site/menu-entries.py:10
+msgid "Sponsoring"
 msgstr ""

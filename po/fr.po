@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-07 16:35+0100\n"
+"POT-Creation-Date: 2005-11-08 00:46+0100\n"
 "PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Publications"
 msgid "Donate"
 msgstr "Faire un don"
 
-#: site/about/menu-entries.py:7
+#: site/about/menu-entries.py:7 site/about/menu-entries.py:6
 msgid "Acknowledgements"
 msgstr "Remerciements"
 
@@ -528,3 +528,15 @@ msgstr "Cygwin"
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
+
+#: site/sponsor/menu-entries.py:2
+msgid "Options"
+msgstr ""
+
+#: site/sponsor/menu-entries.py:3
+msgid "In natura"
+msgstr ""
+
+#: site/menu-entries.py:10
+msgid "Sponsoring"
+msgstr ""

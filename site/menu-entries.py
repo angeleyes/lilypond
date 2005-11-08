@@ -7,4 +7,5 @@
  ('install', _ ('Download')),
  ('documentation.html', _ ('Documentation')),
  ('devel', _ ('Development')),
+ ('sponsor', _('Sponsoring')),
  ]

@@ -1,5 +1,7 @@
 2005-11-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/about/index.html (href): image credits.
+
 	* site/about/faq.html: remove "how to thank question"
 	remove macro drivel.
 
