@@ -1,3 +1,7 @@
+2005-11-10  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/sponsor/options.html (href): sponsoring -> donation.
+
 2005-11-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/sponsor/options.html: add paypal logo.
