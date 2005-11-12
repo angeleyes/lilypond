@@ -532,12 +532,12 @@ msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
 
 #: site/sponsor/menu-entries.py:2
 msgid "Options"
-msgstr ""
+msgstr "Modalités"
 
 #: site/sponsor/menu-entries.py:3
 msgid "In natura"
-msgstr ""
+msgstr "En nature"
 
 #: site/menu-entries.py:10
 msgid "Sponsoring"
-msgstr ""
+msgstr "Soutien"
