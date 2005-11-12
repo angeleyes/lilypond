@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 # fr.po -- LilyPond French website language.
 # Copyright (C) 2005 Jean-Charles Malahieude <lilyfan@wanadoo.fr>,
 #  John Mandereau <john.mandereau@free.fr>.
