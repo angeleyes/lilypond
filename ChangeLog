@@ -1,3 +1,11 @@
+2005-11-14  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/template.ihtml: add google Analytics code.
+
+2005-11-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/switch/testimonials.html (href): add Vaylor Trucks' quote. 
+
 2005-11-13   Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
 	* fr/sponsor/*html: new translated files
