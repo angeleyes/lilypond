@@ -75,8 +75,7 @@
     </td>
     <td>
       <em>
-	_("Included <a href='%s'>with distribution</a>",
-	"ftp://ftp.suse.com/pub/suse/i386/10/suse/src/")
+	_("Included with distribution")
       </em>
     </td>
     <td>2.6.3</td>
