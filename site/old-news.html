@@ -21,6 +21,31 @@
     <td>
       <dl>
 
+<dt><b>LilyPond 2.7.15 is out</b> - <em>November 3, 2005</em></dt>
+<dd>
+This release has another massive cleanup of the backend.  Each grob
+property may also be a "grob closure". This means that it is possible
+to combine functions. Calculation of extent and offset of grob is now
+controlled via the `X-extent', `Y-extent', `X-offset' and `Y-offset'
+properties. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
+
+<dt><b>LilyPond 2.7.14 is out</b> - <em>October 23, 2005</em></dt>
+<dd>
+This release has more cleanup in the layout-engine. Now,
+properties that have Procedure values are thought to be procedures
+that compute said property, i.e.
+
+<pre>
+  \override Beam #'direction = #(lambda (grob)
+  (if (> (random 10) 5) UP DOWN))
+</pre>
+will set  a random direction for beams. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.13 is out</b> - <em>October 18, 2005</em></dt>
 <dd>
 This release features slashed numerals, plus signs and interruptible
