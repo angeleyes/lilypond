@@ -1,3 +1,7 @@
+2005-11-17  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: add Suse 10.
+
 2005-11-14  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/template.ihtml: add google Analytics code.

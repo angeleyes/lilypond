@@ -66,6 +66,25 @@
   </tr>
 
   <tr>
+    <td><p align="center"><img src="@IMAGES@suse-logo.png"></p></td>
+    <td>
+      SUSE
+    </td>
+    <td>
+      10
+    </td>
+    <td>
+      <em>
+	_("Included <a href='%s'>with distribution</a>",
+	"ftp://ftp.suse.com/pub/suse/i386/10/suse/src/")
+      </em>
+    </td>
+    <td>2.6.3</td>
+    <td><a href="http://www.suse.com">SUSE</a></td>
+  </tr>
+
+    
+  <tr>
     <td><p align="center"><img src="@IMAGES@slackware-logo.png"></p></td>
     <td>
       Slackware 
