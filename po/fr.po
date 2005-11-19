@@ -548,4 +548,4 @@ msgstr "En nature"
 
 #: site/menu-entries.py:10
 msgid "Sponsoring"
-msgstr "Soutien"
+msgstr "Mécénat"
