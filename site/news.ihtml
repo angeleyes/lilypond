@@ -37,7 +37,6 @@ fixes. (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
-!-->
 <dt><b>LilyPond 2.7.17 is out</b> - <em>November 17, 2005</em></dt>
 <dd>
 This version has refactored routines for tie formatting. This will
