@@ -1,5 +1,19 @@
 2005-11-23  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/about/faq.html: remove info which is covered in the
+	download page.
+	remove TeX q&a.
+
+	* site/about/thanks.html: move bio from FAQ.
+
+	* nl/about/index.html: idem.
+
+	* site/about/index.html: link to thanks.html only.
+
+	* nl/about/index.html: use trumpet image.
+	link to latest, not hardcoded version. This ensures that AUTHOR
+	links stay healthy.
+
 	* site/about/index.html: don't link features page.
 
 	* site/about/menu-entries.py: remove Features page.
