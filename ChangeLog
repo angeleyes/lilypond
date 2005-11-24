@@ -1,3 +1,9 @@
+2005-11-24  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/about/thanks.html: add name.html link.
+
+	* site/about/name.html: new file.
+
 2005-11-23  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/devel/packaging.html: remove SUSE & Mandrake instructions.
