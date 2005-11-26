@@ -31,12 +31,12 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/Fedora-4/lilypond-2.7.18-1.i386.rpm",
+	"http://lilypond.org/download/binaries/Fedora-4/lilypond-2.7.19-1.i386.rpm",
 	"LilyPond"),
-	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.18-1.i386.rpm">_("documentation")</a>
+	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.19-1.i386.rpm">_("documentation")</a>
       </strong>
     </td>
-    <td>2.7.18</td>
+    <td>2.7.19</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
@@ -80,11 +80,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.18-1.dmg",
+	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.19-1.dmg",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.18-1</td>  
+    <td>2.7.19-1</td>  
     <td>
       <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
@@ -115,11 +115,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.7/lilypond-2.7.18.tar.gz")
+	"http://lilypond.org/download/v2.7/lilypond-2.7.19.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.7.18</td>
+    <td>2.7.19</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 

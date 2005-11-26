@@ -26,6 +26,16 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.19 is out</b> - <em>November 26, 2005</em></dt>
+<dd>
+This version contains a few bugfixes, and now allows the type of
+brackets in system start bracket hierarchies to be specified. Also,
+the horizontal alignment of rehearsal marks may be changed: marks can
+be put on key signatures, clefs, time signatures,
+etc. (<a
+href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>) </dd>
+
 <dt><b>LilyPond 2.7.18 is out</b> - <em>November 21, 2005</em></dt>
 <dd>
 This versions features nestable system start delimiters, like bracket,
@@ -34,22 +44,6 @@ Baca). It also has refactored routines for tie formatting. This will
 make it easier to get better tie formatting for chords (feature
 sponsored by Steve Doonan). It also has a few bug
 fixes. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.17 is out</b> - <em>November 17, 2005</em></dt>
-<dd>
-This version has refactored routines for tie formatting. This will
-make it easier to get better tie formatting for chords (feature
-sponsored by Steve Doonan). It also has a few bug
-fixes. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>) </dd>
-
-<dt><b>LilyPond 2.7.16 is out</b> - <em>November 11, 2005</em></dt>
-<dd>
-This release fixes a large number of bugs. Please upgrade before
-reporting bugs in the 2.7 series. (<a
 href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
