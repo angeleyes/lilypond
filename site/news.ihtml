@@ -38,7 +38,7 @@ href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
 
 <dt><b>LilyPond 2.7.18 is out</b> - <em>November 21, 2005</em></dt>
 <dd>
-This versions features nestable system start delimiters, like bracket,
+This version features nestable system start delimiters, like bracket,
 brace. It also adds "square" line bracket (feature sponsored by Trevor
 Baca). It also has refactored routines for tie formatting. This will
 make it easier to get better tie formatting for chords (feature
