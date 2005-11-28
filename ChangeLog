@@ -1,3 +1,13 @@
+2005-11-28  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+	* site/about/name.html: add header (for translation).
+	"thanks.html" link changed to "thanks".
+
+	* fr/about/name.html: new translated page.
+	
+	* fr/about/*, fr/index.html, fr/documentation.html: translation
+	updates
+
 2005-11-24  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/about/thanks.html: add name.html link.
