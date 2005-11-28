@@ -33,7 +33,7 @@ brackets in system start bracket hierarchies to be specified. Also,
 the horizontal alignment of rehearsal marks may be changed: marks can
 be put on key signatures, clefs, time signatures,
 etc. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
 <dt><b>LilyPond 2.7.18 is out</b> - <em>November 21, 2005</em></dt>
@@ -44,7 +44,7 @@ Baca). It also has refactored routines for tie formatting. This will
 make it easier to get better tie formatting for chords (feature
 sponsored by Steve Doonan). It also has a few bug
 fixes. (<a
-href="@DOC@v2.7/Documentation/topdocs/out-www/NEWS.html">Changes</a>,
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>) </dd>
 
 </dl>
