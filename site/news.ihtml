@@ -26,6 +26,18 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.20 is out</b> - <em>December 2, 2005</em></dt>
+<dd>
+This release contains the following improvements: Texts set in a
+TrueType font are now kerned. Using the TeX no longer requires linking
+or dynamically opening the kpathsea library, making the backend more
+easily usable on various systems (feature sponsored by Christian Ebert
+of Black Trash
+Productions). (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.6.5 is out</b> - <em>December 1, 2005</em></dt>
 <dd>
 This release updates the bugreporting address and reorganizes the
