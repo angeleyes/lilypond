@@ -27,6 +27,19 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.22 is out</b> - <em>December 9, 2005</em></dt>
+<dd>
+This release has better support for MusicXML: it also supports ties,
+beams and editorial accidentals. It also has more options for spacing
+Lyrics; it is now possible to separately specify minimum distances for
+normal and hyphenated syllables. These features were sponsored by Mark
+van den Borre and Bertalan
+Fodor. (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
+
 <dt><b>LilyPond 2.7.21 is out</b> - <em>December 5, 2005</em></dt>
 
 <dd> Saint Nicholas brings you ... a <a
