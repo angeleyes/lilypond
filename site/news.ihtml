@@ -27,6 +27,21 @@ on one day.
 
 !-->
 
+<dt><b>Linux Journal article</b> - <em>December 2005</em></dt>
+<dd>
+  <a href="@IMAGES@lj-cover140.png">
+    <img src="@IMAGES@lj-cover140-small.png" align="right" alt="linux journal cover"></a>
+    Linux Journal publishes an article on
+    <a href="http://www.linuxjournal.com/article/8583"><em>Stunning
+    [Schenker] Graphics with GNU LilyPond</em></a>, as it is
+    advertised on the cover.  It is a in-depth but hands-on multimedia
+    feature article with crisp LilyPond graphics.
+    <br>
+    Schenkerian Analysis [..] is notoriously difficult to notate using
+    [..] Finale and Sibelius.  [..] LilyPond [is] a powerful tool for
+    creating Schenkerian notation graphs.
+</dd>
+
 <dt><b>LilyPond 2.7.22 is out</b> - <em>December 9, 2005</em></dt>
 <dd>
 This release has better support for MusicXML: it also supports ties,
@@ -35,29 +50,6 @@ Lyrics; it is now possible to separately specify minimum distances for
 normal and hyphenated syllables. These features were sponsored by Mark
 van den Borre and Bertalan
 Fodor. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
-
-<dt><b>LilyPond 2.7.21 is out</b> - <em>December 5, 2005</em></dt>
-
-<dd> Saint Nicholas brings you ... a <a
-href="http://www.musicxml.org/">MusicXML</a> convertor for LilyPond!
-The convertor is basic, but working. Check out the <a
-href="http://www.lilypond-design.com/sponsor/open-features.html#inputfilter">
-LilyPond Software Design</a> pages for MusicXML features that can be
-sponsored.
-</dd>
-
-<dt><b>LilyPond 2.7.20 is out</b> - <em>December 2, 2005</em></dt>
-<dd>
-This release contains the following improvements: Texts set in a
-TrueType font are now kerned. Using the TeX no longer requires linking
-or dynamically opening the kpathsea library, making the backend more
-easily usable on various systems (feature sponsored by Christian Ebert
-of Black Trash
-Productions). (<a
 href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
