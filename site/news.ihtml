@@ -37,9 +37,11 @@ on one day.
     advertised on the cover.  It is a in-depth but hands-on multimedia
     feature article with crisp LilyPond graphics.
     <br>
-    Schenkerian Analysis [..] is notoriously difficult to notate using
-    [..] Finale and Sibelius.  [..] LilyPond [is] a powerful tool for
-    creating Schenkerian notation graphs.
+    <!-- Schenkerian Analysis [..] is notoriously difficult to notate
+    using [..] Finale and Sibelius.  [..] LilyPond [is] a powerful
+    tool for creating Schenkerian notation graphs.  !-->
+    ``GNU Lilypond generates beautiful graphics that make commercial
+    alternatives seem second-rate.''
 </dd>
 
 <dt><b>LilyPond 2.7.22 is out</b> - <em>December 9, 2005</em></dt>
