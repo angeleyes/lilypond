@@ -57,8 +57,6 @@
 	"../../download/binaries/Fedora-4/lilypond-2.6.5-1.i386.rpm",
 	"LilyPond"),
 	<a href="../../download/binaries/Fedora-4/lilypond-documentation-2.6.5-1.i386.rpm">_("documentation")</a>,
-	<a href="../../download/binaries/Fedora-3/ghostscript-8.15rc3-0.i386.rpm">Ghostscript</a>,
-	<a href="../../download/binaries/Fedora-3/ghostscript-libs-7.07-41.i386.rpm">_("compatibility libraries")</a>
       </strong>
     </td>
     <td>2.6.5</td>
@@ -191,7 +189,7 @@
   </tr>
 
   <tr>
-    <td><p align="center"><img src="@IMAGES@windows-logo.png">/<img src="@IMAGES@cygwin.png"></p></td>
+    <td><p align="center"><img src="@IMAGES@cygwin.png"></p></td>
     <td>Microsoft&nbsp;Windows/<br>Cygwin</td>
     <td>
       NT, 98, 2000, ME, XP

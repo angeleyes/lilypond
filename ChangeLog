@@ -1,3 +1,8 @@
+2005-12-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: remove ghostscript RPMs.
+	remove windows logo from cygwin.
+
 2005-12-18  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* {site,fr,nl}/install/cygwin.html: move from windows.html
