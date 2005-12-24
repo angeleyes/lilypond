@@ -26,6 +26,16 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
+<dt><b>LilyPond 2.7.25 is out</b> - <em>December 24, 2005</em></dt>
+<dd>
+This release has various bugfixes. Also, stems on the center line now
+have their directions interpolated to minimize the number of direction
+changes (feature sponsored by Basil Crow and Mike
+Rolish). (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.24 is out</b> - <em>December 20, 2005</em></dt>
 <dd>
 This release fixes a couple of bugs, but more importantly, slurs now
@@ -36,29 +46,6 @@ sponsored by Trent Johnston), string arguments for music functions may
 be specified without # marks. This allows syntactical constructs (like
 \clef and \bar) to be expressed in generic music
 functions. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
-<dt><b>LilyPond 2.7.23 is out</b> - <em>December 19, 2005</em></dt>
-<dd>
-This release has the following new features:
-<ul>
-  <li> Ties in chords are also formatted using score based
-formatting. This reduces the number of collisions for ties in chords
-(feature sponsored by Steve Doonan).
-  <li>With the \tweak music function, layout objects that are directly
-connected to input may be tuned easily (feature sponsored by Sean Reed
-and Bertalan Fodor).
-  <li> Generic music functions may now also be used on
-articulations and chord elements (feature sponsored by Sean Reed and
-Bertalan Fodor).
-  <li> Better support for MusicXML, more options for spacing Lyrics;
-it is now possible to separately specify minimum distances for normal
-and hyphenated syllables (features sponsored by Mark van den Borre and
-Bertalan Fodor.
-</ul>
-(<a
 href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
@@ -80,17 +67,6 @@ href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
     alternatives seem second-rate.''
 </dd>
 
-<dt><b>LilyPond 2.7.22 is out</b> - <em>December 9, 2005</em></dt>
-<dd>
-This release has better support for MusicXML: it also supports ties,
-beams and editorial accidentals. It also has more options for spacing
-Lyrics; it is now possible to separately specify minimum distances for
-normal and hyphenated syllables. These features were sponsored by Mark
-van den Borre and Bertalan
-Fodor. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
 
 </dl>
 
