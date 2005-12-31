@@ -26,27 +26,19 @@ Preferably: (<a href= .. >..</a>, etc. )
 on one day.
 
 !-->
-<dt><b>LilyPond 2.7.25 is out</b> - <em>December 24, 2005</em></dt>
+<dt><b>LilyPond 2.7.26 is out</b> - <em>December 31, 2005</em></dt>
 <dd>
-This release has various bugfixes. Also, stems on the center line now
-have their directions interpolated to minimize the number of direction
-changes (feature sponsored by Basil Crow and Mike
-Rolish). (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
+<p>This release has an improvement in the MusicXML importer (feature
+sponsored by Mark vd Borre's Music Academy): now, staves and voices
+are also setup, so you can readily run LilyPond on the .ly output.</p>
 
-<dt><b>LilyPond 2.7.24 is out</b> - <em>December 20, 2005</em></dt>
-<dd>
-This release fixes a couple of bugs, but more importantly, slurs now
-avoid TupletNumbers, and tuplet numbers may enter the staff (feature
-sponsored by Trent Johnston), tuplet brackets and numbers are
-implemented as separate grobs, TupletBracket and TupletNumber (rewrite
-sponsored by Trent Johnston), string arguments for music functions may
-be specified without # marks. This allows syntactical constructs (like
-\clef and \bar) to be expressed in generic music
-functions. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<p>The important occasion for this release is our new build
+environment: we have completely revamped it, which means that binaries
+for all platforms (including MacOS, Windows, Linux/x86, but probably
+FreeBSD too) will be more quickly available for download.</p>
+
+A happy 2006 from the LilyPond Development Team!
+(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
 
