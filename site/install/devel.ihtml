@@ -80,7 +80,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.26-1.dmg",
+	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.26-1.zip",
  	  "LilyPond")
       </strong>
     </td>
@@ -98,12 +98,11 @@
     </td>
     <td>
       <strong>
-	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.25-1.exe",
-	"http://lilypond.org/download/binaries/mingw/lilypond-2.7.25-1-upgrade.exe")
+	_("<a href='%s'>Install</a>",
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.26-1.exe")
       </strong>
     </td>
-    <td>2.7.25</td>
+    <td>2.7.26-1</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
     </td>
   </tr>

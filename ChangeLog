@@ -1,3 +1,7 @@
+2006-01-01  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: MacOS is now  a .zip file.
+
 2005-12-31  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: update links for GUB binaries.
