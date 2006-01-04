@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-31 14:11-0200\n"
+"POT-Creation-Date: 2006-01-04 13:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -316,6 +316,7 @@ msgstr ""
 #: site/install/stable.ihtml:63 site/install/stable.ihtml:141
 #: site/install/stable.ihtml:168 site/install/stable.ihtml:187
 #: site/install/stable.ihtml:202 site/install/stable.ihtml:237
+#: site/install/devel.ihtml:122
 msgid "LilyPond development team"
 msgstr ""
 
@@ -332,6 +333,7 @@ msgstr ""
 #: site/install/devel.ihtml:122 site/install/stable.ihtml:176
 #: site/install/old.ihtml:274 site/install/stable.ihtml:217
 #: site/install/stable.ihtml:235 site/install/stable.ihtml:233
+#: site/install/devel.ihtml:118
 msgid "warning"
 msgstr ""
 
@@ -384,6 +386,7 @@ msgstr ""
 #: site/install/devel.ihtml:116 site/install/stable.ihtml:170
 #: site/install/old.ihtml:270 site/install/stable.ihtml:211
 #: site/install/stable.ihtml:229 site/install/stable.ihtml:227
+#: site/install/devel.ihtml:112
 msgid "Source code"
 msgstr ""
 
@@ -412,7 +415,7 @@ msgstr ""
 #: site/install/stable.ihtml:176 site/install/devel.ihtml:120
 #: site/install/stable.ihtml:174 site/install/old.ihtml:272
 #: site/install/stable.ihtml:215 site/install/stable.ihtml:233
-#: site/install/stable.ihtml:231
+#: site/install/stable.ihtml:231 site/install/devel.ihtml:116
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr ""
@@ -557,4 +560,9 @@ msgstr ""
 
 #: site/menu-entries.py:10
 msgid "Sponsoring"
+msgstr ""
+
+#: site/install/devel.ihtml:101
+#, c-format
+msgid "<a href='%s'>Install</a>"
 msgstr ""
