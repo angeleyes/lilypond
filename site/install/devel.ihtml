@@ -99,10 +99,10 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
- 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.26-2.exe")
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.26-3.exe")
       </strong>
     </td>
-    <td>2.7.26-2</td>
+    <td>2.7.26-3</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
     </td>
   </tr>
