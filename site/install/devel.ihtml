@@ -43,8 +43,7 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@tux-logo.png">/
-	<img src="@IMAGES@autopackage-logo.png">
+	<img src="@IMAGES@tux-logo.png">
       </p>
     </td>
     <td>
@@ -53,9 +52,8 @@
     <td>-</td>
     <td>
       <strong>
-	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.19.x86.package",
-	"http://lilypond.org/download/binaries/autopackage/lilypond-2.7.19-upgrade.x86.package")
+	_("<a href='%s'>Install</a>",
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-1.linux.sh"),
       </strong>
     </td>
     <td>2.7.19</td>
