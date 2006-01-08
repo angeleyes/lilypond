@@ -55,10 +55,10 @@
 	Download _("<a href='%s'>the installer</a>",
 	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-1.linux.sh");
 	<br>
-	run this file from the command prompt.
-      </strong>
+	</strong>
+	<em>run this file from the command prompt.</em>
     </td>
-    <td>2.7.19</td>
+    <td>2.7.27</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
