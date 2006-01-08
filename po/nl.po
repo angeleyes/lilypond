@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-04 13:04+0100\n"
+"POT-Creation-Date: 2006-01-08 23:30+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -566,4 +566,9 @@ msgstr ""
 #: site/install/devel.ihtml:101
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a>"
+msgstr "Download <a href='%s'>tarbal</a>"
+
+#: site/install/devel.ihtml:55
+#, fuzzy, c-format
+msgid "<a href='%s'>the installer</a>"
 msgstr "Download <a href='%s'>tarbal</a>"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-04 13:04+0100\n"
+"POT-Creation-Date: 2006-01-08 23:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -565,4 +565,9 @@ msgstr ""
 #: site/install/devel.ihtml:101
 #, c-format
 msgid "<a href='%s'>Install</a>"
+msgstr ""
+
+#: site/install/devel.ihtml:55
+#, c-format
+msgid "<a href='%s'>the installer</a>"
 msgstr ""

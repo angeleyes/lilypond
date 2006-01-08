@@ -27,6 +27,24 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.27 binaries are out</b> - <em>January 7, 2006</em></dt>
+
+<dd>
+<img src="@IMAGES@macosx-logo" align=right>
+<img src="@IMAGES@windows-logo" align=right>
+<img src="@IMAGES@tux-logo" align=right>
+
+Starting with 2.7.26, the development team has been working on the
+installers. We're proud to announce another version of these: they are
+now available for
+ <a href="http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-1.linux.sh">
+Linux/x86</a>,
+ <a href="http://lilypond.org/download/binaries/MacOS/lilypond-2.7.27-2.zip">
+MacOS X</a> and  
+ <a href="http://lilypond.org/download/binaries/mingw/lilypond-2.7.27-1.exe">
+Windows</a>.
+</dd>
+
 <dt><b>LilyPond 2.7.27 is out</b> - <em>January 7, 2006</em></dt>
 <dd>
 This release allows you to switch staff lines on and off individually

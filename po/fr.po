@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-04 13:04+0100\n"
+"POT-Creation-Date: 2006-01-08 23:32+0100\n"
 "PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -566,4 +566,9 @@ msgstr "Mécénat"
 #: site/install/devel.ihtml:101
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a>"
+msgstr "Télécharger <a href='%s'>l'archive</a>"
+
+#: site/install/devel.ihtml:55
+#, fuzzy, c-format
+msgid "<a href='%s'>the installer</a>"
 msgstr "Télécharger <a href='%s'>l'archive</a>"
