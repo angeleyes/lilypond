@@ -27,6 +27,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.27 is out</b> - <em>January 7, 2006</em></dt>
+<dd>
+This release allows you to switch staff lines on and off individually
+(feature sponsored by Andrea
+Valle). (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>New binaries for LilyPond 2.7.26</b> - <em>January 4,
 2006</em></dt>
 
@@ -65,24 +74,6 @@ page. Let us know how you fare!
     
     
 </dd>
-
-
-<dt><b>LilyPond 2.7.26 is out</b> - <em>December 31, 2005</em></dt>
-<dd>
-<p>This release has an improvement in the MusicXML importer (feature
-sponsored by Mark vd Borre's Music Academy): now, staves and voices
-are also setup, so you can readily run LilyPond on the .ly output.</p>
-
-<p>The important occasion for this release is our new build
-environment: we have completely revamped it, which means that binaries
-for all platforms (including MacOS, Windows, Linux/x86, but probably
-FreeBSD too) will be more quickly available for download.</p>
-
-A happy 2006 from the LilyPond Development Team!
-(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
 
 </dl>
 

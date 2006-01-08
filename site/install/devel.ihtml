@@ -80,11 +80,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.26-2.zip",
+	  "http://lilypond.org/download/binaries/MacOS/lilypond-2.7.27-1.zip",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.26-2</td>  
+    <td>2.7.27-1</td>  
     <td>
       <a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a>
     </td> 
@@ -114,11 +114,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.7/lilypond-2.7.26.tar.gz")
+	"http://lilypond.org/download/v2.7/lilypond-2.7.27.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.7.26</td>
+    <td>2.7.27</td>
     <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
   </tr>
 
