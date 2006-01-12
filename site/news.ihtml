@@ -34,12 +34,10 @@ on one day.
 <img src="@IMAGES@tux-logo" align=right>
 <img src="@IMAGES@daemon" align=right>
 
-The third release of our Grand Unified Binaries is available.  This
-release fixes external font-support, the decompression flag for
-Linux. Also, we have support for
-<b>FreeBSD</b> as well!  Jump to the <a
-href="http://lilypond.org/web/install/#2.7">download section</a> to
-get them!
+The third release of our Grand Unified Binaries is available. We now
+include support for <b>FreeBSD</b> as well!
+Jump to the <a href="http://lilypond.org/web/install/#2.7">download
+section</a> to get them!
 
 </dd>
 
