@@ -27,6 +27,20 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.27 binaries are out</b> - <em>January 12, 2006</em></dt>
+<dd>
+<img src="@IMAGES@macosx-logo" align=right>
+<img src="@IMAGES@windows-logo" align=right>
+<img src="@IMAGES@tux-logo" align=right>
+<img src="@IMAGES@daemon" align=right>
+
+The third release of our Grand Unified Binaries is available. We now
+include support for <b>FreeBSD</b> as well!
+Jump to the <a href="http://lilypond.org/web/install/#2.7">download
+section</a> to get them!
+
+</dd>
+
 <dt><b>LilyPond 2.7.27 binaries are out</b> - <em>January 7, 2006</em></dt>
 
 <dd>
