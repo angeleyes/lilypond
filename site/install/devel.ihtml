@@ -53,7 +53,7 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-1.linux.sh");
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-3.linux.sh");
 	<br>
 	</strong>
 	<em>run this file from the command prompt.</em>
@@ -75,7 +75,7 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.27-1.freebsd.sh");
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.27-3.freebsd.sh");
 	<br>
 	</strong>
 	<em>run this file from the command prompt.</em>

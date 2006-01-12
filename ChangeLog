@@ -1,3 +1,7 @@
+2006-01-12  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: add freebsd, upgrade to 2.7.27-3
+
 2006-01-08  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml (href): announce new binaries.

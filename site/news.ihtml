@@ -34,10 +34,12 @@ on one day.
 <img src="@IMAGES@tux-logo" align=right>
 <img src="@IMAGES@daemon" align=right>
 
-The third release of our Grand Unified Binaries is available. We now
-include support for <b>FreeBSD</b> as well!
-Jump to the <a href="http://lilypond.org/web/install/#2.7">download
-section</a> to get them!
+The third release of our Grand Unified Binaries is available.  This
+release fixes external font-support, the decompression flag for
+Linux. Also, we have support for
+<b>FreeBSD</b> as well!  Jump to the <a
+href="http://lilypond.org/web/install/#2.7">download section</a> to
+get them!
 
 </dd>
 
@@ -67,21 +69,6 @@ Valle). (<a
 href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
-
-<dt><b>New binaries for LilyPond 2.7.26</b> - <em>January 4,
-2006</em></dt>
-
-
-<dd>
-<img src="@IMAGES@macosx-logo" align=right>
-<img src="@IMAGES@windows-logo" align=right>
-
- The Development team has been working around the clock to improve
-to fix the first wave bugs reported by you.  The new results for MacOS
-and Windows are up on the <a href="install/">installation</a>
-page. Let us know how you fare!
-</dd>
-
 
 <dt><b>Linux Journal article</b> - <em>January 2006</em></dt>
 <dd>
