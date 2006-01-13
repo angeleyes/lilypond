@@ -56,7 +56,7 @@
 	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-4.linux.sh");
 	<br>
 	</strong>
-	<em>run this file from the command prompt.</em>
+	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
     </td>
     <td>2.7.27-4</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
@@ -89,7 +89,7 @@
 	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.27-4.freebsd.sh");
 	<br>
 	</strong>
-	<em>run this file from the command prompt.</em>
+	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
     </td>
     <td>2.7.27-4</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>

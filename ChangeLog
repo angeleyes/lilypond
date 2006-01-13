@@ -1,5 +1,7 @@
 2006-01-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
+	* site/install/devel.ihtml: more explicit instructions.
+
 	* site/news.ihtml (Preferably): announce -4
 
 	* site/install/devel.ihtml: announce -4.
