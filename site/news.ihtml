@@ -27,17 +27,32 @@ on one day.
 
 !-->
 
-<dt><b>LilyPond 2.7.27 binaries are out</b> - <em>January 12, 2006</em></dt>
+<dt><b>LilyPond 2.7.27, release 4</b> - <em>January 13, 2006</em></dt>
 <dd>
 <img src="@IMAGES@macosx-logo" align=right>
 <img src="@IMAGES@windows-logo" align=right>
 <img src="@IMAGES@tux-logo" align=right>
 <img src="@IMAGES@daemon" align=right>
 
-The third release of our Grand Unified Binaries is available. We now
-include support for <b>FreeBSD</b> as well!
-Jump to the <a href="http://lilypond.org/web/install/#2.7">download
-section</a> to get them!
+The fourth release of our Grand Unified Binary for 2.7.27 is available.  This
+release uses Pango 1.11.1, which has support for ligatures and
+kerning. Enjoy!
+</dd>
+
+
+<dt><b>LilyPond 2.7.27, release 3</b> - <em>January 12, 2006</em></dt>
+<dd>
+<img src="@IMAGES@macosx-logo" align=right>
+<img src="@IMAGES@windows-logo" align=right>
+<img src="@IMAGES@tux-logo" align=right>
+<img src="@IMAGES@daemon" align=right>
+
+The third release of our Grand Unified Binaries is available.  This
+release fixes external font-support, the decompression flag for
+Linux. Also, we have support for
+<b>FreeBSD</b> as well!  Jump to the <a
+href="http://lilypond.org/web/install/#2.7">download section</a> to
+get them!
 
 </dd>
 
@@ -68,29 +83,6 @@ href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
 
-<dt><b>Linux Journal article</b> - <em>January 2006</em></dt>
-<dd>
-  <a href="@IMAGES@lj-cover140.png">
-  <img src="@IMAGES@lj-cover140-small.png" align="right" alt="linux
-  journal cover"></a>
-
-  
-    Linux Journal publishes an article on
-      <a href="http://www.linuxjournal.com/article/8583"><em>Make
-    Stunning Schenker Graphs with GNU LilyPond</em></a>.  It is a
-    in-depth but hands-on feature article with crisp LilyPond
-    graphics.
-
-    <br>Author Kris Shaffer remarks
-    &ldquo;GNU Lilypond generates beautiful graphics that make commercial
-    alternatives seem second-rate.&rdquo;
-
-    <p>
-    This article is now available <a
-    href="http://www.linuxjournal.com/article/8583">on-line</a>.
-    
-    
-</dd>
 
 </dl>
 
