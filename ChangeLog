@@ -1,3 +1,7 @@
+2006-01-13  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/stable.ihtml: change to PLATFORM-ARCH download links.
+
 2006-01-12  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
 	* fr/install/index.html: update fedora installation tips

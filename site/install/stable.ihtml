@@ -159,7 +159,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/MacOS/lilypond-2.6.5-1.dmg",
+	"../../download/binaries/darwin-ppc/lilypond-2.6.5-1.dmg",
 	"LilyPond")
       </strong>
     </td>
