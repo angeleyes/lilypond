@@ -34,9 +34,10 @@ on one day.
 <img src="@IMAGES@tux-logo" align=right>
 <img src="@IMAGES@daemon" align=right>
 
-The fourth release of our Grand Unified Binary for 2.7.27 is available.  This
-release uses Pango 1.11.1, which has support for ligatures and
-kerning. Enjoy!
+The fourth release of our Grand Unified Binary for 2.7.27 is
+available.  This release uses Pango 1.11.1, which has support for
+ligatures and kerning. Enjoy!  (<a
+href="http://lilypond.org/web/install/#2.7">Download</a>)
 </dd>
 
 
