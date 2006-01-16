@@ -106,11 +106,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.27-4.darwin.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.27-5.darwin.zip",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.27-4</td>  
+    <td>2.7.27-5</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
