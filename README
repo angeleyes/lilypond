@@ -4,7 +4,7 @@ SOURCES
 
 The HTML sources live in a CVS repository.  To get a fresh version run
 
-    cvs -d :ext:anoncvs@subversions.gnu.org:/cvsroot/lilypond co newweb
+    cvs -d :pserver:anonymous@cvs.sv.gnu.org:/sources/lilypond co newweb
 
 This will create the directory newweb.
 
