@@ -21,28 +21,6 @@
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@fedora-logo.png">
-      </p>
-    </td>
-    <td>
-      Fedora Core
-    </td>
-    <td>4</td>
-    <td>
-      <strong>
-	_("Download <a href='%s'>%s</a>",
-	"http://lilypond.org/download/binaries/Fedora-4/lilypond-2.7.26-1.i386.rpm",
-	"LilyPond"),
-	<a href="http://lilypond.org/download/binaries/Fedora-4/lilypond-documentation-2.7.26-1.i386.rpm">_("documentation")</a>
-      </strong>
-    </td>
-    <td>2.7.26</td>
-    <td><a href="mailto:bug-lilypond@gnu.org">_("LilyPond development team")</a></td>
-  </tr>
-
-  <tr>
-    <td>
-      <p align="center">
 	<img src="@IMAGES@tux-logo.png">
       </p>
     </td>
@@ -53,12 +31,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.27-4.linux.sh");
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.28-1.linux.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
     </td>
-    <td>2.7.27-4</td>
+    <td>2.7.28-1</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -86,12 +64,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.27-4.freebsd.sh");
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.28-1.freebsd.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
     </td>
-    <td>2.7.27-4</td>
+    <td>2.7.28-1</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -106,11 +84,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.27-5.darwin.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.28-1.darwin.zip",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.27-5</td>  
+    <td>2.7.28-1</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
@@ -125,10 +103,10 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
- 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.27-4.mingw.exe")
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.28-1.mingw.exe")
       </strong>
     </td>
-    <td>2.7.27-4</td>
+    <td>2.7.28-1</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
   </tr>
