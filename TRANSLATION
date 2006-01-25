@@ -37,8 +37,6 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 3 site/about/automated-engraving/ http://lilypond.org/web/about/automated-engraving/
 
 4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
-4 about/doneet.html  --  http://lilypond.org/web/about/doneet.html
-4 install/slackware.html  --  http://lilypond.org/web/install/slackware.html
 4 site/devel
 
 LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
