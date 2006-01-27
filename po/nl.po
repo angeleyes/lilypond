@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-21 09:22+0100\n"
+"POT-Creation-Date: 2006-01-27 10:00-0200\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -318,7 +318,8 @@ msgstr "Overige"
 #: site/install/stable.ihtml:202 site/install/stable.ihtml:237
 #: site/install/devel.ihtml:122 site/install/devel.ihtml:95
 #: site/install/devel.ihtml:115 site/install/devel.ihtml:132
-#: site/install/devel.ihtml:148
+#: site/install/devel.ihtml:148 site/install/devel.ihtml:73
+#: site/install/devel.ihtml:93
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -399,6 +400,7 @@ msgstr "Broncode"
 #: site/install/devel.ihtml:76 site/install/stable.ihtml:97
 #: site/install/stable.ihtml:141 site/install/stable.ihtml:159
 #: site/install/stable.ihtml:157 site/install/devel.ihtml:104
+#: site/install/devel.ihtml:82
 #, c-format
 msgid "%s and newer"
 msgstr "%s en nieuwer"
@@ -488,6 +490,7 @@ msgstr "Onderdeel <a href='%s'>van distributie</a>"
 #: site/install/old.ihtml:76 site/install/stable.ihtml:56
 #: site/install/stable.ihtml:145 site/install/stable.ihtml:163
 #: site/install/stable.ihtml:161 site/install/devel.ihtml:108
+#: site/install/devel.ihtml:86
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Download <a href='%s'>%s</a>"
@@ -567,11 +570,13 @@ msgid "Sponsoring"
 msgstr ""
 
 #: site/install/devel.ihtml:101 site/install/devel.ihtml:127
+#: site/install/devel.ihtml:105
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
 
 #: site/install/devel.ihtml:55 site/install/devel.ihtml:88
+#: site/install/devel.ihtml:33 site/install/devel.ihtml:66
 #, fuzzy, c-format
 msgid "<a href='%s'>the installer</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
