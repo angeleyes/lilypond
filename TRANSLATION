@@ -31,6 +31,7 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
 2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
 
+3 sponsor/
 3 about/faq.html  --  http://lilypond.org/web/about/faq.html
 3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
 3 documentation.html  --  http://lilypond.org/web/documentation.html
