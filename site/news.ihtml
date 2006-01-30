@@ -27,6 +27,14 @@ on one day.
 
 !-->
                                                                                                                             
+<dt><b>LilyPond 2.7.30 is out</b> - <em>January 30, 2006</em></dt>
+<dd>
+This release has a few bug fixes, like the solfa note head shape and
+collisions, the \epsfile command, and in getting No. ligature in
+normal words. (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
 
 <dt><b>LilyPond 2.7.29 is out</b> - <em>January 27, 2006</em></dt>
 <dd>
