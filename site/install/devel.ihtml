@@ -64,7 +64,7 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.28-1.freebsd.sh");
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.30-1.freebsd.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
