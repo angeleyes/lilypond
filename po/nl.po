@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-27 10:00-0200\n"
+"POT-Creation-Date: 2006-02-02 12:53+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -319,7 +319,8 @@ msgstr "Overige"
 #: site/install/devel.ihtml:122 site/install/devel.ihtml:95
 #: site/install/devel.ihtml:115 site/install/devel.ihtml:132
 #: site/install/devel.ihtml:148 site/install/devel.ihtml:73
-#: site/install/devel.ihtml:93
+#: site/install/devel.ihtml:93 site/install/devel.ihtml:117
+#: site/install/devel.ihtml:133
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -337,6 +338,7 @@ msgstr "LilyPond ontwikkelteam"
 #: site/install/old.ihtml:274 site/install/stable.ihtml:217
 #: site/install/stable.ihtml:235 site/install/stable.ihtml:233
 #: site/install/devel.ihtml:118 site/install/devel.ihtml:144
+#: site/install/devel.ihtml:129
 msgid "warning"
 msgstr "waarschuwing"
 
@@ -390,6 +392,7 @@ msgstr "Onderdeel van distributie"
 #: site/install/old.ihtml:270 site/install/stable.ihtml:211
 #: site/install/stable.ihtml:229 site/install/stable.ihtml:227
 #: site/install/devel.ihtml:112 site/install/devel.ihtml:138
+#: site/install/devel.ihtml:123
 msgid "Source code"
 msgstr "Broncode"
 
@@ -420,7 +423,7 @@ msgstr "%s en nieuwer"
 #: site/install/stable.ihtml:174 site/install/old.ihtml:272
 #: site/install/stable.ihtml:215 site/install/stable.ihtml:233
 #: site/install/stable.ihtml:231 site/install/devel.ihtml:116
-#: site/install/devel.ihtml:142
+#: site/install/devel.ihtml:142 site/install/devel.ihtml:127
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -570,7 +573,7 @@ msgid "Sponsoring"
 msgstr ""
 
 #: site/install/devel.ihtml:101 site/install/devel.ihtml:127
-#: site/install/devel.ihtml:105
+#: site/install/devel.ihtml:105 site/install/devel.ihtml:112
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
