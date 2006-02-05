@@ -31,12 +31,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.30-1.linux.sh");
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-2.7.31-2.linux.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
     </td>
-    <td>2.7.30-1</td>
+    <td>2.7.31-2</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -64,12 +64,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.30-1.freebsd.sh");
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-2.7.31-2.freebsd.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
     </td>
-    <td>2.7.30-1</td>
+    <td>2.7.31-2</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -84,11 +84,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.30-1.darwin.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-2.7.31-2.darwin.zip",
  	  "LilyPond")
       </strong>
     </td>
-    <td>2.7.30-1</td>  
+    <td>2.7.31-2</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
@@ -110,10 +110,10 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
- 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.30-1.mingw.exe")
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-2.7.31-2.mingw.exe")
       </strong>
     </td>
-    <td>2.7.30-1</td>
+    <td>2.7.31-2</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
   </tr>
