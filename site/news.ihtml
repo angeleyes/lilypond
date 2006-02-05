@@ -27,6 +27,18 @@ on one day.
 
 !-->
                                                                                                                             
+<dt><b>LilyPond 2.7.31 is out</b> - <em>February 2, 2006</em></dt>
+<dd>
+This release fixes a load of bugs, and has some internal
+cleanups. Exported C++ members are now named
+ly:class-name::function-name in Scheme instead of
+Class_name::function_name. We are now using C++ vectors and strings
+instead of our own. The Linux/FreeBSD builds now include wrappers for
+Python scripts too, so you can run convert-ly and midi2ly.
+(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.30 is out</b> - <em>January 30, 2006</em></dt>
 <dd>
 This release has a few bug fixes, like the solfa note head shape and

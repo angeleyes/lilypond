@@ -125,11 +125,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.7/lilypond-2.7.30.tar.gz")
+	"http://lilypond.org/download/v2.7/lilypond-2.7.31.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.7.30</td>
+    <td>2.7.31</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
