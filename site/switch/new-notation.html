@@ -1,0 +1,82 @@
+
+<title>Strange Notation</title>
+
+
+<body>
+With a focus on classic notation, you might wonder whether LilyPond is
+suited for modern music. Fortunately, the answer is a resounding
+<b>yes</b>.
+
+
+<h2>&ldquo;Look ma, no hacks!&rdquo;</h2>
+
+If you generate music with software, publishing it is as easy as
+writing simple ASCII files. If you do <em>avant-garde</em> music then
+you will love Lily's flexibility with measures and time
+signatures. Here is a sample with nested tuplets. The spacing is
+exactly proportional to the duration of each note.  Notes don't have
+to fill measures, and two notes are only aligned only if they start
+exactly together.
+
+<p>
+<center>
+<a href="http://lilypond.org/doc/v2.7/input/proportional.pdf">
+<img src="@IMAGES@proportional-fragment.png"></a>
+<p>
+click for a PDF file.</center>
+<p>
+
+In any other program, getting this output requires massive ad-hoc
+fiddling and tweaking. In LilyPond, one simply enters the notes, with
+their rhythmic structure,
+
+<blockquote>
+
+<pre>
+\times 7/9 {
+  \times 4/6 {
+     r8 c32[ c c c c c c c] r4
+     c32[ c32 c16
+  }
+  \times 5/4 {
+    c16 c c] c32[ c32 c16 c] r8
+  }
+}
+</pre>
+</blockquote>
+
+<p>
+
+If you are familiar with the programming language Scheme, you can even
+compose algorithmically inside LilyPond!
+
+<h2>&ldquo;Look ma, easy hacks!&rdquo;</h2>
+
+Need anything non-standard?  With a small twist, you can use Lily's
+unlimited flexibility to make <a
+href="http://www.shaffermusic.com/doc/schenker/index.html for more
+information">Schenker diagrams</a>,
+
+<p>
+<center>
+<img src="@IMAGES@bach-schenker.png">
+</center>
+
+
+<h2>Graphics editing</h2>
+
+If that's not enough, you can always make Lily write an SVG file, and
+edit the final result in an SVG editor, such as <a
+href="http://www.inkscape.org">Inkscape</a>
+
+<p>
+
+<center>
+<img src="@IMAGES@lily-in-inkscape.png">
+</center>
+
+
+<p>
+Back to the <a href="tour.html">tour</a>
+
+</body>
