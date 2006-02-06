@@ -7,6 +7,7 @@ import os
 import re
 import string
 import sys
+import lilypondorg
 
 # The directory to hold the translated and menuified tree.
 outdir = '/var/www'
@@ -91,6 +92,17 @@ LANGUAGES_TEMPLATE = '''\
   %(browser_language)s
 </P>
 ''' % vars ()
+
+
+
+version_builds={}
+for p in lilypondorg.platforms:
+	(v,b) = lilypondorg.max_version_build (p)
+	v = '.'.join (['%d' % vc for vc in v])
+	version_builds[p] = '%s-%d' % (v,b)
+
+version_builds['devel-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version ((2,7))])
+version_builds['stable-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version ((2,6))])
 
 
 def dir_lang (file, lang):
@@ -324,7 +336,10 @@ def format_page (html, file_name, lang):
 
 	
 	page = re.sub ('@LANGUAGE_MENU@', '', page)
-
+	
+	for (p,v) in version_builds.items():
+		page  = re.sub ('@' + p + '-VERSION@', v, page)
+	
 	return page
 
 

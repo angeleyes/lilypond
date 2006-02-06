@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-02 12:53+0100\n"
+"POT-Creation-Date: 2006-02-06 22:00+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,12 +20,13 @@ msgstr ""
 #: site/menu-entries.py:4 scripts/format-page.py:216
 #: scripts/format-page.py:230 scripts/format-page.py:234
 #: scripts/format-page.py:235 scripts/format-page.py:240
-#: scripts/format-page.py:231
+#: scripts/format-page.py:231 scripts/format-page.py:241
+#: scripts/format-page.py:242 scripts/format-page.py:243
 msgid "Home"
 msgstr "Startpagina"
 
 #: scripts/format-page.py:87 scripts/format-page.py:82
-#: scripts/format-page.py:83
+#: scripts/format-page.py:83 scripts/format-page.py:84
 #, python-format
 msgid "Other languages: %s."
 msgstr "Andere talen: %s."
@@ -258,6 +259,7 @@ msgid "Reuse identifier"
 msgstr ""
 
 #: scripts/format-page.py:83 scripts/format-page.py:84
+#: scripts/format-page.py:85
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
