@@ -27,6 +27,21 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.33 is out</b> - <em>February 10, 2006</em></dt>
+<dd>
+Items directly connected with a music input element may be
+parenthesized, for example,
+
+<blockquote>
+     c4 -\parenthesize -.
+      <d \parenthesize fis a>
+</blockquote>
+
+This feature was sponsored by Ramana Kumar. (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+                                                                                                                            
 <dt><b>LilyPond 2.7.32 is out</b> - <em>February 7, 2006</em></dt>
 <dd>
 This release contains some syntax changes: words inside the \paper and
