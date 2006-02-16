@@ -27,6 +27,17 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.34 is out</b> - <em>February 16, 2006</em></dt>
+<dd>
+This release has a bunch of bugfixes, and new features. Newly created
+contexts may also be named with <tt>\new Voice =
+"alto"</tt>. Thicknesses of tie and slurs may be tuned separately for
+the endings and the middle
+part. (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.33 is out</b> - <em>February 10, 2006</em></dt>
 <dd>
 Items directly connected with a music input element may be
@@ -42,36 +53,6 @@ href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
                                                                                                                             
-<dt><b>LilyPond 2.7.32 is out</b> - <em>February 7, 2006</em></dt>
-<dd>
-This release contains some syntax changes: words inside the \paper and
-\layout block are henceforth written with dashes, for instance:
-
-<blockquote>
-  \layout {
-  ragged-right = ##t
-  }
-</blockquote>
-
-Furthermore, in this release, we have dropped some legacy code from
-our library. Now, lily uses standard C++ strings and the STL
-vector. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-                                                                                                                            
-<dt><b>LilyPond 2.7.31 is out</b> - <em>February 2, 2006</em></dt>
-<dd>
-This release fixes a load of bugs, and has some internal
-cleanups. Exported C++ members are now named
-ly:class-name::function-name in Scheme instead of
-Class_name::function_name. We are now using C++ vectors and strings
-instead of our own. The Linux/FreeBSD builds now include wrappers for
-Python scripts too, so you can run convert-ly and midi2ly.
-(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
 
 </dl>
 
