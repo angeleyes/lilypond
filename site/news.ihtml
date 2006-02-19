@@ -27,6 +27,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.35 is out</b> - <em>February 19, 2006</em></dt>
+<dd>
+This release has lots of bugs fixes. The plan is to release 2.8 at the
+end of this month, so bug reports are <b>very</b> welcome. By
+definition a bug is release critical if it wasn't present in version
+2.6. (<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.34 is out</b> - <em>February 16, 2006</em></dt>
 <dd>
 This release has a bunch of bugfixes, and new features. Newly created
