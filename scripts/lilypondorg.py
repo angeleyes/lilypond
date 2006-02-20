@@ -10,19 +10,29 @@ import sys
 
 platforms = ['linux-x86',
 	     'darwin-ppc',
+	     'documentation',
 	     'freebsd-x86',
+#	     'linux-arm',
 	     'mingw']
 
-alias = {
-	'linux-x86': 'linux',
-	'darwin-ppc': 'darwin',
-	'freebsd-x86': 'freebsd',
-	'mingw':'mingw'}
+def get_alias (p):
+	try:
+		return {
+			'linux-x86': 'linux',
+			'darwin-ppc': 'darwin',
+			'linux-arm': 'arm',
+			'freebsd-x86': 'freebsd',
+			}[p]
+	except KeyError:
+		return p
+
 formats = {
 	'linux-x86': 'sh',
 	'darwin-ppc': 'zip',
 	'freebsd-x86': 'sh',
-	'mingw':'exe'
+	'mingw':'exe',
+	'linux-arm': 'sh',
+	'documentation': 'tar.bz2',
 	}
 
 def system (c):
@@ -67,6 +77,23 @@ def get_max_builds (platform):
 
 	return builds
 	
+def max_branch_version_build (branch, platform):
+	vbs = get_versions (platform)
+
+	vs = [v for (v,b) in vbs if v[0:2] == branch]
+	vs.sort()
+	try:
+		max_version = vs[-1]
+	except IndexError:
+		max_version = (0,0,0)
+		
+	max_b = 0
+	for (v,b) in get_versions (platform):
+		if v == max_version:
+			max_b = max (b, max_b)
+
+	return (max_version, max_b)
+
 def max_version_build (platform):
 	vbs = get_versions (platform)
 	vs = [v for (v,b) in vbs]
@@ -101,17 +128,22 @@ def upload_binaries (version):
 	src_dests= []
 	barf = 0
 	for platform in platforms:
-		plat = alias[platform]
+		plat = get_alias (platform)
+		
 		format = formats[platform]
 		host = 'lilypond.org'
 		version_str = '.'.join (['%d' % v for v in version])
 		
 		host_dir  = '/var/www/lilypond/download/binaries'
-		
-		bin = 'uploads/lilypond-%(version_str)s-%(build)d.%(plat)s.%(format)s' % locals()
+		base = 'lilypond-%(version_str)s-%(build)d.%(plat)s.%(format)s' % locals()
+		bin = 'uploads/%(base)s' % locals()
 		
 		if not os.path.exists (bin):
 			print 'binary does not exist', bin
+			barf = 1
+		elif (platform <> 'documentation'
+		      and  not os.path.exists ('log/%s.test.pdf' % base)):
+			print 'test result does not exist for %s' % base
 			barf = 1
 			
 		src_dests.append((bin, '%(host)s:%(host_dir)s/%(platform)s' % locals()))
@@ -142,7 +174,9 @@ if __name__ == '__main__':
 		version = tuple (map (string.atoi, sys.argv[2].split ('.')))
 		upload_binaries (version)
 	else:
+		print max_version_build ('documentation')
 		print max_src_version ((2,7))
+		print max_branch_version_build ((2, 6), 'linux-x86')
 	#print max_version_build ('darwin-ppc')
 	
 	

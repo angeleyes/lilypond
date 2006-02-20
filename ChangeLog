@@ -1,4 +1,14 @@
+2006-02-20  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: use new @@ strings.
+
+	* scripts/lilypondorg.py: sync with GUB.
+
+	* scripts/format-page.py (branches): support for branches, i.e. @v2.7-mingw-VERSION@
+
 2006-02-06  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/switch/new-notation.html (href): typo.
 
 	* scripts/format-page.py (grab_gettext4): substitute
 	@<platform>-VERSION@ for the download page. This automates version

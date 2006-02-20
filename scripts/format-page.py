@@ -96,13 +96,17 @@ LANGUAGES_TEMPLATE = '''\
 
 
 version_builds={}
-for p in lilypondorg.platforms:
-	(v,b) = lilypondorg.max_version_build (p)
-	v = '.'.join (['%d' % vc for vc in v])
-	version_builds[p] = '%s-%d' % (v,b)
+branches = [(2,7), (2,6)]
 
-version_builds['devel-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version ((2,7))])
-version_builds['stable-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version ((2,6))])
+for branch in branches:
+	branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
+	
+	for p in lilypondorg.platforms:
+		(v,b) = lilypondorg.max_branch_version_build (branch, p)
+		v = '.'.join (['%d' % vc for vc in v])
+		version_builds[branch_str + '-' + p] = '%s-%d' % (v,b)
+	
+	version_builds[branch_str + '-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version (branch)])
 
 
 def dir_lang (file, lang):

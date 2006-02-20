@@ -31,12 +31,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/linux-x86/lilypond-@linux-x86-VERSION@.linux.sh");
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-@v2.7-linux-x86-VERSION@.linux.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
     </td>
-    <td>@linux-x86-VERSION@</td>
+    <td>@v2.7-linux-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -64,12 +64,12 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-@freebsd-x86-VERSION@.freebsd.sh");
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-@v2.7-freebsd-x86-VERSION@.freebsd.sh");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
     </td>
-    <td>@freebsd-x86-VERSION@</td>
+    <td>@v2.7-freebsd-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
@@ -84,11 +84,11 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@darwin-ppc-VERSION@.darwin.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.7-darwin-ppc-VERSION@.darwin.zip",
  	  "LilyPond")
       </strong>
     </td>
-    <td>@darwin-ppc-VERSION@</td>  
+    <td>@v2.7-darwin-ppc-VERSION@</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
@@ -110,10 +110,10 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
- 	  "http://lilypond.org/download/binaries/mingw/lilypond-@mingw-VERSION@.mingw.exe")
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-@v2.7-mingw-VERSION@.mingw.exe")
       </strong>
     </td>
-    <td>@mingw-VERSION@</td>
+    <td>@v2.7-mingw-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
   </tr>
@@ -125,11 +125,26 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.7/lilypond-@devel-source-VERSION@.tar.gz")
+	"http://lilypond.org/download/v2.7/lilypond-@v2.7-source-VERSION@.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>@devel-source-VERSION@</td>
+    <td>@v2.7-source-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+
+  <tr>
+    <td></td>
+    <td>_("Documentation")</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.7-documentation-VERSION@.documentation.tar.bz2")
+      </strong>
+    </td>
+    <td>@v2.7-documentation-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 

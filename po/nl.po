@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-06 22:00+0100\n"
+"POT-Creation-Date: 2006-02-20 17:55+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,7 @@ msgstr ""
 #: scripts/format-page.py:235 scripts/format-page.py:240
 #: scripts/format-page.py:231 scripts/format-page.py:241
 #: scripts/format-page.py:242 scripts/format-page.py:243
+#: scripts/format-page.py:247
 msgid "Home"
 msgstr "Startpagina"
 
@@ -86,6 +87,7 @@ msgid "Download"
 msgstr "Download"
 
 #: site/menu-entries.py:8 site/devel/participating/menu-entries.py:3
+#: site/install/devel.ihtml:139
 msgid "Documentation"
 msgstr "Documentatie"
 
@@ -426,6 +428,7 @@ msgstr "%s en nieuwer"
 #: site/install/stable.ihtml:215 site/install/stable.ihtml:233
 #: site/install/stable.ihtml:231 site/install/devel.ihtml:116
 #: site/install/devel.ihtml:142 site/install/devel.ihtml:127
+#: site/install/devel.ihtml:143
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
