@@ -1,3 +1,13 @@
+2006-02-22  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
+
+	* site/switch/new-notation.html:
+	    - add translation header
+	    - change 'tour.html' link to 'tour' (for translation)
+
+	* fr/switch/new-notation.html: new translated page
+
+	* fr/sponsor/options.html: update
+
 2006-02-22  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* fr/index.html: for fr and nl too.
