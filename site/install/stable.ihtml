@@ -151,7 +151,7 @@
   <tr>
     <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
     <td>
-      MacOS X
+      MacOS X (PowerPC)
     </td>
     <td>
       _("%s and newer", "10.3")
