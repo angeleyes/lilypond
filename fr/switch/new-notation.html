@@ -1,0 +1,93 @@
+<!--
+    Translation of CVS Revision: 1.2
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+
+<title>Notation particuli&egrave;re</title>
+
+
+<body>
+Avec son int&eacute;r&ecirc;t pour la notation classique, vous pouvez vous demander
+si LilyPond est utilisable pour la musique contemporaine. La r&eacute;ponse
+est un <b>oui</b> retentissant.
+
+
+<h2>&laquo;Oui, mais je ne suis pas dou&eacute;...&raquo;</h2>
+
+Si vous g&eacute;n&eacute;rez de la musique avec des logiciels, la publier est aussi
+simple que d'&eacute;crire des fichiers ASCII. Pour la musique contemporaine,
+vous allez appr&eacute;cier la souplesse de LilyPond pour sa gestion
+des mesures et des indicateurs de mesure. Voici un exemple de nolets
+imbriqu&eacute;s. L'espacement est rigoureusement proportionnel &agrave; la dur&eacute;e de
+chaque note. Les barres de mesures ne g&ecirc;nent en rien, et deux notes ne
+seront superpos&eacute;es que si elles doivent &ecirc;tre jou&eacute;es en m&ecirc;me temps.
+
+<p>
+<center>
+<a href="http://lilypond.org/doc/v2.7/input/proportional.pdf">
+<img src="@IMAGES@proportional-fragment.png"></a>
+<p>
+cliquez pour obtenir un fichier PDF.</center>
+<p>
+
+Avec n'importe quel autre programme, obtenir ce r&eacute;sultat n&eacute;cessite
+beaucoup de bricolage. Avec LilyPond, il suffit de saisir les notes,
+avec leur structure rythmique&nbsp;:
+
+<blockquote>
+
+<pre>
+\times 7/9 {
+  \times 4/6 {
+     r8 c32[ c c c c c c c] r4
+     c32[ c32 c16
+  }
+  \times 5/4 {
+    c16 c c] c32[ c32 c16 c] r8
+  }
+}
+</pre>
+</blockquote>
+
+<p>
+
+Si le langage de programmation Scheme vous est familier, vous pouvez
+m&ecirc;me composer par algorithmes avec LilyPond&nbsp;!
+
+<h2>&laquo;Je m'en sors bien avec Lily&nbsp;!&raquo;</h2>
+
+Vous avez besoin d'une notation vraiment particuli&egrave;re&nbsp;? L'extr&ecirc;me
+souplesse de LilyPond vous permet par exemple de cr&eacute;er des
+
+<a
+href="http://www.shaffermusic.com/doc/schenker/index.html">diagrammes
+d'analyse Schenkerienne</a>&nbsp;:
+
+<p>
+<center>
+<img src="@IMAGES@bach-schenker.png">
+</center>
+
+
+<h2>Edition de graphiques</h2>
+
+Si cela ne suffit pas, vous pouvez demandez &agrave; LilyPond d'&eacute;crire un
+fichier SVG, puis &eacute;diter le r&eacute;sultat final dans un &eacute;diteur tel que <a
+href="http://www.inkscape.org">Inkscape</a>.
+
+<p>
+
+<center>
+<img src="@IMAGES@lily-in-inkscape.png">
+</center>
+
+
+<p>
+Retour &agrave; l' <a href="tour.html">aper&ccedil;u</a>
+
+</body>
