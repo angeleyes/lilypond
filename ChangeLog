@@ -1,3 +1,7 @@
+2006-03-06  Han-Wen Nienhuys  <hanwen@xs4all.nl>
+
+	* site/install/devel.ihtml: use darwin-ppc for dl link.
+
 2006-03-05  Gauvain Pocentek  <gauvainpocentek@yahoo.fr>
 
 	* fr/switch/new-notation.html: *really* add the page

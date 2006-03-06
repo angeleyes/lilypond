@@ -84,7 +84,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.7-darwin-ppc-VERSION@.darwin.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.7-darwin-ppc-VERSION@.darwin-ppc.zip",
  	  "LilyPond")
       </strong>
     </td>
