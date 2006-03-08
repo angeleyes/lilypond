@@ -1,3 +1,8 @@
+2006-03-08  John Mandereau  <john.mandereau@free.fr>
+
+	* fr/switch/new-notation.html: revise translation
+	* fr/sponsor/options.html: update translation
+
 2006-03-06  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/install/devel.ihtml: use darwin-ppc for dl link.
