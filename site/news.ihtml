@@ -27,6 +27,17 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.38 is out</b> - <em>March 12, 2006</em></dt>
+<dd>
+This is likely to be the last release candidate before we release 2.8,
+so report any bugs that you might find. New attractions include:
+lilypond postscript files now work with GSView, cut & pasting lily
+code from PDF files should now work, and spacing fixes for
+multi-measure rests.
+(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.37 is out</b> - <em>March 4, 2006</em></dt>
 <dd>
 This release has more bug fixes. Please help us by testing it!
