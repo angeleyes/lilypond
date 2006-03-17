@@ -27,6 +27,13 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.7.39 is out</b> - <em>March 17, 2006</em></dt>
+<dd>
+This release has even more bug fixes. Please test before 2.8 is
+released. (<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.7">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.7.38 is out</b> - <em>March 12, 2006</em></dt>
 <dd>
 This is likely to be the last release candidate before we release 2.8,
@@ -37,25 +44,5 @@ multi-measure rests.
 (<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
 <a href="install/#2.7">Download</a>)
 </dd>
-
-<dt><b>LilyPond 2.7.37 is out</b> - <em>March 4, 2006</em></dt>
-<dd>
-This release has more bug fixes. Please help us by testing it!
-(<a href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
-<dt><b>LilyPond 2.7.36 is out</b> - <em>February 24, 2006</em></dt>
-<dd>
-This is another release candidate for 2.8. It has lots of bug fixes
-and polishes to the documentation.  It also contains support for
-creating ties that are only on their right side connected to note
-heads, which is handy for repeats (feature sponsored by Steve Doonan).
-The documentation suite can now be downloaded as a separate tarball
-from lilypond.org. (<a
-href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.7">Download</a>)
-</dd>
-
 </dl>
 
