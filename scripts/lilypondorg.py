@@ -7,6 +7,7 @@ import urllib
 import re
 import string
 import sys
+import optparse
 
 platforms = ['linux-x86',
 	     'darwin-ppc',
@@ -15,11 +16,13 @@ platforms = ['linux-x86',
 #	     'linux-arm',
 	     'mingw']
 
+base_url = 'http://lilypond.org/download'
+host_spec = 'hanwen@lilypond.org:/var/www/lilypond/download/binaries'
+
 def get_alias (p):
 	try:
 		return {
 			'linux-x86': 'linux',
-			'darwin-ppc': 'darwin',
 			'linux-arm': 'arm',
 			'freebsd-x86': 'freebsd',
 			}[p]
@@ -58,12 +61,14 @@ def get_url_versions (url):
 	
 
 def get_versions (platform):
-	return get_url_versions ('http://lilypond.org/download/binaries/%(platform)s/'
+	url = base_url
+	return get_url_versions ('%(url)s/binaries/%(platform)s/'
 			  % locals ())
 
 def get_src_versions (maj_min_version):
-	return get_url_versions ('http://lilypond.org/download/v%d.%d/' %
-				 maj_min_version)
+	(maj_version, min_version) = maj_min_version
+	url = base_url
+	return get_url_versions ('%(url)s/v%(maj_version)d.%(min_version)d/' %  locals())
 
 def get_max_builds (platform):
 	vs = get_versions (platform)
@@ -131,10 +136,8 @@ def upload_binaries (version):
 		plat = get_alias (platform)
 		
 		format = formats[platform]
-		host = 'lilypond.org'
 		version_str = '.'.join (['%d' % v for v in version])
 		
-		host_dir  = '/var/www/lilypond/download/binaries'
 		base = 'lilypond-%(version_str)s-%(build)d.%(plat)s.%(format)s' % locals()
 		bin = 'uploads/%(base)s' % locals()
 		
@@ -145,39 +148,66 @@ def upload_binaries (version):
 		      and  not os.path.exists ('log/%s.test.pdf' % base)):
 			print 'test result does not exist for %s' % base
 			barf = 1
-			
-		src_dests.append((bin, '%(host)s:%(host_dir)s/%(platform)s' % locals()))
 
+		host = host_spec 
+		src_dests.append((bin, '%(host)s/%(platform)s' % locals()))
+
+
+	cmds = ['scp %s %s' % tup for tup in src_dests]
+
+	print '\n'.join (cmds);
 	if barf:
 		raise 'barf'
 		
-	for tup in src_dests:
-		system ('scp %s %s' % tup)
+	for cmd in cmds:
+		system (cmd)
+def get_cli_parser ():
+	p = optparse.OptionParser ()
 
+	p.usage="""lilypondorg.py [OPTION]... COMMAND [PACKAGE]...
 
-if __name__ == '__main__':
-	if len (sys.argv) <= 2:
-		print '''use: lilypondorg.py
+Commands:
 
+upload x.y.z      - upload packages
+nextbuild x.y.z   - get next build number
 
-		nextbuild X.Y.Z
-		upload x.y.z 
+"""
+	p.description='look around on lilypond.org'
 
-		'''
-		
-		sys.exit (1)
+	p.add_option ('', '--url', action='store',
+		      dest='url',
+		      default=base_url,
+		      help='select base url')
+	
+	p.add_option ('', '--upload-host', action='store',
+		      dest='upload_host',
+		      default=host_spec,
+		      help='select upload directory')
+	
+	return p
 
-	if sys.argv[1] == 'nextbuild':
-		version = tuple (map (string.atoi, sys.argv[2].split ('.')))
+def main ():
+	cli_parser = get_cli_parser ()
+	(options, commands)  = cli_parser.parse_args ()
+
+	global base_url, host_spec
+	base_url = options.url
+	host_spec = options.upload_host
+
+	command = commands[0]
+	commands = commands[1:]
+	
+	if command == 'nextbuild':
+		version = tuple (map (string.atoi, commands[0].split ('.')))
 		print uploaded_build_number (version) + 1
-	elif sys.argv[1] == 'upload':
-		version = tuple (map (string.atoi, sys.argv[2].split ('.')))
+	elif command == 'upload':
+		version = tuple (map (string.atoi, commands[0].split ('.')))
 		upload_binaries (version)
 	else:
 		print max_version_build ('documentation')
 		print max_src_version ((2,7))
 		print max_branch_version_build ((2, 6), 'linux-x86')
-	#print max_version_build ('darwin-ppc')
-	
-	
-	     
+
+if __name__ == '__main__':
+	main()
+		
