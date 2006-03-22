@@ -1,5 +1,9 @@
 2006-03-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* scripts/format-page.py (branches): add 2.8, 2.9
+
+	* site/install/older-versions.html: remove 2.0 and earlier.
+
 	* site/switch/advantages.html: change order of advantages.
 
 	* site/devel/packaging.html (href): replace with link to GUB.

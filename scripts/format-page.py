@@ -96,7 +96,7 @@ LANGUAGES_TEMPLATE = '''\
 
 
 version_builds={}
-branches = [(2,7), (2,6)]
+branches = [(2,9), (2,8), (2,7), (2,6)]
 
 for branch in branches:
 	branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])

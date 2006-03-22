@@ -27,6 +27,14 @@ on one day.
 
 !-->
 
+
+<dt><b>LilyPond 2.8.0 is out!</b> - <em>March 22, 2006</em></dt> <dd>
+Version 2.8 is here! Read the <a href="announce-v2.8.html">release
+announcement</a>.  (<a
+href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.7">Download</a>) </dd>
+
+
 <dt><b>LilyPond 2.7.39 is out</b> - <em>March 17, 2006</em></dt>
 <dd>
 This release has even more bug fixes. Please test before 2.8 is

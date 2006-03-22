@@ -1,5 +1,5 @@
-
 <!-- -*-html-*- !-->
+
 <!-- use this as template for new entry
   <tr>
     <th></th>
@@ -10,7 +10,7 @@
     <th>Packager</th>
   </tr>
 !-->
- 
+
   <tr bgcolor="#e8ffe8" >
     <td></td>
     <td colspan="6">
@@ -18,112 +18,10 @@
     </td>
   </tr>
 
-
   <tr>
     <td>
       <p align="center">
-	<img src="@IMAGES@debian-logo.png">
-      </p>
-    </td>
-    <td>
-      Debian
-    </td>
-    <td>
-      Sid (unstable)
-    </td>
-    <td>
-      <em>
-	_("Included <a href='%s'>with distribution</a>",
-	"http://ftp.debian.org/debian/pool/main/l/lilypond/")
-      </em>
-    </td>
-    <td>2.6.3</td>
-    <td><a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?which=pkg&data=lilypond&dist=unstable">Thomas Bushnell, BSG</a></td>
-  </tr>
-
-  <tr>
-    <td>
-      <p align="center">
-	<img src="@IMAGES@fedora-logo.png">
-      </p>
-    </td>
-    <td>
-      Fedora Core
-    </td>
-    <td>4</td>
-    <td>
-      <strong>
-	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/Fedora-4/lilypond-2.6.5-1.i386.rpm",
-	"LilyPond"),
-	<a href="../../download/binaries/Fedora-4/lilypond-documentation-2.6.5-1.i386.rpm">_("documentation")</a>,
-      </strong>
-    </td>
-    <td>2.6.5</td>
-    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
-  </tr>
-
-  <tr>
-    <td><p align="center"><img src="@IMAGES@suse-logo.png"></p></td>
-    <td>
-      SUSE
-    </td>
-    <td>
-      10
-    </td>
-    <td>
-      <em>
-	_("Included with distribution")
-      </em>
-    </td>
-    <td>2.6.3</td>
-    <td><a href="http://www.suse.com">SUSE</a></td>
-  </tr>
-
-    
-  <tr>
-    <td><p align="center"><img src="@IMAGES@slackware-logo.png"></p></td>
-    <td>
-      Slackware 
-    </td>
-    <td>
-      10.1
-    </td>
-    <td>
-      <strong>_("Go <a href='%s'>here</a>","http://www.lost-shoe-films.de/johnny/lilypondslackware/")
-</strong>
-    </td>
-    <td>2.6.3</td>
-    <td><a href="mailto:johnnyweb-1.0@lost-shoe-films.de">Johannes Sch&ouml;pfer</a></td>
-  </tr>
-
-  <tr>
-    <td>
-      <p align="center">
-	<img src="@IMAGES@ubuntu.png">
-      </p>
-    </td>
-    <td>
-      ubuntu
-    </td>
-    <td>
-      Dapper/universe
-    </td>
-    <td>
-      <em>
-	_("Included <a href='%s'>with distribution</a>",
-	"http://ftp.ubuntulinux.org/ubuntu/pool/universe/l/lilypond/")
-      </em>
-    </td>
-    <td>2.6.3</td>
-    <td><a href="http://ubuntulinux.org">ubuntulinux</a></td>
-  </tr>
-
-  <tr>
-    <td>
-      <p align="center">
-	<img src="@IMAGES@tux-logo.png">/
-	<img src="@IMAGES@autopackage-logo.png">
+	<img src="@IMAGES@tux-logo.png">
       </p>
     </td>
     <td>
@@ -132,14 +30,17 @@
     <td>-</td>
     <td>
       <strong>
-	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"../../download/binaries/autopackage/lilypond-2.6.4.3.x86.package",
-	"../../download/binaries/autopackage/lilypond-2.6.4.3-upgrade.x86.package")
-      </strong>
+	Download _("<a href='%s'>the installer</a>",
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-@v2.8-linux-x86-VERSION@.linux.sh");
+	<br>
+	</strong>
+	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
     </td>
-    <td>2.6.4.3</td>
+    <td>@v2.8-linux-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
+
+
 
   <tr bgcolor="#e8ffe8" >
     <td></td>
@@ -149,6 +50,30 @@
   </tr>
   
   <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@daemon.png">
+      </p>
+    </td>
+    <td>
+    FreeBSD
+    </td>
+    <td>
+    4.x
+    </td>
+    <td>
+      <strong>
+	Download _("<a href='%s'>the installer</a>",
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-@v2.8-freebsd-x86-VERSION@.freebsd.sh");
+	<br>
+	</strong>
+	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
+    </td>
+    <td>@v2.8-freebsd-x86-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+    <tr>
     <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
     <td>
       MacOS X (PowerPC)
@@ -159,67 +84,38 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	"../../download/binaries/darwin-ppc/lilypond-2.6.5-1.dmg",
-	"LilyPond")
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-ppc.zip",
+ 	  "LilyPond")
       </strong>
     </td>
-    <td>2.6.5-1</td>  
+    <td>@v2.8-darwin-ppc-VERSION@</td>  
     <td>
       <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
     </td> 
   </tr>
-
 
   <tr>
     <td><p align="center"><img src="@IMAGES@windows-logo.png"></p></td>
     <td>Microsoft Windows</td>
     <td>
-      NT, 98, 2000, ME, XP
+      NT, 2000, ME, XP<br>
+      
+      <em>If 98 works send a <a
+    href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">success
+    report</a>
+
+    </em>
+      
     </td>
     <td>
       <strong>
-	_("<a href='%s'>Install</a> or <a href='%s'>upgrade</a>",
-	"../../download/binaries/mingw/lilypond-2.6.5-1.exe",
-	"../../download/binaries/mingw/lilypond-2.6.4-5-upgrade.exe")
+	_("<a href='%s'>Install</a>",
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-@v2.8-mingw-VERSION@.mingw.exe")
       </strong>
     </td>
-    <td>2.6.5-1</td>
+    <td>@v2.8-mingw-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
     </td>
-  </tr>
-
-  <tr>
-    <td><p align="center"><img src="@IMAGES@cygwin.png"></p></td>
-    <td>Microsoft&nbsp;Windows/<br>Cygwin</td>
-    <td>
-      NT, 98, 2000, ME, XP
-    </td>
-    <td>
-      <strong>_("Go <a href='%s'>here</a>", "windows.html")</strong>
-    </td>
-    <td>2.6.4</td>
-    <td>
-      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
-    </td>
-  </tr>
-
-  <tr>
-    <td><p align="center"><img src="@IMAGES@fink.png"></p></td>
-    <td>
-      MacOS X/Fink
-    </td>
-    <td>
-      <tt>current-unstable</tt>
-    </td>
-    <td>
-      <strong>_("Go <a href='%s'>here</a>", "macos.html")</strong>
-    </td>
-    <td>2.6.1</td>  
-    <td>
-      <a
-    href="http://homepage.mac.com/neeracher/contact.html">Matthias
-    Neeracher</a>
-    </td> 
   </tr>
 
   <tr>
@@ -229,10 +125,26 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"../../download/v2.6/lilypond-2.6.5.tar.gz")
+	"http://lilypond.org/download/v2.8/lilypond-@v2.8-source-VERSION@.tar.gz")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>
-    <td>2.6.5</td>
+    <td>@v2.8-source-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
+
+
+  <tr>
+    <td></td>
+    <td>_("Documentation")</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.8-documentation-VERSION@.documentation.tar.bz2")
+      </strong>
+    </td>
+    <td>@v2.8-documentation-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
