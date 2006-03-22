@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-20 17:55+0100\n"
+"POT-Creation-Date: 2006-03-22 11:44+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,10 +162,12 @@ msgid "Windows"
 msgstr "Windows"
 
 #: site/download/menu-entries.py:4 site/install/menu-entries.py:4
+#: site/install/menu-entries.py:2
 msgid "First use"
 msgstr "Eerste gebruik"
 
 #: site/download/menu-entries.py:5 site/install/menu-entries.py:5
+#: site/install/menu-entries.py:3
 msgid "User help"
 msgstr "Gebruikershulp"
 
