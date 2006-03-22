@@ -1,5 +1,7 @@
 2006-03-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/install/index.html: remove old notes.
+	
 	* scripts/format-page.py (branches): add 2.8, 2.9
 
 	* site/install/older-versions.html: remove 2.0 and earlier.
