@@ -37,7 +37,7 @@ See user manual, \NAME\
 @node Top
 @top
 @end ifnottex
-@unnumbered New features in 2.7 since 2.6
+@unnumbered New features in 2.8 since 2.6
 
 @ifhtml
 This document is also available in @uref{NEWS.pdf,PDF}. It's part of
@@ -67,7 +67,8 @@ which scares away people.
 @end ignore
 
 @item LilyPond PostScript output is now also compatible with GSView, a
-PostScript viewer for the Windows platform.
+PostScript viewer for the Windows platform and Preview.app, on MacOS
+X.
 
 @item The property @code{Score.skipTypesetting} is also respected
 by the MIDI output now.
