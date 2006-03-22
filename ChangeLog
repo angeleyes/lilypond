@@ -1,3 +1,14 @@
+2006-03-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/menu-entries.py: remove cygwin link.
+	remove fink link.
+
+	* site/about/thanks.html: name Mats as support guru.
+
+	* site/switch/advantages.html: link to sponsor page.
+
+	* site/switch/testimonials.html (href): shorten WL quote
+
 2006-03-21  Han-Wen Nienhuys  <lilydev@localhost.localdomain>
 
 	* site/announce-v2.8.html: add Mats B.
