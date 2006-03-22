@@ -1,5 +1,7 @@
 2006-03-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/switch/tour.html: v2.6 -> v2.8 for links.
+
 	* site/install/index.html: remove old notes.
 	
 	* scripts/format-page.py (branches): add 2.8, 2.9
