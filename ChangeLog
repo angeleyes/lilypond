@@ -1,5 +1,8 @@
 2006-03-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/install/getting-started.html: update for mingw. remove
+	cygwin reference. 
+
 	* site/install/menu-entries.py: remove cygwin link.
 	remove fink link.
 
