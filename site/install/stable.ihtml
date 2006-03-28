@@ -98,10 +98,8 @@
     <td><p align="center"><img src="@IMAGES@windows-logo.png"></p></td>
     <td>Microsoft Windows</td>
     <td>
-    
-      98, ME, NT, 2000,  XP
-
-          </td>
+      ME, NT, 2000,  XP
+    </td>
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
