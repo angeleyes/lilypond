@@ -1,3 +1,11 @@
+2006-03-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* scripts/lilypondorg.py (platforms): add darwin-x86
+
+	* site/install/older-versions.html: add 2.6
+
+	* site/install/index.html: remove 2.6 links.
+
 2006-03-30  Pedro Kröger  <kroeger@pedrokroeger.net>
 
 	* site/install/stable.ihtml: add slackware package.

@@ -128,6 +128,21 @@
 
   <tr>
     <td></td>
+    <td>_("Documentation")</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.8-documentation-VERSION@.documentation.tar.bz2")
+      </strong>
+    </td>
+    <td>@v2.8-documentation-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+
+  <tr>
+    <td></td>
     <td>_("Source code")</td>
     <td></td>
     <td>
@@ -138,21 +153,6 @@
       </strong>
     </td>
     <td>@v2.8-source-VERSION@</td>
-    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
-  </tr>
-
-
-  <tr>
-    <td></td>
-    <td>_("Documentation")</td>
-    <td></td>
-    <td>
-      <strong>
-	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.8-documentation-VERSION@.documentation.tar.bz2")
-      </strong>
-    </td>
-    <td>@v2.8-documentation-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 

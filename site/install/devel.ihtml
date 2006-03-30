@@ -1,0 +1,166 @@
+<!-- -*-html-*- !-->
+
+<!-- use this as template for new entry
+  <tr>
+    <th></th>
+    <th>Platform</th>
+    <th>Version</th>
+    <th>Go here</th>
+    <th>LilyPond version</th>
+    <th>Packager</th>
+  </tr>
+!-->
+
+  <tr bgcolor="#e8ffe8" >
+    <td></td>
+    <td colspan="6">
+      <h3>GNU/Linux</h3>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@tux-logo.png">
+      </p>
+    </td>
+    <td>
+      Any x86
+    </td>
+    <td>-</td>
+    <td>
+      <strong>
+	Download _("<a href='%s'>the installer</a>",
+	"http://lilypond.org/download/binaries/linux-x86/lilypond-@v2.9-linux-x86-VERSION@.linux.sh");
+	<br>
+	</strong>
+	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
+    </td>
+    <td>@v2.9-linux-x86-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+
+
+  <tr bgcolor="#e8ffe8" >
+    <td></td>
+    <td colspan="6">
+      <h3>_("Other")</h3>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@daemon.png">
+      </p>
+    </td>
+    <td>
+    FreeBSD
+    </td>
+    <td>
+    4.x
+    </td>
+    <td>
+      <strong>
+	Download _("<a href='%s'>the installer</a>",
+	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-@v2.9-freebsd-x86-VERSION@.freebsd.sh");
+	<br>
+	</strong>
+	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
+    </td>
+    <td>@v2.9-freebsd-x86-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+    <tr>
+    <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
+    <td>
+      MacOS X (Intel)
+    </td>
+    <td>
+      _("%s and newer", "10.4")
+    </td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>%s</a>",
+	  "http://lilypond.org/download/binaries/darwin-x86/lilypond-@v2.9-darwin-x86-VERSION@.darwin-x86.tar.bz2",
+ 	  "LilyPond")
+      </strong>
+    </td>
+    <td>@v2.9-darwin-x86-VERSION@</td>  
+    <td>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
+    </td> 
+  </tr>
+
+    <tr>
+    <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
+    <td>
+      MacOS X (PowerPC)
+    </td>
+    <td>
+      _("%s and newer", "10.3")
+    </td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>%s</a>",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.9-darwin-ppc-VERSION@.darwin-ppc.tar.bz2",
+ 	  "LilyPond")
+      </strong>
+    </td>
+    <td>@v2.9-darwin-ppc-VERSION@</td>  
+    <td>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
+    </td> 
+  </tr>
+
+  <tr>
+    <td><p align="center"><img src="@IMAGES@windows-logo.png"></p></td>
+    <td>Microsoft Windows</td>
+    <td>
+      ME, NT, 2000,  XP
+    </td>
+    <td>
+      <strong>
+	_("<a href='%s'>Install</a>",
+ 	  "http://lilypond.org/download/binaries/mingw/lilypond-@v2.9-mingw-VERSION@.mingw.exe")
+      </strong>
+    </td>
+    <td>@v2.9-mingw-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td></td>
+    <td>_("Documentation")</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.9-documentation-VERSION@.documentation.tar.bz2")
+      </strong>
+    </td>
+    <td>@v2.9-documentation-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+
+
+  
+  <tr>
+    <td></td>
+    <td>_("Source code")</td>
+    <td></td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>tarball</a>",
+	"http://lilypond.org/download/v2.9/lilypond-@v2.9-source-VERSION@.tar.gz")
+	(<a href="../devel/#warning">_("warning")</a>)
+      </strong>
+    </td>
+    <td>@v2.9-source-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+

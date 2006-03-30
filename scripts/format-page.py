@@ -103,6 +103,7 @@ for branch in branches:
 	
 	for p in lilypondorg.platforms:
 		(v,b) = lilypondorg.max_branch_version_build (branch, p)
+		
 		v = '.'.join (['%d' % vc for vc in v])
 		version_builds[branch_str + '-' + p] = '%s-%d' % (v,b)
 	
