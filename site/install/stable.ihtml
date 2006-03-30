@@ -40,6 +40,21 @@
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
+  <tr>
+    <td><p align="center"><img src="@IMAGES@slackware-logo.png"></p></td>
+    <td>
+      Slackware 
+    </td>
+    <td>
+      10.1
+    </td>
+    <td>
+      <strong>_("Go <a href='%s'>here</a>","http://www.lost-shoe-films.de/johnny/lilypondslackware/")
+</strong>
+    </td>
+    <td>2.8.0</td>
+    <td><a href="mailto:johnnyweb-1.0@lost-shoe-films.de">Johannes Sch&ouml;pfer</a></td>
+  </tr>
 
 
   <tr bgcolor="#e8ffe8" >

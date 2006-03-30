@@ -1,3 +1,7 @@
+2006-03-30  Pedro Kröger  <kroeger@pedrokroeger.net>
+
+	* site/install/stable.ihtml: add slackware package.
+	
 2006-03-28  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/install/stable.ihtml: remove w98.
