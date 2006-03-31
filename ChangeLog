@@ -1,5 +1,7 @@
 2006-03-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/install/stable.ihtml: add darwin-x86
+
 	* scripts/lilypondorg.py (platforms): add darwin-x86
 
 	* site/install/older-versions.html: add 2.6

@@ -99,7 +99,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-ppc.zip",
+	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-ppc.tar.bz2",
  	  "LilyPond")
       </strong>
     </td>
@@ -120,7 +120,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-x86/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-x86.zip",
+	  "http://lilypond.org/download/binaries/darwin-x86/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-x86.tar.bz2",
  	  "LilyPond")
       </strong>
     </td>
