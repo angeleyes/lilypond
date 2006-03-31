@@ -109,6 +109,27 @@
     </td> 
   </tr>
 
+    <tr>
+    <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
+    <td>
+      MacOS X (Intel)
+    </td>
+    <td>
+      _("%s and newer", "10.4")
+    </td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>%s</a>",
+	  "http://lilypond.org/download/binaries/darwin-x86/lilypond-@v2.8-darwin-ppc-VERSION@.darwin-x86.zip",
+ 	  "LilyPond")
+      </strong>
+    </td>
+    <td>@v2.8-darwin-x86-VERSION@</td>  
+    <td>
+      <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
+    </td> 
+  </tr>
+  
   <tr>
     <td><p align="center"><img src="@IMAGES@windows-logo.png"></p></td>
     <td>Microsoft Windows</td>
