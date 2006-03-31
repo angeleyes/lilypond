@@ -28,6 +28,11 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond on MacOS X/Intel</b> - <em>March 31, 2006</em></dt>
+<dd> LilyPond now also runs on Intel based macs, offering a 400%
+speedup over the emulated PowerPC binaries.  (<a
+href="install/#2.8">Download</a>) </dd>
+
 <dt><b>LilyPond 2.8.0 is out!</b> - <em>March 22, 2006</em></dt> <dd>
 Version 2.8 is here! Read the <a href="announce-v2.8.html">release
 announcement</a>.  (<a
