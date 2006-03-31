@@ -1,3 +1,9 @@
+2006-03-31  Gauvain Pocentek  <gauvainpocentek@gmail.com>
+
+	* fr/index.html: add version 2.9 links
+
+	* fr/install/index.html: add 2.9 section
+
 2006-03-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): announce 2.8.1 for darwin-x86
