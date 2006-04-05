@@ -1,3 +1,9 @@
+2006-04-06  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/index.html: strip word from intro.
+
+	* site/switch/index.html: new blurb.
+
 2006-03-31  Gauvain Pocentek  <gauvainpocentek@gmail.com>
 
 	* fr/index.html: add version 2.9 links
