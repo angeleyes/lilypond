@@ -10,7 +10,7 @@
 <h1>LilyPond Snippet Repository</h1>
 
 <p>
-The LilyPond Snippet Respository (affectionately known as LSR) is a
+The LilyPond Snippet Repository (affectionately known as LSR) is a
 collection of small examples.  It can be easily searched for special
 tricks, or simply browsed to see some neat examples.  You can also
 add your own examples, so that other LilyPond users can benefit from
@@ -24,18 +24,28 @@ and see for yourself!
 If you have suggestions for the documentation, please be as specific as
 possible.  &ldquo;The docs for lyrics suck!&rdquo; isn't a very useful
 suggestion.  Instead, please tell us exactly what to change and where
-to change it.  A formal patch to the source code is not required; simply
+to change it.  Do <strong>not</strong> forward us a discussion from
+<code>lilypond-user</code> with a note that &ldquo;this contains
+info that should be in the manual!&rdquo;  That is not helpful; we
+need to start reading the whole discussion to figure out what is
+happening, then read the documentation to see what could be
+clarified or added.  <strong>Please</strong> take the time to
+write the exact changes to the text.  If you have been active in
+the discussion, then you probably understand the material better than
+we do.
+<p>
+
+A formal patch to the source code is not required.  Simply
 send an email to
 <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">lilypond-devel@gnu.org</a>
-with your addition to the documentation.  We'll take care of the technical
-details.  For example,
+with your addition to the documentation.  We will take care of the technical
+details.  Here is an imaginary example of a perfect documentation report:
   
 <pre>
 To: lilypond-devel@gnu.org
 From: helpful-user@example.net
-Subject: doc addition for lyrics
+Subject: doc addition 
 
-http://lilypond.org/doc/v2.4/Documentation/user/out-www/lilypond/Printing-lyrics.html
 In section 2.13 (printing lyrics), above the last line ("More options, like..."),
 please add:
     
@@ -48,9 +58,19 @@ To add lyrics to a divided part, use blah blah blah.  For example,
  blah blah blah
 }
 ----
+
+In addition, the second sentence of the first paragraph is
+confusing.  Please delete that sentence (it begins "Users
+often...") and replace it with this:
+----
+To align lyrics with something, do this thing.
+----
+
+Have a nice day,
+Helpful User
 </pre>
 
-We may edit your suggestion (for spelling, grammar, or style), and we may
+We may edit your suggestion for spelling, grammar, or style, and we may
 not place the material exactly where you suggested, but if you give us
 some material to work with, we can improve the manual much faster.
 
