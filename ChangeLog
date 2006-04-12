@@ -1,3 +1,9 @@
+2006-04-12  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* scripts/check-translation.py (do_file): Bugfix.
+
+	* TRANSLATION (LANG): Update.
+
 2006-04-11  Graham Percival  <gpermus@gmail.com>
 
 	* site/devel/participating/documentation-adding.html:

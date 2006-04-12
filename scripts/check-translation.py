@@ -34,7 +34,8 @@ def check_file (original, translated):
 
 	c = CVS_DIFF % vars ()
 	if verbose:
-		os.stderr.write ('running: ' + c)
+		sys.stderr.write ('running: ' + c)
+		sys.stderr.write ('\n')
 	os.system (c)
 
 def do_file (file_name):

@@ -19,7 +19,6 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 1 install/index.html  --  http://lilypond.org/web/install/index.html
 1 install/macos.html  --  http://lilypond.org/web/install/macos.html
 1 install/using.html  --  http://lilypond.org/web/install/using.html
-1 install/windows.html  --  http://lilypond.org/web/install/windows.html
 1 po/LANGUAGE.po  -- menus and http://lilypond.org/web/switch/howto.html
 1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
 1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
@@ -32,29 +31,28 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
 
 3 sponsor/
+3 about/automated-engraving/ http://lilypond.org/web/about/automated-engraving/
 3 about/faq.html  --  http://lilypond.org/web/about/faq.html
 3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
 3 documentation.html  --  http://lilypond.org/web/documentation.html
-3 site/about/automated-engraving/ http://lilypond.org/web/about/automated-engraving/
+3 install/cygwin.html  --  http://lilypond.org/web/install/cygwin.html
 
 4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
 4 site/devel
 
 LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
-  184   331  3865 site/index.html
-   70   147  2163 site/contact.ihtml
-   54   216  1618 site/switch/index.html
-  102   459  3588 site/switch/advantages.html
-  123   459  3539 site/switch/tour.html
-  109   302  2855 site/switch/howto.html
-   77   200  2065 site/about/index.html
-  156   482  3768 site/install/getting-started.html
-  114   262  2438 site/install/index.html
-   31    97   914 site/install/macos.html
-   71   159  1579 site/install/using.html
-  176   515  4271 site/install/windows.html
- 1267  3629 32663 total
-
+   92   218  2251 site/about/index.html
+   74   172  2581 site/contact.ihtml
+  191   352  3972 site/index.html
+  149   465  3656 site/install/getting-started.html
+   83   197  1673 site/install/index.html
+   31    99   930 site/install/macos.html
+   71   159  1571 site/install/using.html
+  117   479  3963 site/switch/advantages.html
+  109   301  2835 site/switch/howto.html
+   57   208  1607 site/switch/index.html
+  136   486  3791 site/switch/tour.html
+ 1110  3136 28830 total
 
  *) The pages marked `4. not to be translated' are mostly out of date,
     need a revision or should be removed before considering a
