@@ -1,5 +1,7 @@
 2006-04-12  Jan Nieuwenhuizen  <janneke@gnu.org>
 
+	* TRANSLATION (Priorities): Add sponsor to category 1.
+
 	* GNUmakefile (VERSION): Use cached Revision from site/index.html
 	rather than `1.0'.
 

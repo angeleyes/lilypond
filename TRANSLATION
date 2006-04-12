@@ -20,6 +20,9 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 1 install/macos.html  --  http://lilypond.org/web/install/macos.html
 1 install/using.html  --  http://lilypond.org/web/install/using.html
 1 po/LANGUAGE.po  -- menus and http://lilypond.org/web/switch/howto.html
+1 sponsor/index.html  -- http://lilypond.org/web/sponsor/index.html
+1 sponsor/natura.html  -- http://lilypond.org/web/sponsor/natura.html
+1 sponsor/options.html  -- http://lilypond.org/web/sponsor/options.html
 1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
 1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
 1 switch/index.html  --  http://lilypond.org/web/switch/index.html
@@ -48,11 +51,14 @@ LANG=C wc $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
    83   197  1673 site/install/index.html
    31    99   930 site/install/macos.html
    71   159  1571 site/install/using.html
+   46   168  1203 site/sponsor/index.html
+   22   101   674 site/sponsor/natura.html
+   90   206  2228 site/sponsor/options.html
   117   479  3963 site/switch/advantages.html
   109   301  2835 site/switch/howto.html
    57   208  1607 site/switch/index.html
   136   486  3791 site/switch/tour.html
- 1110  3136 28830 total
+ 1268  3611 32935 total
 
  *) The pages marked `4. not to be translated' are mostly out of date,
     need a revision or should be removed before considering a
