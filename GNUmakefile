@@ -9,7 +9,7 @@ PYTHON = python
 SCRIPTS = $(wildcard *.py *.scm) 
 SCRIPTDIR = scripts
 
-VERSION = 1.0
+VERSION = $(shell expr "$$(grep 'Revision: [0-9]\+' site/index.html)" : '.*Revision: \([0-9]\+\.[0-9]\+\)')
 DISTDIR = lily-web-$(VERSION)
 
 FILES = GNUmakefile newweb.css $(HTML) $(NON_HTML) $(SCRIPTS) 
