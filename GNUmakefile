@@ -6,13 +6,17 @@ LANGUAGES = nl fr
 .PHONY: all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
 
 PYTHON = python
-SCRIPTS = $(wildcard *.py *.scm) 
+SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
 SCRIPTDIR = scripts
 
 VERSION = $(shell expr "$$(grep 'Revision: [0-9]\+' site/index.html)" : '.*Revision: \([0-9]\+\.[0-9]\+\)')
 DISTDIR = lily-web-$(VERSION)
 
-FILES = GNUmakefile newweb.css $(HTML) $(NON_HTML) $(SCRIPTS) 
+READMES = ChangeLog README TRANSLATION
+SITE_HTML = $(shell find site -name '*.html')
+LOCAL_HTML = $(shell find fr nl -name '*.html')
+FILES = GNUmakefile newweb.css \
+ $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
 MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify
 
 outball = site.tar.gz
