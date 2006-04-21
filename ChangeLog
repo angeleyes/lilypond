@@ -1,6 +1,7 @@
 2006-04-22  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/about/pubs.html (href): add URL
+	(href): fix file size
 
 	* site/images/FISL7-slides.pdf (Module): add slides of FISL7
 
