@@ -27,6 +27,16 @@ on one day.
 
 !-->
 
+<dt><b>FISL7.0 slides available</b> - <em>April 22, 2006</em>
+
+<dd> The slides for Han-Wen's talk at <a
+href="http://fisl.softwarelivre.org">FISL 7</a> are now online. (<a
+href="about/pubs/FISL7-slides.pdf">download</a>)
+
+</dd>
+
+
+
 <dt><b>LilyPond 2.8.1 is out!</b> - <em>April 3, 2006</em></dt> <dd>
 Important bugfixes include CJK font handling and a Darwin/x86 port.
 (<a
