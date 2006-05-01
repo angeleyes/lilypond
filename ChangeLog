@@ -1,5 +1,11 @@
 2006-05-01  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/devel/participating/standards.html: document PEP 8 usage.
+
+	* site/documentation.html: add 2.9 doc links.
+
+	* nl/index.html: add 2.9 links.
+
 	* scripts/big-page.py: 4 space indent everywhere.
 
 2006-04-23  Han-Wen Nienhuys  <hanwen@xs4all.nl>

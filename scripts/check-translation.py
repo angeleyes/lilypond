@@ -62,7 +62,7 @@ This script is licensed under the GNU GPL.
 def do_options ():
     global lang, verbose
     (options, files) = getopt.getopt (sys.argv[1:], '',
-                     ['help', 'language=', 'verbose'])
+                                      ['help', 'language=', 'verbose'])
     for (o, a) in options:
         if 0:
             pass
