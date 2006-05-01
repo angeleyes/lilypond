@@ -1,3 +1,7 @@
+2006-05-01  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* scripts/big-page.py: 4 space indent everywhere.
+
 2006-04-23  Han-Wen Nienhuys  <hanwen@xs4all.nl>
 
 	* site/news.ihtml (href): announce slides.
