@@ -27,6 +27,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.9.3 is out!</b> - <em>May 7, 2006</em></dt> <dd>
+This new release has lots of updates of the manual, courtesy Graham
+and the contributors of the mailing. It handles formatting for ties in
+arpegiated chords better (feature sponsored by
+Steve Doonan), it has al niente hairpins, courtesy of Erlend Aasland,
+and some cleanups of the PostScript output, courtesy David Feuer. (<a
+href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.9">Download</a>) </dd>
+
 <dt><b>FISL7.0 slides available</b> - <em>April 22, 2006</em>
 
 <dd> The slides for Han-Wen's talk at <a
@@ -35,29 +44,9 @@ href="@IMAGES@FISL7-slides.pdf">download</a>)
 
 </dd>
 
-
-
 <dt><b>LilyPond 2.8.1 is out!</b> - <em>April 3, 2006</em></dt> <dd>
 Important bugfixes include CJK font handling and a Darwin/x86 port.
 (<a
-href="@DOC@v2.8/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.8">Download</a>) </dd>
-
-<dt><b>LilyPond 2.9.1 is out!</b> - <em>April 3, 2006</em></dt> <dd>
-It's mostly a bugfix release, and it's almoste the same as 2.8.1. This
-release mainly fixes problems with CJK font loading.
-(<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.9">Download</a>) </dd>
-
-<dt><b>LilyPond on MacOS X/Intel</b> - <em>March 31, 2006</em></dt>
-<dd> LilyPond now also runs on Intel based macs, offering a 400%
-speedup over the emulated PowerPC binaries.  (<a
-href="install/#2.8">Download</a>) </dd>
-
-<dt><b>LilyPond 2.8.0 is out!</b> - <em>March 22, 2006</em></dt> <dd>
-Version 2.8 is here! Read the <a href="announce-v2.8.html">release
-announcement</a>.  (<a
 href="@DOC@v2.8/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.8">Download</a>) </dd>
 
