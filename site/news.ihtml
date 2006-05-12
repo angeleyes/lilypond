@@ -27,6 +27,24 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.9.4 available</b> - <em>May 12, 2006</em>
+<dd>
+
+This release has support for feathered beaming, and note head styles in
+the markup <tt>\note</tt> command. In addition, it has a lot of updates
+of the manual and a clean up of the spring spacer. 
+(<a
+href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.9">Download</a>)
+</dd>
+
+<dt><b>LilyPond 2.8.2 available</b> - <em>May 12, 2006</em>
+
+<dd>
+This release has fixes for minor bugs and compilation issues.
+ (<a href="install/#2.8">Download</a>) </dd>
+</dd>
+
 <dt><b>LilyPond 2.9.3 is out!</b> - <em>May 7, 2006</em></dt> <dd>
 This new release has lots of updates of the manual, courtesy Graham
 and the contributors of the mailing. It handles formatting for ties in
@@ -43,12 +61,6 @@ href="http://fisl.softwarelivre.org">FISL 7</a> are now online. (<a
 href="@IMAGES@FISL7-slides.pdf">download</a>)
 
 </dd>
-
-<dt><b>LilyPond 2.8.1 is out!</b> - <em>April 3, 2006</em></dt> <dd>
-Important bugfixes include CJK font handling and a Darwin/x86 port.
-(<a
-href="@DOC@v2.8/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.8">Download</a>) </dd>
 
 </dl>
 
