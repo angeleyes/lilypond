@@ -1,3 +1,9 @@
+2006-05-15  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/about/index.html: fix broken link.
+
+	* site/images/linux-audio-developers.jpeg (Module): new file.
+
 2006-05-12  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): announce 2.9.4 and 2.8.2
