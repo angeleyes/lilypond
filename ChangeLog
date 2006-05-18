@@ -1,3 +1,7 @@
+2006-05-18  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/devel.ihtml: use Gx monikers for Mac.
+
 2006-05-15  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/about/index.html: fix broken link.
