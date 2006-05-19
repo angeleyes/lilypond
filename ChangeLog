@@ -1,5 +1,7 @@
 2006-05-19  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/install/older-versions.html: remove upgrade links.
+
 	* site/news.ihtml (href): 2.9.5 release.
 
 2006-05-18  Han-Wen Nienhuys  <hanwen@lilypond.org>
