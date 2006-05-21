@@ -1,5 +1,7 @@
 2006-05-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/news.ihtml (href): announce FISL additions.
+
 	* site/about/automated-engraving/index.html (Module): idem.
 
 	* scripts/big-page.py (Module): add new essay pages. 

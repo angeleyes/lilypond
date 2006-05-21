@@ -27,6 +27,19 @@ on one day.
 
 !-->
 
+<dt><b>New essay pages!</b> - <em>May 22, 2006</em>
+<dd>
+
+The <em>Automated Engraving</em> essay has been updated with material
+from the <a href="http://fisl.softwarelivre.org">FISL</a> talk, with
+pages on <a
+href="about/automated-engraving/problem-statement">modeling
+notation</a> and <a
+href="about/automated-engraving/scoring-esthetics">algorithms for
+esthetics</a>. Happy reading!
+
+</dd>
+
 <dt><b>LilyPond 2.9.5 available</b> - <em>May 17, 2006</em>
 <dd>
 This release supports object rotation, hairpins with circled tips,
