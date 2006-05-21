@@ -1,3 +1,11 @@
+2006-05-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/about/automated-engraving/index.html (Module): idem.
+
+	* scripts/big-page.py (Module): add new essay pages. 
+
+	* site/about/automated-engraving/scoring-esthetics.html: new file.
+
 2006-05-21  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* scripts/format-page.py (do_options): add --offline

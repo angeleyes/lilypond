@@ -7,11 +7,19 @@ os.chdir (dir)
 
 s = ''
 for a in ['index.html',
-     'introduction.html', 'software.html', 'problem-statement.html',
-     'implementing-notation.html', 'engraving.html',
-     'implementing-typography.html', 'formatting-architecture.html',
-     'benchmarking.html', 'typography-features.html', 'input-format.html',
-     'conclusion.html']:
+          'introduction.html',
+          'software.html',
+          'problem-statement.html',
+          'divide-and-conquer.html',
+          'implementing-notation.html',
+          'engraving.html',
+          'implementing-typography.html',
+          'formatting-architecture.html',
+          'scoring-esthetics.html',
+          'benchmarking.html',
+          'typography-features.html',
+          'input-format.html',
+          'conclusion.html']:
 
     s += open (a).read()
 

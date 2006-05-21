@@ -380,6 +380,56 @@ contenu
 Suite&nbsp;: <a href="#implementing-notation">Impressionnant, mais
 que se passe-t-il en th&eacute;orie</a>&nbsp;? Une approche pratique pour
 ma&icirc;triser la notation.</p>
+<h2>Plan de campagne</h2>
+
+Since content and form of a score are separate, we have to match that
+in the design of software. Hence, the basic blueprint  of our program
+should this scheme
+
+<table>
+<tr>
+<td align="center">
+<img src="@IMAGES@simple-notation.png">
+</td>
+<td align="center">
+<b>&larr;</b>
+</td>
+<td align="center">
+<tt>{ c'4 d'8 }</tt>
+</td>
+</tr>
+<tr>
+<td align="center">
+1. form
+</td>
+<td align="center">
+2. translation
+</td>
+<td align="center">
+3. content
+</td>
+</tr>
+</table>
+
+In effect, we are conquering the problem by dividing it into
+subproblems
+
+<ol start="1">
+<li>Typography:  <b>where</b> to put symbols
+<li>Notation:  <b>what</b> symbols to produce
+<li>Representation: how to <b>encode</b>  music
+</ol>
+
+Finally, whenever you subdivide a problem, a new problem is created,
+<ol start="4">
+<li> Architecture: glue everything <b>together</b>
+</ol>
+
+
+
+<p align=right>
+Next: <a href="#implementing-notation">Impressive, but does it also
+work in theory</a>? A practical approach to capturing notation.
 <!--
     Translation of CVS Revision: 1.6 
     
@@ -685,6 +735,106 @@ Suite&nbsp;: <a href="#benchmarking">L'homme est la mesure de
 toute chose</a>&nbsp;: peut-on se contenter d'une architecture
 flexible&nbsp;?
 </p>
+
+<h2>Beautiful numbers</h2> 
+	
+How do we actually make formatting
+decisions?
+
+<p>
+Consider the image below.  Which of the three configurations should we
+choose for formatting the slur?
+
+<p>
+
+<img src="@IMAGES@slur-esthetics.png">
+
+<p>
+
+There are a few books on the art of music engraving
+available. Unfortunately, they contain rules of thumbs. Such rules
+examples are instructive, but they are a far cry from an algorithm
+that we could readily implement in a computer. In practice, following
+such examples leads to algorithms that contain a lot of handcoded
+exceptions. Deriving such rules is a lot of work, and they usually do
+not cover all cases completely.
+
+
+<img src="@IMAGES@ross-beam-scan.jpeg">
+<p align="center">
+
+<em>Formatting rules defined by example. Image from Ted Ross' The Art of
+Music Engraving</em>
+</p>
+
+<p>
+We have developed a much easier and robust method of determining the
+best formatting solution: score based formatting. The principle is the
+same as beauty contest: for each possible configuration, we compute an
+ugliness score. Then we choose the least ugly configuration.
+
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-1.png">
+
+<p>
+
+For example, in the above configuration, the slur nicely connects the
+starting and ending note of the figure, a desirable trait. However, it
+also grazes one note head closely, while staying away from the others.
+Therefore, for this configuration, we deduct a `variance' score of
+15.39.  Furthermore, the slur goes up, while the melody goes
+down. This incurs a penalty of 2.00 points
+
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-2.png">
+<p>
+
+In this configuration, the slur keeps a uniform distance from the
+heads, but we have to deduct some points because the slur doesn't
+start and end on the note heads.  For the left edge, we deduct 1.71,
+and for the right edge (which is further from the head) we deduct
+9.37 points.
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-3.png">
+
+<p>
+
+Finally, in this configuration, only the ending the slur is far away
+from the ending note head, at a score of 10.04 ugliness points.
+
+<p>
+Adding up all scores, we notice that the third option is the least
+ugly, or most beautiful version.   Hence we select that one.
+
+<p>
+
+This technique is a general technique, and it is used in a lot of
+situations, for example
+
+<ul>
+<li> determining beam slopes
+
+<img src="beam-scoring-example.png">
+<li> formatting tied chords
+
+<img src="tie-scoring-example.png">
+<li> formatting dotted chords
+<li> line breaking
+<li> page breaking  
+</ul>
+<p>
+
+This technique evaluates a lot of possibilities, which takes some time
+to compute. However, that is a worthwhile expense, because the end
+result is much better, and because it makes our lives easy.
+
+
+<p align=right>
+Next: <a href="#benchmarking">Man is the measure of things</a>: is a
+flexible architecture enough?
 <!--
     Translation of CVS Revision: 1.9 
     
