@@ -12,6 +12,7 @@ import lilypondorg
 # The directory to hold the translated and menuified tree.
 outdir = '/var/www'
 verbose = 0
+offline = 0
 
 C = 'site'
 LANGUAGES = (
@@ -98,16 +99,19 @@ LANGUAGES_TEMPLATE = '''\
 version_builds={}
 branches = [(2,9), (2,8), (2,7), (2,6)]
 
-for branch in branches:
-    branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
+def read_build_versions ():
+    global version_builds
     
-    for p in lilypondorg.platforms:
-        (v,b) = lilypondorg.max_branch_version_build (branch, p)
+    for branch in branches:
+        branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
+    
+        for p in lilypondorg.platforms:
+            (v,b) = lilypondorg.max_branch_version_build (branch, p)
         
-        v = '.'.join (['%d' % vc for vc in v])
-        version_builds[branch_str + '-' + p] = '%s-%d' % (v,b)
+            v = '.'.join (['%d' % vc for vc in v])
+            version_builds[branch_str + '-' + p] = '%s-%d' % (v,b)
     
-    version_builds[branch_str + '-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version (branch)])
+        version_builds[branch_str + '-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version (branch)])
 
 
 def dir_lang (file, lang):
@@ -367,14 +371,17 @@ def do_file (file_name):
 
 
 def do_options ():
-    global outdir, verbose
+    global outdir, verbose, offline
+    
     (options, files) = getopt.getopt (sys.argv[1:], '',
-                     ['outdir=', 'help', 'verbose'])
+                     ['outdir=', 'help', 'verbose', 'offline'])
     for (o, a) in options:
         if o == '--outdir':
             outdir = a
         elif o == '--verbose':
             verbose = 1
+        elif o == '--offline':
+            offline = 1
         elif o == '--help':
             sys.stdout.write (r'''
 Usage:
@@ -389,6 +396,8 @@ This script is licensed under the GNU GPL
 
 def main ():
     files = do_options ()
+    if not offline:
+        read_build_versions ()
 
     global PAGE_TEMPLATE
     f = os.path.join (dir_lang ('', C), 'template.ihtml')

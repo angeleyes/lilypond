@@ -1,5 +1,18 @@
 2006-05-21  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* scripts/format-page.py (do_options): add --offline
+
+	* site/images/naive-notation-uml.png (Module): new file.
+
+	* site/images/naive-notation.png (Module): new file
+
+	* site/images/nonnaive-notation.png (Module): new file.
+
+	* site/about/automated-engraving/problem-statement.html: new
+	section on designing notation: hierarchy vs. divide & conqueror.
+
+	* site/about/automated-engraving/divide-and-conquer.html: new file.
+
 	* site/install/older-versions.html: oops, formatting error.
 
 2006-05-19  Han-Wen Nienhuys  <hanwen@lilypond.org>

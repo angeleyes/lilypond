@@ -9,49 +9,72 @@
 
 
 <a name="problem-statement"></a>
-<h2>Better music notation software</h2>
-<p>
-
-Most notation software needs babysitting to produce acceptable output.
-In our opinion, all this tweaking and tuning is something that a
-computer should do for you.
-
+<h2>Designing notation software: how not to do it</h2>
 <p>
 
 
-Our goal with <em>LilyPond</em> is to write an an <em>automated
-engraving system</em>: a system that will produce beautiful music
-("engraving") automatically.  In concept, such a system is simple: the
-objective of such a system is to produce music notation, a graphical
-image.  The content of this picture is music: pitches and
-durations. In automated system, we want to generate the form from the
-content, so schematically, the program could be represented as
+It would be nice if notation software didn't need any babysitting to
+produce acceptable output. 
 
-<table>
-<tr>
-<td align="center">
-<img src="@IMAGES@simple-notation.png">
-</td>
-<td align="center">
-&lt;--
-</td>
-<td align="center">
-<tt>\notes { c'4 d'8 }</tt>
-</td>
-</tr>
-<tr>
-<td align="center">
-form
-</td>
-<td align="center">
-LilyPond
-</td>
-<td align="center">
-content
-</td>
-</tr>
-</table>
+Our goal with <em>LilyPond</em> was to write such a system: a program
+that will produce beautiful music ("engraving") automatically.
+
+<p>
+At first sight, music notation follows a straightforward hierarchical
+pattern.  Consider the example below, with two staves containing two
+measures.
+</p>
+<img src="@IMAGES@naive-notation.png">
+
+<p>
+Isn't writing software all about finding hierarchies and modeling the
+real world in terms of trees? In the view of a naive programmer, the
+above fragment of notation is easily abstracted to a nested set of
+boxes
+
+<p>
+<img src="@IMAGES@naive-notation-uml.png">
+</p>
+
+It's easy to follow this model when writing software.  It's obvious
+how to store this data in memory, and writing on disk can be easily
+mirrored. In an XML-file you could write something like
+
+<PRE>
+  &lt;score&gt;
+    &lt;staff&gt;
+      &lt;measure id="1"&gt;
+         &lt;chord length="1/2"&gt;
+	   &lt;pitch name="c"&gt;
+         &lt;/chord&gt;
+         &lt;chord&gt;
+	 
+	 ....
+      &lt;/measure&gt;
+    &lt;/staff&gt;
+  &lt;/score&gt;
+</PRE>
+
+<p>
+In short, this model is obvious, simple and neat.  It's the format
+used by a lot software. Unfortunately, it's also wrong.  The
+hierarchical representation works for a lot of simpler music, but it
+falls apart for advanced use. Consider the following example:
+</p>
+
+<img src="@IMAGES@nonnaive-notation.png">
+
+<p>
+In this example, several assumptions of the previous model are
+violated: staves start and stop at will, voices jump around between
+staves, and sometimes span two staves.
+<p>
+
+Music notation is really different from music itself. Notation is an
+intricate symbolic diagramming language for visualizing an often much
+simpler musical concept. Hence, software should reflect that separation.
+
 
 <p align=right>
-Next: <a href=implementing-notation.html>Impressive, but does it also
-work in theory</a>? A practical approach to capturing notation.
+Next: <a href=divide-and-conquer.html>Divide and conqueror</a>
+A blue print for automated notation

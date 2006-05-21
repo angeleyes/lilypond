@@ -116,7 +116,7 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --verbose --outdir=out $(HTML)
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 linktree: tree
 	$(foreach i, $(NON_HTML), ln -f $i out/$i &&) true

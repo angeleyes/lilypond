@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 12:45+0200\n"
+"POT-Creation-Date: 2006-05-21 13:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,13 @@ msgstr ""
 #: scripts/format-page.py:231 scripts/format-page.py:241
 #: scripts/format-page.py:242 scripts/format-page.py:243
 #: scripts/format-page.py:247 scripts/format-page.py:248
+#: scripts/format-page.py:252
 msgid "Home"
 msgstr ""
 
 #: scripts/format-page.py:87 scripts/format-page.py:82
 #: scripts/format-page.py:83 scripts/format-page.py:84
+#: scripts/format-page.py:85
 #, python-format
 msgid "Other languages: %s."
 msgstr ""
@@ -265,7 +267,7 @@ msgid "Reuse identifier"
 msgstr ""
 
 #: scripts/format-page.py:83 scripts/format-page.py:84
-#: scripts/format-page.py:85
+#: scripts/format-page.py:85 scripts/format-page.py:86
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr ""
