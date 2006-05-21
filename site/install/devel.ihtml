@@ -97,7 +97,7 @@
     <tr>
     <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
     <td>
-      MacOS X (G3, G4, G5)
+      MacOS X (G3, G4, G5 Macs)
     </td>
     <td>
       _("%s and newer", "10.3")

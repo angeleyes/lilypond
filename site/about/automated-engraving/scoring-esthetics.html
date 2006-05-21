@@ -11,12 +11,12 @@ of the three configurations should we choose for the following slur?
 <p>
 
 There are a few books on the art of music engraving
-available. Unfortunately, they contain rules of thumbs. Such rules
-examples are instructive, but they are a far cry from an algorithm
-that we could readily implement in a computer. In practice, following
-such examples leads to algorithms that contain a lot of handcoded
-exceptions. Deriving such rules is a lot of work, and they usually do
-not cover all cases completely.
+available. Unfortunately, they contain rules of simple thumbs and some
+examples.  Such rules can be instructive, but they are a far cry from
+an algorithm that we could readily implement in a computer.  Following
+the instructions from literature leads to algorithms with lots of
+handcoded exceptions. Doing all this case analysis is a lot of work,
+and often not all cases are covered completely.
 
 <p align="center">
 <img src="@IMAGES@ross-beam-scan.jpeg" align="center"></p>
@@ -29,7 +29,7 @@ Music Engraving</em>
 <p>
 We have developed a much easier and robust method of determining the
 best formatting solution: score based formatting. The principle is the
-same as beauty contest: for each possible configuration, we compute an
+same as a beauty contest: for each possible configuration, we compute an
 ugliness score. Then we choose the least ugly configuration.
 
 <p>
