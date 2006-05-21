@@ -1,3 +1,7 @@
+2006-05-21  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/older-versions.html: oops, formatting error.
+
 2006-05-19  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/install/older-versions.html: remove upgrade links.
