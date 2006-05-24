@@ -1,5 +1,10 @@
 2006-05-24  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* fr/about/automated-engraving/divide-and-conquer.html (Module):
+	add. 
+
+	* fr/about/automated-engraving/scoring-esthetics.html (Module): add.
+
 	* scripts/format-page.py (read_build_versions): store (version, url)
 
 	* scripts/lilypondorg.py (note_version): update from GUB
