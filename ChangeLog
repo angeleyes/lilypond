@@ -1,3 +1,11 @@
+2006-05-24  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/older-versions.html: remove Fedora URL.
+
+	* scripts/lilypondorg.py (get_versions): update from GUB
+
+	* scripts/format-page.py (do_options):  take --download-base option.
+
 2006-05-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): announce FISL additions.

@@ -24,6 +24,9 @@ outball = site.tar.gz
 LANG =
 SITE = site
 
+DOWNLOAD_URL = 'http://lilypond.org/download'
+INKSCAPE = inkscape
+
 ifneq ($(LANG),)
 SITE = $(LANG)
 mo = out/locale/$(LANG)/LC_MESSAGES/newweb.mo
@@ -42,7 +45,6 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 # no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
 
-INKSCAPE = inkscape
 
 %.png: %.svg GNUmakefile
 	-$(INKSCAPE) --export-area-drawing --export-png=$@ --export-background-opacity=0 $<
@@ -116,7 +118,7 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --download-base $(DOWNLOAD_URL) --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 linktree: tree
 	$(foreach i, $(NON_HTML), ln -f $i out/$i &&) true

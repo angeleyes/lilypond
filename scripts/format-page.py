@@ -374,7 +374,8 @@ def do_options ():
     global outdir, verbose, offline
     
     (options, files) = getopt.getopt (sys.argv[1:], '',
-                     ['outdir=', 'help', 'verbose', 'offline'])
+                     ['outdir=', 'help', 'verbose', 'offline',
+                      'download-base='])
     for (o, a) in options:
         if o == '--outdir':
             outdir = a
@@ -382,6 +383,8 @@ def do_options ():
             verbose = 1
         elif o == '--offline':
             offline = 1
+        elif o == '--download-base':
+            lilypondorg.base_url = a
         elif o == '--help':
             sys.stdout.write (r'''
 Usage:

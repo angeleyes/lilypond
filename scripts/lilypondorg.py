@@ -46,7 +46,8 @@ def system (c):
         raise 'barf'
 
 def get_url_versions (url):
-    index = urllib.urlopen (url).read()
+    opener = urllib.FancyURLopener ()
+    index = opener.open (url).read()
 
     versions = []
     def note_version (m):
@@ -66,7 +67,7 @@ def get_url_versions (url):
 def get_versions (platform):
     url = base_url
     return get_url_versions ('%(url)s/binaries/%(platform)s/'
-             % locals ())
+                             % locals ())
 
 def get_src_versions (maj_min_version):
     (maj_version, min_version) = maj_min_version
@@ -151,13 +152,15 @@ def upload_binaries (version):
         if not os.path.exists (bin):
             print 'binary does not exist', bin
             barf = 1
-        elif (platform <> 'documentation'
-           and  not os.path.exists ('log/%s.test.pdf' % base)):
+        else:
+            ## globals -> locals.
+            host = host_spec 
+            src_dests.append((bin, '%(host)s/%(platform)s' % locals()))
+            
+        if (platform <> 'documentation'
+              and  not os.path.exists ('log/%s.test.pdf' % base)):
             print 'test result does not exist for %s' % base
             barf = 1
-
-        host = host_spec 
-        src_dests.append((bin, '%(host)s/%(platform)s' % locals()))
 
 
     cmds = ['scp %s %s' % tup for tup in src_dests]
@@ -172,11 +175,12 @@ def upload_binaries (version):
     changelog_rev = changelog_match.group (1)
     changelog_date = changelog_match.group (2)
     
-    tag_cmd = 'darcs tag "release %(version_str)s-%(build)d of ChangeLog rev %(changelog_rev)s %(changelog_date)"' % locals()
+    tag_cmd = 'darcs tag --patch "release %(version_str)s-%(build)d of ChangeLog rev %(changelog_rev)s %(changelog_date)s"' % locals()
 
     cmds.append (tag_cmd)
 
     
+    print '\n\n'
     print '\n'.join (cmds);
     if barf:
         raise 'barf'
@@ -199,14 +203,14 @@ nextbuild x.y.z   - get next build number
     p.description='look around on lilypond.org'
 
     p.add_option ('', '--url', action='store',
-           dest='url',
-           default=base_url,
-           help='select base url')
+                  dest='url',
+                  default=base_url,
+                  help='select base url')
     
     p.add_option ('', '--upload-host', action='store',
-           dest='upload_host',
-           default=host_spec,
-           help='select upload directory')
+                  dest='upload_host',
+                  default=host_spec,
+                  help='select upload directory')
     
     return p
 
