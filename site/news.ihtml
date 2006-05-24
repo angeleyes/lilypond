@@ -14,8 +14,8 @@
 
 NOTE:
 
-* avoid `HERE' as name for links, use descriptive link names like
-  <a href=>Download LilyPond 2.5.16</a>
+* avoid "HERE" as name for links, use descriptive link names like
+  <a href "">Download LilyPond 2.5.16</a>
 
 * avoid putting links in running text. They make text harder to read.
 Preferably: (<a href= .. >..</a>, etc. )

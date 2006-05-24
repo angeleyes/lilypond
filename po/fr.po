@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 13:33+0200\n"
+"POT-Creation-Date: 2006-05-24 11:43+0200\n"
 "PO-Revision-Date: 2005-06-15 19:04+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@wanadoo.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: scripts/format-page.py:231 scripts/format-page.py:241
 #: scripts/format-page.py:242 scripts/format-page.py:243
 #: scripts/format-page.py:247 scripts/format-page.py:248
-#: scripts/format-page.py:252
+#: scripts/format-page.py:252 scripts/format-page.py:255
 msgid "Home"
 msgstr "Accueil"
 

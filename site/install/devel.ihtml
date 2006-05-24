@@ -31,7 +31,7 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/linux-x86/lilypond-@v2.9-linux-x86-VERSION@.linux.sh");
+		"@v2.9-linux-x86-URL@");
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
@@ -64,7 +64,7 @@
     <td>
       <strong>
 	Download _("<a href='%s'>the installer</a>",
-	"http://lilypond.org/download/binaries/freebsd-x86/lilypond-@v2.9-freebsd-x86-VERSION@.freebsd.sh");
+	"@v2.9-freebsd-x86-URL@")
 	<br>
 	</strong>
 	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
@@ -84,7 +84,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-x86/lilypond-@v2.9-darwin-x86-VERSION@.darwin-x86.tar.bz2",
+	  "@v2.9-darwin-x86-URL@",
  	  "LilyPond")
       </strong>
     </td>
@@ -105,7 +105,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "http://lilypond.org/download/binaries/darwin-ppc/lilypond-@v2.9-darwin-ppc-VERSION@.darwin-ppc.tar.bz2",
+	  "@v2.9-darwin-ppc-URL@",
  	  "LilyPond")
       </strong>
     </td>
@@ -124,7 +124,7 @@
     <td>
       <strong>
 	_("<a href='%s'>Install</a>",
- 	  "http://lilypond.org/download/binaries/mingw/lilypond-@v2.9-mingw-VERSION@.mingw.exe")
+ 	  "@v2.9-mingw-URL@")
       </strong>
     </td>
     <td>@v2.9-mingw-VERSION@</td>
@@ -140,7 +140,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/binaries/documentation/lilypond-@v2.9-documentation-VERSION@.documentation.tar.bz2")
+	"@v2.9-documentation-URL@")
       </strong>
     </td>
     <td>@v2.9-documentation-VERSION@</td>
@@ -156,7 +156,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>tarball</a>",
-	"http://lilypond.org/download/v2.9/lilypond-@v2.9-source-VERSION@.tar.gz")
+	"@v2.9-source-URL@")
 	(<a href="../devel/#warning">_("warning")</a>)
       </strong>
     </td>

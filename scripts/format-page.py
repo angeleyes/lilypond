@@ -106,12 +106,15 @@ def read_build_versions ():
         branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
     
         for p in lilypondorg.platforms:
-            (v,b) = lilypondorg.max_branch_version_build (branch, p)
+            (v, b, url) = lilypondorg.max_branch_version_build_url (branch, p)
         
             v = '.'.join (['%d' % vc for vc in v])
-            version_builds[branch_str + '-' + p] = '%s-%d' % (v,b)
-    
-        version_builds[branch_str + '-source'] = '.'.join (['%d' % vc for vc in lilypondorg.max_src_version (branch)])
+            version_builds[branch_str + '-' + p] = ('%s-%d' % (v,b), url)
+
+        (version, url) =  lilypondorg.max_src_version_url (branch)
+        version_builds[branch_str + '-source'] = ('.'.join (['%d' % vc for vc in version]),
+                                                  url)
+                                                  
 
 
 def dir_lang (file, lang):
@@ -346,8 +349,9 @@ def format_page (html, file_name, lang):
     
     page = re.sub ('@LANGUAGE_MENU@', '', page)
     
-    for (p,v) in version_builds.items():
+    for (p, (v, url)) in version_builds.items():
         page  = re.sub ('@' + p + '-VERSION@', v, page)
+        page  = re.sub ('@' + p + '-URL@', url, page)
     
     return page
 

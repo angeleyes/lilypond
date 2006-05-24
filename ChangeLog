@@ -1,8 +1,16 @@
 2006-05-24  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
-	* site/install/older-versions.html: remove Fedora URL.
+	* scripts/format-page.py (read_build_versions): store (version, url)
 
-	* scripts/lilypondorg.py (get_versions): update from GUB
+	* scripts/lilypondorg.py (note_version): update from GUB
+
+	* site/install/devel.ihtml: idem.
+
+	* site/install/stable.ihtml: use new -URL format.
+
+	* scripts/format-page.py (grab_gettext4): subst @version-URL@  too.
+
+	* site/install/older-versions.html: remove Fedora URL.
 
 	* scripts/format-page.py (do_options):  take --download-base option.
 
