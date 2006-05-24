@@ -40,7 +40,7 @@ $(mo): po/$(LANG).po
 # Only regenerate for LANGs
 $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 	mkdir -p $(dir $@)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%)
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%) DOWNLOAD_URL="$(DOWNLOAD_URL)"
 
 # no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
