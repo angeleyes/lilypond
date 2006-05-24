@@ -17,7 +17,7 @@ SITE_HTML = $(shell find site -name '*.html')
 LOCAL_HTML = $(shell find fr nl -name '*.html')
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
-MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify
+MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
 
 outball = site.tar.gz
 
@@ -40,7 +40,7 @@ $(mo): po/$(LANG).po
 # Only regenerate for LANGs
 $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 	mkdir -p $(dir $@)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%) DOWNLOAD_URL="$(DOWNLOAD_URL)"
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%)
 
 # no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
@@ -97,7 +97,7 @@ po/newweb.pot: $(PY) $(SVG) $(IHTML)
 
 define LANGUAGE_template
 $(1):
-	$(MAKE) LANG=$(1) png menuify
+	$(MAKE) LANG=$(1) png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
 endef
 
 $(foreach lang,$(LANGUAGES),$(eval $(call LANGUAGE_template,$(lang))))
