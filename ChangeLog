@@ -1,3 +1,7 @@
+2006-05-25  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/index.html: add bandwidth sponsors to download page.
+
 2006-05-24  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* fr/about/automated-engraving/divide-and-conquer.html (Module):
