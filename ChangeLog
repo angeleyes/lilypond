@@ -1,3 +1,7 @@
+2006-05-26  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (href): 2.9.6
+
 2006-05-25  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/install/index.html: add bandwidth sponsors to download page.
