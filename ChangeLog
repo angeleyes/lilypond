@@ -1,3 +1,7 @@
+2006-05-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (href): announce 2.9.7
+
 2006-05-29  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* fr/about/automated-engraving/scoring-esthetics.html: fix URLs.

@@ -28,6 +28,16 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond 2.9.7 available</b> - <em>May 30, 2006</em>
+
+<dd> 2.9.7 has improvements in the formatting for figured bass, and
+includes a new framework for detecting bugs earlier, which will make
+the development releases even better</dd> (<a
+href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.9">Download</a>) </dd>
+</dd>
+
+
 <dt><b>LilyPond 2.9.6 available</b> - <em>May 24, 2006</em> <dd> This
 release has new features in beam formatting: beams may now be put on
 single stems, and obey the <tt>beatGrouping</tt> property.  MusicXML
