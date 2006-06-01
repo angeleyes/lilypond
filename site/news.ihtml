@@ -59,26 +59,5 @@ esthetics</a>. Happy reading!
 
 </dd>
 
-<dt><b>LilyPond 2.9.5 available</b> - <em>May 17, 2006</em>
-<dd>
-This release supports object rotation, hairpins with circled tips,
-hairpins that run to barlines before notes and improvements in the
-MusicXML converter.
-(<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.9">Download</a>)
-</dd>
-
-<dt><b>LilyPond 2.9.4 available</b> - <em>May 12, 2006</em>
-<dd>
-
-This release has support for feathered beaming, and note head styles in
-the markup <tt>\note</tt> command. In addition, it has a lot of updates
-of the manual and a clean up of the spring spacer. 
-(<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.9">Download</a>)
-</dd>
-
 </dl>
 
