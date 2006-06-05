@@ -27,6 +27,13 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em>
+
+<dd>
+2.8.4 fixes some minor bugs, and includes a backport of the
+infrastructure for automated regression testing.
+(<a href="install/#2.8">Download</a>)
+</dd>
 
 <dt><b>First test results available</b> - <em>June 4, 2006</em>
 
@@ -49,26 +56,6 @@ href="install/#2.9">Download</a>) </dd>
 </dd>
 
 
-<dt><b>LilyPond 2.9.6 available</b> - <em>May 24, 2006</em> <dd> This
-release has new features in beam formatting: beams may now be put on
-single stems, and obey the <tt>beatGrouping</tt> property.  MusicXML
-converter.  (<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.9">Download</a>) </dd>
-
-
-<dt><b>New essay pages!</b> - <em>May 22, 2006</em>
-<dd>
-
-The <em>Automated Engraving</em> essay has been updated with material
-from the <a href="http://fisl.softwarelivre.org">FISL</a> talk, with
-pages on <a
-href="about/automated-engraving/problem-statement">modeling
-notation</a> and <a
-href="about/automated-engraving/scoring-esthetics">algorithms for
-esthetics</a>. Happy reading!
-
-</dd>
 
 </dl>
 
