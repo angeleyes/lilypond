@@ -1,3 +1,7 @@
+2006-06-05  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (href): announce regtesting results.
+
 2006-05-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): announce 2.9.7
