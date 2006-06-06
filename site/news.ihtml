@@ -27,6 +27,19 @@ on one day.
 
 !-->
 
+
+<dt><b>LilyPond 2.9.8 available</b> - <em>June 6, 2006</em>
+
+<dd>
+2.9.8 has support for different spacing sections within a single
+score.
+
+
+
+infrastructure for automated regression testing.
+(<a href="install/#2.8">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em>
 
 <dd>
@@ -40,7 +53,7 @@ infrastructure for automated regression testing.
 <dd>
 After a week of frantic tweaking, the first automated testing results
 are available.  You can now see <a
-href="http://lilypond.org/doc/v2.9/v2.8.4/index.html">in full
+href="http://lilypond.org/doc/v2.9/compare-v2.8.4/index.html">in full
 glory</a> what features are broken in the development release
 
  </dd>

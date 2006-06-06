@@ -1,3 +1,7 @@
+2006-06-07  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (href): change URL for new convention.
+
 2006-06-05  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): announce regtesting results.
