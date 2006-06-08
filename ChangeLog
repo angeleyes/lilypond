@@ -1,5 +1,7 @@
 2006-06-08  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/news.ihtml (Preferably): opps.
+
 	* site/index.html: remove .ca mirror.
 
 2006-06-07  Han-Wen Nienhuys  <hanwen@lilypond.org>

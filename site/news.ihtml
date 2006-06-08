@@ -1,4 +1,4 @@
-<!-- -*- html -*- -->
+		<!-- -*- html -*- -->
 <!--
     Translation of CVS $Revision$
     
@@ -32,11 +32,7 @@ on one day.
 
 <dd>
 2.9.8 has support for different spacing sections within a single
-score.
-
-
-
-infrastructure for automated regression testing.
+score, and better infrastructure for automated regression testing.
 (<a href="install/#2.8">Download</a>)
 </dd>
 
