@@ -33,7 +33,8 @@ on one day.
 <dd>
 2.9.8 has support for different spacing sections within a single
 score, and better infrastructure for automated regression testing.
-(<a href="install/#2.8">Download</a>)
+(<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
+<a href="install/#2.8">Download</a>)
 </dd>
 
 <dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em>
