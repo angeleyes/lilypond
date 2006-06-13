@@ -1,3 +1,7 @@
+2006-06-13  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/install/index.html (href): add note about GUB source code.
+
 2006-06-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): add link to changes.
