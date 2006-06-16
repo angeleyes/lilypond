@@ -1,3 +1,7 @@
+2006-06-16  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (Preferably): announce 2.9.9
+
 2006-06-13  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/install/index.html (href): add note about GUB source code.
