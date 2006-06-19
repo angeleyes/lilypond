@@ -1,3 +1,7 @@
+2006-06-19  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (Preferably): oops. fix download links.
+
 2006-06-16  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): announce 2.9.9

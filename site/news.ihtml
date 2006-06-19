@@ -32,7 +32,7 @@ on one day.
 <dd>
 This releases fixes many bugs in 2.9.8 and earlier. 
 (<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.8">Download</a>)
+<a href="install/#2.9">Download</a>)
 </dd>
 
 <dt><b>LilyPond 2.9.8 available</b> - <em>June 6, 2006</em>
@@ -41,7 +41,7 @@ This releases fixes many bugs in 2.9.8 and earlier.
 2.9.8 has support for different spacing sections within a single
 score, and better infrastructure for automated regression testing.
 (<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.8">Download</a>)
+<a href="install/#2.9">Download</a>)
 </dd>
 
 <dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em>
