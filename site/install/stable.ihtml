@@ -30,11 +30,12 @@
     <td>-</td>
     <td>
       <strong>
-	Download _("<a href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.8-linux-x86-URL@");
 	<br>
 	</strong>
-	<em>do <tt>sh lilypond-X.Y.Z.linux.sh</tt> in a command window.</em>
+	<em>_("do %s in a command window.",
+	"<tt>sh lilypond-X.Y.Z.linux.sh</tt>")</em>
     </td>
     <td>@v2.8-linux-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
@@ -78,11 +79,12 @@
     </td>
     <td>
       <strong>
-	Download _("<a href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.8-freebsd-x86-URL@");
 	<br>
 	</strong>
-	<em>do <tt>sh lilypond-X.Y.Z.freebsd.sh</tt> in a command window.</em>
+	<em>_("do %s in a command window.",
+	"<tt>sh lilypond-X.Y.Z.freebsd.sh</tt>")</em>
     </td>
     <td>@v2.8-freebsd-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>

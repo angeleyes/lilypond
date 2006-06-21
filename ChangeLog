@@ -1,3 +1,17 @@
+2006-06-21  John Mandereau  <john.mandereau@free.fr>
+
+	* fr/about/index.html: update image reference.
+
+	* po/fr.po: update translation.
+
+	* site/install/stable.ihtml, site/install/devel.ihtml: mark
+	"Download the installer" and "Do %s in a command window" for
+	translation.
+
+	* site/about/automated-engraving/scoring-esthetics.html,
+	site/about/automated-engraving/divide-and-conquer.html: add
+	"Translation of CVS $Revision$" comment.
+
 2006-06-19  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): oops. fix download links.
