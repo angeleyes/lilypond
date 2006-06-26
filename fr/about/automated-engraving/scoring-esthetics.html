@@ -1,12 +1,19 @@
+<!--
+    Translation of CVS Revision: 1.5
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
 
-<h2>Beautiful numbers</h2> 
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<h2>Ces nombres qui nous entourent</h2> 
 	
-How do we actually make formatting
-decisions?
+Quels sont en r&eacute;alit&eacute; nos crit&egrave;res de fomatage&nbsp;?
 
 <p>
-Consider the image below.  Which of the three configurations should we
-choose for formatting the slur?
+Consid&eacute;rant l'image suivate, laquelle de ces trois configurations
+devrions-nous choisir pour formater la liaison&nbsp;?
 
 <p>
 
@@ -14,87 +21,92 @@ choose for formatting the slur?
 
 <p>
 
-There are a few books on the art of music engraving
-available. Unfortunately, they contain rules of thumbs. Such rules
-examples are instructive, but they are a far cry from an algorithm
-that we could readily implement in a computer. In practice, following
-such examples leads to algorithms that contain a lot of handcoded
-exceptions. Deriving such rules is a lot of work, and they usually do
-not cover all cases completely.
+Seuls quelques livres traitent de l'art de graver la musique.  Ils ne
+contiennent malheureusement que des g&eacute;n&eacute;ralit&eacute;s
+et quelques exemples. La lecture de telles r&egrave;gles est certes
+instructive, mais est tr&egrave;s loin de nous conduire &agrave; un algorithme pr&ecirc;t
+&agrave; &ecirc;tre impl&eacute;ment&eacute; dans un programme. Dans la pratique, suivre les
+instructions de ces trait&eacute;s aboutirait &agrave; des
+algorithmes qui figent bon nombre d'exceptions.  R&eacute;pertorier
+tous ces cas de figure demanderait un travail consid&eacute;rable, qui
+finalement ne les couvrirait pas tous.
 
 
 <img src="@IMAGES@ross-beam-scan.jpeg">
 <p align="center">
 
-<em>Formatting rules defined by example. Image from Ted Ross' The Art of
-Music Engraving</em>
+<em>R&egrave;gles de formatages d&eacute;finies par l'exemple. Image tir&eacute;e de
+l'ouvrage de Ted Ross &laquo; The Art of Music Engraving &raquo;</em>
 </p>
 
 <p>
-We have developed a much easier and robust method of determining the
-best formatting solution: score based formatting. The principle is the
-same as beauty contest: for each possible configuration, we compute an
-ugliness score. Then we choose the least ugly configuration.
+Nous avons d&eacute;velopp&eacute; une m&eacute;thode bien plus simple et robuste pour
+parvenir au meilleur formatage possible&nbsp;: le choix du moindre mal. 
+Le principe est celui d'un concours de beaut&eacute;&nbsp;: &agrave; chaque
+configuration est attribu&eacute;e une note de laideur. Nous optons alors
+pour la configuration la moins laide.
 
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-1.png">
 
 <p>
-
-For example, in the above configuration, the slur nicely connects the
-starting and ending note of the figure, a desirable trait. However, it
-also grazes one note head closely, while staying away from the others.
-Therefore, for this configuration, we deduct a `variance' score of
-15.39.  Furthermore, the slur goes up, while the melody goes
-down. This incurs a penalty of 2.00 points
-
+Si l'on consid&egrave;re le cas de figure pr&eacute;c&eacute;dent, la
+liaison est finement rattach&eacute;e aux notes de d&eacute;but et de
+fin, et a une ligne bien galb&eacute;e.  Elle fr&ocirc;le cependant
+l'une des notes, tout en restant bien loin des autres. Nous lui
+attribuons donc une note de "variance" &ndash; variance des distances
+verticales entre liaison et notes &ndash; de 15,39.
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-2.png">
 <p>
+La liaison ci-dessus reste &agrave; une distance uniforme des notes, mais il
+faut tenir compte du fait qu'elle n'est pas rattach&eacute;e aux premi&egrave;re et derni&egrave;res notes.
+Ceci nous fait 1,71 points pour le d&eacute;but de la liaison et 9,37
+pour la terminaison &ndash; qui est beaucoup plus &eacute;loign&eacute;e de la derni&egrave;re note.
 
-In this configuration, the slur keeps a uniform distance from the
-heads, but we have to deduct some points because the slur doesn't
-start and end on the note heads.  For the left edge, we deduct 1.71,
-and for the right edge (which is further from the head) we deduct
-9.37 points.
+Par ailleurs, la liaison monte alors que la m&eacute;lodie descend, ce qui entra&icirc;ne une
+p&eacute;nalit&eacute; de 2 points.
+
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-3.png">
 
 <p>
-
-Finally, in this configuration, only the ending the slur is far away
-from the ending note head, at a score of 10.04 ugliness points.
-
-<p>
-Adding up all scores, we notice that the third option is the least
-ugly, or most beautiful version.   Hence we select that one.
+Enfin, dans cette configuration, seule la terminaison de la liaison
+reste &eacute;loign&eacute;e de la derni&egrave;re note &nbsp;, ce qui donne
+10,04 points de laideur.
 
 <p>
+Au vu des r&eacute;sultats, nous remarquons que la troisi&egrave;me option est la
+moins laide, ou plut&ocirc;t la version la plus satisfaisante. C'est
+pourquoi nous la s&eacute;lectionnons.
 
-This technique is a general technique, and it is used in a lot of
-situations, for example
+<p>
+Cette mani&egrave;re de proc&eacute;der est g&eacute;n&eacute;rique, et nous y avons recours dans
+bon nombre de situations, comme pour 
 
 <ul>
-<li> determining beam slopes
+<li> d&eacute;terminer la pente d'un lien de croches
 
-<img src="@IMAGES@beam-scoring-example.png">
-<li> formatting tied chords
+<img src="@IMAGES@beam-scoring-example.png">,
+<li> formater des accords li&eacute;s
 
-<img src="@IMAGES@ties-scoring-example.png">
-<li> formatting dotted chords
-<li> line breaking
-<li> page breaking  
+<img src="@IMAGES@ties-scoring-example.png">,
+<li> formater des accords avec des valeurs point&eacute;es,
+<li> les sauts de ligne,
+<li> les sauts de page.
 </ul>
 <p>
 
-This technique evaluates a lot of possibilities, which takes some time
-to compute. However, that is a worthwhile expense, because the end
-result is much better, and because it makes our lives easy.
+Cette technique est consommatrice de temps de calcul, dans la mesure o&ugrave; elle
+examine de nombreuses possibilit&eacute;s&nbsp;; n&eacute;anmoins, le jeu en vaut la
+chandelle, puisque le r&eacute;sultat final est bien meilleur et nous rend les
+choses plus faciles.
 
 
 <p align=right>
-Next: <a href=benchmarking.html>Man is the measure of things</a>: is a
-flexible architecture enough?
+Suite&nbsp;: <a href=benchmarking.html>L'homme est la mesure de
+toute chose</a>&nbsp;: peut-on
+se contenter d'une architecture flexible&nbsp;?

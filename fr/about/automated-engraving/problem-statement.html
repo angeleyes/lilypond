@@ -1,5 +1,5 @@
 <!--
-    Translation of CVS Revision: 1.5
+    Translation of CVS Revision: 1.7
     
     Translators must leave this comment in tact, but remove any dollar
     signs ($) from the CVS Revision indicator.
@@ -8,51 +8,82 @@
     original source file.  !-->
 
 
-<a name="problem-statement"></a>
-<h2>Am&eacute;liorer les logiciels d'&eacute;dition musicale</h2>
+<a name="problem-statement"></a> <h2>Les pi&egrave;ges de la
+conception d'un logiciel d'&eacute;dition musicale</h2>
 <p>
-La plupart des logiciels d'&eacute;dition ne produisent un r&eacute;sultat
-acceptable qu'au prix de nombreux efforts. Nous pensons que c'est le
-r&ocirc;le de l'ordinateur de g&eacute;rer tout le &laquo;&nbsp;bricolage&nbsp;&raquo;.
+Ce serait formidable si les logiciels d'&eacute;dition ne
+n&eacute;cessitaient pas de mettre les mains dans le cambouis pour
+produire un r&eacute;sultat acceptable.
+
+Notre but avec <em>LilyPond</em> &eacute;tait de mettre au point un
+tel syst&egrave;me&nbsp;: un programme qui produise une belle partition
+&ndash; "gravure" &ndash; automatiquement.
 </p>
 
 <p>
-Notre but avec <em>LilyPond</em> est de cr&eacute;er un <em>syst&egrave;me de
-gravure automatis&eacute;e</em>&nbsp;: un syst&egrave;me produisant de la belle
-musique &ndash; &laquo;&nbsp;grav&eacute;e&nbsp;&raquo; &ndash, automatiquement. Le
-concept en est simple&nbsp;: l'objectif d'un tel syst&egrave;me est de g&eacute;n&eacute;rer
-des partitions pr&ecirc;tes &agrave; imprimer. Celles-ci contiennent de la
-musique&nbsp;: des hauteurs et des dur&eacute;es. Nous voulons que la forme imprim&eacute;e
-soit g&eacute;n&eacute;r&eacute;e automatiquement &agrave; partir de son contenu. Sch&eacute;matiquement,
-le programme peut &ecirc;tre repr&eacute;sent&eacute; comme ceci&nbsp;:
+&Agrave; premi&egrave;re vue, la notation musicale est
+organis&eacute;e de fa&ccedil;on compl&egrave;tement
+hi&eacute;rarchique. Consid&eacute;rez l'exemple suivant, avec deux
+port&eacute;es contenant deux mesures&nbsp;:
 </p>
+<img src="@IMAGES@naive-notation.png">
 
-<table>
-<tr>
-<td align="center">
-<img src="@IMAGES@simple-notation.png">
-</td>
-<td align="center">
-&lt;--
-</td>
-<td align="center">
-<tt>\notes { c'4 d'8 }</tt>
-</td>
-</tr>
-<tr>
-<td align="center">
-forme
-</td>
-<td align="center">
-LilyPond
-</td>
-<td align="center">
-contenu
-</td>
-</tr>
-</table>
+<p>Le d&eacute;veloppement logiciel ne consisterait-t-il pas &agrave;
+d&eacute;couvrir des hi&eacute;rarchies et &agrave; mod&eacute;liser
+le monde r&eacute;el sous forme d'arbres&nbsp;?
+Dans l'esprit d'un programmeur na&iuml;f, l'extrait musical
+ci-dessus peut ais&eacute;ment se repr&eacute;senter par un ensemble de
+bo&icirc;tes imbriqu&eacute;es&nbsp;:
+</p>
+<img src="@IMAGES@naive-notation-uml.png">
+
+<p>
+Il est facile de suivre ce mod&egrave;le en &eacute;crivant un
+logiciel. Le stockage en m&eacute;moire des donn&eacute;es est
+&eacute;vident, et leur &eacute;criture sur le disque est
+triviale. Dans un fichier XML, ce pourrait &ecirc;tre quelque chose
+comme
+
+<PRE>
+  &lt;score&gt;
+    &lt;staff&gt;
+      &lt;measure id="1"&gt;
+         &lt;chord length="1/2"&gt;
+          &lt;pitch name="c"&gt;
+         &lt;/chord&gt;
+         &lt;chord&gt;
+
+        ....
+      &lt;/measure&gt;
+    &lt;/staff&gt;
+  &lt;/score&gt;
+</PRE>
+
+<p>
+En r&eacute;sum&eacute;, ce mod&egrave;le est &eacute;vident, simple
+et clair. Beaucoup de logiciels sont fond&eacute;s
+dessus. Malheureusement, il est &eacute;galement insuffisant. La
+repr&eacute;sentation hi&eacute;rarchique fonctionne pour beaucoup de
+partitions simples, mais elle est limit&eacute;e pour une utilisation
+pouss&eacute;e. Regardez l'exemple suivant&nbsp;:
+</p>
+<img src="@IMAGES@nonnaive-notation.png">
+
+<p>
+Ici, plusieurs suppositions du mod&egrave;le hi&eacute;rarchique sont
+mises &agrave; mal&nbsp;: les port&eacute;es d&eacute;butent et
+s'arr&ecirc;tent n'importe o&ugrave;, les voix passent d'une
+port&eacute;e &agrave; l'autre, et parfois occupent m&ecirc;me deux
+port&eacute;es.
+
+<p>
+La notation musicale est vraiment diff&eacute;rente de la musique
+elle-m&ecirc;me. La notation est un langage visuel complexe, qui
+permet de coder des concepts musicaux souvent beaucoup plus
+simples. Par cons&eacute;quent, les logiciels devraient
+refl&eacute;ter cette s&eacute;paration.
 
 <p align="right">
-Suite&nbsp;: <a href="implementing-notation.html">Impressionnant, mais
-que se passe-t-il en th&eacute;orie</a>&nbsp;? Une approche pratique pour
-ma&icirc;triser la notation.</p>
+Suite&nbsp;: <a href="divide-and-conquer.html">Diviser pour mieux
+r&eacute;gner</a>, un mod&egrave;le pour la notation
+automatis&eacute;e.</p>
