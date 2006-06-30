@@ -1,3 +1,9 @@
+2006-06-30  Jean-Charles  <lolyfan@wanadoo.fr>
+
+	* site/switch/tour.html, fr/switch/tour.html: v2.7 -> v2.9 for
+	links.
+	* fr/about/automated-engraving/scoring-esthetics.html: layout bugfix
+
 2006-06-26  John Mandereau  <john.mandereau@free.fr>
 
 	* fr/<various files>: update translation.
