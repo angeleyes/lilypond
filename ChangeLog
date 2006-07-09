@@ -1,3 +1,7 @@
+2006-07-09  Graham Percival  <gpermus@gmail.com>
+
+	* site/install/stable.ihtml: fixed link for OSX-x86 download.
+
 2006-06-30  Jean-Charles  <lolyfan@wanadoo.fr>
 
 	* site/switch/tour.html, fr/switch/tour.html: v2.7 -> v2.9 for

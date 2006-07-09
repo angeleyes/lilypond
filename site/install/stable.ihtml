@@ -122,7 +122,7 @@
     <td>
       <strong>
 	_("Download <a href='%s'>%s</a>",
-	  "@v2.8-darwin-ppc-URL@",
+	  "@v2.8-darwin-x86-URL@",
  	  "LilyPond")
       </strong>
     </td>
