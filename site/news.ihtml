@@ -28,6 +28,19 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond 2.9.13 available</b> - <em>July 23, 2006</em>
+
+<dd>
+This release supports doits and falls, and more tuning options for
+grace note spacing and tuplet brackets.  (<a
+href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.9">Download</a>)
+
+
+</dd>
+
+
+
 <dt><b>LilyPond 2.9.12 available</b> - <em>July 18, 2006</em>
 
 <dd>
@@ -38,6 +51,7 @@ href="install/#2.9">Download</a>)
 
 
 </dd>
+
 
 <dt><b>LilyPond 2.9.11 available</b> - <em>July 12, 2006</em>
 
@@ -52,13 +66,6 @@ href="install/#2.9">Download</a>)
 
 </dd>
 
-
-<dt><b>LilyPond 2.9.10 available</b> - <em>June 15, 2006</em>
-<dd>
-This releases fixes a couple of  bugs in 2.9.9. 
-(<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
-<a href="install/#2.9">Download</a>)
-</dd>
 
 
 </dl>
