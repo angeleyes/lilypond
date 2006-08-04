@@ -1,3 +1,7 @@
+2006-08-04  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/old-news.html (href): 2.9.14.
+
 2006-07-25  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/install/stable.ihtml: update slackware download link.
