@@ -1,3 +1,7 @@
+2006-08-08    <hanwen@lilypond.org>
+
+	* site/devel/index.html: remove uwaterloo link.
+
 2006-08-04  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/old-news.html (href): 2.9.14.
