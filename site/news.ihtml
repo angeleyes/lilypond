@@ -28,6 +28,16 @@ on one day.
 !-->
 
 
+
+<dt><b>LilyPond 2.9.17 available</b> - <em>September 2, 2006</em>
+
+<dd>
+This release fixes many bugs. Among others, MacOS X QuickTime now
+ honors tempo changes are in the MIDI output.  (<a
+ href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+ href="install/#2.9">Download</a>) </dd>
+
+
 <dt><b>LilyPond 2.9.16 available</b> - <em>August 25, 2006</em>
 
 <dd>
@@ -45,13 +55,6 @@ This releases fixes many bugs in the 2.9.14 release.  (<a
 href="install/#2.8">Download</a>)
 
 </dd>
-
-<dt><b>LilyPond 2.8.6 available</b> - <em>August 8, 2006</em> <dd>
-This release contains a few minor bugfixes; the source tarball is also
-available.  (<a href="install/#2.8">Download</a>)
-
-</dd>
-
 
 </dl>
 
