@@ -1,3 +1,7 @@
+2006-09-17  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* nl/index.html: Remove broken link to canadian mirror.
+
 2006-09-04  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): 2.9.17
