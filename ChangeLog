@@ -1,3 +1,7 @@
+2006-09-17  John Mandereau  <john.mandereau@free.fr>
+
+	* fr/index.html: remove sponsoring section.
+
 2006-09-17  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/menu-entries.py: idem.
