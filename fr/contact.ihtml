@@ -85,7 +85,7 @@ Souscrivez</a> &agrave; la liste d'informations (<tt>info-lilypond</tt>,
   <dt>Contacter directement les auteurs&nbsp?</dt>
     <dd>
     Reportez-vous &agrave; la
-    <a href="@DOC@v2.6/Documentation/topdocs/AUTHORS.html">
+    <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">
       liste des auteurs</a>.
     <em>Merci de ne les contacter directement que pour des motifs strictement
       personnels</em>.
