@@ -1,3 +1,15 @@
+2006-10-15  John Mandereau  <john.mandereau@free.fr>
+
+	* site/install/using.html, fr/install/using.html,
+	nl/install/using.html: fix mailto:lilypond-user@gnu.org link.
+
+	* fr/switch/advantages.html: update translation.
+
+	* fr/index.html, fr/about/faq.html, fr/switch/tour.html,
+	fr/switch/howto.html, fr/switch/new-notation.html: fix
+	"Translation of CVS Revision" number (translation was already
+	updated).
+
 2006-10-15  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): 2.9.24
