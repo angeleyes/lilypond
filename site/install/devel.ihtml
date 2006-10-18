@@ -34,12 +34,34 @@
 	"@v2.9-linux-x86-URL@");
 	<br>
 	</strong>
-	<em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux.sh</tt>")</em>
+	<em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-x86.sh</tt>")</em>
     </td>
     <td>@v2.9-linux-x86-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
 
+  <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@tux-logo.png">
+      </p>
+    </td>
+    <td>
+      Any x86_64
+    </td>
+    <td>-</td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>the installer</a>",
+	"@v2.9-linux-64-URL@");
+	<br>
+	</strong>
+	<em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-64.sh</tt>")</em>
+    </td>
+    <td>@v2.9-linux-64-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
+  
 
 
   <tr bgcolor="#e8ffe8" >
