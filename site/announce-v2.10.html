@@ -1,0 +1,60 @@
+<title>LilyPond 2.10 now available</title>
+
+<h1>LilyPond version 2.10 available - prettier music than ever</h1>
+
+Utrecht the Netherlands--October, 2006.
+<p>
+After 8 months of furious programming, the LilyPond Development Team
+is proud to announce LilyPond 2.10.0, software for better looking music
+notation.
+<p>
+
+The inspiration for LilyPond came when two befriended musicians got
+annoyed with the bland and boring look of computer print-out. Every
+musician prefers reading beautiful music, so couldn't we programmers
+solve that printing problem?
+<p>
+
+LilyPond just does that: it prints music in the best traditions of
+classical engraving with minimum fuss.  Don't waste time on tuning
+spacing, moving around symbols, or shaping slurs.  Impress friends and
+colleagues with sharp sheet music!
+
+
+<h2>New stuff</h2>
+
+Version 2.10 replaces the latest "stable" release 2.8.  The two most
+significant additions are:  
+
+<ul>
+<li>Optimal Page Layout
+<p>
+  Creating music with good page turning points is easier than
+  ever. The new page breaker will tune horizontal and vertical spacing
+  to ensure that page turns only fall at rests or places that you
+  mark explicitly.
+
+  <p>
+  This code was contributed by Joe Neeman
+<li>Stream based music representation
+<p>
+
+  LilyPond uses a very elegant input format, that uses identifiers,
+  arbitrary nested structures and inline Scheme expressions.  As such,
+  it is hard for other programs to parse.
+
+  With this release, Erik Sandberg has contributed internal rewrites
+  that make it possible to output a much simpler intermediate format.
+  On the long term, this will make it easier to read LilyPond files in
+  other programs.
+
+</ul>
+
+That's not all, check out
+<pre>
+   <a
+   href="http://lilypond.org/doc/v2.8/Documentation/topdocs/NEWS.html">
+   http://lilypond.org/doc/v2.8/Documentation/topdocs/NEWS.html
+   </a>
+</pre>
+for all changes.
