@@ -1,3 +1,11 @@
+2006-10-20  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (Preferably): fix date. 
+
+	* site/announce-v2.10.html: new file.
+
+	* site/about/pubs.html (href): add erik's thesis.
+
 2006-10-18  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (href): 2.9.25
