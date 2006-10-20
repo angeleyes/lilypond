@@ -1,3 +1,7 @@
+2006-10-21  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/news.ihtml (href): 2.9.26
+
 2006-10-20  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): fix date. 

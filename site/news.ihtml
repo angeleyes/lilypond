@@ -29,6 +29,16 @@ on one day.
 
 
 
+<dt><b>LilyPond 2.9.26 available</b> - <em>October 20, 2006</em>
+
+<dd>
+This release has further bugfixes.   (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_26&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="install/#2.9">Download</a>)
+
+</dd>
+
+
 <dt><b>LilyPond 2.9.25 available</b> - <em>October 18, 2006</em>
 
 <dd>
@@ -52,20 +62,6 @@ href="install/#2.9">Download</a>)
 
 </dd>
 
-
-<dt><b>LilyPond 2.9.23 available</b> - <em>October 12, 2006</em>
-
-<dd>
-This release cuts fragments of EPS directly from your finished score,
-and makes it easier to insert ties into lyrics. (<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.9">Download</a>)
-
-</dd>
-
-
-
- 
 
 </dl>
 
