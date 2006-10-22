@@ -1,6 +1,10 @@
 
-default: local-doc
+default: local-doc local-txt
 
+local-txt: $(addprefix $(outdir)/,$(TO_TOP_FILES))
+
+foo:
+	cho
 copy-to-top:  $(TO_TOP_FILES)
 	$(foreach i, $(TO_TOP_FILES), \
 	  cp $(i) $(top-build-dir) && ) true

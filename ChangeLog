@@ -1,3 +1,7 @@
+2006-10-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* lily/font-config.cc (init_fontconfig): remove FC cache warning.
+
 2006-10-04  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* VERSION (PACKAGE_NAME): release 2.8.7
