@@ -35,7 +35,7 @@ on one day.
 The last months, Erik Sandberg has been overhauling the internals of
 Lily. This change introduces a new intermediate format, Music Streams,
 which will make it easier get music data out of LilyPond. A copy of
-the thesis is now avalaible from lilypond.org (<a
+the thesis is now available from lilypond.org (<a
 href="@IMAGES@thesis-erik-sandberg.pdf">download PDF 750k</a>)
 
 </dd>
