@@ -1,3 +1,14 @@
+2006-10-23  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* .cvsignore: Update.
+
+	* cygwin/postinstall-lilypond.sh: Remove.
+
+2006-10-16  Jan Nieuwenhuizen  <janneke@gnu.org>
+
+	* GNUmakefile.in ($(tree-share-prefix)/mf-link-tree link-mf-tree):
+	Remove bashishms.  Fixes build when /bin/sh is dash.
+
 2006-10-22  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* lily/font-config.cc (init_fontconfig): remove FC cache warning.
