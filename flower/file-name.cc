@@ -41,8 +41,10 @@ using namespace std;
 static string
 dos_to_posix (string file_name)
 {
-  char buf[PATH_MAX] = "";
+  char buf[PATH_MAX];
   char s[PATH_MAX];
+  /* FIXME: copy forgets trailing zero.  */
+  memset ((void*)s, 0, PATH_MAX);
   file_name.copy (s, PATH_MAX - 1);
   /* ugh: char const* argument gets modified.  */
   int fail = cygwin_conv_to_posix_path (s, buf);
