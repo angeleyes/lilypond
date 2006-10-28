@@ -27,7 +27,16 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.9.27 available</b> - <em>October 28, 2006</em>
 
+<dd>
+This release has a new <tt>FretBoards</tt> context, and some further
+bugfixes.  (<a
+href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_27&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="install/#2.9">Download</a>)
+
+</dd>
 
 <dt><b>Music streams thesis available</b> - <em>October 21, 2006</em>
 
@@ -59,19 +68,6 @@ This release has more bugfixes; from now on, binaries are also
 available for x86/64.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_25&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="install/#2.9">Download</a>)
-
-</dd>
-
-<dt><b>LilyPond 2.9.24 available</b> - <em>October 15, 2006</em>
-
-<dd>
-This release has support for right hand guitar fingerings, and offers
-some bugfixes.  (<a
-href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
-<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed2924&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
- <a
-href="install/#2.9">Download</a>)
 
 </dd>
 
