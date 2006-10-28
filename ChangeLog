@@ -1,5 +1,7 @@
 2006-10-29  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* VERSION (PATCH_LEVEL): bump.
+
 	* lily/include/GNUmakefile: gitness
 
 	* flower/include/GNUmakefile: gitness.
