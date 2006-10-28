@@ -61,16 +61,6 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_26&colspec
 </dd>
 
 
-<dt><b>LilyPond 2.9.25 available</b> - <em>October 18, 2006</em>
-
-<dd>
-This release has more bugfixes; from now on, binaries are also
-available for x86/64.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_25&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="install/#2.9">Download</a>)
-
-</dd>
-
 
 </dl>
 
