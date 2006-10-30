@@ -10,7 +10,6 @@ import time
 import string 
 import getopt
 
-gcos = "unknown"
 index_url=''
 top_url=''
 changelog_file=''
@@ -47,7 +46,7 @@ default_footer = r"""<hr>Please take me <a href=@INDEX@>back to the index</a>
 of @PACKAGE_NAME@
 """
 
-built = r"""
+built = r'''
 <div style="background-color: #e8ffe8; padding: 2; border: #c0ffc0 1px solid;">
 %(wiki_string)s
 <p>
@@ -60,7 +59,7 @@ Report errors to <a href="%(mail_address_url)s">%(mail_address)s</a>.</font></ad
 </div>
 
 
-"""
+'''
 
 
 def gulp_file (f):
@@ -119,31 +118,12 @@ for opt in options:
 	else:
 		raise 'unknown opt ', o
 
-#burp?
-def set_gcos ():
-	global gcos
-	os.environ["CONFIGSUFFIX"] = 'www';
-	if os.name == 'nt':
-		import ntpwd
-		pw = ntpwd.getpwname(os.environ['USERNAME'])
-	else:
-		import pwd
-		if os.environ.has_key('FAKEROOTKEY') and os.environ.has_key('LOGNAME'):
-			pw = pwd.getpwnam (os.environ['LOGNAME'])
-		else:
-			pw = pwd.getpwuid (os.getuid())
-
-	f = pw[4]
-	f = string.split (f, ',')[0]
-	gcos = f 
-
 def compose (default, file):
 	s = default
 	if file:
 		s = gulp_file (file)
 	return s
 
-set_gcos ()
 localtime = time.strftime ('%c %Z', time.localtime (time.time ()))
 
 if os.path.basename (index_url) != "index.html":

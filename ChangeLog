@@ -1,3 +1,16 @@
+2006-10-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* ChangeLog: 
+	* GNUmakefile.in: 
+	* stepmake/bin/add-html-footer.py: 
+	set_gcos cherrypick.
+
+	* ps/music-drawing-routines.ps: 
+	strip draw_white_text
+
+	* Documentation/user/GNUmakefile: 
+	use pnmtops iso. ImageMagick
+
 2006-10-30  Jan Nieuwenhuizen  <janneke@gnu.org>
 
 	* GNUmakefile.in (install-help2man): Target from HEAD.  Fixes gub

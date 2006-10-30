@@ -62,10 +62,10 @@ web-install:
 	$(MAKE) out=www install-WWW
 
 uninstall-WWW:
-	#TODO
+	echo TODO
 
 web-uninstall:
-	$(MAKE) out=www uninstall-WWW=
+	$(MAKE) out=www uninstall-WWW
 
 local-install:
 	$(INSTALL) -d $(DESTDIR)$(local_lilypond_datadir)

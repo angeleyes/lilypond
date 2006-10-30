@@ -198,7 +198,7 @@ $(outdir)/%.png: %.png
 	convert -geometry 50x50% $< $@
 
 $(outdir)/%.eps: %.png
-	convert $< $@
+	pngtopnm < $< | pnmtops > $@
 
 DEEP_HTML_FILES =\
  $(outdir)/lilypond/index.html\
