@@ -1,5 +1,8 @@
 2006-10-31  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* mf/GNUmakefile: 
+	otf depends on otf-g?table. Fixes race condition in -j2 build.
+
 	* ChangeLog: 
 	* GNUmakefile.in: 
 	* stepmake/bin/add-html-footer.py: 
