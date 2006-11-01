@@ -4,21 +4,19 @@
 
 Utrecht the Netherlands--November, 2006.
 <p>
-After 9 months of furious programming, the LilyPond Development Team
-is proud to announce LilyPond 2.10.0, software for better looking music
-notation.
-<p>
-
-The inspiration for LilyPond came when two befriended musicians got
-annoyed with the bland and boring look of computer print-out. Every
-musician prefers reading beautiful music, so couldn't we programmers
-solve that printing problem?
+The inspiration for LilyPond came when ten years ago two befriended
+musicians were disappointed with the bland and boring look of computer
+print-outs. Every musician prefers to read beautiful music, so
+couldn't we programmers solve that printing problem?
 <p>
 
 LilyPond just does that: it prints music in the best traditions of
 classical engraving with minimum fuss.  Don't waste time on tuning
 spacing, moving around symbols, or shaping slurs.  Impress friends and
 colleagues with sharp sheet music!
+<p>
+We are proud to announce the 10-year anniversary release, LilyPond
+version 2.10.
 
 
 <h2>New stuff</h2>
@@ -38,20 +36,23 @@ fingerings for guitar.
 <li> formatting improvements in tied chords, automatic beaming, 
 nested tuplets, and much more.
 
-<li>stream based music representation
+<li>stream based music representation.
 <p>
 
-  LilyPond uses a very sophisticated input format, that uses identifiers,
-  arbitrary nested structures and inline Scheme expressions.  As such,
-  it is hard for other programs to parse.
+  LilyPond uses an elegant input format, that uses identifiers,
+  arbitrary nested structures and inline Scheme expressions.  While
+  the format is easy to write and read for humans, it is less so for
+  programs.
 <p>
   With this release, Erik Sandberg has contributed internal rewrites
   that make it possible to output a much simpler intermediate format.
   In the long term, this will enable other programs to read LilyPond
   music.
+  
+<li> automated testing, to prevent older bugs from reappearing.
 
 <li> Docbook and PDFLaTeX support in lilypond-book.
-<li> Completely revised manual.
+<li> completely revised manual.
 </ul>
 
 That's not all, check out
