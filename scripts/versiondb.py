@@ -26,7 +26,6 @@ def get_url_versions (url):
     def note_version (m):
 
         name = m.group (1)
-        print m.group (2)
         version = tuple (map (int,  m.group (2).split('.')))
         build = 0
         build_url = url + re.sub ("HREF=", '', m.group (0))
@@ -163,7 +162,6 @@ def main ():
         print 'last mingw 2.9:', db.get_last_release ('mingw', (2,9))
         print 'last mingw 2.9:', db.get_last_release ('mingw', (2,))
         print 'last source:', db.get_last_release ('source', ())
- #       print db._db['mingw']
         return
 
     if options.download:

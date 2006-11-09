@@ -118,7 +118,7 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions
+	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url http://download.linuxaudio.org/lilypond/
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --version-db lilypond.versions --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 linktree: tree
