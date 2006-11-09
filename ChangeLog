@@ -1,5 +1,11 @@
 2006-11-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* site/install/index.html: use new files.
+
+	* site/install/install-2.9.ihtml: new file, from devel.ihtml
+
+	* site/install/install-2.10.ihtml: new file.
+
 	* site/devel/index.html: idem.
 	Use repo.or.cz until sv.gnu comes online.
 	
