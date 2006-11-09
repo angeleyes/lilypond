@@ -24,8 +24,8 @@ for a in ['index.html',
     s += open (a).read()
 
 s= re.sub ('<a href="?([^.">]+).html"?>',
-     '<a href="#\\1">', s)
+           '<a href="#\\1">', s)
 
 open ('big-page.html','w').write (s)
 
-    
+

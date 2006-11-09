@@ -1,5 +1,9 @@
 2006-11-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* GNUmakefile: use $(DOWNLOAD_URL)
+
+	* site/devel/menu-entries.py: remove packaging menu.
+
 	* GNUmakefile (menuify): add download version db command.
 	(menuify): set download url.
 	(update-versions): update-versions target
