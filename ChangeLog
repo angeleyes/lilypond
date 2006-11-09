@@ -4,7 +4,7 @@
 	(menuify): set download url.
 	(update-versions): update-versions target
 
-	* scripts/lilypondorg..py: remove file.
+	* scripts/lilypondorg.py: remove file.
 	
 	* scripts/versiondb.py: new file from gub.
 	
