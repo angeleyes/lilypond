@@ -97,7 +97,7 @@ LANGUAGES_TEMPLATE = '''\
 
 
 version_builds={}
-branches = [(2,9), (2,8), (2,7), (2,6)]
+branches = [(2,10), (2,9), (2,8), (2,7), (2,6)]
 
 def read_build_versions ():
     global version_builds

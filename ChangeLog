@@ -1,5 +1,7 @@
 2006-11-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* scripts/format-page.py (branches): add 2.10.
+
 	* site/install/index.html: use new files.
 
 	* site/install/install-2.9.ihtml: new file, from devel.ihtml
