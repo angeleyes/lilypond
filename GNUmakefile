@@ -118,7 +118,8 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --download-base $(DOWNLOAD_URL) --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
+	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions
+	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --version-db lilypond.versions --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 linktree: tree
 	$(foreach i, $(NON_HTML), ln -f $i out/$i &&) true

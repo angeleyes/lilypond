@@ -7,12 +7,11 @@ import os
 import re
 import string
 import sys
-import lilypondorg
+import versiondb
 
 # The directory to hold the translated and menuified tree.
 outdir = '/var/www'
 verbose = 0
-offline = 0
 
 C = 'site'
 LANGUAGES = (
@@ -96,26 +95,25 @@ LANGUAGES_TEMPLATE = '''\
 
 
 
+version_db_file_name = 'lilypond.versions'
 version_builds={}
 branches = [(2,10), (2,9), (2,8), (2,7), (2,6)]
 
-def read_build_versions ():
-    global version_builds
-    
+def read_build_versions (name):
+    version_db = versiondb.VersionDataBase (name)
+
+    print 'hoi\n\n\n'
     for branch in branches:
         branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
     
-        for p in lilypondorg.platforms:
-            (v, b, url) = lilypondorg.max_branch_version_build_url (branch, p)
-        
+        for p in version_db.platforms ():
+            (v, b, url) = version_db.get_last_release (p, branch)
             v = '.'.join (['%d' % vc for vc in v])
             version_builds[branch_str + '-' + p] = ('%s-%d' % (v,b), url)
 
-        (version, url) =  lilypondorg.max_src_version_url (branch)
+        (version, b, url) =  version_db.get_last_release ('source', branch)
         version_builds[branch_str + '-source'] = ('.'.join (['%d' % vc for vc in version]),
                                                   url)
-                                                  
-
 
 def dir_lang (file, lang):
     return string.join ([lang] + string.split (file, '/')[1:], '/')
@@ -129,9 +127,6 @@ def file_lang (file, lang):
     return base + ext
 
 
-def rreverse (lst):
-    list.reverse (lst)
-    return lst
 
 
 def format_page (html, file_name, lang):
@@ -159,7 +154,7 @@ def format_page (html, file_name, lang):
     def is_active (dir_entry, url):
         '''Return if DIR_ENTRY is used in URL.'''
         return (url == dir_split[dir_entry.up - 1] \
-            or os.path.join (dir_entry.name, url) == file_name)
+                or os.path.join (dir_entry.name, url) == file_name)
 
     def get_menu (dir):
         '''Return menu list for DIR.'''
@@ -229,8 +224,9 @@ def format_page (html, file_name, lang):
         return s % (match.group (3), match.group (4),
               match.group (5), match.group (6))
 
+    
     dir = os.path.dirname (file_name)
-    dir_split = rreverse (string.split (dir, '/'))
+    dir_split = [x for x in reversed (string.split (dir, '/'))]
     base_name = os.path.basename (file_name)
     is_index = base_name == 'index.html'
     directories = list_directories (dir, 0)
@@ -241,12 +237,12 @@ def format_page (html, file_name, lang):
     menus = map (lambda x: map (menuitemize, x), listings)
     menu_strings = map (lambda x: MENU_TEMPLATE % string.join (x),
               menus)
-    menu = string.join (rreverse (menu_strings), MENU_SEP)
+    menu = string.join (reversed (menu_strings), MENU_SEP)
 
 
     # Make location.
     locations = filter (lambda x: x, map (location_menu, directories))
-    locations = rreverse (map (lambda x: x[0], locations))
+    locations = map (lambda x: x[0], reversed (locations))
 
     is_root = is_index and depth == 1
     if is_root:
@@ -312,7 +308,7 @@ def format_page (html, file_name, lang):
     i = string.index (page_template, '@MAIN@')
     page = page_template[:i] + main + page_template[i+6:]
 
-    page = re.sub ('@([-A-Za-z]*.ihtml)@', grab_ihtml, page)
+    page = re.sub ('@([-A-Za-z0-9.]*.ihtml)@', grab_ihtml, page)
     page = re.sub ('@LOCATION@', location, page)
     page = re.sub ('@MENU@', menu, page)
     page = re.sub ('@SCRIPT@', script, page)
@@ -375,20 +371,18 @@ def do_file (file_name):
 
 
 def do_options ():
-    global outdir, verbose, offline
+    global outdir, verbose
     
     (options, files) = getopt.getopt (sys.argv[1:], '',
-                     ['outdir=', 'help', 'verbose', 'offline',
-                      'download-base='])
+                                      ['outdir=', 'help',
+                                       'version-db=', 'verbose'])
     for (o, a) in options:
         if o == '--outdir':
             outdir = a
         elif o == '--verbose':
             verbose = 1
-        elif o == '--offline':
-            offline = 1
-        elif o == '--download-base':
-            lilypondorg.base_url = a
+        elif o == '--version-db':
+            version_db_file_name = a
         elif o == '--help':
             sys.stdout.write (r'''
 Usage:
@@ -403,9 +397,7 @@ This script is licensed under the GNU GPL
 
 def main ():
     files = do_options ()
-    if not offline:
-        read_build_versions ()
-
+    read_build_versions (version_db_file_name)
     global PAGE_TEMPLATE
     f = os.path.join (dir_lang ('', C), 'template.ihtml')
     if os.path.isfile (f):

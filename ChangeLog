@@ -1,6 +1,14 @@
 2006-11-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
+	* GNUmakefile (menuify): add download version db command.
+
+	* scripts/lilypondorg..py: remove file.
+	
+	* scripts/versiondb.py: new file from gub.
+	
 	* scripts/format-page.py (branches): add 2.10.
+	(read_build_versions): use version_db
+	(main): junk offline option, add --db-file
 
 	* site/install/index.html: use new files.
 
