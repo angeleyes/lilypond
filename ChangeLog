@@ -1,3 +1,10 @@
+2006-11-09  Han-Wen Nienhuys  <hanwen@lilypond.org>
+
+	* site/devel/index.html: idem.
+	Use repo.or.cz until sv.gnu comes online.
+	
+	* site/devel/participating/index.html: git instructions.
+
 2006-11-08  Han-Wen Nienhuys  <hanwen@lilypond.org>
 
 	* site/news.ihtml (Preferably): typos, move chunks to old news.
