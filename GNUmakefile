@@ -24,7 +24,7 @@ outball = site.tar.gz
 LANG =
 SITE = site
 
-DOWNLOAD_URL = 'http://lilypond.org/download'
+DOWNLOAD_URL = 'http://lilypond.org/download/'
 INKSCAPE = inkscape
 
 ifneq ($(LANG),)
@@ -63,7 +63,7 @@ PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
 update-versions:
-	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url http://download.linuxaudio.org/lilypond/
+	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url $(DOWNLOAD_URL)
 
 all: scripts linktree update-versions menuify $(LANGUAGES) apache-1.3.x-fixup
 

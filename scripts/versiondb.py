@@ -11,8 +11,6 @@ platforms = ['linux-x86',
              'darwin-x86',
              'documentation',
              'freebsd-x86',
-#             'freebsd6-x86',
-#             'linux-arm',
              'mingw',
              'cygwin',
              'source',
@@ -51,6 +49,7 @@ class VersionDataBase:
         self.file_name = file_name
         if os.path.exists (file_name):
             self.read ()
+            
     def platforms (self):
         return self._db.keys ()
     
@@ -150,6 +149,9 @@ Inspect lilypond.org download area, and write pickle of all version numbers.
 def main ():
     cli_parser = get_cli_parser ()
     (options, files) = cli_parser.parse_args ()
+
+    if options.url and not options.url.endswith ('/'):
+        options.url += "/"
 
     db = VersionDataBase (options.dbfile)
     if options.test:
