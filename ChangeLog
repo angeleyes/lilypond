@@ -2,6 +2,7 @@
 
 	* GNUmakefile (menuify): add download version db command.
 	(menuify): set download url.
+	(update-versions): update-versions target
 
 	* scripts/lilypondorg..py: remove file.
 	

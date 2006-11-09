@@ -62,7 +62,10 @@ TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
-all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
+update-versions:
+	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url http://download.linuxaudio.org/lilypond/
+
+all: scripts linktree update-versions menuify $(LANGUAGES) apache-1.3.x-fixup
 
 # In Apache 1.3.x, .nl always has a higher LanguagePriority than the
 # empty content-language, everyone will see the Dutch pages.
@@ -118,7 +121,6 @@ tree:
 	cd out/site && mkdir -p $(TREE)
 
 menuify: $(mo)
-	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url http://download.linuxaudio.org/lilypond/
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --version-db lilypond.versions --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 linktree: tree
