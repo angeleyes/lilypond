@@ -102,7 +102,6 @@ branches = [(2,10), (2,9), (2,8), (2,7), (2,6)]
 def read_build_versions (name):
     version_db = versiondb.VersionDataBase (name)
 
-    print 'hoi\n\n\n'
     for branch in branches:
         branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
     
