@@ -36,11 +36,11 @@ href="install/#2.10">Download</a>)
 </dd>
 
 <dt><b>GIT repository online</b> - <em>November 11, 2006</em> <dd>
-The LilyPond sources have moved over to  <a
-href="http://git.or.cz">GIT</a>. Check out our repository
-at <a
-href="http://git.sv.gnu.org/gitweb/?p=lilypond.git;a=summary">gnu.org</a>.
-</dd>
+ LilyPond development has moved over its source code to <a
+ href="http://git.or.cz">GIT</a>, the fast version control
+ system. Check out our repository at <a
+ href="http://git.sv.gnu.org/gitweb/?p=lilypond.git;a=summary">gnu.org</a>.
+ </dd>
 
 
 <dt><b>LilyPond 2.9.29 available</b> - <em>November 5, 2006</em>
