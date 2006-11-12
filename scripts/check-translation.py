@@ -21,15 +21,15 @@ LANGUAGES = (
 def dir_lang (file, lang):
     return string.join ([lang] + string.split (file, '/')[1:], '/')
 
-##     Translation of CVS Revision: 1.193
-REVISION_RE = re.compile ('.*CVS Revision: ([0-9]+[.][0-9]+)', re.DOTALL)
-CVS_DIFF = 'cvs diff -kk -u -r%(revision)s -rHEAD %(original)s'
+##     Translation of GIT Commit: <hash>
+REVISION_RE = re.compile ('.*GIT Commit: ([a-f0-9]+)', re.DOTALL)
+CVS_DIFF = 'git diff %(revision)s HEAD -- %(original)s'
 
 def check_file (original, translated):
     s = open (translated).read ()
     m = REVISION_RE.match (s)
     if not m:
-        raise translated + ': no Revision: x.yy found'
+        raise translated + ': no Commit: <hash> found'
     revision = m.group (1)
 
     c = CVS_DIFF % vars ()
