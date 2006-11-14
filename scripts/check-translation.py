@@ -5,7 +5,6 @@ import optparse
 import gettext
 import os
 import re
-import string
 import sys
 
 # The directory to hold the translated and menuified tree.
@@ -19,7 +18,7 @@ LANGUAGES = (
     )
 
 def dir_lang (file, lang):
-    return string.join ([lang] + string.split (file, '/')[1:], '/')
+    return '/'.join ([lang] + file.split ('/')[1:])
 
 ##     Translation of GIT Commit: <hash>
 REVISION_RE = re.compile ('.*GIT Committish: ([a-f0-9]+)', re.DOTALL)
@@ -40,7 +39,7 @@ def check_file (original, translated):
 def do_file (file_name):
     if verbose:
         sys.stderr.write ('%s...\n' % file_name)
-    file_lang = string.split (file_name, '/')[0]
+    file_lang = file_name.split ('/')[0]
     if file_lang != C:
         check_lang = file_lang
     else:
