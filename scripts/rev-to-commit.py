@@ -1,5 +1,5 @@
 #! /usr/bin/python
-
+import sys
 import re
 import os
 
@@ -16,8 +16,12 @@ def read_pipe (command):
 def file_sub (file, frm, to):
     s = open (file).read ()
     open (file, 'w').write (s.replace (frm, to))
+
+files = sys.argv[1:]
+if not files:
+    files = read_pipe ('''git grep -l "CVS Revision: [0-9]"''').split ('\n')
     
-for file in read_pipe ('''git grep -l "CVS Revision: [0-9]"''').split ('\n'):
+for file in files:
     revision = ''
     if not file or file.find ('big-page') >= 0:
         continue
