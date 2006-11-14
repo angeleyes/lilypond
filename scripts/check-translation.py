@@ -22,7 +22,7 @@ def dir_lang (file, lang):
     return string.join ([lang] + string.split (file, '/')[1:], '/')
 
 ##     Translation of GIT Commit: <hash>
-REVISION_RE = re.compile ('.*GIT commit: ([a-f0-9]+)', re.DOTALL)
+REVISION_RE = re.compile ('.*GIT Committish: ([a-f0-9]+)', re.DOTALL)
 CVS_DIFF = 'git diff %(revision)s HEAD -- %(original)s | cat'
 
 def check_file (original, translated):
@@ -47,6 +47,7 @@ def do_file (file_name):
         check_lang = lang
     if check_lang == C:
         raise 'cannot determine language for: ' + file_name
+    
     original = dir_lang (file_name, C)
     translated = dir_lang (file_name, check_lang)
     check_file (original, translated)
