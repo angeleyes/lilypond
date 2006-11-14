@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import __main__
-import getopt
+import optparse
 import gettext
 import os
 import re
@@ -34,7 +34,7 @@ def check_file (original, translated):
 
     c = CVS_DIFF % vars ()
     if verbose:
-        os.stderr.write ('running: ' + c)
+        sys.stderr.write ('running: ' + c)
     os.system (c)
 
 def do_file (file_name):
@@ -59,22 +59,29 @@ check-translation [--language=LANG] [--verbose] FILE...
 
 This script is licensed under the GNU GPL.
 ''')
+
+
             
 def do_options ():
     global lang, verbose
-    (options, files) = getopt.getopt (sys.argv[1:], '',
-                                      ['help', 'language=', 'verbose'])
-    for (o, a) in options:
-        if 0:
-            pass
-        elif o == '--help':
-            usage ()
-        elif o == '--language':
-            lang = a
-        elif o == '--verbose':
-            verbose = 1
-        else:
-            assert unimplemented
+
+    p = optparse.OptionParser (usage="check-translation [--language=LANG] [--verbose] FILE...",
+                               description="This script is licensed under the GNU GPL.")
+    p.add_option ("--language",
+                  action='store',
+                  default='site',
+                  dest="language")
+    p.add_option ("--verbose",
+                  action='store_true',
+                  default=False,
+                  dest="verbose",
+                  help="the GIT directory to merge.")
+                               
+
+    (options, files) = p.parse_args ()
+    verbose = options.verbose
+    lang = options.language
+    
     return files
 
 def main ():
