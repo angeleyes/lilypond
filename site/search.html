@@ -1,5 +1,5 @@
 <!--
-    Translation of CVS $Revision$
+    Translation of GIT Committish: <FILL THIS>
     
     Translators must leave this comment in tact, but remove any dollar
     signs ($) from the CVS Revision indicator.
@@ -36,8 +36,10 @@
 <h2>Search mailing lists</h2>
 
 <ul>
-  <li><strong>lilypond-user</strong> is about using LilyPond, especially the 2.4 stable series.</li>
-  <li><strong>lilypond-devel</strong> is about LilyPond development, especially the 2.5 unstable series.</li>
+  <li><strong>lilypond-user</strong> is about using LilyPond,
+  especially the even-numbered (stable) series.</li>
+  <li><strong>lilypond-devel</strong> is about LilyPond development,
+  especially the  odd-numbered (development) series.</li>
   <li><strong>bug-lilypond</strong> is the bugreport list for LilyPond.</li>
   
   <li><strong>info-lilypond</strong> is the announcement list for LilyPond.</li>
@@ -45,19 +47,15 @@
 
 <h3>Search an individual mailing list </h3>
 
-<form action="http://www.mail-archive.com/cgi-bin/htsearch" method="get">
-  <input type="hidden" name="method" value="and">
-  <input type="hidden" name="format" value="short">
-  <select name="config">
-    <option value="lilypond-user_gnu_org">lilypond-user@gnu.org</option>
+<form action="http://www.mail-archive.com/search" method="get">
+  <select name="l">
+    <option value="lilypond-user@gnu.org">lilypond-user@gnu.org</option>
 
-    <option value="lilypond-devel_gnu_org">lilypond-devel@gnu.org</option>
-    <option value="bug-lilypond-admin_gnu_org">bug-lilypond@gnu.org</option>
-    <option value="info-lilypond_gnu_org">info-lilypond@gnu.org</option>
+    <option value="lilypond-devel@gnu.org">lilypond-devel@gnu.org</option>
+    <option value="bug-lilypond@gnu.org">bug-lilypond@gnu.org</option>
+    <option value="info-lilypond@gnu.org">info-lilypond@gnu.org</option>
   </select>
-  <input type="hidden" name="restrict" value="">
-  <input type="hidden" name="exclude" value="">
-  <input type="text" name="words" value="" size="35">
+  <input type="text" name="q" value="" size="35">
   <input type="submit" value="Search">
 </form>
 
