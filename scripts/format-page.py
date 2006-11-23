@@ -278,7 +278,7 @@ def format_page (html, file_name, lang):
     language_menu = ''
     for (prefix, name) in available:
         lang_file = file_lang (base_name, prefix)
-        if language_menu <> '':
+        if language_menu != '':
             language_menu += ', '
         language_menu += '<a href="%(lang_file)s">%(name)s</a>' % vars ()
 
@@ -332,15 +332,13 @@ def format_page (html, file_name, lang):
            grab_gettext4, page)
     page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
-    # Use 0 to switch i18n off.
-    if 1:
-        # Strip .html, .png suffix for auto language selection.
-        page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)(#[^"\']*)?[\'"]''',
-               '\\1="\\2"', page)
+    # Strip .html, .png suffix for auto language selection (content
+    # negotiation).
+    page = re.sub ('''(href|src)=[\'"]([^/][.]*[^.:\'"]*)(.html|.png)(#[^"\']*|)[\'"]''',
+                   '\\1="\\2\\4"', page)
 
-        # After stripping: no autoselection for language menu.
-        page = re.sub ('@LANGUAGE_MENU@', languages, page)
-
+    # Add menu after stripping: must not have autoselection for language menu.
+    page = re.sub ('@LANGUAGE_MENU@', languages, page)
     
     page = re.sub ('@LANGUAGE_MENU@', '', page)
     
