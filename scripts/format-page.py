@@ -97,7 +97,7 @@ LANGUAGES_TEMPLATE = '''\
 
 version_db_file_name = 'lilypond.versions'
 version_builds={}
-branches = [(2,10), (2,9), (2,8), (2,7), (2,6)]
+branches = [(2,11), (2,10), (2,9), (2,8), (2,7), (2,6)]
 
 def read_build_versions (name):
     version_db = versiondb.VersionDataBase (name)
