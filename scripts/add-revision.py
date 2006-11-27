@@ -35,7 +35,8 @@ def send_message (options, msg):
 
 
 def check_revision (options, committish, languages):
-    
+
+    # look for adds (diff-filter=A)
     diff = read_pipe ('git-diff-tree  --diff-filter=A -p %(committish)s %(languages)s/' % locals())
     diff = '\n'.join (diff.split ('\n')[1:])
     file_diffs = diff.split ('\ndiff --git')
