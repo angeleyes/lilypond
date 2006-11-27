@@ -93,7 +93,7 @@ TAGS:
 	etags $$(find scripts site -name '*.html' -o -name '.py')
 
 po/newweb.pot: $(PY) $(SVG) $(IHTML)
-	xgettext --default-domain=newweb --language=python --keyword=_ --join --output=$@ $(PY) $(SVG)
+	xgettext --from-code=utf-8 --default-domain=newweb --language=python --keyword=_ --join --output=$@ $(PY) $(SVG)
 	xgettext --default-domain=newweb --language=c --keyword=_ --keyword=_@ --join --output=$@  $(IHTML)
 
 
@@ -153,5 +153,3 @@ dist:
 clean:
 	rm -rf out
 
-foe:
-	echo $(IHTML)
