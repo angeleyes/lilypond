@@ -27,14 +27,23 @@ on one day.
 
 !-->
 
-<dt><b>LilyPond 2.11.0 available</b> - <em>November 27, 2006</em>
+<dt><b>LilyPond 2.11.1 available</b> - <em>December 4, 2006</em>
 
 <dd>
-This release has improved support for vertical spacing.  (<a
+This release has improved support for horizontal spacing.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">,
+<a
 href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
 
 </dd>
+
+<dt><b>LilyPond 2.10.1 available</b> - <em>December 3, 2006</em> <dd>
+A new stable release of LilyPond is available.  ((<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a
+href="install/#2.10">Download</a>)
+
 
 <dt><b>LilyPond 2.10.0 available</b> - <em>November 11, 2006</em> <dd>
 A new stable release of LilyPond is available.  (<a
@@ -43,13 +52,5 @@ href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.10">Download</a>)
 
 </dd>
-
-<dt><b>GIT repository online</b> - <em>November 11, 2006</em> <dd>
- LilyPond development has moved over its source code to <a
- href="http://git.or.cz">GIT</a>, the fast version control
- system. Check out our repository at <a
- href="http://git.sv.gnu.org/gitweb/?p=lilypond.git;a=summary">gnu.org</a>.
- </dd>
-
 </dl>
 
