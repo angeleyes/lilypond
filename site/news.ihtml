@@ -31,7 +31,7 @@ on one day.
 
 <dd>
 This release has improved support for horizontal spacing.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">,
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a
 href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
