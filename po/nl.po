@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-09 18:16+0100\n"
+"POT-Creation-Date: 2006-11-27 17:43+0100\n"
 "PO-Revision-Date: 2005-06-16 09:50+0200\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "Download"
 #: site/install/stable.ihtml:147 site/install/devel.ihtml:138
 #: site/install/stable.ihtml:152 site/install/stable.ihtml:154
 #: site/install/install-2.10.ihtml:160 site/install/install-2.9.ihtml:160
-#: site/install/install-2.8.ihtml:154
+#: site/install/install-2.8.ihtml:154 site/install/install-2.11.ihtml:160
 msgid "Documentation"
 msgstr "Documentatie"
 
@@ -289,7 +289,7 @@ msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 #: site/install/old.ihtml:147 site/install/stable.ihtml:48
 #: site/install/stable.ihtml:63 site/install/stable.ihtml:64
 #: site/install/install-2.10.ihtml:70 site/install/install-2.9.ihtml:70
-#: site/install/install-2.8.ihtml:64
+#: site/install/install-2.8.ihtml:64 site/install/install-2.11.ihtml:70
 msgid "Other"
 msgstr "Overige"
 
@@ -361,6 +361,10 @@ msgstr "Overige"
 #: site/install/install-2.8.ihtml:90 site/install/install-2.8.ihtml:110
 #: site/install/install-2.8.ihtml:131 site/install/install-2.8.ihtml:148
 #: site/install/install-2.8.ihtml:163 site/install/install-2.8.ihtml:179
+#: site/install/install-2.11.ihtml:40 site/install/install-2.11.ihtml:62
+#: site/install/install-2.11.ihtml:95 site/install/install-2.11.ihtml:115
+#: site/install/install-2.11.ihtml:136 site/install/install-2.11.ihtml:153
+#: site/install/install-2.11.ihtml:169 site/install/install-2.11.ihtml:186
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -383,6 +387,7 @@ msgstr "LilyPond ontwikkelteam"
 #: site/install/devel.ihtml:160 site/install/stable.ihtml:173
 #: site/install/stable.ihtml:175 site/install/install-2.10.ihtml:182
 #: site/install/install-2.9.ihtml:182 site/install/install-2.8.ihtml:175
+#: site/install/install-2.11.ihtml:182
 msgid "warning"
 msgstr "waarschuwing"
 
@@ -442,6 +447,7 @@ msgstr "Onderdeel van distributie"
 #: site/install/devel.ihtml:154 site/install/stable.ihtml:167
 #: site/install/stable.ihtml:169 site/install/install-2.10.ihtml:176
 #: site/install/install-2.9.ihtml:176 site/install/install-2.8.ihtml:169
+#: site/install/install-2.11.ihtml:176
 msgid "Source code"
 msgstr "Broncode"
 
@@ -458,6 +464,7 @@ msgstr "Broncode"
 #: site/install/install-2.10.ihtml:104 site/install/install-2.10.ihtml:125
 #: site/install/install-2.9.ihtml:104 site/install/install-2.9.ihtml:125
 #: site/install/install-2.8.ihtml:99 site/install/install-2.8.ihtml:120
+#: site/install/install-2.11.ihtml:104 site/install/install-2.11.ihtml:125
 #, c-format
 msgid "%s and newer"
 msgstr "%s en nieuwer"
@@ -485,7 +492,8 @@ msgstr "%s en nieuwer"
 #: site/install/stable.ihtml:173 site/install/install-2.10.ihtml:164
 #: site/install/install-2.10.ihtml:180 site/install/install-2.9.ihtml:164
 #: site/install/install-2.9.ihtml:180 site/install/install-2.8.ihtml:158
-#: site/install/install-2.8.ihtml:173
+#: site/install/install-2.8.ihtml:173 site/install/install-2.11.ihtml:164
+#: site/install/install-2.11.ihtml:180
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -565,7 +573,8 @@ msgstr "Onderdeel <a href='%s'>van distributie</a>"
 #: site/install/stable.ihtml:124 site/install/install-2.10.ihtml:108
 #: site/install/install-2.10.ihtml:129 site/install/install-2.9.ihtml:108
 #: site/install/install-2.9.ihtml:129 site/install/install-2.8.ihtml:103
-#: site/install/install-2.8.ihtml:124
+#: site/install/install-2.8.ihtml:124 site/install/install-2.11.ihtml:108
+#: site/install/install-2.11.ihtml:129
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Download <a href='%s'>%s</a>"
@@ -652,6 +661,7 @@ msgstr ""
 #: site/install/devel.ihtml:126 site/install/stable.ihtml:141
 #: site/install/stable.ihtml:143 site/install/install-2.10.ihtml:148
 #: site/install/install-2.9.ihtml:148 site/install/install-2.8.ihtml:143
+#: site/install/install-2.11.ihtml:148
 #, fuzzy, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -670,6 +680,8 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/install-2.10.ihtml:88 site/install/install-2.9.ihtml:33
 #: site/install/install-2.9.ihtml:55 site/install/install-2.9.ihtml:88
 #: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
+#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
+#: site/install/install-2.11.ihtml:88
 #, fuzzy, c-format
 msgid "Download <a href='%s'>the installer</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -680,6 +692,8 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/install-2.10.ihtml:92 site/install/install-2.9.ihtml:37
 #: site/install/install-2.9.ihtml:59 site/install/install-2.9.ihtml:92
 #: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
+#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
+#: site/install/install-2.11.ihtml:92
 #, c-format
 msgid "do %s in a command window."
 msgstr ""
