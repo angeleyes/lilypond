@@ -2,15 +2,22 @@ THE LILYPOND.ORG WEBSITE
 
 SOURCES
 
-The HTML sources live in a CVS repository.  To get a fresh version run
+The HTML sources live in a GIT repository.  To get a fresh version run
 
-    cvs -d :pserver:anonymous@cvs.sv.gnu.org:/sources/lilypond co newweb
+   mkdir web ; cd web 
+   git init-db
 
-This will create the directory newweb.
+   ## not necessary for 1.4.4.1 or newer
+   touch empty ; git add empty ; git commit  -m 'empty' empty
+   git pull git://git.sv.gnu.org/lilypond.git/ web/master:
+   git repack
 
-To update a previously fetched version, in the newweb direcotry run
+The command can
 
-   cvs update -d
+   git pull git://git.sv.gnu.org/lilypond.git/ web/master:
+
+also be used to update a repository
+
 
 
 BUILDING THE WEBSITE
@@ -108,11 +115,10 @@ Copy the file from site into your language tree
 
 Translate it, see UPDATE a TRANSLATION
 
-Add the page to CVS
+Add the page to repository
 
-    cvs add <MY-LANGUAGE>/about/index.html
-
-or send it to your CVS translation sponsor.
+    git add <MY-LANGUAGE>/about/index.html
+    git commit -m 'add file' <MY-LANGUAGE>/about/index.html
 
 
 UPDATE A TRANSLATION
@@ -125,21 +131,11 @@ a simple text editor with syntax coloring such as jEdit or Gedit.  You
 may view and check the result in your favorite browser.  Do not use a
 word processor, that will probably mess with the markup.
 
-If you think the original text should be changed or fixed, please do
-so first, but share your suggestion before changing CVS.  Typos may be
-fixed right away.
+If you think the original text should be changed or fixed, share your
+suggestion before pushing any changes.  Typos may be fixed right away.
 
 Do not use mozilla composer, at least until it is clear how to
 let it really preserve markup.
-
-#The best choice for non-destructive editing HTML source is probably
-#NOT Mozilla Composer (the new Mozilla Firefox/Thunderbird suite does not
-#include an HTML editor yet).  You get to see the result and the HTML
-#markup codes in different TABs.  *NOTE*: be sure to tell Mozilla
-#Composer to leave the original markup in tact, setting
-#
-#    Edit/Preferences/Composer: (X) Retain original source formatting
-#
 
 
 CHECK STATE OF TRANSLATION
@@ -156,8 +152,14 @@ of the translation.  To check a single page, run
 
 SUBMIT TO CVS
 
-    cvs ci -m 'translation update' <MY-LANGUAGE>/
+    git push 
 
-If you do not have CVS write access, send your translated page to your
-CVS translation sponsor, or the the lilypond-user list.
+If you do not have GIT write access, send patches to your translation
+sponsor, or the the lilypond-user list.
 
+
+You can format a patch with
+
+    git-format-patch MY-FIRST-CHANGE^..
+
+where MY-FIRST-CHANGE is the committish of your first applied change. 
