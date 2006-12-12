@@ -27,6 +27,21 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.11.2 available</b> - <em>December 12, 2006</em>
+
+<dd>
+This release supports glissandi and harmonics in tablature.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+
+</dd>
+
+<dt><b>LilyPond 2.10.2 available</b> - <em>December 12, 2006</em> <dd>
+A new stable release of LilyPond is available.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="install/#2.10">Download</a>)
+
 <dt><b>LilyPond 2.11.1 available</b> - <em>December 4, 2006</em>
 
 <dd>
@@ -38,19 +53,5 @@ href="install/#2.11">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.10.1 available</b> - <em>December 3, 2006</em> <dd>
-A new stable release of LilyPond is available.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a
-href="install/#2.10">Download</a>)
-
-
-<dt><b>LilyPond 2.10.0 available</b> - <em>November 11, 2006</em> <dd>
-A new stable release of LilyPond is available.  (<a
-href="announce-v2.10.html">Announcement</a>, <a
-href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.10">Download</a>)
-
-</dd>
 </dl>
 
