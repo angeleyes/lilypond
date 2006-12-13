@@ -25,7 +25,18 @@ Preferably: (<a href= .. >..</a>, etc. )
 * Split news items in small chunks. It's OK to have more than 1 item
 on one day.
 
-!-->
+!--> <dt><b>Traduction du tutoriel en fran&ccedil;ais</b> -
+<em>December 13, 2006</em>
+
+<dd>
+Fruit du travail d'une &eacute;quipe de traducteurs, le tutoriel en
+fran&ccedil;ais est maintenant disponible en ligne. <a
+href="@DOC@v2.10/Documentation/user/lilypond/Tutorial.fr.html">Version
+2.10</a>, <a
+href="@DOC@v2.11/Documentation/user/lilypond/Tutorial.fr.html">Version
+2.11</a>.
+
+</dd>
 
 <dt><b>LilyPond 2.11.2 available</b> - <em>December 12, 2006</em>
 
@@ -41,15 +52,6 @@ href="install/#2.11">Download</a>)
 A new stable release of LilyPond is available.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="install/#2.10">Download</a>)
-
-<dt><b>LilyPond 2.11.1 available</b> - <em>December 4, 2006</em>
-
-<dd>
-This release has improved support for horizontal spacing.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a
-href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.11">Download</a>)
 
 </dd>
 
