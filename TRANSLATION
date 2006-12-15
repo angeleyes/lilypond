@@ -1,9 +1,10 @@
-
-
 NEW TRANSLATIONS
 
 A new translation will be made available on LILYPOND.ORG as soon as a
 useful part of the site has been translated, and is of good quality.
+
+See the README file for the technical details of starting and
+translating.
 
 Note that contact.ihtml is the only .i[nclude]html to be translated,
 news.ihtml and install/*.ihtml change too frequently.

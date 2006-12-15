@@ -110,7 +110,11 @@ check-translation:
 
 png: $(SVG:site/graphics/%.svg=out/site/graphics/%.$(LANG).png)
 
-
+show-committish:
+	@$(foreach a, $(wordlist 2,1000,$(MAKECMDGOALS)), \
+		echo -n '    Translation of GIT committish: ';\
+		git-rev-list --max-count=1 HEAD $(a) &&) true
+	$(eval MAKECMDGOALS=)
 
 new:
 	mkdir -p $(LANG)

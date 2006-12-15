@@ -101,24 +101,25 @@ Type
     make new LANG=<MY-LANGUAGE>
 
 eg. <MY-LANGUAGE> "nl" is Dutch, "de" German and "fr" French.
+
+This will copy all orininal files from site/ to <MY-LANGUAGE>/, eg
+
+    site/about/index.html -> <MY-LANGUAGE>/about/index.html
+
+so you can start translating the file <MY-LANGUAGE>/about/index.html
+by typing over the original English text.
+
+See TRANSLATION for details on what pages to translate first.
+
+When you have translated a page, add that page to repository
+
+    git add <MY-LANGUAGE>/about/index.html
+    git commit -m 'add file' <MY-LANGUAGE>/about/index.html
+
 Add <MY-LANGUAGE> to
 
   * scripts/translate.py
   * scripts/format-page.py
-
-
-TRANSLATE A PAGE
-
-Copy the file from site into your language tree
-
-    cp site/about/index.html <MY-LANGUAGE>/about/index.html
-
-Translate it, see UPDATE a TRANSLATION
-
-Add the page to repository
-
-    git add <MY-LANGUAGE>/about/index.html
-    git commit -m 'add file' <MY-LANGUAGE>/about/index.html
 
 
 UPDATE A TRANSLATION
@@ -137,6 +138,28 @@ suggestion before pushing any changes.  Typos may be fixed right away.
 Do not use mozilla composer, at least until it is clear how to
 let it really preserve markup.
 
+After updating a translation, also update the GIT committish of the
+original page, eg for site/about/index.html do
+
+    make show-committish site/about/index.html 
+
+which prints the string
+
+    Translation of GIT committish: eb39846c61c0f3bd22d5b4d4fb12c0d7f9a381a8
+
+that you can use to update your translated page.
+
+Another trick is to use the `start a new translation' mechanism, and
+copy committishes from the new tree
+
+    make new LANG=committish
+    head -2 committish/about/index.html 
+
+shows
+
+<!--
+    Translation of GIT committish: afb547faee2179383f32d636554df32d11ab878e  
+
 
 CHECK STATE OF TRANSLATION
 
@@ -150,7 +173,7 @@ of the translation.  To check a single page, run
     scripts/check-translation.py <MY-LANGUAGE>/index.html
 
 
-SUBMIT TO CVS
+SUBMIT TO GIT
 
     git push 
 
