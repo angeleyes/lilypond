@@ -72,13 +72,13 @@ our page about
 
   <li>Create a patch:
     <pre>
-      git commit
-      git show HEAD > mypatch
+      git commit -a 
+      git-format-patch HEAD^
     </pre>
 
   <li>Send an email to <a
-    href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel"><tt>lilypond-devel@gnu.org</tt></a>,
-    attaching the patch.
+    href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel"><tt>lilypond-devel@gnu.org</tt></a>, 
+including or attaching the patch.
   
 </ul>
 
