@@ -61,7 +61,29 @@
     <td>@v2.11-linux-64-VERSION@</td>
     <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
   </tr>
-  
+ 
+
+  <tr>
+    <td>
+      <p align="center">
+	<img src="@IMAGES@tux-logo.png">
+      </p>
+    </td>
+    <td>
+      Any PowerPC
+    </td>
+    <td>-</td>
+    <td>
+      <strong>
+	_("Download <a href='%s'>the installer</a>",
+	"@v2.11-linux-ppc-URL@");
+	<br>
+	</strong>
+	<em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-ppc.sh</tt>")</em>
+    </td>
+    <td>@v2.11-linux-ppc-VERSION@</td>
+    <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
+  </tr>
 
 
   <tr bgcolor="#e8ffe8" >
