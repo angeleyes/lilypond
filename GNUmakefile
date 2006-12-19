@@ -142,8 +142,7 @@ out/$(outball): site
 
 WEBSERVER=lilypond.org:
 upload: site
-	$(if $(CVS_COMMIT), cvs commit -m 'upload commit', true)   
-	-cd out/site \
+	cd out/site \
 	   && chgrp -R lilypond . \
 	   && chmod -R g+w * \
 	   && chmod 2775 . $$(find . -type d)
