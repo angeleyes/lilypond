@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT Committish: 6fcd1d1d35f31841d231cc98d2dcedd6e9973d12
+    Translation of GIT Committish: 78ef6fca2d5adcfde8256c34af8f1337d083ba86
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
@@ -11,13 +11,16 @@
 
 <h1>Waarom overstappen op LilyPond?</h1>
 
-<h2>
-  &ldquo;...  verbluffend goede resultaten&rdquo; -
-  <a href="http://www.computermusic.co.uk">Computer Music Special</a>.
-</h2>
+<p class="boxoutleft boxout" align="right" style="max-width:50%;">
+<font size="+1">
+  &ldquo;...&nbsp;muziek gemaakt met LilyPond is uitzonderlijk mooi&nbsp;...&rdquo; -
+  <a href="http://www.computertotaal.nl">Computer!Totaal</a>.
+  </font>
+</p>
 
-<a href="@IMAGES@lilypond-book-small.png">
-<img src="@IMAGES@lilypond-book-small.png" align="right" alt="lilypond-book"></a>
+<a href="@IMAGES@lilypond-book.png">
+<img style="float: right;" src="@IMAGES@lilypond-book-small.png" align="right" alt="lilypond-book">
+</a>
 
 <dl>
   <dt>Tekstgebaseerde invoer</dt>
@@ -29,50 +32,53 @@
     De input kan worden opgeslagen en later opnieuw worden gebruikt.
   </dd>
 
-  <dt>Combineer muziek en tekst</dt> <dd> Met het hulpprogramma
-  lilypond-book kun je naadloos bladmuziek in LaTeX of HTML
-  integreren.  Op basis van slechts één bronbestand (het
-  invoerbestand) is het mogelijk tekst met muziekfragmenten te
-  produceren!  </dd>
-
-  <dt>Losse partijen maken, nu nog makkelijker!</dt>
-  <dd>
-    Aangezien partijen en partituren worden
-    gegenereerd vanuit hetzelfde bronbestand, lopen ze altijd synchroon
-    (<a href="howto.html#orchestral">demo</a>). Eventuele wijzigingen hoeven dus maar een bestand te worden ingevoerd
-    Bovendien kan LilyPond partijen
-    in partituren combineren en stichnoten uit andere partijen invoegen.
-  </dd>
-
   <dt>Geen gepriegel</dt>
 
-   <dd> Verspil geen tijd met het aanpassen van de output. LilyPond
-   verzint zelf de beste layout.  Het bepaalt de spatiëring en het
-   afbreken van regels en pagina's, zodat een strakke en regelmatige
-   layout ontstaat.  Het voorkomt botsingen tussen liedtekst, noten en
-   akkoorden en plaatst legatobogen en waardestrepen
-   <em>automatisch</em>.
-    
+   <dd>
+     Verspil geen tijd met het aanpassen van de output; LilyPond
+     verzint zelf de beste layout.  Het bepaalt de spatiëring en het
+     afbreken van regels en pagina's, zodat een strakke en regelmatige
+     layout ontstaat.  Het voorkomt botsingen tussen liedtekst, noten en
+     akkoorden en plaatst legatobogen en waardestrepen
+   <em>automatisch</em>!
   </dd>
   
   <dt>Prachtige klassieke muziekgravure</dt>
 
   <dd>
+    Alle stijlinstellingen, het ontworpen muziekfont en algoritmes zijn
+    geïnspireerd op de mooiste handgegraveerde bladmuziek.  De
+    LilyPond-output ziet er net zo krachtig en harmonisch uit als
+    klassieke partituren.
+    (<a href="../about/automated-engraving/typography-features.html">Lees
+      verder</a>)
 
-  <img src="@IMAGES@flat-design.png" align="right"> Alle
-  stijlinstellingen, het ontworpen muziekfont en algoritmes zijn
-  geïnspireerd op de mooiste handgegraveerde bladmuziek.  De
-  LilyPond-output ziet er net zo krachtig en harmonisch uit als
-  klassieke partituren.  (<a
-  href="../about/automated-engraving/typography-features.html">Lees
-  verder</a>) </dd>
+    <img src="@IMAGES@flat-design.png" align="right">
+  </dd>
+
+  <dt>Combineer muziek en tekst</dt>
+  <dd>
+    Voeg muziekfragmenten aan teksten toe zonder het knippen en
+    plakken van plaatjes.  Je kunt naadloos bladmuziek in LaTeX of
+    HTML integreren, of muziek aan OpenOffice.org toevoegen met
+    <a href="http://ooolilypond.sourceforge.net/">ooolilypond</a>.
+  </dd>
+
+  <dt>Losse partijen maken, nu nog makkelijker!</dt>
+
+  <dd>
+    Aangezien partijen en partituren worden gegenereerd vanuit
+    hetzelfde bronbestand, lopen ze altijd synchroon
+    (<a href="howto.html#orchestral">demo</a>). Bovendien kan
+    LilyPond partijen in partituren combineren en stichnoten uit
+    andere partijen invoegen.
+  </dd>
 
   <dt>Vrije software</dt>
   <dd>
-    <p>
-      LilyPond is gratis.  Je kunt het downloaden van de <a
-      href="../install">downloadpagina</a>.
-    </p>
+    LilyPond kan kostenloos worden gedownload.  Ja hoor - het is gratis.
+    Je kunt het downloaden van de <a href="../install">downloadpagina</a>.
+
     <p>
       Bovendien is het ook vrije software.  Wat betekent dat je de
       broncode erbij krijgt, plus toestemming om deze te veranderen en
@@ -82,24 +88,24 @@
     </p>
   </dd>
 
-  <dt>Extensible design</dt>
+  <dt>Uitbreidbaar ontwerp</dt>
   <dd>
-    Alle instellingen kunnen worden aangepast aan je eigen persoonlijke typografische
-    voorkeuren.  Als dat niet voldoende is, bestaat er nog altijd de ingebouwde
-    scriptingtaal, een dialect van de krachtige programmeertaal LISP, waarmee je desnoods elk detail kunt veranderen.
-    Instellingen, variabelen en functies zijn allemaal beschreven in de
-    uitvoerige referentiehandleiding van het programma.
+    Alle instellingen kunnen worden aangepast aan je eigen
+    persoonlijke typografische voorkeuren.  Als dat niet voldoende is,
+    bestaat er nog altijd de ingebouwde scriptingtaal, een dialect van
+    de krachtige programmeertaal LISP, waarmee je desnoods elk detail
+    kunt veranderen.  Instellingen, variabelen en functies zijn
+    allemaal beschreven in de uitvoerige referentiehandleiding van het
+    programma.
   </dd>
   
-<a href="@IMAGES@screenshot-macos.png"><img
-  src="@IMAGES@screenshot-macos-small.png" align="right" alt="LilyPond
-  op MacOS" ></a>
+  <a href="@IMAGES@screenshot-macos.png"><img src="@IMAGES@screenshot-macos-small.png" align="right"
+					      alt="LilyPond op MacOS" caption="bla"></a>
   
   <dt>Uitstekende support</dt>
   <dd>
     LilyPond werkt op alle bekende besturingssystemen: Linux, MacOS X, en Windows.
-
-    Er is een handleiding van 230 pagina's en meer dan 400
+    Er is een handleiding van 300 pagina's en meer dan 400
     voorbeeldbestandjes.  Er is een actieve gebruikersgroep die
     antwoorden geeft op de <a
     href="http://news.gmane.org/gmane.comp.gnu.lilypond.general">Lilypond
@@ -110,4 +116,4 @@
 <h2>Dankbetuigingen</h2>
 
 Geloof niet zomaar wat wij zeggen, maar <a
-href="testimonials.html">lees</a> zelf wat anderen ervan.
+href="testimonials.html">lees</a> zelf wat anderen ervan vinden.
