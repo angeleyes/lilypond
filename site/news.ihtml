@@ -28,6 +28,17 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond 2.11.4 available</b> - <em>December 21, 2006</em>
+
+<dd>
+The vertical spacing improvements that were introduced in 2.11.0 now work
+within a system as well as between systems.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_4&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+
+</dd>
+
 <dt><b>LilyPond 2.11.3 available</b> - <em>December 19, 2006</em>
 
 <dd>
@@ -56,20 +67,6 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_3&colspec
 <dd>
 From now on, our GUB binary builds include support for Linux/PPC.  (<a
 href="install/#2.10">Download</a>)
-</dd>
-
-
-<dt><b>Traduction du tutoriel en fran&ccedil;ais</b> -
-<em>December 13, 2006</em>
-
-<dd>
-Fruit du travail d'une &eacute;quipe de traducteurs, le tutoriel en
-fran&ccedil;ais est maintenant disponible en ligne. <a
-href="@DOC@v2.10/Documentation/user/lilypond/Tutorial.fr.html">Version
-2.10</a>, <a
-href="@DOC@v2.11/Documentation/user/lilypond/Tutorial.fr.html">Version
-2.11</a>.
-
 </dd>
 
 </dl>
