@@ -1,0 +1,108 @@
+<!--
+    Translation of CVS Revision: 1.24 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+<h1>LilyPond crash course</h1>
+
+<h2>Screenshot</h2> 
+
+<p>
+LilyPond ist ein <em>Batch</em>-System: ihm wird beim Start eine Noten enthaltende Textdatei &uuml;bergeben. Die sich daraus ergebende Ausgabe kann auf dem Bildschirm angezeigt oder gedruckt werden. Ein Screenshot aus der Praxis k&ouml;nnte so aussehen:
+</p>
+
+<p align="center">
+  <a href="@IMAGES@nereid-shot.png">
+    <img src="@IMAGES@nereid-shot-small.png" alt="nereid-shot">
+  </a>
+</p>
+<p align="center">
+<em>(Klicke hier um zu vergr&ouml;&szlig;)</em>
+</p>
+
+
+<h2>Es ist so einfach wie A B C</h2>
+
+Noten werden durch Buchstaben und Numbern kodiert. Spezielle Kommandos werden mit Backslashs eingegeben.
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png"
+       alt="annotate-example-1">
+  <br>
+  <img src="@IMAGES@example-1.png" alt="Beispiel 1"> 
+
+<p>
+  Alterationen werden durch unterschiedliche Namen gemacht: H&aauml;nge ein -is
+  an, um die Note um einen Ton zu erh&ouml;hen (Kreuz, "sharp") oder ein -es, um
+  die Note um einen halben Ton zu erniedrigen ("b", "flat"). Die Bezeichnungen
+  "sharp"/"flat" kommen aus dem Holl&aauml;ndischen, andere Sprachen sind
+  verf&uuml;gbar. LilyPond findet heraus,wo Vorzeichen zu setzen sind.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-2@.LANG@.png"
+       alt="annotate-example-2">
+  <br>
+  <img src="@IMAGES@example-2@.LANG@.png" alt="Beispiel 2">
+</p>
+
+<h2>Pop Musik</h2>
+
+<p>
+  Setze Akkorde und Liedtext (lyrics) zu einem Musikst&uuml;ck zusammen:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-lead@.LANG@.png"
+       alt="annotate-example-lead">
+  <br>
+  <img src="@IMAGES@example-lead.png" alt="example-lead">
+</p>
+
+<h2>Orchesterst&uuml;cke</h2>
+
+<p>
+<a name="orchestral"></a> Die Eingabedatei enth&aauml;lt die Noten des
+  St&uuml;cks. Die Partition und die Einzelstimmennotenbl&aauml;tter k&ouml;nnen
+  aus einer einzelnen Textdatei erstellt werden. So ver&aauml;ndert eine Note
+  immer die Partition und die Einzelstimme gleichzeitig. Um die Noten mehrfach zu
+  verwenden, werden sie einer Variablen zugewiesen,
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-parts@.LANG@.png"
+       alt="annotate-example-parts">
+  <br>
+</p>
+
+<p>
+diese Variable wird dann als Einzelstimme (hier transponiert, mit verdichteten Pausen) ben&uuml;tzt:
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-single-part@.LANG@.png"
+       alt="annotate-example-single-part">
+  <br>
+  <img src="@IMAGES@example-singlepart.png" alt="example-singlepart">
+</p>
+
+<p>
+  Die gleiche Variable wird auch in der vollst&aauml;ndigen Notation (hier in Konzertstimmung) verwendet.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-score@.LANG@.png"
+       alt="annotate-example-score">
+  <br>
+  <img src="@IMAGES@example-score.png" alt="example-score">
+</p>
+
+
+<h2>Weiterlernen</h2>
+
+<a href="../install">Lade</a> LilyPond herunter und probiere auch das 
+<a href="@DOC@v2.6/Documentation/user/out-www/lilypond/Tutorial">Tutorial</a> aus.

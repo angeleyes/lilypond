@@ -1,0 +1,167 @@
+<!--
+    Translation of CVS Revision: 1.4 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+    <title>LilyPond - in Cygwin unter Microsoft Windows</title>
+
+    <h1>LilyPond in Cygwin unter Microsoft Windows</h1>
+
+
+<a name="installing"></a>
+<h2>Installation</h2>
+
+<img src="@IMAGES@cygwin-shot.png" align="right">
+
+<ul>
+  <li>
+  Lade <tt>setup.exe</tt> herunter indem du, w&aauml;hrend du die Shift-Taste dr&uuml;ckst,
+    <a href="http://cygwin.com/setup.exe">hier</a> klickst,
+  </li>
+  <li>
+    f&uuml;r NT, 2000 und XP musst du Administratorrechte besitzen.
+  </li>
+
+  <li>
+  Starte <code>setup.exe</code>,
+  </li>
+
+  <li>
+    fahre fort "Next" (weiter) zu klicken, bis...
+  </li>
+
+  <li>
+  du zum <strong>Paketansicht</strong>-Dialogfenster gelangst.  W&aauml;hle
+  LilyPond aus, welches du im Abschnitt <strong>Publishing</strong>
+  findest.
+  </li>
+
+  <li>
+    LilyPond wird nun installiert werden, gleichzeitig mit unterst&uuml;tzenden
+    Programmen. Der download ist 66 MB gro&szlig;, die Installation
+    ben&ouml;tigt 260MB freien Festplattenplatz.
+  </li>
+
+</ul>
+
+<p>
+  Wenn du dir nicht 100% sicher bist was <tt>setup.exe</tt> dich fragt,
+  ver&aauml;ndere die Voreinstellungen nicht. Ver&aauml;ndere
+  <strong>nicht</strong> das voreingestellte
+  Installationverzeichnis(<code>c:/cygwin</code>) und <strong>belasse</strong>
+  den voreingestellten Texttyp (Typ  UNIX muss eingestellt sein).
+</p>
+
+
+<h2>Test</h2>
+
+<ul>
+  <li>
+  Shift-klicke <a href="test.ly">hier</a> um den Test herunterzuladen.
+  </li>
+
+  <li>
+    Speichere die Datei auf dem Desktop unter dem Namen <tt>test.ly</tt>
+    (stelle sicher, dass sie nicht <tt>test.ly<em>.TXT</em></tt>genannt wird.
+  </li>
+
+  <li>
+    Klicke doppelt auf der Datei.
+  </li>
+</ul>
+
+Das wird die Datei verarbeiten und das Ergebnis in einem PDF-Betracther anzeigen.
+
+<h4>Jipiee - es funktioniert</h4> 
+<p>
+  Gut!  Gehe weiter zu <a href="using.html">Wie man LilyPond ben&uuml;tzt</a>.
+</p>
+
+<h4>Hmm, Ich bin mir nicht sicher was ich tun muss. Hilfe mir bitte!</h4>
+
+<p>
+  F&uuml;r Fragen und Unterst&uuml;tzung, schicke eine Mail an 
+<a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h4>Verdammt, es funktioniert nicht</h4>
+
+<p>
+  Versuche <tt>setup.exe</tt> nochmal zu starten, das behept 90% der Probleme die uns gemeldet werden. Stelle sicher dass es die richtige LilyPondversion installiert hat, denn wenn du zweimal auf auf das Paket LilyPond klickst, bekommst du eine &aauml;ltere Version.
+
+<p>
+  Wenn es immer noch nicht funktioniert, sende uns bitte einen Fehlerbericht
+  (bugreport) Es gibt die Datei <tt>test.log</tt> im gleichen Verzeichnis wie
+  <tt>test.ly</tt>. Schicke diese Datei an <a
+    href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> mit einer
+  Beschreibung deines Problems.
+</p>
+
+<h4>Windows 98</h4>
+
+<p>
+  Auf Windows<strong>95, 98 und ME</strong> gibt es Probleme mit dem Cygwin
+  Paket, welches die fehlerfreie Operations von LilyPond st&ouml;ren kann. (siehe
+  <a href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">Die Python
+    test-suite schl&aauml;gt fehl </a>).  LilyPond selbst sollte benutzbar
+  sein, aber das Klicken auf eine <tt>.ly></tt> Datei, dass ein PDF erzeugt.
+  Desweiteren <em>kann</em> es sein, dass lilypond-book und midi2ly nicht
+  funktionieren. Ungl&uuml;cklicherweise sind diese Probleme au&szlig;erhalb der Reichweite des LilyPond-Entwicklerteams. Windows NT, 2000 und XP sind nicht betroffen.
+</p>
+
+<h4>Aber ich habe keine <tt>test.log</tt></h4>
+<p>
+  Das LilyPond Paket ist nicht richtig installiert, bitte gehe zur&uuml;ck zur
+  <a href="#installing">Installation</a> und gehe sicher, dass du der Prozedur wie beschrieben gefolgt bist.
+  Wenn du Zweifel hast, schreibe eine Mail an:
+  <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+
+<h2>Deinstallation</h2>
+
+<ul>
+  <li>
+    By brute force (Unter zuhilfenahme roher Gewalt):
+    entferne <code>C:\CYGWIN</code>.
+    <p>
+    <em>Das entfern auch dein Cygwin <code>/home/</code> Verzeichnis,
+      also kopiere wichtige Dateien vorher woandersthin.</em>
+  </li>
+
+  <li>
+  Offizieller Weg:
+    <ul>
+      <li>
+	<p>Starte <code>setup.exe</code>,
+	  <li>
+	  Klicke auf Next.
+	  </li>
+	  <li>
+	    W&aauml;hle <strong>Install from
+	      Local Directory</strong>. (Installiere von lokalem Verzeichnis)
+	  </li>
+
+	  <li>
+	    Klicke auf next bis du den Dialog <strong>Select packages to
+	      install</strong> (Paketinstallationsauswahldialog) erreichst.
+	  </li>
+
+	  <li>
+	    Klicke auf <strong>View</strong>.
+	  </li>
+
+	  <li>
+	  F&uuml;r jedes Paket, dass du deinstallieren willst klicke auf das
+	  Recycleicon bis es <strong>Uninstall</strong> sagt.  </li>
+
+	  <li>
+	    Klicke auf <strong>Next</strong>.
+	  </li>
+    </ul>
+  </li>
+</ul>

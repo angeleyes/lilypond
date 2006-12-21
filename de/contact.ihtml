@@ -1,0 +1,67 @@
+<!--
+    Translation of CVS Revision: 1.4 
+    
+    Translators must leave this comment in tact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
+
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
+
+    <!--  Ist dieser Kommentar gut ? -->
+    Die hier angefuhrten Mailinglisten sind haupts&aauml;chlich Englisch, es gibt aber bestimmt auch genug Deutsche Benutzer, die dir antworten k&ouml;nnen.
+<dl>
+  <dt>Fragen oder Kommentare?</dt>
+  <dd>
+    Schreib uns : <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
+    (Mailingliste
+    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An/Ab-meldung</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-user/">Archiv</a>)
+    <br>
+  </dd>
+
+  <dt>Fehler gefunden ?</dt>
+  <dd>
+    Schreib uns:
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+    (Mailingliste
+    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">Archiv</a>)
+    <br>
+  </dd>
+
+  <dt>M&ouml;chtest du bei neuen Versionen benachrichtigt werden?</dt>
+  <dd>Subscribe to
+    <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
+    (Mailingliste
+    <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">Info</a>,
+    <a href="http://mail.gnu.org/archive/html/info-lilypond/">Archiv</a>)
+  </dd>
+
+  
+  <dt>Kommentare zu den Seiten ?</dt>
+  <dd>Schreib uns:
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+    (Mailingliste
+    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">Archiv</a>)
+  </dd>
+
+  
+  <dt>M&ouml;chtest du Kontakt zu den Entwicklern ?<dt>
+  <dd>abonniere
+    <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
+    (Mailingliste
+    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">Info</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">Archiv</a>)
+  </dd>
+
+  <dt>
+  M&ouml;chtest du den Entwickler direkt kontaktieren?</dt>
+    <dd>
+    Schau hier:
+    <a href="@DOC@v2.6/Documentation/topdocs/out-www/AUTHORS.html">die
+      Liste der Autoren</a>.
+    (<em>Schreibe den Autoren nur im Falle strikten 
+      pers&ouml;nlichen Kontakts </em>)
+  </dd>
+</dl>
