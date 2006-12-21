@@ -1,14 +1,20 @@
 <!--
     Translation of GIT Committish: cec31011f06330d110bb45c998d7492502927a07
     
-    Translators must leave this comment in tact, but remove any dollar
-    signs ($) from the CVS Revision indicator.
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
 
-    When revising a translation, copy the CVS Revision number from the
-    original source file.  !-->
+      git-rev-list HEAD | head -1
 
-    <!--  Ist dieser Kommentar gut ? -->
-    Die hier angefuhrten Mailinglisten sind haupts&aauml;chlich Englisch, es gibt aber bestimmt auch genug Deutsche Benutzer, die dir antworten k&ouml;nnen.
+    to discover that.
+!-->
+
+ Diese Mailinglisten werden alle in englischer Sprache gef&uuml;hrt.
+ Wenn du ein wenig Englisch kannst, versuche deine Frage auf Englisch
+ zu stellen, auch wenn dein Englisch nicht gut ist. Wenn du kein
+ Englisch kannst, schreibe auf Deutsch, es kann aber sein dass du
+ weniger Antworten bekommst.
+
 <dl>
   <dt>Fragen oder Kommentare?</dt>
   <dd>

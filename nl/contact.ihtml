@@ -2,9 +2,9 @@
     Translation of GIT Committish: 2108b30d355c6b0c471df096e71e571088c49e0a
 
     When revising a translation, copy the HEAD committish of the
-    version you're working on. Use
+    version that you are working on.  Use
 
-      git-rev-list HEAD  |head -1
+      git-rev-list HEAD | head -1
 
     to discover that.
 !-->
