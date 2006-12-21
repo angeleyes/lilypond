@@ -21,14 +21,14 @@ def dir_lang (file, lang):
     return '/'.join ([lang] + file.split ('/')[1:])
 
 ##     Translation of GIT Commit: <hash>
-REVISION_RE = re.compile ('.*GIT Committish: ([a-f0-9]+)', re.DOTALL)
+REVISION_RE = re.compile ('.*GIT [Cc]ommittish: ([a-f0-9]+)', re.DOTALL)
 CVS_DIFF = 'git diff %(revision)s HEAD -- %(original)s | cat'
 
 def check_file (original, translated):
     s = open (translated).read ()
     m = REVISION_RE.match (s)
     if not m:
-        raise translated + ': no GIT commit: <hash> found'
+        raise translated + ': no GIT committish: <hash> found'
     revision = m.group (1)
 
     c = CVS_DIFF % vars ()
