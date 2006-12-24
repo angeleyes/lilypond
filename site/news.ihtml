@@ -28,6 +28,29 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond 2.11.5 available</b> - <em>December 24, 2006</em>
+
+<dd>
+These releases complete the translation infrastructure for
+Documentation. 
+(<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_5&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+
+</dd>
+
+<dt><b>LilyPond 2.10.5 available</b> - <em>December 24, 2006</em>
+<dd>
+New! Improved! With even more bugfixes!
+(<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_5&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.10">Download</a>)
+
+
+</dd>
+
 <dt><b>LilyPond 2.11.4 available</b> - <em>December 21, 2006</em>
 
 <dd>
@@ -37,36 +60,6 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_4&colspec
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
 
-</dd>
-
-<dt><b>LilyPond 2.11.3 available</b> - <em>December 19, 2006</em>
-
-<dd>
-This release has <a
-href="http://lilypond.org/doc/v2.11/compare-v2.10.3/index.html">graphical
-test results</a> and several website build improvements.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_3&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.11">Download</a>)
-
-</dd>
-
-<dt><b>LilyPond 2.10.3 available</b> - <em>December 19, 2006</em>
-
-<dd>
-This release fixes several bugs.
-(<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_3&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="install/#2.11">Download</a>)
-
-</dd>
-
-
-<dt><b>LinuxPPC binaries available!</b> - <em>December 19, 2006</em>
-
-<dd>
-From now on, our GUB binary builds include support for Linux/PPC.  (<a
-href="install/#2.10">Download</a>)
 </dd>
 
 </dl>
