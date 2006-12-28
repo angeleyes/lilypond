@@ -3,7 +3,7 @@
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = nl fr
 
-.PHONY: all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
+.PHONY: add all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
 
 PYTHON = python
 SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
@@ -122,7 +122,9 @@ new:
 	cd $(LANG) && mkdir -p $(TREE)
 	HEAD=`git-rev-list --max-count=1 HEAD` && \
 	$(foreach i, $(SITE_HTML), \
-		(sed 's/<FILL[^>]*>/'$$HEAD'/g' < $(i) > $(LANG)/$(i:site/%=%)) && ) true
+		(test -e $(LANG)/$(i:site/%=%) \
+			|| sed 's/<FILL[^>]*>/'$$HEAD'/g' < $(i) \
+				> $(LANG)/$(i:site/%=%)) && ) true
 	-find ./$(LANG) | grep -E $(NO_TRANSLATION) | xargs rm -rf
 
 tree:
