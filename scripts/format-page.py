@@ -330,6 +330,7 @@ def format_page (html, file_name, lang):
            grab_gettext3, page)
     page = re.sub ('_ *\("(([^"]*%s[^"]*){4})",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)",\s*"([^"]*)"\)',
            grab_gettext4, page)
+    page = re.sub ('__\(', '_ (', page)
     page = re.sub ('\$\Date: (.*) \$', '\\1', page)
 
     # Strip .html, .png suffix for auto language selection (content
