@@ -11,13 +11,20 @@
 
 <h1> Localization guidelines</h1>
 
-This document provides some guidelines
-To help translations, user messages must be uniformized.
-Follow these rules when coding for LilyPond.
+<p>
+This document provides some guidelines for programmers writing user
+messages.
+
+To help translations, user messages must be uniformized.  Follow these
+rules when coding for LilyPond.
 
 Hopefully, this can be replaced by general GNU guidelines in the
 future.
+
+Even better would be to have an English (en_BR, en_AM) helping
+programmers writing consistent messages for all GNU programs.
 </p>
+
 <p>
   Not-preferred messages are marked with `+'.  By convention,
   ungrammatical examples are marked with `*'.
@@ -43,11 +50,11 @@ future.
   </li>
   <li>
     <p>
-      Messages to be localised must be encapsulated in `_ (STRING)' or
+      Messages to be localised must be encapsulated in `__(STRING)' or
       `_f (FORMAT, ...)'.  Eg:
     </p>
     <pre>
-      warning (_ ("need music in a score"));
+      warning (__("need music in a score"));
       error (_f ("cannot open file: `%s'", file_name));
     </pre>
     <p>
@@ -83,7 +90,7 @@ future.
       message
     </p>
     <pre>
-      message (_ ("Calculating line breaks...") + " ");
+      message (__("Calculating line breaks...") + " ");
     </pre>
   </li>
   <li>
@@ -125,7 +132,7 @@ future.
       on the translator.  So, instead of
     </p>
     <pre>
-      _ ("stem at ") + moment.str () + _(" does not fit in beam")
+      __("stem at ") + moment.str () + _(" does not fit in beam")
     </pre>
     <p>
       have
@@ -145,7 +152,7 @@ future.
       rather say:
     </p>
     <pre>
-      warning (_ ("out of tune:");
+      warning (__("out of tune:");
       warning (_f ("cannot find: `%s', "Key_engraver"));
       warning (_f ("cannot find font: `%s', font_name));
       warning (_f ("Loading default font"));
@@ -158,7 +165,7 @@ future.
     </p>
     <pre>
       _f ("Non-matching braces in text `%s', adding braces", text)
-      _ ("Debug output disabled.  Compiled with NPRINT.")
+      __("Debug output disabled.  Compiled with NPRINT.")
       _f ("Huh?  Not a Request: `%s'.  Ignoring.", request)
     </pre>
   <li>
