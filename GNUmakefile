@@ -15,7 +15,7 @@ DISTDIR = lily-web-$(VERSION)
 READMES = ChangeLog README TRANSLATION
 SITE_HTML = $(shell find site -name '*.html')
 LOCAL_HTML = $(shell find fr nl -name '*.html')
-NO_TRANSLATION = '/announce-|/devel/|/old-|/older-|/search'
+NO_TRANSLATION = '/announce-|/devel/|/donate|/old-|/older-|/search'
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
 MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
