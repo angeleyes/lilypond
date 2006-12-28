@@ -107,7 +107,9 @@ This will copy all orininal files from site/ to <MY-LANGUAGE>/, eg
     site/about/index.html -> <MY-LANGUAGE>/about/index.html
 
 so you can start translating the file <MY-LANGUAGE>/about/index.html
-by typing over the original English text.
+by typing over the original English text.  Typing `make new' does not
+overwrite any existing files in the <MY-LANGUAGE>/ folder/, it can
+also be used to add pages to an existing translation.
 
 See TRANSLATION for details on what pages to translate first.
 
