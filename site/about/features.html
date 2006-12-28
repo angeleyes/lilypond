@@ -4,44 +4,14 @@
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
 
-      git-rev-list HEAD | head -1
+    git-rev-list HEAD | head -1
 
     to discover that.
-!-->
+    !-->
 
 <h1>Features of LilyPond</h1>
 
-<h2>Music language input.</h2>
-<p>
-  The  input is done in the form of a textual music language.
-</p>
-
-<ul>
-  <li>
-    Entry may be done with the text editor of your choice, and using
-    the national language of your choice.
-  </li>
-  <li>
-    The ASCII input language can integrate with TeX, HTML and Texinfo,
-    thus allowing musicological treatises to be written from a single
-    source.
-  </li>
-  <li>
-    The music and its layout are strictly separated, so score and
-    parts (possibly in different styles and keys) and scores can be
-    generated from the same source, and changes always take effect in both
-    places.
-  </li>
-  <li>
-    The output can be improved by upgrading the program.
-  </li>
-  <li>
-    Pieces can be printed in different (typographical) house styles,
-    or according to different notational conventions.
-  </li>
-</ul>
-
-<h2>Automated high-quality formatting.</h2>
+<h2>Automated high-quality formatting</h2>
 
 <ul>
   <li>
@@ -51,94 +21,129 @@
     Handling of polyphonic collisions for notes, dots, and rests.
   </li>
   <li>
-    Automatic placement of accidentals, beams, slurs. 
+    Automatic placement of accidentals, beams, slurs, ties, based on
+    optimal scoring algorithms.
   </li>
   <li>
-    Users don't need typographical expertise to produce good notation.
+    Users don't need typographical expertise to produce excellent
+    notation.
   </li>
   <li>
-    No user interaction necessary during running, Running the
-    program can be automated, which is convenient for mass converting
-    databases of digitized music, and printing algorithmic
-    compositions.
+    No user interaction necessary during running.  Running the program
+    can be automated which is convenient for mass converting databases
+    of digitized music and printing algorithmic compositions.
   </li>
   <li>
     The Feta font has been tailored especially for LilyPond, and was
     designed carefully mimicking the finest hand-engraved scores.
     It is available as a scalable font, but also as a Metafont.
   </li>
-  <li>
-    Support for many notation constructs.
-  </li>
 </ul>
 
 <h2>Special notation</h2>  
 <ul>
-  <!-- todo: add links-->
-  <li>Chord names.</li>
-  <li>Drum notation.</li>
-  <li>Figured bass.</li>
-  <li>Grace notes.</li>
-  <li>Fret diagrams.</li>
-  <li>Basic tablature notation.</li>
-  <li>Cluster notation and rhythmic  grouping signs.</li>
-  <li>Tremolos, both for single notes and chords.</li>
-  <li>Tuplets in arbitrary ratios.</li>
-  <li>Polymetric notation.</li>
-  <li>Mensural notation.</li>
-  <li>Automatic cue-notes.</li>
-  <li>Automatic part combining for orchestral scores.</li>
-  <li>Quarter tone accidentals.</li>
-  <li>Ambituses.</li>
-  <li>Metronome markings.</li>
-  <li>Harmonics.</li>
-  <li>Measure repeats (&ldquo;Percent style&rdquo;).</li>
-  <li>EasyNotation note heads.</li>
-  <li>Blanking arbitrary notation elements.</li>
-  <li>Arpeggio signs.</li>
-  <li>Ottava brackets.</li>
-  <li>Nested analysis brackets.</li>
-  <li>Piano pedals.</li>
+  <!-- todo: add links !-->
+  <li>Accidental cautionaries and suggestions, classic and modern styles</li>
+  <li>Ambituses</li>
+  <li>Arpeggio signs</li>
+  <li>Balloon texts (teaching)</li>
+  <li>Beamlets</li>
+  <li>Blanking arbitrary notation elements (teaching)</li>
+  <li>Chord names, in English, French or Italian</li>
+  <li>Cluster notation and rhythmic grouping signs</li>
+  <li>Coloring of arbitrary notation elements</li>
+  <li>Cross staff beaming</li>
+  <li>Cue-notes (automatic)</li>
+  <li>Dashed or dotted bar lines</li>
+  <li>Drum notation</li>
+  <li>EasyNotation note heads</li>
+  <li>Falls and doits</li>
+  <li>Feathered beams</li>
+  <li>Figured bass</li>
+  <li>Fingerings, including guitar right-hand fingering</li>
+  <li>Fret diagrams</li>
+  <li>Glissandi</li>
+  <li>Grace notes, acciaccatura and appoggiatura</li>
+  <li>Hairpin crescendi and decrescendi, also with circled tips (al niente)</li>
+  <li>Harmonics</li>
+  <li>Laissez vibrer ties</li>
+  <li>Ledger lines, including automatic shortening for tight spacing</li>
+  <li>Lyric extenders, hyphens, melismata</li>
+  <li>Measure repeats (&ldquo;Percent style&rdquo;)</li>
+  <li>Mensural notation</li>
+  <li>Microtones</li>
+  <li>Metronome markings</li>
+  <li>Nested analysis brackets</li>
+  <li>Orchestral scores with automatic part combining</li>
+  <li>Ornaments; mordents, pralls and combinations thereof</li>
+  <li>Ottava brackets (octaviation)</li>
+  <li>Part extraction: see Orchestral scores</li>
+  <li>Piano pedals</li>
+  <li>Polymetric notation</li>
+  <li>Proportional notation</li>
+  <li>Quarter tone accidentals</li>
+  <li>Quoting of other music fragments, including transposing</li>
+  <li>Separator slashes between systems</li>
+  <li>Shaped note heads</li>
   <li>Starting and stopping staves anywhere</li>
+  <li>Staves, tunable number of staff lines, individual positioning of staff lines</li>
+  <li>Stemlets</li>
+  <li>String numbering, also on chords</li>
   <li>System separators</li>
-  
+  <li>Tablature notation</li>
+  <li>Tie formatting for chords</li>
+  <li>Transposing</li>
+  <li>Tremolos, both for single notes and chords</li>
+  <li>Trills, also running and explicit pitches</li>
+  <li>Tuplets in arbitrary ratios, nested, broken with customisable endings</li>
+  <li>Vertical staff spacing using a skyline algorithm</li>
 </ul>
 
+For details and music samples, follow the
+<a href="@DOC@latest/Documentation/topdocs/NEWS">chain of NEWS</a>
+    entries and have a look at the
+<a href="@DOC@latest/input/regression">regression tests</a>.
 
-<h2> Robust design</h2>
-
+<h2>Robust design</h2>
 <ul>
+  <li>
+    No arbitrary limits: unlimited number of staves, voices, measures,
+    lengths of texts, etc.
+  </li>
+  <li>
+    Pluggable output backend: output in EPS, PDF, PNG, PostScript,
+    MIDI, SVG.
+  </li>
   <li>
     Lyrics in any language.
   </li>
-  
   <li>
-    Output in PostScript, PDF, PNG, MIDI, SVG.
-  </li>
-
-  <li>
-    No limits on the number of staves, voices, measures, lengths of
-    texts, etc.
+    Text-based input with versatile music language.
   </li>
   <li>
-    Extensible with built-in LISP interpreter.
+    Programmable and extensible with built-in LISP interpreter.
   </li>
 </ul>
 
+
 <h2>Excellent support</h2>
 <ul>
-  <li>Runs on Unix, including MacOS X and Linux, and Windows.</li>
+  <li>Works with Unix, including MacOS X and Linux, and Windows (native and Cygwin).</li>
   <li>Active user community.</li>
-  <li>Extensive documentation.</li>
-  <li>Supported by many other programs,</li>
-  <a href="http://www.rosegardenmusic.com">RoseGarden</a> 
-  <a href="http://noteedit.berlios.de/">NoteEdit</a> and
-  <a href="http://jelmer.vernstok.nl/oss/ptabtool">PowerTab</a>
-  and
-  <a href="http://denemo.sourceforge.net/">Denemo</a>.
-</li>
-<li>
-  Imports <a href="http://abc.sourceforge.net/">ABC</a>,
-  <a href="http://www.finalemusic.com/finale/">ETF</a> and MIDI.
-</li>
+  <li>Extensive <a href="@DOC@stable/Documentation/user">documentation</a>.</li>
+  <li>Supported by many other programs:
+    <a href="http://www.rosegardenmusic.com">RoseGarden</a>,
+    <a href="http://noteedit.berlios.de/">NoteEdit (surpassed by Canorus)</a>,
+    <a href="http://canorus.berlios.de">Canorus</a>,
+    <a href="http://jelmer.vernstok.nl/oss/ptabtool">PowerTab Tools</a>,
+    <a href="http://denemo.sourceforge.net/">Denemo</a>,
+    <a href="http://ooolilypond.sourceforge.net/">OpenOffice.org plugin</a>.
+  </li>
+  <li>
+    Imports
+    <a href="http://abc.sourceforge.net/">ABC</a>,
+    <a href="http://www.finalemusic.com/finale/">ETF (finale)</a>, MIDI
+    <a href="http://www.recordare.com/xml.html">Musix XML</a>,
+    <a href="http://nwc2ly.sourceforge.net">Noteworthy Composer</a>.
+  </li>
 </ul>

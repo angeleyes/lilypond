@@ -3,13 +3,12 @@
 # Jan Nieuwenhuizen <janneke@gnu.org>, 2005.
 # This file is distributed under the same license as the LilyPond package.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-27 17:43+0100\n"
-"PO-Revision-Date: 2005-06-16 09:50+0200\n"
+"POT-Creation-Date: 2006-12-28 16:43+0100\n"
+"PO-Revision-Date: 2006-12-28 16:58+0100\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,6 +94,7 @@ msgstr "Download"
 #: site/install/stable.ihtml:152 site/install/stable.ihtml:154
 #: site/install/install-2.10.ihtml:160 site/install/install-2.9.ihtml:160
 #: site/install/install-2.8.ihtml:154 site/install/install-2.11.ihtml:160
+#: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:182
 msgid "Documentation"
 msgstr "Documentatie"
 
@@ -267,7 +267,7 @@ msgstr "Transponeer voor F-instrument"
 
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse identifier"
-msgstr ""
+msgstr "Hergebruik variabele"
 
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #: scripts/format-page.py:85 scripts/format-page.py:86
@@ -290,6 +290,7 @@ msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 #: site/install/stable.ihtml:63 site/install/stable.ihtml:64
 #: site/install/install-2.10.ihtml:70 site/install/install-2.9.ihtml:70
 #: site/install/install-2.8.ihtml:64 site/install/install-2.11.ihtml:70
+#: site/install/install-2.10.ihtml:94 site/install/install-2.11.ihtml:92
 msgid "Other"
 msgstr "Overige"
 
@@ -365,6 +366,13 @@ msgstr "Overige"
 #: site/install/install-2.11.ihtml:95 site/install/install-2.11.ihtml:115
 #: site/install/install-2.11.ihtml:136 site/install/install-2.11.ihtml:153
 #: site/install/install-2.11.ihtml:169 site/install/install-2.11.ihtml:186
+#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:119
+#: site/install/install-2.10.ihtml:139 site/install/install-2.10.ihtml:160
+#: site/install/install-2.10.ihtml:177 site/install/install-2.10.ihtml:193
+#: site/install/install-2.10.ihtml:210 site/install/install-2.11.ihtml:85
+#: site/install/install-2.11.ihtml:117 site/install/install-2.11.ihtml:137
+#: site/install/install-2.11.ihtml:158 site/install/install-2.11.ihtml:175
+#: site/install/install-2.11.ihtml:191 site/install/install-2.11.ihtml:208
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
@@ -387,7 +395,8 @@ msgstr "LilyPond ontwikkelteam"
 #: site/install/devel.ihtml:160 site/install/stable.ihtml:173
 #: site/install/stable.ihtml:175 site/install/install-2.10.ihtml:182
 #: site/install/install-2.9.ihtml:182 site/install/install-2.8.ihtml:175
-#: site/install/install-2.11.ihtml:182
+#: site/install/install-2.11.ihtml:182 site/install/install-2.10.ihtml:206
+#: site/install/install-2.11.ihtml:204
 msgid "warning"
 msgstr "waarschuwing"
 
@@ -447,7 +456,8 @@ msgstr "Onderdeel van distributie"
 #: site/install/devel.ihtml:154 site/install/stable.ihtml:167
 #: site/install/stable.ihtml:169 site/install/install-2.10.ihtml:176
 #: site/install/install-2.9.ihtml:176 site/install/install-2.8.ihtml:169
-#: site/install/install-2.11.ihtml:176
+#: site/install/install-2.11.ihtml:176 site/install/install-2.10.ihtml:200
+#: site/install/install-2.11.ihtml:198
 msgid "Source code"
 msgstr "Broncode"
 
@@ -465,6 +475,8 @@ msgstr "Broncode"
 #: site/install/install-2.9.ihtml:104 site/install/install-2.9.ihtml:125
 #: site/install/install-2.8.ihtml:99 site/install/install-2.8.ihtml:120
 #: site/install/install-2.11.ihtml:104 site/install/install-2.11.ihtml:125
+#: site/install/install-2.10.ihtml:128 site/install/install-2.10.ihtml:149
+#: site/install/install-2.11.ihtml:126 site/install/install-2.11.ihtml:147
 #, c-format
 msgid "%s and newer"
 msgstr "%s en nieuwer"
@@ -493,7 +505,9 @@ msgstr "%s en nieuwer"
 #: site/install/install-2.10.ihtml:180 site/install/install-2.9.ihtml:164
 #: site/install/install-2.9.ihtml:180 site/install/install-2.8.ihtml:158
 #: site/install/install-2.8.ihtml:173 site/install/install-2.11.ihtml:164
-#: site/install/install-2.11.ihtml:180
+#: site/install/install-2.11.ihtml:180 site/install/install-2.10.ihtml:188
+#: site/install/install-2.10.ihtml:204 site/install/install-2.11.ihtml:186
+#: site/install/install-2.11.ihtml:202
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
@@ -574,7 +588,9 @@ msgstr "Onderdeel <a href='%s'>van distributie</a>"
 #: site/install/install-2.10.ihtml:129 site/install/install-2.9.ihtml:108
 #: site/install/install-2.9.ihtml:129 site/install/install-2.8.ihtml:103
 #: site/install/install-2.8.ihtml:124 site/install/install-2.11.ihtml:108
-#: site/install/install-2.11.ihtml:129
+#: site/install/install-2.11.ihtml:129 site/install/install-2.10.ihtml:132
+#: site/install/install-2.10.ihtml:153 site/install/install-2.11.ihtml:130
+#: site/install/install-2.11.ihtml:151
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Download <a href='%s'>%s</a>"
@@ -618,10 +634,9 @@ msgstr "compatibiliteitsbibliotheken"
 
 #: site/install/menu-entries.py:2
 msgid "Fink"
-msgstr ""
+msgstr "Fink"
 
 #: site/install/menu-entries.py:3
-#, fuzzy
 msgid "Cygwin"
 msgstr "Cygwin"
 
@@ -639,21 +654,21 @@ msgstr "Cygwin"
 #: site/install/stable.ihtml:183 site/install/stable.ihtml:135
 #: site/install/stable.ihtml:181 site/install/old.ihtml:135
 #: site/install/old.ihtml:181
-#, fuzzy, c-format
+#, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
-msgstr "Download het installeerprograma <a href='%s'>hier</a>"
+msgstr "msgid <a href='%s'>Installeer</a> of <a href='%s'>actualiseer</a>"
 
 #: site/sponsor/menu-entries.py:2
 msgid "Options"
-msgstr ""
+msgstr "Opties"
 
 #: site/sponsor/menu-entries.py:3
 msgid "In natura"
-msgstr ""
+msgstr "In natura"
 
 #: site/menu-entries.py:10
 msgid "Sponsoring"
-msgstr ""
+msgstr "Sponsoring"
 
 #: site/install/devel.ihtml:101 site/install/devel.ihtml:127
 #: site/install/devel.ihtml:105 site/install/devel.ihtml:112
@@ -661,18 +676,19 @@ msgstr ""
 #: site/install/devel.ihtml:126 site/install/stable.ihtml:141
 #: site/install/stable.ihtml:143 site/install/install-2.10.ihtml:148
 #: site/install/install-2.9.ihtml:148 site/install/install-2.8.ihtml:143
-#: site/install/install-2.11.ihtml:148
-#, fuzzy, c-format
+#: site/install/install-2.11.ihtml:148 site/install/install-2.10.ihtml:172
+#: site/install/install-2.11.ihtml:170
+#, c-format
 msgid "<a href='%s'>Install</a>"
-msgstr "Download <a href='%s'>tarbal</a>"
+msgstr "<a href='%s'>Installeer</a>"
 
 #: site/install/devel.ihtml:55 site/install/devel.ihtml:88
 #: site/install/devel.ihtml:33 site/install/devel.ihtml:66
 #: site/install/stable.ihtml:33 site/install/stable.ihtml:66
 #: site/install/stable.ihtml:81
-#, fuzzy, c-format
+#, c-format
 msgid "<a href='%s'>the installer</a>"
-msgstr "Download <a href='%s'>tarbal</a>"
+msgstr "<a href='%s'>de installer</a>"
 
 #: site/install/stable.ihtml:33 site/install/stable.ihtml:82
 #: site/install/devel.ihtml:33 site/install/devel.ihtml:66
@@ -681,10 +697,12 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/install-2.9.ihtml:55 site/install/install-2.9.ihtml:88
 #: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
 #: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
-#: site/install/install-2.11.ihtml:88
-#, fuzzy, c-format
+#: site/install/install-2.11.ihtml:88 site/install/install-2.10.ihtml:80
+#: site/install/install-2.10.ihtml:112 site/install/install-2.11.ihtml:78
+#: site/install/install-2.11.ihtml:110
+#, c-format
 msgid "Download <a href='%s'>the installer</a>"
-msgstr "Download <a href='%s'>tarbal</a>"
+msgstr "Download <a href='%s'>de installer</a>"
 
 #: site/install/stable.ihtml:37 site/install/stable.ihtml:86
 #: site/install/devel.ihtml:37 site/install/devel.ihtml:70
@@ -693,7 +711,9 @@ msgstr "Download <a href='%s'>tarbal</a>"
 #: site/install/install-2.9.ihtml:59 site/install/install-2.9.ihtml:92
 #: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
 #: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
-#: site/install/install-2.11.ihtml:92
+#: site/install/install-2.11.ihtml:92 site/install/install-2.10.ihtml:84
+#: site/install/install-2.10.ihtml:116 site/install/install-2.11.ihtml:82
+#: site/install/install-2.11.ihtml:114
 #, c-format
 msgid "do %s in a command window."
-msgstr ""
+msgstr "doe %s in een commandoverster."
