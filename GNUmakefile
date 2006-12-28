@@ -3,7 +3,7 @@
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = nl fr
 
-.PHONY: all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
+.PHONY: add all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
 
 PYTHON = python
 SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
@@ -13,8 +13,9 @@ VERSION = $(shell expr "$$(grep 'Revision: [0-9]\+' site/index.html)" : '.*Revis
 DISTDIR = lily-web-$(VERSION)
 
 READMES = ChangeLog README TRANSLATION
-SITE_HTML = $(shell find site/ -name '*.html')
+SITE_HTML = $(shell find site -name '*.html')
 LOCAL_HTML = $(shell find fr nl -name '*.html')
+NO_TRANSLATION = '/announce-|/devel/|/donate|/old-|/older-|/search'
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
 MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
@@ -121,7 +122,10 @@ new:
 	cd $(LANG) && mkdir -p $(TREE)
 	HEAD=`git-rev-list --max-count=1 HEAD` && \
 	$(foreach i, $(SITE_HTML), \
-		(sed 's/<FILL[^>]*>/'$$HEAD'/g' < $(i) > $(LANG)/$(i:site/%=%)) && ) true
+		(test -e $(LANG)/$(i:site/%=%) \
+			|| sed 's/<FILL[^>]*>/'$$HEAD'/g' < $(i) \
+				> $(LANG)/$(i:site/%=%)) && ) true
+	-find ./$(LANG) | grep -E $(NO_TRANSLATION) | xargs rm -rf
 
 tree:
 	rm -rf out/site
