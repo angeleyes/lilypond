@@ -1,0 +1,56 @@
+<!--
+    Translation of GIT committish: <FILL-IN-HEAD-COMMITTISH>  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<h1>Bug reporting</h1>
+
+<p>
+If you have input that results in a crash or an erroneous output, then
+that is a bug.  There is a list of current bugs on our google bug
+tracker,
+
+<blockquote>
+<a href="http://code.google.com/p/lilypond/issues/list">
+http://code.google.com/p/lilypond/issues/list</a>
+</blockquote>
+
+If you have discovered a bug which is not listed, please help us by
+sending an input file which demonstrates the problem.
+
+<p>
+When creating a file, please
+
+<ul>
+<li>Include the <tt>\version</tt> number and which Operating System
+you use.
+
+<li>Create an example which is as small as possible.  Most bugs can
+be duplicated in less than ten lines of LilyPond code.  Unfortunately
+we do not have the resources to debug large examples.
+
+<li>If possible, use <tt>\paper{ ragged-right=##t }</tt> at the top
+of your example.
+</ul>
+
+Here's an example of a good bug report:
+
+<pre>
+%% the octovation command doesn't do anything.
+
+\version "2.10.0"  % on OSX
+\paper{ ragged-right=##t }
+\relative c''' {
+  c1
+  #(set-octavation 1)
+  c1
+}
+</pre>
+
+
