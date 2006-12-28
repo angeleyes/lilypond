@@ -173,16 +173,33 @@ of the translation.  To check a single page, run
     scripts/check-translation.py <MY-LANGUAGE>/index.html
 
 
-SUBMIT TO GIT
+SUBMIT 
 
-    git push 
+Run
 
-If you do not have GIT write access, send patches to your translation
-sponsor, or the the lilypond-user list.
+    git log
 
+This shows something like
 
-You can format a patch with
+    commit 527d87fa35f419e292e6beb5233ded7268b0110b
+    Author: Han-Wen Nienhuys <hanwen@lilypond.org>
+    Date: ... 
 
-    git-format-patch MY-FIRST-CHANGE^..
+    ...description...
 
-where MY-FIRST-CHANGE is the committish of your first applied change. 
+For every patch.
+
+The number 527d87fa35f419e292e6beb5233ded7268b0110b is called
+"committish".  Cut & paste the number for the first change you want to
+submit, eg. 
+
+     git format-patch 527d87fa35f419e292e6beb5233ded7268b0110b^..
+
+(the .. and ^ need to be entered literally).  This will create patches
+named
+
+    0001-summary-of-patch1.txt 
+    0002-summary-of-patch2.txt 
+    0003-summary-of-patch3.txt 
+
+Send each of them to lilypond-devel@gnu.org.
