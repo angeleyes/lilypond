@@ -1,0 +1,146 @@
+<!--
+    Translation of GIT committish: ac5da2c7e90f10ce8a680b275d1e33b10462c4ea
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>LilyPond - empezando</title>
+
+<h1>Empezando</h1>
+<p>
+  Ha instalado su flamante y nueva copia de LilyPond, ahora no puede 
+esperar para hacer su primer grabado de música. Aquí hay algunas pistas.
+</p>
+
+
+<p align="right">
+  <em>Haga clic para aumentar</em>
+  <a href="@IMAGES@terminal-shot.png">
+    <img src="@IMAGES@terminal-shot.png" width="400" align="right">
+  </a>
+</p>
+
+<h2>Probando LilyPond</h2>
+
+<p>
+  Estas son las instrucciones para Unix y Windows en la línea de 
+  comando. Es recomendable para los usuarios de Windows que lean la 
+  <a href="windows.html">guía rápida para Windows</a>.
+</p>
+
+<ul>
+  <li>Abra una ventana de terminal y escriba
+
+    <blockquote>
+      <pre>
+	lilypond --help
+      </pre>
+    </blockquote>
+    en su ventana.
+    Deberá aparecer algo parecido a 
+    <blockquote>
+      <pre>
+	Usage: lilypond [OPTION]... FILE...
+
+	Typeset music and/or produce MIDI from FILE.
+
+	LilyPond produces beautiful music notation.
+	For more information, see http://lilypond.org
+
+	Options:
+	-b, --backend=EXT     select backend to use
+	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
+	-f, --formats=EXTs    list of formats to dump
+	-h, --help            print this help
+	[..]
+      </pre>
+    </blockquote>
+    <p>
+      Si aparece esto, tiene el programa instalado y podrá ejecutarlo.
+    </p>
+  </li>
+  <li>Inicie su editor de texto favorito. 
+  </li>
+  <li> Inserte 
+    <blockquote>
+      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
+	{
+	c4( c)
+	}
+      </pre>
+    </blockquote>
+    
+    <strong>NOTA:</strong> los usuarios de LilyPond 2.2 y anterior deberán encerrar el ejemplo  anterior dentro de un bloque 
+    <code>\notes{}</code> <em>y</em> a su vez dentro de un bloque <code>\score {}</code>.
+    
+  </li>
+  <li>Guárdelo como <tt>test.ly</tt>. Salga del editor.
+  <li>Ejecute 
+    <blockquote>
+      <pre>
+	lilypond test
+      </pre>
+    </blockquote>
+    Si ha tenido éxito, deberá aparecer 
+    <blockquote>
+      <pre>
+	DVI output `test.dvi'...
+	PS output to `test.ps'...
+	PDF output to `test.pdf'...
+      </pre>
+    </blockquote>
+  </li>
+  <li>
+    Visualice el archivo PDF. Pruebe estos comandos 
+    <blockquote>
+      <pre>
+	ggv test.pdf
+	gv test.pdf
+	kgv test.pdf
+	acroread test.pdf
+	xpdf test.pdf
+	ghostview test.pdf
+      </pre>
+    </blockquote>
+  </li>
+
+  <li>
+    La opción más sencilla para usuarios de Windows es el 
+    <a href="windows.html">modo de arrastrar &amp; soltar</a>. Si prefiere el 
+    teclado, puede intentar con el procedimiento anterior, con las notas 
+    adicionales: 
+    <ul>
+    <li> doble clic en el ícono de LilyPond</li>
+    <li> esta acción abrirá un archivo de prueba. Guárdelo como <code>test.ly</code>
+    en el escritorio.</li>
+    <li> haga doble clic en <code>test.ly</code></li>
+    <li> después de algunos segundos, un archivo <code>test.pdf</code> deberá aparecer.</li>
+    </ul>
+  </li>
+
+</ul>
+
+<h2>¡Viva!, ¡Funciona!</h2>
+<p>
+  ¡Bien! Ahora vaya a <a href="using.html">Usando LilyPond</a>
+</p>
+
+<h2>Mmm, no sé que debo hacer. ¡Ayúdenme!</h2>
+
+<p>
+  Para preguntas y soporte, envíe correo a <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h2>Caramba, no funciona</h2>
+<p>
+ Algo falló. Envíe un reporte de falla, para ayudarnos a encontrar la solución a 
+ su problema. Las indicaciones para los reportes de fallo están en la 
+ <a href="../about/faq.html#bugreport">FAQ</a>. Si su descarga no fué empaquetada 
+ por el equipo LilyPond, envíe un correo al empaquetador listado en la columna 
+ "Courtesy" <a href="index.html">en la página de descargas.</a>
+</p>
