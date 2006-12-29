@@ -1,46 +1,17 @@
 <!--
-    Translation of GIT Committish: c72fd2fa225611379417a78fc8b1e537f1e6c9f0
+    Translation of GIT Committish: 1b01f2cbe54744b151da765163d4ffba842ee28e
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
 
-      git-rev-list HEAD | head -1
+    git-rev-list HEAD | head -1
 
     to discover that.
 !-->
 
-<h1>Fonctionnalit&eacute;s de LilyPond</h1>
+<h1>Fonctionnalités de LilyPond</h1>
 
-<h2>Langage musical source</h2>
-<p>
-  La saisie se fait sous la forme d'un langage musical en texte brut.
-</p>
-
-<ul>
-  <li>
-    La saisie peut &ecirc;tre faite avec l'&eacute;diteur de texte de votre choix,
-    en utilisant la langue de votre choix.
-  </li>
-  <li>
-    Le format de saisie ASCII, compatible avec TeX, HTML et Texinfo
-    permet l'&eacute;dition de documents musicologiques avec un fichier source unique.
-  </li>
-  <li>
-    Musique et mise en page &eacute;tant strictement distinctes, le conducteur
-    et les parties s&eacute;par&eacute;es (pouvant &ecirc;tre dans des styles ou tonalit&eacute;s diff&eacute;rents)
-    peuvent &ecirc;tre g&eacute;n&eacute;r&eacute;s depuis la m&ecirc;me source, les changements prenant
-    toujours effet dans chacune des partitions.
-  </li>
-  <li>
-    La sortie peut &ecirc;tre am&eacute;lior&eacute;e en mettant &agrave; jour le logiciel.
-  </li>
-  <li>
-    Les &oelig;uvres peuvent &ecirc;tre &eacute;dit&eacute;es dans diff&eacute;rents
-    styles (typographiques) personalis&eacute;s, ou selon certaines normes de notation.
-  </li>
-</ul>
-
-<h2>Mise en page automatis&eacute;e de haute qualit&eacute;</h2>
+<h2>Mise en page automatisée de haute qualité</h2>
 
 <ul>
   <li>
@@ -50,92 +21,146 @@
     Gestion des collisions polyphoniques pour les notes, points et silences.
   </li>
   <li>
-    Placement automatique des alt&eacute;rations, liaisons, barres.
+    Placement automatique des altérations et liaisons, grâce à
+    des algorithmes d'évaluation optimale.
   </li>
   <li>
-    Aucune connaissance typographique n'est n&eacute;cessaire pour les utilisateurs.
+    Aucune connaissance typographique n'est nécessaire pour les
+    utilisateurs.
   </li>
   <li>
-    Aucune intervention de l'utilisateur n'est n&eacute;cessaire durant l'ex&eacute;cution du programme.
-    Celle-ci peut &ecirc;tre automatis&eacute;e, permettant ainsi la conversion de masse
-    d'une base de donn&eacute;es de musique num&eacute;rique, et l'impression de compositions algorithmiques.
+    Aucune intervention de l'utilisateur n'est nécessaire
+  durant l'exécution du programme. Celle-ci peut être
+  automatisée, permettant ainsi la conversion de masse d'une
+  base de données de musique numérique et l'impression
+  de compositions algorithmiques.
   </li>
   <li>
-    La police Feta a &eacute;t&eacute; sp&eacute;cialement travaill&eacute;e pour LilyPond, en imitant
-    du mieux possible l'aspect des partitions grav&eacute;es &agrave; la main. Elle est disponible
-    comme police vectorielle, mais aussi comme police Metafont.
-      </li>
-  <li>
-    Support de nombreuses structures de notation.
+    La police Feta a été spécialement
+    travaillée pour LilyPond, en imitant du mieux possible
+    l'aspect des partitions gravées à la main. Elle est
+    disponible comme police vectorielle, mais aussi comme police
+    Metafont.
   </li>
 </ul>
 
-<h2>Notations sp&eacute;ciales</h2>  
+<h2>Notations spéciales</h2>  
 <ul>
   <!-- todo: add links-->
-  <li>Accords sous forme de lettres.</li>
-  <li>Notation pour percussions.</li>
-  <li>Basse chiffr&eacute;e.</li>
-  <li>Appoggiatures.</li>
-  <li>Diagrammes d'accords.</li>
-  <li>Tablatures.</li>
-  <li>Clusters et signes de groupements rythmiques.</li>
-  <li>Tremolos, sur notes et accords.</li>
-  <li>&ldquo;Tuplets&rdquo; (duolet, triolet, nolet, etc) de toutes sortes.</li>
-  <li>Notation polym&eacute;trique (mesures irr&eacute;guli&egrave;res).</li>
-  <li>Notation mensurale.</li>
-  <li>R&eacute;pliques automatiques.</li>
-  <li>Cr&eacute;ation automatique d'un conducteur d'orchestre.</li>
-  <li>Alt&eacute;rations en quart de ton.</li>
-  <li>Ambitus.</li>
-  <li>Indications m&eacute;tronomiques.</li>
-  <li>Harmoniques.</li>
-  <li>R&eacute;p&eacute;titions de mesures (style &ldquo;%&rdquo;).</li>
-  <li>Changement des t&ecirc;tes de notes.</li>
-  <li>Masquage d'&eacute;l&eacute;ments de notation.</li>
-  <li>Signes d'arp&egrave;ge.</li>
-  <li>Octaviation.</li>
-  <li>Crochets d'analyse imbriqu&eacute;s.</li>
-  <li>P&eacute;dales de piano.</li>
-  <li>Placement configurable des d&eacute;buts et fins de port&eacute;es</li>
-  <li>S&eacute;parateurs de syst&egrave;mes</li>
+  <li>Accords sous forme de lettres, en anglais, français ou
+   italien</li>
+  <li>Altérations accidentelles suggérées ou de précaution, style
+   classique ou moderne</li>
+  <li>Altérations microtonales (quarts de ton)</li>
+  <li>Ambitus</li>
+  <li>Angles de crescendi et decrescendi, également avec des petits
+   cercles à l'extrémité (al niente)</li>
+  <li>Appoggiatures et notes d'agrément</li>
+  <li>Ballons de texte (enseignement)</li>
+  <li>Barres de ligature sur plusieurs portées</li>
+  <li>Barres de mesure en tiret ou en pointillé</li>
+  <li>Basse chiffrée</li>
+  <li>Chutes et sauts</li>
+  <li>Citation de fragments musicaux, y compris avec
+   transposition</li>
+  <li>Clusters et signes de groupements rythmiques</li>
+  <li>Conducteurs avec combinaison automatique des parties</li>
+  <li>Coloration de n'importe quel élément de notation</li>
+  <li>Crochets d'analyse imbriqués</li>
+  <li>Crochets d'octaviation</li>
+  <li>Doigtés, y compris doigtés de guitare pour la main droite</li>
+  <li>Espacement vertical des portées à l'aide d'un algorithme de
+   ligne d'horizon</li>
+  <li>Extraction de parties&nbsp;: voir Conducteurs</li>
+  <li>Formatage avancé des liaisons de prolongation d'accords</li>
+  <li>Harmoniques</li>
+  <li>Indications métronomiques</li>
+  <li>Liaisons &ldquo; laissez vibrer &rdquo;</li>
+  <li>Ligatures en éventail (crescendo rythmique)</li>
+  <li>Lignes supplémentaires, raccourcies automatiquement selon l'espacement</li>
+  <li>Masquage d'éléments de notation (enseignement)</li>
+  <li>Nolets de proportions arbitraires, imbriqués, brisés avec des
+   extrémités paramétrables</li>
+  <li>Notation mensurale</li>
+  <li>Notation polymétrique (mesures
+   irrégulières)</li>
+  <li>Notation pour percussions</li>
+  <li>Notation proportionnelle</li>
+  <li>Ornementation&nbsp;: grande variété d'ornements, dont des mordants
+  <li>Numérotation des cordes, également sur des accords</li>
+  <li>Pédales de piano</li>
+  <li>Petites barres de ligature</li>
+  <li>Petites hampes</li>
+  <li>Portées avec nombre de lignes variable, positionnement
+   individuel des portées</li>
+  <li>Portées de début et de fin arbitraires</li>
+  <li>Répétitions de mesures (style &ldquo;%&rdquo;)</li>
+  <li>Répliques automatiques</li>
+  <li>Séparateurs de systèmes</li>
+  <li>Signes d'arpège</li>
+  <li>Tablatures</li>
+  <li>Têtes de note contenant le nom de note</li>
+  <li>Têtes de note personnalisables</li>
+  <li>Traits d'union et de prolongation pour les paroles, mélismes</li>
+  <li>Transposition</li>
+  <li>Trémolos, sur notes et accords</li>
+  <li>Trilles, également avec vague de prolongation et hauteur explicite</li>
 </ul>
+
+Pour les détails et extraits de gravure musicale, suivez la
+<a href="@DOC@latest/Documentation/topdocs/NEWS">liste des
+nouveautés</a> et jetez un coup d'œil aux <a
+href="@DOC@latest/input/regression/collated-files.html">tests de
+régression</a>.
 
 
 <h2>Conception robuste</h2>
 
 <ul>
   <li>
-    Paroles dans toutes les langues.
-  </li>
-  
-  <li>
-    Sortie aux formats PostScript, PDF, PNG, MIDI, SVG.
+    Aucune limite au nombre de portées, voix, mesures,
+    à la longueur des textes, etc.
   </li>
 
   <li>
-    Aucune limite au nombre de port&eacute;es, voix, mesures,
-    longueur de texte, etc.
+    Moteur de rendu extensible&nbsp;: sortie aux formats EPS,
+    PostScript, PDF, PNG, MIDI, SVG.
   </li>
+
   <li>
-    Extensible avec l'interpr&eacute;teur LISP int&eacute;gr&eacute;.
+    Paroles dans toutes les langues.
+  </li>
+
+  <li>
+    Format source sous forme de texte, avec un langage musical
+    versatile.
+  </li>
+
+  <li>
+    Programmable et extensible avec l'interpréteur LISP intégré.
   </li>
 </ul>
 
 <h2>Excellent support</h2>
 <ul>
-  <li>Fonctionne sous Unix, y compris MacOS X et Linux, et Windows.</li>
-  <li>Communaut&eacute; d'utilisateurs active.</li>
-  <li>Documentation &eacute;volutive.</li>
-  <li>Support&eacute; par de nombreux autres logiciels,</li>
-  <a href="http://www.rosegardenmusic.com">RoseGarden</a> 
-  <a href="http://noteedit.berlios.de/">NoteEdit</a>
-  <a href="http://jelmer.vernstok.nl/oss/ptabtool">PowerTab</a>
-  et
-  <a href="http://denemo.sourceforge.net/">Denemo</a>.
-</li>
-<li>
-  Importe les formats <a href="http://abc.sourceforge.net/">ABC</a>,
-  <a href="http://www.finalemusic.com/finale/">ETF</a> et MIDI.
-</li>
+  <li>Fonctionne sous Unix, y compris MacOS X et Linux, et Windows
+  (nativement et avec Cygwin).</li>
+  <li>Communauté d'utilisateurs active.</li>
+  <li><a href="@DOC@stable/Documentation/user">Documentation</a> évolutive.</li>
+  <li>Supporté par de nombreux autres logiciels&nbsp;:</li>
+    <a href="http://www.rosegardenmusic.com">RoseGarden</a>,
+    <a href="http://noteedit.berlios.de/">NoteEdit (surpassé par
+    Canorus)</a>,
+    <a href="http://canorus.berlios.de">Canorus</a>,
+    <a href="http://jelmer.vernstok.nl/oss/ptabtool">PowerTab Tools</a>,
+    <a href="http://denemo.sourceforge.net/">Denemo</a>,
+    <a href="http://ooolilypond.sourceforge.net/">greffon OpenOffice.org</a>.
+  </li>
+  <li>
+    Importe les formats
+    <a href="http://abc.sourceforge.net/">ABC</a>,
+    <a href="http://www.finalemusic.com/finale/">ETF (Finale)</a>, MIDI,
+    <a href="http://www.recordare.com/xml.html">Music XML</a>,
+    <a href="http://nwc2ly.sourceforge.net">Noteworthy Composer</a>.
+  </li>
 </ul>
