@@ -16,9 +16,10 @@ verbose = 0
 C = 'site'
 LANGUAGES = (
     (C, 'English'),
-    ('nl', 'Nederlands'),
+    ('de', 'Deutch'),
+    ('es', 'Español'),
     ('fr', 'Fran&ccedil;ais'),
-    ('es', 'Español')
+    ('nl', 'Nederlands'),
     )
 
 localedir = 'out/locale'

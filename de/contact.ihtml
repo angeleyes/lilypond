@@ -10,24 +10,24 @@
 !-->
 
  Diese Mailinglisten werden alle in englischer Sprache gef&uuml;hrt.
- Wenn du ein wenig Englisch kannst, versuche deine Frage auf Englisch
- zu stellen, auch wenn dein Englisch nicht gut ist. Wenn du kein
- Englisch kannst, schreibe auf Deutsch, es kann aber sein dass du
- weniger Antworten bekommst.
+ Wenn Sie etwas Englisch sprechen, sollten Sie ihre Frage auf Englisch
+ stellen. Wenn Sie kein
+ Englisch k&ouml;nnen, schreiben Sie auf Deutsch, es kann aber sein, dass
+ weniger Antworten kommen.
 
 <dl>
   <dt>Fragen oder Kommentare?</dt>
   <dd>
-    Schreib uns : <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
+    Mail to: <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
     (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An/Ab-meldung</a>,
+    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An- oder Abmeldung</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-user/">Archiv</a>)
     <br>
   </dd>
 
-  <dt>Fehler gefunden ?</dt>
+  <dt>Fehler gefunden?</dt>
   <dd>
-    Schreib uns:
+    Mail to:
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
     (Mailingliste
     <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
@@ -35,8 +35,8 @@
     <br>
   </dd>
 
-  <dt>M&ouml;chtest du bei neuen Versionen benachrichtigt werden?</dt>
-  <dd>Subscribe to
+  <dt>Benachrichtigung bei neuen Versionen</dt>
+  <dd>Eine Benachrichtigung kann abonniert werden.
     <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
     (Mailingliste
     <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">Info</a>,
@@ -44,8 +44,8 @@
   </dd>
 
   
-  <dt>Kommentare zu den Seiten ?</dt>
-  <dd>Schreib uns:
+  <dt>Kommentare zu den Seiten?</dt>
+  <dd>Mail to:
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
     (Mailingliste
     <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
@@ -53,8 +53,8 @@
   </dd>
 
   
-  <dt>M&ouml;chtest du Kontakt zu den Entwicklern ?<dt>
-  <dd>abonniere
+  <dt>Kontakt zu den Entwicklern?<dt>
+  <dd>Kontaktieren Sie die Entwickler &uuml;ber ein Abonnement der Entwickler-Liste 
     <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
     (Mailingliste
     <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">Info</a>,
@@ -62,12 +62,12 @@
   </dd>
 
   <dt>
-  M&ouml;chtest du den Entwickler direkt kontaktieren?</dt>
+  Privater Kontakt zu den Entwicklern?</dt>
     <dd>
-    Schau hier:
+    Siehe 
     <a href="@DOC@v2.6/Documentation/topdocs/out-www/AUTHORS.html">die
       Liste der Autoren</a>.
-    (<em>Schreibe den Autoren nur im Falle strikten 
-      pers&ouml;nlichen Kontakts </em>)
+    (<em>Bitten den Autoren nur im Falle strikten 
+      pers&ouml;nlichen Kontakts schreiben!</em>)
   </dd>
 </dl>
