@@ -1,0 +1,108 @@
+<!--
+    Translation of GIT committish: ac5da2c7e90f10ce8a680b275d1e33b10462c4ea
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<h1>LilyPond curso intensivo</h1>
+
+<h2>Captura de pantalla</h2> 
+
+<p>
+  LilyPond es un sistema de <em>lotes</em>: se corre sobre archivos de texto 
+  que contienen las notas. La salida resultante se podrá visualizar en pantalla 
+  o imprimir. Para darse una idea, observe esta captura de pantalla. 
+</p>
+
+<p align="center">
+  <a href="@IMAGES@nereid-shot.png">
+    <img src="@IMAGES@nereid-shot-small.png" alt="nereid-shot">
+  </a>
+</p>
+<p align="center">
+  <em>(clic para agrandar)</em>
+</p>
+
+
+<h2>Es tan fácil como A B C</h2>
+Las notas se escriben con letras y números. Los comandos especiales 
+pueden insertarse con diagonales invertidas.
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png"
+       alt="annotate-example-1">
+  <br>
+  <img src="@IMAGES@example-1.png" alt="example-1"> 
+
+<p>
+  Las alteraciones se hacen con diferentes nombres: añada -is para sostenido, y  
+  -es para bemol (estos son los nombres Daneses, pero puede usar otros idiomas). 
+  LilyPond sabrá cómo colocar los accidentes.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-2@.LANG@.png"
+       alt="annotate-example-2">
+  <br>
+  <img src="@IMAGES@example-2@.LANG@.png" alt="example-2">
+</p>
+
+<h2>Música Pop</h2>
+
+<p>
+ Mezcle acordes y letras para obtener un cifrado o una partitura guía: 
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-lead@.LANG@.png"
+       alt="annotate-example-lead">
+  <br>
+  <img src="@IMAGES@example-lead.png" alt="example-lead">
+</p>
+
+<h2>Partes orquestales</h2>
+
+<p>
+  <a name="orchestral"></a> El archivo de entrada contiene las notas de una pieza. 
+  La partitura y las partes individuales (partichella) se pueden obtener de un sólo 
+  archivo. Por lo que si altera una nota, se reflejará tanto en la partitura como en la partichella. Para reutilizar las notas, se asigna la música a una variable:
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-parts@.LANG@.png"
+       alt="annotate-example-parts">
+  <br>
+</p>
+
+<p>
+  Esta variable se podrá usar en una parte individual (aquí transportada, con los silencios que abarcan más de un compás, condensados en un silencio multi-compás):
+</p>
+
+<p align=center>
+  <img src="@DEPTH@/graphics/annotate-example-single-part@.LANG@.png"
+       alt="annotate-example-single-part">
+  <br>
+  <img src="@IMAGES@example-singlepart.png" alt="example-singlepart">
+</p>
+
+<p>
+  La misma variable se usa en la partitura completa (aquí en afinación de concierto):
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-score@.LANG@.png"
+       alt="annotate-example-score">
+  <br>
+  <img src="@IMAGES@example-score.png" alt="example-score">
+</p>
+
+
+<h2>Aprendiendo más</h2>
+
+<a href="../install">Descargue</a> LilyPond y pruebe el 
+<a href="@DOC@stable/Documentation/user/lilypond/Tutorial">tutorial</a>.
