@@ -6,12 +6,9 @@ import getopt
 import os
 import re
 import sys
+import safeeval
 
-LANGUAGES = (
-    'nl',
-    'fr',
-    'es'
-    )
+LANGUAGES = [x[0] for x in safeeval.eval_file ('scripts/languages.py')]
 
 outdir = '/tmp'
 verbose = 0
