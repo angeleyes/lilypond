@@ -1,6 +1,6 @@
 [
- ("call-for-help.html", _ ("Help wanted!")),
- ("documentation-adding.html", _ ("Documentation")),
- ("localization.html", _ ("Localization")),
- ("standards.html", _ ("Standards")),
+ ("call-for-help.html", "Help wanted!"),
+ ("documentation-adding.html", "Documentation"),
+ ("localization.html", "Localization"),
+ ("standards.html", "Standards"),
  ]

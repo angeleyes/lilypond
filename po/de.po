@@ -1,23 +1,19 @@
-# -*- encoding: utf-8 -*-
-# fr.po -- LilyPond French website language.
-# Copyright (C) 2005 Jean-Charles Malahieude <lilyfan@wanadoo.fr>,
-# John Mandereau <john.mandereau@free.fr>.
+# nl.po -- LilyPond Dutch website language file
+# Copyright (C) 2005 Jan Nieuwenhuizen <janneke@gnu.org>, Tineke de munnik <tdm@dds.nl>.
+# Jan Nieuwenhuizen <janneke@gnu.org>, 2005.
 # This file is distributed under the same license as the LilyPond package.
-# Jean-Charles Malahieude <lilyfan@wanadoo.fr>, 2005.
-# 
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: LilyPond website lilypond.org\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-12-29 21:01+0100\n"
-"PO-Revision-Date: 2006-06-21 10:38+0200\n"
-"Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
-"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"PO-Revision-Date: 2006-12-29 20:36+0100\n"
+"Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
 #: site/menu-entries.py:4 scripts/format-page.py:216
@@ -30,55 +26,55 @@ msgstr ""
 #: scripts/format-page.py:251 scripts/format-page.py:250
 #: scripts/format-page.py:246
 msgid "Home"
-msgstr "Accueil"
+msgstr "Startpagina"
 
 #: scripts/format-page.py:87 scripts/format-page.py:82
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #: scripts/format-page.py:85 scripts/format-page.py:81
 #, python-format
 msgid "Other languages: %s."
-msgstr "Autres langues : %s."
+msgstr "Andere talen: %s."
 
 #: scripts/format-page.py:88 scripts/format-page.py:83
 #, python-format
 msgid "Using <A HREF='%s'>automatic language selection</A>."
-msgstr "Utiliser la <A HREF='%s'>sélection automatique de la langue</A>."
+msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
 #: site/about/menu-entries.py:2
 msgid "Features"
-msgstr "Fonctionnalités"
+msgstr "Eigenschappen"
 
 #: site/about/menu-entries.py:3
 msgid "FAQ"
-msgstr "Foire aux questions"
+msgstr "FAQ"
 
 #: site/about/menu-entries.py:4
 msgid "Essay"
-msgstr "Essai"
+msgstr "Essay"
 
 #: site/about/menu-entries.py:5
 msgid "Publications"
-msgstr "Publications"
+msgstr "Publicaties"
 
 #: site/about/menu-entries.py:6
 msgid "Donate"
-msgstr "Faire un don"
+msgstr "Donaties"
 
 #: site/about/menu-entries.py:7 site/about/menu-entries.py:6
 msgid "Acknowledgements"
-msgstr "Remerciements"
+msgstr "Dankbetuigingen"
 
 #: site/about/news/menu-entries.py:2
 msgid "Older news"
-msgstr "Annonces précédentes"
+msgstr "Oud nieuws"
 
 #: site/menu-entries.py:5
 msgid "Introduction"
-msgstr "Introduction"
+msgstr "Introductie"
 
 #: site/menu-entries.py:6
 msgid "About"
-msgstr "À propos"
+msgstr "Over LilyPond"
 
 #: site/menu-entries.py:7 site/install/devel.ihtml:36
 #: site/install/devel.ihtml:81 site/install/devel.ihtml:127
@@ -91,7 +87,7 @@ msgstr "À propos"
 #: site/install/old.ihtml:231 site/install/old.ihtml:232
 #: site/install/old.ihtml:235
 msgid "Download"
-msgstr "Téléchargement"
+msgstr "Download"
 
 #: site/menu-entries.py:8 site/devel/participating/menu-entries.py:3
 #: site/install/devel.ihtml:139 site/install/stable.ihtml:139
@@ -101,61 +97,61 @@ msgstr "Téléchargement"
 #: site/install/install-2.8.ihtml:154 site/install/install-2.11.ihtml:160
 #: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:182
 msgid "Documentation"
-msgstr "Documentation"
+msgstr "Dokumentation"
 
 #: site/menu-entries.py:9
 msgid "Development"
-msgstr "Développement"
+msgstr "Entwicklung"
 
 #: site/devel/menu-entries.py:2
 msgid "Participate"
-msgstr "Participer"
+msgstr "Mitarbeit"
 
 #: site/devel/menu-entries.py:3
 msgid "Packaging"
-msgstr "Empaqueter"
+msgstr "Pakete-Erstellung"
 
 #: site/devel/misc/menu-entries.py:2
 msgid "Finale ETF format"
-msgstr "Format Finale ETF"
+msgstr "Finales ETF-Format"
 
 #: site/devel/misc/menu-entries.py:3
 msgid "Conferences relevant to LilyPond"
-msgstr "Conférences en relation avec LilyPond"
+msgstr "Konferenzen zum Thema LilyPond"
 
 #: site/devel/misc/menu-entries.py:4
 msgid "Related online resources"
-msgstr "Ressources en ligne"
+msgstr "Verwandte Webseiten"
 
 #: site/devel/notation/menu-entries.py:2
 msgid "appogiatura"
-msgstr "appogiature"
+msgstr "Vorschlag"
 
 #: site/devel/notation/menu-entries.py:3
 msgid "Basso Continuo"
-msgstr "Basse Continue"
+msgstr "Basso Continuo"
 
 #: site/devel/notation/menu-entries.py:4
 msgid "Color"
-msgstr "Couleur"
+msgstr "Farbe"
 
 #: site/devel/notation/menu-entries.py:5
 msgid "Ligature"
-msgstr "Ligature"
+msgstr "Ligatur"
 
 #: site/devel/participating/menu-entries.py:2
 msgid "Help wanted!"
-msgstr "À l'aide !"
+msgstr "Hilfe erw&uuml;nscht!"
 
 #: site/devel/participating/menu-entries.py:3
 #: site/devel/participating/menu-entries.py:4
 msgid "Localization"
-msgstr "Localisation"
+msgstr "Lokalisierung"
 
 #: site/devel/participating/menu-entries.py:4
 #: site/devel/participating/menu-entries.py:5
 msgid "Standards"
-msgstr "Standards"
+msgstr "Standarde"
 
 #: site/download/windows/menu-entries.py:2
 msgid " Cygwin"
@@ -163,7 +159,7 @@ msgstr "Cygwin"
 
 #: site/download/windows/menu-entries.py:3
 msgid "Troubleshooting"
-msgstr "Résolution de problèmes"
+msgstr "Probleml&ouml;sung"
 
 #: site/download/menu-entries.py:2 site/install/menu-entries.py:2
 msgid "MacOS X"
@@ -176,110 +172,110 @@ msgstr "Windows"
 #: site/download/menu-entries.py:4 site/install/menu-entries.py:4
 #: site/install/menu-entries.py:2
 msgid "First use"
-msgstr "Première utilisation"
+msgstr "Erste Benutzung"
 
 #: site/download/menu-entries.py:5 site/install/menu-entries.py:5
 #: site/install/menu-entries.py:3
 msgid "User help"
-msgstr "Aide pour l'utilisateur"
+msgstr "Hilfe"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
-msgstr "Pourquoi utiliser LilyPond ?"
+msgstr "Warum LilyPond?"
 
 #: site/switch/menu-entries.py:3
 msgid "Testimonials"
-msgstr "Témoignages"
+msgstr "Empfehlungen"
 
 #: site/switch/menu-entries.py:4
 msgid "A short tour"
-msgstr "Un rapide coup d'oeil"
+msgstr "Kurzanleitung"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
-msgstr "Cours express"
+msgstr "Intensivkurs"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
-msgstr "Les commandes sont précédées d'un \\"
+msgstr "Befehle fangen mit \\ an"
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
-msgstr "Les lettres représentent les notes"
+msgstr "Buchstaben sind Noten"
 
 #: site/graphics/annotate-example-1.svg:227
 msgid "Numbers are durations"
-msgstr "Les chiffres annoncent la durée"
+msgstr "Zahlen sind Notendauern"
 
 #: site/graphics/annotate-example-2.svg:181
 msgid "Add articulations"
-msgstr "Ajouter des articulations"
+msgstr "Artikulations-Zeichen dazu"
 
 #: site/graphics/annotate-example-2.svg:191
 msgid "Add -es for flat, -is for sharp"
-msgstr "Ajouter -es pour un bémol, -is pour un dièse"
+msgstr "Dann -es f&uuml;r ein b und -is f&uuml;r ein Kreuz"
 
 #: site/graphics/annotate-example-2.svg:201
 msgid "Enclose pitches in &lt; &gt; for chords"
-msgstr "Inclure les notes entre &lt; &gt; pour des accords"
+msgstr "Noten innerhalb von &lt; &gt; bilden Akkorde"
 
 #: site/graphics/annotate-example-lead.svg:160
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
-msgstr "Entrer le nom des accords"
+msgstr "Eingabe von Akkord-Bezeichnungen"
 
 #: site/graphics/annotate-example-lead.svg:170
 #: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
-msgstr "Entrer la mélodie"
+msgstr "Voer melodie in"
 
 #: site/graphics/annotate-example-lead.svg:177
 msgid "Enter lyrics"
-msgstr "Entrer les paroles"
+msgstr "Eingabe von Text"
 
 #: site/graphics/annotate-example-lead.svg:196
 #: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
-msgstr "Combiner la mélodie et les paroles"
+msgstr "Verbindung von Melodie und Text"
 
 #: site/graphics/annotate-example-parts.svg:165
 #: site/graphics/annotate-example-parts.svg:163
 msgid "Enter multi-rest"
-msgstr "Entrer des mesures à compter"
+msgstr "Mehrtaktige Pausen"
 
 #: site/graphics/annotate-example-parts.svg:178
 #: site/graphics/annotate-example-parts.svg:175
 msgid "Store notes in variable"
-msgstr "Stocker des notes sous forme de variable"
+msgstr "Noten als Variablen bezeichnen"
 
 #: site/graphics/annotate-example-score.svg:115
 msgid "Create staff"
-msgstr "Créer une portée"
+msgstr "Erstellung eines Notensystems"
 
 #: site/graphics/annotate-example-score.svg:126
 msgid "Combine staffs in parallel"
-msgstr "Regrouper des portées dans un système"
+msgstr "Kombination von Systemen &uuml;bereinander"
 
 #: site/graphics/annotate-example-single-part.svg:120
 #: site/graphics/annotate-example-single-part.svg:119
 msgid "Condense multi-rests"
-msgstr "Condenser les mesures à compter"
+msgstr "Mehrtaktige Pausen reduzieren"
 
 #: site/graphics/annotate-example-single-part.svg:134
 #: site/graphics/annotate-example-single-part.svg:132
 msgid "Transpose for F instrument"
-msgstr "Transposer pour un instrument en fa"
+msgstr "Transponieren von F-Instrumenten"
 
 #: site/graphics/annotate-example-single-part.svg:145
 msgid "Reuse identifier"
-msgstr "Réutiliser un identificateur"
+msgstr "Einen Bezeichner wiederverwenden"
 
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #: scripts/format-page.py:85 scripts/format-page.py:86
 #: scripts/format-page.py:82
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "À propos de la <A HREF='%s'>sélection automatique de la langue</A>."
+msgstr "&Uuml;ber die <A HREF='%s'>automatische Sprachauswahl</A>."
 
 #: site/install/devel.ihtml:60 site/install/stable.ihtml:180
 #: site/install/old.ihtml:171 site/install/devel.ihtml:48
@@ -298,7 +294,7 @@ msgstr "À propos de la <A HREF='%s'>sélection automatique de la langue</A>."
 #: site/install/install-2.8.ihtml:64 site/install/install-2.11.ihtml:70
 #: site/install/install-2.10.ihtml:94 site/install/install-2.11.ihtml:92
 msgid "Other"
-msgstr "Autre"
+msgstr "Andere"
 
 #: site/install/devel.ihtml:52 site/install/devel.ihtml:89
 #: site/install/devel.ihtml:123 site/install/devel.ihtml:139
@@ -380,7 +376,7 @@ msgstr "Autre"
 #: site/install/install-2.11.ihtml:158 site/install/install-2.11.ihtml:175
 #: site/install/install-2.11.ihtml:191 site/install/install-2.11.ihtml:208
 msgid "LilyPond development team"
-msgstr "Équipe de développement de LilyPond"
+msgstr "LilyPond-Entwicklerteam"
 
 #: site/install/devel.ihtml:135 site/install/stable.ihtml:268
 #: site/install/old.ihtml:240 site/install/devel.ihtml:115
@@ -404,24 +400,24 @@ msgstr "Équipe de développement de LilyPond"
 #: site/install/install-2.11.ihtml:182 site/install/install-2.10.ihtml:206
 #: site/install/install-2.11.ihtml:204
 msgid "warning"
-msgstr "avertissement"
+msgstr "Warnung"
 
 #: site/graphics/annotate-example-parts.svg:44
 #: site/graphics/annotate-example-score.svg:50
 #: site/graphics/annotate-example-parts.svg:42
 msgid "hornNotes"
-msgstr "notesCor"
+msgstr "HornNoten"
 
 #: site/graphics/annotate-example-parts.svg:72
 #: site/graphics/annotate-example-score.svg:54
 #: site/graphics/annotate-example-parts.svg:70
 msgid "bassoonNotes"
-msgstr "notesBasson"
+msgstr "FagotNoten"
 
 #: site/graphics/annotate-example-single-part.svg:145
 #: site/graphics/annotate-example-single-part.svg:142
 msgid "Reuse variable"
-msgstr "Réutiliser une variable"
+msgstr "Eine Variable wiederverwenden"
 
 #: site/install/devel.ihtml:46 site/install/devel.ihtml:51
 #: site/install/devel.ihtml:49 site/install/stable.ihtml:169
@@ -433,7 +429,7 @@ msgstr "Réutiliser une variable"
 #: site/install/stable.ihtml:41 site/install/devel.ihtml:34
 #: site/install/devel.ihtml:36 site/install/old.ihtml:81
 msgid "NOTE"
-msgstr "NOTE"
+msgstr "ANMERKUNG"
 
 #: site/install/stable.ihtml:43 site/install/old.ihtml:30
 #: site/install/old.ihtml:164 site/install/stable.ihtml:33
@@ -441,7 +437,7 @@ msgstr "NOTE"
 #: site/install/stable.ihtml:78 site/install/stable.ihtml:76
 #: site/install/old.ihtml:76
 msgid "Included with distribution"
-msgstr "Inclus dans la distribution"
+msgstr "In der Distribution enthalten"
 
 #: site/install/devel.ihtml:129 site/install/stable.ihtml:264
 #: site/install/old.ihtml:234 site/install/devel.ihtml:109
@@ -465,7 +461,7 @@ msgstr "Inclus dans la distribution"
 #: site/install/install-2.11.ihtml:176 site/install/install-2.10.ihtml:200
 #: site/install/install-2.11.ihtml:198
 msgid "Source code"
-msgstr "Code source"
+msgstr "Quellcode"
 
 #: site/install/devel.ihtml:78 site/install/devel.ihtml:58
 #: site/install/devel.ihtml:80 site/install/stable.ihtml:81
@@ -485,7 +481,7 @@ msgstr "Code source"
 #: site/install/install-2.11.ihtml:126 site/install/install-2.11.ihtml:147
 #, c-format
 msgid "%s and newer"
-msgstr "%s et plus récent"
+msgstr "%s und neuer"
 
 #: site/install/devel.ihtml:133 site/install/stable.ihtml:266
 #: site/install/old.ihtml:125 site/install/old.ihtml:238
@@ -516,7 +512,7 @@ msgstr "%s et plus récent"
 #: site/install/install-2.11.ihtml:202
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
-msgstr "Télécharger <a href='%s'>l'archive</a>"
+msgstr "<a href='%s'>Tarball</a> herunterladen"
 
 #: site/install/devel.ihtml:102 site/install/stable.ihtml:64
 #: site/install/stable.ihtml:201 site/install/stable.ihtml:214
@@ -557,7 +553,7 @@ msgstr "Télécharger <a href='%s'>l'archive</a>"
 #: site/install/install-2.8.ihtml:53
 #, c-format
 msgid "Go <a href='%s'>here</a>"
-msgstr "Aller <a href='%s'>ici</a>"
+msgstr "Siehe <a href='%s'>hier</a>"
 
 #: site/install/stable.ihtml:144 site/install/old.ihtml:143
 #: site/install/stable.ihtml:134 site/install/old.ihtml:150
@@ -571,7 +567,7 @@ msgstr "Aller <a href='%s'>ici</a>"
 #: site/install/old.ihtml:114
 #, c-format
 msgid "Included <a href='%s'>with distribution</a>"
-msgstr "Inclus dans <a href='%s'>la distribution</a>"
+msgstr "In der <a href='%s'>Distribution</a> enthalten"
 
 #: site/install/devel.ihtml:42 site/install/devel.ihtml:82
 #: site/install/stable.ihtml:164 site/install/devel.ihtml:32
@@ -599,7 +595,7 @@ msgstr "Inclus dans <a href='%s'>la distribution</a>"
 #: site/install/install-2.11.ihtml:151
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
-msgstr "Télécharger <a href='%s'>%s</a>"
+msgstr "<a href='%s'>%s</a> herunterladen"
 
 #: site/install/devel.ihtml:45 site/install/stable.ihtml:167
 #: site/install/devel.ihtml:35 site/install/stable.ihtml:157
@@ -610,12 +606,12 @@ msgstr "Télécharger <a href='%s'>%s</a>"
 #: site/install/old.ihtml:79 site/install/stable.ihtml:59
 #: site/install/old.ihtml:59
 msgid "documentation"
-msgstr "documentation"
+msgstr "Dokumentation"
 
 #: site/install/devel.ihtml:118 site/install/devel.ihtml:98
 #, c-format
 msgid "Download the installer <a href='%s'>here</a>"
-msgstr "Télécharger l'installateur <a href='%s'>ici</a>"
+msgstr "Den Installer <a href='%s'>hier</a> herunterladen"
 
 #: site/install/stable.ihtml:81 site/install/stable.ihtml:103
 #: site/install/stable.ihtml:124 site/install/old.ihtml:85
@@ -630,13 +626,13 @@ msgstr "Télécharger l'installateur <a href='%s'>ici</a>"
 #: site/install/old.ihtml:140
 #, c-format
 msgid "Go to <a href='%s'>%s</a>"
-msgstr "Aller à <a href='%s'>%s</a>"
+msgstr "Siehe <a href='%s'>%s</a>"
 
 #: site/install/devel.ihtml:47 site/install/devel.ihtml:37
 #: site/install/stable.ihtml:38 site/install/stable.ihtml:56
 #: site/install/stable.ihtml:39 site/install/stable.ihtml:61
 msgid "compatibility libraries"
-msgstr "bibliothèques de compatibilité"
+msgstr "Bibliotheken f&uuml;r die Kompatibilit&auml;t"
 
 #: site/install/menu-entries.py:2
 msgid "Fink"
@@ -662,19 +658,19 @@ msgstr "Cygwin"
 #: site/install/old.ihtml:181
 #, c-format
 msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
-msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
+msgstr "<a href='%s'>Installieren oder <a href='%s'>upgraden</a>"
 
 #: site/sponsor/menu-entries.py:2
 msgid "Options"
-msgstr "Modalités"
+msgstr "Optionen"
 
 #: site/sponsor/menu-entries.py:3
 msgid "In natura"
-msgstr "En nature"
+msgstr ""
 
 #: site/menu-entries.py:10
 msgid "Sponsoring"
-msgstr "Mécénat"
+msgstr ""
 
 #: site/install/devel.ihtml:101 site/install/devel.ihtml:127
 #: site/install/devel.ihtml:105 site/install/devel.ihtml:112
@@ -686,7 +682,7 @@ msgstr "Mécénat"
 #: site/install/install-2.11.ihtml:170
 #, c-format
 msgid "<a href='%s'>Install</a>"
-msgstr "<a href='%s'>Installation</a>"
+msgstr "<a href='%s'>Installieren</a>"
 
 #: site/install/devel.ihtml:55 site/install/devel.ihtml:88
 #: site/install/devel.ihtml:33 site/install/devel.ihtml:66
@@ -694,7 +690,7 @@ msgstr "<a href='%s'>Installation</a>"
 #: site/install/stable.ihtml:81
 #, c-format
 msgid "<a href='%s'>the installer</a>"
-msgstr "<a href='%s'>le script d'installation</a>"
+msgstr "<a href='%s'>das Installationsprogramm</a>"
 
 #: site/install/stable.ihtml:33 site/install/stable.ihtml:82
 #: site/install/devel.ihtml:33 site/install/devel.ihtml:66
@@ -708,7 +704,7 @@ msgstr "<a href='%s'>le script d'installation</a>"
 #: site/install/install-2.11.ihtml:110
 #, c-format
 msgid "Download <a href='%s'>the installer</a>"
-msgstr "Télécharger <a href='%s'>le script d'installation</a>"
+msgstr "Das <a href='%s'>Installationsprogramm</a> herunterladen"
 
 #: site/install/stable.ihtml:37 site/install/stable.ihtml:86
 #: site/install/devel.ihtml:37 site/install/devel.ihtml:70
@@ -722,4 +718,4 @@ msgstr "Télécharger <a href='%s'>le script d'installation</a>"
 #: site/install/install-2.11.ihtml:114
 #, c-format
 msgid "do %s in a command window."
-msgstr "Faites %s dans un terminal."
+msgstr "%s auf einer Konsole eingeben"

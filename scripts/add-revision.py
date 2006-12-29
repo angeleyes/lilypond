@@ -115,7 +115,7 @@ def opt_parser ():
                   dest="sender")
     p.add_option ('--languages',
                   action="store",
-                  default="fr,nl",
+                  default="de,es,fr,nl",
                   dest="language_str")
     
     return p

@@ -8,18 +8,14 @@ import re
 import string
 import sys
 import versiondb
+import safeeval
 
 # The directory to hold the translated and menuified tree.
 outdir = '/var/www'
 verbose = 0
 
 C = 'site'
-LANGUAGES = (
-    (C, 'English'),
-    ('nl', 'Nederlands'),
-    ('fr', 'Fran&ccedil;ais'),
-    ('es', 'Español')
-    )
+LANGUAGES = safeeval.eval_file ('scripts/languages.py')
 
 localedir = 'out/locale'
 try:
@@ -161,8 +157,7 @@ def format_page (html, file_name, lang):
         f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
         if os.path.isfile (f):
-            menu = eval (open (f).read (),
-                  {'__builtins__': {}, '_': _ }, {})
+            menu = [(name, _(label)) for (name, label) in safeeval.eval_file (f)]
         else:
             menu = [('', os.path.splitext (dir)[0]),]
         return menu

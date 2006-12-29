@@ -1,6 +1,6 @@
 <!--
-    Translation of GIT Committish: cec31011f06330d110bb45c998d7492502927a07
-    
+    Translation of GIT committish: 74f7ad76a984df5ed29fe9f11aa793b44eaaca5d  
+
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
 
@@ -9,17 +9,17 @@
     to discover that.
 !-->
 
-<title>LilyPond - Starthilfe</title>
+<title>Ein erster Anfang mit LilyPond</title>
 
-<h1>Wo du anf&aauml;ngst</h1>
+<h1>Ein erster Anfang</h1>
 <p>
-  Du hast gerade dein strahlendes neues LilyPond installiert und kannst kaum
-  darauf warten mit dem Noten setzen anzufangen. Hier gibt's einige Tips.
+  Nun endlich ist das neue LilyPond installiert, und es juckt schon in den Fingern.
+  Hier gibt es ein paar Hinweise.
 </p>
 
 
 <p align="right">
-  <em>Klicke hier um zu Vergr&ouml;&szlig;ern</em>
+  <em>Klicken zum Vergr&ouml;&szlig;ern</em>
   <a href="@IMAGES@terminal-shot.png">
     <img src="@IMAGES@terminal-shot.png" width="400" align="right">
   </a>
@@ -28,21 +28,21 @@
 <h2>LilyPond testen</h2>
 
 <p>
-  Dies sind Anweisungen f&uuml;r Linux und Windows f&uuml;r die Kommandozeile.
-  Windowsbenutzer wird es geraten sich den
-  <a href="windows.html">Schnellstart f&uuml;r Windows</a>anzusehen.
+  Das ist eine Anleitung für Unix/Linux und Windows auf der
+  Kommandozeile. Windowsbenutzer sollten sich die 
+  <a href="windows.html">Schnellstartmethoden f&uuml;r Windows</a> ansehen.
 </p>
 
 <ul>
-  <li>&ouml;ffne ein Terminalfenster und gib
+  <li>&Ouml;ffnen Sie ein Terminal und tippen Sie
 
     <blockquote>
       <pre>
 	lilypond --help
       </pre>
     </blockquote>
-    in dein Fenster ein. (Mit der Entertaste abschlie&szlig;en)
-    Du solltest etwas &aauml;hnliches wie
+    in das Fenster.
+    Es sollte in etwa folgende Ausgabe zu sehen sein:
     <blockquote>
       <pre>
 	Usage: lilypond [OPTION]... FILE...
@@ -60,14 +60,13 @@
 	[..]
       </pre>
     </blockquote>
-    sehen.
     <p>
-      Wenn du das siehst ist LilyPond installiert und du kannst es ben&uuml;tzen.
+      Wenn dieser Text zu sehen ist, ist das Programm installiert und kann benutzt werden.
     </p>
   </li>
-  <li>Starte deinen Lieblingseditor (z.B notepad ;) 
+  <li>&Ouml;ffnen Sie ihren Lieblingstexteditor. 
   </li>
-  <li> Gib
+  <li> Tippen Sie
     <blockquote>
       <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
 	{
@@ -75,24 +74,20 @@
 	}
       </pre>
     </blockquote>
-    ein.
     
-    <strong>Hinweis:</strong> Benutzer von LilyPond 2.2 and fr&uuml;herer
-    Versionen m&uuml;ssen das oben angef&uuml;hrte Beispiel in
-    <code>\notes{}</code> <em>und</em> <code>\score {}</code> Blocks
-    einschlie&szlig;en..
+    <strong>Anmerkung:</strong> Benutzer von LilyPond 2.2 und früher müssen dieses
+	Beispiel in <code>\notes{}</code> <em>und</em> <code>\score {}</code> Bl&ouml;cke einschlie&szlig;en.
     
   </li>
-  <li>Speichere ihn unter dem Namen<tt>test.ly</tt>. Beende den Editor.
-  <li>Gib im Terminal/Konsole
+  <li>Speichern Sie den Text als <tt>test.ly</tt>. Verlassen Sie den Editor.
+  <li>Tippen Sie im Terminal
     <blockquote>
       <pre>
 	lilypond test
       </pre>
     </blockquote>
-    ein
 
-    Wenn alles funktioniert, sollte die Ausgabe
+    Wenn alles funktioniert, sollte folgende Ausgabe erscheinen:
     <blockquote>
       <pre>
 	DVI output `test.dvi'...
@@ -100,10 +95,9 @@
 	PDF output to `test.pdf'...
       </pre>
     </blockquote>
-    enthalten.
   </li>
   <li>
-  Lass die PDF-Datei anzeigen. Probiere folgende Kommandos aus:
+    Betrachten Sie die pdf-Datei, z. B. mit folgenden Kommandos:
     <blockquote>
       <pre>
 	ggv test.pdf
@@ -117,40 +111,34 @@
   </li>
 
   <li>
-    Der einfachste Weg f&uuml;r Windowsbenutzer ist die 
-    <a href="windows.html">drag &amp; drop Verfahrensweise</a> (Hier Doppelklick auf der .ly Datei). Wenn du die Tastatur bevorzugst, kannst du auch das obige Verfahren verwenden, mit den folgenden Tips:
+    Der einfachste Weg für Windows-Benutzer geht über
+    <a href="windows.html">drag &amp; drop</a>. 
+    Wenn Sie aber lieber die Tastatur benutzen,
+	k&ouml;nnen Sie das oben beschriebene Verfahren benutzen, mit folgenden Anmerkungen:
     <ul>
-
-      <li>&Oum;ffne eine Shell indem du auf dem "Cygwin"-Icon doppelt klickst.
-	icon
-      </li>
-
-      <li> Starte einen Texteditor z.B durch starten von notepad (Start-> Asuf&uuml;hren dann notepad eingeben) .  Speichere deine Eingaben
-      unter <code>test.ly</code> und stelle sicher, dass notepad kein <code>.txt/<code> anh&aauml;ngt (Entwede nenne den schlie&szlig;e den Namen in "" ein oder stelle Den Dateitypauswahlfilter auf "alle Dateien")
-</li>
-
-<li> Die PDFdatei wird in C: -&gt; CYGWIN -&gt; HOME -&gt;
-	<em>your-user-name</em> belassen.
-      </li>
+    <li> Doppelklick auf das LilyPond-Symbol</li>
+    <li> Dabei öffnet sich ein Testdokument. Speichern Sie es als <code>test.ly</code>
+    auf dem Desktop.</li>
+    <li> Doppelklick <code>test.ly</code></li>
+    <li> Nach einigen Sekunden sollte eine<code>test.pdf</code>-Datei erscheinen.</li>
     </ul>
   </li>
 
 </ul>
 
-<h2>Jipiee, es funktioniert!</h2>
+<h2>Hurrah, es klappt!</h2>
 <p>
-Gut! Dann mach bei<a href="using.html">Benutzung von LilyPond</a>weiter.
+  Gut! Hier geht es weiter zur <a href="using.html">Benutzung von LilyPond</a>.
 </p>
 
-<h2>Hmm, Ich bin mir nicht sicher was ich tun soll. Kannst du mir bitte helfen?</h2>
+<h2>Hmm, ich weiß nicht recht. Helft mir!</h2>
 
 <p>
-  F&uuml;r Fragen und Unterst&uuml;tzung, schicke eine mail a<a
-    href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> </p>
+  Um Fragen zu stellen oder Hilfe zu bekommen, einfach eine E-Mail an <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> schicken.
+</p>
 
 <h2>Mist, es funktioniert nicht</h2>
 <p>
- Irgendwas ging schief. Sende einen Fehlerbericht (bugreport) um uns zu helfen dein Problem zu finden. Wie das gemacht wird findest du in der FAQ
- <a
-   href="../about/faq.html#bugreport">FAQ</a>.  Wenn dein Download nicht vom LilyPondteam zusammengestllt wurde, schicke eine Kopie zu den Paketzusammenstellern im CC Feld<a href="index.html">auf der Downloadseite</a>
+ Irgendwas ist schiefgegangen. Senden Sie uns einen Fehlerbericht, damit wir das Problem 
+ l&ouml;sen k&ouml;nnen. Wie das gemacht wird, steht in den <a href="../about/faq.html#bugreport">FAQ</a>. Wenn das Paket nicht vom LilyPond-Team zusammengestellt worden war, bitte eine Kopie der E-Mail auch an den Paketersteller. Dessen Adresse findet sich neben dem entsprechenden Paket auf der <a href="index.html">Download-Seite</a>.
 </p>
