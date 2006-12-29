@@ -1,6 +1,6 @@
 (
     ('site', 'English'),
-    ('de', 'Deutch'),
+    ('de', 'Deutsch'),
     ('es', 'Español'),
     ('fr', 'Fran&ccedil;ais'),
     ('nl', 'Nederlands'),
