@@ -118,10 +118,7 @@ When you have translated a page, add that page to repository
     git add <MY-LANGUAGE>/about/index.html
     git commit -m 'add file' <MY-LANGUAGE>/about/index.html
 
-Add <MY-LANGUAGE> to
-
-  * scripts/translate.py
-  * scripts/format-page.py
+Add <MY-LANGUAGE> to scripts/languages.py
 
 
 UPDATE A TRANSLATION

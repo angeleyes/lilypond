@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-24 16:09-0600\n"
+"POT-Creation-Date: 2006-12-29 21:01+0100\n"
 "PO-Revision-Date: 2006-12-29 03:14-0600\n"
 "Last-Translator: Daniel Tonda Castillo <daniel.tonda@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -25,12 +25,13 @@ msgstr ""
 #: scripts/format-page.py:247 scripts/format-page.py:248
 #: scripts/format-page.py:252 scripts/format-page.py:255
 #: scripts/format-page.py:251 scripts/format-page.py:250
+#: scripts/format-page.py:246
 msgid "Home"
 msgstr "Home"
 
 #: scripts/format-page.py:87 scripts/format-page.py:82
 #: scripts/format-page.py:83 scripts/format-page.py:84
-#: scripts/format-page.py:85
+#: scripts/format-page.py:85 scripts/format-page.py:81
 #, python-format
 msgid "Other languages: %s."
 msgstr "Otros idiomas: %s"
@@ -272,6 +273,7 @@ msgstr "Reutilizar identificador"
 
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #: scripts/format-page.py:85 scripts/format-page.py:86
+#: scripts/format-page.py:82
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Acerca de<A HREF='%s'>selección automática de idioma</A>."
@@ -718,4 +720,3 @@ msgstr "Descargue <a href='%s'>el instalador</a>"
 #, c-format
 msgid "do %s in a command window."
 msgstr "haga %s en una terminal de comando"
-

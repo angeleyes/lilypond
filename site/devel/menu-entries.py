@@ -1,3 +1,3 @@
 [
- ("participating", _ ("Participate")),
+ ("participating", "Participate"),
  ]
