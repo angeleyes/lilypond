@@ -17,7 +17,8 @@ C = 'site'
 LANGUAGES = (
     (C, 'English'),
     ('nl', 'Nederlands'),
-    ('fr', 'Fran&ccedil;ais')
+    ('fr', 'Fran&ccedil;ais'),
+    ('es', 'Español')
     )
 
 localedir = 'out/locale'
