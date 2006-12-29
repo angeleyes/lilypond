@@ -157,8 +157,7 @@ def format_page (html, file_name, lang):
         f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
         if os.path.isfile (f):
-            menu = eval (open (f).read (),
-                  {'__builtins__': {}, '_': _ }, {})
+            menu = [(name, _(label)) for (name, label) in safeeval.eval_file (f)]
         else:
             menu = [('', os.path.splitext (dir)[0]),]
         return menu
