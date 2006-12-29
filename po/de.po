@@ -1,15 +1,15 @@
-# nl.po -- LilyPond Dutch website language file
-# Copyright (C) 2005 Jan Nieuwenhuizen <janneke@gnu.org>, Tineke de munnik <tdm@dds.nl>.
-# Jan Nieuwenhuizen <janneke@gnu.org>, 2005.
-# This file is distributed under the same license as the LilyPond package.
+# de.po -- translation of es.po to German
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-12-29 21:01+0100\n"
-"PO-Revision-Date: 2006-12-29 20:36+0100\n"
-"Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,55 +26,55 @@ msgstr ""
 #: scripts/format-page.py:251 scripts/format-page.py:250
 #: scripts/format-page.py:246
 msgid "Home"
-msgstr "Startpagina"
+msgstr ""
 
 #: scripts/format-page.py:87 scripts/format-page.py:82
 #: scripts/format-page.py:83 scripts/format-page.py:84
 #: scripts/format-page.py:85 scripts/format-page.py:81
 #, python-format
 msgid "Other languages: %s."
-msgstr "Andere talen: %s."
+msgstr ""
 
 #: scripts/format-page.py:88 scripts/format-page.py:83
 #, python-format
 msgid "Using <A HREF='%s'>automatic language selection</A>."
-msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
+msgstr ""
 
 #: site/about/menu-entries.py:2
 msgid "Features"
-msgstr "Eigenschappen"
+msgstr ""
 
 #: site/about/menu-entries.py:3
 msgid "FAQ"
-msgstr "FAQ"
+msgstr ""
 
 #: site/about/menu-entries.py:4
 msgid "Essay"
-msgstr "Essay"
+msgstr ""
 
 #: site/about/menu-entries.py:5
 msgid "Publications"
-msgstr "Publicaties"
+msgstr ""
 
 #: site/about/menu-entries.py:6
 msgid "Donate"
-msgstr "Donaties"
+msgstr ""
 
 #: site/about/menu-entries.py:7 site/about/menu-entries.py:6
 msgid "Acknowledgements"
-msgstr "Dankbetuigingen"
+msgstr ""
 
 #: site/about/news/menu-entries.py:2
 msgid "Older news"
-msgstr "Oud nieuws"
+msgstr ""
 
 #: site/menu-entries.py:5
 msgid "Introduction"
-msgstr "Introductie"
+msgstr ""
 
 #: site/menu-entries.py:6
 msgid "About"
-msgstr "Over LilyPond"
+msgstr ""
 
 #: site/menu-entries.py:7 site/install/devel.ihtml:36
 #: site/install/devel.ihtml:81 site/install/devel.ihtml:127
