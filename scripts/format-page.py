@@ -156,14 +156,14 @@ def format_page (html, file_name, lang):
         f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
         if os.path.isfile (f):
-            def strip_gettext (label):
+            def strip_gettext_call (label):
                 if type (label) == type (()):
                     label = label[2][0]
 
                 assert type(label) == type ('')
                 return label
             
-            menu = [(name, strip_gettext (label)) for (name, label) in safeeval.eval_file (f)]
+            menu = [(name, _ (strip_gettext_call (label))) for (name, label) in safeeval.eval_file (f)]
         else:
             menu = [('', os.path.splitext (dir)[0]),]
         return menu
