@@ -157,7 +157,11 @@ def format_page (html, file_name, lang):
         f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
         if os.path.isfile (f):
-            menu = [(name, _(label)) for (name, label) in safeeval.eval_file (f)]
+            #FIXME: quickfix, should extend safeeval with CallFunc _ / gettext
+            #menu = [(name, _ (label)) for (name, label) in safeeval.eval_file (f)]
+            s = re.sub ('''_ *\((['"][^"']*['"])\)''', '\\1', open (f).read ())
+            menu = [(name, _ (label))
+                    for (name, label) in safeeval.eval_string (s)]
         else:
             menu = [('', os.path.splitext (dir)[0]),]
         return menu
