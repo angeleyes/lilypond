@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-29 21:01+0100\n"
+"POT-Creation-Date: 2006-12-30 11:11+0100\n"
 "PO-Revision-Date: 2006-12-29 03:14-0600\n"
 "Last-Translator: Daniel Tonda Castillo <daniel.tonda@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -16,185 +16,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: scripts/old-page.py:196 scripts/new-page.py:197 scripts/format-page.py:221
-#: site/menu-entries.py:4 scripts/format-page.py:216
-#: scripts/format-page.py:230 scripts/format-page.py:234
-#: scripts/format-page.py:235 scripts/format-page.py:240
-#: scripts/format-page.py:231 scripts/format-page.py:241
-#: scripts/format-page.py:242 scripts/format-page.py:243
-#: scripts/format-page.py:247 scripts/format-page.py:248
-#: scripts/format-page.py:252 scripts/format-page.py:255
-#: scripts/format-page.py:251 scripts/format-page.py:250
-#: scripts/format-page.py:246
-msgid "Home"
-msgstr "Home"
-
-#: scripts/format-page.py:87 scripts/format-page.py:82
-#: scripts/format-page.py:83 scripts/format-page.py:84
-#: scripts/format-page.py:85 scripts/format-page.py:81
+#: scripts/format-page.py:81
 #, python-format
 msgid "Other languages: %s."
 msgstr "Otros idiomas: %s"
 
-#: scripts/format-page.py:88 scripts/format-page.py:83
+#: scripts/format-page.py:82
 #, python-format
-msgid "Using <A HREF='%s'>automatic language selection</A>."
-msgstr "Usando <A HREF='%s'>selección automática de idioma</A>"
+msgid "About <A HREF='%s'>automatic language selection</A>."
+msgstr "Acerca de<A HREF='%s'>selección automática de idioma</A>."
 
-#: site/about/menu-entries.py:2
-msgid "Features"
-msgstr "Características"
-
-#: site/about/menu-entries.py:3
-msgid "FAQ"
-msgstr "FAQ"
-
-#: site/about/menu-entries.py:4
-msgid "Essay"
-msgstr "Ensayo"
-
-#: site/about/menu-entries.py:5
-msgid "Publications"
-msgstr "Publicaciones"
-
-#: site/about/menu-entries.py:6
-msgid "Donate"
-msgstr "Donar"
-
-#: site/about/menu-entries.py:7 site/about/menu-entries.py:6
-msgid "Acknowledgements"
-msgstr "Agradecimientos"
-
-#: site/about/news/menu-entries.py:2
-msgid "Older news"
-msgstr "Noticias anteriores"
-
-#: site/menu-entries.py:5
-msgid "Introduction"
-msgstr "Introducción"
-
-#: site/menu-entries.py:6
-msgid "About"
-msgstr "Acerca de"
-
-#: site/menu-entries.py:7 site/install/devel.ihtml:36
-#: site/install/devel.ihtml:81 site/install/devel.ihtml:127
-#: site/install/stable.ihtml:152 site/install/stable.ihtml:253
-#: site/install/old.ihtml:114 site/install/old.ihtml:218
-#: site/install/devel.ihtml:116 site/install/stable.ihtml:150
-#: site/install/stable.ihtml:251 site/install/old.ihtml:216
-#: site/install/old.ihtml:219 site/install/devel.ihtml:85
-#: site/install/stable.ihtml:151 site/install/stable.ihtml:252
-#: site/install/old.ihtml:231 site/install/old.ihtml:232
-#: site/install/old.ihtml:235
-msgid "Download"
-msgstr "Descargar"
-
-#: site/menu-entries.py:8 site/devel/participating/menu-entries.py:3
-#: site/install/devel.ihtml:139 site/install/stable.ihtml:139
-#: site/install/stable.ihtml:147 site/install/devel.ihtml:138
-#: site/install/stable.ihtml:152 site/install/stable.ihtml:154
-#: site/install/install-2.10.ihtml:160 site/install/install-2.9.ihtml:160
-#: site/install/install-2.8.ihtml:154 site/install/install-2.11.ihtml:160
-#: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:182
-msgid "Documentation"
-msgstr "Documentación"
-
-#: site/menu-entries.py:9
-msgid "Development"
-msgstr "Desarrollo"
-
-#: site/devel/menu-entries.py:2
-msgid "Participate"
-msgstr "Participar"
-
-#: site/devel/menu-entries.py:3
-msgid "Packaging"
-msgstr "Empaquetado"
-
-#: site/devel/misc/menu-entries.py:2
-msgid "Finale ETF format"
-msgstr "Formato ETF Finale"
-
-#: site/devel/misc/menu-entries.py:3
-msgid "Conferences relevant to LilyPond"
-msgstr "Conferencias relacionadas a LilyPond"
-
-#: site/devel/misc/menu-entries.py:4
-msgid "Related online resources"
-msgstr "Recursos relacionados en línea"
-
-#: site/devel/notation/menu-entries.py:2
-msgid "appogiatura"
-msgstr "apoyatura"
-
-#: site/devel/notation/menu-entries.py:3
-msgid "Basso Continuo"
-msgstr "Bajo continuo"
-
-#: site/devel/notation/menu-entries.py:4
-msgid "Color"
-msgstr "Color"
-
-#: site/devel/notation/menu-entries.py:5
-msgid "Ligature"
-msgstr "Ligadura"
-
-#: site/devel/participating/menu-entries.py:2
-msgid "Help wanted!"
-msgstr "¡Se solicita ayuda!"
-
-#: site/devel/participating/menu-entries.py:3
-#: site/devel/participating/menu-entries.py:4
-msgid "Localization"
-msgstr "Localización"
-
-#: site/devel/participating/menu-entries.py:4
-#: site/devel/participating/menu-entries.py:5
-msgid "Standards"
-msgstr "Estándares"
-
-#: site/download/windows/menu-entries.py:2
-msgid " Cygwin"
-msgstr " Cygwin"
-
-#: site/download/windows/menu-entries.py:3
-msgid "Troubleshooting"
-msgstr "Resolución de problemas"
-
-#: site/download/menu-entries.py:2 site/install/menu-entries.py:2
-msgid "MacOS X"
-msgstr "MacOS X"
-
-#: site/download/menu-entries.py:3 site/install/menu-entries.py:3
-msgid "Windows"
-msgstr "Windows"
-
-#: site/download/menu-entries.py:4 site/install/menu-entries.py:4
-#: site/install/menu-entries.py:2
-msgid "First use"
-msgstr "Primer uso"
-
-#: site/download/menu-entries.py:5 site/install/menu-entries.py:5
-#: site/install/menu-entries.py:3
-msgid "User help"
-msgstr "Ayuda para el usuario"
-
-#: site/switch/menu-entries.py:2
-msgid "Why use LilyPond?"
-msgstr "¿Por qué usar LilyPond?"
-
-#: site/switch/menu-entries.py:3
-msgid "Testimonials"
-msgstr "Recomendaciones de usuarios"
-
-#: site/switch/menu-entries.py:4
-msgid "A short tour"
-msgstr "Una corta visita guiada"
-
-#: site/switch/menu-entries.py:5
-msgid "Crash course"
-msgstr "Curso intensivo"
+#: scripts/format-page.py:246
+msgid "Home"
+msgstr "Home"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
@@ -220,12 +54,10 @@ msgstr "Agregue -es para bemol, -is para sostenido"
 msgid "Enclose pitches in &lt; &gt; for chords"
 msgstr "Encierre notas en &lt; &gt; para obtener acordes"
 
-#: site/graphics/annotate-example-lead.svg:160
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
 msgstr "Insertar nombres de acordes"
 
-#: site/graphics/annotate-example-lead.svg:170
 #: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
 msgstr "Insertar melodía"
@@ -234,17 +66,24 @@ msgstr "Insertar melodía"
 msgid "Enter lyrics"
 msgstr "Insertar letra"
 
-#: site/graphics/annotate-example-lead.svg:196
 #: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
 msgstr "Combinar melodía y letra"
 
-#: site/graphics/annotate-example-parts.svg:165
+#: site/graphics/annotate-example-parts.svg:42
+#: site/graphics/annotate-example-score.svg:50
+msgid "hornNotes"
+msgstr ""
+
+#: site/graphics/annotate-example-parts.svg:70
+#: site/graphics/annotate-example-score.svg:54
+msgid "bassoonNotes"
+msgstr ""
+
 #: site/graphics/annotate-example-parts.svg:163
 msgid "Enter multi-rest"
 msgstr "Insertar un silencio multi-compás"
 
-#: site/graphics/annotate-example-parts.svg:178
 #: site/graphics/annotate-example-parts.svg:175
 msgid "Store notes in variable"
 msgstr "Almacenar notas en una variable"
@@ -257,466 +96,247 @@ msgstr "Crear pentagrama"
 msgid "Combine staffs in parallel"
 msgstr "Combinar pentagramas en paralelo"
 
-#: site/graphics/annotate-example-single-part.svg:120
 #: site/graphics/annotate-example-single-part.svg:119
 msgid "Condense multi-rests"
 msgstr "Condensar silencios multi-compás"
 
-#: site/graphics/annotate-example-single-part.svg:134
 #: site/graphics/annotate-example-single-part.svg:132
 msgid "Transpose for F instrument"
 msgstr "Transportar para instrumento en clave de Fa"
 
-#: site/graphics/annotate-example-single-part.svg:145
-msgid "Reuse identifier"
-msgstr "Reutilizar identificador"
-
-#: scripts/format-page.py:83 scripts/format-page.py:84
-#: scripts/format-page.py:85 scripts/format-page.py:86
-#: scripts/format-page.py:82
-#, python-format
-msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "Acerca de<A HREF='%s'>selección automática de idioma</A>."
-
-#: site/install/devel.ihtml:60 site/install/stable.ihtml:180
-#: site/install/old.ihtml:171 site/install/devel.ihtml:48
-#: site/install/stable.ihtml:168 site/install/old.ihtml:183
-#: site/install/old.ihtml:179 site/install/devel.ihtml:70
-#: site/install/old.ihtml:168 site/install/stable.ihtml:71
-#: site/install/old.ihtml:191 site/install/stable.ihtml:89
-#: site/install/devel.ihtml:65 site/install/stable.ihtml:88
-#: site/install/devel.ihtml:67 site/install/devel.ihtml:66
-#: site/install/stable.ihtml:87 site/install/devel.ihtml:68
-#: site/install/old.ihtml:194 site/install/stable.ihtml:131
-#: site/install/stable.ihtml:149 site/install/stable.ihtml:147
-#: site/install/old.ihtml:147 site/install/stable.ihtml:48
-#: site/install/stable.ihtml:63 site/install/stable.ihtml:64
-#: site/install/install-2.10.ihtml:70 site/install/install-2.9.ihtml:70
-#: site/install/install-2.8.ihtml:64 site/install/install-2.11.ihtml:70
-#: site/install/install-2.10.ihtml:94 site/install/install-2.11.ihtml:92
-msgid "Other"
-msgstr "Otros"
-
-#: site/install/devel.ihtml:52 site/install/devel.ihtml:89
-#: site/install/devel.ihtml:123 site/install/devel.ihtml:139
-#: site/install/stable.ihtml:172 site/install/stable.ihtml:274
-#: site/install/old.ihtml:246 site/install/devel.ihtml:42
-#: site/install/devel.ihtml:69 site/install/devel.ihtml:103
-#: site/install/devel.ihtml:119 site/install/stable.ihtml:162
-#: site/install/stable.ihtml:254 site/install/old.ihtml:259
-#: site/install/old.ihtml:255 site/install/devel.ihtml:104
-#: site/install/devel.ihtml:120 site/install/devel.ihtml:88
-#: site/install/devel.ihtml:64 site/install/devel.ihtml:91
-#: site/install/devel.ihtml:110 site/install/devel.ihtml:145
-#: site/install/old.ihtml:162 site/install/old.ihtml:254
-#: site/install/stable.ihtml:43 site/install/stable.ihtml:65
-#: site/install/stable.ihtml:92 site/install/stable.ihtml:111
-#: site/install/stable.ihtml:146 site/install/old.ihtml:81
-#: site/install/old.ihtml:277 site/install/stable.ihtml:61
-#: site/install/stable.ihtml:83 site/install/stable.ihtml:110
-#: site/install/stable.ihtml:129 site/install/stable.ihtml:164
-#: site/install/stable.ihtml:44 site/install/devel.ihtml:37
-#: site/install/devel.ihtml:59 site/install/devel.ihtml:86
-#: site/install/devel.ihtml:105 site/install/stable.ihtml:82
-#: site/install/stable.ihtml:109 site/install/stable.ihtml:128
-#: site/install/stable.ihtml:163 site/install/devel.ihtml:39
-#: site/install/devel.ihtml:61 site/install/devel.ihtml:106
-#: site/install/devel.ihtml:125 site/install/devel.ihtml:38
-#: site/install/devel.ihtml:60 site/install/devel.ihtml:87
-#: site/install/devel.ihtml:124 site/install/stable.ihtml:81
-#: site/install/stable.ihtml:108 site/install/stable.ihtml:127
-#: site/install/stable.ihtml:182 site/install/devel.ihtml:40
-#: site/install/devel.ihtml:62 site/install/devel.ihtml:107
-#: site/install/devel.ihtml:126 site/install/stable.ihtml:180
-#: site/install/old.ihtml:84 site/install/old.ihtml:280
-#: site/install/stable.ihtml:125 site/install/stable.ihtml:152
-#: site/install/stable.ihtml:171 site/install/stable.ihtml:186
-#: site/install/stable.ihtml:221 site/install/stable.ihtml:143
-#: site/install/stable.ihtml:170 site/install/stable.ihtml:189
-#: site/install/stable.ihtml:204 site/install/stable.ihtml:239
-#: site/install/stable.ihtml:63 site/install/stable.ihtml:141
-#: site/install/stable.ihtml:168 site/install/stable.ihtml:187
-#: site/install/stable.ihtml:202 site/install/stable.ihtml:237
-#: site/install/devel.ihtml:122 site/install/devel.ihtml:95
-#: site/install/devel.ihtml:115 site/install/devel.ihtml:132
-#: site/install/devel.ihtml:148 site/install/devel.ihtml:73
-#: site/install/devel.ihtml:93 site/install/devel.ihtml:117
-#: site/install/devel.ihtml:133 site/install/old.ihtml:63
-#: site/install/old.ihtml:141 site/install/old.ihtml:168
-#: site/install/old.ihtml:187 site/install/old.ihtml:202
-#: site/install/old.ihtml:237 site/install/stable.ihtml:40
-#: site/install/stable.ihtml:73 site/install/stable.ihtml:93
-#: site/install/stable.ihtml:117 site/install/stable.ihtml:133
-#: site/install/stable.ihtml:148 site/install/stable.ihtml:88
-#: site/install/stable.ihtml:156 site/install/devel.ihtml:114
-#: site/install/devel.ihtml:131 site/install/devel.ihtml:147
-#: site/install/devel.ihtml:164 site/install/stable.ihtml:161
-#: site/install/stable.ihtml:177 site/install/stable.ihtml:41
-#: site/install/stable.ihtml:90 site/install/stable.ihtml:131
-#: site/install/stable.ihtml:179 site/install/install-2.10.ihtml:40
-#: site/install/install-2.10.ihtml:62 site/install/install-2.10.ihtml:95
-#: site/install/install-2.10.ihtml:115 site/install/install-2.10.ihtml:136
-#: site/install/install-2.10.ihtml:153 site/install/install-2.10.ihtml:169
-#: site/install/install-2.10.ihtml:186 site/install/install-2.9.ihtml:40
-#: site/install/install-2.9.ihtml:62 site/install/install-2.9.ihtml:95
-#: site/install/install-2.9.ihtml:115 site/install/install-2.9.ihtml:136
-#: site/install/install-2.9.ihtml:153 site/install/install-2.9.ihtml:169
-#: site/install/install-2.9.ihtml:186 site/install/install-2.8.ihtml:41
-#: site/install/install-2.8.ihtml:90 site/install/install-2.8.ihtml:110
-#: site/install/install-2.8.ihtml:131 site/install/install-2.8.ihtml:148
-#: site/install/install-2.8.ihtml:163 site/install/install-2.8.ihtml:179
-#: site/install/install-2.11.ihtml:40 site/install/install-2.11.ihtml:62
-#: site/install/install-2.11.ihtml:95 site/install/install-2.11.ihtml:115
-#: site/install/install-2.11.ihtml:136 site/install/install-2.11.ihtml:153
-#: site/install/install-2.11.ihtml:169 site/install/install-2.11.ihtml:186
-#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:119
-#: site/install/install-2.10.ihtml:139 site/install/install-2.10.ihtml:160
-#: site/install/install-2.10.ihtml:177 site/install/install-2.10.ihtml:193
-#: site/install/install-2.10.ihtml:210 site/install/install-2.11.ihtml:85
-#: site/install/install-2.11.ihtml:117 site/install/install-2.11.ihtml:137
-#: site/install/install-2.11.ihtml:158 site/install/install-2.11.ihtml:175
-#: site/install/install-2.11.ihtml:191 site/install/install-2.11.ihtml:208
-msgid "LilyPond development team"
-msgstr "Equipo de desarrollo de LilyPond"
-
-#: site/install/devel.ihtml:135 site/install/stable.ihtml:268
-#: site/install/old.ihtml:240 site/install/devel.ihtml:115
-#: site/install/stable.ihtml:248 site/install/old.ihtml:253
-#: site/install/old.ihtml:249 site/install/devel.ihtml:116
-#: site/install/devel.ihtml:119 site/install/devel.ihtml:141
-#: site/install/old.ihtml:248 site/install/stable.ihtml:142
-#: site/install/old.ihtml:271 site/install/stable.ihtml:160
-#: site/install/devel.ihtml:101 site/install/stable.ihtml:159
-#: site/install/devel.ihtml:121 site/install/devel.ihtml:120
-#: site/install/stable.ihtml:158 site/install/stable.ihtml:178
-#: site/install/devel.ihtml:122 site/install/stable.ihtml:176
-#: site/install/old.ihtml:274 site/install/stable.ihtml:217
-#: site/install/stable.ihtml:235 site/install/stable.ihtml:233
-#: site/install/devel.ihtml:118 site/install/devel.ihtml:144
-#: site/install/devel.ihtml:129 site/install/old.ihtml:233
-#: site/install/stable.ihtml:129 site/install/stable.ihtml:137
-#: site/install/devel.ihtml:160 site/install/stable.ihtml:173
-#: site/install/stable.ihtml:175 site/install/install-2.10.ihtml:182
-#: site/install/install-2.9.ihtml:182 site/install/install-2.8.ihtml:175
-#: site/install/install-2.11.ihtml:182 site/install/install-2.10.ihtml:206
-#: site/install/install-2.11.ihtml:204
-msgid "warning"
-msgstr "advertencia"
-
-#: site/graphics/annotate-example-parts.svg:44
-#: site/graphics/annotate-example-score.svg:50
-#: site/graphics/annotate-example-parts.svg:42
-msgid "hornNotes"
-msgstr ""
-
-#: site/graphics/annotate-example-parts.svg:72
-#: site/graphics/annotate-example-score.svg:54
-#: site/graphics/annotate-example-parts.svg:70
-msgid "bassoonNotes"
-msgstr ""
-
-#: site/graphics/annotate-example-single-part.svg:145
 #: site/graphics/annotate-example-single-part.svg:142
 msgid "Reuse variable"
 msgstr "Reutilizar variable"
 
-#: site/install/devel.ihtml:46 site/install/devel.ihtml:51
-#: site/install/devel.ihtml:49 site/install/stable.ihtml:169
-#: site/install/old.ihtml:86 site/install/old.ihtml:89
-#: site/install/devel.ihtml:39 site/install/stable.ihtml:159
-#: site/install/old.ihtml:96 site/install/old.ihtml:92
-#: site/install/old.ihtml:159 site/install/stable.ihtml:40
-#: site/install/old.ihtml:78 site/install/stable.ihtml:58
-#: site/install/stable.ihtml:41 site/install/devel.ihtml:34
-#: site/install/devel.ihtml:36 site/install/old.ihtml:81
-msgid "NOTE"
-msgstr "NOTA"
+#: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
+#: site/install/install-2.10.ihtml:80 site/install/install-2.10.ihtml:112
+#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
+#: site/install/install-2.11.ihtml:78 site/install/install-2.11.ihtml:110
+#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
+#, c-format
+msgid "Download <a href='%s'>the installer</a>"
+msgstr "Descargue <a href='%s'>el instalador</a>"
 
-#: site/install/stable.ihtml:43 site/install/old.ihtml:30
-#: site/install/old.ihtml:164 site/install/stable.ihtml:33
-#: site/install/old.ihtml:37 site/install/old.ihtml:33
-#: site/install/stable.ihtml:78 site/install/stable.ihtml:76
-#: site/install/old.ihtml:76
-msgid "Included with distribution"
-msgstr "Incluido en la distribución"
+#: site/install/install-2.10.ihtml:37 site/install/install-2.10.ihtml:59
+#: site/install/install-2.10.ihtml:84 site/install/install-2.10.ihtml:116
+#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
+#: site/install/install-2.11.ihtml:82 site/install/install-2.11.ihtml:114
+#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
+#, c-format
+msgid "do %s in a command window."
+msgstr "haga %s en una terminal de comando"
 
-#: site/install/devel.ihtml:129 site/install/stable.ihtml:264
-#: site/install/old.ihtml:234 site/install/devel.ihtml:109
-#: site/install/stable.ihtml:244 site/install/old.ihtml:247
-#: site/install/old.ihtml:243 site/install/devel.ihtml:110
-#: site/install/devel.ihtml:113 site/install/devel.ihtml:135
-#: site/install/old.ihtml:244 site/install/stable.ihtml:136
-#: site/install/old.ihtml:267 site/install/stable.ihtml:154
-#: site/install/devel.ihtml:95 site/install/stable.ihtml:153
-#: site/install/devel.ihtml:115 site/install/devel.ihtml:114
-#: site/install/stable.ihtml:152 site/install/stable.ihtml:172
-#: site/install/devel.ihtml:116 site/install/stable.ihtml:170
-#: site/install/old.ihtml:270 site/install/stable.ihtml:211
-#: site/install/stable.ihtml:229 site/install/stable.ihtml:227
-#: site/install/devel.ihtml:112 site/install/devel.ihtml:138
-#: site/install/devel.ihtml:123 site/install/old.ihtml:227
-#: site/install/stable.ihtml:123 site/install/stable.ihtml:131
-#: site/install/devel.ihtml:154 site/install/stable.ihtml:167
-#: site/install/stable.ihtml:169 site/install/install-2.10.ihtml:176
-#: site/install/install-2.9.ihtml:176 site/install/install-2.8.ihtml:169
-#: site/install/install-2.11.ihtml:176 site/install/install-2.10.ihtml:200
-#: site/install/install-2.11.ihtml:198
-msgid "Source code"
-msgstr "Código fuente"
+#: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
+#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:119
+#: site/install/install-2.10.ihtml:139 site/install/install-2.10.ihtml:160
+#: site/install/install-2.10.ihtml:177 site/install/install-2.10.ihtml:193
+#: site/install/install-2.10.ihtml:210 site/install/install-2.11.ihtml:40
+#: site/install/install-2.11.ihtml:62 site/install/install-2.11.ihtml:85
+#: site/install/install-2.11.ihtml:117 site/install/install-2.11.ihtml:137
+#: site/install/install-2.11.ihtml:158 site/install/install-2.11.ihtml:175
+#: site/install/install-2.11.ihtml:191 site/install/install-2.11.ihtml:208
+#: site/install/install-2.8.ihtml:41 site/install/install-2.8.ihtml:90
+#: site/install/install-2.8.ihtml:110 site/install/install-2.8.ihtml:131
+#: site/install/install-2.8.ihtml:148 site/install/install-2.8.ihtml:163
+#: site/install/install-2.8.ihtml:179
+msgid "LilyPond development team"
+msgstr "Equipo de desarrollo de LilyPond"
 
-#: site/install/devel.ihtml:78 site/install/devel.ihtml:58
-#: site/install/devel.ihtml:80 site/install/stable.ihtml:81
-#: site/install/stable.ihtml:99 site/install/devel.ihtml:75
-#: site/install/stable.ihtml:98 site/install/devel.ihtml:77
-#: site/install/devel.ihtml:76 site/install/stable.ihtml:97
-#: site/install/stable.ihtml:141 site/install/stable.ihtml:159
-#: site/install/stable.ihtml:157 site/install/devel.ihtml:104
-#: site/install/devel.ihtml:82 site/install/old.ihtml:157
-#: site/install/stable.ihtml:82 site/install/devel.ihtml:103
-#: site/install/stable.ihtml:118 site/install/stable.ihtml:120
-#: site/install/install-2.10.ihtml:104 site/install/install-2.10.ihtml:125
-#: site/install/install-2.9.ihtml:104 site/install/install-2.9.ihtml:125
-#: site/install/install-2.8.ihtml:99 site/install/install-2.8.ihtml:120
-#: site/install/install-2.11.ihtml:104 site/install/install-2.11.ihtml:125
+#: site/install/install-2.10.ihtml:94 site/install/install-2.11.ihtml:92
+#: site/install/install-2.8.ihtml:64
+msgid "Other"
+msgstr "Otros"
+
 #: site/install/install-2.10.ihtml:128 site/install/install-2.10.ihtml:149
 #: site/install/install-2.11.ihtml:126 site/install/install-2.11.ihtml:147
+#: site/install/install-2.8.ihtml:99 site/install/install-2.8.ihtml:120
 #, c-format
 msgid "%s and newer"
 msgstr "%s y más reciente"
 
-#: site/install/devel.ihtml:133 site/install/stable.ihtml:266
-#: site/install/old.ihtml:125 site/install/old.ihtml:238
-#: site/install/devel.ihtml:113 site/install/stable.ihtml:246
-#: site/install/old.ihtml:132 site/install/old.ihtml:251
-#: site/install/old.ihtml:128 site/install/old.ihtml:247
-#: site/install/devel.ihtml:114 site/install/devel.ihtml:117
-#: site/install/devel.ihtml:139 site/install/old.ihtml:246
-#: site/install/stable.ihtml:140 site/install/old.ihtml:269
-#: site/install/stable.ihtml:158 site/install/devel.ihtml:99
-#: site/install/stable.ihtml:157 site/install/devel.ihtml:119
-#: site/install/devel.ihtml:118 site/install/stable.ihtml:156
-#: site/install/stable.ihtml:176 site/install/devel.ihtml:120
-#: site/install/stable.ihtml:174 site/install/old.ihtml:272
-#: site/install/stable.ihtml:215 site/install/stable.ihtml:233
-#: site/install/stable.ihtml:231 site/install/devel.ihtml:116
-#: site/install/devel.ihtml:142 site/install/devel.ihtml:127
-#: site/install/devel.ihtml:143 site/install/old.ihtml:231
-#: site/install/stable.ihtml:127 site/install/stable.ihtml:143
-#: site/install/stable.ihtml:135 site/install/stable.ihtml:151
-#: site/install/devel.ihtml:158 site/install/stable.ihtml:171
-#: site/install/stable.ihtml:173 site/install/install-2.10.ihtml:164
-#: site/install/install-2.10.ihtml:180 site/install/install-2.9.ihtml:164
-#: site/install/install-2.9.ihtml:180 site/install/install-2.8.ihtml:158
-#: site/install/install-2.8.ihtml:173 site/install/install-2.11.ihtml:164
-#: site/install/install-2.11.ihtml:180 site/install/install-2.10.ihtml:188
-#: site/install/install-2.10.ihtml:204 site/install/install-2.11.ihtml:186
-#: site/install/install-2.11.ihtml:202
+#: site/install/install-2.10.ihtml:132 site/install/install-2.10.ihtml:153
+#: site/install/install-2.11.ihtml:130 site/install/install-2.11.ihtml:151
+#: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
+#, c-format
+msgid "Download <a href='%s'>%s</a>"
+msgstr "Descargar <a href='%s'>%s</a>"
+
+#: site/install/install-2.10.ihtml:172 site/install/install-2.11.ihtml:170
+#: site/install/install-2.8.ihtml:143
+#, c-format
+msgid "<a href='%s'>Install</a>"
+msgstr "<a href='%s'>Instalar</a>"
+
+#: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:182
+#: site/install/install-2.8.ihtml:154
+msgid "Documentation"
+msgstr "Documentación"
+
+#: site/install/install-2.10.ihtml:188 site/install/install-2.10.ihtml:204
+#: site/install/install-2.11.ihtml:186 site/install/install-2.11.ihtml:202
+#: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Descargar <a href='%s'>tarball</a>"
 
-#: site/install/devel.ihtml:102 site/install/stable.ihtml:64
-#: site/install/stable.ihtml:201 site/install/stable.ihtml:214
-#: site/install/stable.ihtml:231 site/install/stable.ihtml:250
-#: site/install/stable.ihtml:252 site/install/old.ihtml:49
-#: site/install/old.ihtml:67 site/install/old.ihtml:184
-#: site/install/old.ihtml:197 site/install/old.ihtml:219
-#: site/install/old.ihtml:221 site/install/devel.ihtml:82
-#: site/install/stable.ihtml:54 site/install/stable.ihtml:181
-#: site/install/stable.ihtml:194 site/install/stable.ihtml:211
-#: site/install/stable.ihtml:230 site/install/stable.ihtml:232
-#: site/install/old.ihtml:56 site/install/old.ihtml:74
-#: site/install/old.ihtml:210 site/install/old.ihtml:232
-#: site/install/old.ihtml:234 site/install/old.ihtml:52
-#: site/install/old.ihtml:70 site/install/old.ihtml:193
-#: site/install/old.ihtml:206 site/install/old.ihtml:228
-#: site/install/old.ihtml:230 site/install/devel.ihtml:101
-#: site/install/devel.ihtml:123 site/install/old.ihtml:54
-#: site/install/old.ihtml:181 site/install/old.ihtml:194
-#: site/install/old.ihtml:211 site/install/stable.ihtml:124
-#: site/install/old.ihtml:200 site/install/old.ihtml:220
-#: site/install/old.ihtml:236 site/install/old.ihtml:238
-#: site/install/old.ihtml:254 site/install/stable.ihtml:31
-#: site/install/stable.ihtml:142 site/install/stable.ihtml:56
-#: site/install/stable.ihtml:141 site/install/stable.ihtml:55
-#: site/install/stable.ihtml:140 site/install/stable.ihtml:139
-#: site/install/stable.ihtml:160 site/install/stable.ihtml:158
-#: site/install/old.ihtml:57 site/install/old.ihtml:203
-#: site/install/old.ihtml:223 site/install/old.ihtml:239
-#: site/install/old.ihtml:241 site/install/old.ihtml:257
-#: site/install/stable.ihtml:77 site/install/stable.ihtml:182
-#: site/install/stable.ihtml:199 site/install/stable.ihtml:95
-#: site/install/stable.ihtml:200 site/install/stable.ihtml:217
-#: site/install/stable.ihtml:93 site/install/stable.ihtml:198
-#: site/install/stable.ihtml:215 site/install/old.ihtml:93
-#: site/install/old.ihtml:198 site/install/old.ihtml:215
-#: site/install/stable.ihtml:52 site/install/stable.ihtml:53
+#: site/install/install-2.10.ihtml:200 site/install/install-2.11.ihtml:198
+#: site/install/install-2.8.ihtml:169
+msgid "Source code"
+msgstr "Código fuente"
+
+#: site/install/install-2.10.ihtml:206 site/install/install-2.11.ihtml:204
+#: site/install/install-2.8.ihtml:175
+msgid "warning"
+msgstr "advertencia"
+
 #: site/install/install-2.8.ihtml:53
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Vaya <a href='%s'>aquí</a>"
 
-#: site/install/stable.ihtml:144 site/install/old.ihtml:143
-#: site/install/stable.ihtml:134 site/install/old.ihtml:150
-#: site/install/old.ihtml:172 site/install/old.ihtml:146
-#: site/install/old.ihtml:168 site/install/old.ihtml:134
-#: site/install/old.ihtml:158 site/install/old.ihtml:180
-#: site/install/old.ihtml:34 site/install/old.ihtml:161
-#: site/install/old.ihtml:183 site/install/stable.ihtml:36
-#: site/install/stable.ihtml:98 site/install/stable.ihtml:116
-#: site/install/stable.ihtml:114 site/install/old.ihtml:36
-#: site/install/old.ihtml:114
-#, c-format
-msgid "Included <a href='%s'>with distribution</a>"
-msgstr "Incluida <a href='%s'>en la distribución</a>"
+#~ msgid "Using <A HREF='%s'>automatic language selection</A>."
+#~ msgstr "Usando <A HREF='%s'>selección automática de idioma</A>"
 
-#: site/install/devel.ihtml:42 site/install/devel.ihtml:82
-#: site/install/stable.ihtml:164 site/install/devel.ihtml:32
-#: site/install/devel.ihtml:62 site/install/stable.ihtml:154
-#: site/install/devel.ihtml:84 site/install/old.ihtml:154
-#: site/install/stable.ihtml:33 site/install/stable.ihtml:85
-#: site/install/old.ihtml:73 site/install/stable.ihtml:51
-#: site/install/stable.ihtml:103 site/install/stable.ihtml:34
-#: site/install/devel.ihtml:29 site/install/devel.ihtml:79
-#: site/install/stable.ihtml:102 site/install/devel.ihtml:31
-#: site/install/devel.ihtml:81 site/install/devel.ihtml:80
-#: site/install/stable.ihtml:101 site/install/devel.ihtml:33
-#: site/install/old.ihtml:76 site/install/stable.ihtml:56
-#: site/install/stable.ihtml:145 site/install/stable.ihtml:163
-#: site/install/stable.ihtml:161 site/install/devel.ihtml:108
-#: site/install/devel.ihtml:86 site/install/old.ihtml:56
-#: site/install/old.ihtml:161 site/install/stable.ihtml:86
-#: site/install/devel.ihtml:107 site/install/stable.ihtml:122
-#: site/install/stable.ihtml:124 site/install/install-2.10.ihtml:108
-#: site/install/install-2.10.ihtml:129 site/install/install-2.9.ihtml:108
-#: site/install/install-2.9.ihtml:129 site/install/install-2.8.ihtml:103
-#: site/install/install-2.8.ihtml:124 site/install/install-2.11.ihtml:108
-#: site/install/install-2.11.ihtml:129 site/install/install-2.10.ihtml:132
-#: site/install/install-2.10.ihtml:153 site/install/install-2.11.ihtml:130
-#: site/install/install-2.11.ihtml:151
-#, c-format
-msgid "Download <a href='%s'>%s</a>"
-msgstr "Descargar <a href='%s'>%s</a>"
+#~ msgid "Features"
+#~ msgstr "Características"
 
-#: site/install/devel.ihtml:45 site/install/stable.ihtml:167
-#: site/install/devel.ihtml:35 site/install/stable.ihtml:157
-#: site/install/old.ihtml:157 site/install/stable.ihtml:36
-#: site/install/old.ihtml:76 site/install/stable.ihtml:54
-#: site/install/stable.ihtml:37 site/install/devel.ihtml:32
-#: site/install/devel.ihtml:34 site/install/devel.ihtml:36
-#: site/install/old.ihtml:79 site/install/stable.ihtml:59
-#: site/install/old.ihtml:59
-msgid "documentation"
-msgstr "documentación"
+#~ msgid "FAQ"
+#~ msgstr "FAQ"
 
-#: site/install/devel.ihtml:118 site/install/devel.ihtml:98
-#, c-format
-msgid "Download the installer <a href='%s'>here</a>"
-msgstr "Descargar el instalador <a href='%s'>aquí</a>"
+#~ msgid "Essay"
+#~ msgstr "Ensayo"
 
-#: site/install/stable.ihtml:81 site/install/stable.ihtml:103
-#: site/install/stable.ihtml:124 site/install/old.ihtml:85
-#: site/install/old.ihtml:105 site/install/stable.ihtml:71
-#: site/install/stable.ihtml:93 site/install/stable.ihtml:114
-#: site/install/old.ihtml:92 site/install/old.ihtml:112
-#: site/install/old.ihtml:88 site/install/old.ihtml:108
-#: site/install/old.ihtml:71 site/install/old.ihtml:93
-#: site/install/old.ihtml:114 site/install/old.ihtml:94
-#: site/install/old.ihtml:116 site/install/old.ihtml:137
-#: site/install/old.ihtml:97 site/install/old.ihtml:119
-#: site/install/old.ihtml:140
-#, c-format
-msgid "Go to <a href='%s'>%s</a>"
-msgstr "Vaya a <a href='%s'>%s</a>"
+#~ msgid "Publications"
+#~ msgstr "Publicaciones"
 
-#: site/install/devel.ihtml:47 site/install/devel.ihtml:37
-#: site/install/stable.ihtml:38 site/install/stable.ihtml:56
-#: site/install/stable.ihtml:39 site/install/stable.ihtml:61
-msgid "compatibility libraries"
-msgstr "bibliotecas de compatibilidad"
+#~ msgid "Donate"
+#~ msgstr "Donar"
 
-#: site/install/menu-entries.py:2
-msgid "Fink"
-msgstr "Fink"
+#~ msgid "Acknowledgements"
+#~ msgstr "Agradecimientos"
 
-#: site/install/menu-entries.py:3
-msgid "Cygwin"
-msgstr "Cygwin"
+#~ msgid "Older news"
+#~ msgstr "Noticias anteriores"
 
-#: site/install/devel.ihtml:98 site/install/devel.ihtml:82
-#: site/install/devel.ihtml:58 site/install/devel.ihtml:104
-#: site/install/stable.ihtml:59 site/install/stable.ihtml:105
-#: site/install/stable.ihtml:77 site/install/stable.ihtml:123
-#: site/install/devel.ihtml:53 site/install/stable.ihtml:76
-#: site/install/stable.ihtml:122 site/install/devel.ihtml:55
-#: site/install/devel.ihtml:100 site/install/devel.ihtml:54
-#: site/install/devel.ihtml:99 site/install/stable.ihtml:75
-#: site/install/stable.ihtml:121 site/install/devel.ihtml:56
-#: site/install/devel.ihtml:101 site/install/stable.ihtml:119
-#: site/install/stable.ihtml:165 site/install/stable.ihtml:137
-#: site/install/stable.ihtml:183 site/install/stable.ihtml:135
-#: site/install/stable.ihtml:181 site/install/old.ihtml:135
-#: site/install/old.ihtml:181
-#, c-format
-msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
-msgstr "<a href='%s'>Instalar</a> o <a href='%s'>actualizar</a>"
+#~ msgid "Introduction"
+#~ msgstr "Introducción"
 
-#: site/sponsor/menu-entries.py:2
-msgid "Options"
-msgstr "Opciones"
+#~ msgid "About"
+#~ msgstr "Acerca de"
 
-#: site/sponsor/menu-entries.py:3
-msgid "In natura"
-msgstr "En especie"
+#~ msgid "Download"
+#~ msgstr "Descargar"
 
-#: site/menu-entries.py:10
-msgid "Sponsoring"
-msgstr "Patrocinio"
+#~ msgid "Development"
+#~ msgstr "Desarrollo"
 
-#: site/install/devel.ihtml:101 site/install/devel.ihtml:127
-#: site/install/devel.ihtml:105 site/install/devel.ihtml:112
-#: site/install/stable.ihtml:112 site/install/stable.ihtml:120
-#: site/install/devel.ihtml:126 site/install/stable.ihtml:141
-#: site/install/stable.ihtml:143 site/install/install-2.10.ihtml:148
-#: site/install/install-2.9.ihtml:148 site/install/install-2.8.ihtml:143
-#: site/install/install-2.11.ihtml:148 site/install/install-2.10.ihtml:172
-#: site/install/install-2.11.ihtml:170
-#, c-format
-msgid "<a href='%s'>Install</a>"
-msgstr "<a href='%s'>Instalar</a>"
+#~ msgid "Participate"
+#~ msgstr "Participar"
 
-#: site/install/devel.ihtml:55 site/install/devel.ihtml:88
-#: site/install/devel.ihtml:33 site/install/devel.ihtml:66
-#: site/install/stable.ihtml:33 site/install/stable.ihtml:66
-#: site/install/stable.ihtml:81
-#, c-format
-msgid "<a href='%s'>the installer</a>"
-msgstr "<a href='%s'>el instalador</a>"
+#~ msgid "Packaging"
+#~ msgstr "Empaquetado"
 
-#: site/install/stable.ihtml:33 site/install/stable.ihtml:82
-#: site/install/devel.ihtml:33 site/install/devel.ihtml:66
-#: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
-#: site/install/install-2.10.ihtml:88 site/install/install-2.9.ihtml:33
-#: site/install/install-2.9.ihtml:55 site/install/install-2.9.ihtml:88
-#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
-#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
-#: site/install/install-2.11.ihtml:88 site/install/install-2.10.ihtml:80
-#: site/install/install-2.10.ihtml:112 site/install/install-2.11.ihtml:78
-#: site/install/install-2.11.ihtml:110
-#, c-format
-msgid "Download <a href='%s'>the installer</a>"
-msgstr "Descargue <a href='%s'>el instalador</a>"
+#~ msgid "Finale ETF format"
+#~ msgstr "Formato ETF Finale"
 
-#: site/install/stable.ihtml:37 site/install/stable.ihtml:86
-#: site/install/devel.ihtml:37 site/install/devel.ihtml:70
-#: site/install/install-2.10.ihtml:37 site/install/install-2.10.ihtml:59
-#: site/install/install-2.10.ihtml:92 site/install/install-2.9.ihtml:37
-#: site/install/install-2.9.ihtml:59 site/install/install-2.9.ihtml:92
-#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
-#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
-#: site/install/install-2.11.ihtml:92 site/install/install-2.10.ihtml:84
-#: site/install/install-2.10.ihtml:116 site/install/install-2.11.ihtml:82
-#: site/install/install-2.11.ihtml:114
-#, c-format
-msgid "do %s in a command window."
-msgstr "haga %s en una terminal de comando"
+#~ msgid "Conferences relevant to LilyPond"
+#~ msgstr "Conferencias relacionadas a LilyPond"
+
+#~ msgid "Related online resources"
+#~ msgstr "Recursos relacionados en línea"
+
+#~ msgid "appogiatura"
+#~ msgstr "apoyatura"
+
+#~ msgid "Basso Continuo"
+#~ msgstr "Bajo continuo"
+
+#~ msgid "Color"
+#~ msgstr "Color"
+
+#~ msgid "Ligature"
+#~ msgstr "Ligadura"
+
+#~ msgid "Help wanted!"
+#~ msgstr "¡Se solicita ayuda!"
+
+#~ msgid "Localization"
+#~ msgstr "Localización"
+
+#~ msgid "Standards"
+#~ msgstr "Estándares"
+
+#~ msgid " Cygwin"
+#~ msgstr " Cygwin"
+
+#~ msgid "Troubleshooting"
+#~ msgstr "Resolución de problemas"
+
+#~ msgid "MacOS X"
+#~ msgstr "MacOS X"
+
+#~ msgid "Windows"
+#~ msgstr "Windows"
+
+#~ msgid "First use"
+#~ msgstr "Primer uso"
+
+#~ msgid "User help"
+#~ msgstr "Ayuda para el usuario"
+
+#~ msgid "Why use LilyPond?"
+#~ msgstr "¿Por qué usar LilyPond?"
+
+#~ msgid "Testimonials"
+#~ msgstr "Recomendaciones de usuarios"
+
+#~ msgid "A short tour"
+#~ msgstr "Una corta visita guiada"
+
+#~ msgid "Crash course"
+#~ msgstr "Curso intensivo"
+
+#~ msgid "Reuse identifier"
+#~ msgstr "Reutilizar identificador"
+
+#~ msgid "NOTE"
+#~ msgstr "NOTA"
+
+#~ msgid "Included with distribution"
+#~ msgstr "Incluido en la distribución"
+
+#~ msgid "Included <a href='%s'>with distribution</a>"
+#~ msgstr "Incluida <a href='%s'>en la distribución</a>"
+
+#~ msgid "documentation"
+#~ msgstr "documentación"
+
+#~ msgid "Download the installer <a href='%s'>here</a>"
+#~ msgstr "Descargar el instalador <a href='%s'>aquí</a>"
+
+#~ msgid "Go to <a href='%s'>%s</a>"
+#~ msgstr "Vaya a <a href='%s'>%s</a>"
+
+#~ msgid "compatibility libraries"
+#~ msgstr "bibliotecas de compatibilidad"
+
+#~ msgid "Fink"
+#~ msgstr "Fink"
+
+#~ msgid "Cygwin"
+#~ msgstr "Cygwin"
+
+#~ msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
+#~ msgstr "<a href='%s'>Instalar</a> o <a href='%s'>actualizar</a>"
+
+#~ msgid "Options"
+#~ msgstr "Opciones"
+
+#~ msgid "In natura"
+#~ msgstr "En especie"
+
+#~ msgid "Sponsoring"
+#~ msgstr "Patrocinio"
+
+#~ msgid "<a href='%s'>the installer</a>"
+#~ msgstr "<a href='%s'>el instalador</a>"

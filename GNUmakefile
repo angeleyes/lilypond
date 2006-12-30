@@ -3,7 +3,7 @@
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = de es fr nl
 
-.PHONY: add all clean dist menuify out scripts site TAGS tree $(LANGUAGES)
+.PHONY: add all clean default dist menuify out scripts site TAGS tree $(LANGUAGES)
 
 PYTHON = python
 SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
@@ -28,12 +28,24 @@ SITE = site
 DOWNLOAD_URL = 'http://lilypond.org/download/'
 INKSCAPE = inkscape
 
+default: all
+
 ifneq ($(LANG),)
 SITE = $(LANG)
-mo = out/locale/$(LANG)/LC_MESSAGES/newweb.mo
+po: po/out/newweb.po $(mo)
+
+po-update: po/out/newweb.po
+	rm -f po/out/$(LANG).po
+	msgmerge po/$(LANG).po po/out/newweb.po -o po/out/$(LANG).po
+
+po-replace: po/out/newweb.po
+	mv po/out/newweb.po po/newweb.pot
+	mv po/out/$(LANG).po po/$(LANG).po
+
 po/$(LANG).po: po/newweb.pot
 	msgmerge --update $@ $^
 
+mo = out/locale/$(LANG)/LC_MESSAGES/newweb.mo
 $(mo): po/$(LANG).po
 	mkdir -p $(dir $@)
 	msgfmt --output=$@ $<
@@ -52,7 +64,15 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 
 out/site/%.$(LANG).png: $(LANG)/%.png
 	-cp $< $@
+else
+LANG_LOOP = $(foreach lang,$(LANGUAGES),$(MAKE) LANG=$(lang) $@ &&) true
 
+po:
+	$(LANG_LOOP)
+po-update: po
+	$(LANG_LOOP)
+po-replace: po-update
+	$(LANG_LOOP)
 endif
 
 EXT = .jpeg .ly .pdf .png
@@ -93,11 +113,18 @@ site: all
 TAGS:
 	etags $$(find scripts site -name '*.html' -o -name '.py')
 
-po/newweb.pot: $(PY) $(SVG) $(IHTML)
-	xgettext --from-code=utf-8 --default-domain=newweb --language=python --keyword=_ --join --output=$@ $(PY) $(SVG)
-	xgettext --default-domain=newweb --language=c --keyword=_ --keyword=_@ --join --output=$@  $(IHTML)
-
-
+po/out/newweb.po: $(PY) $(SVG) $(IHTML)
+	mkdir -p po/out
+	rm -f po/out/newweb.po
+	touch po/out/newweb.po
+	xgettext --default-domain=newweb \
+		--from-code=utf-8 --join --add-comments \
+		--language=python --keyword=_ \
+		 --output-dir=$(dir $@) $(PY) $(SVG)
+	xgettext --default-domain=newweb \
+		--join --add-comments\
+		--language=c --keyword=_ --keyword=_@ \
+		--output-dir=$(dir $@) $(IHTML)
 
 define LANGUAGE_template
 $(1):
@@ -162,5 +189,5 @@ dist:
 	rm -rf $(DISTDIR)
 
 clean:
-	rm -rf out
+	rm -rf out po/out
 
