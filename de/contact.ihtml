@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT Committish: cec31011f06330d110bb45c998d7492502927a07
+    Translation of GIT Committish: 9d3bc5da06c66e6562c7ee08d09f5311dc716d3a
     
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
@@ -10,64 +10,71 @@
 !-->
 
  Diese Mailinglisten werden alle in englischer Sprache gef&uuml;hrt.
- Wenn Sie etwas Englisch sprechen, sollten Sie ihre Frage auf Englisch
+ Wenn Sie etwas Englisch sprechen, sollten Sie ihre Frage auf englisch
  stellen. Wenn Sie kein
- Englisch k&ouml;nnen, schreiben Sie auf Deutsch, es kann aber sein, dass
+ Englisch k&ouml;nnen, schreiben Sie auf deutsch, es kann aber sein, dass
  weniger Antworten kommen.
 
 <dl>
   <dt>Fragen oder Kommentare?</dt>
   <dd>
-    Mail to: <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>
-    (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An- oder Abmeldung</a>,
+    <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">Hier</a> k&ouml;nnen Sie direkt fragen.
+   <p>
+    Das ist die <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>-Mailingliste
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An- oder Abmeldung)</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-user/">Archiv</a>)
     <br>
   </dd>
 
+
+  
+
+  
+
   <dt>Fehler gefunden?</dt>
   <dd>
-    Mail to:
-    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
+    <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Hier</a> kann ein Fehlerbericht abgeschickt werden.
+  <p>
+    Das ist die
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>-Fehler-Mailingliste
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">Archiv</a>)
     <br>
   </dd>
 
+
   <dt>Benachrichtigung bei neuen Versionen</dt>
-  <dd>Eine Benachrichtigung kann abonniert werden.
-    <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
-    (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">Info</a>,
+  <dd>Eine Benachrichtigung kann von der 
+    <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>-Mailingliste abonniert werden.
+    (<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">Info</a>,
     <a href="http://mail.gnu.org/archive/html/info-lilypond/">Archiv</a>)
   </dd>
 
   
-  <dt>Kommentare zu den Seiten?</dt>
-  <dd>Mail to:
-    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
+  <dt>Kommentare zum Internetauftritt?</dt>
+  <dd>
+    Kommentare k&ouml;nnen <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">hier</a> direkt gesendet werden.
+<p>
+    Oder eine E-Mail an die 
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>-Fehler-Mailingliste schicken 
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">Info</a>,
     <a href="http://mail.gnu.org/archive/html/bug-lilypond/">Archiv</a>)
   </dd>
 
   
   <dt>Kontakt zu den Entwicklern?<dt>
-  <dd>Kontaktieren Sie die Entwickler &uuml;ber ein Abonnement der Entwickler-Liste 
-    <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>
-    (Mailingliste
-    <a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">Info</a>,
+    <dd><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">Hier</a> kann direkt Kontakt aufgenommen werden.
+<p>
+  <dd>Hier ist die 
+    <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>-Entwickler-Mailingliste
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">Info</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-devel/">Archiv</a>)
   </dd>
 
   <dt>
-  Privater Kontakt zu den Entwicklern?</dt>
-    <dd>
-    Siehe 
-    <a href="@DOC@v2.6/Documentation/topdocs/out-www/AUTHORS.html">die
-      Liste der Autoren</a>.
-    (<em>Bitten den Autoren nur im Falle strikten 
-      pers&ouml;nlichen Kontakts schreiben!</em>)
+  Direkter Kontakt zu den Autoren?</dt>
+    <dd>Siehe die
+    <a href="@DOC@v2.6/Documentation/topdocs/out-www/AUTHORS.html">Liste der Autoren</a>.
+    (<em>Bitte ausschlie&szlig;lich bei pers&ouml;nlichem Kontakt!</em>)
   </dd>
 </dl>

@@ -34,11 +34,11 @@ ifneq ($(LANG),)
 SITE = $(LANG)
 po: po/out/newweb.po $(mo)
 
-po-update: po/out/newweb.po
+po-update: po
 	rm -f po/out/$(LANG).po
 	msgmerge po/$(LANG).po po/out/newweb.po -o po/out/$(LANG).po
 
-po-replace: po/out/newweb.po
+po-replace: po-update
 	mv po/out/newweb.po po/newweb.pot
 	mv po/out/$(LANG).po po/$(LANG).po
 

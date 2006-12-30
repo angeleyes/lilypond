@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-30 11:35+0100\n"
+"POT-Creation-Date: 2006-12-30 12:55+0100\n"
 "PO-Revision-Date: 2006-12-28 23:36+0100\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr "Andere talen: %s."
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
-#: scripts/format-page.py:246 site/menu-entries.py:3
+#: scripts/format-page.py:250 site/menu-entries.py:9
 msgid "Home"
 msgstr "Startpagina"
 
@@ -57,24 +57,24 @@ msgstr "Eerste gebruik"
 msgid "User help"
 msgstr "Gebruikershulp"
 
-#: site/menu-entries.py:4
+#: site/menu-entries.py:10
 msgid "Introduction"
 msgstr "Introductie"
 
-#: site/menu-entries.py:5
+#: site/menu-entries.py:11
 msgid "About"
 msgstr "Over LilyPond"
 
-#: site/menu-entries.py:6
+#: site/menu-entries.py:12
 msgid "Download"
 msgstr "Download"
 
-#: site/menu-entries.py:7 site/install/install-2.10.ihtml:184
+#: site/menu-entries.py:13 site/install/install-2.10.ihtml:184
 #: site/install/install-2.11.ihtml:182 site/install/install-2.8.ihtml:154
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: site/menu-entries.py:8
+#: site/menu-entries.py:14
 msgid "Development"
 msgstr "Ontwikkeling"
 

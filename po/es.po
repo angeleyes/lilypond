@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-30 11:35+0100\n"
+"POT-Creation-Date: 2006-12-30 12:55+0100\n"
 "PO-Revision-Date: 2006-12-29 03:14-0600\n"
 "Last-Translator: Daniel Tonda Castillo <daniel.tonda@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Otros idiomas: %s"
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Acerca de<A HREF='%s'>selección automática de idioma</A>."
 
-#: scripts/format-page.py:246 site/menu-entries.py:3
+#: scripts/format-page.py:250 site/menu-entries.py:9
 msgid "Home"
 msgstr "Home"
 
@@ -58,24 +58,24 @@ msgstr "Primer uso"
 msgid "User help"
 msgstr "Ayuda para el usuario"
 
-#: site/menu-entries.py:4
+#: site/menu-entries.py:10
 msgid "Introduction"
 msgstr "Introducción"
 
-#: site/menu-entries.py:5
+#: site/menu-entries.py:11
 msgid "About"
 msgstr "Acerca de"
 
-#: site/menu-entries.py:6
+#: site/menu-entries.py:12
 msgid "Download"
 msgstr "Descargar"
 
-#: site/menu-entries.py:7 site/install/install-2.10.ihtml:184
+#: site/menu-entries.py:13 site/install/install-2.10.ihtml:184
 #: site/install/install-2.11.ihtml:182 site/install/install-2.8.ihtml:154
 msgid "Documentation"
 msgstr "Documentación"
 
-#: site/menu-entries.py:8
+#: site/menu-entries.py:14
 msgid "Development"
 msgstr "Desarrollo"
 
