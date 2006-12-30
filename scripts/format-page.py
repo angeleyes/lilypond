@@ -5,7 +5,6 @@ import getopt
 import gettext
 import os
 import re
-import string
 import sys
 import versiondb
 import safeeval
@@ -112,7 +111,7 @@ def read_build_versions (name):
                                                   url)
 
 def dir_lang (file, lang):
-    return string.join ([lang] + string.split (file, '/')[1:], '/')
+    return '/'.join ([lang] + file.split ('/')[1:])
 
 
 def file_lang (file, lang):
@@ -157,11 +156,14 @@ def format_page (html, file_name, lang):
         f = os.path.join (dir_lang (dir, C), 'menu-entries.py')
 
         if os.path.isfile (f):
-            #FIXME: quickfix, should extend safeeval with CallFunc _ / gettext
-            #menu = [(name, _ (label)) for (name, label) in safeeval.eval_file (f)]
-            s = re.sub ('''_ *\((['"][^"']*['"])\)''', '\\1', open (f).read ())
-            menu = [(name, _ (label))
-                    for (name, label) in safeeval.eval_string (s)]
+            def strip_gettext (label):
+                if type (label) == type (()):
+                    label = label[2][0]
+
+                assert type(label) == type ('')
+                return label
+            
+            menu = [(name, strip_gettext (label)) for (name, label) in safeeval.eval_file (f)]
         else:
             menu = [('', os.path.splitext (dir)[0]),]
         return menu
@@ -225,7 +227,7 @@ def format_page (html, file_name, lang):
 
     
     dir = os.path.dirname (file_name)
-    dir_split = [x for x in reversed (string.split (dir, '/'))]
+    dir_split = [x for x in reversed (dir.split ('/'))]
     base_name = os.path.basename (file_name)
     is_index = base_name == 'index.html'
     directories = list_directories (dir, 0)
@@ -234,9 +236,9 @@ def format_page (html, file_name, lang):
     # Make menu.
     listings = map (directory_menu, directories)
     menus = map (lambda x: map (menuitemize, x), listings)
-    menu_strings = map (lambda x: MENU_TEMPLATE % string.join (x),
+    menu_strings = map (lambda x: MENU_TEMPLATE % ' '.join (x),
               menus)
-    menu = string.join (reversed (menu_strings), MENU_SEP)
+    menu = MENU_SEP.join (reversed (menu_strings))
 
 
     # Make location.
@@ -250,10 +252,10 @@ def format_page (html, file_name, lang):
         home = item (dir_entry (lang, depth - 1), ('', _ ("Home")))
         locations = [home] + locations
 
-    location = string.join (map (locationize, locations), LOCATION_SEP)
-    location_title = LOCATION_TITLE % string.join (map (lambda x: x.name,
-                              locations[1:]),
-                           ' - ')
+    location = LOCATION_SEP.join (map (locationize, locations))
+    location_title = LOCATION_TITLE % ' - '.join (map (lambda x: x.name,
+                                                       locations[1:]))
+                                           
 
     # Ugh: title and script hacks.
     titles = [location_title]
@@ -269,7 +271,7 @@ def format_page (html, file_name, lang):
         #onload = "setfocus ();"
 
     # Find available translations of this page.
-    rel_name = string.join (string.split (file_name, '/')[1:], '/')
+    rel_name = '/'.join (file_name.split ('/')[1:])
     available = filter (lambda x: lang != x[0] \
               and os.path.exists (os.path.join (x[0], rel_name)),
               LANGUAGES)
@@ -304,7 +306,7 @@ def format_page (html, file_name, lang):
 
     # Ugh: factor 2 slowdown
     # page = re.sub ('@MAIN@', main, page_template)
-    i = string.index (page_template, '@MAIN@')
+    i = page_template.index ('@MAIN@')
     page = page_template[:i] + main + page_template[i+6:]
 
     page = re.sub ('@([-A-Za-z0-9.]*.ihtml)@', grab_ihtml, page)
@@ -353,7 +355,7 @@ def format_page (html, file_name, lang):
 def do_file (file_name):
     if verbose:
         sys.stderr.write ('%s...\n' % file_name)
-    lang = string.split (file_name, '/')[0]
+    lang = file_name.split ('/')[0]
     if lang == C:
         out_file_name = file_name
     else:

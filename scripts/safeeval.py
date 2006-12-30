@@ -40,15 +40,19 @@ class SafeEval(AbstractVisitor):
     def visitList(self,node, **kw):
         return [self.visit(i) for i in node.nodes]
 
+    def visitName (self, node, **kw):
+        return 'name(%s)' % node.name
+        
+    def visitCallFunc(self, node, **kw):
+        func = self.visit (node.getChildNodes ()[0])
+        args = [self.visit (i) for i in node.getChildNodes()[1:]]
+        return ('call', func, args)
+
 class SafeEvalWithErrors(SafeEval):
 
     def default(self, node, **kw):
         raise Unsafe_Source_Error("Unsupported source construct",
-                                node.__class__,node)
-
-    def visitName(self,node, **kw):
-        raise Unsafe_Source_Error("Strings must be quoted",
-                                 node.name, node)
+                                  node.__class__, node)
 
     # Add more specific errors if desired
 
@@ -66,3 +70,6 @@ def eval_string(source, fail_on_error = True):
 def eval_file(filename, fail_on_error = True):
     return eval_string (open (filename).read ())
 
+if __name__=='__main__':
+    import sys
+    print eval_file (sys.argv[1])
