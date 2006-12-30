@@ -1,4 +1,4 @@
 [
-  ("getting-started.html", "First use"),
-  ("using.html", "User help"),
+  ("getting-started.html", _ ("First use")),
+  ("using.html", _ ("User help")),
   ]

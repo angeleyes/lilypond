@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LilyPond website lilypond.org\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-12-30 11:11+0100\n"
+"POT-Creation-Date: 2006-12-30 11:35+0100\n"
 "PO-Revision-Date: 2006-06-21 10:38+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -29,9 +29,82 @@ msgstr "Autres langues : %s."
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "À propos de la <A HREF='%s'>sélection automatique de la langue</A>."
 
-#: scripts/format-page.py:246
+#: scripts/format-page.py:246 site/menu-entries.py:3
 msgid "Home"
 msgstr "Accueil"
+
+#: site/about/menu-entries.py:2
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: site/about/menu-entries.py:3
+msgid "FAQ"
+msgstr "Foire aux questions"
+
+#: site/about/menu-entries.py:4
+msgid "Essay"
+msgstr "Essai"
+
+#: site/about/menu-entries.py:5
+msgid "Publications"
+msgstr "Publications"
+
+#: site/about/menu-entries.py:6
+msgid "Acknowledgements"
+msgstr "Remerciements"
+
+#: site/install/menu-entries.py:2
+msgid "First use"
+msgstr "Première utilisation"
+
+#: site/install/menu-entries.py:3
+msgid "User help"
+msgstr "Aide pour l'utilisateur"
+
+#: site/menu-entries.py:4
+msgid "Introduction"
+msgstr "Introduction"
+
+#: site/menu-entries.py:5
+msgid "About"
+msgstr "À propos"
+
+#: site/menu-entries.py:6
+msgid "Download"
+msgstr "Téléchargement"
+
+#: site/menu-entries.py:7 site/install/install-2.10.ihtml:184
+#: site/install/install-2.11.ihtml:182 site/install/install-2.8.ihtml:154
+msgid "Documentation"
+msgstr "Documentation"
+
+#: site/menu-entries.py:8
+msgid "Development"
+msgstr "Développement"
+
+#: site/sponsor/menu-entries.py:2
+msgid "Options"
+msgstr "Modalités"
+
+#: site/sponsor/menu-entries.py:3
+msgid "In natura"
+msgstr "En nature"
+
+#: site/switch/menu-entries.py:2
+msgid "Why use LilyPond?"
+msgstr "Pourquoi utiliser LilyPond ?"
+
+#: site/switch/menu-entries.py:3
+msgid "Testimonials"
+msgstr "Témoignages"
+
+#: site/switch/menu-entries.py:4
+msgid "A short tour"
+msgstr "Un rapide coup d'oeil"
+
+#: site/switch/menu-entries.py:5
+msgid "Crash course"
+msgstr "Cours express"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
@@ -170,11 +243,6 @@ msgstr "Télécharger <a href='%s'>%s</a>"
 msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>Installation</a>"
 
-#: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:182
-#: site/install/install-2.8.ihtml:154
-msgid "Documentation"
-msgstr "Documentation"
-
 #: site/install/install-2.10.ihtml:188 site/install/install-2.10.ihtml:204
 #: site/install/install-2.11.ihtml:186 site/install/install-2.11.ihtml:202
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
@@ -200,38 +268,11 @@ msgstr "Aller <a href='%s'>ici</a>"
 #~ msgid "Using <A HREF='%s'>automatic language selection</A>."
 #~ msgstr "Utiliser la <A HREF='%s'>sélection automatique de la langue</A>."
 
-#~ msgid "Features"
-#~ msgstr "Fonctionnalités"
-
-#~ msgid "FAQ"
-#~ msgstr "Foire aux questions"
-
-#~ msgid "Essay"
-#~ msgstr "Essai"
-
-#~ msgid "Publications"
-#~ msgstr "Publications"
-
 #~ msgid "Donate"
 #~ msgstr "Faire un don"
 
-#~ msgid "Acknowledgements"
-#~ msgstr "Remerciements"
-
 #~ msgid "Older news"
 #~ msgstr "Annonces précédentes"
-
-#~ msgid "Introduction"
-#~ msgstr "Introduction"
-
-#~ msgid "About"
-#~ msgstr "À propos"
-
-#~ msgid "Download"
-#~ msgstr "Téléchargement"
-
-#~ msgid "Development"
-#~ msgstr "Développement"
 
 #~ msgid "Participate"
 #~ msgstr "Participer"
@@ -281,24 +322,6 @@ msgstr "Aller <a href='%s'>ici</a>"
 #~ msgid "Windows"
 #~ msgstr "Windows"
 
-#~ msgid "First use"
-#~ msgstr "Première utilisation"
-
-#~ msgid "User help"
-#~ msgstr "Aide pour l'utilisateur"
-
-#~ msgid "Why use LilyPond?"
-#~ msgstr "Pourquoi utiliser LilyPond ?"
-
-#~ msgid "Testimonials"
-#~ msgstr "Témoignages"
-
-#~ msgid "A short tour"
-#~ msgstr "Un rapide coup d'oeil"
-
-#~ msgid "Crash course"
-#~ msgstr "Cours express"
-
 #~ msgid "Reuse identifier"
 #~ msgstr "Réutiliser un identificateur"
 
@@ -331,12 +354,6 @@ msgstr "Aller <a href='%s'>ici</a>"
 
 #~ msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
 #~ msgstr "<a href='%s'>Installer</a> ou <a href='%s'>mettre à jour</a>"
-
-#~ msgid "Options"
-#~ msgstr "Modalités"
-
-#~ msgid "In natura"
-#~ msgstr "En nature"
 
 #~ msgid "Sponsoring"
 #~ msgstr "Mécénat"

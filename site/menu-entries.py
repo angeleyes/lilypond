@@ -1,10 +1,9 @@
-
 # This is the toplevel menu.  Keep it short.
 [
- ('index', 'Home'),
- ('switch', 'Introduction'),
- ('about', 'About'),
- ('install', 'Download'),
- ('documentation.html', 'Documentation'),
- ('devel', 'Development'),
+ ("index", _ ("Home")),
+ ("switch", _ ("Introduction")),
+ ("about", _ ("About")),
+ ("install", _ ("Download")),
+ ("documentation.html", _ ("Documentation")),
+ ("devel", _ ("Development")),
  ]
