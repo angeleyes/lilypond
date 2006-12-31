@@ -29,8 +29,8 @@ can be developed and improved separately.
 <ul>
 <li>The most basic plug-in creates Note-heads:
 
-<p align=center> 
-<img src=@IMAGES@engraver-noteheads.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-noteheads.png">
 <p>
 This plug-in creates graphical objects from musical events.  People
 that put graphics to musical ideas are called copyists or engravers,
@@ -39,20 +39,20 @@ so by analogy, this plug-in is called <tt>Note_head_engraver</tt>.
 <li> The <tt>Staff_symbol_engraver</tt> generates the object
 representing the staff lines.
 
-<p align=center> <img
-src=@IMAGES@engraver-staff.png>
+<p align="center"> <img
+src="@IMAGES@engraver-staff.png">
 
 <li>
  The <tt>Clef_engraver</tt> tells <tt>Note_head_engraver</tt> how high
 each head should be placed.
 
-<p align=center> 
-<img src=@IMAGES@engraver-clef.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-clef.png">
 
 <li>
 For the flags and stems we add  a <tt>Stem_engraver</tt>:
-<p align=center> 
-<img src=@IMAGES@engraver-stem.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-stem.png">
 <p>
 This engraver is notified of any note head coming along.  Every time
 one (or more, for a chord) note head is seen, a stem object is
@@ -63,14 +63,14 @@ Beams, slurs, accents are handled by separate engravers. Like the
 <tt>Stem_engraver</tt>, they create objects and connect them to stems,
 note heads, etc.:
 
-<p align=center> <img src=@IMAGES@engraver-slur.png>
+<p align="center"> <img src="@IMAGES@engraver-slur.png">
 
 <li>
 Accidentals, bar lines, time signature, and key signature each have a
 separate
 engraver.
-<p align=center>
-<img src=@IMAGES@engraver-acc.png>
+<p align="center">
+<img src="@IMAGES@engraver-acc.png">
 
 <p>
 The <tt>Accidental_engraver</tt> is the most complex plug-in: it has
@@ -85,8 +85,8 @@ decide when to print accidentals.
 The system shown in the last section works well for monophonic music,
 but what about polyphony?  In polyphonic notation, many voices can
 share a staff:
-<p align=center>
-<img src=@IMAGES@engraver-final.png>
+<p align="center">
+<img src="@IMAGES@engraver-final.png">
 <p>
 In this situation, the accidentals and staff are shared, but the
 stems, slurs, beams, etc. are private to each voice. Hence, engravers
@@ -97,9 +97,9 @@ case of polyphony, a single Staff context contains more than one Voice
 context.  Similarly, more Staff contexts can be put into a single
 Score context:
 
-<p align=center>
-<img src=@IMAGES@engraver-score.png>
+<p align="center">
+<img src="@IMAGES@engraver-score.png">
 
-<p align=right>
+<p align="right">
 Next: <a href="engraving.html">The art of stamping</a>:
 how <em>did</em> they make hand-made music? 

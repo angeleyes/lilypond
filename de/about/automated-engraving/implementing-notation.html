@@ -30,8 +30,8 @@ k&ouml;nnen somit auch unabh&auml;ngig voneinander entwickelt werden.
 <ul>
 <li>Die untersten Plugin-Ebene erstellt die Notenk&ouml;pfe:
 
-<p align=center> 
-<img src=@IMAGES@engraver-noteheads.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-noteheads.png">
 <p>
 Mit diesem Plugin werden die graphischen Elemente f&uuml;r musikalische
 Ereignisse dargestellt. Der Schreiber, der die Musik in Graphik umwandelt,
@@ -40,20 +40,20 @@ dieses Plugin <tt>Note_head_engraver</tt> (Notenkopfstecher) genannt.
 
 <li> Der <tt>Staff_symbol_engraver</tt> (Notensystemstecher) erstellt
 die Objekte, das die Notenlinien darstellt.
-<p align=center> <img
-src=@IMAGES@engraver-staff.png>
+<p align="center"> <img
+src="@IMAGES@engraver-staff.png">
 
 <li>
  Der <tt>Clef_engraver</tt> (Notenschl&uuml;sselstecher) sagt dem
  <tt>Note_head_engraver</tt> wie hoch jedes Symbol gesetzt werden soll.
 
-<p align=center> 
-<img src=@IMAGES@engraver-clef.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-clef.png">
 
 <li>
 F&uuml;r Fähnchen und H&auml;lse nehmen wir den <tt>Stem_engraver</tt> (Halsstecher):
-<p align=center> 
-<img src=@IMAGES@engraver-stem.png>
+<p align="center"> 
+<img src="@IMAGES@engraver-stem.png">
 <p>
 Diesem <em>engraver</em> wird jeder Notenkopf mitgeteilt, der 
 vorkommt. Jedes Mal wenn ein (oder mehrer bei einem Akkord) Notenkopf
@@ -63,13 +63,13 @@ erscheint, wird ein Hals-Objekt erstellt und an den Kopf geheftet.
 Balken, B&ouml;gen und Akzente werden von eigenen <em>engravern</em>
 gehandhabt. So wie der <tt>stem_engraver</tt> erstellen sie Objekte
 und verbinden sie dann mit den H&auml;lsen, K&ouml;pfen usw.:
-<p align=center> <img src=@IMAGES@engraver-slur.png>
+<p align="center"> <img src="@IMAGES@engraver-slur.png">
 
 <li>
 Vorzeichen, Taktstriche, Taktartangaben und Schl&uuml;ssel haben alle
 ihre eigenen <em>engraver</em>.
-<p align=center>
-<img src=@IMAGES@engraver-acc.png>
+<p align="center">
+<img src="@IMAGES@engraver-acc.png">
 
 <p>
 Der <tt>Accidental_engraver</tt> ist von ihnen am kompliziertesten.
@@ -85,8 +85,8 @@ Vorzeichen entscheiden kann.
 Das System, wie es im letzten Absatz gezeigt wurde, funktioniert sehr gut
 mit monophoner Musik, aber wie geht es mit Polyphonie? Hier m&uuml;ssen
 sich mehrere Stimme ein System teilen:
-<p align=center>
-<img src=@IMAGES@engraver-final.png>
+<p align="center">
+<img src="@IMAGES@engraver-final.png">
 <p>
 In diesem Fall werden das System und die Vorzeichen geteilt, aber die
 H&auml;lse, B&ouml;gen, Balken usw. sind jeder einzelnen Stimme eigen.
@@ -100,9 +100,9 @@ mehr als einen Voice context. Auf gleiche Weise k&ouml;nnen auch
 mehrere Staff contexte in einen gro&szlig;en Score context (Partiturkontext)
  eingebunden werden:
 
-<p align=center>
-<img src=@IMAGES@engraver-score.png>
+<p align="center">
+<img src="@IMAGES@engraver-score.png">
 
-<p align=right>
+<p align="right">
 Weiter: <a href="engraving.html">Die Kunst des Notenstechens</a>:
 Wie <em>wurde</em> denn Musik mit der Hand gestochen? 
