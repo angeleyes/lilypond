@@ -12,11 +12,11 @@ The HTML sources live in a GIT repository.  To get a fresh version run
    git pull git://git.sv.gnu.org/lilypond.git/ web/master:
    git repack
 
-The command can
+The command 
 
    git pull git://git.sv.gnu.org/lilypond.git/ web/master:
 
-also be used to update a repository
+can also be used to update a repository
 
 
 
