@@ -1,0 +1,29 @@
+utility	hulpprogramma
+input	input
+feature	functie/eigenschap/feature
+scripting language	scriptingtaal
+music engraving	muziekgravure
+engraving	muzieknotatie
+accidental	voorteken
+alteration	alteratie
+sharp	kruis
+flat	mol
+lyrics	songtekst/liedtekst
+chord	akkoord
+lead sheet	leadsheet -> melodie/becijferde akkoorden, hierbij worden op een notenbalk weergegeven de melodie, de tekst en de akkoordsymbolen
+score	partituur
+transpose	transponeren
+polyphonic	polyfoon (en niet polyfonisch)
+condensed rest	meermaatse rust??
+concert pitch	concerttoonhoogte ??
+chord names	akkoordnamen
+drum notation	drumnotatie
+tablature	tabulatuur
+fingering	vingerzetting
+command line	commandoregel
+acknowledgement	dankbetuiging
+shell	shell
+tutorial	korte handleiding
+mailing list	mailinglijst
+packager	samengesteld door
+
