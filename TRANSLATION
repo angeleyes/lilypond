@@ -72,28 +72,26 @@ LANG=C wc --words $(grep ^2 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
  1816 total
 
 LANG=C wc --words $(grep ^3 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
-   345 site/about/automated-engraving/benchmarking.html
-  5139 site/about/automated-engraving/big-page.html
-    89 site/about/automated-engraving/conclusion.html
-   168 site/about/automated-engraving/divide-and-conquer.html
-   259 site/about/automated-engraving/engraving.html
-   241 site/about/automated-engraving/formatting-architecture.html
-   460 site/about/automated-engraving/implementing-notation.html
-   352 site/about/automated-engraving/implementing-typography.html
-   299 site/about/automated-engraving/index.html
-   477 site/about/automated-engraving/input-format.html
-   579 site/about/automated-engraving/introduction.html
-   310 site/about/automated-engraving/problem-statement.html
-   177 site/about/automated-engraving/schubert.html
-   469 site/about/automated-engraving/scoring-esthetics.html
-   666 site/about/automated-engraving/software.html
-   425 site/about/automated-engraving/typography-features.html
-  1799 site/about/faq.html
-   556 site/about/pubs.html
-   173 site/documentation.html
-   501 site/install/cygwin.html
-   200 site/sponsor/index.html
-   134 site/sponsor/natura.html
-   238 site/sponsor/options.html
- 14056 total
- 
+  345 site/about/automated-engraving/benchmarking.html
+   89 site/about/automated-engraving/conclusion.html
+  168 site/about/automated-engraving/divide-and-conquer.html
+  259 site/about/automated-engraving/engraving.html
+  241 site/about/automated-engraving/formatting-architecture.html
+  460 site/about/automated-engraving/implementing-notation.html
+  352 site/about/automated-engraving/implementing-typography.html
+  299 site/about/automated-engraving/index.html
+  477 site/about/automated-engraving/input-format.html
+  579 site/about/automated-engraving/introduction.html
+  310 site/about/automated-engraving/problem-statement.html
+  177 site/about/automated-engraving/schubert.html
+  469 site/about/automated-engraving/scoring-esthetics.html
+  666 site/about/automated-engraving/software.html
+  425 site/about/automated-engraving/typography-features.html
+ 1799 site/about/faq.html
+  556 site/about/pubs.html
+  173 site/documentation.html
+  501 site/install/cygwin.html
+  200 site/sponsor/index.html
+  134 site/sponsor/natura.html
+  238 site/sponsor/options.html
+ 8917 total
