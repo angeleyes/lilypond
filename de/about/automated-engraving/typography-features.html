@@ -1,0 +1,104 @@
+<!--
+    Translation of GIT committish: 670e5bd4d2077903e6a428e83c9af8d9dc16baab  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<a name="Typographische Eigenschaften"></a>
+
+<h2>Schriftartdesign</h2>
+
+Ein wichtiger Faktor f&uuml;r die traditionelle Wirkung, die LilyPonds Notenbild
+erreicht, ist der Graufaktor der Seite. Durch die Verwendung von dickeren Notenlinien
+und einer Schriftart, die darauf abgestimmt ist, wirkt der Gesamteindruck sehr
+viel kr&auml;ftiger. Das wird sofort deutlich in den folgenden Beispielen:
+
+<table align=center><tr><td>
+<img src="@IMAGES@henle-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@baer-flat-gray.png"></td>
+<td>
+<img src="@IMAGES@lily-flat-bw.png"></td>
+</tr><tr>
+<td align=center>Henle (2000)</td>
+<td align=center>B&auml;renreiter (1950)</td>
+<td align=center>LilyPond (2003)</td>
+</tr>
+</table>
+<p>
+
+Ein weiterer typischer Aspekt von handgravierten Noten ist das allgemeine
+Design der Zeichen. Sie haben fast nie scharfe Kanten. Das r&uuml;hrt 
+daher, dass scharfe Ecken an den Stempeln sehr schnell schartig 
+werden, wenn man sie in Metall schl&auml;gt. Diese rundliche Form
+wurde auch f&uuml;r die Symbole unserer &bdquo;Feta&lbquo;-Schriftart
+herausgearbeitet.
+
+ 
+<h2>Abst&auml;nde</h2>
+
+<p>
+Eins der Probleme, dass von dem oben erw&auml;hnten Bach-St&uuml;ck angeregt
+wurde, ist die Einstellung der Abst&auml;nde. Der Formatierer beherrscht
+den optischen Ausgleich. Das soll des Beispiel unten beleuchten: 
+
+<p align=center>
+<img src="@IMAGES@spacing-with-corr.png">
+
+<p align=center>
+<img src="@IMAGES@spacing-no-corr.png">
+
+<p>
+In diesem Ausschnitt kommen nur Viertel vor, Noten, die in einem 
+gleichm&auml;&szlig;igen Rhythmus gespielt werden. Die Abst&auml;nde
+sollten das wiederspiegeln. Leider l&auml;sst uns aber das Auge im
+Stich: es beachtet nicht nur den Abstand von aufeinanderfolgenden 
+Notenk&ouml;pfen, sondern auch den ihrer H&auml;lse. Also m&uuml;ssen
+Noten, deren H&auml;lse oben/unten gerichtet sind, weiter
+auseinander gezogen werden, w&auml;hrend die unten/oben-Folge engere
+Abst&auml;nde fordert, und das alles in Abh&auml;ngigkeit von der 
+vertikalen Position der Noten. Das obere Beispiel ist mit dieser 
+Korrektur gesetzt, das unter ohne. In letzterem Fall bilden sich f&uuml;r das Auge
+bei unten/oben-Folgen Notenhaufen.
+
+<h2>Hilfslinien</h2>
+
+Hilflinien sind typographisch schwierig. Sie k&ouml;nnen leicht
+mit anderen Zeichen verschmelzen, wie etwa anderen Hilfslienien oder 
+Vorzeichen. Andere Programme l&ouml;sen dieses Problem, indem sie
+die Notenzeichen weiter auseinander setzen (so dass sie mehr Platz
+brauchen), oder indem sie die Hilflinien generell k&uuml;rzen (wodurch 
+die Lesbarkeit behindert wird).
+
+<table align=center><tr><td>
+<img src=@IMAGES@henle-ledger.png>
+&nbsp;
+</td>
+<td>
+<img src=@IMAGES@baer-ledger.png>&nbsp;
+
+</td>
+<td>
+<img src=@IMAGES@lily-ledger.png></td>
+</tr><tr>
+<td align=center>Henle (2000)</td>
+<td align=center>B&auml;renreiter (1950)</td>
+<td align=center>LilyPond (2004)</td>
+</tr>
+</table>
+
+Notenstecher der alten Schulen w&uuml;rden die L&auml;nge
+der Hilfslinie abh&auml;ngig von den umgebenden Symbolen  anpassen.
+LilyPond unternimmt das gleiche. Hilfslinien werden verk&uuml;rzt,
+so dass sie nicht mit umgebenden Linien zusammensto&szlig;en, und
+sie werden verk&uuml;rzt wenn vor der Note ein Vorzeichen steht.
+
+
+<p align=right>
+Weiter: <a href=input-format.html>Das Eingabeformat</a>
+oder Wie wird eigentlich gesetzt

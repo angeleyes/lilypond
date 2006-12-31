@@ -1,0 +1,72 @@
+<!--
+    Translation of GIT committish: 670e5bd4d2077903e6a428e83c9af8d9dc16baab  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+
+<a name="implementing-typography"></a>
+
+
+<h2>Typographie implementieren</h2>
+
+
+<p>
+Wie sollen wir also jetzt die Typographie anwenden? Nachdem wir
+schon die Frage beantwortet haben, was f&uuml;r Notensymbole wir brauchen,
+haben wir einen ganzen Sack voller loser Elemente, die Notenk&ouml;pfe,
+H&auml;lse usw. darstellen.
+
+<p>
+Wie k&ouml;nnen wir jetzt auf einmal erwarten, dass wir in der Lage
+w&auml;ren, ein Programm zu schreiben, dass den Beruf des Notenstechers
+ersetzt, wo dieser doch mehr als zehn Jahre braucht, um ein Meister 
+zu werden?
+
+<p>
+Wir k&ouml;nnen es tats&auml;chlich nicht! Da Typographie allein
+durch das menschliche Auge bestimmt ist, kann der Mensch nicht 
+ersetzt werden. Aber sehr viel mechanische Arbeit kann erleichtert
+werden. Indem etwa LilyPond die &uuml;blichen Situationen kennt und
+bew&auml;ltigt, k&ouml;nnen die restlichen Fehler von Hand beseitigt 
+werden. Das ist schon ein gro&szlig;er Fortschritt im Vergleich mit
+den existierenden Programmen. Und mit der Zeit k&ouml;nnen immer mehr
+F&auml;lle automatisiert werden, so dass immer weniger Eingriffe
+von Hand notwendig werden.
+
+<p>
+Wie aber bauen wir ein solches System? Als wir anfingen, haben wir
+ein Programm mit C++ geschrieben. Das hei&szlig;t aber, dass der 
+Funktionsumfang des Programmes vom Anfang an durch die Entwickler
+festgelegt ist. Das erschien uns nicht ausreichend:
+
+<ul>
+<li> Wenn manches noch von Hand eingestellt werden muss, muss der
+   Benutzer auch Zugang zur Formatierungsmaschinerie haben. Also
+   k&ouml;nnen die Regeln und Einstellungen nicht beim Kompilieren
+   des Programmes festgelegt werden, sondern sie m&uuml;ssen w&auml;hrend
+   des Laufes zug&auml;nglich sein.
+
+<li> Notensatz ist eine Frage des Augenma&szlig;es, und damit auch
+  vom Geschmack abh&auml;ngig. Benutzer k&ouml;nnen mit unseren Entscheidungen
+  unzufrieden sein. Darum m&uuml;ssen also auch die Definitionen des
+  typographischen Stils dem Benutzer zug&auml;nglich sein.
+
+<li> Schlie&szlig;lich verfeinern wir unseren Formatierungsalgorythmus immer
+  weiter, also m&uuml;ssen die Regeln auch flexibel sein. Die C++-Sprache zwingt
+  zu einer bestimmten Gruppierungsmethode, die nicht den Regeln f&uuml;r den 
+  Notensatz entspricht.
+</ul>
+
+Auf jeden Fall brauchten wir also eine flexible Architektur. Sie sollte 
+Formatierungsregeln, typographische Stile und individuelle Formatierungsentscheidungen
+umfassen.
+
+<p align=right>
+Weiter: <a href="formatting-architecture.html">Eine flexible
+Programmstruktur</a>: Formen, Entwickeln und Abstimmen der Typographieregeln

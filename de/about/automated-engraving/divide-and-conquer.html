@@ -1,0 +1,62 @@
+<!--
+    Translation of GIT committish: 74f7ad76a984df5ed29fe9f11aa793b44eaaca5d  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<h2>Strategieplan</h2>
+
+Da Inhalt und Form der Musiknotation sich unterscheiden, m&uuml;ssen
+wir darauf bei dem Entwurf unseres Programmes acht geben. Die Grundlage
+unseres Programmes erfolgt also nach diesem Schema:
+
+<table>
+<tr>
+<td align="center">
+<img src="@IMAGES@simple-notation.png">
+</td>
+<td align="center">
+<b>&larr;</b>
+</td>
+<td align="center">
+<tt>{ c'4 d'8 }</tt>
+</td>
+</tr>
+<tr>
+<td align="center">
+1. Form
+</td>
+<td align="center">
+2. &Uuml;bersetzung
+</td>
+<td align="center">
+3. Inhalt
+</td>
+</tr>
+</table>
+
+Am besten k&ouml;nnen wir das Problem besiegen, indem
+wir es in Unterprobleme teilen:
+
+<ol start="1">
+<li>Typographie:  <b>wohin</b> die Symbole sollen
+<li>Notation:  <b>welche</b> Symbole benutzt werden
+<li>Representation: wie soll die Musik <b>kodiert</b> werden
+</ol>
+
+Schlie&szlig;lich entsteht durch die Unterteilung ein neues Problem:
+<ol start="4">
+<li> Architectur: Wie setzt man alles wieder <b>zusammen</b>
+</ol>
+
+
+
+<p align=right>
+Weiter: <a href=implementing-notation.html>Interessant, aber funktioniert
+das denn auch in der Theorie</a>? Ein praktischer Ansatz,
+Notation zu erfassen

@@ -1,0 +1,115 @@
+<!--
+    Translation of GIT committish: 670e5bd4d2077903e6a428e83c9af8d9dc16baab  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<h2>Sch&ouml;ne Zahlen</h2> 
+	
+Wie aber werden nun tats&auml;chlich Entscheidungen &uuml;ber
+die Formatierung vorgenommen? Oder auch: welcher von drei
+Werten f&uuml;r den Bogen im Beispiel ist der beste?
+
+<p>
+
+<img src="@IMAGES@slur-esthetics.png">
+
+<p>
+Es gibt einige wenige B&uuml;cher &uuml;ber die Kunst des
+Notensatzes. Leider haben sie oft nur Daumenregeln und dazu
+ein paar Beispiele. Solche Regeln k&ouml;nnen sehr lehrreich
+sein, aber mit ihnen kann man nat&uuml;rlich keine Algorithmen
+f&uuml;r einen Computer erstellen. Wenn man die Regeln aus der
+Literatur befolgt, ergeben sich Algorithmen, zu denen man noch eine
+gro&szlig;e Anzahl von handgeschriebenen Ausnahmen hinzuf&uuml;gen muss.
+Die Analyse aller F&auml;lle ist sehr arbeitsintensiv, und oft 
+sind noch nicht einmal alle M&ouml;glichkeiten abgedeckt.
+
+<p align="center">
+<img src="@IMAGES@ross-beam-scan.jpeg" align="center"></p>
+<p align="center">
+
+<em>Formatierungsregeln am Beispiel definiert.Ausschnitt aus der Art of 
+Music Engraving von Ted Ross.</em>
+</p>
+
+<p>
+Wir haben eine sehr viel einfachere und verl&auml;sslichere Methode
+entwickelt, um die beste Formatierungsoption zu ermitteln: ein
+Notenbildvergleich. Der erfolgt nach dem gleichen Prinzip wie ein
+Sch&ouml;nheitswettbewerb: f&uuml;r jede m&ouml;gliche Einstellung
+erstellen wir eine H&auml;sslichkeitsskala. Dann wird die am wenigsten
+h&auml;ssliche Einstellung ausgew&auml;hlt.
+
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-1.png">
+
+<p>
+
+In der ersten Einstellung, zum Beispiel, reicht der Bogen sehr gut an 
+die erste und letzte Note heran. Das ist auch eine sehr wichtige Forderung.
+Ein anderer Notenkopf wird allerdings sehr nahe gestreift, w&auml;hrend
+die anderen ziemliche gro&szlig;e Abst&auml;nde aufweisen. Also w&aunl;hlen
+wir f&uuml;r diese Einstellung eine Punktezahl
+von 15,39.
+
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-2.png">
+<p>
+
+In dieser Einstellung hat der Bogen zwar den gleichen Abstand zu allen 
+Notenk&ouml;pfen, aber wir m&uuml;ssen einige Punkte abziehen, weil
+der Bogen nicht mehr bis zu den Anfangs- und Endnoten reicht. F&uuml;r 
+die linke Seite ziehen wir 1,71 Punkte ab, f&uuml;r die rechte Seite (die noch
+weiter vom Notenkopf entfernt ist) 9,37. Zus&auml;tzlich steigt der Bogen
+an, w&auml;hrend die Melodie absteigend ist. Das sind nochmal zwei
+Strafpunkte.
+
+<p>
+
+<img src="@IMAGES@slur-esthetics-annotate-3.png">
+
+<p>
+
+Am Ende ist nur noch das Ende des Bogens weit weg von dem letzten Notenkopf,
+und diese Einstellung hat 10,04 H&auml;sslichkeitspunkte.
+
+<p>
+Wenn wir nun alle drei Einstellungen vergleichen, sehen wir, dass
+die dritte Option die am wenigsten h&auml;ssliche, oder die sch&ouml;nste 
+ist. Darum w&auml;hlen wir sie aus.
+
+<p>
+Das ist eine sehr allgemeine Technik, und sie kann f&uuml;r sehr
+viele Situationen angewandt werden, etwa beim
+
+<ul>
+<li> Bestimmten der Balkensteigung
+<p>
+
+<img src="@IMAGES@beam-scoring-example.png">
+<li> Formatieren von angebundenen Akkorden
+
+<p>
+<img src="@IMAGES@ties-scoring-example.png">
+<li> Formatieren von punktierten Noten,
+<li> Zeilenumbruch,
+<li> Seitenumbruch usw.  
+</ul>
+<p>
+
+Diese Technik braucht einige Zeit, denn man  muss sehr viele M&ouml;glichkeiten
+auswerten, aber es ist den Aufwand wert, denn das Resultat ist sehr viel
+besser, und die Satzarbeit wird dadurch ganz erheblich erleichtert.
+
+
+<p align=right>
+Weiter: <a href=benchmarking.html>Der Mensch ist das Ma&szlig; der Dinge</a> oder
+Gen&uuml;gt eine flexible Architektur?

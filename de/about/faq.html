@@ -1,0 +1,403 @@
+<!--
+    Translation of GIT committish: 9d3bc5da06c66e6562c7ee08d09f5311dc716d3a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>H&auml;ufige Fragen (FAQ)</title>
+<h1>H&auml;ufige Fragen</h1>
+
+
+<h2>Einleitung</h2>
+
+<h3>Was ist LilyPond?</h3>
+<p>
+   LilyPond ist ein &bdquo;automatisiertes Notensatzsystem&ldquo;. Es kann
+   Musik sehr sch&ouml;n und ausgewogen setzen, ohne dass der Benutzer
+   typographisches Wissen ben&ouml;tigt.
+</p>
+
+
+<h3>Automatisierte Notation, hei&szlig;t das, ich spiele Musik, und dann
+   kommen die Noten aus dem Drucker?</h3>
+
+<p>
+  Nein. Unser Programm erwartet, dass die Information sich in einer exakten, 
+  abstrahierten Form finden l&auml;sst. Notensatz ist schon schwierig genug,
+  da wollen wir nicht uns noch ein anderes Problem aufhalsen. Die &Uuml;bersetzung
+  von gespielter Musik in ein exaktes Notenbild ist sehr schwierig. Auch wenn
+  die richtigen Tonh&ouml;hen von einem MIDI-Keyboard kommen (im Unterschied
+  zu einer Tonaufnahme), m&uuml;ssen doch die Rhythmen korrekt erkannt werden.
+  Wie zum Beispiel soll ein Computer zwischen einer staccato-Viertelnote und
+  einer Achtel unterscheiden? Und wie w&uuml;rde man ein St&uuml;ck notieren,
+  dass nicht auf einem Keyboard gespielt werden kann?
+</p>
+
+<h3>Es gibt auch andere Notationsprogramme. Was ist so besonders mit dem hier?</h3>
+
+<p> 
+  Moderner Computernotensatz sieht nicht sch&ouml;n aus, er wirkt 
+  geistlos und mechanisch. Im Gegensatz dazu imitieren wir
+  den tranditionellen Notenstich durch besondere Abstands-Algorithmen
+  und eine besondere Notenschriftart. Darum ist unser Satz auch oft
+  den anderen Programmen an Klarheit und Lesbarkeit &uuml;berlegen. 
+</p>
+
+<h3>Was stimmt denn nicht mit anderen Notationsprogrammen?</h3>
+<p>
+<ul>
+<li>
+  Am Computer erstellten Noten fehlen meistens kleine
+  Abstandsabweichungen, wodurch ein mechanisches Aussehen entsteht.
+  <li>Um &Uuml;berschneidungen zwischen verschiedenen Symbolen zu
+  vermeiden, werden sie sehr weit auseinander gezogen, wodurch ein
+  &bdquo;luftiger&ldquo; Charakter entsteht.
+  <li>Die Dichte des Layouts wird diesem luftigen Aussehen angeglichen,
+  dadurch sind die Symbole zu d&uuml;nn und die Notenlinien zu fein.
+  <li>Diese gestreckten Abst&auml;nde brauchen auch mehr Blatt Papier.
+  <li>Balken decken die Notenlinien oft nicht vollst&auml;ndig ab,
+  w&auml;hrend B&ouml;gen und Bindeb&ouml;gen sie ber&uuml;hren, wodurch
+  irritierende schwarze Flecken und weiße L&ouml;cher an diesen Stellen
+  entstehen.
+  </ul>
+</p>
+
+<p>
+  Normalerweise werden diese Details nur unterbewusst wahrgenommen. Am 
+  besten kann man sie sich bewusst machen, indem man einen traditionellen
+  (also mehr als 20 Jahre alten) Notenstich mit einer Computer-Version
+  vergleicht, am besten mit einer Lupe. Traditioneller Notenstich ist
+  fotografisch reproduzierte Handarbeit und kann an kleinen Variationen
+  in den Abst&auml;nden sowie winzigen Klecksen erkannt werden.
+</p>
+
+<h3>Was bedeutet Notenstich?</h3>
+<p>
+  Urspr&uuml;nglich wurden Noten gedruckt, indem man in Metallplatten
+  gravierte und stempelte. Die Platten wurden dann mit Druckerschw&auml;rze
+  versehen, ein Papier darauf gepresst, und so erhielt man ein Spiegelbild.
+  Somit wird traditioneller Notensatz als Stich bezeichnet, auch wenn 
+  er mit dem Computer gemacht wird. In der Tat spricht man heute auch 
+  eher vom Notensatz, was der Wechsel zum Computer mit sich gebracht 
+  hat. Die Satzarbeit wird von einem Notenstecher
+  oder Notensetzer ausgef&uuml;hrt.
+</p>
+
+<h3>Warum ist Notensatz wichtig?</h3>
+<p>
+  Wir sind der Meinung, dass sch&ouml;ne Musik auch mit einem 
+  sch&ouml;nen Satz gedruckt werden sollte.
+</p>
+
+<h3>Warum sollte der Notensatz mich k&uuml;mmern?</h3>
+<p>
+  Guter Satz macht die Musik lesbarer und dadurch auch einfacher zu
+  spielen. So f&auml;llt es leichter ein St&uuml;ck zu interpretieren,
+  dessen Layout dem Charakter entspricht. Wenn es dicht gesetzt ist, 
+  braucht es weniger Seiten und also auch weniger Bl&auml;ttern. Wenn
+  ein Notensystem eine einzigartige horizontale Ausrichtung hat, ist 
+  es leichter im Text wiederzufinden, nachdem man den Dirigenten angeschaut 
+  hat. Eine Stimme mit dickeren Linien und schwereren Symbolen l&auml;sst sich
+  auch noch aus einiger Entfernung gut lesen.
+</p>
+
+<p>
+  <h3>Diese Programm ist also besonders? Dann wird es wohl viel kosten?</h3>
+
+<p>
+  Nein. Es ist vollkommen umsonst. Siehe die <a href="../install">Download-Seite</a>.
+</p>
+
+<h3>Es ist jetzt umsonst, aber irgendwann wird es dann kosten?</h3>
+
+<p>
+  Nein. Wir verteilen es nicht nur umsonst, sondern wir liefern auch den vollen
+  Quellcode mit, und die Erlaubnis, alles anzubieten, zu ver&auml;ndern, 
+  zu verkaufen oder zu verst&uuml;mmeln. Mit anderen Worten: LilyPond ist
+  freie Software, es geh&ouml;rt zum GNU-Projekt und wird unter der
+  <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public
+    License</a> ver&ouml;ffentlicht.
+</p>
+
+<p>
+  Wir sind der Meinung, dass das sehr viel wichtiger als eine Bezahlung ist.
+  Es bedeutet auch, dass jeder die Freiheit hat, alles zu reparieren, zu ver&auml;ndern
+  oder zu erweitern, oder dass man jemanden einstellen kann, das zu tun.
+  Wir werden niemanden zu einem Upgrade zwingen, wenn die Programmversion nicht
+  mehr gewartet wird, noch bedeutet es das Ende f&uuml;r das Programm, wenn
+  wir es nicht mehr warten.
+</p>
+
+
+
+
+
+
+<h2>&Uuml;ber das Programm</h2>
+
+
+<h3>Wie wird LilyPond benutzt?</h3>
+
+<p>
+  LilyPond ist ein &Uuml;bersetzer, der die kodierten Noten
+  aus einer <tt>.ly</tt>-Textdatei liest. Diese werden beim
+  Lauf von LilyPond in wirkliche Noten umgesetzt, welche
+  auf der Festplatte als PostScript-, SVG- oder Pdf- bzw. Png-Datei 
+  gespeichert werden.
+</p>
+
+<h3>Wie sieht das Inputformat aus?</h3>
+<p>
+  Wir haben unser eigenes Inputformat erstellt, das <tt>.ly</tt>-Format.
+  Es ist eine Sprache, in der Musik durch Ausdr&uuml;cke kodiert wird.
+  Diese Ausdr&uuml;cke bestehen in sich aus einfacheren Ausdr&uuml;cken,
+  der einfachste Ausdruck ist eine Noten/Pause. Auf gleiche Art k&ouml;nnen
+  arithmetische Gleichungen zerlegt werden in einfachere Ausdr&uuml;cke, von
+  denen die einfachsten  Zahlen und Operatoren sind.
+</p>
+
+
+<h3>Es gibt viel gute Formate, warum wurde nicth ABC, MusicXML oder
+  NIFF oder DARMS verwendet?</h3>
+
+Wir haben folgende Anspr&uuml;che: Die sprach muss
+<ul>
+  <li>
+    ASCII benutzen,
+  </li>
+  <li>
+    einfach genug sein, um mit der Hand getippt werden zu k&ouml;nnen,
+  </li>
+  <li>
+    eine logische formale Definition besitzen,
+  </li>
+  <li>
+    m&auml;chtig genug sein, um viele unterschiedliche Arten von
+    Notation und Druckformaten zu unterst&uuml;tzen.
+  </li>
+</ul>
+
+<p>
+  Unserer Meinung nach erf&uuml;llt keine der existierenden Sprache alle 
+  diese Forderungen. Zum Beispiel kann MusicXML nicht mit der Hand
+  eingegeben werden, DARMS ist sehr beschr&auml;nkt, ABC hat keine
+  wirklich strickte Definition und NIFF ist ein Bin&auml;rformat. Das
+  hei&szlig;t trotzdem noch nicht, dass man diese Formate nicht benutzen
+  kann, denn es gibt eine ganze Reihe von Filtern, die von verschiedenen
+  Formaten nach
+  <tt>.ly</tt> &uuml;bersetzen.
+</p>
+
+<h3>Wie kann ich diese Sprache lernen?</h3>
+<p>
+  Schauen Sie sich den 
+  <a href="@DOC@stable/Documentation/user/lilypond.html#Tutorial">Lehrgang (tutorial)</a> (englisch) an.
+  Er ist ziemlich kurz, in leicht verst&auml;ndliche Happen aufgeteilt und wir haben
+  uns M&uuml;he gegeben, ihn didaktisch aufzuarbeiten. Wenn Sie lieber einfach
+  herumprobieren wollen, k&ouml;nnen Sie Beispiele kriegen, indem Sie auf die Notenbilder
+  im Lehrgang klicken.
+</p>
+
+<h3>&Auml;ndert die Syntax nicht andauernd!</h3>
+<p>
+  Wir versuchen, LilyPond so gut wie m&ouml;glich zu mache, und dazu 
+  geh&ouml;hrt auch, dass wir st&auml;ndig Verbesserungen an der
+  Eingabesprache einarbeiten. Die Syntax wird immer ver&auml;ndert, 
+  wenn das dazu beitr&auml;gt, die gesamte Sprache zu vereinfachen 
+  oder die Lernkurve abzuflachen. Und die Sprache ist jetzt nur so
+  gut, weil wir auch in der Vergangenheit immer wieder Ver&auml;derungen
+  vorgenommen haben.
+</p>
+<p>
+  Die meisten &Auml;nderungen werden von dem Programm 
+  <tt>convert-ly</tt> gel&ouml;st, das mit Lilypond kommt.
+  <tt>convert-ly</tt> kann allerdings nur richtig funtionieren,
+  wenn es wei&szlig;, f&uuml;r welche Programmversion die Eingabedatei
+  urspr&uuml;nglich geschrieben war. Darum ist es sehr wichtig, die
+  <code>version</code> am Anfang der Datei mitzuteilen, z. B. so: <xmp>
+    \version "2.8.4" </xmp>
+</p>
+<p>
+  &Auml;nderungen, die nicht so einfach ersetzt werden k&ouml;nnen, sind durch
+  eine &Auml;nderung der ersten Versionsnummer markiert: Der Umstieg von
+  1.8 nach 2.0 braucht noch einige Handarbeit zus&auml;tzlich.
+</p>
+
+<h3>Wie schnell kann man Noten mit LilyPond eingeben?</h3>
+
+<p>
+  Es gibt keine einzige Antwort auf diese Frage, denn die aufgewendete
+  Zeit h&auml;ngt vor allem von der Komplexit&auml;t der Musik ab, und
+  dem Bekanntheitsgrad mit LilyPonds Sprache. Musik mit komplizierten
+  Eigenschaften (H&auml;lse &uuml;ber mehrere Systeme, Zusammenst&ouml;&szlig;e
+  von Objekten) braucht l&auml;nger in der Eingabe als einfache
+  homophone Musik. Erfahrene Benutzer setzen etwa 3,5 Seiten einfache
+  monophone Musik in der
+  Stunde. Als Eingabeprogramm dient ein einfacher Texteditor. In dieser Zeit
+  sind auch Korrekturen und kleine Layoutver&auml;nderungen enthalten.
+</p>
+
+
+<h3>Ich m&ouml;chte mein Midi-Keyboard f&uuml; die Eingabe verwenden.</h3>
+
+
+Versuchen sie folgende M&ouml;glichkeiten:
+
+<ul>
+  <li>
+    Hans Lubs
+    <a href="http://mail.gnu.org/archive/html/gnu-music-discuss/2001-10/msg00018.html"> emacs/MIDI-Eingabemodus</a>
+  </li>
+  <li>
+    Nicholas Sceaux'
+    <a href="http://nicolas.sceaux.free.fr/lilypond">Emacs/MIDI-Eingabemethode</a>
+
+  <li>
+    <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>,
+    ein monophones Kommandozeilenwerkzeug zur MIDI/lilypond-Eingabe.
+  </li>
+
+  <li>
+    <a href="http://lilycomp.sf.net">LilyComp</a>, ein graphisches Werkzeug,
+    f&uuml;r die, die nicht so gut Noten lesen k&ouml;nnen.
+  </li>
+</ul>
+
+<h3>Ich m&ouml;chte keine andere Syntax lernen. Was jetzt?</h3>
+<p>
+  Es gibt noch andere Optionen. Man kann Musik in einem anderen Format
+  erstellen und dann importieren. Unterst&uuml;tzte Formate sind
+</p>
+
+<dl>
+  <dt>
+    MIDI</dt><dd> LilyPond beinhaltet midi2ly, ein Programm, das eine MIDI-Datei
+ nach LilyPond &uuml;bersetzt.
+  </dd>
+
+  <dt>
+    ETF</dt><dd> LilyPond enth&auml;lt etf2ly, ein Konvertierungsprogramm f&uuml; Finales ETF-Format (<a href="../devel/misc/etfformat.html">&Uuml;ber ETF</a>).
+  </dd>
+
+  <dt>
+    ABC</dt><dd> LilyPond beinhaltet abc2ly, ein Konvertierungsprogramm f&uuml; 
+das beliebte ABC-Format (<a href="http://www.gre.ac.uk/~c.walshaw/abc/">&Uuml;ber ABC</a>).
+  </dd>
+
+  <dt>
+    MusicXML</dt><dd> LilyPond beinhaltet <code>musicxml2ly</code> a
+    ein teilweises Konvertierungsprogramm von MusicXML; auch Guido Amorusos <a
+    href="http://lists.gnu.org/archive/html/lilypond-user/2005-12/msg00107.html">xml2ly</a>
+    kann MusicXML in LilyPond umwandeln (<a
+    href="http://www.musicxml.org/">&Uuml;ber MusicXML</a>).  </dd>
+
+  <dt>
+    NoteWorthy</dt><dd>  Mike Wierings <a
+    href="http://nwc2ly.sourceforge.net/">nwc2ly</a> wandelt das NWC-Format nach LilyPond um.  </dd>
+
+  <dt>
+  Band In A Box</dt><dd>  Alain Brenzikofers <a
+     href="http://people.ee.ethz.ch/~brenzala/builder.php?content=projects_biabconverter&lang=en">biabconverter</a>
+     wandelt Band-in-a-box-Dateien nach LilyPond um.
+
+     </dd>
+
+</ul>
+
+
+<h3>Ich m&ouml;chte aber eine graphische Schnittstelle haben!</h3>
+<p>
+  Wir haben leider keine Zeit, auch noch eine graphische Benutzerschnittstelle
+  zu programmieren. Zum Gl&uuml;ck haben andere Leute diesen Mangel
+  behoben. Folgende Programme haben sehr gute LilyPond-Exportfunktionen
+  und sind in konstanter Entwicklung:
+</p>
+
+<ul>
+  <li>
+    <a href="http://noteedit.berlios.de/">
+      NoteEdit</a>
+  </li>
+  <li>
+    <a href="http://www.all-day-breakfast.com/rosegarden/">RoseGarden</a>
+  </li>
+</ul>
+Es gibt auch noch zwei nicht graphische Schnittstellen:
+
+<ul>
+  <li> <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>
+    erstellt LilyPond-Code mit einem MIDI-Keyboard.
+  </li>
+  <li><a
+	 href="http://nicolas.sceaux.free.fr/lilypond/lyqi.html">LyQI</a>
+    stellt eine klavierartige Tastatur zur Verf&uuml,gung, die &uuml;ber 
+    die normale Computertastatur in emacs genutzt wird. Es kann auch RUMOR 
+    ben&uuml;tzen.
+  </li>
+</ul>
+
+
+<h2>Unterst&uuml;tzung</h2>
+
+<h3>Hilfe, ich kann nicht installieren oder kompilieren. Wo finde ich Hilfe?</h3>
+<p>
+  Wenn Ihr Bin&auml;rpaket sich nicht richtig installieren l&auml;sst, oder wenn
+  es nicht gelingt, die Anleitung zu befolgen, dann senden Sie uns bitte einen
+  vollst&auml;ndigen Fehlerbericht in Englisch an unsere
+  <a
+  href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">
+  Fehlerliste</a>. Nat&uuml;rlich k&ouml;nnen Sie auch an die <a
+  href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypond-Benutzerliste</a> schreiben und um Hilfe bitten.
+   <!-- !-->
+</p>
+
+<h3>Hilfe, es funktioniert einfach nicht. Wer kann mit helfen?</h3>
+<p>
+  Sie k&ouml;nnen an die lilypond-Benutzerliste (auf
+   <a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>) schreiben. Es ist auch eine gute Idee, die Archive nach Antworten
+zu durchsuchen, die sich unter
+der Adresse <a
+href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a> finden lassen.
+</p>
+
+<a name="bugreport"></a>
+
+<h3>Ich habe einen Fehler gefunden.</h3>
+
+<p>
+  Wenn Sie eine Eingabedatei haben, die das Programm abst&uuml;rtzen l&auml;sst oder
+  schlechte Ergebnisse erzielt, ist dies ein Fehler. Helfen Sie uns bitte,
+  indem Sie einen guten Fehlerbericht in Englisch einschicken, mit
+  einer Eingabedatei, die das Problem zeigt. Bitte halten sie es klein, so dass
+  wir das Problem schnell isolieren k&ouml;nnen. Und teilen Sie uns mit,
+  unter welcher Version das Problem auftritt und unter welchem Betriebssystem.
+  Diesen Bericht k&ouml;nnen Sie an
+  <a
+  href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">bug-lilypond@gnu.org</a> schicken.
+</p>
+
+<h3>K&ouml;nnt ihr diese Funktion f&uuml;r micht einbauen?</h3>
+
+<p>
+  Nat&uuml;lich! Lesen Sie das Kapitel <a href="../sponsor">Sponsoring</a> 
+  f&uuml;r mehr Information &uuml;ber spezielle Funktionen.
+
+  
+</p>
+
+<h3>Aber es ist doch ganz einfach, erweitern Sie die Sprache nur so...</h3>
+
+<p>
+  Man ist schnell versucht zu denken, dass eine neue Syntax alle Probleme
+  l&ouml;sen kann. Aber in Wirklichkeit betr&auml;gt der Anteil der 
+  Eingabesprache am Programmcode nur etwa 10%. Fast immer braucht man
+  sehr viel mehr Arbeit als nur eine Spracherweiterung, wenn man eine 
+  Funktion hinzuf&uuml;gen will.
+</p>
+

@@ -1,0 +1,88 @@
+<!--
+    Translation of GIT committish: 670e5bd4d2077903e6a428e83c9af8d9dc16baab  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<a name="benchmarking"></a>
+
+<h2>Notationbenchmark</h2>
+
+Eine flexible Architektur ist notwendig f&uuml;r guten Notensatz.
+Aber sie ist leider nicht ausreichend. Nur eine sehr sorgf&auml;ltige
+Imitation eines gedruckten Notenblattes kann ein gutes Ergebnis
+bringen. Zu Anfang schlugen wir vor, den Notensatz eines Programmes
+mit einem handgravierten Satz zu vergleichen. Mit genau dieser
+Technik machen auch wir uns daran, LilyPond zu polieren. Es ist
+sozusagen eine Benchmark-Technik: Die Qualit&auml;t der Arbeit des Programmes wird
+im Vergleich mit einer festgelegten Gr&ouml;&szlig;e gemessen.
+
+<p>
+Hier sind Teile eines Benchmark-St&uuml;ckes zu sehen. Zuerst die
+Vergleichsedition (B&auml;renreiter BA 350), darunter dann
+der Satz von LilyPond Version 1.4:
+
+<p align=center>
+<img src=@IMAGES@baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+
+<p align=center>
+<img src=@IMAGES@lily14-sarabande.png>
+<p align=center>
+LilyPond 1.4
+<p>
+
+Das Ergebnis von LilyPond ist schon gut zu lesen, und f&uuml;r viele
+Leute w&uuml;rde es wohl auch ausreichen. Aber der genauere Vergleich
+mit dem handgravierten Beispiel enth&uuml;llt viele Fehler in 
+den Satzdetails:
+
+<p align=center>
+<img src=@IMAGES@lily14-sarabande-correct.png>
+<p align=center>
+
+<ul>
+<li> Viele Symbole sind nicht ausbalanciert. Besonders das Triller-Zeichen
+ist zu gro&szlig;.
+
+<li> H&auml;lse und Balken sind alle falsch: die H&auml;lse zu lang und
+die Balken sollten angeschr&auml;gt sein und die Notenlinien exakt 
+&uuml;berdecken. Die Balken sind auch zu d&uuml;nn.
+
+<li> Die Aufteilung ist unregelm&auml;&szlig;ig, einige Takte zu breit,
+andere zu schmal.
+</ul>
+(Und au&szlig;erdem fehlten einige Noten in der urspr&uuml;nglichen Version
+von LilyPond.)
+
+<p>
+
+Indem wir uns der relevanten Algorithmen, Einstellungen und Schriftartenformen
+annahmen, konnten wir das Ergebnis verbessern. Der Satz von LilyPond Version 1.8
+findet sich unten. Auch wenn es sich immer noch nicht um einen Klon der
+Referenzversion handelt, hat der Satz doch schon fast Publikationsqualit&auml;t.
+
+<p align=center>
+<img src=@IMAGES@lily17-sarabande.png>
+<p align=center>
+LilyPond 1.8
+
+<p align=center>
+<img src=@IMAGES@baer-sarabande.png>
+<p align=center>
+B&auml;renreiter
+<p>
+
+Ein anderes Beispiel f&uuml;r diesen Benchmark-Test f&uuml;r die
+Programmversion 2.1x ist ein
+<a href="schubert">Schubert-Lied</a>.
+
+<p align=right>
+Weiter: <a href=typography-features.html>Einzigartige Eigenschaften</a>,
+mit denen LilyPond brilliert

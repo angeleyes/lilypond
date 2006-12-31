@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-12-30 12:55+0100\n"
-"PO-Revision-Date: 2006-12-30 12:48+0100\n"
+"PO-Revision-Date: 2006-12-31 11:53+0100\n"
 "Last-Translator: Till Rettig\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "Optionen"
 
 #: site/sponsor/menu-entries.py:3
 msgid "In natura"
-msgstr ""
+msgstr "In natura"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
@@ -184,7 +184,7 @@ msgstr "Eine Variable wiederverwenden"
 #: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
 #: site/install/install-2.11.ihtml:78 site/install/install-2.11.ihtml:110
 #: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
-#, fuzzy, c-format
+#, c-format
 msgid "Download <a href='%s'>the installer</a>"
 msgstr "Das <a href='%s'>Installationsprogramm</a> herunterladen"
 
@@ -234,9 +234,9 @@ msgstr "<a href='%s'>%s</a> herunterladen"
 
 #: site/install/install-2.10.ihtml:172 site/install/install-2.11.ihtml:170
 #: site/install/install-2.8.ihtml:143
-#, fuzzy, c-format
+#, c-format
 msgid "<a href='%s'>Install</a>"
-msgstr "<a href='%s'>Tarball</a> herunterladen"
+msgstr "<a href='%s'>Installieren</a>"
 
 #: site/install/install-2.10.ihtml:188 site/install/install-2.10.ihtml:204
 #: site/install/install-2.11.ihtml:186 site/install/install-2.11.ihtml:202

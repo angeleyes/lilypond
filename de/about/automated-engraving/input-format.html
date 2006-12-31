@@ -1,0 +1,124 @@
+<!--
+    Translation of GIT committish: 670e5bd4d2077903e6a428e83c9af8d9dc16baab  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<a name="input-format"></a>
+
+<h2>Das Eingabeformat</h2>
+<p>
+Wie oben besprochen liegt dem Eingabeformat der Inhalt, also
+die Musik zu Grunde. Damit aber entsteht ein gro&szlig;es Problem:
+Wie k&ouml;nnen wir denn definieren, was Musik eigentlich <em>ist</em>?
+Wir n&auml;hern uns der L&ouml;sung von hinten. Anstatt zu definieren,
+was Musik ist, lassen wir unser Programm als Definition gelten. Wir
+schreiben ein Programm, das Noten setzen kann, und halten das Format so
+einfach wie m&ouml;glich. Wenn das Format nicht mehr abgespeckt werden
+kann, bleibt nur noch der reine Inhalt &uuml;brig.
+
+<p>
+Die Syntax ist gleichzeitig die Benutzerschnittstelle bei LilyPond, darum 
+ist es einfach zu schreiben, z.&thinsp;B. bedeutet
+
+<pre>
+  c'4 d'8
+</pre>
+eine Viertel c' und eine Achtel d', wie in diesem Beispiel:
+<p align=center>
+<img src="@IMAGES@simple-notation.png">
+<p>
+
+In kleinem Rahmen ist diese Syntax sehr einfach zu benutzen. In gr&ouml;&szlig;eren
+Zusammenh&auml;ngen aber brauchen wir Struktur. Wie sonst kann man gro&szlig;e
+Open oder Symphonien notieren? Diese Struktur wird gew&auml;hrleistet durch sog.
+music expressions (Musikausdr&uuml;cke): indem kleine Fragmente zu gr&ouml;&szlig;eren
+kombiniert werden, kann mehr Komplexit&auml;t ausgedr&uuml;ckt werden. So etwa hier:
+<table>
+<td align=center>
+c4</td>
+<td>
+<img src="@IMAGES@simultaneous-0.png">
+</td></tr></table>
+
+<p>
+Gleichzeitig erklingende Noten werden hinzugef&uuml;gt, indem man alle in &lt;&lt;
+und &gt;&gt; einschlie&szlig;t.
+
+<table>
+<tr>
+<td align=center>
+<pre>
+  &lt&lt;c4 d4 e4&gt;&gt;
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-1.png">
+</td>
+</tr></table>
+
+Um aufeinanderfolgende Noten darzustellen, werden sie in Klammern gefasst:
+<table>
+<tr>
+<td align=center><pre>
+   { &lt;&lt;c4 d4 e4&gt;&gt f4  }</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-2.png">
+</td>
+</tr></table>
+
+Dieses Gebilde ist in sich wieder ein Ausdruck, und kann daher mit einem anderen Ausdruck
+kombiniert werden (hier ein Halbe).
+
+<table>
+<tr>
+<td align=center>
+<pre>
+&lt;&lt; { &lt;&lt;c4 d4 e4&gt;&gt; f4 } g2 &gt;&gt; 
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-3.png">
+</td>
+</tr>
+</table>
+<p>
+Solche geschachtelten Strukturen k&ouml;nnen sehr gut in einer
+<em>kontextunabh&auml;ngigen Grammatik</em> beschrieben werden.
+Der Programmcode f&uuml;r den Satz ist auch mit solch einer 
+Grammatik erstellt. Die Syntax von LilyPond ist also klar und
+ohne Zweideutigkeiten definiert.
+
+<p>
+Die Benutzerschnittstelle und die Syntax werden als erstes vom 
+Benutzer wahrgenommen. Teilweise ist es eine Frage des Geschmackes 
+und auch ein Objekt vieler Diskussionen. Auch wenn Geschmacksfragen
+ihre Berechtigung haben, sind sie nicht sehr produktiv. Im gro&szlig;en
+Rahmen von LilyPond spielt die Eingabe-Syntax nur eine geringe Rolle, 
+denn eine logische Syntax zu schreiben ist einfach, guten Formatierungscode
+aber sehr viel schwieriger. Das kann auch die Zeilenzahl der Programmzeilen
+zeigen: Analysieren und Darstellen nimmt nur etwa 10% des Codes ein:
+
+<table>
+<tr><th>Analyse + Darstellung</th><th>gesamt</th></tr>
+<tr>
+<td>6000 Zeilen C++</td>
+<td>61500 Zeilen C++</td></tr>
+</table>
+
+<! todo :
+
+  blurbs about lilypond today
+
+  future?
+  >
+
+
+<p align=right>
+Weiter: <a href=conclusion.html>So kann es also gehen</a>, ein Schlusswort
