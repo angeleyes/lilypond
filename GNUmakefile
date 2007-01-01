@@ -55,13 +55,16 @@ $(LANG)/%.svg: site/%.svg $(mo) scripts/translate.py GNUmakefile
 	mkdir -p $(dir $@)
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/translate.py --remove-quotes --outdir=$(dir $@) $(@:$(LANG)/%=site/%)
 
-# no inkscape on lilypond.org
+# FIXME: no inkscape on lilypond.org
 .PRECIOUS: %.png %.svg
 
-
 %.png: %.svg GNUmakefile
+ifeq ($(HOSTNAME),abc)
+# FIXME: allow to fail on lilypond.org
 	-$(INKSCAPE) --export-area-drawing --export-png=$@ --export-background-opacity=0 $<
-
+else
+	$(INKSCAPE) --export-area-drawing --export-png=$@ --export-background-opacity=0 $<
+endif
 out/site/%.$(LANG).png: $(LANG)/%.png
 	-cp $< $@
 else
