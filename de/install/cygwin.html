@@ -1,0 +1,183 @@
+<!--
+    Translation of GIT committish: 858ca3ce90eb63c0914e2766a1ffb59d2c115224  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>LilyPond - mit Cygwin</title>
+
+<h1>LilyPond mit Cygwin</h1>
+
+<a name="installing"></a>
+<h2>Installieren</h2>
+
+<img src="@IMAGES@cygwin-shot.png" align="right">
+
+<ul>
+  <li>
+    Laden Sie sich <tt>setup.exe</tt> auf Ihren Computer, indem Sie
+    <a href="http://cygwin.com/setup.exe">hier</a> klicken.
+  </li>
+  <li>
+    Wenn Sie Windows NT, 2000 and XP benutzen, m&uuml;ssen Sie evtl. zuerst Administrator werden
+  </li>
+
+  <li>
+    Starten Sie <code>setup.exe</code> 
+  </li>
+
+  <li>
+    und klicken Sie &bdquo;next&ldquo;, bis Sie zum
+  </li>
+
+  <li>
+    <strong>Package View</strong>-Dialog kommen.  W&auml;hlen Sie 
+    LilyPond aus, es befindet sich im Abschnitt
+    <strong>Publishing</strong>.
+  </li>
+
+  <li>
+    Jetzt wird LilyPond mit allen Unterst&uuml;tzungsprogrammen installiert.
+    Dazu m&uuml;ssen 66 Mb heruntergeladen werden, die gesamte Installation
+    wird 260 Mb auf Ihrer Festplatte einnehmen.
+  </li>
+
+</ul>
+
+<p>
+   Wenn Sie sich nicht sicher sind, was von <tt>setup.exe</tt> abgefragt wird,
+  ver&auml;ndern Sie nicht die urspr&uuml;nglichen Einstellungen.
+    <strong>Auf keinen Fall</strong> den voreingestellten Installationsordner
+  (<code>c:/cygwin</code>) ver&auml;ndern und auch die Texteinstellungen
+  <strong>bei ihrem Originalwert</strong> (UNIX muss als Typ benutzt werden) 
+  <strong>belassen</strong>.
+</p>
+
+
+<h2>&Uuml;berpr&uuml;fung</h2>
+
+<ul>
+  <li>
+    <a href="test.ly">Hier</a> k&ouml;nnen Sie eine Testdatei herunterladen.
+  </li>
+
+  <li>
+    Speichern Sie sie auf Ihrem Desktop unter dem Namen <tt>test.ly</tt> (und versichern
+    Sie sich, dass es  <strong>nicht</strong> 
+    <tt>test.ly<em>.TXT</em></tt> hei&szlig;t).
+  </li>
+
+  <li>
+    Doppelklicken Sie auf die Datei.
+  </li>
+</ul>
+
+Jetzt wird die Datei verarbeitet und das Ergibnis in einem Pdf-Betrachter angezeigt.
+
+<h4>Hurra, es klappt!</h4>
+
+<p>
+  Gut! Fahren Sie fort mit der <a href="using.html">Benutzung von LilyPond</a>.
+</p>
+
+<h4>Hmm, ich wei&szlig; wirklich nicht, was ich machen soll. Helft mir!</h4>
+
+<p>
+  Fragen und Bitte um Unterst&uuml;tzung k&ouml;nnen Sie an die Mailingliste <a
+					     href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> schicken.
+</p>
+
+<h4>Mist, es klappt nicht!</h4>
+
+<p>
+  Versuchen Sie, nocheinmal  <tt>setup.exe</tt> aufzurufen; dadurch werden etwa
+  90% der Probleme gel&ouml;st. Versichern Sie sich, dass die richtige Version
+  von LilyPond installiert ist; wenn Sie zweimal auf das ausgew&auml;hlte Paket
+  klicken, erhalten Sie eine &auml;ltere Version.
+  <!-- what does this mean?!-->
+
+<p>
+  Wenn es jetzt immer noch nicht funktionieren sollte, schicken Sie uns bitte
+  einen Fehlerbericht (m&ouml;glichst auf englisch). Im gleichen Ordner wie
+  <tt>test.ly</tt> sollte sich auch eine Datei <tt>test.log</tt> befinden.
+  Schicken Sie diese Datei an <a
+		       href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> 
+  mit einer Beschreibung Ihres Problems.
+</p>
+
+<h4>Windows 98</h4>
+
+<p>
+  Unter Windows <strong>95, 98 und ME</strong> gibt es Probleme mit dem
+  Cygwin Python-Paket, das evtl. die ungest&ouml;rte Funktion von
+  LilyPond behindern kann (siehe auch <a
+  href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">Python
+  besteht die Testsuite nicht</a>(auf englisch)).  LilyPond selber
+  sollte benutzbar sein, aber die Funktion, auf eine <tt>.ly</tt>-Datei
+  zu klicken, damit ein pdf erstellt wird, sowie lilypond-book und midi2ly
+  funktionieren evtl. nicht. Leider sind diese Probleme aus&szlig;er Reichweite
+  des   LilyPond-Entwicklerteams.  Windows NT, 2000
+  und XP haben keine Probleme damit.
+</p>
+
+<h4>Aber ich habe keine Datei <tt>test.log</tt></h4>
+<p>
+  Das LilyPond-Paket ist nicht korrekt installiert. Gehen Sie bitte
+  nocheinmal die Prozedur der 
+  <a href="#installing">Installation</a> durch und versichern Sie sich,
+  dass alles fehlerfrei verlaufen ist. Fragen k&ouml;nnen an
+  <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> per E-Mail geschickt werden.
+</p>
+
+
+<h2>Deinstallieren</h2>
+
+<ul>
+  <li>
+    Entweder mit Gewalt:
+    entfernen Sie den ganzen <code>C:\CYGWIN</code>-Ordner.
+    <p>
+    <em>Damit wird auch Ihr  Cygwin-<code>/home/</code>-Verzeichnis
+    entfernt, so dass Sie sich eine Kopie von wichtigen Dateien 
+    anfertigen sollten.
+      </em>.
+  </li>
+
+  <li>
+    Offizielle Version:
+    <ul>
+      <li>
+	<p>Rufen Sie <code>setup.exe</code> auf,
+	  <li>
+	    klicken Sie Next.
+	  </li>
+	  <li>
+	    Dann w&auml;hlen Sie <strong>Install from
+	      Local Directory</strong> aus.
+	  </li>
+
+	  <li>
+	    Klicken Sie Next, bis Sie zu der Auswahl <strong>Select
+	      packages to install</strong> kommen.
+	  </li>
+
+	  <li>
+	    Klicken Sie <strong>View</strong> an.
+	  </li>
+
+	  <li>
+	    Jedes Paket, dass Sie deinstallieren wollen, klicken Sie
+            so lange auf das Recycle-Bild, bis ein <strong>Uninstall</strong> erscheint.
+	  </li>
+
+	  <li>
+	    Klicken Sie auf <strong>Next</strong>.
+	  </li>
+    </ul>
+  </li>
+</ul>
