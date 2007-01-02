@@ -1,0 +1,152 @@
+<!--
+    Translation of GIT committish: abb073a5a9b3a050525017ef595428c334bcfd9f
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>LilyPond - en Cygwin</title>
+
+<h1>LilyPond en Cygwin</h1>
+
+<a name="installing"></a>
+<h2>Instalación</h2>
+
+<img src="@IMAGES@cygwin-shot.png" align="right">
+
+<ul>
+  <li>
+    Descargue <tt>setup.exe</tt> haciendo clic mientras oprime shift
+    <a href="http://cygwin.com/setup.exe">aquí</a>,
+  </li>
+  <li>
+    Para NT, 2000 y XP: hágase administrador,
+  </li>
+
+  <li>
+    Ejecute <code>setup.exe</code>,
+  </li>
+
+  <li>
+    Siga oprimiendo "Next" hasta que...
+  </li>
+
+  <li>
+    Obtenga el diálogo de <strong>Package View</strong>. Seleccione LilyPond, que se podrá encontrar en la sección 
+    <strong>Publishing</strong>.
+  </li>
+
+  <li>
+    LilyPond será instalado junto con programas adicionales de soporte. La descarga es de 66 MB, y la instalación requiere de 260 MB de espacio libre en el disco duro.
+  </li>
+
+</ul>
+
+<p>
+  Si no tiene la certeza de lo que le pregunta <tt>setup.exe</tt>, no cambie las opciones por defecto. <strong>No</strong> cambie la ruta de instalación predeterminada (<code>c:/cygwin</code>), y
+  <strong>no</strong> modifique el tipo de texto predeterminado (debe usarse "type UNIX").
+</p>
+
+
+<h2>Probando</h2>
+
+<ul>
+  <li>
+    Haga clic mientras oprime shift <a href="test.ly">aquí</a> para descargar una prueba.
+  </li>
+
+  <li>
+    Guárdelo en su escritorio como <tt>test.ly</tt> (asegúrese de que <strong>no</strong> se grabe como <tt>test.ly<em>.TXT</em></tt>).
+  </li>
+
+  <li>
+    Haga doble clic en el archivo.
+  </li>
+</ul>
+Esto procesará el archivo y le mostrará el resultado en un visor PDF.
+
+<h4>¡Viva, funciona!</h4>
+
+<p>
+  ¡Bien! Ahora vaya a <a href="using.html">Usando LilyPond</a>.
+</p>
+
+<h4>Mmm. No sé muy bien que hacer, ¡Ayúdenme!</h4>
+
+<p>
+  Para preguntas y soporte, envíe correo a <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+<h4>Caramba, no funciona</h4>
+
+<p>
+  Intente correr <tt>setup.exe</tt> de nuevo; esto suele reparar el 90% de los problemas que se nos reportan. Asegúrese de haber instalado la versión correcta de LilyPond; si hace doble clic en el paquete seleccionado, obtendrá una versión anterior de LilyPond.
+
+<p>
+  Si aún no funciona, envíe un reporte de fallo. Se genera un archivo <tt>test.log</tt> en la misma carpeta donde está <tt>test.ly</tt>. 
+Envíe este archivo a <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a> junto con una descripción de su problema.
+</p>
+
+<h4>Windows 98</h4>
+
+<p>
+  En Windows <strong>95, 98 y ME</strong> hay problemas con el paquete Cygwin de Python, que <em>puede</em> ocasionar la operación fallida de Python (vea <a
+  href="http://www.cygwin.com/ml/cygwin/2004-06/msg00956.html">python
+  falla suite de prueba</a>). LilyPond debería ser usable, pero al hacer clic en un archivo <tt>.ly</tt> para producir un PDF, lilypond-book, y
+  midi2ly <em>pueden</em> no funcionar. Desafortunadamente estos problemas están fuera del control del equipo de desarrollo de LilyPond. Windows NT, 2000 y XP no están afectados.
+</p>
+
+<h4>Pero no aparece <tt>test.log</tt></h4>
+<p>
+  El paquete de LilyPond no se instaló correctamente. Por favor regrese a 
+  <a href="#installing">Instalación</a> y revise que ha seguido el procedimiento de forma correcta. Si tiene dudas, envíe correo a <a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a>
+</p>
+
+
+<h2>Desinstalación</h2>
+
+<ul>
+  <li>
+    Por fuerza bruta:
+    borre <code>C:\CYGWIN</code>.
+    <p>
+    <em>Esto también borrará su directorio <code>/home/</code>, 
+      por lo que quizás desee copiar archivos importantes a un lugar seguro antes.</em>.
+  </li>
+
+  <li>
+    Oficialmente:
+    <ul>
+      <li>
+	<p>Corra <code>setup.exe</code>,
+	  <li>
+	    Haga clic en "Next"".
+	  </li>
+	  <li>
+	    Seleccione <strong>Install from
+	      Local Directory</strong>.
+	  </li>
+
+	  <li>
+	    Siga haciendo clic hasta que llegue a <strong>Select
+	      packages to install</strong>.
+	  </li>
+
+	  <li>
+	    Haga clic en <strong>View</strong>.
+	  </li>
+
+	  <li>
+            Por cada paquete que desee desintalar, haga clic en el ícono de reciclaje hasta que muestre <strong>Uninstall</strong>.
+	  </li>
+
+	  <li>
+	    Haga clic en <strong>Next</strong>.
+	  </li>
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,56 @@
+<!--
+    Translation of GIT committish: abb073a5a9b3a050525017ef595428c334bcfd9f
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<h2>Plan de campaña</h2>
+Puesto que el contenido y la forma de una partitura están separados, tenemos que 
+coordinar esto en el diseño de software. Por lo tanto, el esquema básico de nuestro programa debería ser así.
+
+<table>
+<tr>
+<td align="center">
+<img src="@IMAGES@simple-notation.png">
+</td>
+<td align="center">
+<b>&larr;</b>
+</td>
+<td align="center">
+<tt>{ c'4 d'8 }</tt>
+</td>
+</tr>
+<tr>
+<td align="center">
+1. forma
+</td>
+<td align="center">
+2. traducción
+</td>
+<td align="center">
+3. contenido
+</td>
+</tr>
+</table>
+
+En efecto, estamos conquistando el problema al dividirlo en sub-problemas.
+
+<ol start="1">
+<li>Tipografía:  <b>donde</b> colocar los símbolos
+<li>Notación:  <b>qué</b> símbolos producir
+<li>Representación: como <b>codificar</b> la música
+</ol>
+Finalmente, cuando se dubdivide un problema, se crea un nuevo problema,
+<ol start="4">
+<li> Arquitectura: pegar todo <b>junto</b>
+</ol>
+
+
+
+<p align=right>
+Siguiente: <a href=implementing-notation.html>Impresionante pero, ¿funciona también en teoría?</a> Un enfoque práctico para la captura de notación.

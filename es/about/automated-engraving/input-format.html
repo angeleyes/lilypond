@@ -1,0 +1,99 @@
+<!--
+    Translation of GIT committish: abb073a5a9b3a050525017ef595428c334bcfd9f
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<a name="input-format"></a>
+
+<h2>Formato de entrada</h2>
+<p>
+Como se discutió antes, el formato de entrada ideal para el grabado de música es el contenido: la música en sí misma. Esto plantea un problema formidable: ¿cómo definimos lo que la música realmente <em>es</em>? Nuestra forma de definir este problema es, invertirlo. En lugar de definir lo que es la música, nuestro programa sirve de definición: escribimos un programa capaz de producir música impresa y podemos ajustar el formato tanto como sea posible. Cuando el formato no se puede reducir más, nos quedamos con el contenido por sí mismo.
+
+<p>
+La sintaxis es también la interfase de usuario para LilyPond, por lo tanto es fácil de escribir, por ejemplo: 
+
+<pre>
+  c'4 d'8
+</pre>
+Son una negra de Do 1 y una corchea de Re 1, como en este ejemplo:
+<p align=center>
+<img src="@IMAGES@simple-notation.png">
+<p>
+En una escala microscópica, tal sintaxis es fácil de usar. En una escala mayor, la sintaxis también requiere de estructura. ¿De qué otra manera podemos escribir complejas piezas como sinfonías u óperas? La estructura se forma por el concepto de expresiones musicales: al combinar pequeños fragmentos en segmentos de mayor tamaño, se puede expresar música de mayor complejidad. Por ejemplo,
+
+<table>
+<td align=center>
+c4</td>
+<td>
+<img src="@IMAGES@simultaneous-0.png">
+</td></tr></table>
+
+<p>
+Combine este simultáneamente con otras dos notas al encerrarlo en &lt;&lt
+y &gt;&gt;.
+
+<table>
+<tr>
+<td align=center>
+<pre>
+  &lt&lt;c4 d4 e4&gt;&gt;
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-1.png">
+</td>
+</tr></table>
+Esta expresión se pone en secuencia al encerrarla en corchetes, por ejemplo:
+<table>
+<tr>
+<td align=center><pre>
+   { &lt;&lt;c4 d4 e4&gt;&gt f4  }</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-2.png">
+</td>
+</tr></table>
+Lo anterior es otra expresión y por lo tanto se puede volver a combinar con otra expresión simultáneamente (en este caso, una blanca).
+
+<table>
+<tr>
+<td align=center>
+<pre>
+&lt;&lt; { &lt;&lt;c4 d4 e4&gt;&gt; f4 } g2 &gt;&gt; 
+</pre>
+</td>
+<td>
+<img src="@IMAGES@simultaneous-3.png">
+</td>
+</tr>
+</table>
+<p>
+Estructuras recursivas como ésta, pueden especificarse de forma ordenada en una 
+<em>gramática libre de contexto</em>. El código de análisis se genera a partir de esta gramática. 
+En otras palabras, la sintaxis de LilyPond es clara y está nítidamente definida sin ambiguedades.
+<p>
+Las interfases de usuario y la sintaxis son con lo que la gente tiene que tratar la mayor parte del tiempo. Son una cuestión de gusto, y también sujetas a mucha discusión. Aun cuando estas discusiones sobre el gusto tienen su mérito, no son muy productivas. En el marco más grande, la importancia de la sintaxis de entrada es pequeña: inventar una sintaxis nítida es sencillo, escribir un código decente para formatear es mucho más complicado. Esto se puede ilustrar por la cantidad de líneas para los componentes respectivos del software: el análisis y representación de la sintaxis representa menos de 10% del código.
+
+<table>
+<tr><th>Análisis + Representación</th><th>Total </th></tr>
+<tr>
+<td>6000 líneas de código C++</td>
+<td>61500 líneas de código C++</td></tr>
+</table>
+
+<! todo :
+
+  blurbs about lilypond today
+
+  future?
+  >
+
+
+<p align=right>
+Siguiente: <a href=conclusion.html>para acabar</a>, la conclusión.

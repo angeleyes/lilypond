@@ -1,0 +1,50 @@
+<!--
+    Translation of GIT committish: abb073a5a9b3a050525017ef595428c334bcfd9f
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+<!-- Voy aquí -->
+
+<a name="formatting-architecture"></a>
+
+<h2>Una arquitecutra de formateo flexible</h2>
+
+<p>
+¿Recuerda el problema de la notación musical? Su solución nos dejó una gran cantidad de objetos. La arquitectura se construye sobre estos objetos. Cada objeto conlleva variables:
+
+<ul>
+<li> 
+Las variables controlan las decisiones sobre la diposición. Por ejemplo, 
+muchos objetos tienen la variable <tt>direction</tt> que determina la elección entre 
+arriba o abajo (o izquierda derecha). Aquí puede ver dos acordes, con acentos y arpegios. En el primer acorde, los objetos tienen dirección hacia arriba (o izquierda). El segundo acorde tiene todas las direcciones hacia arriba (o derecha).
+
+<p align=center>
+<img src="@IMAGES@directions-updown.png">
+<p>
+El proceso de formatear una partitura consiste en la lectura y escritura de variables de varios objetos. 
+
+<li>
+
+Algunas variables tienen un valor predefinido. Por ejemplo, el grosor de muchas líneas &ndash; una característica tipográfica de estilo &ndash; ya predispuesta en las variables. Cambiarlas dará una impresión tipográfica distinta: 
+ 
+ <p align=center>
+ <img src="@IMAGES@thickness-tweaks.png">
+ <p>
+ 
+<li>
+Las reglas de formateo también son variables predipuestas: cada objeto tiene variables que contienen procedimientos. Estos procedimientos realizan la operación de formateo y al cambiar sus valores podemos cambiar su comportamiento. En el siguiente ejemplo, la regla que define cómo se dibuja una cabeza de nota se cambia para este fragmento de música:
+
+<p align=center>
+<img src="@IMAGES@mc-squared.png">
+<p>
+
+</ul>
+
+<p align=right>
+Siguiente:
+ <a href="scoring-esthetics.html">Hermosos números</a>: como LilyPond participa en los concursos de Miss Mundo.
