@@ -2,22 +2,48 @@ THE LILYPOND.ORG WEBSITE
 
 SOURCES
 
-The HTML sources live in a GIT repository.  To get a fresh version run
+The HTML sources live in a GIT repository.  Git 1.4.4.1 or newer is
+required.  To get a fresh version run
 
-   mkdir web ; cd web 
-   git init-db
+    mkdir web ; cd web 
+    git init-db
+    git fetch git://git.sv.gnu.org/lilypond.git/ web/master:web/master
+    git checkout -b myweb web/master
 
-   ## not necessary for 1.4.4.1 or newer
-   touch empty ; git add empty ; git commit  -m 'empty' empty
-   git pull git://git.sv.gnu.org/lilypond.git/ web/master:
-   git repack
 
-The command 
+GIT BASICS
 
-   git pull git://git.sv.gnu.org/lilypond.git/ web/master:
+The commands above don't only bring you the latest version of the
+sources, but also the full history of revisions (revisons, also called
+commits, are changes made to the sources), stored in the .git
+directory.  You can browse this history with
 
-can also be used to update a repository
+    git log     # only shows the logs (author, committish and commit message)
+    git log -p  # also shows diffs
+    gitk        # shows history graphically
 
+
+Whenever you are asked in this README to pull, it means you should
+update your local copy of the repository with the changes made by
+others on the remote git.sv.gnu.org repository; run
+
+    git pull git://git.sv.gnu.org/lilypond.git/ web/master:web/master
+
+
+Let's explain a bit of Git vocabulary.  A commit is a set of changes
+made to the sources; it also includes the committish of the parent
+commit, the name and e-mail of the author (the person who wrote the
+changes), the name and e-mail of the committer (the person who brings
+these changes into the git repository), and a commit message.  A
+committish is the SHA1 checksum of a commit, a number made of 40
+hexadecimal digits which acts as the internal unique identifier for
+this commit.
+
+This README tries to explain most of git commands needed for
+translationg the web site.  However, you are invited to read further
+documentation to make git more familiar to you; for instance, take a
+look at http://git.or.cz/gitwiki/, especially GitDocumentation
+(follow the links from this page) and GitGlossary.
 
 
 BUILDING THE WEBSITE
@@ -39,9 +65,15 @@ To generate the web site for language LANG (available: LANG), run
 
 REQUIREMENTS
 
+Building the web site requires:
+
     * python
     * make
     * gettext
+    * inkscape
+
+If you want to do translations without building the site, only python
+and make are required.
 
 
 AT-VARIABLEs
@@ -91,18 +123,20 @@ lilypond.org):
 
 TRANSLATION
 
-Get or update the sources.  See the top of README.
+Get or update the sources.  See SOURCES section at the top of README.
 
 
-STARTING A NEW LANGUAGE
+* STARTING A NEW LANGUAGE
 
 Type
 
     make new LANG=<MY-LANGUAGE>
 
-eg. <MY-LANGUAGE> "nl" is Dutch, "de" German and "fr" French.
+e.g. <MY-LANGUAGE> "nl" is Dutch, "de" German and "fr" French;
+generally <MY-LANGUAGE> is the ISO 639 language code.  A table of
+language codes is available in GNU Gettext documentation.
 
-This will copy all orininal files from site/ to <MY-LANGUAGE>/, eg
+This will copy all original files from site/ to <MY-LANGUAGE>/, e.g.
 
     site/about/index.html -> <MY-LANGUAGE>/about/index.html
 
@@ -111,94 +145,227 @@ by typing over the original English text.  Typing `make new' does not
 overwrite any existing files in the <MY-LANGUAGE>/ folder/, it can
 also be used to add pages to an existing translation.
 
-See TRANSLATION for details on what pages to translate first.
+See TRANSLATION file for details on what pages to translate first.
 
-When you have translated a page, add that page to repository
-
-    git add <MY-LANGUAGE>/about/index.html
-    git commit -m 'add file' <MY-LANGUAGE>/about/index.html
-
-Add <MY-LANGUAGE> to scripts/languages.py
+Also, add <MY-LANGUAGE> to scripts/languages.py in order to enable the
+translation.
 
 
-UPDATE A TRANSLATION
+* TRANSLATION HINTS
 
-Open the HTML source file and translate all plain text, leaving markup
-and URLs in tact.  Tracking changes is much easier, that way.
+To translate a page, open the HTML source file with a plain text
+editor and translate all plain text, leaving markup and URLs in tact.
+Tracking changes is much easier, that way.
 
 The best choice for non-destructive editing of HTML source is probably
-a simple text editor with syntax coloring such as jEdit or Gedit.  You
-may view and check the result in your favorite browser.  Do not use a
-word processor, that will probably mess with the markup.
+a simple text editor with syntax coloring such as emacs, jEdit or
+Gedit.  You may view and check the result in your favorite browser.
+Do not use a word processor, that will probably mess with the markup.
 
 If you think the original text should be changed or fixed, share your
 suggestion before pushing any changes.  Typos may be fixed right away.
 
-Do not use mozilla composer, at least until it is clear how to
+Do not use Mozilla Composer, at least until it is clear how to
 let it really preserve markup.
 
-After updating a translation, also update the GIT committish of the
-original page, eg for site/about/index.html do
+When you have translated a page, add that page to repository
 
-    make show-committish site/about/index.html 
+    git add <MY-LANGUAGE>/about/index.html
 
-which prints the string
-
-    Translation of GIT committish: eb39846c61c0f3bd22d5b4d4fb12c0d7f9a381a8
-
-that you can use to update your translated page.
-
-Another trick is to use the `start a new translation' mechanism, and
-copy committishes from the new tree
-
-    make new LANG=committish
-    head -2 committish/about/index.html 
-
-shows
-
-<!--
-    Translation of GIT committish: afb547faee2179383f32d636554df32d11ab878e  
+When you have done this for pages you have translated, see SUBMIT
+section for how to submit your work.
 
 
-CHECK STATE OF TRANSLATION
+* CHECK STATE OF TRANSLATION
 
-Running
+First pull, then run
 
     make LANG=<MY-LANGUAGE> check-translation
 
-presents a diff of the original pages since the most recent revision
-of the translation.  To check a single page, run
+This presents a diff of the original pages since the most recent
+revision of the translation.  To check a single page, run
 
     scripts/check-translation.py <MY-LANGUAGE>/index.html
 
 
-SUBMIT 
+* UPDATE A TRANSLATION
+
+Check state of the translation using the method described above.  For
+each file diff shown in check-translation ouput, open the
+corresponding translated file in a text editor and update the
+translation according to the diff.  The translation hints above still
+apply.
+
+After updating a translation, also update the GIT committish in the
+updated translated pages; do
+
+    git-rev-parse HEAD
+
+to see the last committish ), and in each translated page you updated,
+replace the old Git committish with the new one.
 
 Run
 
-    git log
+    make LANG=<MY-LANGUAGE> check-translation
 
-This shows something like
+again. If it no more shows any diff, the translation is up to date:
+you are ready to submit your changes.
 
-    commit 527d87fa35f419e292e6beb5233ded7268b0110b
-    Author: Han-Wen Nienhuys <hanwen@lilypond.org>
-    Date: ... 
 
-    ...description...
 
-For every patch.
+SUBMIT
 
-The number 527d87fa35f419e292e6beb5233ded7268b0110b is called
-"committish".  Cut & paste the number for the first change you want to
-submit, eg. 
+To submit your work, follow these three steps.
 
-     git format-patch 527d87fa35f419e292e6beb5233ded7268b0110b^..
+* SANITY CHECK
 
-(the .. and ^ need to be entered literally).  This will create patches
-named
+To check the status of your working tree, do
+
+    git status
+
+It lists files which are different from the last git revision.  Note
+that there should not be any untracked files other than those
+generated by "make" (like LANG/graphics); if there are any, add them
+before doing anything else (see git-add command at the end of
+"TRANSLATION HINTS").  Files you have modified (most likely
+translation updates) are listed under the "Changed but not updated"
+section.  If everything looks good, you are ready to commit.
+
+The following commands are optional if you are sure of what you are
+doing, but it is good you play with them a little, so they will be
+familiar to you the day you need them.
+
+To verify that all you did since the last commit looks sane,
+do
+
+    git diff
+
+This gives you the changes which will be committed by a
+"git commit -a".  Maybe you found a little typo in the file
+bar/baz.html.  Fix it and verify with
+
+    git diff bar/baz.html
+
+that all is fine.  This command is also useful is there are too many
+changes and you want to see changes only for bar/baz.html.
+
+
+* UPDATE YOUR COPY
+
+To commit your changes to your local git repository (which is always
+necessary before pulling), the command to use is
+
+    git-commit [-m 'one-line not too long commit message'] -a | FILES
+
+The
+
+    -m 'commit message'
+
+argument is optional; if you want to write a long commit message, it
+is better to omit the -m argument so that Git opens a text editor so
+you can write a long commit message.  For this purpose, if Vim is not
+your favorite editor, append
+
+    export EDITOR=your_favourite_editor
+
+to  ~/.bashrc, and while you are at it, also append
+
+    export GIT_COMMITTER_EMAIL=your.address@example.net
+    export GIT_AUTHOR_EMAIL=$GIT_COMMITTER_EMAIL
+
+to set the author address properly (your name should already be
+defined in /etc/passwd).
+
+If you edit the commit message within a text editor, keep the lines
+beginning with '#' intact, write at top a short line in English
+describing your commit, leave one blank line after this first line,
+and after this blank line, if you want to explain the commit in detail, 
+write blurb with any number of lines. After this, save the text and
+close the editor to complete the commit.
+
+Let's explain now the other arguments. The -a option tells Git to
+commit all files which are modified or added with "git add".  (Still,
+the untracked files, and the ignored files, listed in .gitignore, are
+not concerned by the commit.)  If you prefer to commit files
+separately, do not use '-a', but give the files you want to commit as
+arguments.
+
+For example, if you want to commit a German translation update and
+there are no other changes in your working tree, do
+
+    git commit -m 'German updates' -a
+
+Another example: if you have corrected typos in site/foo/bar.html, site/baz.html,
+de/foo/bar.html and de/baz.html, you may want to commit changes in site/ first (see
+why at 'COMMON ISSUES' section, issue #2) by doing
+
+    git commit site/foo/bar.html site/baz.html
+
+or, if you are sure you want to commit all modified files in site/,
+
+    git commit site/
+
+The commit message could look like (without the quotes)
+
+"""
+Nitpicks
+
+site/foo/bar.html: update mail address
+site/baz.html: typo.
+# git comments (read them and keep them intact)
+# ...
+"""
+
+
+* BRINGING YOUR CHANGES TO THE WORLD
+
+If you do not have Git write access to git.sv.gnu.org repository (in
+which case a "git push" will only say that permission is denied), send
+patches to the lilypond-devel list, the Translation meister will take
+care of them. You can create patches like this
+(please do this after committing locally and before pulling):
+
+    git format-patch web/master
+
+You will get a number of patch files:
 
     0001-summary-of-patch1.txt 
     0002-summary-of-patch2.txt 
     0003-summary-of-patch3.txt 
+    ...
 
 Send each of them to lilypond-devel@gnu.org.
+
+
+COMMON ISSUES
+
+1) 'make LANG=<MY-LANGUAGE> check-translation' shows a diff for
+site/foo/bar.html, but <MY-LANGUAGE>/foo/bar.html is already up to
+date. What does it mean?
+
+Somebody has updated the translation and forgot (or didn't want) to
+update the Git committish in the translated page.  This happens when
+the translator has updated the translation but forgot to update the
+GIT committish, or when somebody (a developer or a translator for
+another language) has made a change in HTML code in both original and
+translated pages.  Whatever the cause is, fix the Git committish
+number as if you were updating a translation (see 'UPDATE A
+TRANSLATION' section), and submit your changes.
+
+Keep in mind that the check-translation system is intended to help
+keeping the translation up to date, so you are responsible for the
+correctness of the GIT committish in pages you translate.  It is a
+good idea to sometimes (read "once a year") check the translation
+against full original pages.
+
+
+2) I want to correct a typo or to in both original and translated
+pages. What's the most convenient way to do it, so that
+check-translation doesn't falsely complain?
+
+First make the changes in the English pages (i.e. in site/) and commit
+them, then update translation for our language as usual. If you also
+update other translations, update the committish ONLY IF the concerned
+translated page was previously up to date; if unsure, don't update the
+committish, or even better don't update translations other than your
+language.
