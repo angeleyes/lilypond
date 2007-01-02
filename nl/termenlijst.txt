@@ -4,7 +4,7 @@ feature	functie/eigenschap/feature
 scripting language	scriptingtaal
 music engraving	muziekgravure
 engraving	muzieknotatie
-accidental	voorteken
+accidental	toavalllig teken
 alteration	alteratie
 sharp	kruis
 flat	mol
