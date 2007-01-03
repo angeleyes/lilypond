@@ -123,7 +123,7 @@ lilypond.org):
 
 TRANSLATION
 
-Get or update the sources.  See SOURCES section at the top of README.
+Get or update (pull) the sources.  See SOURCES section at the top of README.
 
 
 * STARTING A NEW LANGUAGE
@@ -199,10 +199,10 @@ apply.
 After updating a translation, also update the GIT committish in the
 updated translated pages; do
 
-    make show-committish path/to/the/original-file.html
+    git-rev-parse web/master
 
-to see the last committish for that page, and in each translated page
-you updated, replace the old Git committish with the new one.
+to see the last committish, and in each translated page you updated,
+replace the old Git committish with the new one.
 
 Run
 
@@ -280,15 +280,16 @@ If you edit the commit message within a text editor, keep the lines
 beginning with '#' intact, write at top a short line in English
 describing your commit, leave one blank line after this first line,
 and after this blank line, if you want to explain the commit in detail, 
-write blurb with any number of lines. After this, save the text and
+write blurb with any number of lines.  After this, save the text and
 close the editor to complete the commit.
 
-Let's explain now the other arguments. The -a option tells Git to
-commit all files which are modified or added with "git add".  (Still,
-the untracked files, and the ignored files, listed in .gitignore, are
-not concerned by the commit.)  If you prefer to commit files
-separately, do not use '-a', but give the files you want to commit as
-arguments.
+Let's explain now the other arguments.  With the -a option, git will
+commit all the changes of all files it knows about (i.e. all that were
+present in the revision you worked from, plus all files you added),
+where changes can also mean that the file was removed.  (Still, the
+untracked files, and the ignored files, listed in .gitignore, are not
+concerned by the commit.)  If you prefer to commit files separately,
+do not use '-a', but give the files you want to commit as arguments.
 
 For example, if you want to commit a German translation update and
 there are no other changes in your working tree, do
@@ -364,8 +365,21 @@ pages. What's the most convenient way to do it, so that
 check-translation doesn't falsely complain?
 
 First make the changes in the English pages (i.e. in site/) and commit
-them, then update translation for our language as usual. If you also
-update other translations, update the committish ONLY IF the concerned
-translated page was previously up to date; if unsure, don't update the
-committish, or even better don't update translations other than your
-language.
+them, then update translation for our language as usual, except
+that.if you have no Git push access, you have to wait that your
+changes are committed before updating the committishes in translated
+files.
+
+If you also update other translations and have Git push access, update
+the committish ONLY IF the concerned translated page was previously up
+to date; if unsure, don't update the committish, or even better don't
+update translations other than your language.
+
+
+SUPPORT
+
+If you have any question or problem regarding translation and Git
+usage, search the archives of lilypond-devel@gnu.org, e.g. with "git"
+as a keyword; if it is not enough, send an email to
+lilypond-devel@gnu.org, you will expect a reply from the Translation
+meister or one of our Git experts.
