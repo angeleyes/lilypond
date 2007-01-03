@@ -199,10 +199,10 @@ apply.
 After updating a translation, also update the GIT committish in the
 updated translated pages; do
 
-    git-rev-parse HEAD
+    make show-committish path/to/the/original-file.html
 
-to see the last committish ), and in each translated page you updated,
-replace the old Git committish with the new one.
+to see the last committish for that page, and in each translated page
+you updated, replace the old Git committish with the new one.
 
 Run
 
