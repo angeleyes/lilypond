@@ -13,23 +13,26 @@
 
 <h1>RELEASE-MEISTER</h1>
 
-The job of the release-meister is to coordinate releases.  Ideally,
-they would happen less frequently than they do now --perhaps once a
-month-- but offer a better quality.
+The job of the release-meister is to build, troubleshoot and
+upload  releases.
+
 <p>
-LilyPond is ready for a release when
+LilyPond is ready for a release when:
+
+
 <ul>
 
  <li>The regression test comes out clean
 
  <li>All features work as documented 
 
- <li>A new release would offer an improvement over the last one
-</ul>
+ <li>A new release offers an improvement over the last one
 
-The release-meister keeps an eye on the bugreports and ChangeLog, and
-has the responsibility to decide when a release is in order.
+ </ul>
+
+The release-meister keeps an eye on the bug tracker and the current
+head to determine when a release should be made.
 <p>
-The actual mechanics entail branching CVS, pestering developers for
-important bug-fixes, creating and uploading the tarball, announcing it
-on mailing lists, websites, etc.
+The actual mechanics of building a release is completely scripted
+in our <a href="http://lilypond.org/vc/gub.darcs/READ-ME">Grand
+Unified Builder</a> system. 
