@@ -24,7 +24,7 @@ msgstr "Otros idiomas: %s"
 #: scripts/format-page.py:82
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "Acerca de<A HREF='%s'>selección automática de idioma</A>."
+msgstr "Acerca de <A HREF='%s'>selección automática de idioma</A>."
 
 #: scripts/format-page.py:250 site/menu-entries.py:9
 msgid "Home"
