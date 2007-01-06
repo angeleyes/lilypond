@@ -14,7 +14,7 @@ DISTDIR = lily-web-$(VERSION)
 
 READMES = ChangeLog README TRANSLATION
 SITE_HTML = $(shell find site -name '*.html')
-LOCAL_HTML = $(shell find fr nl -name '*.html')
+LOCAL_HTML = $(shell find de es fr nl -name '*.html')
 NO_TRANSLATION = '/announce-|/devel/|/donate|/old-|/older-|/search'
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
@@ -109,6 +109,8 @@ apache-1.3.x-fixup:
 scripts:
 	python $(SCRIPTDIR)/big-page.py site/about/automated-engraving
 	python $(SCRIPTDIR)/big-page.py fr/about/automated-engraving
+	python $(SCRIPTDIR)/big-page.py es/about/automated-engraving
+	python $(SCRIPTDIR)/big-page.py de/about/automated-engraving
 
 # no silly buttons
 site: all
