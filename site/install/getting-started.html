@@ -14,7 +14,11 @@
 <h1>Getting started</h1>
 <p>
   You've installed your shiny new LilyPond, and you can't wait to
-  typeset music. Here are some hints.
+  typeset music. See <a
+  href="http://lilypond.org/doc/stable/Documentation/user/lilypond/First-steps#First-steps">
+  the tutorial</a> in the manual for instructions.
+</a>
+
 </p>
 
 
@@ -24,103 +28,6 @@
     <img src="@IMAGES@terminal-shot.png" width="400" align="right">
   </a>
 </p>
-
-<h2>Testing LilyPond</h2>
-
-<p>
-  These are the instruction for Unix and Windows on the command line.
-  Windows users are advised to a look at the
-  <a href="cygwin.html">quickstart method for Windows</a>.
-</p>
-
-<ul>
-  <li>Open a terminal window and type
-
-    <blockquote>
-      <pre>
-	lilypond --help
-      </pre>
-    </blockquote>
-    in your window.
-    You should see something similar to
-    <blockquote>
-      <pre>
-	Usage: lilypond [OPTION]... FILE...
-
-	Typeset music and/or produce MIDI from FILE.
-
-	LilyPond produces beautiful music notation.
-	For more information, see http://lilypond.org
-
-	Options:
-	-b, --backend=EXT     select backend to use
-	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
-	-f, --formats=EXTs    list of formats to dump
-	-h, --help            print this help
-	[..]
-      </pre>
-    </blockquote>
-    <p>
-      If you see this, you have the program installed, and you can run it.
-    </p>
-  </li>
-  <li>Start your favorite text editor. 
-  </li>
-  <li> Enter
-    <blockquote>
-      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
-	{
-	c4( c)
-	}
-      </pre>
-    </blockquote>
-  </li>
-  <li>Save it as <tt>test.ly</tt>. Exit the editor.
-  <li>Run
-    <blockquote>
-      <pre>
-	lilypond test
-      </pre>
-    </blockquote>
-
-    If everything works well, it  should say
-    <blockquote>
-      <pre>
-	PS output to `test.ps'...
-	PDF output to `test.pdf'...
-      </pre>
-    </blockquote>
-  </li>
-  <li>
-    View the PDF file. Try these commands
-    <blockquote>
-      <pre>
-	ggv test.pdf
-	gv test.pdf
-	kgv test.pdf
-	acroread test.pdf
-	xpdf test.pdf
-	ghostview test.pdf
-      </pre>
-    </blockquote>
-  </li>
-
-  <li>
-    The easiest option for  Windows users is the
-    <a href="cygwin.html">drag &amp; drop approach</a>.  If you
-    prefer the keyboard, you can try the above procedure, with the
-    following notes:
-    <ul>
-    <li> double click the LilyPond icon</li>
-    <li> this will open a test file. Save it as <code>test.ly</code>
-    on the desktop</li>
-    <li> double click <code>test.ly</code></li>
-    <li> after a few seconds, a <code>test.pdf</code> file should
-    appear.</li>
-    </ul>
-  </li>
-
-</ul>
 
 <h2>Yay, it works!</h2>
 <p>
