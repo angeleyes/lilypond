@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT Committish: 78aeb69f041a646876af8d863d34eeecf505f39b
+    Translation of GIT Committish: 48d2b47d70c5358769654b0670ed46cd1953dd31
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
@@ -14,7 +14,9 @@
 <h1>D&eacute;buter</h1>
 <p>
   Vous venez d'installer votre tout nouveau LilyPond, et &ecirc;tes impatient de cr&eacute;er
-  votre premi&egrave;re partition. Voici quelques conseils.
+  votre premi&egrave;re partition. Lisez les instructions dans <a
+  href="http://lilypond.org/doc/stable/Documentation/user/lilypond/First-steps#First-steps">le
+  tutoriel</a> inclus dans le manuel.
 </p>
 
 <p align="right">
@@ -24,103 +26,6 @@
   </a>
 </p>
 
-<h2>Tester LilyPond</h2>
-<p>
-  Voici les instructions en ligne de commandes, sous Windows et Unix.
-  Les utilisateurs de Windows peuvent jeter un oeil au
-  <a href="cygwin.html">guide de d&eacute;marrage pour Windows</a>.
-</p>
-
-<ul>
-  <li>Ouvrez un terminal et tapez
-
-    <blockquote>
-      <pre>
-	lilypond --help
-      </pre>
-    </blockquote>
-    dans la fen&ecirc;tre.
-    Vous devriez voir quelque chose comme
-    <blockquote>
-      <pre>
-	Usage: lilypond [OPTION]... FILE...
-
-	Typeset music and/or produce MIDI from FILE.
-
-	LilyPond produces beautiful music notation.
-	For more information, see http://lilypond.org
-
-	Options:
-	-b, --backend=EXT     select backend to use
-	-e, --evaluate=EXPR   set options, use -e '(ly:option-usage)' for help
-	-f, --formats=EXTs    list of formats to dump
-	-h, --help            print this help
-	[..]
-      </pre>
-    </blockquote>
-    <p>
-      Si vous voyez &ccedil;a, le programme et install&eacute;, vous pouvez l'utiliser.
-    </p>
-  </li>
-  <li>D&eacute;marrez votre &eacute;diteur de texte favori. 
-  </li>
-  <li> Entrez
-    <blockquote>
-      <pre title="LilyPond 2.4 syntax.  For 2.2 use: \score{ \notes{ c4( c) } }">
-	{
-	c4( c)
-	}
-      </pre>
-    </blockquote>
-  </li>
-  <li>Enregistrez le fichier sous <tt>test.ly</tt>. Quittez l'&eacute;diteur.
-  <li>Ex&eacute;cutez
-    <blockquote>
-      <pre>
-	lilypond test
-      </pre>
-    </blockquote>
-
-    Si tout va bien, vous devriez voir
-    <blockquote>
-      <pre>
-	DVI output `test.dvi'...
-	PS output to `test.ps'...
-	PDF output to `test.pdf'...
-      </pre>
-    </blockquote>
-  </li>
-  <li>
-    Ouvrez le fichier PDF pour voir le r&eacute;sultat. Essayez ces commandes&nbsp;:
-    <blockquote>
-      <pre>
-	ggv test.pdf
-	gv test.pdf
-	kgv test.pdf
-	acroread test.pdf
-	xpdf test.pdf
-	ghostview test.pdf
-      </pre>
-    </blockquote>
-  </li>
-
-  <li>
-    Les utilisateurs de Windows peuvent se servir du
-    <a href="cygwin.html">glisser / d&eacute;poser</a>.  Si vous
-    pr&eacute;f&eacute;rez le clavier, essayez la proc&eacute;dure ci-dessus, en
-    y ajoutant ces notes&nbsp;:
-    <ul>
-      <li>double-cliquez sur l'ic&ocirc;ne LilyPond&nbsp;;</li>
-      <li>cela ouvrira un fichier test. Enregistrez le sous
-    <tt>test.ly</tt> sur le bureau&nbsp;;
-      <li>double-cliquez sur <tt>test.ly</tt>&nbsp;;</li>
-      <li>apr&egrave;s quelques secondes, un fichier <tt>test.pdf</tt>
-    devrait appara&icirc;tre.</li>
-
-    </ul>
-  </li>
-
-</ul>
 
 <h2>G&eacute;nial, &ccedil;a marche&nbsp;!</h2>
 <p>
@@ -141,5 +46,5 @@
  href="../about/faq.html#bugreport">FAQ</a> pour savoir comment faire. Si vous avez
  t&eacute;l&eacute;charg&eacute; un paquet autre que ceux fournis par l'&eacute;quipe de
  LilyPond, envoyez une copie de votre courriel au cr&eacute;ateur du paquetage, list&eacute; dans la colonne
- "Packager" de <a href="index.html">la page de t&eacute;l&eacute;chargement</a>.
+ "Compil&eacute; et empaquet&eacute; par" de <a href="index.html">la page de t&eacute;l&eacute;chargement</a>.
 </p>
