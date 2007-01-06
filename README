@@ -40,7 +40,7 @@ hexadecimal digits which acts as the internal unique identifier for
 this commit.
 
 This README tries to explain most of git commands needed for
-translationg the web site.  However, you are invited to read further
+translating the web site.  However, you are invited to read further
 documentation to make git more familiar to you; for instance, take a
 look at http://git.or.cz/gitwiki/, especially GitDocumentation
 (follow the links from this page) and GitGlossary.
@@ -154,7 +154,7 @@ translation.
 * TRANSLATION HINTS
 
 To translate a page, open the HTML source file with a plain text
-editor and translate all plain text, leaving markup and URLs in tact.
+editor and translate all plain text, leaving markup and URLs intact.
 Tracking changes is much easier, that way.
 
 The best choice for non-destructive editing of HTML source is probably
@@ -246,7 +246,7 @@ bar/baz.html.  Fix it and verify with
 
     git diff bar/baz.html
 
-that all is fine.  This command is also useful is there are too many
+that all is fine.  This command is also useful if there are too many
 changes and you want to see changes only for bar/baz.html.
 
 
@@ -366,7 +366,7 @@ check-translation doesn't falsely complain?
 
 First make the changes in the English pages (i.e. in site/) and commit
 them, then update translation for our language as usual, except
-that.if you have no Git push access, you have to wait that your
+that if you have no Git push access, you have to wait that your
 changes are committed before updating the committishes in translated
 files.
 
