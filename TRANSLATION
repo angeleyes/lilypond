@@ -48,7 +48,7 @@ Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
     need a revision or should be removed before considering a
     translation.
 
-WORD COUNTS FOR CATEROGIES
+WORD COUNTS FOR CATEGORIES
 
 LANG=C wc --words $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
   210 site/about/index.html
