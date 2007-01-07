@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Daniel Tonda Castillo <daniel.tonda@gmail.com>, 2006.
+# Daniel Tonda Castillo <daniel.tonda@gmail.com>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-12-30 12:55+0100\n"
-"PO-Revision-Date: 2006-12-29 03:14-0600\n"
+"PO-Revision-Date: 2007-01-06 16:31-0600\n"
 "Last-Translator: Daniel Tonda Castillo <daniel.tonda@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "Acerca de <A HREF='%s'>selección automática de idioma</A>."
 
 #: scripts/format-page.py:250 site/menu-entries.py:9
 msgid "Home"
-msgstr "Home"
+msgstr "Principio"
 
 #: site/about/menu-entries.py:2
 msgid "Features"
@@ -129,15 +129,15 @@ msgstr "Encierre notas en &lt; &gt; para obtener acordes"
 
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
-msgstr "Insertar nombres de acordes"
+msgstr "Escribir acordes por nombre"
 
 #: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
-msgstr "Insertar melodía"
+msgstr "Escribir melodía"
 
 #: site/graphics/annotate-example-lead.svg:177
 msgid "Enter lyrics"
-msgstr "Insertar letra"
+msgstr "Escribir letra"
 
 #: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
@@ -146,16 +146,16 @@ msgstr "Combinar melodía y letra"
 #: site/graphics/annotate-example-parts.svg:42
 #: site/graphics/annotate-example-score.svg:50
 msgid "hornNotes"
-msgstr ""
+msgstr "notasAlientos"
 
 #: site/graphics/annotate-example-parts.svg:70
 #: site/graphics/annotate-example-score.svg:54
 msgid "bassoonNotes"
-msgstr ""
+msgstr "notasFagot"
 
 #: site/graphics/annotate-example-parts.svg:163
 msgid "Enter multi-rest"
-msgstr "Insertar un silencio multi-compás"
+msgstr "Escribir un silencio multi-compás"
 
 #: site/graphics/annotate-example-parts.svg:175
 msgid "Store notes in variable"
@@ -262,98 +262,3 @@ msgstr "advertencia"
 msgid "Go <a href='%s'>here</a>"
 msgstr "Vaya <a href='%s'>aquí</a>"
 
-#~ msgid "Using <A HREF='%s'>automatic language selection</A>."
-#~ msgstr "Usando <A HREF='%s'>selección automática de idioma</A>"
-
-#~ msgid "Donate"
-#~ msgstr "Donar"
-
-#~ msgid "Older news"
-#~ msgstr "Noticias anteriores"
-
-#~ msgid "Participate"
-#~ msgstr "Participar"
-
-#~ msgid "Packaging"
-#~ msgstr "Empaquetado"
-
-#~ msgid "Finale ETF format"
-#~ msgstr "Formato ETF Finale"
-
-#~ msgid "Conferences relevant to LilyPond"
-#~ msgstr "Conferencias relacionadas a LilyPond"
-
-#~ msgid "Related online resources"
-#~ msgstr "Recursos relacionados en línea"
-
-#~ msgid "appogiatura"
-#~ msgstr "apoyatura"
-
-#~ msgid "Basso Continuo"
-#~ msgstr "Bajo continuo"
-
-#~ msgid "Color"
-#~ msgstr "Color"
-
-#~ msgid "Ligature"
-#~ msgstr "Ligadura"
-
-#~ msgid "Help wanted!"
-#~ msgstr "¡Se solicita ayuda!"
-
-#~ msgid "Localization"
-#~ msgstr "Localización"
-
-#~ msgid "Standards"
-#~ msgstr "Estándares"
-
-#~ msgid " Cygwin"
-#~ msgstr " Cygwin"
-
-#~ msgid "Troubleshooting"
-#~ msgstr "Resolución de problemas"
-
-#~ msgid "MacOS X"
-#~ msgstr "MacOS X"
-
-#~ msgid "Windows"
-#~ msgstr "Windows"
-
-#~ msgid "Reuse identifier"
-#~ msgstr "Reutilizar identificador"
-
-#~ msgid "NOTE"
-#~ msgstr "NOTA"
-
-#~ msgid "Included with distribution"
-#~ msgstr "Incluido en la distribución"
-
-#~ msgid "Included <a href='%s'>with distribution</a>"
-#~ msgstr "Incluida <a href='%s'>en la distribución</a>"
-
-#~ msgid "documentation"
-#~ msgstr "documentación"
-
-#~ msgid "Download the installer <a href='%s'>here</a>"
-#~ msgstr "Descargar el instalador <a href='%s'>aquí</a>"
-
-#~ msgid "Go to <a href='%s'>%s</a>"
-#~ msgstr "Vaya a <a href='%s'>%s</a>"
-
-#~ msgid "compatibility libraries"
-#~ msgstr "bibliotecas de compatibilidad"
-
-#~ msgid "Fink"
-#~ msgstr "Fink"
-
-#~ msgid "Cygwin"
-#~ msgstr "Cygwin"
-
-#~ msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
-#~ msgstr "<a href='%s'>Instalar</a> o <a href='%s'>actualizar</a>"
-
-#~ msgid "Sponsoring"
-#~ msgstr "Patrocinio"
-
-#~ msgid "<a href='%s'>the installer</a>"
-#~ msgstr "<a href='%s'>el instalador</a>"
