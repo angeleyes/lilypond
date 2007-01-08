@@ -27,6 +27,16 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.10.10 available</b> - <em>January 8, 2007</em> <dd>
+As a fall-out of the 2.11.10, this release fixes several popular bugs,
+among others: MIDI files that go silent after (de)crescendi, and
+tuplets  problems with quoting and part-combining (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+  
+</dd>
+
 <dt><b>LilyPond 2.11.9 and 2.10.9 available</b> - <em>January 3, 2007</em>
 
 <dd>
@@ -46,12 +56,6 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_8&colspec
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
 
-</dd>
-
-<dt><b><tt>lilypond.org</tt> auf deutsch</b> - <em>31. Dezember 2006</em>
-
-<dd>
-Die LilyPond-Webseiten sind jetzt auch auf deutsch &uuml;bersetzt!
 </dd>
 
 </dl>
