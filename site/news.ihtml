@@ -31,9 +31,9 @@ on one day.
 
 LilyPond 2.11.10 has further review of the test-suite, performance and
 code coverage. This brought to light several problems that were
-fixed. Notably, lots 2.11.10 fixes lots of regressions in optical
-correction spacing, and MIDI dynamics.  Also, this version will 20 to
-50 % faster than previous 2.11 releases. (<a
+fixed. Notably, 2.11.10 fixes lots of regressions in optical
+correction spacing and MIDI dynamics.  Also, this version is 20 to 50
+% faster than previous 2.11 releases. (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
