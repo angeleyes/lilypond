@@ -27,6 +27,15 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.11.11 available</b> - <em>January 11, 2007</em> <dd>
+This release has further fixes for popular bugs. Timing of the MIDI
+output won't get confused by tuplets and grace notes anymore. Some fat
+has also been trimmed of the skyline code performance.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+</dd>
+
 <dt><b>LilyPond 2.11.10 available</b> - <em>January 8, 2007</em> <dd>
 
 LilyPond 2.11.10 has further review of the test-suite, performance and
@@ -50,15 +59,6 @@ This release fixes several popular bugs, among others: MIDI files
  href="install/#2.10">Download</a>)
   
 </dd>
-
-<dt><b>LilyPond 2.11.9 and 2.10.9 available</b> - <em>January 3, 2007</em>
-
-<dd>
-This release has a couple of bugfixes, and &mdash;in 2.11.9&mdash
-further improvements in the regression test suite (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_9&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.11">Download</a>)
 
 </dd>
 </dl>
