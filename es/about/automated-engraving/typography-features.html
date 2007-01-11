@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT committish: ac5da2c7e90f10ce8a680b275d1e33b10462c4ea
+    Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
@@ -13,18 +13,18 @@
 
 <h2>Diseño de fuente</h2>
 Un factor importante que hace que la salida de LilyPond se vea tradicional recae en 
-la negrura de la página. Al usar líneas más densas en el pentagrama, y un diseño de fuente acorde, la impresión general es mucho más fuerte. Esto es más evidente a partir de las siguientes imágenes ampliadas:
+la negrura de la página. Al usar líneas más pesadas en el pentagrama, y un diseño de fuente acorde, la impresión general es mucho más fuerte. Esto es más evidente a partir de las siguientes imágenes ampliadas:
 
-<table align=center><tr><td>
+<table align="center"><tr><td>
 <img src="@IMAGES@henle-flat-gray.png"></td>
 <td>
 <img src="@IMAGES@baer-flat-gray.png"></td>
 <td>
 <img src="@IMAGES@lily-flat-bw.png"></td>
 </tr><tr>
-<td align=center>Henle (2000)</td>
-<td align=center>B&auml;renreiter (1950)</td>
-<td align=center>LilyPond (2003)</td>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2003)</td>
 </tr>
 </table>
 <p>
@@ -35,37 +35,37 @@ Otro aspecto típico de las partituras grabadas a mano es la apariencia general 
 <p>
 Uno de los problemas que esta pieza de Bach nos inspiró a resolver, fué el motor de espaciado. Una de sus características es el espaciado óptico. Se demuestra en el fragmento que aparece abajo.
 
-<p align=center>
+<p align="center">
 <img src="@IMAGES@spacing-with-corr.png">
 
-<p align=center>
+<p align="center">
 <img src="@IMAGES@spacing-no-corr.png">
 
 <p>
-Este fragmento usa sólamente negras: las notas se tocan a un ritmo constante. El espaciado debería reflejar esto. Desafortunadamente, el ojo a veces nos engaña: no sólo nota la distancia entre las cabezas de las notas, también toma en consideración la distancia entre plicas sucesivas. Como resultado, las notas de una combinación de notas plica-arriba/plica-abajo deberían estár más distanciadas, y las notas de una combinación de notas plica-abajo/plica-arriba deberían estar más cercanas, todo dependiendo de la posición vertical combinada de las notas. El fragmento superior se imprime con esta corrección, el de abajo, sin ella. El el caso posterior, las combinaciones plica-abajo/plica-arriba forman racimos de notas.
+Este fragmento sólo usa negras: las notas se tocan a un ritmo constante. El espaciado debería reflejar esto. Desafortunadamente, el ojo a veces nos engaña un poco: no sólo nota la distancia entre las cabezas de las notas, también toma en consideración la distancia entre plicas sucesivas. Como resultado, las notas de una combinación de notas plica-arriba/plica-abajo deberían estár más distanciadas, y las notas de una combinación de notas plica-abajo/plica-arriba deberían estar más cercanas, todo dependiendo de la posición vertical combinada de las notas. El fragmento superior se imprime con esta corrección, el de abajo, sin ella. El el caso posterior, las combinaciones plica-abajo/plica-arriba forman racimos de notas.
 
 
 <h2>Líneas adicionales</h2>
 
-Las líneas adicionales son tipográficamente difíciles. Con mucha facilidad pueden manchar u ocultar otros signos, tales como accidentes. Otros programas de software previenen estos choques espaciando las líneas adicionales más ampliamente (por lo tanto ocupando más espacio), o acortan las líneas adicionales (lo que dificulta la lectura).
+Las líneas adicionales son tipográficamente difíciles. Con mucha facilidad pueden emborronar o manchar otros signos, tales como otras líneas adicionales o accidentes. Otros programas de software previenen estas colisiones  espaciando las líneas adicionales más ampliamente (por lo tanto ocupando más espacio), o acortan las líneas adicionales (lo que dificulta la lectura).
 
-<table align=center><tr><td>
-<img src=@IMAGES@henle-ledger.png>
+<table align="center"><tr><td>
+<img src="@IMAGES@henle-ledger.png">
 &nbsp;
 </td>
 <td>
-<img src=@IMAGES@baer-ledger.png>&nbsp;
+<img src="@IMAGES@baer-ledger.png">&nbsp;
 
 </td>
 <td>
-<img src=@IMAGES@lily-ledger.png></td>
+<img src="@IMAGES@lily-ledger.png"></td>
 </tr><tr>
-<td align=center>Henle (2000)</td>
-<td align=center>B&auml;renreiter (1950)</td>
-<td align=center>LilyPond (2004)</td>
+<td align="center">Henle (2000)</td>
+<td align="center">B&auml;renreiter (1950)</td>
+<td align="center">LilyPond (2004)</td>
 </tr>
 </table>
-Los copistas tradicionales ajustarían el tamaño de la línea adicional, dependiendo de cuáles son los símbolos vecinos. LilyPond hace lo mismo. Las líneas adicionales se acortan para que no choquen con líneas adicionales vecinas, y cuando hay un accidente.
+Los copistas tradicionales ajustarían el tamaño de la línea adicional, dependiendo de cuáles símbolos haya cerca. LilyPond hace lo mismo. Las líneas adicionales se acortan para que nunca choquen con líneas adicionales vecinas, o cuando hay un accidente.
 
-<p align=right>
-Siguiente: <a href=input-format.html>Usa la Fuente, Luke</a>, o: que ocurre dentro de LilyPond.
+<p align="right">
+Siguiente: <a href="input-format.html">Usa la Fuente, Luke</a>, o: qué ocurre dentro de LilyPond.
