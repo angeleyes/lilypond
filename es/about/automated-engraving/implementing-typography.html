@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT committish: ac5da2c7e90f10ce8a680b275d1e33b10462c4ea
+    Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Use
@@ -18,15 +18,15 @@
 
 <p>
 
-¿Cómo hacemos para implementar la tipografía? Resolver el "problema de la notación musical" nos ha dejado con cantidad de objetos gráficos representando cabezas de notas, el pentagrama, plicas, etc.
+¿Cómo hacemos para implementar la tipografía? Resolver el "problema de la notación musical" nos ha dejado con una gran cantidad de objetos gráficos representando cabezas de notas, el pentagrama, plicas, etc.
 
 <p>
-Si los artesanos requieren de diez años para convertirse en verdaderos maestros, ¿cómo podrán simples hackers, construir un programa para quitarles su trabajo?
+Si los artesanos requieren de diez años para convertirse en verdaderos maestros, ¿cómo podrán simples hackers, desarrollar  un programa para quitarles su trabajo?
 <p>
-La respuesta es: ¡no podemos! Puesto que la tipografía requiere del jucio humano sobre la apariencia, no se puede reemplazar a la gente. Sin embargo, mucho de el trabajo duro y repetitivo puede ser automatizado: si LilyPond resuelve la mayor parte de las situaciones más comunes de forma correcta, entonces esto será una gran mejora sobre el software existente. Los casos restantes se pueden afinar a mano. Con el curso de los años, el software podrá ser refinado para hacer más y más de forma automática, así que las alteraciones forzadas a mano serán cada vez menores.
+La respuesta es: ¡no podemos! Puesto que la tipografía requiere del jucio humano sobre la apariencia, no se puede reemplazar a la gente. Sin embargo, mucho del trabajo duro y repetitivo puede ser automatizado: si LilyPond resuelve la mayor parte de las situaciones más comunes de forma correcta, entonces esto será una gran mejoría sobre el software existente. Los casos restantes se pueden afinar a mano. Con el curso de los años, el software podrá ser refinado para hacer más y más de forma automática, de manera que las alteraciones forzadas a mano serán cada vez menores.
 
 <p>
-¿Cómo hacemos para construir tal sistema? Cuando iniciamos, escribimos el programa en C++. Esencialmente, esto significa que la funcionalidad del programa sería grabada en piedra por nosotros los desarrolladores. Esto no  nos pareció satisfactorio:
+¿Cómo podemos construir tal sistema? Cuando iniciamos, escribimos el programa en C++. Esencialmente, esto significa que la funcionalidad del programa quedaría  grabada en piedra por nosotros los desarrolladores. Esto no nos pareció satisfactorio:
 
 <ul>
 <li> Si las cosas deben ser afinadas a mano, entonces el usuario debería tener acceso al motor de formateo. Por lo tanto, las reglas y parámetros no pueden estar fijos al momento de la compilación, pero deben ser accesibles en el momento de la ejecución.
@@ -34,14 +34,13 @@ La respuesta es: ¡no podemos! Puesto que la tipografía requiere del jucio huma
 <li> El grabado es un asunto de juicio visual y por lo tanto de gusto personal. Tan conocedores como creemos ser, los usuarios podrán estar en desacuerdo con nuestra decisión estética. Por lo tanto, las definiciones sobre el estilo tipográfico deben ser accesibles para el usuario.
 
 <li>
-Finalmente, contínuamente refinamos los algoritmos de formateo, por lo que se 
-requiere de un enfoque flexible sobre las reglas. El lenguaje C++ nos obliga a usar reglas de 
+Finalmente, contínuamente refinamos los algoritmos de formateo, por lo que  necesitamos un enfoque flexible sobre las reglas. El lenguaje C++ nos obliga a usar reglas de 
 agrupación que no concuerdan con la manera en que funciona la notación musical.
 
 </ul>
 Claramente, hay una necesidad para una arquitectura flexible. La arquitectura debería 
-encerrar reglas de formateo, estilo tipográfico y decisiones de formateo individual.
+integrar reglas de formateo, estilo tipográfico y decisiones de formateo individual.
 
 <p align=right>
-Siguiente: <a href="formatting-architecture.html">Arquitectura de programa,
-su amigo flexible</a>: afinando, modificando y desarrollando reglas de tipografía.
+Siguiente: <a href="formatting-architecture.html">La arquitectura del  programa,
+su amiga flexible</a>: afinando, modificando y desarrollando reglas de tipografía.
