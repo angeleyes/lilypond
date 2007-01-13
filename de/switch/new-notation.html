@@ -1,0 +1,99 @@
+<!--
+    Translation of GIT committish: 70dccb472f11807fd39e3194421ea1153e0b282f  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>Au&szlig;ergew&ouml;hnliche Notation</title>
+
+
+<body>
+Trotz seiner Orientierung an klassischer Notation und klassischem
+Notensatz ist LilyPond au&szlig;erordentlich gut f&uuml;r die 
+Notation von moderner Musik geeignet.
+
+
+
+<h2>&bdquo;Ganz ohne Anpassung!&ldquo;</h2>
+
+LilyPonds Flexibilit&auml;t mit Taktl&auml;ngen und 
+den Taktangaben ist besonders dazu geeignet, komplizierte
+rhythmische Musik zu setzen. In diesem Beispiel werden
+ineinander verschachtelte N-tolen gesetzt. Die Abst&auml;nde 
+entsprechen exakt der Dauer einer jeden Note. Noten m&uuml;ssen
+auch keine ganzen Takte ausf&uuml;llen und Noten werden nur
+dann aneinander vertikal ausgerichtet, wenn sie auch 
+wirklich genau zur gleichen Zeit erklingen.
+
+
+<p>
+<center>
+<a href="http://lilypond.org/doc/latest/input/proportional.pdf">
+<img src="@IMAGES@proportional-fragment.png"></a>
+<p>
+Klick f&uuml;r eine pdf-Datei.</center>
+<p>
+
+In jedem anderen Programm muss man massiv herumprobieren und
+die Noten einzeln anpassen. In LilyPond werden ganz einfach die Noten 
+mit ihrem Rhythmus eingegeben&hellip;
+
+
+<blockquote>
+
+<pre>
+\times 7/9 {
+  \times 4/6 {
+     r8 c32[ c c c c c c c] r4
+     c32[ c32 c16
+  }
+  \times 5/4 {
+    c16 c c] c32[ c32 c16 c] r8
+  }
+}
+</pre>
+</blockquote>
+
+<p>
+
+Wenn Sie sich etwas mit der Programmsprache Scheme auskennen, k&ouml;nnen 
+Sie sogar in den Quelldateien algorithmische Kompositionen erstellen.
+
+<h2>&bdquo;Nur mit kleinen Ver&auml;nderungen!&ldquo;</h2>
+
+Ben&ouml;tigen Sie etwas vollkommen ungew&ouml;hnliches? Mit einer 
+kleinen Anpassung k&ouml;nnen Sie LilyPond sehr einfach dazu verwenden,
+ 
+ <a
+href="http://www.shaffermusic.com/doc/schenker/index.html">Schenker-Analysen</a>
+herzustellen.
+
+<p>
+<center>
+<img src="@IMAGES@bach-schenker.png">
+</center>
+
+
+<h2>Graphische Nachbearbeitung</h2>
+
+Wenn Ihnen eine solche Anpassung noch nicht reicht, lassen Sie sich von
+LilyPond einfach eine svg-Datei ausgeben und ver&auml;ndern Sie diese
+nach Belieben in einem svg-Grafikprogramm wie etwa  <a
+href="http://www.inkscape.org">Inkscape</a>.
+
+<p>
+
+<center>
+<img src="@IMAGES@lily-in-inkscape.png">
+</center>
+
+
+<p>
+Zur&uuml;ck zur <a href="tour">Kurzdarstellung</a>
+
+</body>
