@@ -101,7 +101,7 @@ msgstr "Empfehlungen"
 
 #: site/switch/menu-entries.py:4
 msgid "A short tour"
-msgstr "Kurzanleitung"
+msgstr "Kurzdarstellung"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
@@ -121,11 +121,11 @@ msgstr "Zahlen sind Notendauern"
 
 #: site/graphics/annotate-example-2.svg:181
 msgid "Add articulations"
-msgstr "Artikulations-Zeichen dazu"
+msgstr "Artikulations-Zeichen"
 
 #: site/graphics/annotate-example-2.svg:191
 msgid "Add -es for flat, -is for sharp"
-msgstr "Dann -es für ein b und -is für ein Kreuz"
+msgstr "-es f&uuml;r ein b und -is f&uuml;r ein Kreuz"
 
 #: site/graphics/annotate-example-2.svg:201
 msgid "Enclose pitches in &lt; &gt; for chords"
