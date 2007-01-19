@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -13,7 +13,7 @@
 
 <h2>Formato de entrada</h2>
 <p>
-Como se discutió anteriormente, el formato de entrada ideal para el grabado de música es el contenido: la música en sí misma. Esto plantea un problema formidable: ¿cómo definimos lo que la música realmente <em>es</em>? Nuestra salida de este  problema es, revertirlo. En lugar de definir lo que es la música, nuestro programa sirve de definición: escribimos un programa capaz de producir música impresa y ajustamos el formato para que sea tan escueto como sea posible. Cuando el formato no se puede recortar más, nos quedamos con el contenido por sí mismo.
+Como se discutió anteriormente, el formato de entrada ideal para el grabado de música es el contenido: la música en sí misma. Esto plantea un problema formidable: ¿cómo definimos lo que la música realmente <em>es</em>? Nuestra salida de este problema es darle la vuelta. En lugar de definir lo que es la música, nuestro programa sirve de definición: escribimos un programa capaz de producir música impresa y ajustamos el formato para que sea tan escueto como sea posible. Cuando el formato no se puede recortar más, nos quedamos con el contenido por sí mismo.
 
 <p>
 La sintaxis es también la interfase de usuario para LilyPond, por lo tanto es fácil de escribir, por ejemplo: 
@@ -25,7 +25,7 @@ Son una negra de Do 1 y una corchea de Re 1, como en este ejemplo:
 <p align="center">
 <img src="@IMAGES@simple-notation.png">
 <p>
-En una escala microscópica, tal sintaxis es fácil de usar. En una escala mayor, la sintaxis también requiere de estructura. ¿De qué otra manera podemos escribir complejas piezas como sinfonías u óperas? La estructura es formada por el concepto de expresiones musicales: al combinar pequeños fragmentos en segmentos de mayor tamaño, se puede expresar música de mayor complejidad. Por ejemplo,
+A una escala microscópica, tal sintaxis es fácil de usar. En una escala mayor, la sintaxis también necesita una estructura. ¿De qué otra manera podemos escribir piezas complejas como sinfonías u óperas? La estructura se forma mediante el concepto de expresiones musicales: al combinar pequeños fragmentos en segmentos de mayor tamaño, se puede expresar música de mayor complejidad. Por ejemplo:
 
 <table>
 <td align="center">
@@ -35,7 +35,7 @@ c4</td>
 </td></tr></table>
 
 <p>
-Combine éste simultáneamente con otras dos notas al encerrarlo entre &lt;&lt
+Combine esto simultáneamente con otras dos notas al encerrarlo entre &lt;&lt;
 y &gt;&gt;.
 
 <table>
@@ -78,7 +78,7 @@ Estructuras recursivas como ésta, pueden especificarse de forma nítida y forma
 <em>gramática libre de contexto</em>. El código de análisis se genera a partir de esta gramática. 
 En otras palabras, la sintaxis de LilyPond es clara y está definida sin ambiguedades.
 <p>
-Las interfases de usuario y la sintaxis son con lo que la gente tiene que tratar la mayor parte del tiempo. Son una cuestión de gusto, y también sujetas a mucha discusión. Aun cuando estas discusiones sobre el gusto tienen su mérito, no son muy productivas. En el contexto mayor, la importancia de la sintaxis de entrada es pequeña: inventar una sintaxis nítida es sencillo, escribir un código decente para formatear es mucho más complicado. Esto se puede ilustrar por la cuenta de líneas para los componentes respectivos del software: el análisis y representación de la sintaxis representa menos de 10% del código.
+Las interfases de usuario y la sintaxis son con lo que la gente tiene que tratar la mayor parte del tiempo. Son una cuestión de gusto, y también un tema sjueto a mucha discusión. Aun cuando estas discusiones sobre el gusto tienen su mérito, no son muy productivas. En el contexto mayor de LilyPond, la importancia de la sintaxis de entrada es pequeña: inventar una sintaxis nítida es sencillo, escribir un código decente para formatear es mucho más complicado. Esto se puede ilustrar por el número de líneas de los componentes respectivos del software: el análisis de la sintaxis y la representación representan menos de 10% del código.
 
 <table>
 <tr><th>Análisis + Representación</th><th>Total </th></tr>
@@ -87,12 +87,12 @@ Las interfases de usuario y la sintaxis son con lo que la gente tiene que tratar
 <td>61500 líneas de código C++</td></tr>
 </table>
 
-<! todo :
+<!-- todo :
 
   blurbs about lilypond today
 
   future?
-  >
+  -->
 
 
 <p align="right">

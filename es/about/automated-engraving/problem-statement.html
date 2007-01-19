@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -14,22 +14,22 @@
 <h2>Diseñando software de notación musical: cómo no hacerlo</h2>
 <p>
 
-Sería agradable si al software de notación musical no se le tuviera que tomar la mano para que produzca un resultado aceptable.
+Sería agradable si al software de notación musical no se le tuviera que llevar de la mano para que produzca un resultado aceptable.
 
-Nuestra meta con <em>LilyPond</em> fué la de escribir tal sistema: un programa que produzca bella música ("grabado") de forma automática. 
+Nuestra meta con <em>LilyPond</em> fue la de escribir tal sistema: un programa que produzca bella música ("grabado") de forma automática. 
 
 <p>
-A primera vista, la notación musical sigue un patrón jerárquico bastante directo. Considere el ejemplo que aparece abajo, con dos sistemas conteniendo dos compases.
+A primera vista, la notación musical sigue un patrón jerárquico bastante sencillo. Considere el ejemplo que aparece abajo, con dos sistemas de dos compases cada uno.
 </p>
 <img src="@IMAGES@naive-notation.png">
 
 <p>
-¿No es la escritura de software el encontrar las jerarquías y modelar el mundo real en términos de árboles? Desde el punto de vista de un programador ingenuo, el fragmento de arriba, se puede abstraer fácilmente a una serie de cajas anidadas.
+¿No consiste la escritura de software en encontrar las jerarquías y modelar el mundo real en términos de árboles? Desde el punto de vista de un programador ingenuo, el fragmento de arriba se puede abstraer fácilmente a una serie de cajas anidadas.
 
 <p>
 <img src="@IMAGES@naive-notation-uml.png">
 </p>
-Es fácil seguir este modelo cuando se está escribiendo software. Es bastante obvia la manera en que se podría guardar esta información en memoria, y cuán  sencillo el guardarla en un fichero en el disco duro. En un fichero de tipo XML, podría escribir algo como: 
+Es fácil seguir este modelo cuando se está escribiendo software. Es bastante obvia la manera en que se podría guardar esta información en memoria, y cuán  sencillo el guardarla en un fichero en el disco duro. En un fichero de tipo XML podría escribir algo como: 
 
 <PRE>
   &lt;score&gt;
@@ -47,7 +47,7 @@ Es fácil seguir este modelo cuando se está escribiendo software. Es bastante o
 </PRE>
 
 <p>
-En resumen, este modelo es obvio, simple y nítido. Este es el formato seguido por  mucho software. Desafortunadamente, es erróneo. La representación jerárquica funciona para música sencilla, pero fracasará con un uso más avanzado. Considere el ejemplo siguiente:
+En resumen, este modelo es obvio, simple y nítido. Éste es el formato seguido por muchos programas. Desafortunadamente, es erróneo. La representación jerárquica funciona para música sencilla, pero fracasará con un uso más avanzado. Considere el ejemplo siguiente:
 </p>
 
 <img src="@IMAGES@nonnaive-notation.png">

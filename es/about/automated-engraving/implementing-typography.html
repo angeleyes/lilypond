@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -18,29 +18,29 @@
 
 <p>
 
-¿Cómo hacemos para implementar la tipografía? Resolver el "problema de la notación musical" nos ha dejado con una gran cantidad de objetos gráficos representando cabezas de notas, el pentagrama, plicas, etc.
+¿Cómo hacemos para implementar la tipografía? Resolver el "problema de la notación musical" nos ha dejado con una gran cantidad de objetos gráficos que representan cabezas de notas, el pentagrama, plicas, etc.
 
 <p>
-Si los artesanos requieren de diez años para convertirse en verdaderos maestros, ¿cómo podrán simples hackers, desarrollar  un programa para quitarles su trabajo?
+Si los artesanos requieren diez años para convertirse en verdaderos maestros, ¿cómo podríamos nosotros, simples hackers, desarrollar un programa para quitarles su trabajo?
 <p>
-La respuesta es: ¡no podemos! Puesto que la tipografía requiere del jucio humano sobre la apariencia, no se puede reemplazar a la gente. Sin embargo, mucho del trabajo duro y repetitivo puede ser automatizado: si LilyPond resuelve la mayor parte de las situaciones más comunes de forma correcta, entonces esto será una gran mejoría sobre el software existente. Los casos restantes se pueden afinar a mano. Con el curso de los años, el software podrá ser refinado para hacer más y más de forma automática, de manera que las alteraciones forzadas a mano serán cada vez menores.
+La respuesta es: ¡no podemos! Puesto que la tipografía se fundamenta en el jucio humano sobre la apariencia, no se puede reemplazar a la gente. Sin embargo, mucho del trabajo duro y repetitivo puede ser automatizado: si LilyPond resuelve la mayor parte de las situaciones más comunes de forma correcta, entonces esto será una gran mejoría sobre el software existente. Los casos restantes se pueden afinar a mano. Con el curso de los años, el software podrá ser refinado para hacer cada vez más cosas de forma automática, de manera que las alteraciones forzadas a mano serán cada vez menos.
 
 <p>
-¿Cómo podemos construir tal sistema? Cuando iniciamos, escribimos el programa en C++. Esencialmente, esto significa que la funcionalidad del programa quedaría  grabada en piedra por nosotros los desarrolladores. Esto no nos pareció satisfactorio:
+¿Cómo podemos construir tal sistema? Cuando iniciamos, escribimos el programa en C++. En esencia esto significa que la funcionalidad del programa quedaría grabada en piedra por nosotros los desarrolladores. Esto demostró no ser satisfactorio:
 
 <ul>
-<li> Si las cosas deben ser afinadas a mano, entonces el usuario debería tener acceso al motor de formateo. Por lo tanto, las reglas y parámetros no pueden estar fijos al momento de la compilación, pero deben ser accesibles en el momento de la ejecución.
+<li> Si las cosas deben ser afinadas a mano, entonces el usuario debería tener acceso al motor de formateo. Por lo tanto, las reglas y parámetros no pueden estar fijos al momento de la compilación, sino que deben ser accesibles en el momento de la ejecución.
 
-<li> El grabado es un asunto de juicio visual y por lo tanto de gusto personal. Tan conocedores como creemos ser, los usuarios podrán estar en desacuerdo con nuestra decisión estética. Por lo tanto, las definiciones sobre el estilo tipográfico deben ser accesibles para el usuario.
+<li> El grabado es un asunto de juicio visual y por lo tanto de gusto personal. A pesar de ser tan conocedores como creemos, los usuarios podrán estar en desacuerdo con nuestra decisión estética. Por lo tanto, las definiciones sobre el estilo tipográfico deben ser accesibles para el usuario.
 
 <li>
-Finalmente, contínuamente refinamos los algoritmos de formateo, por lo que  necesitamos un enfoque flexible sobre las reglas. El lenguaje C++ nos obliga a usar reglas de 
-agrupación que no concuerdan con la manera en que funciona la notación musical.
+Por último, refinamos contínuamente los algoritmos de formateo, por lo que necesitamos un enfoque flexible sobre las reglas. El lenguaje C++ nos obliga a usar un método de reglas de 
+agrupación que no concuerda con la manera en que funciona la notación musical.
 
 </ul>
-Claramente, hay una necesidad para una arquitectura flexible. La arquitectura debería 
+Claramente existe la necesidad de una arquitectura flexible. La arquitectura debería 
 integrar reglas de formateo, estilo tipográfico y decisiones de formateo individual.
 
-<p align=right>
+<p align="right">
 Siguiente: <a href="formatting-architecture.html">La arquitectura del  programa,
-su amiga flexible</a>: afinando, modificando y desarrollando reglas de tipografía.
+su amiga flexible</a>: afinando, modificando y desarrollando las reglas de tipografía.

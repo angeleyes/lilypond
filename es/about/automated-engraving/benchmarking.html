@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -11,57 +11,58 @@
 
 <a name="benchmarking"></a>
 
-<h2>Patrón de pruebas de notación</h2>
+<h2>Banco de pruebas de la notación</h2>
 
-Es necesaria una arquitectura flexible para obtener buen formateo. 
-Desafortunadamente, esto no es suficiente. Sólo una cuidadosa emulación de la materia impresa dará buen resultado. Sugerimos en la introducción que compare las partituras una generada por ordenador y otra original hecha a mano. Esta es exactamente la técnica que usamos para mejorar los resultados de LilyPond. En una forma, ésta es una forma de hacer patrones de prueba: el desempeño del programa, en términos de calidad, se mide en relación a una cantidad conocida.
+Es necesaria una arquitectura flexible para obtener un buen formateo. 
+Desafortunadamente, esto no es suficiente. Sólo una cuidadosa emulación de la materia impresa dará buen resultado. En la introducción sugerimos que comparase una partitura generadas por ordenador con otra original hecha a mano. Ésta es exactamente la técnica que usamos para mejorar los resultados de LilyPond. En cierta manera, ésta es una forma de realizar bancos de prueba: el desempeño del programa, en términos de calidad, se mide en relación a una cantidad conocida.
 
 <p>
-Aquí puede ver partes del patrón de pruebas de una pieza. Arriba la edición de referencia (B&auml;renreiter BA 320), abajo la salida de LilyPond 1.4:
+Aquí puede ver partes del banco de pruebas de una pieza. Arriba la edición de referencia (B&auml;renreiter BA 320) y abajo la salida de LilyPond 1.4:
 
-<p align=center>
-<img src=@IMAGES@baer-sarabande.png>
-<p align=center>
-B&auml;renreiter
+<p align="center">
+<a href="@IMAGES@baer-sarabande-hires.jpeg">
+<img src="@IMAGES@baer-sarabande.png"></a>
+<p align="center">
+B&auml;renreiter (haga clic para ampliar la imagen)
 
-<p align=center>
-<img src=@IMAGES@lily14-sarabande.png>
-<p align=center>
+<p align="center">
+<img src="@IMAGES@lily14-sarabande.png">
+<p align="center">
 LilyPond 1.4
 <p>
-La salida LilyPond ciertamente es legible, y para muchas personas, esto es aceptable. Sin embargo, bajo una inspección más profunda, la comparación muestra errores en los detalles de formateo:
+La salida de LilyPond ciertamente es legible, y para muchas personas esto es aceptable. Sin embargo, bajo una inspección más profunda, la comparación muestra errores en los detalles de formateo:
 
-<p align=center>
-<img src=@IMAGES@lily14-sarabande-correct.png>
-<p align=center>
+<p align="center">
+<img src="@IMAGES@lily14-sarabande-correct.png">
+<p align="center">
 
 <ul>
-<li> Gran cantidad de los símbolos están desequilibrados. En particular, el símbolo del trino, es demasiado grande.
+<li> Gran cantidad de los símbolos están desequilibrados. En particular, el símbolo del trino es demasiado grande.
 
 <li> Las plicas y barras son incorrectas: las plicas demasiado largas y la barra debería estar inclinada para cubir las líneas del pentagrama exactamente. También la barra es demasiado delgada.
 
 <li> El espaciado es irregular: algunos compases están muy ajustados y otros son demasiado amplios.
 </ul>
-(también hay notas faltantes en la versión original para LilyPond)
+(también faltaban notas en la versión original para LilyPond)
 
 <p>
 
-Al orientarnos a los algoritmos relevantes, configuración y diseños de fuente, fuimos capaces de mejorar el resultado. La salida para LilyPond 1.8 se muestra abajo. Aun cuando no es un duplicado exacto de la edición de referencia, este resultado está muy cercano a calidad de publicación.
+Al orientarnos a los algoritmos, configuración y diseños de fuente relevantes, fuimos capaces de mejorar el resultado. La salida para LilyPond 1.8 se muestra abajo. Aun cuando no es un duplicado exacto de la edición de referencia, este resultado está muy cercano a calidad de publicación.
 
-<p align=center>
-<img src=@IMAGES@lily17-sarabande.png>
-<p align=center>
+<p align="center">
+<img src="@IMAGES@lily17-sarabande.png">
+<p align="center">
 LilyPond 1.8
 
-<p align=center>
+<p align="center">
 <a  href="@IMAGES@baer-sarabande-hires.jpeg">
-<img src=@IMAGES@baer-sarabande.png></a>
-<p align=center>
-B&auml;renreiter (click para agrandar)
+<img src="@IMAGES@baer-sarabande.png"></a>
+<p align="center">
+B&auml;renreiter (haga clic para ampliar)
 <p>
-Otro ejemplo de patrones de prueba es nuestro proyecto para la serie 2.1, una 
+Otro ejemplo de bancos de prueba es nuestro proyecto para la serie 2.1, una 
 <a href="schubert">canción de Schubert</a>.
 
-<p align=right>
-Siguiente: <a href=typography-features.html>Características notables</a>, 
+<p align="right">
+Siguiente: <a href="typography-features.html">Características notables</a>, 
 los aros circenses tipográficos por los que hicimos pasar a LilyPond.
