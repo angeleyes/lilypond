@@ -1,4 +1,4 @@
-		<!-- -*- html -*- -->
+<!-- -*- html -*- -->
 <!--
     Translation of GIT committish: <FILL-IN-HEAD-COMMITTISH>  
     
@@ -27,39 +27,41 @@ on one day.
 
 !-->
 
-<dt><b>LilyPond 2.11.10 available</b> - <em>January 8, 2007</em> <dd>
-
-LilyPond 2.11.10 has further review of the test-suite, performance and
-code coverage. This brought to light several problems that were
-fixed. Notably, 2.11.10 fixes lots of regressions in optical
-correction spacing and MIDI dynamics.  Also, this version is 20 to 50
-% faster than previous 2.11 releases. (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.11">Download</a>)
-  
-
-  
-</dd>
-<dt><b>LilyPond 2.10.10 available</b> - <em>January 8, 2007</em> <dd>
-This release fixes several popular bugs, among others: MIDI files
- that go silent after (de)crescendi, and tuplets problems with quoting
- and part-combining (<a
- href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
- <a href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
- href="install/#2.10">Download</a>)
-  
-</dd>
-
-<dt><b>LilyPond 2.11.9 and 2.10.9 available</b> - <em>January 3, 2007</em>
-
+<dt><b>LilyPond 2.11.12 available</b> - <em>January 17, 2007</em></dt>
 <dd>
-This release has a couple of bugfixes, and &mdash;in 2.11.9&mdash
-further improvements in the regression test suite (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_9&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+
+This release fixes lots of bugs. In particular, the tie formatting has
+been further improved, and memory usage has been improved enormously.
+(<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_12&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
 
 </dd>
+
+
+<dt><b>LilyPond 2.10.12 available</b> - <em>January 17, 2007</em></dt>
+<dd> This release mirrors 2.11.12. Notably, it has the same memory
+usage improvements.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_12&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.10">Download</a>) </dd>
+
+<dt><b>LilyPond 2.10.11 available</b> - <em>January 12, 2007</em></dt> <dd>
+This release mostly has the same fixes as 2.11.11.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_11&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.10">Download</a>)
+</dd>
+
+<dt><b>LilyPond 2.11.11 available</b> - <em>January 11, 2007</em></dt> <dd>
+This release has further fixes for popular bugs. Timing of the MIDI
+output won't get confused by tuplets and grace notes anymore. Some fat
+has also been trimmed of the skyline code performance.  (<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_11&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+</dd>
+
 </dl>
 
