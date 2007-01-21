@@ -177,6 +177,13 @@
   </tr>
 
 
+ <tr bgcolor="#e8ffe8" >
+    <td></td>
+    <td colspan="6">
+      <h3>_("Documentation and Source code")</h3>
+    </td>
+  </tr>
+
   <tr>
     <td></td>
     <td>_("Documentation")</td>
