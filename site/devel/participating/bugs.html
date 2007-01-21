@@ -45,6 +45,12 @@ When creating a file, please
 be duplicated in less than ten lines of LilyPond code.  Unfortunately
 we do not have the resources to debug large examples.
 
+<li>Do not use <tt>\override</tt> commands unless the bug is
+about those particular commands.
+
+<li>Avoid using complicated notes, keys, or time signatures, unless
+the bug is about the behavior of those items.
+
 <li>If possible, use <tt>\paper{ ragged-right=##t }</tt> at the top
 of your example.
 </ul>
