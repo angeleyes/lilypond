@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -14,7 +14,17 @@
 <h2>Notación musical</h2>
 
 <p>
-La notación musical abarca cerca de 500 años de música. Sus aplicaciones van desde las melodías monofónicas hasta contrapuntos monstruosos para grandes orquestas. ¿Cómo podemos tratar de dominar a semejante bestia? Nuestra solución es hacer una estricta distinción entre la notación, <em>qué</em> símbolos usar, y el grabado, <em>dónde</em> colocarlos. Para atacar el problema de la notación, lo hemos partido en bloques más pequeños y fáciles de programar: cada tipo de símbolo se maneja por un plugin separado. Todos los plugins cooperan a través de la arquitectura de LilyPond. Los plugins son completamente modulares e independientes, por lo que cada uno puede ser desarrollado y mejorado por separado.
+La notación musical abarca cerca de 500 años de música. Sus
+aplicaciones van desde las melodías monofónicas hasta contrapuntos
+monstruosos para grandes orquestas. ¿Cómo podemos tratar de dominar a
+semejante bestia? Nuestra solución es hacer una estricta distinción
+entre la notación, <em>qué</em> símbolos usar, y el grabado,
+<em>dónde</em> colocarlos. Para atacar el problema de la notación, lo
+hemos partido en bloques más pequeños y fáciles de programar: cada
+tipo de símbolo se maneja por un plugin separado. Todos los plugins
+cooperan a través de la arquitectura de LilyPond. Los plugins son
+completamente modulares e independientes, por lo que cada uno puede
+ser desarrollado y mejorado por separado.
 <p>
 <ul>
 <li>El plugin más básico crea las cabezas de las notas:
@@ -22,15 +32,20 @@ La notación musical abarca cerca de 500 años de música. Sus aplicaciones van 
 <p align="center"> 
 <img src="@IMAGES@engraver-noteheads.png">
 <p>
-Este plugin crea objetos gráficos a partir de eventos musicales. A las personas que crean imágenes gráficas a partir de ideas musicales se les llama copistas o grabadores, así que, por analogía, este plugin se llama <tt>Note_head_engraver</tt>.
+Este plugin crea objetos gráficos a partir de eventos musicales. A las
+personas que crean imágenes gráficas a partir de ideas musicales se
+les llama copistas o grabadores, así que, por analogía, este plugin se
+llama <tt>Note_head_engraver</tt>.
 
-<li> El <tt>Staff_symbol_engraver</tt> genera el objeto que representa las líneas del pentagrama.
+<li> El <tt>Staff_symbol_engraver</tt> genera el objeto que representa
+las líneas del pentagrama.
 
 <p align="center"> <img
 src="@IMAGES@engraver-staff.png">
 
 <li>
- El <tt>Clef_engraver</tt> le dice al <tt>Note_head_engraver</tt> qué tan aguda o grave debe colocarse cada cabeza.
+ El <tt>Clef_engraver</tt> le dice al <tt>Note_head_engraver</tt> qué
+ tan aguda o grave debe colocarse cada cabeza.
 
 <p align="center"> 
 <img src="@IMAGES@engraver-clef.png">
@@ -40,31 +55,48 @@ Para los corchetes y barras añadimos un <tt>Stem_engraver</tt>:
 <p align="center"> 
 <img src="@IMAGES@engraver-stem.png">
 <p>
-Este grabador es notificado cuando viene una cabeza de nota. Cada vez que se ve una cabeza (o más, en el caso de un acorde), se crea un objeto plica que se anexa a la cabeza de la nota.
+Este grabador es notificado cuando viene una cabeza de nota. Cada vez
+que se ve una cabeza (o más, en el caso de un acorde), se crea un
+objeto plica que se anexa a la cabeza de la nota.
 
 <li>
-Las barras, ligaduras y acentos son manejados por grabadores distintos. Como el 
-<tt>Stem_engraver</tt>, crean objetos y los conectan a plicas, cabezas de notas, etc.:
+Las barras, ligaduras y acentos son manejados por grabadores
+distintos. Como el <tt>Stem_engraver</tt>, crean objetos y los
+conectan a plicas, cabezas de notas, etc.:
 
 <p align="center"> <img src="@IMAGES@engraver-slur.png">
 
 <li>
-Los accidentes, barras de compás, compás y armadura, tienen cada uno grabadores distintos.
-<p align="center">
-<img src="@IMAGES@engraver-acc.png">
+Los accidentes, barras de compás, compás y armadura, tienen cada uno
+grabadores distintos.  <p align="center"> <img
+src="@IMAGES@engraver-acc.png">
 
 <p>
-El <tt>Accidental_engraver</tt> es el plugin más complejo: tiene que examinar la armadura, las tonalidades, ligaduras y barras de compás para decidir cuándo imprimir los accidentes.
+El <tt>Accidental_engraver</tt> es el plugin más complejo: tiene que
+examinar la armadura, las tonalidades, ligaduras y barras de compás
+para decidir cuándo imprimir los accidentes.
 
 </ul>
 
 
-<h2> Notación polifónica</h2>
-El sistema mostrado en la última sección funciona bien para música monofónica, pero ¿qué pasa cuando se trata de polifonía? En la notación polifónica, muchas voces pueden compartir un pentagrama:
-<p align="center">
-<img src="@IMAGES@engraver-final.png">
+<h2>Notación polifónica</h2>
+
+<p>El sistema mostrado en la última sección
+funciona bien para música monofónica, pero ¿qué pasa cuando se trata
+de polifonía? En la notación polifónica, muchas voces pueden compartir
+un pentagrama: <p align="center"> <img
+src="@IMAGES@engraver-final.png">
 <p>
-En esta situación, los accidentes y el pentagrama se comparten, pero las plicas, ligaduras, barras, etc., son exclusivas de cada voz. Por lo tanto, los grabadores deberían estar agrupados. Los grabadores para las cabezas, plicas, ligaduras, etc., van en un grupo llamado "Voice Context" (contexto de voz), mientras que los grabadores para armadura, accidentes, compás, etc. van en un grupo llamado "Staff Context" (contexto de pentagrama). En el caso de la polifonía, un solo contexto de pentagrama contiene más de un contexto de Voz; asimismo, un "Score Context" (contexto de partitura) puede contener muchos contextos de pentagrama:
+En esta situación, los accidentes y el pentagrama se comparten, pero
+las plicas, ligaduras, barras, etc., son exclusivas de cada voz. Por
+lo tanto, los grabadores deberían estar agrupados. Los grabadores para
+las cabezas, plicas, ligaduras, etc., van en un grupo llamado "Voice
+Context" (contexto de voz), mientras que los grabadores para armadura,
+accidentes, compás, etc. van en un grupo llamado "Staff Context"
+(contexto de pentagrama). En el caso de la polifonía, un solo contexto
+de pentagrama contiene más de un contexto de Voz; asimismo, un "Score
+Context" (contexto de partitura) puede contener muchos contextos de
+pentagrama:
 
 <p align="center">
 <img src="@IMAGES@engraver-score.png">
