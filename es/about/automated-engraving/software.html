@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -13,8 +13,15 @@
 <h2>Lo que hay de malo con el software de notación musical</h2>
 
 <p>
-Los ordenadores han logrado que la impresión de notación musical esté al alcance de las masas, 
-pero han tendido a aportar una tipografía mediocre. Aparentemente, los programadores han estado haciendo un trabajo pobre en los programas de notación musical. Para ilustrar esto, le pedimos a un músico aficionado que capturara una pieza de música en uno de las programas de notación &lsquo;profesional&rsquo; más vendidos actualmente: Finale 2003. Se realizó con todos los parámetros predeterminados. La música es de la Sarabanda de la Suite para Violonchelo número 2 de J.S. Bach.
+Los ordenadores han logrado que la impresión de notación musical esté
+al alcance de las masas, pero han tendido a aportar una tipografía
+mediocre. Aparentemente, los programadores han estado haciendo un
+trabajo pobre en los programas de notación musical. Para ilustrar
+esto, le pedimos a un músico aficionado que capturara una pieza de
+música en uno de las programas de notación &lsquo;profesional&rsquo;
+más vendidos actualmente: Finale 2003. Se realizó con todos los
+parámetros predeterminados. La música es de la Sarabanda de la Suite
+para Violonchelo número 2 de J.S. Bach.
 
 <p>
 <em>
@@ -25,40 +32,77 @@ pero han tendido a aportar una tipografía mediocre. Aparentemente, los programa
 
 <img align="center"  src="@IMAGES@finale-sarabande-full.png">
 
-<p> 
-Este ejemplo sobrepasa en mucho al anterior en cuanto a errores de formateo se refiere: hay errores serios en literalmente <em>cada</em> compás. Los errores vienen en todos tamaños: uno de los más notorios es el e x t r a ñ o &nbsp; e s p a c i a d o de la última línea. Otro más pequeño 
-es el bemol en el compás 13, que está  cubierto por la nota que le precede. Aquí hay una ampliación de ese compás: <p align="center" > <img align="center"
+<p> Este ejemplo sobrepasa en mucho al anterior en cuanto a errores de
+formateo se refiere: hay errores serios en literalmente <em>cada</em>
+compás. Los errores vienen en todos tamaños: uno de los más notorios
+es el e x t r a ñ o &nbsp; e s p a c i a d o de la última línea. Otro
+más pequeño es el bemol en el compás 13, que está cubierto por la nota
+que le precede. Aquí hay una ampliación de ese compás: <p
+align="center" > <img align="center"
 src="@IMAGES@finale-flat-detail.png">
 <p>
 
-Los errores continúan hasta los más mínimos: abajo se muestra una ampliación de ese compás. Por supuesto, en una tipografía apropiada, la barra no debería salirse a la derecha de la plica, y los ribetes que aparecen, dan un atisbo revelador de la aptitud de los programadores de Coda Music Technology (o su falta) con respecto a la tecnología PostScript subyacente.
+Los errores continúan hasta los más mínimos: abajo se muestra una
+ampliación de ese compás. Por supuesto, en una tipografía apropiada,
+la barra no debería salirse a la derecha de la plica, y los ribetes
+que aparecen, dan un atisbo revelador de la aptitud de los
+programadores de Coda Music Technology (o su falta) con respecto a la
+tecnología PostScript subyacente.
 
 <p align="center" >
 <img src="@IMAGES@finale-beam-detail.png">
 <p>
-Ahora, uno podría refutar que Finale tiene una interfase gráfica, y le deja mover los elementos para corregir los errores, o usa plugins para hacerlo. En efecto esto es cierto: de hecho, la mayoría de los grabadores profesionales que usan Finale, típicamente invierten la mayor parte de su tiempo corrigiendo los errores que Finale hace rutinariamente. Pero ¿realmente desea gastar su tiempo corrigiendo errores evidentes? Para la línea excesivamente espaciada esto es fácil de lograr, pero imagínese que tiene que corregir cada barra de cada nota que sobresale de la plica... ¿a mano?
+Ahora, uno podría refutar que Finale tiene una interfase gráfica, y le
+deja mover los elementos para corregir los errores, o usa plugins para
+hacerlo. En efecto esto es cierto: de hecho, la mayoría de los
+grabadores profesionales que usan Finale, típicamente invierten la
+mayor parte de su tiempo corrigiendo los errores que Finale hace
+rutinariamente. Pero ¿realmente desea gastar su tiempo corrigiendo
+errores evidentes? Para la línea excesivamente espaciada esto es fácil
+de lograr, pero imagínese que tiene que corregir cada barra de cada
+nota que sobresale de la plica... ¿a mano?
 
 <p>
-Existe una razón menos obvia por la cual corregir las cosas a mano es mala idea. Considere de nuevo el compás 13 que se muestra arriba. El bemol mal colocado es bastante obvio, pero ¿se dió cuenta de la barra de repetición? Sus líneas están demasiado separadas entre sí. ¿Notó que el silencio de corchea está demasiado abajo? ¿Se percató de que la plica de la última corchea es demasiado larga?
+Existe una razón menos obvia por la cual corregir las cosas a mano es
+mala idea. Considere de nuevo el compás 13 que se muestra arriba. El
+bemol mal colocado es bastante obvio, pero ¿se dió cuenta de la barra
+de repetición? Sus líneas están demasiado separadas entre sí. ¿Notó
+que el silencio de corchea está demasiado abajo? ¿Se percató de que la
+plica de la última corchea es demasiado larga?
 
 <p align="center" >
 <img src="@IMAGES@finale-flat-correct.png">
 <p>
-A menos que sea un experto, los errores tipográficos le molestarán sin ser obvios. Muchos de ellos pasarán sin ser corregidos y permanecerán en la impresión final.
+A menos que sea un experto, los errores tipográficos le molestarán sin
+ser obvios. Muchos de ellos pasarán sin ser corregidos y permanecerán
+en la impresión final.
 
 <p>
-
-Este ejemplo podrá parecer forzado, pero de hecho no lo es. Los mayores productores de software de notación musical alegan que siguen los estándares de notación, pero no hemos visto ninguno que siga las normas básicas correctamente; todos cometen errores de forma sistemática. Si desea evaluar la salida de su programa favorito, entonces compre una edición hecha a mano de un editor respetable, y trate de reproducir una página. Luego haga la comparación:
+Este ejemplo podrá parecer forzado, pero de hecho no lo es. Los
+mayores productores de software de notación musical alegan que siguen
+los estándares de notación, pero no hemos visto ninguno que siga las
+normas básicas correctamente; todos cometen errores de forma
+sistemática. Si desea evaluar la salida de su programa favorito,
+entonces compre una edición hecha a mano de un editor respetable, y
+trate de reproducir una página. Luego haga la comparación:
 
 <ul>
 <li>
-¿Qué diferencia hay en la disposición de la página? Típicamente, las impresiones hechas por ordenador están espaciadas más ampliamente por lo que ocupan más páginas, lo que lleva a más vueltas de página.
+¿Qué diferencia hay en la disposición de la página? Típicamente, las
+impresiones hechas por ordenador están espaciadas más ampliamente por
+lo que ocupan más páginas, lo que lleva a más vueltas de página.
 
 <li>
-¿Qué diferencia hay en el espaciado? ¿Es vivaz y fluido como en una partitura hecha a mano? Si tiene dudas, mida ambos con una regla.
+¿Qué diferencia hay en el espaciado? ¿Es vivaz y fluido como en una
+partitura hecha a mano? Si tiene dudas, mida ambos con una regla.
 
 <li>
-Ponga la música en un atril a un metro de distancia; esto es bastante común cuando se está tocando. ¿Puede leer ambas páginas? Casi todas las ediciones de ordenador tienen una apariencia anémica: usan líneas que son demasiado delgadas, y símbolos demasiado ligeros. Esto las hace difíciles de leer a distancia. Si tiene dudas, mida la diferencia con una lente de aumento.
+Ponga la música en un atril a un metro de distancia; esto es bastante
+común cuando se está tocando. ¿Puede leer ambas páginas? Casi todas
+las ediciones de ordenador tienen una apariencia anémica: usan líneas
+que son demasiado delgadas, y símbolos demasiado ligeros. Esto las
+hace difíciles de leer a distancia. Si tiene dudas, mida la diferencia
+con una lente de aumento.
 
 </ul>
 

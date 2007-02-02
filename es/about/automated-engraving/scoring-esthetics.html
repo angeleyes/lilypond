@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -9,50 +9,78 @@
     to discover that.
 !-->
 
-<h2>Números hermosos</h2> 
-¿De qué forma se toman las decisiones sobre formateo? En otras palabras, ¿cuál de las tres configuraciones debemos escoger para la siguiente ligadura?
+<h2>Números hermosos</h2> ¿De qué forma se toman las decisiones sobre
+formateo? En otras palabras, ¿cuál de las tres configuraciones debemos
+escoger para la siguiente ligadura?
 <p>
 
 <img src="@IMAGES@slur-esthetics.png">
 
 <p>
-Se pueden encontrar algunos libros sobre el arte de grabar notación musical. Por desgracia, contienen reglas prácticas sencillas y algún que otro ejemplo. Tales reglas pueden ser instructivas, pero están lejos de constituir un algortimo que se pueda implementar en un ordenador. Seguir las instrucciones a partir de la literatura lleva a la construcción de algoritmos con demasiadas excepciones manuales. Desarrollar estos casos de análisis es mucho trabajo, y generalmente no se cubren todos los casos completamente.
+Se pueden encontrar algunos libros sobre el arte de grabar notación
+musical. Por desgracia, contienen reglas prácticas sencillas y algún
+que otro ejemplo. Tales reglas pueden ser instructivas, pero están
+lejos de constituir un algortimo que se pueda implementar en un
+ordenador. Seguir las instrucciones a partir de la literatura lleva a
+la construcción de algoritmos con demasiadas excepciones
+manuales. Desarrollar estos casos de análisis es mucho trabajo, y
+generalmente no se cubren todos los casos completamente.
 
 <p align="center">
 <img src="@IMAGES@ross-beam-scan.jpeg" align="center"></p>
 <p align="center">
 
-<em>Reglas de formato definidas mediante ejemplos. Imagen extraída de 'The Art of Music Engraving', de Ted Ross</em>
+<em>Reglas de formato definidas mediante ejemplos. Imagen extraída de
+'The Art of Music Engraving', de Ted Ross</em>
 </p>
 
 <p>
-Hemos desarrollado un método mucho más sencillo y robusto para determinar la mejor solución de formateo: formateo basado en puntuación. El principio es el mismo que se usa en los concursos de belleza: para cada configuración posible, se calcula una puntuación de 'fealdad'. Entonces se procede a seleccionar la configuración menos fea.
+Hemos desarrollado un método mucho más sencillo y robusto para
+determinar la mejor solución de formateo: formateo basado en
+puntuación. El principio es el mismo que se usa en los concursos de
+belleza: para cada configuración posible, se calcula una puntuación de
+'fealdad'. Entonces se procede a seleccionar la configuración menos
+fea.
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-1.png">
 
 <p>
-Por ejemplo, en la configuración que se muestra arriba, la ligadura conecta estéticamente a la primera y última notas de la figura, una característica deseable. Sin embargo, casi alcanza a rozar la cabeza de una de las notas, mientras que se mantiene lejos de las demás. Por lo tanto, para esta configuración, se le deducirá una puntuación de 'discrepancia' de 15.39.
+Por ejemplo, en la configuración que se muestra arriba, la ligadura
+conecta estéticamente a la primera y última notas de la figura, una
+característica deseable. Sin embargo, casi alcanza a rozar la cabeza
+de una de las notas, mientras que se mantiene lejos de las demás. Por
+lo tanto, para esta configuración, se le deducirá una puntuación de
+'discrepancia' de 15.39.
 
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-2.png">
 <p>
-En esta configuración la ligadura mantiene una distancia uniforme con respecto a las notas, pero tenemos que deducir algunos puntos porque la ligadura no inicia y termina en las cabezas de las notas. Por la orilla izquierda, deduciremos 1.71, y por la orilla derecha (que está más lejana a la cabeza), restaremos 9.37 puntos.
+En esta configuración la ligadura mantiene una distancia uniforme con
+respecto a las notas, pero tenemos que deducir algunos puntos porque
+la ligadura no inicia y termina en las cabezas de las notas. Por la
+orilla izquierda, deduciremos 1.71, y por la orilla derecha (que está
+más lejana a la cabeza), restaremos 9.37 puntos.
 
-Además, la ligadura tiende hacia arriba, mientras que la melodía es descendente; esto causará una penalización de 2.00 puntos.
+Además, la ligadura tiende hacia arriba, mientras que la melodía es
+descendente; esto causará una penalización de 2.00 puntos.
 
 <p>
 
 <img src="@IMAGES@slur-esthetics-annotate-3.png">
 
 <p>
-Por último, en esta configuración, sólo el final de la ligadura está alejado de la última nota, lo cuál da una puntuación de 10.04 puntos de fealdad.
+Por último, en esta configuración, sólo el final de la ligadura está
+alejado de la última nota, lo cuál da una puntuación de 10.04 puntos
+de fealdad.
 <p>
-Al sumar todos los puntos, notamos que la tercera opción es la menos fea, o la más bella; por lo tanto, escogemos ésta.
+Al sumar todos los puntos, notamos que la tercera opción es la menos
+fea, o la más bella; por lo tanto, escogemos ésta.
 
 <p>
-Esta es una técnica general que se usa en muchas situaciones. Por ejemplo:
+Esta es una técnica general que se usa en muchas situaciones. Por
+ejemplo:
 
 <ul>
 <li> determinar la pendiente de las barras 
@@ -68,7 +96,11 @@ Esta es una técnica general que se usa en muchas situaciones. Por ejemplo:
 <li> cortes de página
 </ul>
 <p>
-Esta técnica evalúa muchas posibilidades, lo cual toma algo de tiempo para calcular. Sin embargo, es un gasto que vale la pena, porque el resultado final es mucho mejor, y también porque nos hace la vida más fácil.
+Esta técnica evalúa muchas posibilidades, lo cual toma algo de tiempo
+para calcular. Sin embargo, es un gasto que vale la pena, porque el
+resultado final es mucho mejor, y también porque nos hace la vida más
+fácil.
 
 <p align="right">
-Siguiente: <a href="benchmarking.html">El hombre es la medida de todas las cosas</a>: ¿es suficiente una arquitectura flexible?
+Siguiente: <a href="benchmarking.html">El hombre es la medida de todas
+las cosas</a>: ¿es suficiente una arquitectura flexible?

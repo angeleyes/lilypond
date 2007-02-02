@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Translation of GIT committish: 7395df5e8c42686a74365f884249aa61fcb60ec4
 
     When revising a translation, copy the HEAD committish of the
@@ -13,11 +13,20 @@
 
 <h2>Banco de pruebas de la notación</h2>
 
-Es necesaria una arquitectura flexible para obtener un buen formateo. 
-Desafortunadamente, esto no es suficiente. Sólo una cuidadosa emulación de la materia impresa dará buen resultado. En la introducción sugerimos que comparase una partitura generadas por ordenador con otra original hecha a mano. Ésta es exactamente la técnica que usamos para mejorar los resultados de LilyPond. En cierta manera, ésta es una forma de realizar bancos de prueba: el desempeño del programa, en términos de calidad, se mide en relación a una cantidad conocida.
+Es necesaria una arquitectura flexible para obtener un buen formateo.
+Desafortunadamente, esto no es suficiente. Sólo una cuidadosa
+emulación de la materia impresa dará buen resultado. En la
+introducción sugerimos que comparase una partitura generadas por
+ordenador con otra original hecha a mano. Ésta es exactamente la
+técnica que usamos para mejorar los resultados de LilyPond. En cierta
+manera, ésta es una forma de realizar bancos de prueba: el desempeño
+del programa, en términos de calidad, se mide en relación a una
+cantidad conocida.
 
 <p>
-Aquí puede ver partes del banco de pruebas de una pieza. Arriba la edición de referencia (B&auml;renreiter BA 320) y abajo la salida de LilyPond 1.4:
+Aquí puede ver partes del banco de pruebas de una pieza. Arriba la
+edición de referencia (B&auml;renreiter BA 320) y abajo la salida de
+LilyPond 1.4:
 
 <p align="center">
 <a href="@IMAGES@baer-sarabande-hires.jpeg">
@@ -30,24 +39,34 @@ B&auml;renreiter (haga clic para ampliar la imagen)
 <p align="center">
 LilyPond 1.4
 <p>
-La salida de LilyPond ciertamente es legible, y para muchas personas esto es aceptable. Sin embargo, bajo una inspección más profunda, la comparación muestra errores en los detalles de formateo:
+La salida de LilyPond ciertamente es legible, y para muchas personas
+esto es aceptable. Sin embargo, bajo una inspección más profunda, la
+comparación muestra errores en los detalles de formateo:
 
 <p align="center">
 <img src="@IMAGES@lily14-sarabande-correct.png">
 <p align="center">
 
 <ul>
-<li> Gran cantidad de los símbolos están desequilibrados. En particular, el símbolo del trino es demasiado grande.
+<li> Gran cantidad de los símbolos están desequilibrados. En
+particular, el símbolo del trino es demasiado grande.
 
-<li> Las plicas y barras son incorrectas: las plicas demasiado largas y la barra debería estar inclinada para cubir las líneas del pentagrama exactamente. También la barra es demasiado delgada.
+<li> Las plicas y barras son incorrectas: las plicas demasiado largas
+y la barra debería estar inclinada para cubir las líneas del
+pentagrama exactamente. También la barra es demasiado delgada.
 
-<li> El espaciado es irregular: algunos compases están muy ajustados y otros son demasiado amplios.
-</ul>
-(también faltaban notas en la versión original para LilyPond)
+<li> El espaciado es irregular: algunos compases están muy ajustados y
+otros son demasiado amplios.  </ul>
+
+<p>(también faltaban notas en la
+versión original para LilyPond)
 
 <p>
-
-Al orientarnos a los algoritmos, configuración y diseños de fuente relevantes, fuimos capaces de mejorar el resultado. La salida para LilyPond 1.8 se muestra abajo. Aun cuando no es un duplicado exacto de la edición de referencia, este resultado está muy cercano a calidad de publicación.
+Al orientarnos a los algoritmos, configuración y diseños de fuente
+relevantes, fuimos capaces de mejorar el resultado. La salida para
+LilyPond 1.8 se muestra abajo. Aun cuando no es un duplicado exacto de
+la edición de referencia, este resultado está muy cercano a calidad de
+publicación.
 
 <p align="center">
 <img src="@IMAGES@lily17-sarabande.png">
