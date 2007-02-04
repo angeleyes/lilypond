@@ -28,6 +28,21 @@ on one day.
 !-->
 
 
+<dt><b>LilyPond 2.10.16 and 2.11.16 available</b> - <em>February 1,
+2007</em></dt>
+<dd>
+This release fixes many bugs.
+(<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_16&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.11</a>,
+<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_16&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.10</a>, 
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+href="install/#2.11">Download</a>)
+
+</dd>
+
 <dt><b>LilyPond 2.10.15 and 2.11.15 available</b> - <em>February 1,
 2007</em></dt> <dd> This release will stretch piano staves on a
 system-by-system basis and add a few glyphs: a black harmonic note
@@ -55,18 +70,6 @@ href="install/#2.11">Download</a>)
 </dd>
 
 
-
-<dt><b>LilyPond 2.10.13 and 2.11.13 available</b> - <em>January 17, 2007</em></dt>
-<dd>
-
-This release fixes a few minor but irritating bugs. In addition, the
-2.11 release has updates of the tutorial.
-(<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_13&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
-href="install/#2.11">Download</a>)
-
-</dd>
 
 </dl>
 
