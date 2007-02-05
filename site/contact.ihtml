@@ -22,13 +22,8 @@
 
   <dt>Bug report?</dt>
   <dd>
-<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Post</a> your bugreport.
-<p>
-This is the mailing list 
-    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
-    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">info</a>,
-    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archive</a>)
-    <br>
+<a href="http://lilypond.org/web/devel/participating/bugs">How to report a bug</a>.
+
   </dd>
 
   <dt>Get notified of new releases?</dt>
