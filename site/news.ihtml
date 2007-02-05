@@ -38,7 +38,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_16&colspe
 <a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_16&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.10</a>, 
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
 
 </dd>
@@ -52,7 +52,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_15&colspe
 <a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_15&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.10</a>, 
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
 
 </dd>
@@ -64,7 +64,7 @@ This release has a rewrite of the line-spanner code, responsible for
 among other glissandi and text-crescendos, making them more flexible.
 (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_14&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
 
 </dd>
