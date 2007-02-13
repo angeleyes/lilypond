@@ -191,7 +191,7 @@ revision of the translation.  To check a single page, run
 * UPDATE A TRANSLATION
 
 Check state of the translation using the method described above.  For
-each file diff shown in check-translation ouput, open the
+each file diff shown in check-translation output, open the
 corresponding translated file in a text editor and update the
 translation according to the diff.  The translation hints above still
 apply.
