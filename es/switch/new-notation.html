@@ -1,0 +1,92 @@
+<!--
+    Translation of GIT committish: ab28c3ebd24bcdf8be02e323402fafb9a9f1a507 
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Use
+
+      git-rev-list HEAD | head -1
+
+    to discover that.
+!-->
+
+<title>Notación extraña</title>
+
+
+<body>
+Con el objetivo puesto en la notación clásica, usted se preguntará si LilyPond es
+adecuado para la música moderna. Afortunadamente, la respuesta es un sonoro
+<b>sí</b>.
+
+
+<h2>&ldquo;¡Mira, mamá, sin trucos!&rdquo;</h2>
+
+Si usted produce música mediante software, publicarla es tan fácil como
+escribir unos sencillos archivos de texto ASCII. Si usted hace música de <em>vanguardia</em>, entonces
+adorará la flexibilidad de Lily con las medidas y las indicaciones de
+compás. He aquí una muestra con grupos anidados. El espaciado es
+exactamente proporcional ala duración de cada nota.  Las notas no han de
+llenar los compases, y dos notas solamente se alinean si comienzan juntas
+exactamente.
+
+<p>
+<center>
+<a href="http://lilypond.org/doc/latest/input/proportional.pdf">
+<img src="@IMAGES@proportional-fragment.png"></a>
+<p>
+Pulse con el ratón para descargar un archivo PDF.</center>
+<p>
+
+En cualquier otro programa, conseguir este resultado necesita una desmesurada cantidad de trucos y artimañas
+especiales. En LilyPond, sólo hay que introducir las notas, con
+su estructura rítmica:
+
+<blockquote>
+
+<pre>
+\times 7/9 {
+  \times 4/6 {
+     r8 c32[ c c c c c c c] r4
+     c32[ c32 c16
+  }
+  \times 5/4 {
+    c16 c c] c32[ c32 c16 c] r8
+  }
+}
+</pre>
+</blockquote>
+
+<p>
+
+Si usted está familiarizado con el lenguaje de programación Scheme ¡podrá incluso
+componer de forma algorítmica desde dentro de LilyPond!
+
+<h2>&ldquo;¡Mira, mamá, qué trucos tan fáciles!&rdquo;</h2>
+
+¿Necesita algo no estándar?  Con un pequeño giro, puede utilizar la ilimitada
+flexibilidad de Lily para crear <a
+href="http://www.shaffermusic.com/doc/schenker/index.html">diagramas de Schenker
+</a>:
+
+<p>
+<center>
+<img src="@IMAGES@bach-schenker.png">
+</center>
+
+
+<h2>Edición de gráficos</h2>
+
+Si todo esto no es suficiente, siempre puede hacer que Lily escriba un archivo SVG, y
+editar el resultado final en un editor de SVG, como por ejemplo <a
+href="http://www.inkscape.org">Inkscape</a>.
+
+<p>
+
+<center>
+<img src="@IMAGES@lily-in-inkscape.png">
+</center>
+
+
+<p>
+Volver a la <a href="tour">visita guiada</a>
+
+</body>
