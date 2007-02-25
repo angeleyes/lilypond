@@ -3,7 +3,8 @@ THE LILYPOND.ORG WEBSITE
 SOURCES
 
 The HTML sources live in a GIT repository.  Git 1.4.4.1 or newer is
-required.  To get a fresh version run
+required, and Git 1.5.x is highly recommended.  To get a fresh version
+run
 
     mkdir web ; cd web 
     git init-db
@@ -30,20 +31,48 @@ others on the remote git.sv.gnu.org repository; run
     git pull git://git.sv.gnu.org/lilypond.git/ web/master:web/master
 
 
-Let's explain a bit of Git vocabulary.  A commit is a set of changes
-made to the sources; it also includes the committish of the parent
-commit, the name and e-mail of the author (the person who wrote the
-changes), the name and e-mail of the committer (the person who brings
-these changes into the git repository), and a commit message.  A
-committish is the SHA1 checksum of a commit, a number made of 40
-hexadecimal digits which acts as the internal unique identifier for
-this commit.
+Let's explain a bit of Git vocabulary.
 
-This README tries to explain most of git commands needed for
+A commit is a set of changes made to the sources; it also includes the
+committish of the parent commit, the name and e-mail of the author
+(the person who wrote the changes), the name and e-mail of the
+committer (the person who brings these changes into the git
+repository), and a commit message.
+
+A committish is the SHA1 checksum of a commit, a number made of 40
+hexadecimal digits, which acts as the internal unique identifier for
+this commit.  To refer to a particular revision, don't use vague
+references like the (approximative) date, simply copy'n'paste the
+committish.
+
+A branch is a tree (in the mathematical or computer science sense) of
+commits, and the topmost commit of this branch is called a head.
+
+The "git fetch" command above has created a branch called web/master
+in your local Git repository.  As this branch is a copy of the remote
+branch web/master from git.sv.gnu.org LilyPond repository, it is
+called a `remote branch', and is meant to track the changes on the
+branch from git.sv.gnu.org: it will be updated every time you run "git
+pull" or "git fetch" with this branch reference as argument.
+
+The "git checkout" command above has created a branch named myweb.
+At the beginning, this branch is identical to web/master, but it will
+differ as soon as you make changes, e.g. adding newly translated
+pages.  Whenever you pull, you merge the changes from web/master and your
+myweb branch since the last pulling.  If you do not have push
+(i.e. "write") access on git.sv.gnu.org, your myweb branch will always
+differ from web/master.  In this case, remember that other people
+working like you on the remote web/master branch of
+git://git.sv.gnu.org/lilypond.git/ know nothing know nothing about
+your myweb branch: this means that whenever you use a committish or
+make a patch, others expect you to take the lastest web/master branch
+as a reference.
+
+This README tries to explain most of Git commands needed for
 translating the web site.  However, you are invited to read further
 documentation to make git more familiar to you; for instance, take a
 look at http://git.or.cz/gitwiki/, especially GitDocumentation
-(follow the links from this page) and GitGlossary.
+and GitGlossary.
 
 
 BUILDING THE WEBSITE
@@ -123,7 +152,8 @@ lilypond.org):
 
 TRANSLATION
 
-Get or update (pull) the sources.  See SOURCES section at the top of README.
+Get or update (pull) the sources.  See SOURCES section at the top of
+README.
 
 
 * STARTING A NEW LANGUAGE
@@ -279,9 +309,9 @@ defined in /etc/passwd).
 If you edit the commit message within a text editor, keep the lines
 beginning with '#' intact, write at top a short line in English
 describing your commit, leave one blank line after this first line,
-and after this blank line, if you want to explain the commit in detail, 
-write blurb with any number of lines.  After this, save the text and
-close the editor to complete the commit.
+and after this blank line, if you want to explain the commit in
+detail, write blurb with any number of lines.  After this, save the
+text and close the editor to complete the commit.
 
 Let's explain now the other arguments.  With the -a option, git will
 commit all the changes of all files it knows about (i.e. all that were
@@ -296,9 +326,10 @@ there are no other changes in your working tree, do
 
     git commit -m 'German updates' -a
 
-Another example: if you have corrected typos in site/foo/bar.html, site/baz.html,
-de/foo/bar.html and de/baz.html, you may want to commit changes in site/ first (see
-why at 'COMMON ISSUES' section, issue #2) by doing
+Another example: if you have corrected typos in site/foo/bar.html,
+site/baz.html, de/foo/bar.html and de/baz.html, you may want to commit
+changes in site/ first (see why at 'COMMON ISSUES' section, issue #2)
+by doing
 
     git commit site/foo/bar.html site/baz.html
 
@@ -318,13 +349,19 @@ site/baz.html: typo.
 """
 
 
+With Git 1.5.0 or newer, you can also commit some files separately by
+running "git add" on them, regardless of whether they are already
+tracked or not, then by runnning "git commit" as usual (without -a).
+
+
+
 * BRINGING YOUR CHANGES TO THE WORLD
 
 If you do not have Git write access to git.sv.gnu.org repository (in
 which case a "git push" will only say that permission is denied), send
 patches to the lilypond-devel list, the Translation meister will take
 care of them. You can create patches like this
-(please do this after committing locally and before pulling):
+(please do this after committing locally and after pulling):
 
     git format-patch web/master
 
@@ -335,7 +372,12 @@ You will get a number of patch files:
     0003-summary-of-patch3.txt 
     ...
 
-Send each of them to lilypond-devel@gnu.org.
+Send each of them you haven't already sent to lilypond-devel@gnu.org.
+If the Translation meister complains your patches don't apply cleanly,
+try this alternative command to make a single clean patch (do it after
+committing local changes and after pulling)
+
+    git diff web/master myweb
 
 
 COMMON ISSUES
