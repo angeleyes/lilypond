@@ -27,7 +27,16 @@ on one day.
 
 !-->
 
-
+<dt><b>Traduction de la documentation en fran&ccedil;ais</b> - <em>25 f&eacute;vrier
+2007</em></dt>
+<dd>
+Les chapitres 1 &agrave; 4 et 6 du manuel de l'utilisateur sont
+d&eacute;sormais traduits, et disponibles en ligne &mdash; <a
+href="@DOC@v2.10/Documentation/user/lilypond/index.fr.html">version
+2.10</a>, <a
+href="@DOC@v2.11/Documentation/user/lilypond/index.fr.html">version
+2.11</a>.  Les traductions sont &eacute;galement incluses dans la <a
+href="install">documentation t&eacute;l&eacute;chargeable</a>.  </dd>
 
 
 <dt><b>LilyPond 2.10.20 and 2.11.20 available</b> - <em>February 25,
@@ -59,13 +68,6 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_19&colspe
 href="install/#2.11">Download</a>)
 
 </dd>
-
-<dt><b>LilyPond 2.11.18 available</b> - <em>February 12,
-2007</em></dt> <dd> This release fixes still more bugs, and included
-singing support through festival contributed by Milan Zamazal. (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_18&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-2.11</a>, <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes
-2.11</a>, <a href="install/#2.11">Download</a>)
 
 
 </dl>
