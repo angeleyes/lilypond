@@ -30,6 +30,21 @@ on one day.
 
 
 
+<dt><b>LilyPond 2.10.20 and 2.11.20 available</b> - <em>February 4,
+2007</em></dt>
+<dd>
+This release fixes many bugs.
+(<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_20&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.11</a>,
+<a
+href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_20&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.10</a>, 
+<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
+href="install/#2.11">Download</a>)
+
+</dd>
+
 <dt><b>LilyPond 2.10.19 and 2.11.19 available</b> - <em>February 4,
 2007</em></dt>
 <dd>
@@ -51,18 +66,6 @@ singing support through festival contributed by Milan Zamazal. (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_18&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.11</a>, <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes
 2.11</a>, <a href="install/#2.11">Download</a>)
-
-
-
-<dt><b>LilyPond  2.11.17 available</b> - <em>February 9,
-2007</em></dt>
-<dd>
-This release fixes still more bugs.
-(<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_17&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-2.11</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
-href="install/#2.11">Download</a>)
 
 
 </dl>
