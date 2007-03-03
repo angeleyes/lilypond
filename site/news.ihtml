@@ -44,10 +44,10 @@ href="install">documentation t&eacute;l&eacute;chargeable</a>.  </dd>
 <dd>
 This release fixes many bugs.
 (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_20&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.11</a>,
 <a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_20&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.10</a>, 
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
@@ -59,10 +59,10 @@ href="install/#2.11">Download</a>)
 <dd>
 This release fixes many bugs.
 (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_19&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_19&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.11</a>,
 <a
-href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_19&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_19&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.10</a>, 
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
