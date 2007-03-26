@@ -1,0 +1,71 @@
+
+# Deny following of symlinks by robots.
+# HTTrack is a known offender.
+# better yet, to redirect this to page that tells adminstrator
+# about brokenness
+
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} httrack [NC]
+RewriteRule ^.*/source/.*$ /please-respect-robots.txt.html [L]
+
+# No recursively deep source links
+RedirectMatch ^(.*/source/).*/source/(.*)$ $1$2
+
+# Help deep linkers with stale urls before out-www transition
+RedirectMatch ^(/doc/(v2.[67]|latest).*)/out-www(.*)$ $1$3
+
+# Help broken case-insensitive browsers?
+#RedirectMatch ^(.*/)(authors|news)(.[.a-z]*html)$ $1$2$3
+
+## UGH breaks documentation binary platform
+#RedirectMatch ^(.*/)(documentation)(/.*)$ $1Documentation$3
+#RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3?warning=your-browser-is-broken [L,QSA]
+RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3
+RedirectMatch ^(.*/)(news)(.[.a-z]*html)$ $1NEWS$3
+
+RedirectMatch ^/music-glossary /doc/v2.10/Documentation/user/music-glossary/index.html
+RedirectMatch ^/tutorial /doc/v2.10/Documentation/user/lilypond/Tutorial.html
+RedirectMatch ^/documentation /doc/v2.10/
+RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
+RedirectMatch ^/wiki	http://afavant.elte.hu/lywiki
+
+# ./web redirects
+RedirectMatch ^/pdflink$ /web/switch/advantages.html
+RedirectMatch ^/$ /web
+RedirectMatch ^/mingit.* /git/binaries/mingw/
+RedirectMatch ^/index /web
+RedirectMatch ^/stable /web
+RedirectMatch ^/development /web
+RedirectMatch ^(/devel.*)$ /web/$1
+RedirectMatch ^(/search.*)$ /web$1
+RedirectMatch ^(/switch.*)$ /web$1
+RedirectMatch ^(/install.*)$ /web$1
+
+# catch renamed download dir
+RedirectMatch ^/web/download(.*)$ /web/install$1
+RedirectMatch ^/web/doawnload(.*)$ /web/install$1
+
+# catch renamed sources dir
+RedirectMatch ^/download/(v[0-9][.][0-9].*)$ /download/sources/$1
+
+# default doc dir
+RedirectMatch ^/doc/*$ /doc/v2.10
+# make attempt at `latest' symlink avoid ^v catch-all doc fix rule below
+RedirectMatch ^/doc//*latest/*(.*)$ /doc/v2.11/$1
+RedirectMatch ^/doc//*development/*(.*)$ /doc/v2.11/$1
+RedirectMatch ^/doc//*stable/*(.*)$ /doc/v2.10/$1
+RedirectMatch ^/doc//*([^v].*)$ /doc/v2.10/$1
+RedirectMatch ^(/Documentation.*)$ /doc/v2.10$1
+
+# fix root calculation: no double slashes
+RedirectMatch ^(.*/)/+(.*)$ $1$2
+
+# latin1 version copied to web and doc/2.x
+AddDefaultCharset utf-8
+AddCharset utf-8 .html
+AddCharset utf-8 .de
+AddCharset utf-8 .en
+AddCharset utf-8 .es
+AddCharset utf-8 .fr
+AddCharset utf-8 .nl
+AddCharset utf-8 .txt
