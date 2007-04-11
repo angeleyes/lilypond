@@ -27,6 +27,29 @@ on one day.
 
 !-->
 
+<dt><b>Traducci&oacute;n de la documentaci&oacute;n al espa&ntilde;ol</b> - 
+    <em>10 de abril de 2007</em>
+</dt>
+<dd>Se han traducido la p&aacute;gina web, el manual de aprendizaje
+    completo y la referencia de la notaci&oacute;n b&aacute;sica, y
+    est&aacute;n disponibles en l&iacute;nea en la <a
+    href="../doc/v2.11/Documentation/user/lilypond/index.es.html">versi&oacute;n
+    2.11</a>.  Estas traducciones est&aacute;n incluidas
+    tambi&eacute;n en los <a href="install">paquetes para
+    descargar</a>.
+</dd>
+
+<dt><b>&Uuml;bersetzung der Dokumentation</b> - <em>10. April
+2007</em></dt>
+<dd>
+Die Kapitel 1-5 (der Abschnitt für Anf&auml;nger) des 
+LilyPond-Benutzerhandbuchs
+sind auf deutsch &uuml;bersetzt &mdash; sie sind erh&auml;ltlich f&uuml;r
+die <a href="@DOC@v2.11/Documentation/user/lilypond/index.de.html">Version
+2.11</a> online und <a
+href="install/#2.11">integriert in das Installationspaket</a>.
+</dd>
+
 <dt><b>LilyPond 2.11.22 available</b> - <em>April 10, 2007</em></dt>
 <dd> This release has updates of the dot collision code.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_22&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
@@ -43,33 +66,6 @@ This release has some documentation updates.
 (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_21&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 </a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
-href="install/#2.11">Download</a>)
-
-</dd>
-
-<dt><b>Traduction de la documentation en fran&ccedil;ais</b> - <em>25 f&eacute;vrier
-2007</em></dt>
-<dd>
-Les chapitres 1 &agrave; 4 et 6 du manuel de l'utilisateur sont
-d&eacute;sormais traduits, et disponibles en ligne &mdash; <a
-href="@DOC@v2.10/Documentation/user/lilypond/index.fr.html">version
-2.10</a>, <a
-href="@DOC@v2.11/Documentation/user/lilypond/index.fr.html">version
-2.11</a>.  Les traductions sont &eacute;galement incluses dans la <a
-href="install">documentation t&eacute;l&eacute;chargeable</a>.  </dd>
-
-
-<dt><b>LilyPond 2.10.20 and 2.11.20 available</b> - <em>February 25,
-2007</em></dt>
-<dd>
-This release fixes many bugs.
-(<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-2.11</a>,
-<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-2.10</a>, 
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
 href="install/#2.11">Download</a>)
 
