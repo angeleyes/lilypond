@@ -348,7 +348,11 @@ def format_page (html, file_name, lang):
     for (p, (v, url)) in version_builds.items():
         page  = re.sub ('@' + p + '-VERSION@', v, page)
         page  = re.sub ('@' + p + '-URL@', url, page)
-    
+
+    for v in ['v2.11', 'v2.10']:
+        track = r'''onClick="javascript:urchinTracker ('/download/%s');"''' % v
+        page = re.sub ('@CLICKREG_%s@' % v, track, page)
+        
     return page
 
 
