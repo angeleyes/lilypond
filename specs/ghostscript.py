@@ -14,7 +14,8 @@ class Ghostscript (targetpackage.TargetBuildSpec):
             source='http://svn.ghostscript.com:8080/ghostscript',
             branch='trunk',
             module='gs',
-            revision='7665')
+            ## 8.56
+            revision='7881')
 
         ## ugh: nested, with self shadow?
         def version_from_VERSION (self):
