@@ -30,7 +30,7 @@
     <td>-</td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.11-linux-x86-URL@");
 	<br>
 	</strong>
@@ -52,7 +52,7 @@
     <td>-</td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.11-linux-64-URL@");
 	<br>
 	</strong>
@@ -75,7 +75,7 @@
     <td>-</td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.11-linux-ppc-URL@");
 	<br>
 	</strong>
@@ -107,7 +107,7 @@
     </td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>the installer</a>",
+	_("Download <a href='%s'>the installer</a>",
 	"@v2.11-freebsd-x86-URL@")
 	<br>
 	</strong>
@@ -127,7 +127,7 @@
     </td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>%s</a>",
+	_("Download <a href='%s'>%s</a>",
 	  "@v2.11-darwin-x86-URL@",
  	  "LilyPond")
       </strong>
@@ -148,7 +148,7 @@
     </td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>%s</a>",
+	_("Download <a href='%s'>%s</a>",
 	  "@v2.11-darwin-ppc-URL@",
  	  "LilyPond")
       </strong>
@@ -167,7 +167,7 @@
     </td>
     <td>
       <strong>
-	_("<a @CLICKREG_v2.11@ href='%s'>Install</a>",
+	_("<a href='%s'>Install</a>",
  	  "@v2.11-mingw-URL@")
       </strong>
     </td>
@@ -190,7 +190,7 @@
     <td></td>
     <td>
       <strong>
-	_("Download <a @CLICKREG_v2.11@ href='%s'>tarball</a>",
+	_("Download <a href='%s'>tarball</a>",
 	"@v2.11-documentation-URL@")
       </strong>
     </td>

@@ -349,10 +349,16 @@ def format_page (html, file_name, lang):
         page  = re.sub ('@' + p + '-VERSION@', v, page)
         page  = re.sub ('@' + p + '-URL@', url, page)
 
-    for v in ['v2.11', 'v2.10']:
-        track = r'''onClick="javascript:urchinTracker ('/download/%s');"''' % v
-        page = re.sub ('@CLICKREG_%s@' % v, track, page)
+
+    def sub_download_link (m):
+        version = m.group (2)
+        version = re.sub ('([0-9]+)[.]([0-9]+)[.].*', r'\1.\2', version)
+        track = r'''onClick="javascript:urchinTracker ('/download/v%s');"''' % version
+
+        return track + ' ' +  m.group (0)
         
+    page = re.sub  ('href=[\'"]http://([^ ]*)/lilypond-([0-9.]+)-',
+                    sub_download_link, page)
     return page
 
 
