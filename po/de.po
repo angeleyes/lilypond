@@ -123,7 +123,7 @@ msgstr "Artikulations-Zeichen"
 
 #: site/graphics/annotate-example-2.svg:191
 msgid "Add -es for flat, -is for sharp"
-msgstr "-es f&uuml;r ein b und -is f&uuml;r ein Kreuz"
+msgstr "-es für ein b und -is für ein Kreuz"
 
 #: site/graphics/annotate-example-2.svg:201
 msgid "Enclose pitches in &lt; &gt; for chords"
