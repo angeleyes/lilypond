@@ -86,7 +86,7 @@ TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
 
-all: scripts linktree update-versions menuify $(LANGUAGES) apache-1.3.x-fixup
+all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
 
 update-versions:
 	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url $(DOWNLOAD_URL)
