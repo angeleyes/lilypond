@@ -25,7 +25,7 @@ platforms = ['linux-x86',
 #             'freebsd6-x86',
 #             'linux-arm',
              'mingw',
-             'cygwin',
+#             'cygwin',
              ]
 
 build_platform = {
@@ -78,8 +78,10 @@ def upload_binaries (repo, version, version_db):
 
     src_dests = []
     cmds = ['chgrp -R lilypond uploads/lilypond*',
-            "chmod -R g+rw uploads/lilypond*",
-            'chmod 4775 `find uploads/cygwin/release -type d`']
+            "chmod -R g+rw uploads/lilypond*"]
+
+    if 'cygwin' in platforms:
+        cmds += ['chmod 4775 `find uploads/cygwin/release -type d`']
 
 
     d = globals ().copy ()
