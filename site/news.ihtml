@@ -31,7 +31,7 @@ on one day.
 2007</em></dt> <dd> This has lots of bugfixes.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.11</a>, <a
-href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.10</a>, <a href="install/#2.11">Download</a>)
 
 </dd>
@@ -57,27 +57,6 @@ sind auf deutsch &uuml;bersetzt &mdash; sie sind erh&auml;ltlich f&uuml;r
 die <a href="@DOC@v2.11/Documentation/user/lilypond/index.de.html">Version
 2.11</a> online und <a
 href="install/#2.11">integriert in das Installationspaket</a>.
-</dd>
-
-<dt><b>LilyPond 2.11.22 available</b> - <em>April 10, 2007</em></dt>
-<dd> This release has updates of the dot collision code.  (<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_22&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
-href="install/#2.11">Download</a>)
-
-</dd>
-
-<dt><b>LilyPond 2.11.21 available</b> - <em>March 24,
-2007</em></dt>
-<dd>
-This release has some documentation updates.
-(<a
-href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_21&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-</a>,
-<a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes 2.11</a>, <a
-href="install/#2.11">Download</a>)
-
 </dd>
 
 
