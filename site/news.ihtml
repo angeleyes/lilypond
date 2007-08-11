@@ -27,6 +27,18 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.10.29 and 2.11.29 available</b> - <em>August 11,
+2007</em></dt>
+
+<dd> Release 2.11.29 is now available. 2.10.29 has a few small fixes.
+2.11.29 has several bugfixes, among others in the new spacing code,
+and lots of updates for the translations.
+(<a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_29&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.10</a>, <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_29&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
+2.11</a>, <a href="install/#2.11">Download</a>)
+</dd>
+
+
 <dt><b>LilyPond 2.11.28 for FreeBSD x86_64</b> - <em>August 10,
 2007</em></dt>
 
