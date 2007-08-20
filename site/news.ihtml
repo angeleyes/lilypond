@@ -27,6 +27,14 @@ on one day.
 
 !-->
 
+<dt><b>LilyPond 2.11.30 available</b> - <em>August 20,
+2007</em></dt>
+
+<dd> Release 2.11.30 is now available. It has various bugfixes among
+ others in the new spacing code, MusicXML import and lots of updates
+ for the translations.  (<a
+ href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_30&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>) </dd>
+
 <dt><b>LilyPond 2.10.29 and 2.11.29 available</b> - <em>August 11,
 2007</em></dt>
 
@@ -38,7 +46,6 @@ and lots of updates for the translations.
 2.11</a>, <a href="install/#2.11">Download</a>)
 </dd>
 
-
 <dt><b>LilyPond 2.11.28 for FreeBSD x86_64</b> - <em>August 10,
 2007</em></dt>
 
@@ -46,17 +53,6 @@ and lots of updates for the translations.
   FreeBSD x86_64.  Download
 <a href="http://lilypond.org/download/binaries/freebsd-64/lilypond-2.11.28-1.freebsd-64.sh">the installer</a> and 
 do <em>sh lilypond-2.11.28-1.freebsd-64.sh</em> in a command window.
-</dd>
-
-<dt><b>LilyPond 2.11.28 available</b> - <em>July 25,
-2007</em></dt>
-
-<dd> Release 2.11.28 has several updates to the manual and its
-translations,  an plethora of bugfixes and a complete cleanup of the
-spacing engine code. 
-(<a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_28&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-2.11</a>, <a href="install/#2.11">Download</a>)
-
 </dd>
 
 
