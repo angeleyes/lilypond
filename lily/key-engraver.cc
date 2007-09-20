@@ -15,6 +15,7 @@
 #include "protected-scm.hh"
 #include "staff-symbol-referencer.hh"
 #include "stream-event.hh"
+#include "key-entry.hh"
 
 #include "translator.icc"
 
@@ -72,35 +73,55 @@ Key_engraver::create_key (bool is_default)
 	   || key == SCM_EOL)
 	  && !scm_is_eq (last, key))
 	{
-	  SCM restore = SCM_EOL;
-	  SCM *tail = &restore;
+	  SCM restore_scm = SCM_EOL;
+	  SCM *restore_tail = &restore_scm;
 	  for (SCM s = last; scm_is_pair (s); s = scm_cdr (s))
 	    {
-	      SCM new_alter_pair = scm_assoc (scm_caar (s), key);
-	      Rational old_alter = robust_scm2rational (scm_cdar (s), 0);
-	      if (new_alter_pair == SCM_BOOL_F
-		  || extranatural
-		  && (ly_scm2rational (scm_cdr (new_alter_pair)) - old_alter)*old_alter < Rational (0))
+	      Key_entry *old_entry = Key_entry::unsmob (scm_car (s));
+	      Key_entry *new_entry = NULL;
+	      for (SCM t = key; scm_is_pair (t); t = scm_cdr (t))
 		{
-		  *tail = scm_cons (scm_car (s), *tail);
-		  tail = SCM_CDRLOC (*tail);
+		  Key_entry *entry = Key_entry::unsmob (scm_car (t));
+		  if ( old_entry->get_notename () == entry -> get_notename ())
+		    {
+		      new_entry = entry;
+		      break;
+		    }
+		}
+	      Rational old_alter = old_entry->get_alteration ();
+	      Rational new_alter = new_entry->get_alteration ();
+	      SCM old_alterpair = old_entry -> to_name_alter_pair ();
+	      if (new_entry == NULL
+		  || extranatural
+		  && (new_alter - old_alter)*old_alter < Rational (0))
+		{
+		  *restore_tail = scm_cons (old_alterpair, *restore_tail);
+		  restore_tail = SCM_CDRLOC (*restore_tail);
 		}
 	    }
 
-	  if (scm_is_pair (restore))
+	  if (scm_is_pair (restore_scm))
 	    {
 	      cancellation_ = make_item ("KeyCancellation",
 					 key_event_
-					 ? key_event_->self_scm () : SCM_EOL);
+					 ? key_event_ -> self_scm () : SCM_EOL);
 	      
-	      cancellation_->set_property ("alteration-alist", restore);
+	      cancellation_->set_property ("alteration-alist", restore_scm);
 	      cancellation_->set_property ("c0-position",
 					   get_property ("middleCPosition"));
 	    }
 	}
 
-      item_->set_property ("alteration-alist", key);
+      SCM key_scm = scm_list_copy (key);
+      for (SCM s = key_scm; scm_is_pair (s); s = scm_cdr (s))
+	{
+	  Key_entry *entry = Key_entry::unsmob (scm_car (s));
+	  *SCM_CARLOC (s) = entry -> to_name_alter_pair ();
+	}
+
+      item_->set_property ("alteration-alist", key_scm);
     }
+
 
   if (!is_default)
     {
@@ -159,7 +180,7 @@ Key_engraver::read_event (Stream_event const *r)
   if (!scm_is_pair (p))
     return;
 
-  SCM accs = SCM_EOL;
+  SCM entries = SCM_EOL;
 
   SCM alist = scm_list_copy (p);
   SCM order = get_property ("keyAlterationOrder");
@@ -170,7 +191,8 @@ Key_engraver::read_event (Stream_event const *r)
       
       if (scm_is_pair (head))
 	{
-	  accs = scm_cons (scm_car (head), accs);
+	  SCM entry_scm = Key_entry(scm_car (head)). smobbed_copy ();
+	  entries = scm_cons (entry_scm, entries);
 	  alist = scm_delete_x (scm_car (head), alist);
 	}
     }
@@ -182,14 +204,15 @@ Key_engraver::read_event (Stream_event const *r)
 	if (ly_scm2rational (scm_cdar (s)))
 	  {
 	    warn = true;
-	    accs = scm_cons (scm_car (s), accs);
+	    SCM entry_scm = Key_entry(scm_car (s)). smobbed_copy ();
+	    entries = scm_cons (entry_scm, entries);
 	  }
 
       if (warn)
 	r->origin ()->warning ("No ordering for key signature alterations");      
     }
   
-  context ()->set_property ("keySignature", accs);
+  context ()->set_property ("keySignature", entries);
   context ()->set_property ("tonic",
 			    r->get_property ("tonic"));
 }

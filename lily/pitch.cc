@@ -26,6 +26,9 @@ Pitch::Pitch (int o, int n, Rational a)
 }
 
 /* FIXME: why is octave == 0 and default not middleC ? */
+/* Because otherwise Pitch () would not be a "zero element" -
+   e.g. implementation of negated () would not work. -rz ! */
+
 Pitch::Pitch ()
 {
   notename_ = 0;

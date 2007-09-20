@@ -273,9 +273,8 @@ around for.")
 alterations should be printed.  The format is @code{(@var{step}
 . @var{alter})}, where @var{step} is a number from 0 to@tie{}6 and
 @var{alter} from -2 (sharp) to 2 (flat).")
-     (keySignature ,list? "The current key signature.  This is an alist
-containing @code{(@var{step} . @var{alter})} or @code{((@var{octave} .
-@var{step}) . @var{alter})},  where @var{step} is a number in the range
+     (keySignature ,list? "The current key signature.  This is a list
+containing objects of type @code{Key_entry}.  @var{step} is a number in the range
 0 to@tie{}6 and @var{alter} a fraction, denoting alteration.  For
 alterations, use symbols, e.g. @code{keySignature = #`((6 . ,FLAT))}.")
 
@@ -538,9 +537,9 @@ instrument name to.")
      (lastKeySignature ,list? "Last key signature before a key
 signature change.")
      (localKeySignature ,list? "The key signature at this point in the
-measure.  The format is the same as for @code{keySignature}, but can
-also contain @code{((@var{octave} . @var{name}) . (@var{alter} .
-@var{barnumber}))} pairs.  It is reset at every bar line.")
+measure.  The format is the same as for @code{keySignature} but contains also
+for each note information about when (which barnumber and measureposition)
+it was last altered.")
 
 
      (melismaBusy ,boolean? "Signifies whether a melisma is active.

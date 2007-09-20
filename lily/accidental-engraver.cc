@@ -15,6 +15,7 @@
 #include "engraver.hh"
 #include "international.hh"
 #include "pitch.hh"
+#include "duration.hh"
 #include "protected-scm.hh"
 #include "rhythmic-head.hh"
 #include "separation-item.hh"
@@ -22,6 +23,9 @@
 #include "stream-event.hh"
 #include "tie.hh"
 #include "warn.hh"
+#include "key-entry.hh"
+
+#include <iostream>
 
 #include "translator.icc"
 
@@ -136,35 +140,13 @@ Accidental_engraver::update_local_key_signature (SCM new_sig)
     Return number of accidentals (0, 1 or 2).  */
 
 static bool
-recent_enough (int bar_number, SCM alteration_def, SCM laziness)
+recent_enough (int bar_number, Key_entry *entry, SCM laziness)
 {
-  if (scm_is_number (alteration_def)
+  if (!entry->has_position ()
       || laziness == SCM_BOOL_T)
     return true;
 
-  return (bar_number <= scm_to_int (scm_cdr (alteration_def)) + scm_to_int (laziness));
-}
-
-static Rational
-extract_alteration (SCM alteration_def)
-{
-  if (scm_is_number (alteration_def))
-    return ly_scm2rational (alteration_def);
-  else if (scm_is_pair (alteration_def))
-    return ly_scm2rational (scm_car (alteration_def));
-  else if (alteration_def == SCM_BOOL_F)
-    return Rational (0);
-  else
-    assert (0);
-  return Rational (0);
-}
-
-bool
-is_tied (SCM alteration_def)
-{
-  SCM tied = ly_symbol2scm ("tied");
-  return (alteration_def == tied
-	  || (scm_is_pair (alteration_def) && scm_car (alteration_def) == tied));
+  return (bar_number <= entry->get_bar_number() + scm_to_int (laziness));
 }
 
 struct Accidental_result
@@ -177,8 +159,8 @@ struct Accidental_result
   }
 
   int score () const {
-    return need_acc ? 1 : 0
-      + need_restore ? 1 : 0;
+    return (need_acc ? 1 : 0)
+      + (need_restore ? 1 : 0);
   }
 };
 
@@ -186,57 +168,75 @@ Accidental_result
 check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 			       int bar_number, SCM laziness, bool ignore_octave)
 {
+  cerr << "check against sig\n";
   Accidental_result result;
   int n = pitch.get_notename ();
   int o = pitch.get_octave ();
+  Key_entry dummy_entry;
 
-  SCM previous_alteration = SCM_BOOL_F;
+  Key_entry * previous_entry = NULL;
 
-  SCM from_same_octave = ly_assoc_get (scm_cons (scm_from_int (o),
-						 scm_from_int (n)), key_signature, SCM_BOOL_F);
-  SCM from_key_signature = ly_assoc_get (scm_from_int (n), key_signature, SCM_BOOL_F);
-  SCM from_other_octaves = SCM_BOOL_F;
+  Key_entry * from_same_octave = NULL;
+  Key_entry * from_key_signature = NULL;
+  Key_entry * from_other_octaves = NULL;
   for (SCM s = key_signature; scm_is_pair (s); s = scm_cdr (s))
     {
-      SCM entry = scm_car (s);
-      if (scm_is_pair (scm_car (entry))
-	  && scm_cdar (entry) == scm_from_int (n))
+      Key_entry * entry = Key_entry::unsmob(scm_car (s));
+      if(n == entry->get_notename ())
 	{
-	  from_other_octaves = scm_cdr (entry);
-	  break;
+	  if (from_other_octaves == NULL)
+	    {
+	      from_other_octaves = entry;
+	    }
+	  if (from_same_octave == NULL &&
+	      (!entry->has_octave() || entry->get_octave () == o))
+	    {
+	      from_same_octave = entry;
+	    }
+	  if (from_key_signature == NULL &&
+	      !entry->has_position())
+	    {
+	      from_key_signature = entry;
+	    }
 	}
     }
+  cerr << "A\n";
 
   if (!ignore_octave
-      && from_same_octave != SCM_BOOL_F
+      && from_same_octave != NULL
       && recent_enough (bar_number, from_same_octave, laziness))
-    previous_alteration = from_same_octave;
+    previous_entry = from_same_octave;
   else if (ignore_octave
-	   && from_other_octaves != SCM_BOOL_F
+	   && from_other_octaves != NULL
 	   && recent_enough (bar_number, from_other_octaves, laziness))
-    previous_alteration = from_other_octaves;
-  else if (from_key_signature != SCM_BOOL_F)
-    previous_alteration = from_key_signature;
+    previous_entry = from_other_octaves;
+  else if (from_key_signature != NULL)
+    previous_entry = from_key_signature;
+  else
+    previous_entry = &dummy_entry;
+  cerr << "B\n";
 
-  if (is_tied (previous_alteration))
+  if (previous_entry->is_tied())
     {
+      cerr << "C\n";
       result.need_acc = true;
     }
   else
     {
-      Rational prev = extract_alteration (previous_alteration);
+      cerr << "D\n";
+      Rational prev = previous_entry -> get_alteration ();
       Rational alter = pitch.get_alteration ();
 
       if (alter != prev)
         {
 	  result.need_acc = true;
-	  if (alter.sign ()
-	      && (alter.abs () < prev.abs ()
-		  || (prev * alter).sign () < 0))
+	  if (alter.sign () &&
+	      (((alter - prev) * prev).sign () < 0))
 	    result.need_restore = true;
 	}
     }
 
+  cerr << "done\n";
   return result;
 }
 
@@ -245,6 +245,7 @@ Accidental_result
 check_pitch_against_rules (Pitch const &pitch, Context *origin,
 				 SCM rules, int bar_number)
 {
+  cerr << "check against rules\n";
   Accidental_result result;
   if (scm_is_pair (rules) && !scm_is_symbol (scm_car (rules)))
     warning (_f ("accidental typesetting list must begin with context-name: %s",
@@ -315,6 +316,7 @@ Accidental_engraver::get_bar_number ()
 void
 Accidental_engraver::process_acknowledged ()
 {
+  cerr << "process\n";
   if (accidentals_.size () && !accidentals_.back ().done_)
     {
       SCM accidental_rules = get_property ("autoAccidentals");
@@ -333,6 +335,11 @@ Accidental_engraver::process_acknowledged ()
 	  Pitch *pitch = unsmob_pitch (note->get_property ("pitch"));
 	  if (!pitch)
 	    continue;
+
+	  /*
+	  Duration *dur = unsmob_duration (note->get_property ("duration"));
+	  cerr << "duration: " << dur->to_string() << endl;
+	  */
 
 	  Accidental_result acc = check_pitch_against_rules (*pitch, origin,
 							     accidental_rules, barnum);
@@ -457,6 +464,7 @@ Accidental_engraver::finalize ()
 void
 Accidental_engraver::stop_translation_timestep ()
 {
+  cerr << "stt\n";
   for (vsize j = ties_.size (); j--;)
     {
       Grob *r = Tie::head (ties_[j], RIGHT);
@@ -472,7 +480,7 @@ Accidental_engraver::stop_translation_timestep ()
 	    break;
 	  }
     }
-
+  cerr << "X\n";
   for (vsize i = accidentals_.size (); i--;)
     {
       int barnum = get_bar_number ();
@@ -487,43 +495,59 @@ Accidental_engraver::stop_translation_timestep ()
       int n = pitch->get_notename ();
       int o = pitch->get_octave ();
       Rational a = pitch->get_alteration ();
-      SCM key = scm_cons (scm_from_int (o), scm_from_int (n));
+      Duration *dur = unsmob_duration (note->get_property ("duration"));
+
+      SCM smp = get_property ("measurePosition");
+      Moment mp = robust_scm2moment (smp, Moment (0));
+      /*
+	TODO: Check this. Is this correct? -rz : 
+       */
+      Moment end_mp = mp.grace_part_ < Rational(0)
+	? Moment(mp.main_part_, mp.grace_part_+dur->get_length())
+	: Moment(mp.main_part_+dur->get_length(), mp.grace_part_);
 
       SCM localsig = SCM_EOL;
       while (origin
 	     && origin->where_defined (ly_symbol2scm ("localKeySignature"), &localsig))
 	{
-	  bool change = false;
+	  SCM entry_scm;
 	  if (accidentals_[i].tied_)
 	    {
 	      /*
 		Remember an alteration that is different both from
 		that of the tied note and of the key signature.
 	      */
-	      localsig = ly_assoc_prepend_x (localsig, key, scm_cons (ly_symbol2scm ("tied"),
-								      scm_from_int (barnum)));
-
-	      change = true;
+	      entry_scm = Key_entry (n, o, barnum, end_mp).smobbed_copy();
 	    }
 	  else
 	    {
-	      /*
-		not really really correct if there are more than one
-		noteheads with the same notename.
-	      */
-	      localsig = ly_assoc_prepend_x (localsig, key,
-					   scm_cons (ly_rational2scm (a),
-						     scm_from_int (barnum)));
-	      change = true;
+	      entry_scm = Key_entry (n, a, o, barnum, end_mp).smobbed_copy();
 	    }
+      
+	  /*
+	    not really really correct if there are more than one
+	    noteheads with the same notename.
+	  */
+	  localsig = scm_cons(entry_scm, localsig);
 
-	  if (change)
-	    origin->set_property ("localKeySignature", localsig);
+	  /* delete old key_entry with same (n,o) from localsig */
+	  for (SCM s = localsig ; scm_is_pair (scm_cdr (s)) ; s = scm_cdr(s))
+	    {
+	      Key_entry *entry = Key_entry::unsmob(scm_cadr(s));
+	      if (entry->get_notename () == n
+		  && entry->has_octave() && entry->get_octave () == o)
+		{
+		  scm_set_cdr_x(s, scm_cddr(s));
+		  break;
+		}
+	    }	  
+
+	  origin->set_property ("localKeySignature", localsig);
 
 	  origin = origin->get_parent_context ();
 	}
     }
-
+  cerr << "Y\n";
   if (accidental_placement_)
     for (vsize i = 0; i < note_columns_.size (); i++)
       Separation_item::add_conditional_item (note_columns_[i], accidental_placement_);
@@ -537,6 +561,7 @@ Accidental_engraver::stop_translation_timestep ()
 void
 Accidental_engraver::acknowledge_rhythmic_head (Grob_info info)
 {
+  cerr << "ack head\n";
   Stream_event *note = info.event_cause ();
   if (note
       && (note->in_event_class ("note-event")
@@ -616,6 +641,6 @@ ADD_TRANSLATOR (Accidental_engraver,
 		"internalBarNumber "
 		"extraNatural "
 		"harmonicAccidentals "
-		"localKeySignature ",
+		"keySignature ",
 		"localKeySignature "
 		);
