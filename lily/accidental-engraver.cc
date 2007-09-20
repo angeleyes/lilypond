@@ -4,7 +4,7 @@
   source file of the GNU LilyPond music typesetter
 
   (c) 1997--2007 Han-Wen Nienhuys <hanwen@xs4all.nl>
-  Modified 2001--2002 by Rune Zedeler <rz@daimi.au.dk>
+  Modified 2001--2007 by Rune Zedeler <rz@daimi.au.dk>
 */
 
 #include "accidental-placement.hh"
@@ -24,8 +24,6 @@
 #include "tie.hh"
 #include "warn.hh"
 #include "key-entry.hh"
-
-#include <iostream>
 
 #include "translator.icc"
 
@@ -168,7 +166,6 @@ Accidental_result
 check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 			       int bar_number, SCM laziness, bool ignore_octave)
 {
-  cerr << "check against sig\n";
   Accidental_result result;
   int n = pitch.get_notename ();
   int o = pitch.get_octave ();
@@ -200,7 +197,6 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 	    }
 	}
     }
-  cerr << "A\n";
 
   if (!ignore_octave
       && from_same_octave != NULL
@@ -214,16 +210,13 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
     previous_entry = from_key_signature;
   else
     previous_entry = &dummy_entry;
-  cerr << "B\n";
 
   if (previous_entry->is_tied())
     {
-      cerr << "C\n";
       result.need_acc = true;
     }
   else
     {
-      cerr << "D\n";
       Rational prev = previous_entry -> get_alteration ();
       Rational alter = pitch.get_alteration ();
 
@@ -236,7 +229,6 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 	}
     }
 
-  cerr << "done\n";
   return result;
 }
 
@@ -245,7 +237,6 @@ Accidental_result
 check_pitch_against_rules (Pitch const &pitch, Context *origin,
 				 SCM rules, int bar_number)
 {
-  cerr << "check against rules\n";
   Accidental_result result;
   if (scm_is_pair (rules) && !scm_is_symbol (scm_car (rules)))
     warning (_f ("accidental typesetting list must begin with context-name: %s",
@@ -316,7 +307,6 @@ Accidental_engraver::get_bar_number ()
 void
 Accidental_engraver::process_acknowledged ()
 {
-  cerr << "process\n";
   if (accidentals_.size () && !accidentals_.back ().done_)
     {
       SCM accidental_rules = get_property ("autoAccidentals");
@@ -335,11 +325,6 @@ Accidental_engraver::process_acknowledged ()
 	  Pitch *pitch = unsmob_pitch (note->get_property ("pitch"));
 	  if (!pitch)
 	    continue;
-
-	  /*
-	  Duration *dur = unsmob_duration (note->get_property ("duration"));
-	  cerr << "duration: " << dur->to_string() << endl;
-	  */
 
 	  Accidental_result acc = check_pitch_against_rules (*pitch, origin,
 							     accidental_rules, barnum);
@@ -464,7 +449,6 @@ Accidental_engraver::finalize ()
 void
 Accidental_engraver::stop_translation_timestep ()
 {
-  cerr << "stt\n";
   for (vsize j = ties_.size (); j--;)
     {
       Grob *r = Tie::head (ties_[j], RIGHT);
@@ -480,7 +464,6 @@ Accidental_engraver::stop_translation_timestep ()
 	    break;
 	  }
     }
-  cerr << "X\n";
   for (vsize i = accidentals_.size (); i--;)
     {
       int barnum = get_bar_number ();
@@ -547,7 +530,6 @@ Accidental_engraver::stop_translation_timestep ()
 	  origin = origin->get_parent_context ();
 	}
     }
-  cerr << "Y\n";
   if (accidental_placement_)
     for (vsize i = 0; i < note_columns_.size (); i++)
       Separation_item::add_conditional_item (note_columns_[i], accidental_placement_);
@@ -561,7 +543,6 @@ Accidental_engraver::stop_translation_timestep ()
 void
 Accidental_engraver::acknowledge_rhythmic_head (Grob_info info)
 {
-  cerr << "ack head\n";
   Stream_event *note = info.event_cause ();
   if (note
       && (note->in_event_class ("note-event")
