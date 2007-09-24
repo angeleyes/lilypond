@@ -1,21 +1,19 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: 0f7f5743a43e7522782075c29a6bde37ff00bd02
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
     in README for details.
 !-->
 
-<h1>LilyPond curso intensivo</h1>
+<h1>Curso intensivo de LilyPond</h1>
 
-<h2>Captura de pantalla</h2> 
+<h2>Captura de pantalla</h2>
 
 <p>
-  LilyPond es un sistema de <em>lotes</em>: se corre sobre ficheros de texto 
-  que contienen las notas. La salida resultante se podrá visualizar en pantalla 
-  o imprimir. Una captura de pantalla del uso práctico podría verse así  
+  LilyPond es un sistema de <em>lotes</em>: se ejecuta sobre un fichero de texto
+  que contiene las notas.  La salida resultante se podrá visualizar en la pantalla
+  o imprimirse.  La captura de pantalla de un caso de utilización real podría tener este aspecto:
 </p>
 
 <p align="center">
@@ -24,25 +22,25 @@
   </a>
 </p>
 <p align="center">
-  <em>(clic para agrandar)</em>
+  <em>(haga clic para agrandar)</em>
 </p>
 
 
 <h2>Es tan fácil como A B C</h2>
 
-Las notas se escriben con letras y números. Los comandos especiales 
-pueden insertarse con diagonales invertidas "\".
+Las notas se codifican mediante letras y números. Las instrucciones especiales
+se escriben mediante barras invertidas «\».
 
 <p align="center">
   <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png"
        alt="annotate-example-1">
   <br>
-  <img src="@IMAGES@example-1.png" alt="example-1"> 
+  <img src="@IMAGES@example-1.png" alt="example-1">
 
 <p>
-  Las alteraciones se hacen con diferentes nombres: añada -is para sostenido, y  
-  -es para bemol (estos son los nombres Daneses, pero puede usar otros idiomas). 
-  LilyPond sabrá cómo colocar los accidentes.
+  Las alteraciones se hacen con nombres diferentes: añada -is para el sostenido, y
+  -es para el bemol (estos son los nombres de las notas en el idioma danés, pero puede usar otros idiomas).
+  LilyPond sabrá cómo colocar las alteraciones accidentales.
 </p>
 
 <p align="center">
@@ -55,7 +53,7 @@ pueden insertarse con diagonales invertidas "\".
 <h2>Música Pop</h2>
 
 <p>
- Mezcle acordes y letra juntos para obtener un cifrado o una partitura guía: 
+ Combine los acordes con la letra para obtener una hoja guía de acordes o 'lead sheet':
 </p>
 
 <p align="center">
@@ -65,12 +63,13 @@ pueden insertarse con diagonales invertidas "\".
   <img src="@IMAGES@example-lead.png" alt="example-lead">
 </p>
 
-<h2>Partes orquestales</h2>
+<h2>Particellas de orquesta</h2>
 
 <p>
-  <a name="orchestral"></a> El fichero de entrada contiene las notas de una pieza. 
-  La partitura y las partes individuales (partichella) se pueden obtener de un sólo 
-  archivo. Por lo que si altera una nota, se reflejará tanto en la partitura como en la partichella. Para reutilizar las notas, se asigna la música a una variable:
+  <a name="orchestral"></a> El fichero de entrada contiene las notas de una pieza.
+  La partitura y las particellas se obtienen de un archivo de entrada único.
+  Por ello, al modificar una nota, el cambio se reflejará tanto en la partitura como en la particella.
+  Para reutilizar las notas, se asigna la música a una variable:
 </p>
 
 <p align="center">
@@ -80,7 +79,7 @@ pueden insertarse con diagonales invertidas "\".
 </p>
 
 <p>
-  Esta variable se podrá usar en una parte individual (aquí transportada, con silencios multi-compás condensados):
+  Esta variable se podrá usar en una particella individual (aquí transportada, con silencios multi-compás condensados):
 </p>
 
 <p align="center">
@@ -102,7 +101,7 @@ pueden insertarse con diagonales invertidas "\".
 </p>
 
 
-<h2>Aprendiendo más</h2>
+<h2>Aprender más</h2>
 
-<a href="../install">Descargue</a> LilyPond y pruebe el 
+<a href="../install">Descargue</a> LilyPond y pruebe el
 <a href="@DOC@stable/Documentation/user/lilypond/Tutorial">tutorial</a>.

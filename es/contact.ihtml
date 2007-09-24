@@ -1,7 +1,5 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: 0f7f5743a43e7522782075c29a6bde37ff00bd02
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -11,28 +9,28 @@
 <dl>
   <dt>¿Preguntas o comentarios?</dt>
   <dd>
-<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">Envíe</a> 
-su comentario.
-<p> Ésta es la lista de correo 
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">Envíe</a> su comentario.
+<p>Ésta es la lista de correo 
  <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>.
     (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">información</a>,
-    <a href="http://mail.gnu.org/archive/html/lilypond-user/">archivo</a>)
+    <a href="http://mail.gnu.org/archive/html/lilypond-user/">archivos</a>)
     <br>
   </dd>
 
-  <dt>¿Reporte de fallo?</dt>
+  <dt>¿Informar de un fallo?</dt>
   <dd>
-<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Envíe</a> 
-su reporte de fallo.
-<p>
-Ésta es la lista de correo
+<a href="http://lilypond.org/web/devel/participating/bugs">Cómo remitir un informe de fallo</a>.
+
+
+	<p>
+	Los informes de fallos se envían a la lista de correo
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
     (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">información</a>,
-    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archivo</a>)
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archivos</a>)
     <br>
   </dd>
 
-  <dt>¿Desea ser notificado de nuevas versiones?</dt>
+  <dt>¿Desea que le avisemos sobre las versiones nuevas?</dt>
   <dd>
 <a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">
 Subscríbase</a> a nuestros anuncios.
@@ -40,18 +38,18 @@ Subscríbase</a> a nuestros anuncios.
 <p>Ésta es la lista de correo 
 <tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt> 
  (<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">información</a>,
-    <a href="http://mail.gnu.org/archive/html/info-lilypond/">archivo</a>)
+    <a href="http://mail.gnu.org/archive/html/info-lilypond/">archivos</a>)
   </dd>
 
   
   <dt>¿Comentarios sobre estas páginas?</dt>
   <dd>
-<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Envíe</a> su reporte de fallo.
+<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">Envíe</a> su informe de fallo.
 <p>
 Ésta es la lista de correo 
     <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt> 
     (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">información</a>,
-    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archivo</a>) 
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archivos</a>) 
   </dd>
 
   
@@ -61,14 +59,14 @@ Subscríbase</a> a nuestros anuncios.
 Ésta es la lista de correo 
 <tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>.
     (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">información</a>,
-    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">archivo</a>)
+    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">archivos</a>)
   </dd>
 
   <dt>
     ¿Contactar directamente con los autores?</dt>
     <dd>
-    Vea la 
+    Consulte la 
     <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">lista de autores</a>.
-    (<em>Contacte directamente con los autores para comunicación personal</em>)
+    (<em>Contacte directamente con los autores sólo para comunicación estrictamente personal</em>)
   </dd>
 </dl>
