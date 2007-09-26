@@ -21,7 +21,7 @@ private:
   int octave_;
   int notename_;
   Rational alteration_;
-  bool has_position_;
+  bool has_position_; // whether bar_number_ and measure_position_ are set
   int bar_number_;
   Moment measure_position_;
   bool is_tied_;

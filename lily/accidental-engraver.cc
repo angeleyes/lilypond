@@ -482,12 +482,10 @@ Accidental_engraver::stop_translation_timestep ()
 
       SCM smp = get_property ("measurePosition");
       Moment mp = robust_scm2moment (smp, Moment (0));
-      /*
-	TODO: Check this. Is this correct? -rz : 
-       */
+
       Moment end_mp = mp.grace_part_ < Rational(0)
 	? Moment(mp.main_part_, mp.grace_part_+dur->get_length())
-	: Moment(mp.main_part_+dur->get_length(), mp.grace_part_);
+	: Moment(mp.main_part_+dur->get_length(), 0);
 
       SCM localsig = SCM_EOL;
       while (origin

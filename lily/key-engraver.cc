@@ -75,25 +75,31 @@ Key_engraver::create_key (bool is_default)
 	{
 	  SCM restore_scm = SCM_EOL;
 	  SCM *restore_tail = &restore_scm;
+	  /* run through all entries in last key signature to see which ones
+	     needs to be cancelled: */
 	  for (SCM s = last; scm_is_pair (s); s = scm_cdr (s))
 	    {
 	      Key_entry *old_entry = Key_entry::unsmob (scm_car (s));
 	      Key_entry *new_entry = NULL;
+	      /* run through all entries in new key signature to see if one
+		 of them matches s */
 	      for (SCM t = key; scm_is_pair (t); t = scm_cdr (t))
 		{
 		  Key_entry *entry = Key_entry::unsmob (scm_car (t));
-		  if ( old_entry->get_notename () == entry -> get_notename ())
+		  if (old_entry->get_notename () == entry->get_notename ())
 		    {
 		      new_entry = entry;
 		      break;
 		    }
 		}
+	      /* Decide whether to add a key cancellation for s
+	       */
 	      Rational old_alter = old_entry->get_alteration ();
-	      Rational new_alter = new_entry->get_alteration ();
-	      SCM old_alterpair = old_entry -> to_name_alter_pair ();
+	      SCM old_alterpair = old_entry->to_name_alter_pair ();
 	      if (new_entry == NULL
 		  || extranatural
-		  && (new_alter - old_alter)*old_alter < Rational (0))
+		     && (new_entry->get_alteration () - old_alter)*old_alter
+		        < Rational (0))
 		{
 		  *restore_tail = scm_cons (old_alterpair, *restore_tail);
 		  restore_tail = SCM_CDRLOC (*restore_tail);
@@ -104,7 +110,7 @@ Key_engraver::create_key (bool is_default)
 	    {
 	      cancellation_ = make_item ("KeyCancellation",
 					 key_event_
-					 ? key_event_ -> self_scm () : SCM_EOL);
+					 ? key_event_->self_scm () : SCM_EOL);
 	      
 	      cancellation_->set_property ("alteration-alist", restore_scm);
 	      cancellation_->set_property ("c0-position",
@@ -116,7 +122,7 @@ Key_engraver::create_key (bool is_default)
       for (SCM s = key_scm; scm_is_pair (s); s = scm_cdr (s))
 	{
 	  Key_entry *entry = Key_entry::unsmob (scm_car (s));
-	  *SCM_CARLOC (s) = entry -> to_name_alter_pair ();
+	  *SCM_CARLOC (s) = entry->to_name_alter_pair ();
 	}
 
       item_->set_property ("alteration-alist", key_scm);

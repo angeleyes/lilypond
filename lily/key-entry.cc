@@ -78,7 +78,7 @@ IMPLEMENT_TYPE_P (Key_entry, "ly:key-signature-entry?");
 SCM
 Key_entry::mark_smob (SCM x)
 {
-  return SCM_EOL; // FIXME: I don't understand what this function is supposed to do. This is just blindly coppied from moment.cc
+  return SCM_EOL;
 }
 
 IMPLEMENT_SIMPLE_SMOBS (Key_entry);
@@ -185,8 +185,10 @@ Key_entry::get_measure_position () const
 
 
 LY_DEFINE (ly_make_keysig_entry, "ly:make-keysig-entry",
-	   2, 3, 0, (SCM note, SCM alter, SCM octave, SCM barnumber, SCM measurepos),
-	   "An entry for key signature. Key signatures consists of lists of these. The three last arguments are used for local key changes.")
+	   2, 3, 0, (SCM note, SCM alter,
+		     SCM octave, SCM barnumber, SCM measurepos),
+	   "An entry for key signature. Key signatures consists of lists of"
+	   "these. The three last arguments are used for local key changes.")
 {
   LY_ASSERT_TYPE (scm_is_integer, note, 1);
   LY_ASSERT_TYPE (scm_is_integer, alter, 2);
@@ -201,7 +203,7 @@ LY_DEFINE (ly_make_keysig_entry, "ly:make-keysig-entry",
     {
       LY_ASSERT_TYPE (scm_is_integer, octave, 3);
       LY_ASSERT_TYPE (scm_is_integer, barnumber, 4);
-      LY_ASSERT_SMOB (Moment, measurepos, 5);
+      LY_ASSERT_TYPE (unsmob_moment, measurepos, 5);
       
       Key_entry e (scm_to_int (octave),
 		   scm_to_int (note),
