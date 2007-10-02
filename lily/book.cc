@@ -19,6 +19,7 @@ using namespace std;
 #include "text-interface.hh"
 #include "warn.hh"
 #include "performance.hh"
+#include "embosser-output.hh"
 #include "paper-score.hh"
 #include "page-marker.hh"
 
@@ -143,12 +144,14 @@ Book::process (Output_def *default_paper,
 	      Music_output *output = unsmob_music_output (scm_car (outputs));
 
 	      if (Performance *perf = dynamic_cast<Performance *> (output))
-		paper_book->add_performance (perf->self_scm ());
+			paper_book->add_performance (perf->self_scm ());
+	      else if (Embosser_output *embossing = dynamic_cast<Embosser_output *> (output))
+			paper_book->add_embossing (embossing->self_scm ());
 	      else if (Paper_score *pscore = dynamic_cast<Paper_score *> (output))
-		{
-		  if (ly_is_module (score->header_))
-		    paper_book->add_score (score->header_);
-		  paper_book->add_score (pscore->self_scm ());
+			{
+		  	if (ly_is_module (score->header_))
+		    	paper_book->add_score (score->header_);
+		  	paper_book->add_score (pscore->self_scm ());
 		}
 
 	      outputs = scm_cdr (outputs);

@@ -222,6 +222,16 @@ get_midi (Lily_parser *parser)
 }
 
 Output_def *
+get_braille (Lily_parser *parser)
+{
+  SCM id = parser->lexer_->lookup_identifier ("$defaultbraille");
+  Output_def *layout = unsmob_output_def (id);
+  layout = layout ? layout->clone () : new Output_def;
+  layout->set_variable (ly_symbol2scm ("is-braille"), SCM_BOOL_T);
+  return layout;
+}
+
+Output_def *
 get_paper (Lily_parser *parser)
 {
   SCM id = parser->lexer_->lookup_identifier ("$defaultpaper");

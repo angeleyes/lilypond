@@ -23,6 +23,7 @@ class Paper_book
   SCM systems_;
   SCM pages_;
   SCM performances_;
+  SCM embossings_;
 
   void add_score_title (SCM);
   SCM get_score_title (SCM);
@@ -37,8 +38,10 @@ public:
 
   void add_score (SCM);
   void add_performance (SCM);
+  void add_embossing (SCM);
 
   SCM performances () const;
+  SCM embossings () const;
   SCM systems ();
   SCM pages ();
   SCM get_system_specs ();

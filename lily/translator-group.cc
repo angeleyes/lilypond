@@ -18,6 +18,7 @@
 #include "music.hh"
 #include "output-def.hh"
 #include "performer-group.hh"
+#include "embosser-group.hh"
 #include "scm-hash.hh"
 #include "warn.hh"
 
@@ -170,6 +171,8 @@ Translator_group::create_child_translator (SCM sev)
   if (dynamic_cast<Engraver_group *> (g))
     g->simple_trans_list_ = filter_performers (trans_list);
   else if (dynamic_cast<Performer_group *> (g))
+    g->simple_trans_list_ = filter_engravers (trans_list);
+  else if (dynamic_cast<Embosser_group *> (g))
     g->simple_trans_list_ = filter_engravers (trans_list);
 
   // TODO: scrap Context::implementation

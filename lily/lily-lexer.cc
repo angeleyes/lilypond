@@ -31,6 +31,7 @@ static Keyword_ent the_key_tab[]
   {"alias", ALIAS},
   {"alternative", ALTERNATIVE},
   {"book", BOOK},
+  {"braille", BRAILLE},
   {"change", CHANGE},
   {"chordmode", CHORDMODE},
   {"chords", CHORDS},

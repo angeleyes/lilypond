@@ -28,6 +28,7 @@ Paper_book::Paper_book ()
   pages_ = SCM_BOOL_F;
   scores_ = SCM_EOL;
   performances_ = SCM_EOL;
+  embossings_ = SCM_EOL;
   systems_ = SCM_BOOL_F;
 
   paper_ = 0;
@@ -52,6 +53,7 @@ Paper_book::mark_smob (SCM smob)
   scm_gc_mark (b->header_0_);
   scm_gc_mark (b->pages_);
   scm_gc_mark (b->performances_);
+  scm_gc_mark (b->embossings_);
   scm_gc_mark (b->scores_);
   return b->systems_;
 }
@@ -83,6 +85,12 @@ Paper_book::add_score (SCM s)
 }
 
 void
+Paper_book::add_embossing (SCM s)
+{
+  embossings_ = scm_cons (s, embossings_);
+}
+
+void
 Paper_book::add_performance (SCM s)
 {
   performances_ = scm_cons (s, performances_);
@@ -96,6 +104,13 @@ Paper_book::output (SCM output_channel)
       SCM proc = ly_lily_module_constant ("write-performances-midis");
  
       scm_call_2 (proc, performances (), output_channel);
+    }
+    
+  if (scm_is_pair (embossings_))
+    {
+      SCM proc = ly_lily_module_constant ("write-embossings");
+ 
+      scm_call_2 (proc, embossings (), output_channel);
     }
 
   if (scores_ == SCM_EOL)
@@ -144,6 +159,13 @@ Paper_book::classic_output (SCM output)
       SCM proc = ly_lily_module_constant ("write-performances-midis");
  
       scm_call_2 (proc, performances (), output);
+    }
+    
+  if (scm_is_pair (embossings_))
+    {
+      SCM proc = ly_lily_module_constant ("write-embossings");
+ 
+      scm_call_2 (proc, embossings (), output);
     }
   
   /* Generate all stencils to trigger font loads.  */
@@ -523,4 +545,10 @@ SCM
 Paper_book::performances () const
 {
   return scm_reverse (performances_);
+}
+
+SCM
+Paper_book::embossings () const
+{
+  return scm_reverse (embossings_);
 }

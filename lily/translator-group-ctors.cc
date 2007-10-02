@@ -8,6 +8,7 @@
 
 #include "score-engraver.hh"
 #include "score-performer.hh"
+#include "score-embosser.hh"
 #include "warn.hh"
 #include "international.hh"
 
@@ -25,6 +26,10 @@ get_translator_group (SCM sym)
     return new Score_engraver ();
   else if (sym == ly_symbol2scm ("Score_performer"))
     return new Score_performer ();
+  else if (sym == ly_symbol2scm ("Score_embosser"))
+    return new Score_embosser ();
+  else if (sym == ly_symbol2scm ("Embosser_group"))
+    return new Embosser_group ();
 
   error (_f ("fatal error. Couldn't find type: %s",
 	     ly_symbol2string (sym).c_str ()));

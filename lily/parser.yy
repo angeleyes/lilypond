@@ -159,6 +159,7 @@ void set_music_properties (Music *p, SCM a);
 %token ALIAS "\\alias"
 %token ALTERNATIVE "\\alternative"
 %token BOOK "\\book"
+%token BRAILLE "\\braille"
 %token CHANGE "\\change"
 %token CHORDMODE "\\chordmode"
 %token CHORDS "\\chords"
@@ -503,6 +504,8 @@ toplevel_expression:
 			id = ly_symbol2scm ("$defaultmidi");
 		else if ($1->c_variable ("is-layout") == SCM_BOOL_T)
 			id = ly_symbol2scm ("$defaultlayout");
+		else if ($1->c_variable ("is-braille") == SCM_BOOL_T)
+			id = ly_symbol2scm ("$defaultbraille");
 
 		PARSER->lexer_->set_identifier (id, od->self_scm ());
 		od->unprotect();
@@ -774,6 +777,11 @@ output_def_head:
 	}
 	| MIDI    {
 		Output_def *p = get_midi (PARSER);
+		$$ = p;
+		PARSER->lexer_->add_scope (p->scope_);
+	}
+	| BRAILLE    {
+		Output_def *p = get_braille (PARSER);
 		$$ = p;
 		PARSER->lexer_->add_scope (p->scope_);
 	}

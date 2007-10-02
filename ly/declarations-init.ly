@@ -1,4 +1,4 @@
-\version "2.10.0"
+\version "2.11.32"
 
 %% < 1.8 compatibility switch
 #(ly:set-option 'old-relative)
@@ -74,6 +74,7 @@ repeatTie = #(make-music 'RepeatTieEvent)
 		  
 \include "grace-init.ly"
 \include "midi-init.ly"
+\include "braille-init.ly"
 \include "paper-defaults.ly"
 
 \layout {
