@@ -1,7 +1,5 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: f0d85310229e5027765718ce69f254f89a226b9d
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -21,45 +19,72 @@
 
 <img src="@IMAGES@hader-collage.jpeg" align="right">
 
-LilyPond no es único en la producción de notación musical: hay muchos otros programas que imprimen música, y actualmente la mayoría de la música impresa reciente se hace por ordenador. Lamentablemente, esto se nota: sólo pregunte a cualquier músico que toque música clásica: las partituras más nuevas no se ven tan bien como las viejas.
+LilyPond no es único en la producción de notación musical:
+hay muchos otros programas que imprimen música, y actualmente
+la mayoría de la música de nueva impresión se hace por ordenador.
+Lamentablemente, esto se nota: sólo pregunte a cualquier músico que
+toque música clásica: las partituras más nuevas no se ven tan bien como las antiguas.
 
 <p>
-¿Cuál es la diferencia entre el trabajo a mano y el trabajo por ordenador, y qué la ha causado? ¿Cómo podemos mejorar la situación? Este ensayo explica los problemas existentes en la notación musical (software), y nuestro enfoque para resolverlos.
+¿Cuál es la diferencia entre el trabajo a mano y el trabajo mecanizado,
+y qué la ha causado? ¿Cómo podemos mejorar la situación? Este ensayo explica
+los problemas existentes en la notación musical (software), y nuestro enfoque
+para resolverlos.
+</p>
 
-
-<h2>Indice de contenido</h2>
+<h2>Índice</h2>
 
 <ul>
-<li><a href="introduction.html">Introducción</a>: qué hay de malo con la notación musical por ordenador. 
-<li><a href="software.html">Lo que hay de malo con la notación musical</a>, o 
-por qué Finale no es la panacea del software de notación musical.
-
-<li>
-<a href="problem-statement.html">Cómo no diseñar software</a>,
-o: modelando la notación musical.
-<li>
-<a href="divide-and-conquer.html">Dividir y vencer</a>,
-un esquema para la automatización de la impresión de notación.
-
-<li>
- <a href="implementing-notation.html">Impresionante, pero ¿también funciona 
-en teoría</a>? Un enfoque práctico para la captura de notación.
-
-<li><a href="engraving.html">Grabado musical</a>, el arte de imprimir música.
-
-<li><a href="implementing-typography.html">Implementando la tipografía</a>:
-los hackers atacan el problema de grabado.
-<li><a href="formatting-architecture.html">Una arquitectura de programa flexible</a> vamos a escribir software de grabado. 
-
-<li><a href="scoring-esthetics.html">Hermosos números</a>: como LilyPond participa en los concursos de Miss Mundo.
-
-<li><a href="benchmarking.html">Pruebas patrón</a>: es suficiente una arquitectura flexible?
-<li><a href="typography-features.html">Características tipográficas</a> único a LilyPond.
-
-<li><a href="input-format.html">Formato de entrada</a>: como insertar música. 
-<li><a href="conclusion.html">Conclusión</a>
-</a>
-
+	<li>
+		<a href="introduction.html">Introducción</a>:
+		qué falla en la notación musical por ordenador. 
+	</li>
+	<li>
+		<a href="software.html">Qué falla en el software</a>,
+		o por qué Finale no es la panacea del software de notación musical.
+	</li>
+	<li>
+		<a href="problem-statement.html">Cómo no diseñar software</a>,
+		o: modelar la notación musical.
+	</li>
+	<li>
+		<a href="divide-and-conquer.html">Divide y vencerás</a>,
+		plan maestro para la notación automatizada.
+	</li>
+	<li>
+		<a href="implementing-notation.html">Impresionante, pero ¿también funciona 
+		en la práctica</a>? Un enfoque práctico para la captura de notación.
+	</li>
+	<li>
+		<a href="engraving.html">Grabado musical</a>,
+		el arte de imprimir música.
+	</li>
+	<li>
+		<a href="implementing-typography.html">Implementar la tipografía</a>:
+		los hackers atacan el problema de grabado.
+	</li>
+	<li>
+		<a href="formatting-architecture.html">Una arquitectura de programa flexible</a>
+		nos permite escribir software de grabado. 
+	</li>
+	<li>
+		<a href="scoring-esthetics.html">La belleza de los números</a>:
+		cómo LilyPond participa en los concursos de Miss Mundo.
+	</li>
+	<li>
+		<a href="benchmarking.html">Banco de pruebas de notación</a>:
+		¿es suficiente una arquitectura flexible?
+	</li>
+	<li>
+		<a href="typography-features.html">Características tipográficas</a> únicas de LilyPond.
+	</li>
+	<li>
+		<a href="input-format.html">El formato de la entrada</a>:
+		cómo escribir la música. 
+	</li>
+	<li>
+		<a href="conclusion.html">Conclusión</a>
+	</li>
 </ul>
 
-Este ensayo también se puede conseguir en <a href="big-page.html">una sola página</a>.
+Este ensayo también está disponible en <a href="big-page.html">una sola página</a>.

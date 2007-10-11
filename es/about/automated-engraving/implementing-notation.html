@@ -1,7 +1,5 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: f0d85310229e5027765718ce69f254f89a226b9d
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -13,14 +11,14 @@
 <h2>Notación musical</h2>
 
 <p>
-La notación musical abarca cerca de 500 años de música. Sus
-aplicaciones van desde las melodías monofónicas hasta contrapuntos
-monstruosos para grandes orquestas. ¿Cómo podemos tratar de dominar a
-semejante bestia? Nuestra solución es hacer una estricta distinción
+La notación musical común abarca cerca de 500 años de música. Sus
+aplicaciones van desde melodías monofónicas hasta monstruosos contrapuntos
+para gran orquesta. ¿Cómo vamos a dominar a una bestia de tantas cabezas?
+Nuestra solución es hacer una estricta distinción
 entre la notación, <em>qué</em> símbolos usar, y el grabado,
 <em>dónde</em> colocarlos. Para atacar el problema de la notación, lo
-hemos partido en bloques más pequeños y fáciles de programar: cada
-tipo de símbolo se maneja por un plugin separado. Todos los plugins
+hemos dividido en bloques más pequeños y fáciles de programar: cada
+tipo de símbolo se maneja por un «plugin» o añadido separado. Todos los plugins
 cooperan a través de la arquitectura de LilyPond. Los plugins son
 completamente modulares e independientes, por lo que cada uno puede
 ser desarrollado y mejorado por separado.
@@ -34,7 +32,7 @@ ser desarrollado y mejorado por separado.
 Este plugin crea objetos gráficos a partir de eventos musicales. A las
 personas que crean imágenes gráficas a partir de ideas musicales se
 les llama copistas o grabadores, así que, por analogía, este plugin se
-llama <tt>Note_head_engraver</tt>.
+llama <tt>Note_head_engraver</tt> <em>(grabador de las cabezas de nota)</em>.
 
 <li> El <tt>Staff_symbol_engraver</tt> genera el objeto que representa
 las líneas del pentagrama.
@@ -43,57 +41,59 @@ las líneas del pentagrama.
 src="@IMAGES@engraver-staff.png">
 
 <li>
- El <tt>Clef_engraver</tt> le dice al <tt>Note_head_engraver</tt> qué
+ El <tt>Clef_engraver</tt> o grabador de la clave le dice al <tt>Note_head_engraver</tt> qué
  tan aguda o grave debe colocarse cada cabeza.
 
 <p align="center"> 
 <img src="@IMAGES@engraver-clef.png">
 
 <li>
-Para los corchetes y barras añadimos un <tt>Stem_engraver</tt>: 
+Para los corchetes y las plicas añadimos un <tt>Stem_engraver</tt> (grabador de las plicas): 
 <p align="center"> 
 <img src="@IMAGES@engraver-stem.png">
 <p>
-Este grabador es notificado cuando viene una cabeza de nota. Cada vez
+Este grabador recibe un aviso por cada cabeza de nota que llega. Cada vez
 que se ve una cabeza (o más, en el caso de un acorde), se crea un
-objeto plica que se anexa a la cabeza de la nota.
+objeto de plica que se anexa a la cabeza de la nota.
 
 <li>
-Las barras, ligaduras y acentos son manejados por grabadores
-distintos. Como el <tt>Stem_engraver</tt>, crean objetos y los
+Las barras, ligaduras y acentos se manejan por parte de grabadores
+distintos. Como el <tt>Stem_engraver</tt> o grabador de las plicas, crean objetos y los
 conectan a plicas, cabezas de notas, etc.:
 
 <p align="center"> <img src="@IMAGES@engraver-slur.png">
 
 <li>
-Los accidentes, barras de compás, compás y armadura, tienen cada uno
-grabadores distintos.  <p align="center"> <img
+Las alteraciones accidentales, las líneas divisorias y las indicaciones de compás y de armadura de la tonalidad, tienen cada uno
+un grabador distinto.
+<p align="center"> <img
 src="@IMAGES@engraver-acc.png">
 
 <p>
-El <tt>Accidental_engraver</tt> es el plugin más complejo: tiene que
-examinar la armadura, las tonalidades, ligaduras y barras de compás
-para decidir cuándo imprimir los accidentes.
+El <tt>Accidental_engraver</tt>, o grabador de las alteraciones, es el plugin más complejo: tiene que
+examinar la armadura, la altura de las notas, las ligaduras y las barras de compás
+para decidir cuándo imprimir las alteraciones accidentales.
 
 </ul>
 
 
 <h2>Notación polifónica</h2>
 
-<p>El sistema mostrado en la última sección
+<p>El sistema que se ha mostrado en la sección anterior
 funciona bien para música monofónica, pero ¿qué pasa cuando se trata
 de polifonía? En la notación polifónica, muchas voces pueden compartir
-un pentagrama: <p align="center"> <img
+un pentagrama:
+<p align="center"> <img
 src="@IMAGES@engraver-final.png">
 <p>
 En esta situación, los accidentes y el pentagrama se comparten, pero
 las plicas, ligaduras, barras, etc., son exclusivas de cada voz. Por
-lo tanto, los grabadores deberían estar agrupados. Los grabadores para
+lo tanto, los grabadores se tienen que agrupar. Los grabadores de
 las cabezas, plicas, ligaduras, etc., van en un grupo llamado "Voice
-Context" (contexto de voz), mientras que los grabadores para armadura,
+Context" (contexto de voz), mientras que los grabadores de la armadura,
 accidentes, compás, etc. van en un grupo llamado "Staff Context"
 (contexto de pentagrama). En el caso de la polifonía, un solo contexto
-de pentagrama contiene más de un contexto de Voz; asimismo, un "Score
+de Pentagrama contiene más de un contexto de Voz; asimismo, un solo "Score
 Context" (contexto de partitura) puede contener muchos contextos de
 pentagrama:
 
@@ -102,4 +102,4 @@ pentagrama:
 
 <p align="right">
 Siguiente: <a href="engraving.html">el arte del estampado</a>:
-¿Cómo <em>hacían</em> la música grabada a mano?
+¿<em>Cómo</em> hacían la música grabada a mano?

@@ -1,7 +1,5 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: f0d85310229e5027765718ce69f254f89a226b9d
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -16,14 +14,14 @@
 <p>
 ¿Recuerda el problema de la notación musical? Su solución nos dejó una
 gran cantidad de objetos. La arquitectura de formateo se construye
-sobre estos objetos. Cada objeto contiene variables o atributos:
+sobre estos objetos. Cada objeto conlleva unas variables o atributos:
 
 <ul>
-<li> Las variables controlan decisiones sobre la diposición. Por
-ejemplo, muchos objetos tienen el atributo <tt>direction</tt> que
+<li> Las variables controlan decisiones sobre la diposición.  Por
+ejemplo, muchos objetos tienen una variable de <tt>dirección</tt> que
 determina la elección entre arriba y abajo (o izquierda y
-derecha). Aquí puede ver dos acordes, con acentos y un arpegio. En el
-primer acorde, los objetos tienen dirección hacia arriba (o hacia la
+derecha). Aquí puede ver dos acordes con acentos y un arpegio. En el
+primer acorde, todos los objetos tienen la dirección hacia abajo (o hacia la
 izquierda). El segundo acorde tiene todas las direcciones hacia arriba
 (o hacia la derecha).
 
@@ -33,9 +31,7 @@ izquierda). El segundo acorde tiene todas las direcciones hacia arriba
 El proceso de formatear una partitura consiste en leer y escribir las
 variables de los objetos.
 
-<li>
-
-Algunas variables tienen un valor predefinido. Por ejemplo, el grosor
+<li>Algunas variables tienen un valor predefinido. Por ejemplo, el grosor
 de muchas líneas &ndash;una característica tipográfica de
 estilo&ndash; son atributos que ya están predispuestos. Al cambiarlos
 se obtendrá una impresión tipográfica distinta:
@@ -44,13 +40,12 @@ se obtendrá una impresión tipográfica distinta:
  <img src="@IMAGES@thickness-tweaks.png">
  <p>
  
-<li>
-Las reglas de formateo también son variables que están predefinidas:
+<li>Las reglas de formateo también son variables que están predefinidas:
 cada objeto tiene variables que contienen procedimientos. Estos
 procedimientos son los que realizan la operación de formateo, y al
 sustituirlos por otros podemos cambiar su comportamiento. En el
-siguiente ejemplo, la regla que define cómo se dibuja una cabeza de
-nota se cambia para este fragmento de música:
+siguiente ejemplo, la regla que usan los objetos de cabeza de nota
+para dibujar su símbolo, se cambia en el transcurso del fragmento:
 
 <p align="center">
 <img src="@IMAGES@mc-squared.png">
@@ -59,5 +54,5 @@ nota se cambia para este fragmento de música:
 </ul>
 
 <p align="right">
-Siguiente: <a href="scoring-esthetics.html">Números hermosos</a>: cómo
+Siguiente: <a href="scoring-esthetics.html">La belleza de los números</a>: cómo
  LilyPond participa en los concursos de Miss Mundo.

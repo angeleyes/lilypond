@@ -1,14 +1,12 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: f0d85310229e5027765718ce69f254f89a226b9d
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
     in README for details.
 !-->
 
-<h2>Números hermosos</h2> ¿De qué forma se toman las decisiones sobre
+<h2>La belleza de los números</h2> ¿De qué forma concreta se toman las decisiones sobre
 formateo? En otras palabras, ¿cuál de las tres configuraciones debemos
 escoger para la siguiente ligadura?
 <p>
@@ -22,7 +20,7 @@ que otro ejemplo. Tales reglas pueden ser instructivas, pero están
 lejos de constituir un algortimo que se pueda implementar en un
 ordenador. Seguir las instrucciones a partir de la literatura lleva a
 la construcción de algoritmos con demasiadas excepciones
-manuales. Desarrollar estos casos de análisis es mucho trabajo, y
+manuales. Llevar a cabo todo este análisis de casos es mucho trabajo, y
 generalmente no se cubren todos los casos completamente.
 
 <p align="center">
@@ -30,15 +28,15 @@ generalmente no se cubren todos los casos completamente.
 <p align="center">
 
 <em>Reglas de formato definidas mediante ejemplos. Imagen extraída de
-'The Art of Music Engraving', de Ted Ross</em>
+«The Art of Music Engraving», de Ted Ross</em>
 </p>
 
 <p>
 Hemos desarrollado un método mucho más sencillo y robusto para
 determinar la mejor solución de formateo: formateo basado en
-puntuación. El principio es el mismo que se usa en los concursos de
+puntuaciones. El principio es el mismo que se usa en los concursos de
 belleza: para cada configuración posible, se calcula una puntuación de
-'fealdad'. Entonces se procede a seleccionar la configuración menos
+«fealdad». Entonces se procede a seleccionar la configuración menos
 fea.
 <p>
 
@@ -50,7 +48,7 @@ conecta estéticamente a la primera y última notas de la figura, una
 característica deseable. Sin embargo, casi alcanza a rozar la cabeza
 de una de las notas, mientras que se mantiene lejos de las demás. Por
 lo tanto, para esta configuración, se le deducirá una puntuación de
-'discrepancia' de 15.39.
+«discrepancia» de 15.39.
 
 <p>
 
@@ -58,9 +56,9 @@ lo tanto, para esta configuración, se le deducirá una puntuación de
 <p>
 En esta configuración la ligadura mantiene una distancia uniforme con
 respecto a las notas, pero tenemos que deducir algunos puntos porque
-la ligadura no inicia y termina en las cabezas de las notas. Por la
-orilla izquierda, deduciremos 1.71, y por la orilla derecha (que está
-más lejana a la cabeza), restaremos 9.37 puntos.
+la ligadura no inicia y termina en las cabezas de las notas. Por el
+extremo izquierdo deduciremos 1.71, y por el extremo derecho (que está
+más lejano a la cabeza), restaremos 9.37 puntos.
 
 Además, la ligadura tiende hacia arriba, mientras que la melodía es
 descendente; esto causará una penalización de 2.00 puntos.
@@ -71,7 +69,7 @@ descendente; esto causará una penalización de 2.00 puntos.
 
 <p>
 Por último, en esta configuración, sólo el final de la ligadura está
-alejado de la última nota, lo cuál da una puntuación de 10.04 puntos
+alejado de la última nota, lo que da una puntuación de 10.04 puntos
 de fealdad.
 <p>
 Al sumar todos los puntos, notamos que la tercera opción es la menos
@@ -95,8 +93,8 @@ ejemplo:
 <li> cortes de página
 </ul>
 <p>
-Esta técnica evalúa muchas posibilidades, lo cual toma algo de tiempo
-para calcular. Sin embargo, es un gasto que vale la pena, porque el
+Esta técnica evalúa muchas posibilidades, que se tardan algo de tiempo
+en calcular. Sin embargo, es un gasto que vale la pena, porque el
 resultado final es mucho mejor, y también porque nos hace la vida más
 fácil.
 
