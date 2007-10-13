@@ -101,7 +101,7 @@ def read_build_versions (name):
     for branch in branches:
         branch_str = 'v' + '.'.join (['%d' % vc for vc in branch])
     
-        for p in version_db.platforms ():
+        for p in version_db.platforms:
             (v, b, url) = version_db.get_last_release (p, branch)
             v = '.'.join (['%d' % vc for vc in v])
             version_builds[branch_str + '-' + p] = ('%s-%d' % (v,b), url)
