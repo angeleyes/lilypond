@@ -88,8 +88,10 @@ SVG = $(shell find site -name '*.svg')
 
 all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
 
+PLATFORMS = linux-x86 linux-64 linux-ppc darwin-ppc darwin-x86 documentation freebsd-x86 freebsd-64 mingw cygwin
+
 update-versions:
-	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile lilypond.versions --url $(DOWNLOAD_URL)
+	$(PYTHON) $(SCRIPTDIR)/versiondb.py --download --dbfile=lilypond.versions --url=$(DOWNLOAD_URL) --platforms='$(PLATFORMS)'
 
 # In Apache 1.3.x, .nl always has a higher LanguagePriority than the
 # empty content-language, everyone will see the Dutch pages.
