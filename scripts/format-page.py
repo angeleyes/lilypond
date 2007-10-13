@@ -157,10 +157,10 @@ def format_page (html, file_name, lang):
 
         if os.path.isfile (f):
             def strip_gettext_call (label):
-                if type (label) == type (()):
+                if type (label) == type (tuple ()):
                     label = label[2][0]
 
-                assert type(label) == type ('')
+                assert type (label) == type ('')
                 return label
             
             menu = [(name, _ (strip_gettext_call (label))) for (name, label) in safeeval.eval_file (f)]
@@ -345,20 +345,19 @@ def format_page (html, file_name, lang):
     
     page = re.sub ('@LANGUAGE_MENU@', '', page)
     
-    for (p, (v, url)) in version_builds.items():
-        page  = re.sub ('@' + p + '-VERSION@', v, page)
-        page  = re.sub ('@' + p + '-URL@', url, page)
-
+    for (p, (v, url)) in version_builds.items ():
+        page = re.sub ('@' + p + '-VERSION@', v, page)
+        page = re.sub ('@' + p + '-URL@', url, page)
 
     def sub_download_link (m):
         version = m.group (2)
         version = re.sub ('([0-9]+)[.]([0-9]+)[.].*', r'\1.\2', version)
-        track = r'''onClick="javascript:urchinTracker ('/download/v%s');"''' % version
-
+        track = (r'''onClick="javascript:urchinTracker ('/download/v%s');"'''
+                 % version)
         return track + ' ' +  m.group (0)
         
-    page = re.sub  ('href=[\'"]http://([^ ]*)/lilypond-([0-9.]+)-',
-                    sub_download_link, page)
+    page = re.sub ('href=[\'"]http://([^ ]*)/lilypond-([0-9.]+)-',
+                   sub_download_link, page)
     return page
 
 
