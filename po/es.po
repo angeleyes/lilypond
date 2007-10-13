@@ -3,18 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Daniel Tonda Castillo <daniel.tonda@gmail.com>, 2006, 2007.
+# Francisco Vila <francisco.vila@hispalinux.es>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-23 22:33+0100\n"
-"PO-Revision-Date: 2007-01-06 16:31-0600\n"
-"Last-Translator: Daniel Tonda Castillo <daniel.tonda@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2007-09-24 20:20+0200\n"
+"Last-Translator: Francisco Vila <francisco.vila@hispalinux.es>\n"
+"Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: scripts/format-page.py:80
 #, python-format
@@ -24,11 +26,11 @@ msgstr "Otros idiomas: %s"
 #: scripts/format-page.py:81
 #, python-format
 msgid "About <A HREF='%s'>automatic language selection</A>."
-msgstr "Acerca de <A HREF='%s'>selección automática de idioma</A>."
+msgstr "Acerca de la <A HREF='%s'>selección automática de idioma</A>."
 
 #: scripts/format-page.py:252 site/menu-entries.py:9
 msgid "Home"
-msgstr "Principio"
+msgstr "Inicio"
 
 #: site/about/menu-entries.py:2
 msgid "Features"
@@ -97,7 +99,7 @@ msgstr "Recomendaciones de usuarios"
 
 #: site/switch/menu-entries.py:4
 msgid "A short tour"
-msgstr "Una corta visita guiada"
+msgstr "Una breve visita guiada"
 
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
@@ -105,7 +107,7 @@ msgstr "Curso intensivo"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
-msgstr "Los comandos inician con \\"
+msgstr "Los comandos empiezan por \\"
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
@@ -121,15 +123,15 @@ msgstr "Añadir articulaciones"
 
 #: site/graphics/annotate-example-2.svg:191
 msgid "Add -es for flat, -is for sharp"
-msgstr "Agregue -es para bemol, -is para sostenido"
+msgstr "Agregue -es para el bemol, -is para el sostenido"
 
 #: site/graphics/annotate-example-2.svg:201
 msgid "Enclose pitches in &lt; &gt; for chords"
-msgstr "Encierre notas en &lt; &gt; para obtener acordes"
+msgstr "Encierre las notas dentro de &lt; &gt; para obtener acordes"
 
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
-msgstr "Escribir acordes por nombre"
+msgstr "Escribir nombres de acorde"
 
 #: site/graphics/annotate-example-lead.svg:169
 msgid "Enter melody"
@@ -137,7 +139,7 @@ msgstr "Escribir melodía"
 
 #: site/graphics/annotate-example-lead.svg:177
 msgid "Enter lyrics"
-msgstr "Escribir letra"
+msgstr "Escribir la letra"
 
 #: site/graphics/annotate-example-lead.svg:198
 msgid "Combine melody and lyrics"
@@ -146,7 +148,7 @@ msgstr "Combinar melodía y letra"
 #: site/graphics/annotate-example-parts.svg:42
 #: site/graphics/annotate-example-score.svg:50
 msgid "hornNotes"
-msgstr "notasAlientos"
+msgstr "notasTrompa"
 
 #: site/graphics/annotate-example-parts.svg:70
 #: site/graphics/annotate-example-score.svg:54
@@ -175,7 +177,7 @@ msgstr "Condensar silencios multi-compás"
 
 #: site/graphics/annotate-example-single-part.svg:132
 msgid "Transpose for F instrument"
-msgstr "Transportar para instrumento en clave de Fa"
+msgstr "Transportar para instrumento en Fa"
 
 #: site/graphics/annotate-example-single-part.svg:142
 msgid "Reuse variable"
@@ -197,7 +199,7 @@ msgstr "Descargue <a href='%s'>el instalador</a>"
 #: site/install/install-2.11.ihtml:82 site/install/install-2.11.ihtml:114
 #, c-format
 msgid "do %s in a command window."
-msgstr "haga %s en una terminal de comando"
+msgstr "haga %s en una terminal de órdenes."
 
 #: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
 #: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:119
@@ -241,9 +243,8 @@ msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>Instalar</a>"
 
 #: site/install/install-2.10.ihtml:184 site/install/install-2.11.ihtml:183
-#, fuzzy
 msgid "Documentation and Source code"
-msgstr "Documentación"
+msgstr "Documentación y código fuente"
 
 #: site/install/install-2.10.ihtml:194 site/install/install-2.10.ihtml:210
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
@@ -266,3 +267,4 @@ msgstr "advertencia"
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Vaya <a href='%s'>aquí</a>"
+

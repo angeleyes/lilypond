@@ -1,7 +1,5 @@
 <!--
-    Translation of GIT Committish: 1d0752a197850c9bf1d82a468fc130a4eb8df181
-
-
+    Translation of GIT Committish: f0d85310229e5027765718ce69f254f89a226b9d
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -10,26 +8,25 @@
 
 <a name="input-format"></a>
 
-<h2>Formato de entrada</h2>
+<h2>El formato de la entrada</h2>
 <p>
-Como se discutió anteriormente, el formato de entrada ideal para el
-grabado de música es el contenido: la música en sí misma. Esto plantea
-un problema formidable: ¿cómo definimos lo que la música realmente
-<em>es</em>? Nuestra salida de este problema es darle la vuelta. En
+Como se discutió anteriormente, el formato de entrada ideal para un sistema de
+grabado musical es el contenido: la propia música. Esto plantea
+un problema formidable: ¿cómo definimos <em>qué es</em> la música realmente?
+Nuestra salida de este problema es darle la vuelta. En
 lugar de definir lo que es la música, nuestro programa sirve de
 definición: escribimos un programa capaz de producir música impresa y
 ajustamos el formato para que sea tan escueto como sea posible. Cuando
-el formato no se puede recortar más, nos quedamos con el contenido por
-sí mismo.
+el formato no se puede recortar más, por definición nos quedamos con el contenido en sí.
 
 <p>
-La sintaxis es también la interfase de usuario para LilyPond, por lo
-tanto es fácil de escribir, por ejemplo:
+La sintaxis es también la interfase de usuario de LilyPond, por lo
+tanto es fácil escribir, por ejemplo:
 
 <pre>
   c'4 d'8
 </pre>
-Son una negra de Do 1 y una corchea de Re 1, como en este ejemplo:
+Son un Do central negra y un Re corchea, como en este ejemplo:
 <p align="center">
 <img src="@IMAGES@simple-notation.png">
 <p>
@@ -62,7 +59,7 @@ y &gt;&gt;.
 <img src="@IMAGES@simultaneous-1.png">
 </td>
 </tr></table>
-Esta expresión se pone en secuencia al encerrarla en llaves, por ejemplo:
+Esta expresión se pone en secuencia al encerrarla entre llaves, esto es:
 <table>
 <tr>
 <td align="center"><pre>
@@ -73,7 +70,7 @@ Esta expresión se pone en secuencia al encerrarla en llaves, por ejemplo:
 </td>
 </tr></table>
 Lo anterior es otra expresión y por lo tanto se puede volver a
-combinar con otra expresión simultáneamente (en este caso, una
+combinar con una expresión simultánea (en este caso, una
 blanca).
 
 <table>
@@ -89,24 +86,24 @@ blanca).
 </tr>
 </table>
 <p>
-Estructuras recursivas como ésta, pueden especificarse de forma nítida
-y formal en una <em>gramática libre de contexto</em>. El código de
-análisis se genera a partir de esta gramática.  En otras palabras, la
-sintaxis de LilyPond es clara y está definida sin ambiguedades.
+Estructuras recursivas como ésta se pueden especificar formalmente y de manera clara
+en una <em>gramática independiente del contexto</em>. El código de
+análisis también se genera a partir de esta gramática.  En otras palabras, la
+sintaxis de LilyPond está definida claramente y sin ambigüedades.
 <p>
 Las interfases de usuario y la sintaxis son con lo que la gente tiene
-que tratar la mayor parte del tiempo. Son una cuestión de gusto, y
-también un tema sjueto a mucha discusión. Aun cuando estas discusiones
+que tratar la mayor parte del tiempo. Son en parte una cuestión de gusto, y
+también un tema sujeto a mucha discusión. Aún cuando las discusiones
 sobre el gusto tienen su mérito, no son muy productivas. En el
 contexto mayor de LilyPond, la importancia de la sintaxis de entrada
-es pequeña: inventar una sintaxis nítida es sencillo, escribir un
+es pequeña: inventar una sintaxis nítida es sencillo, pero escribir un
 código decente para formatear es mucho más complicado. Esto se puede
 ilustrar por el número de líneas de los componentes respectivos del
-software: el análisis de la sintaxis y la representación representan
+software: el análisis sintáctico y la representación se llevan
 menos de 10% del código.
 
 <table>
-<tr><th>Análisis + Representación</th><th>Total </th></tr>
+<tr><th>Análisis y representación</th><th>Total</th></tr>
 <tr>
 <td>6000 líneas de código C++</td>
 <td>61500 líneas de código C++</td></tr>
@@ -121,4 +118,4 @@ menos de 10% del código.
 
 
 <p align="right">
-Siguiente: <a href="conclusion.html">para acabar</a>, la conclusión.
+Siguiente: <a href="conclusion.html">resumiendo</a>, la conclusión.
