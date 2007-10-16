@@ -12,6 +12,7 @@
 #include "lily-proto.hh"
 #include "smobs.hh"
 #include "rational.hh"
+#include "pitchclass.hh"
 
 
 /** A "tonal" pitch. This is a pitch used in diatonal western music
@@ -22,29 +23,24 @@
     alteration).
 
 */
-class Pitch
+class Pitch : public Pitchclass
 {
 private:
   int octave_;
-  int notename_;
-  Rational alteration_;
-  Scale *scale_;
 
-  void transpose (Pitch);
   void up_to (int);
   void down_to (int);
   void normalize ();
 
 public:
   int get_octave () const;
-  int get_notename () const;
-  Rational get_alteration () const;
 
   Pitch (int octave, int notename, Rational accidental);
   Pitch (int octave, int notename);
   Pitch ();
 
   Pitch transposed (Pitch) const;
+  Pitch transposed (Pitchclass) const;
   Pitch to_relative_octave (Pitch) const;
 
   static int compare (Pitch const &, Pitch const &);
@@ -53,6 +49,7 @@ public:
   Rational tone_pitch () const;
   int rounded_semitone_pitch () const;
   int rounded_quartertone_pitch () const;
+
   Pitch negated () const;
   string to_string () const;
 

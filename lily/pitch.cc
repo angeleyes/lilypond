@@ -25,10 +25,6 @@ Pitch::Pitch (int o, int n, Rational a)
   normalize ();
 }
 
-/* FIXME: why is octave == 0 and default not middleC ? */
-/* Because otherwise Pitch () would not be a "zero element" -
-   e.g. implementation of negated () would not work. -rz ! */
-
 Pitch::Pitch ()
 {
   notename_ = 0;
@@ -87,13 +83,13 @@ Pitch::tone_pitch () const
 int
 Pitch::rounded_semitone_pitch () const
 {
-  return int (double (tone_pitch () * Rational (2)));
+  return int (round (double (tone_pitch () * Rational (2))));
 }
 
 int
 Pitch::rounded_quartertone_pitch () const
 {
-  return int (double (tone_pitch () * Rational (4)));
+  return int (round (double (tone_pitch () * Rational (4))));
 }
 
 void
@@ -104,17 +100,20 @@ Pitch::normalize ()
     {
       notename_ -= scale_->step_tones_.size ();
       octave_++;
+      // why? isn't this always 0? -rz
       alteration_ -= tone_pitch () - pitch;
     }
   while (notename_ < 0)
     {
       notename_ += scale_->step_tones_.size ();
       octave_--;
+      // do -rz
       alteration_ -= tone_pitch () - pitch;
     }
 
   while (alteration_ > Rational (1))
     {
+      // code duplication. Remove this and move the two above while-loops below this one: -rz
       if (notename_ == int (scale_->step_tones_.size ()))
 	{
 	  notename_ = 0;
@@ -123,11 +122,13 @@ Pitch::normalize ()
       else
 	notename_++;
 
+      // isn't the below the same as alteration_ = pitch - tone_pitch() -rz
       alteration_ = Rational (0);
       alteration_ -= tone_pitch () - pitch;
     }
   while (alteration_ < Rational (-1))
     {
+      // do -rz
       if (notename_ == 0)
 	{
 	  notename_ = scale_->step_tones_.size ();
@@ -136,6 +137,7 @@ Pitch::normalize ()
       else
 	notename_--;
 
+      // do -rz
       alteration_ = 0;
       alteration_ -= tone_pitch () - pitch;
     }
