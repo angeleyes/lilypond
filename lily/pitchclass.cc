@@ -92,7 +92,7 @@ Pitchclass::normalize ()
       alteration_ += scale_->pitch_at_step(notename_+1)
 	- scale_->pitch_at_step(notename_);
     }
-  notename_ %= scale_->step_tones_.size ();
+  notename_ %= (int)scale_->step_tones_.size ();
   if(notename_ < 0)
     notename_ += scale_->step_tones_.size ();
 }
@@ -102,7 +102,6 @@ Pitchclass::transpose (Pitchclass delta)
 {
   Rational new_alter = tone_pitch () + delta.tone_pitch ();
 
-  //octave_ += delta.octave_;
   notename_ += delta.notename_;
   alteration_ += new_alter - tone_pitch ();
 
@@ -128,7 +127,7 @@ char const *accname[] = {"eses", "eseh", "es", "eh", "",
 string
 Pitchclass::to_string () const
 {
-  int n = (notename_ + 2) % scale_->step_tones_.size ();
+  int n = (notename_ + 2) % (int)scale_->step_tones_.size ();
   string s = ::to_string (char (n + 'a'));
   Rational qtones = alteration_ * Rational (4,1);
   int qt = int (rint (Real (qtones)));

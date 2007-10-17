@@ -15,6 +15,7 @@
 
 #include "ly-smobs.icc"
 
+#include <iostream>
 
 Pitch::Pitch (int o, int n, Rational a)
 {
@@ -52,7 +53,7 @@ Pitch::compare (Pitch const &m1, Pitch const &m2)
 int
 Pitch::steps () const
 {
-  return notename_ + octave_ * scale_->step_tones_.size ();
+  return notename_ + octave_ * (int)scale_->step_tones_.size ();
 }
 
 Rational
@@ -71,57 +72,11 @@ Pitch::tone_pitch () const
 void
 Pitch::normalize ()
 {
+  //  cout << "normalizing " << octave_ << " " << notename_ << " " << alteration_.to_string() << " -> ";
   Rational pitch = tone_pitch ();
   Pitchclass::normalize ();
   octave_ += ((pitch - tone_pitch ()) / Rational (6)).to_int ();
-
-  /*
-  while (notename_ >= (int) scale_->step_tones_.size ())
-    {
-      notename_ -= scale_->step_tones_.size ();
-      octave_++;
-      // why? isn't this always 0? -rz
-      alteration_ -= tone_pitch () - pitch;
-    }
-  while (notename_ < 0)
-    {
-      notename_ += scale_->step_tones_.size ();
-      octave_--;
-      // do -rz
-      alteration_ -= tone_pitch () - pitch;
-    }
-
-  while (alteration_ > Rational (1))
-    {
-      // code duplication. Remove this and move the two above while-loops below this one: -rz
-      if (notename_ == int (scale_->step_tones_.size ()))
-	{
-	  notename_ = 0;
-	  octave_++;
-	}
-      else
-	notename_++;
-
-      // isn't the below the same as alteration_ = pitch - tone_pitch() -rz
-      alteration_ = Rational (0);
-      alteration_ -= tone_pitch () - pitch;
-    }
-  while (alteration_ < Rational (-1))
-    {
-      // do -rz
-      if (notename_ == 0)
-	{
-	  notename_ = scale_->step_tones_.size ();
-	  octave_--;
-	}
-      else
-	notename_--;
-
-      // do -rz
-      alteration_ = 0;
-      alteration_ -= tone_pitch () - pitch;
-    }
-  */
+  //  cout << octave_ << " " << notename_ << " " << alteration_.to_string() << endl;
 }
 
 void

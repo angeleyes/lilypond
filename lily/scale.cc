@@ -11,6 +11,7 @@
 
 #include "ly-smobs.icc"
 
+#include <iostream>
 /*
   todo: put string <-> pitch here too.
 
@@ -86,13 +87,19 @@ Scale::pitch_at_step (int notename)
 Rational
 Scale::pitch_at_step (int octave, int notename)
 {
-  int notenamei = notename % step_tones_.size ();
+  //  cout << "pitch@" << octave << "," << notename << ":";
+  int notenamei = notename % (int)step_tones_.size ();
+  //  cout << "("<<step_tones_.size ()<<")";
   if (notenamei<0)
     {
       notenamei += step_tones_.size ();
     }
-  octave += (notename-notenamei) / step_tones_.size ();
-  return step_tones_[notenamei] + Rational (6*octave);
+  //  cout << "("<<notenamei<<")";
+  octave += (notename-notenamei) / (int)step_tones_.size ();
+  Rational result(step_tones_[notenamei] + Rational (6*octave));
+  //  cout << result.to_string() << " ";
+  //cout << endl << "(-1)%7 = " << (-1)%(int)step_tones_.size () << endl;
+  return result;
 }
 
 int
