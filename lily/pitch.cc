@@ -58,44 +58,24 @@ Pitch::steps () const
 Rational
 Pitch::tone_pitch () const
 {
-  int o = octave_;
-  int n = notename_;
-  while (n < 0)
-    {
-      n += scale_->step_tones_.size ();
-      o--;
-    }
-
   /*
     we're effictively hardcoding the octave to 6 whole-tones,
     which is as arbitrary as coding it to 1200 cents
   */
-  Rational tones ((o + n / scale_->step_tones_.size ()) * 6, 1);
-  tones += scale_->step_tones_[n % scale_->step_tones_.size ()];
-
-  tones += alteration_;
-  
+  Rational tones = scale_->pitch_at_step (octave_, notename_);
+  tones += alteration_;  
   return tones;
 }
 
-/* Calculate pitch height in 12th octave steps.  Don't assume
-   normalized pitch as this function is used to normalize the pitch.  */
-int
-Pitch::rounded_semitone_pitch () const
-{
-  return int (round (double (tone_pitch () * Rational (2))));
-}
-
-int
-Pitch::rounded_quartertone_pitch () const
-{
-  return int (round (double (tone_pitch () * Rational (4))));
-}
 
 void
 Pitch::normalize ()
 {
   Rational pitch = tone_pitch ();
+  Pitchclass::normalize ();
+  octave_ += ((pitch - tone_pitch ()) / Rational (6)).to_int ();
+
+  /*
   while (notename_ >= (int) scale_->step_tones_.size ())
     {
       notename_ -= scale_->step_tones_.size ();
@@ -141,6 +121,7 @@ Pitch::normalize ()
       alteration_ = 0;
       alteration_ -= tone_pitch () - pitch;
     }
+  */
 }
 
 void
@@ -167,20 +148,11 @@ pitch_interval (Pitch const &from, Pitch const &to)
   return pt.transposed (Pitch (0, 0, sound - pt.tone_pitch ()));
 }
 
-/* FIXME
-   Merge with *pitch->text* funcs in chord-name.scm  */
-char const *accname[] = {"eses", "eseh", "es", "eh", "",
-			 "ih", "is", "isih", "isis"};
-
 string
 Pitch::to_string () const
 {
-  int n = (notename_ + 2) % scale_->step_tones_.size ();
-  string s = ::to_string (char (n + 'a'));
-  Rational qtones = alteration_ * Rational (4,1);
-  int qt = int (rint (Real (qtones)));
-      
-  s += string (accname[qt + 4]);
+  string s = Pitchclass::to_string ();
+
   if (octave_ >= 0)
     {
       int o = octave_ + 1;
@@ -291,18 +263,6 @@ Pitch::get_octave () const
   return octave_;
 }
 
-int
-Pitch::get_notename () const
-{
-  return notename_;
-}
-
-Rational
-Pitch::get_alteration () const
-{
-  return alteration_;
-}
-
 Pitch
 Pitch::transposed (Pitch d) const
 {
@@ -310,11 +270,6 @@ Pitch::transposed (Pitch d) const
   p.transpose (d);
   return p;
 }
-
-Rational NATURAL_ALTERATION (0);
-Rational FLAT_ALTERATION (-1, 2);
-Rational DOUBLE_FLAT_ALTERATION (-1);
-Rational SHARP_ALTERATION (1, 2);
 
 Pitch
 Pitch::negated () const

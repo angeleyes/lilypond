@@ -8,13 +8,13 @@
 
 class Pitchclass
 {
-private:
+protected:
   int notename_;
   Rational alteration_;
   Scale *scale_;
 
   void transpose (Pitchclass);
-  virtual void normalize ();
+  void normalize ();
 
 public:
   int get_notename () const;
@@ -24,15 +24,17 @@ public:
   Pitchclass (int notename);
   Pitchclass ();
 
-  virtual Pitchclass transposed (Pitchclass) const;
+  virtual ~Pitchclass () {}
 
-  // not virtual. Formal parameter types decide which comparation to do
+  Pitchclass transposed (Pitchclass) const;
+
   static int compare (Pitchclass const &, Pitchclass const &);
 
-  //virtual Rational tone_pitch () const;
-  //int rounded_semitone_pitch () const;
-  //int rounded_quartertone_pitch () const;
-  virtual Pitchclass negated () const;
+  virtual Rational tone_pitch () const;
+  int rounded_semitone_pitch () const;
+  int rounded_quartertone_pitch () const;
+
+  Pitchclass negated () const;
   string to_string () const;
 
   DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
@@ -71,5 +73,4 @@ INSTANTIATE_COMPARE (Pitchclass, Pitchclass::compare);
 extern SCM pitchclass_less_proc;
 Pitchclass pitchclass_interval (Pitchclass const &from, Pitchclass const &to);
 
-#endif /* MUSICAL_PITCH_HH */
-
+#endif /* MUSICAL_PITCHCLASS_HH */

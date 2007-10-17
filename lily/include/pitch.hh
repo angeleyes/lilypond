@@ -32,6 +32,8 @@ private:
   void down_to (int);
   void normalize ();
 
+  void transpose (Pitch);
+
 public:
   int get_octave () const;
 
@@ -40,15 +42,14 @@ public:
   Pitch ();
 
   Pitch transposed (Pitch) const;
-  Pitch transposed (Pitchclass) const;
   Pitch to_relative_octave (Pitch) const;
 
   static int compare (Pitch const &, Pitch const &);
 
   int steps () const;
   Rational tone_pitch () const;
-  int rounded_semitone_pitch () const;
-  int rounded_quartertone_pitch () const;
+  //int rounded_semitone_pitch () const;
+  //int rounded_quartertone_pitch () const;
 
   Pitch negated () const;
   string to_string () const;
@@ -56,29 +57,6 @@ public:
   DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
   DECLARE_SIMPLE_SMOBS (Pitch);
 };
-
-
-enum {
-  DOUBLE_FLAT = -4,
-  THREE_Q_FLAT,
-  FLAT,
-  SEMI_FLAT,
-  NATURAL,
-  SEMI_SHARP,
-  SHARP,
-  THREE_Q_SHARP,
-  DOUBLE_SHARP,
-};
-
-extern Rational  DOUBLE_FLAT_ALTERATION;
-extern Rational  THREE_Q_FLAT_ALTERATION;
-extern Rational  FLAT_ALTERATION;
-extern Rational  SEMI_FLAT_ALTERATION;
-extern Rational  NATURAL_ALTERATION;
-extern Rational  SEMI_SHARP_ALTERATION;
-extern Rational  SHARP_ALTERATION;
-extern Rational  THREE_Q_SHARP_ALTERATION;
-extern Rational  DOUBLE_SHARP_ALTERATION;
 
 SCM ly_pitch_diff (SCM pitch, SCM root);
 SCM ly_pitch_transpose (SCM p, SCM delta);

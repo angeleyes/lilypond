@@ -20,6 +20,9 @@ struct Scale
   Scale ();
   Scale (Scale const&);
   DECLARE_SMOBS (Scale);
+public:
+  Rational pitch_at_step(int notename);
+  Rational pitch_at_step(int octave, int notename);
 };
 
 extern Scale *default_global_scale;

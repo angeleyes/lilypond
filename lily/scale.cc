@@ -77,6 +77,23 @@ LY_DEFINE (ly_set_default_scale, "ly:set-default-scale",
   return SCM_UNSPECIFIED;
 }
 
+Rational
+Scale::pitch_at_step (int notename)
+{
+  return pitch_at_step (0, notename);
+}
+
+Rational
+Scale::pitch_at_step (int octave, int notename)
+{
+  int notenamei = notename % step_tones_.size ();
+  if (notenamei<0)
+    {
+      notenamei += step_tones_.size ();
+    }
+  octave += (notename-notenamei) / step_tones_.size ();
+  return step_tones_[notenamei] + Rational (6*octave);
+}
 
 int
 Scale::print_smob (SCM x, SCM port, scm_print_state *)
