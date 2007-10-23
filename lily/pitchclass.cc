@@ -15,6 +15,7 @@
 
 #include "ly-smobs.icc"
 
+#include <iostream>
 
 Pitchclass::Pitchclass (int n, Rational a)
 {
@@ -27,6 +28,7 @@ Pitchclass::Pitchclass (int n, Rational a)
 Pitchclass::Pitchclass ()
 {
   notename_ = 0;
+  alteration_ = 0;
   scale_ = default_global_scale; 
 }
 
@@ -190,7 +192,10 @@ Pitchclass::get_notename () const
 Rational
 Pitchclass::get_alteration () const
 {
-  return alteration_;
+  cout << "getting alteration ... ";
+  Rational result = alteration_;
+  cout << "Done" << endl;
+  return result;
 }
 
 Pitchclass

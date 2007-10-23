@@ -13,31 +13,34 @@
 #include "smobs.hh"
 #include "moment.hh"
 #include "rational.hh"
+#include "pitch.hh"
+
+/* 
+FIXME!!!
+Does it work with simple smobs when it contains a reference to a pitchclass_?
+*/
 
 class Key_entry
 {
 private:
-  bool has_octave_; // hmm. In ML one would say "octave_ : int option"
-  int octave_;
-  int notename_;
-  Rational alteration_;
-  bool has_position_; // whether bar_number_ and measure_position_ are set
+  /* This has to be a reference -
+     otherwise it cannot contain a pitch (subclass of pitchclass)
+   */
+  Pitchclass * pitchclass_;
+
+  /* if false, this key_entry lasts until next key-sig-change */
+  bool is_accidental_; 
   int bar_number_;
   Moment measure_position_;
   bool is_tied_;
 
-  // todo: Perhaps add Scale *
-
 public:
   string to_string () const;
-  bool has_octave () const;
-  int get_octave () const;
-  int get_notename () const;
-  Rational get_alteration () const;
-  bool has_position () const;
+  Pitchclass * get_pitchclass () const;
+  bool is_accidental () const;
   int get_bar_number () const;
-  bool is_tied () const;
   Moment get_measure_position () const;
+  bool is_tied () const;
 
   Key_entry (int notename, Rational alteration);
   Key_entry (int notename, int octave, 
@@ -47,6 +50,9 @@ public:
   Key_entry (SCM scm);
   // todo: add constructors for other combinations of has_octave and has_position
   Key_entry ();
+
+  ~Key_entry();
+
 
   SCM to_name_alter_pair () const;
 

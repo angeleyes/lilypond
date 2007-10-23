@@ -140,7 +140,7 @@ Accidental_engraver::update_local_key_signature (SCM new_sig)
 static bool
 recent_enough (int bar_number, Key_entry *entry, SCM laziness)
 {
-  if (!entry->has_position ()
+  if (!entry->is_accidental ()
       || laziness == SCM_BOOL_T)
     return true;
 
@@ -179,19 +179,21 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
   for (SCM s = key_signature; scm_is_pair (s); s = scm_cdr (s))
     {
       Key_entry * entry = Key_entry::unsmob(scm_car (s));
-      if(n == entry->get_notename ())
+      Pitchclass * pitchclass = entry->get_pitchclass ();
+      if(n == pitchclass->get_notename ())
 	{
+	  Pitch * entrypitch = dynamic_cast<Pitch *>(pitchclass);
 	  if (from_other_octaves == NULL)
 	    {
 	      from_other_octaves = entry;
 	    }
 	  if (from_same_octave == NULL &&
-	      (!entry->has_octave() || entry->get_octave () == o))
+	      (!entrypitch || entrypitch->get_octave () == o))
 	    {
 	      from_same_octave = entry;
 	    }
 	  if (from_key_signature == NULL &&
-	      !entry->has_position())
+	      !entry->is_accidental())
 	    {
 	      from_key_signature = entry;
 	    }
@@ -217,7 +219,7 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
     }
   else
     {
-      Rational prev = previous_entry -> get_alteration ();
+      Rational prev = previous_entry->get_pitchclass ()->get_alteration ();
       Rational alter = pitch.get_alteration ();
 
       if (alter != prev)
@@ -515,13 +517,15 @@ Accidental_engraver::stop_translation_timestep ()
 	  for (SCM s = localsig ; scm_is_pair (scm_cdr (s)) ; s = scm_cdr(s))
 	    {
 	      Key_entry *entry = Key_entry::unsmob(scm_cadr(s));
-	      if (entry->get_notename () == n
-		  && entry->has_octave() && entry->get_octave () == o)
+	      Pitchclass * pitchclass = entry->get_pitchclass ();
+	      Pitch * entrypitch = dynamic_cast<Pitch *>(pitchclass);
+	      if (pitchclass->get_notename () == n
+		  && entrypitch && entrypitch->get_octave () == o)
 		{
 		  scm_set_cdr_x(s, scm_cddr(s));
 		  break;
 		}
-	    }	  
+	    }
 
 	  origin->set_property ("localKeySignature", localsig);
 

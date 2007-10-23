@@ -15,35 +15,32 @@
 #include "ly-smobs.icc"
 
 
+#include <iostream>
+
 Key_entry::Key_entry (int n, Rational a)
 {
-  notename_ = n;
-  alteration_ = a;
-  has_octave_ = false;
-  has_position_ = false;
+  pitchclass_ = new Pitchclass (n, a);
+  bar_number_ = 0;
+  measure_position_ = Rational(0);
+  is_accidental_ = false;
   is_tied_ = false;
 }
 
 Key_entry::Key_entry (int n, Rational a, int o, int b, Moment mp)
 {
-  notename_ = n;
-  alteration_ = a;
-  octave_ = o;
+  pitchclass_ = new Pitch (o, n, a);
   bar_number_ = b;
   measure_position_ = mp;
-  has_octave_ = true;
-  has_position_ = true;
+  is_accidental_ = true;
   is_tied_ = false;
 }
 
 Key_entry::Key_entry (int n, int o, int b, Moment mp)
 {
-  notename_ = n;
-  octave_ = o;
+  pitchclass_ = new Pitch (o, n, Rational (0));
   bar_number_ = b;
   measure_position_ = mp;
-  has_octave_ = true;
-  has_position_ = true;
+  is_accidental_ = true;
   is_tied_ = true;
 }
 
@@ -55,23 +52,27 @@ Key_entry::Key_entry (SCM scm)
   int n = scm_to_int (scm_car (scm));
   Rational a = ly_scm2rational (scm_cdr (scm));
   //  ::Key_entry (n, a);
-  notename_ = n;
-  alteration_ = a;
-  has_octave_ = false;
-  has_position_ = false;
+  pitchclass_ = new Pitchclass (n, a);
+  bar_number_ = 0;
+  measure_position_ = Rational(0);
+  is_accidental_ = false;
   is_tied_ = false;
 }
 
 Key_entry::Key_entry ()
 {
-  notename_ = 0;
-  alteration_ = 0;
-  has_octave_ = false;
-  has_position_ = false;
+  pitchclass_ = new Pitchclass ();
+  bar_number_ = 0;
+  measure_position_ = Rational(0);
+  is_accidental_ = false;
   is_tied_ = false;
 }
 
-
+Key_entry::~Key_entry ()
+{
+  cout << "Killing entry" << endl;
+  // what here?
+}
 
 IMPLEMENT_TYPE_P (Key_entry, "ly:key-signature-entry?");
 
@@ -98,15 +99,11 @@ Key_entry::equal_p (SCM a, SCM b)
   Key_entry *p = (Key_entry *) SCM_CELL_WORD_1 (a);
   Key_entry *q = (Key_entry *) SCM_CELL_WORD_1 (b);
 
-  bool eq = p->notename_ == q->notename_
-    && p->alteration_ == q->alteration_
-    && p->has_position_ == q->has_position_
-    && p->has_octave_ == q->has_octave_;
-  if(eq && p->has_octave_)
-    eq &= p->octave_ == q->octave_;
-  if(eq && p->has_position_)
-    eq &= p->bar_number_ == q->bar_number_
-      && p->measure_position_ == q->measure_position_;
+  bool eq = *(p->pitchclass_) == *(q->pitchclass_)
+    && p->is_accidental_ == q->is_accidental_
+    && p->is_tied_ == q->is_tied_
+    && p->bar_number_ == q->bar_number_
+    && p->measure_position_ == q->measure_position_;
 
   return eq ? SCM_BOOL_T : SCM_BOOL_F;
 }
@@ -114,49 +111,28 @@ Key_entry::equal_p (SCM a, SCM b)
 string
 Key_entry::to_string () const
 {
-  Pitch p = Pitch(has_octave_ ? octave_ : -1, notename_, alteration_);
-  string pitchstring = p.to_string();
-  return pitchstring;
+  return pitchclass_->to_string ();
 }
 
 SCM
 Key_entry::to_name_alter_pair () const
 {
-  if (has_position_ || has_octave_ || is_tied_)
+  if (dynamic_cast<Pitch *>(pitchclass_))
     warning(_ ("converting local keysig to name_alter_pair"));
-  return scm_cons (scm_from_int (notename_), ly_rational2scm (alteration_));
+  return scm_cons (scm_from_int (pitchclass_->get_notename()),
+		   ly_rational2scm (pitchclass_->get_alteration()));
+}
+
+Pitchclass *
+Key_entry::get_pitchclass () const
+{
+  return pitchclass_;
 }
 
 bool
-Key_entry::has_octave () const
+Key_entry::is_accidental () const
 {
-  return has_octave_;
-}
-
-int
-Key_entry::get_octave () const
-{
-  if(!has_octave_)
-    warning(_ ("getting non-existent octave"));
-  return octave_;
-}
-
-int
-Key_entry::get_notename () const
-{
-  return notename_;
-}
-
-Rational
-Key_entry::get_alteration () const
-{
-  return alteration_;
-}
-
-bool
-Key_entry::has_position () const
-{
-  return has_position_;
+  return is_accidental_;
 }
 
 bool
@@ -168,7 +144,7 @@ Key_entry::is_tied () const
 int
 Key_entry::get_bar_number () const
 {
-  if(!has_position_)
+  if(!is_accidental_)
     warning(_ ("getting non-existent bar_number"));
   return bar_number_;
 }
@@ -176,7 +152,7 @@ Key_entry::get_bar_number () const
 Moment
 Key_entry::get_measure_position () const
 {
-  if(!has_position_)
+  if(!is_accidental_)
     warning(_ ("getting non-existent measure_position"));
   return measure_position_;
 }
@@ -191,11 +167,11 @@ LY_DEFINE (ly_make_keysig_entry, "ly:make-keysig-entry",
 	   "these. The three last arguments are used for local key changes.")
 {
   LY_ASSERT_TYPE (scm_is_integer, note, 1);
-  LY_ASSERT_TYPE (scm_is_integer, alter, 2);
+  LY_ASSERT_TYPE (scm_is_rational, alter, 2);
 
-  if (octave == SCM_UNDEFINED)
+  if (octave == SCM_BOOL_F)
     {
-      Key_entry e (scm_to_int (note), scm_to_int (alter));
+      Key_entry e (scm_to_int (note), ly_scm2rational (alter));
       
       return e.smobbed_copy ();
     }
