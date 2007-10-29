@@ -223,13 +223,16 @@ Context_def::path_to_acceptable_context (SCM type_sym, Output_def *odef) const
     {
       Context_def *g = accepteds[i];
 
-      vector<Context_def*> result
-	= g->path_to_acceptable_context (type_sym, odef);
-      if (result.size () && result.size () < best_depth)
+      if (g!=this)
 	{
-	  best_depth = result.size ();
-	  result.insert (result.begin (), g);
-	  best_result = result;
+	  vector<Context_def*> result
+	    = g->path_to_acceptable_context (type_sym, odef);
+	  if (result.size () && result.size () < best_depth)
+	    {
+	      best_depth = result.size ();
+	      result.insert (result.begin (), g);
+	      best_result = result;
+	    }
 	}
     }
 
