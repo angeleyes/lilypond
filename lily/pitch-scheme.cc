@@ -4,6 +4,7 @@
   source file of the GNU LilyPond music typesetter
 
   (c) 2005--2007 Han-Wen Nienhuys <hanwen@xs4all.nl>
+  2007 Rune Zedeler <rune@zedeler.dk>
 */
 
 #include "pitch.hh"
@@ -13,18 +14,16 @@ LY_DEFINE (ly_pitch_transpose, "ly:pitch-transpose",
 	   "Transpose @var{p} by the amount @var{delta},"
 	   " where @var{delta} is relative to middle@tie{}C.")
 {
-  LY_ASSERT_SMOB (Pitch, p, 1);
-  LY_ASSERT_SMOB (Pitch, delta, 2);
-
-  Pitch *t = unsmob_pitch (p);
-  Pitch *d = unsmob_pitch (delta);
+  Pitchclass *t = unsmob_pitch_or_pitchclass (p,1);
+  Pitchclass *d = unsmob_pitch_or_pitchclass (delta,2);
   return t->transposed (*d).smobbed_copy ();
 }
 
 /* Should add optional args.  */
 LY_DEFINE (ly_make_pitch, "ly:make-pitch",
 	   2, 1, 0, (SCM octave, SCM note, SCM alter),
-	   "@var{octave} is specified by an integer, zero for the octave"
+	   "@var{octave} is specified by #f to indicate pitchclass"
+	   " or an integer, zero for the octave"
 	   " containing middle@tie{}C.  @var{note} is a number from 0"
 	   " to@tie{}6, with 0 corresponding to pitch@tie{}C and 6"
 	   " corresponding to pitch@tie{}B.  @var{alter} is a rational"
@@ -63,8 +62,12 @@ LY_DEFINE (ly_pitch_octave, "ly:pitch-octave",
 	   1, 0, 0, (SCM pp),
 	   "Extract the octave from pitch@tie{}@var{pp}.")
 {
-  LY_ASSERT_SMOB (Pitch, pp, 1);
   Pitch *p = unsmob_pitch (pp);
+  if(p==NULL)
+    {
+      LY_ASSERT_SMOB (Pitchclass, pp, 1);
+      return SCM_BOOL_F;
+    }
   int q = p->get_octave ();
   return scm_from_int (q);
 }
@@ -73,9 +76,8 @@ LY_DEFINE (ly_pitch_alteration, "ly:pitch-alteration",
 	   1, 0, 0, (SCM pp),
 	   "Extract the alteration from pitch@tie{}@var{pp}.")
 {
-  LY_ASSERT_SMOB (Pitch, pp, 1);
-  Pitch *p = unsmob_pitch (pp);
-  Rational q = p->get_alteration ();
+  Pitchclass *pc = unsmob_pitch_or_pitchclass (pp, 1);
+  Rational q = pc->get_alteration ();
 
   return ly_rational2scm (q);
 }
@@ -84,8 +86,7 @@ LY_DEFINE (pitch_notename, "ly:pitch-notename",
 	   1, 0, 0, (SCM pp),
 	   "Extract the note name from pitch @var{pp}.")
 {
-  LY_ASSERT_SMOB (Pitch, pp, 1);
-  Pitch *p = unsmob_pitch (pp);
+  Pitchclass *p = unsmob_pitch_or_pitchclass (pp, 1);
   int q = p->get_notename ();
   return scm_from_int (q);
 }

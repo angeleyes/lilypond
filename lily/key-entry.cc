@@ -15,8 +15,6 @@
 #include "ly-smobs.icc"
 
 
-#include <iostream>
-
 Key_entry::Key_entry (int n, Rational a)
 {
   pitchclass_ = new Pitchclass (n, a);
@@ -70,8 +68,9 @@ Key_entry::Key_entry ()
 
 Key_entry::~Key_entry ()
 {
-  cout << "Killing entry" << endl;
-  // what here?
+  // TODO: what here?
+  //cout << "Killing entry" << endl;
+ 
 }
 
 IMPLEMENT_TYPE_P (Key_entry, "ly:key-signature-entry?");

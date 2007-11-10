@@ -42,6 +42,8 @@ public:
   Pitch ();
 
   Pitch transposed (Pitch) const;
+  Pitchclass transposed (Pitchclass) const;
+
   Pitch to_relative_octave (Pitch) const;
 
   static int compare (Pitch const &, Pitch const &);
@@ -61,6 +63,9 @@ public:
 SCM ly_pitch_diff (SCM pitch, SCM root);
 SCM ly_pitch_transpose (SCM p, SCM delta);
 DECLARE_UNSMOB (Pitch, pitch);
+
+Pitchclass *
+unsmob_pitch_or_pitchclass (SCM s, int number);
 
 INSTANTIATE_COMPARE (Pitch, Pitch::compare);
 

@@ -26,7 +26,7 @@ public:
 
   virtual ~Pitchclass () {}
 
-  Pitchclass transposed (Pitchclass) const;
+  virtual Pitchclass transposed (Pitchclass) const;
 
   static int compare (Pitchclass const &, Pitchclass const &);
 

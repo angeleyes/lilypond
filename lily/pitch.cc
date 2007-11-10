@@ -15,8 +15,6 @@
 
 #include "ly-smobs.icc"
 
-#include <iostream>
-
 Pitch::Pitch (int o, int n, Rational a)
 {
   notename_ = n;
@@ -91,6 +89,19 @@ Pitch::transpose (Pitch delta)
   normalize ();
 }
 
+Pitchclass *
+unsmob_pitch_or_pitchclass (SCM s, int number)
+{
+  Pitchclass *pc = unsmob_pitch (s);
+  if (pc==NULL)
+    {
+      LY_ASSERT_SMOB (Pitchclass, s, number);
+      pc = unsmob_pitchclass (s);
+    }
+  return pc;
+}
+
+// TODO: Merge pitch_interval and pitchclass_interval
 Pitch
 pitch_interval (Pitch const &from, Pitch const &to)
 {
@@ -224,6 +235,16 @@ Pitch::transposed (Pitch d) const
   Pitch p = *this;
   p.transpose (d);
   return p;
+}
+
+Pitchclass
+Pitch::transposed (Pitchclass d) const
+{
+  Pitch * dp = dynamic_cast<Pitch *> (&d);
+  if (dp)
+    return transposed (*dp);
+  else
+    return Pitchclass::transposed (d);
 }
 
 Pitch

@@ -15,8 +15,6 @@
 
 #include "ly-smobs.icc"
 
-#include <iostream>
-
 Pitchclass::Pitchclass (int n, Rational a)
 {
   notename_ = n;
@@ -115,7 +113,6 @@ pitchclass_interval (Pitchclass const &from, Pitchclass const &to)
 {
   Rational sound = to.tone_pitch () - from.tone_pitch ();
   Pitchclass pc (to.get_notename () - from.get_notename (),
-		 
 		 to.get_alteration () - from.get_alteration ());
 
   return pc.transposed (Pitchclass (0, sound - pc.tone_pitch ()));
@@ -192,9 +189,7 @@ Pitchclass::get_notename () const
 Rational
 Pitchclass::get_alteration () const
 {
-  cout << "getting alteration ... ";
   Rational result = alteration_;
-  cout << "Done" << endl;
   return result;
 }
 
