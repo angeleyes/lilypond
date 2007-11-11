@@ -55,6 +55,9 @@ public:
 
   Pitch negated () const;
   string to_string () const;
+  SCM virtual_smobbed_copy () { // AAARGH!
+    return smobbed_copy ();
+  }
 
   DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
   DECLARE_SIMPLE_SMOBS (Pitch);

@@ -8,6 +8,7 @@
 */
 
 #include "pitch.hh"
+#include <iostream>
 
 LY_DEFINE (ly_pitch_transpose, "ly:pitch-transpose",
 	   2, 0, 0, (SCM p, SCM delta),
@@ -63,11 +64,14 @@ LY_DEFINE (ly_pitch_octave, "ly:pitch-octave",
 	   "Extract the octave from pitch@tie{}@var{pp}.")
 {
   Pitch *p = unsmob_pitch (pp);
+  //Pitchclass *pc = unsmob_pitch_or_pitchclass (pp,0);  cout << "Getting octave at pitch " << pc->to_string() << " ... ";
   if(p==NULL)
     {
+      //cout << "global" << endl;
       LY_ASSERT_SMOB (Pitchclass, pp, 1);
       return SCM_BOOL_F;
     }
+  //cout << "local" << endl;
   int q = p->get_octave ();
   return scm_from_int (q);
 }

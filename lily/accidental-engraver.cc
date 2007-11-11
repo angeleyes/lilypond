@@ -147,21 +147,76 @@ recent_enough (int bar_number, Key_entry *entry, SCM laziness)
   return (bar_number <= entry->get_bar_number() + scm_to_int (laziness));
 }
 
-struct Accidental_result
+class Accidental_result
 {
-  bool need_acc;
+public:
   bool need_restore;
+  bool need_acc;
 
-  Accidental_result () {
+  Accidental_result ()
+  {
     need_restore = need_acc = false;
   }
+  Accidental_result (bool restore, bool acc)
+  {
+    need_restore = restore;
+    need_acc = acc;
+  }
+  Accidental_result (SCM scm) {
+    need_restore = to_boolean (scm_car (scm));
+    need_acc = to_boolean (scm_cdr (scm));
+  }
 
-  int score () const {
+  int score () const
+  {
     return (need_acc ? 1 : 0)
       + (need_restore ? 1 : 0);
   }
+  /*
+
+  bool operator == (Accidental_result const &other)
+  {
+    return need_acc == other.need_acc && need_restore == other.need_restore;
+  }
+  
+  DECLARE_SIMPLE_SMOBS (Accidental_result);
+  */
 };
 
+/*
+
+SCM Accidental_result::mark_smob (SCM)
+{
+  return SCM_EOL;
+}
+
+SCM Accidental_result::equal_p (SCM a, SCM b)
+{
+  Accidental_result *ra = Accidental_result::unsmob (a);
+  Accidental_result *rb = Accidental_result::unsmob (b);
+  
+  return (*ra == *rb) ? SCM_BOOL_T : SCM_BOOL_F;
+}
+
+#include "ly-smobs.icc"
+
+IMPLEMENT_SIMPLE_SMOBS (Accidental_result);
+*/
+
+/*
+LY_DEFINE (ly_make_accidental_result, "ly:make-accidental_result",
+	   2, 0, 0, (SCM acc, SCM restore),
+	   " ... ")
+{
+  LY_ASSERT_TYPE (scm_is_bool, acc, 1);
+  LY_ASSERT_TYPE (scm_is_bool, restore, 2);
+  Accidental_result result (to_boolean (acc), to_boolean (restore));
+  return result.smobbed_copy ();
+}
+*/
+
+
+ // TODO: Move to scheme!
 Accidental_result
 check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 			       int bar_number, SCM laziness, bool ignore_octave)
@@ -234,12 +289,30 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
   return result;
 }
 
+LY_DEFINE (ly_find_accidentals_simple, "ly:find-accidentals-simple", 5, 0, 0,
+	   (SCM keysig, SCM p, SCM barnum, SCM laziness, SCM octaveness ),
+	   "Temporary. Scm-wrapper around the old c++-function. Should be moved to scheme.")
+{
+  LY_ASSERT_SMOB (Pitch, p, 2);
+  LY_ASSERT_TYPE (scm_is_integer, barnum, 3);
+  LY_ASSERT_TYPE (ly_is_symbol, octaveness, 5);
+  Pitch * pitch = unsmob_pitch (p);
+  int bar_number = scm_to_int (barnum);
+  bool ignore_octave = ly_symbol2scm ("any-octave") == octaveness; // todo - check that otherwise "same-octave"
+  Accidental_result result = check_pitch_against_signature (keysig, *pitch, bar_number, laziness, ignore_octave );
+  return scm_cons (scm_from_bool (result.need_restore), scm_from_bool (result.need_acc));
+}
+
+
 static
 Accidental_result
 check_pitch_against_rules (Pitch const &pitch, Context *origin,
-				 SCM rules, int bar_number)
+			   SCM rules, int bar_number, SCM measurepos)
 {
   Accidental_result result;
+  SCM pitch_scm = pitch.smobbed_copy ();
+  SCM barnum_scm = scm_from_int (bar_number);
+
   if (scm_is_pair (rules) && !scm_is_symbol (scm_car (rules)))
     warning (_f ("accidental typesetting list must begin with context-name: %s",
 		 ly_scm2string (scm_car (rules)).c_str ()));
@@ -248,33 +321,9 @@ check_pitch_against_rules (Pitch const &pitch, Context *origin,
        rules = scm_cdr (rules))
     {
       SCM rule = scm_car (rules);
-      if (scm_is_pair (rule))
-	{
-	  SCM type = scm_car (rule);
-	  SCM laziness = scm_cdr (rule);
-	  SCM localsig = origin->get_property ("localKeySignature");
-
-	  bool same_octave
-	    = (ly_symbol2scm ("same-octave") == type);
-	  bool any_octave
-	    = (ly_symbol2scm ("any-octave") == type);
-
-	  if (same_octave || any_octave)
-	    {
-	      Accidental_result rule_result = check_pitch_against_signature
-		(localsig, pitch, bar_number, laziness, any_octave);
-
-	      result.need_acc |= rule_result.need_acc;
-	      result.need_restore |= rule_result.need_restore;
-	    }
-	  else
-	    warning (_f ("ignoring unknown accidental rule: %s",
-			 ly_symbol2string (type).c_str ()));
-	}
-
       /* if symbol then it is a context name.  Scan parent contexts to
 	 find it. */
-      else if (scm_is_symbol (rule))
+      if (scm_is_symbol (rule))
 	{
 	  Context *dad = origin;
 	  while (dad && !dad->is_alias (rule))
@@ -283,9 +332,22 @@ check_pitch_against_rules (Pitch const &pitch, Context *origin,
 	  if (dad)
 	    origin = dad;
 	}
+      else if ( true /* FIXME does not work: ly_is_procedure (rule) */ )
+	{
+	  SCM localsig = origin->get_property ("localKeySignature");
+
+	  SCM rule_result_scm = scm_call_4 (rule, localsig, pitch_scm, barnum_scm, measurepos);
+
+	  Accidental_result rule_result (rule_result_scm);
+
+	  result.need_acc |= rule_result.need_acc;
+	  result.need_restore |= rule_result.need_restore;
+	}
+
       else
-	warning (_f ("pair or context-name expected for accidental rule, found %s",
-		     ly_scm2string (rule).c_str ()));
+	warning (_f ("procedure or context-name expected for accidental rule, found %s",
+		     /*ly_scm2string (rule).c_str ()*/ "FIXME!"));
+
     }
 
   return result;
@@ -313,6 +375,8 @@ Accidental_engraver::process_acknowledged ()
     {
       SCM accidental_rules = get_property ("autoAccidentals");
       SCM cautionary_rules = get_property ("autoCautionaries");
+      SCM measure_position = get_property ("measurePosition");
+
       int barnum = get_bar_number ();
 
       for (vsize i = 0; i < accidentals_.size (); i++)
@@ -329,9 +393,9 @@ Accidental_engraver::process_acknowledged ()
 	    continue;
 
 	  Accidental_result acc = check_pitch_against_rules (*pitch, origin,
-							     accidental_rules, barnum);
+							     accidental_rules, barnum, measure_position);
 	  Accidental_result caut = check_pitch_against_rules (*pitch, origin,
-							      cautionary_rules, barnum);
+							      cautionary_rules, barnum, measure_position);
 
 	  bool cautionary = to_boolean (note->get_property ("cautionary"));
 	  if (caut.score () > acc.score ())
@@ -618,12 +682,15 @@ ADD_TRANSLATOR (Accidental_engraver,
 		"AccidentalCautionary "
 		"AccidentalSuggestion ",
 
-		/* props */
+		/* read props */
 		"autoAccidentals "
 		"autoCautionaries "
 		"internalBarNumber "
 		"extraNatural "
 		"harmonicAccidentals "
-		"keySignature ",
+		"keySignature "
+		"localKeySignature ",
+
+		/* write props */
 		"localKeySignature "
 		);

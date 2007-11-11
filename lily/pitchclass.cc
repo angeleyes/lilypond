@@ -127,7 +127,7 @@ string
 Pitchclass::to_string () const
 {
   int n = (notename_ + 2) % (int)scale_->step_tones_.size ();
-  string s = ::to_string (char (n + 'a'));
+  string s = ::to_string (char (n + 'A'));
   Rational qtones = alteration_ * Rational (4,1);
   int qt = int (rint (Real (qtones)));
       

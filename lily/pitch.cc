@@ -118,7 +118,8 @@ string
 Pitch::to_string () const
 {
   string s = Pitchclass::to_string ();
-
+  s[0] = s[0]-'A'+'a';
+  
   if (octave_ >= 0)
     {
       int o = octave_ + 1;

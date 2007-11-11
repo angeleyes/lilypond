@@ -35,7 +35,10 @@ public:
   int rounded_quartertone_pitch () const;
 
   Pitchclass negated () const;
-  string to_string () const;
+  virtual string to_string () const;
+  virtual SCM virtual_smobbed_copy () { // AAARGH!
+    return smobbed_copy ();
+  }
 
   DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
   DECLARE_SIMPLE_SMOBS (Pitchclass);

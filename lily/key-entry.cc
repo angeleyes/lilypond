@@ -159,7 +159,7 @@ Key_entry::get_measure_position () const
 /* SCHEME **************************************************/
 
 
-LY_DEFINE (ly_make_keysig_entry, "ly:make-keysig-entry",
+LY_DEFINE (ly_make_key_entry, "ly:make-key-entry",
 	   2, 3, 0, (SCM note, SCM alter,
 		     SCM octave, SCM barnumber, SCM measurepos),
 	   "An entry for key signature. Key signatures consists of lists of"
@@ -189,3 +189,75 @@ LY_DEFINE (ly_make_keysig_entry, "ly:make-keysig-entry",
       return e.smobbed_copy ();
     }
 }
+
+
+/*
+LY_DEFINE (ly_key_entry_octave, "ly:key-entry-octave",
+	   1, 0, 0, (SCM entry),
+	   "Extract octave information from key entry. #f if entry is global.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return ly_pitch_octave (ent->pitchclass_);
+}
+
+LY_DEFINE (ly_key_entry_notename, "ly:key-entry-notename",
+	   1, 0, 0, (SCM entry),
+	   "Get the notename that the key entry alters.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return ly_pitch_notename (ent->pitchclass_);
+}
+
+LY_DEFINE (ly_key_entry_octave, "ly:key-entry-accidental",
+	   1, 0, 0, (SCM entry),
+	   "Get the alteration of the key entry. 0 is natural, 1/2 is sharp, etc.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return ly_pitch_accidental (ent->pitchclass_);
+}
+*/
+
+LY_DEFINE (ly_key_entry_pitch, "ly:key-entry-pitch",
+	   1, 0, 0, (SCM entry),
+	   "The pitch or pitchclass that the key entry defines.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return ent->get_pitchclass()->virtual_smobbed_copy();
+}
+
+
+LY_DEFINE (ly_key_entry_bar_number, "ly:key-entry-bar-number",
+	   1, 0, 0, (SCM entry),
+	   "Get the bar number in which the key entry occured.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return scm_from_int (ent->get_bar_number ());
+}
+
+LY_DEFINE (ly_key_entry_measure_position, "ly:key-entry-measure-position",
+	   1, 0, 0, (SCM entry),
+	   "Extract octave information from key entry. #f if entry is global.")
+{
+  LY_ASSERT_SMOB (Key_entry, entry, 1);
+
+  Key_entry *ent = unsmob_key_entry (entry);
+
+  return ent->get_measure_position ().smobbed_copy ();
+}
+
+

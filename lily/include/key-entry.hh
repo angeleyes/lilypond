@@ -61,7 +61,7 @@ public:
 };
 
 
-//DECLARE_UNSMOB (Key_entry, key_signature_entry);
+DECLARE_UNSMOB (Key_entry, key_entry);
 
 INSTANTIATE_COMPARE (Key_entry, Key_entry::compare);
 
