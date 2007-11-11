@@ -542,8 +542,9 @@ automatically when an output definition (a @code{\score} or
   rehearsalMark = #1
   subdivideBeams = ##f
   allowBeamBreak = ##f
+
   extraNatural = ##t
-  autoAccidentals = #'(Staff (same-octave . 0))
+  autoAccidentals = #`(Staff ,(make-accidental-rule 'same-octave 0))
   autoCautionaries = #'()  
 
   printKeyCancellation = ##t

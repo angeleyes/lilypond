@@ -298,8 +298,10 @@ LY_DEFINE (ly_find_accidentals_simple, "ly:find-accidentals-simple", 5, 0, 0,
   LY_ASSERT_TYPE (ly_is_symbol, octaveness, 5);
   Pitch * pitch = unsmob_pitch (p);
   int bar_number = scm_to_int (barnum);
-  bool ignore_octave = ly_symbol2scm ("any-octave") == octaveness; // todo - check that otherwise "same-octave"
-  Accidental_result result = check_pitch_against_signature (keysig, *pitch, bar_number, laziness, ignore_octave );
+  /* todo - check that otherwise octaveness=="same-octave" */
+  bool ignore_octave = ly_symbol2scm ("any-octave") == octaveness; 
+  Accidental_result result = check_pitch_against_signature
+    (keysig, *pitch, bar_number, laziness, ignore_octave );
   return scm_cons (scm_from_bool (result.need_restore), scm_from_bool (result.need_acc));
 }
 
@@ -332,11 +334,10 @@ check_pitch_against_rules (Pitch const &pitch, Context *origin,
 	  if (dad)
 	    origin = dad;
 	}
-      else if ( true /* FIXME does not work: ly_is_procedure (rule) */ )
+      else if ( ly_is_procedure (rule) )
 	{
-	  SCM localsig = origin->get_property ("localKeySignature");
-
-	  SCM rule_result_scm = scm_call_4 (rule, localsig, pitch_scm, barnum_scm, measurepos);
+	  SCM rule_result_scm = scm_call_4 (rule, origin->self_scm (),
+					    pitch_scm, barnum_scm, measurepos);
 
 	  Accidental_result rule_result (rule_result_scm);
 
@@ -346,7 +347,7 @@ check_pitch_against_rules (Pitch const &pitch, Context *origin,
 
       else
 	warning (_f ("procedure or context-name expected for accidental rule, found %s",
-		     /*ly_scm2string (rule).c_str ()*/ "FIXME!"));
+		     print_scm_val (rule).c_str ()));
 
     }
 
@@ -392,10 +393,10 @@ Accidental_engraver::process_acknowledged ()
 	  if (!pitch)
 	    continue;
 
-	  Accidental_result acc = check_pitch_against_rules (*pitch, origin,
-							     accidental_rules, barnum, measure_position);
-	  Accidental_result caut = check_pitch_against_rules (*pitch, origin,
-							      cautionary_rules, barnum, measure_position);
+	  Accidental_result acc = check_pitch_against_rules
+	    (*pitch, origin, accidental_rules, barnum, measure_position);
+	  Accidental_result caut = check_pitch_against_rules
+	    (*pitch, origin, cautionary_rules, barnum, measure_position);
 
 	  bool cautionary = to_boolean (note->get_property ("cautionary"));
 	  if (caut.score () > acc.score ())

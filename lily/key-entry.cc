@@ -246,7 +246,10 @@ LY_DEFINE (ly_key_entry_bar_number, "ly:key-entry-bar-number",
 
   Key_entry *ent = unsmob_key_entry (entry);
 
-  return scm_from_int (ent->get_bar_number ());
+  if (ent->is_accidental ())
+    return scm_from_int (ent->get_bar_number ());
+  else
+    return SCM_BOOL_F;
 }
 
 LY_DEFINE (ly_key_entry_measure_position, "ly:key-entry-measure-position",
@@ -257,7 +260,10 @@ LY_DEFINE (ly_key_entry_measure_position, "ly:key-entry-measure-position",
 
   Key_entry *ent = unsmob_key_entry (entry);
 
-  return ent->get_measure_position ().smobbed_copy ();
+  if (ent->is_accidental ())
+    return ent->get_measure_position ().smobbed_copy ();
+  else
+    return SCM_BOOL_F;
 }
 
 
