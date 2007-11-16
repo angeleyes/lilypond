@@ -28,6 +28,7 @@ Context_def::Context_def ()
   default_child_ = SCM_EOL;
   description_ = SCM_EOL;
   input_location_ = SCM_EOL;
+  visited_ = false;
 
   smobify_self ();
 
@@ -52,6 +53,8 @@ Context_def::Context_def (Context_def const &s)
   description_ = SCM_EOL;
   default_child_ = SCM_EOL;
   input_location_ = SCM_EOL;
+  visited_ = false;
+
   smobify_self ();
 
   description_ = s.description_;
@@ -194,7 +197,7 @@ Context_def::get_default_child (SCM user_mod) const
 }
 
 vector<Context_def*>
-Context_def::path_to_acceptable_context (SCM type_sym, Output_def *odef) const
+Context_def::path_to_acceptable_context (SCM type_sym, Output_def *odef)
 {
   assert (scm_is_symbol (type_sym));
 
@@ -218,12 +221,13 @@ Context_def::path_to_acceptable_context (SCM type_sym, Output_def *odef) const
 	}
     }
 
+  visited_ = true;
   vsize best_depth = INT_MAX;
   for (vsize i = 0; i < accepteds.size (); i++)
     {
       Context_def *g = accepteds[i];
 
-      if (g!=this)
+      if (!g->visited_)
 	{
 	  vector<Context_def*> result
 	    = g->path_to_acceptable_context (type_sym, odef);
@@ -235,6 +239,7 @@ Context_def::path_to_acceptable_context (SCM type_sym, Output_def *odef) const
 	    }
 	}
     }
+  visited_ = false;
 
   return best_result;
 }

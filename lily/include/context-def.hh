@@ -35,6 +35,8 @@ private:
   SCM translator_group_type_;
   SCM default_child_;
   SCM input_location_;
+  /* used by the traverser to detect loops */
+  bool visited_;
 public:
   Input *origin () const;
   void add_context_mod (SCM);
@@ -49,7 +51,7 @@ public:
   VIRTUAL_COPY_CONSTRUCTOR(Context_def, Context_def);
 
   vector<Context_def*> path_to_acceptable_context (SCM type_string,
-						      Output_def *) const;
+						      Output_def *);
   Context *instantiate (SCM extra_ops);
 
   SCM to_alist () const;
