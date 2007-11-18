@@ -103,7 +103,7 @@
 
 \context {
   \type "Engraver_group"
-  \name "InnerChoirStaff"
+  \name "ChoirStaff"
   \consists "System_start_delimiter_engraver"
   systemStartDelimiter = #'SystemStartBracket
   vocalName = #'()
@@ -116,16 +116,10 @@
   \accepts "PianoStaff"
   \accepts "Lyrics"
   \accepts "ChordNames"
+  \accepts "ChoirStaff"
+  \accepts "StaffGroup"
   \defaultchild "Staff"
-}
-
-\context {
-  \InnerChoirStaff
-  \name ChoirStaff
   
-  \defaultchild "Staff"
-  \accepts "InnerChoirStaff"
-  \accepts "InnerStaffGroup"
   \description "Identical to @code{StaffGroup} except that the
 contained staves are not connected vertically."
 
@@ -312,7 +306,7 @@ can be used."
 
 \context {
   \type "Engraver_group"
-  \name InnerStaffGroup
+  \name "StaffGroup"
 
   \consists "Span_bar_engraver"
   \consists "Span_arpeggio_engraver"
@@ -330,21 +324,15 @@ can be used."
   \accepts "TabStaff"	
   \accepts "Lyrics"
   \accepts "ChordNames"
-}
-
-\context {
-  \InnerStaffGroup
-  \name StaffGroup
+  \accepts "FiguredBass"
+  \accepts "ChoirStaff"
+  \accepts "StaffGroup"
   
   \description "Groups staves while adding a bracket on the left
 side, grouping the staves together.  The bar lines of the contained
 staves are connected vertically.  @code{StaffGroup} only consists of
 a collection of staves, with a bracket in front and spanning bar lines."
   
-  \accepts "InnerChoirStaff"
-  \accepts "ChoirStaff"
-  \accepts "InnerStaffGroup"
-  \accepts "FiguredBass"
 }
 
 

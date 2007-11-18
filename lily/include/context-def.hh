@@ -14,7 +14,7 @@
 #include "smobs.hh"
 #include "input.hh"
 #include "virtual-methods.hh"
-
+#include <set>
 
 /*
   The definition of a interpretation context as given in the
@@ -35,8 +35,6 @@ private:
   SCM translator_group_type_;
   SCM default_child_;
   SCM input_location_;
-  /* used by the traverser to detect loops */
-  bool visited_;
 public:
   Input *origin () const;
   void add_context_mod (SCM);
@@ -51,7 +49,8 @@ public:
   VIRTUAL_COPY_CONSTRUCTOR(Context_def, Context_def);
 
   vector<Context_def*> path_to_acceptable_context (SCM type_string,
-						      Output_def *);
+						   Output_def *,
+						   set<const Context_def *> * seen = NULL) const;
   Context *instantiate (SCM extra_ops);
 
   SCM to_alist () const;

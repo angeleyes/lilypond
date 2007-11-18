@@ -219,9 +219,10 @@ uneven vertical spacing.
 }
 @end lilypond
 
+@item Nested contexts of the same type are now allowed.
+This deprecates @code{InnerStaffGroup} and @code{InnerChoirStaff}.
+
 @end itemize
-
-
 
 @ifhtml
 For older news, go to

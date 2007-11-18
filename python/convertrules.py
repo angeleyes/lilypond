@@ -3013,3 +3013,17 @@ def conv (str):
 
 conversions.append (((2, 11, 23), conv, """#'break-align-symbol -> #'break-align-symbols"""))
 
+def conv (str):
+    if re.search ('\\\\InnerStaffGroup',str) or re.search ('\\\\InnerChoirStaff',str):
+        error_file.write ("\n")
+        error_file.write (NOT_SMART % "re-definitions of InnerStaffGroup / InnerChoirStaff.")
+        error_file.write ("\n")
+        error_file.write (FROM_TO % ("InnerStaffGroup / InnerChoirStaff", "StaffGroup / ChoirStaff"))
+        error_file.write ("\n")
+    else:
+        str = re.sub ('InnerStaffGroup', 'StaffGroup', str)
+        str = re.sub ('InnerChoirStaff', 'ChoirStaff', str)
+    return str
+
+conversions.append (((2, 11, 32), conv, """InnerStaffGroup -> StaffGroup"""))
+
