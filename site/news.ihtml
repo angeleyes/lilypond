@@ -28,6 +28,17 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.36 available</b> -
+    <em>December 13, 2007</em>
+  </dt>
+  <dd>
+    Release 2.11.36 is now available. It has many bugfixes, updates
+    for MusicXML import, and it includes major documentation changes from
+    Grand Documentation Project. (<a
+	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_36&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.33 and 2.10.33 available</b> -
     <em>September 20, 2007</em>
   </dt>
@@ -48,16 +59,6 @@
 	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_32&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
   </dd>
 
-  <dt>
-    <b>LilyPond 2.11.31 available</b> -
-    <em>August 31, 2007</em>
-  </dt>
-  <dd>
-    Release 2.11.31 is now available. It has more bugfixes, updates
-    for MusicXML import and lots of updates for the translations.
-    (<a
-	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_31&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
-  </dd>
 
 </dl>
 
