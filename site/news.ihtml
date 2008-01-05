@@ -28,6 +28,15 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.37 available</b> -
+    <em>January 3, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.37 is available. It has a few bugfixes, and 
+    documentation changes. (<a href="install/#2.11">Download</a>)
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.36 available</b> -
     <em>December 13, 2007</em>
   </dt>
@@ -48,17 +57,6 @@
       2.10</a>, <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_33&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
       2.11</a>, <a href="install/#2.11">Download</a>)
   </dd>
-
-  <dt>
-    <b>LilyPond 2.11.32 available</b> -
-    <em>September 2, 2007</em>
-  </dt>
-  <dd>
-    Release 2.11.32 is now available.
-    (<a
-	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_32&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
-  </dd>
-
 
 </dl>
 
