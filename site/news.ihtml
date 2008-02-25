@@ -28,34 +28,39 @@
     !-->
 
   <dt>
+    <b>Comparison of music engraving with Finale and LilyPond</b> -
+    <em>February 25, 2008</em>
+  </dt>
+  <dd>
+    In three articles, Andrew Hawryluk compares Finale and LilyPond in
+    general terms, and evaluates in detail engraving capabilities of
+    both pieces of software.  The second article is an instructive
+    analysis of Rachmaninoff's Piano Prelude 6 engraving, including
+    comparisons with a reference hand-engraved edition.
+
+    <p><a href="http://www.musicbyandrew.ca/finale-lilypond-1.html">Read
+    the articles</a>.
+  </dd>
+
+  <dt>
+    <b>LilyPond 2.11.41 available</b> -
+    <em>February 25, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.41 is available. It has a few bugfixes, updated
+    program messages in French, German, Spanish and Vietnamese, and
+    updates to the MusicXML converter. (<a
+	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_41&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>)
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.37 available</b> -
     <em>January 3, 2008</em>
   </dt>
   <dd>
-    Release 2.11.37 is available. It has a few bugfixes, and 
+    Release 2.11.37 is available. It has a few bugfixes, and
     documentation changes. (<a href="install/#2.11">Download</a>)
-  </dd>
-
-  <dt>
-    <b>LilyPond 2.11.36 available</b> -
-    <em>December 13, 2007</em>
-  </dt>
-  <dd>
-    Release 2.11.36 is now available. It has many bugfixes, updates
-    for MusicXML import, and it includes major documentation changes from
-    Grand Documentation Project. (<a
-	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_36&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
-  </dd>
-
-  <dt>
-    <b>LilyPond 2.11.33 and 2.10.33 available</b> -
-    <em>September 20, 2007</em>
-  </dt>
-  <dd>
-    Release 2.11.33 is now available.
-    (<a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_33&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-      2.10</a>, <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_33&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
-      2.11</a>, <a href="install/#2.11">Download</a>)
   </dd>
 
 </dl>
