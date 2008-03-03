@@ -168,6 +168,33 @@
 <tr>
   <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
   <td>
+    MacOS X
+  </td>
+  <td>
+    10.5 (Leopard)
+  </td>
+  <td>
+    <strong>
+      _("Instructions for users with command line experience: <a href='%s'>%s</a>",
+      "http://simon.bailey.at/blog/lilyleopard/",
+      "Click here")
+    </strong>
+    <br>
+    <strong>
+      _("Instructions for less experienced users: <a href='%s'>%s</a>",
+      "http://ivo.bouwmans.name/lilypondleopard/",
+      "Click here")
+    </strong>
+  </td>
+  <td></td>  
+  <td>
+    <a href='mailto:binabik@gmail.com'>Simon Bailey</a> / <a href='mailto:lilypondleopard@ivo.bouwmans.name'>Ivo Bouwmans</a>
+  </td> 
+</tr>
+
+<tr>
+  <td><p align="center"><img src="@IMAGES@macosx-logo.png"></p></td>
+  <td>
     MacOS X (Intel)
   </td>
   <td>
