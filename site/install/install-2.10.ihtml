@@ -175,20 +175,12 @@
   </td>
   <td>
     <strong>
-      _("Instructions for users with command line experience: <a href='%s'>%s</a>",
-      "http://simon.bailey.at/blog/lilyleopard/",
-      "Click here")
-    </strong>
-    <br>
-    <strong>
-      _("Instructions for less experienced users: <a href='%s'>%s</a>",
-      "http://ivo.bouwmans.name/lilypondleopard/",
-      "Click here")
+      _("Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>")
     </strong>
   </td>
   <td></td>  
   <td>
-    <a href='mailto:binabik@gmail.com'>Simon Bailey</a> / <a href='mailto:lilypondleopard@ivo.bouwmans.name'>Ivo Bouwmans</a>
+    <a href='mailto:lilypondleopard@ivo.bouwmans.name'>Ivo Bouwmans</a>
   </td> 
 </tr>
 
