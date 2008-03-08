@@ -1,20 +1,20 @@
 # translation of fr.po to Français
 # -*- encoding: utf-8 -*-
 # fr.po -- LilyPond French website language.
-# Copyright (C) 2005 Jean-Charles Malahieude <lilyfan@wanadoo.fr>,
+# Copyright (C) 2005-2008 Jean-Charles Malahieude <lilyfan@wanadoo.fr>,
 # John Mandereau <john.mandereau@free.fr>.
 # This file is distributed under the same license as the LilyPond package.
 #
 #
-# Jean-Charles Malahieude <lilyfan@wanadoo.fr>, 2005.
+# Jean-Charles Malahieude <lilyfan@wanadoo.fr>, 2008.
 # John Mandereau <john.mandereau@free.fr>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-04 23:16+0100\n"
-"PO-Revision-Date: 2007-01-23 22:37+0100\n"
-"Last-Translator: John Mandereau <john.mandereau@free.fr>\n"
+"PO-Revision-Date: 2008-03-08 18:04+0100\n"
+"Last-Translator: Jean-Charles Malahieude <lolyfan-AT-wanadoo-DOT-fr>\n"
 "Language-Team: Français <lilypond-user-fr@gnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -188,9 +188,8 @@ msgid "Reuse variable"
 msgstr "Réutiliser une variable"
 
 #: site/graphics/naive-notation.svg:675
-#, fuzzy
 msgid "measures"
-msgstr "Fonctionnalités"
+msgstr "mesures"
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
@@ -235,11 +234,11 @@ msgstr "Équipe de développement de LilyPond"
 
 #: site/install/install-2.10.ihtml:102
 msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
-msgstr ""
+msgstr "Aller <a href='http://www.johannes-schoepfer.de/lilypond/'>ici</a>"
 
 #: site/install/install-2.10.ihtml:107
 msgid "Johannes Sch&ouml;pfer"
-msgstr ""
+msgstr "Johannes Sch&ouml;pfer"
 
 #: site/install/install-2.10.ihtml:116 site/install/install-2.8.ihtml:64
 #: site/install/install-2.11.ihtml:92
@@ -248,7 +247,7 @@ msgstr "Autre"
 
 #: site/install/install-2.10.ihtml:178 site/install/install-2.11.ihtml:154
 msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
-msgstr ""
+msgstr "Aller href='http://ivo.bouwmans.name/lilypondleopard'>ici</a>"
 
 #: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
