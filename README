@@ -79,7 +79,13 @@ BUILDING THE WEBSITE
 
 To generate the main web site, run
 
+    make update-versions
     make
+
+If 'make update-versions' fail, remove lilypond.versions file if it
+exists and try again.  'make update-versions' does not need to be run
+before each 'make' invocation, it is only useful to run it when new
+LilyPond releases come out.
 
 The scripts/format-page.py script merges the pages in the
 site/template.ihtml template and handles @AT-VARIABLE@ substitutions,
