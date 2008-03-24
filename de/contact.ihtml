@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT Committish: dfac495ce530710defeff84032b9d75b12bac373
+    Translation of GIT Committish: 0d0c0f7d3aa17d622974c8cb80250ec32c389ff6
 
 
 
@@ -18,18 +18,22 @@
 
 <dl>
   <dt>Fragen oder Kommentare?</dt>
-  <dd>
+  <br>
+  <ul>
+  <li>
+    Auf Englisch:<br>
     <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">Hier</a> k&ouml;nnen Sie direkt fragen.
-   <p>
-    Das ist die <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>-Mailingliste
+   <br>
+    Schreiben Sie eine E-Mail an die <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>-Mailingliste
     (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">Info (An- oder Abmeldung)</a>,
     <a href="http://mail.gnu.org/archive/html/lilypond-user/">Archiv</a>)
-    <br>
-  </dd>
-
-
-  
-
+  </li>
+  <li>
+    Auf Deutsch:<br>
+    Stellen Sie ihre Fragen im <a href="http://www.lilypondforum.de">Lilypond-Forum</a>, hier wird Ihnen auf deutsch geholfen.
+  </li>
+</ul>
+  <br>
   
 
   <dt>Fehler gefunden?</dt>

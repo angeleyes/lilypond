@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the LilyPond package.
 # NOTE: Use &...; entries for strings in HTML files, but not for .svg
 # files, eg, use
-#  #: site/graphics/annotate-example-2.svg:191
-#  msgid "Add -es for flat, -is for sharp"
-#  msgstr "Dann -es für ein b und -is für ein Kreuz"
+# msgid "Add -es for flat, -is for sharp"
+# msgstr "Dann -es für ein b und -is für ein Kreuz"
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-04 23:16+0100\n"
-"PO-Revision-Date: 2007-01-01 11:49+0100\n"
-"Last-Translator: Till Rettig\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2008-03-24 15:30+0200\n"
+"Last-Translator: Till Rettig <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: scripts/format-page.py:80
 #, python-format
@@ -106,7 +107,7 @@ msgid "Crash course"
 msgstr "Intensivkurs"
 
 #: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\"
+msgid "Commands start with \\""
 msgstr "Befehle fangen mit \\ an"
 
 #: site/graphics/annotate-example-1.svg:205
@@ -184,13 +185,12 @@ msgid "Reuse variable"
 msgstr "Eine Variable wiederverwenden"
 
 #: site/graphics/naive-notation.svg:675
-#, fuzzy
 msgid "measures"
-msgstr "Eigenschaften"
+msgstr "Takte"
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
-msgstr ""
+msgstr "System"
 
 #: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
 #: site/install/install-2.10.ihtml:80 site/install/install-2.10.ihtml:134
@@ -231,11 +231,11 @@ msgstr "LilyPond-Entwicklerteam"
 
 #: site/install/install-2.10.ihtml:102
 msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
-msgstr ""
+msgstr "<a·href='http://www.johannes-schoepfer.de/lilypond/'>Hier</a> klicken"
 
 #: site/install/install-2.10.ihtml:107
 msgid "Johannes Sch&ouml;pfer"
-msgstr ""
+msgstr "Johannes Sch&ouml;pfer"
 
 #: site/install/install-2.10.ihtml:116 site/install/install-2.8.ihtml:64
 #: site/install/install-2.11.ihtml:92
@@ -244,7 +244,7 @@ msgstr "Andere"
 
 #: site/install/install-2.10.ihtml:178 site/install/install-2.11.ihtml:154
 msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
-msgstr ""
+msgstr "<a·href='http://ivo.bouwmans.name/lilypondleopard'>Hier</a> klicken"
 
 #: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
@@ -266,9 +266,8 @@ msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>Installieren</a>"
 
 #: site/install/install-2.10.ihtml:248 site/install/install-2.11.ihtml:225
-#, fuzzy
 msgid "Documentation and Source code"
-msgstr "Dokumentation"
+msgstr "Dokumentation und Quellcode"
 
 #: site/install/install-2.10.ihtml:258 site/install/install-2.10.ihtml:274
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
