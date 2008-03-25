@@ -107,8 +107,14 @@ msgid "Crash course"
 msgstr "Intensivkurs"
 
 #: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\""
-msgstr "Befehle fangen mit \\ an"
+
+# Breaks web compile:
+#msgfmt --output=out/locale/de/LC_MESSAGES/newweb.mo po/de.po
+#po/de.po:111: end-of-line within string
+#msgfmt: found 1 fatal error
+#
+#msgid "Commands start with \\""
+#msgstr "Befehle fangen mit \\ an"
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
