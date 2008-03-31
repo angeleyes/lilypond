@@ -6,10 +6,18 @@ The HTML sources live in a GIT repository.  Git 1.4.4.1 or newer is
 required, and Git 1.5.x is highly recommended.  To get a fresh version
 run
 
-    mkdir web ; cd web 
+    mkdir web ; cd web ; mkdir .git/refs/remotes/origin
     git init-db
-    git fetch git://git.sv.gnu.org/lilypond.git/ web:web
-    git checkout -b myweb web
+
+then write the two following lines to a text file named .git/remotes/web
+
+URL: git://git.sv.gnu.org/lilypond.git/
+Pull: web:refs/remotes/origin/web
+
+then run
+
+    git fetch web
+    git checkout -b web origin/web
 
 
 GIT BASICS
@@ -28,7 +36,13 @@ Whenever you are asked in this README to pull, it means you should
 update your local copy of the repository with the changes made by
 others on the remote git.sv.gnu.org repository; run
 
-    git pull git://git.sv.gnu.org/lilypond.git/ web:web
+    git pull web
+
+which tells Git to pull using the remote file .git/remotes/web; with
+this remote file already created, the 'pull' command above is in fact
+equivalent to
+
+    git pull git://git.sv.gnu.org/lilypond.git/ web:origin/web
 
 
 Let's explain a bit of Git vocabulary.
@@ -48,31 +62,32 @@ committish.
 A branch is a tree (in the mathematical or computer science sense) of
 commits, and the topmost commit of this branch is called a head.
 
-The "git fetch" command above has created a branch called web
+The "git fetch" command above has created a branch called origin/web
 in your local Git repository.  As this branch is a copy of the remote
 branch web from git.sv.gnu.org LilyPond repository, it is
 called a `remote branch', and is meant to track the changes on the
-branch from git.sv.gnu.org: it will be updated every time you run "git
-pull" or "git fetch" with this branch reference as argument.
+branch from git.sv.gnu.org: it will be updated every time you run 'git
+pull' or 'git fetch' with this branch reference as argument, e.g.
+by using .git/remotes/web remote file when running 'git fetch web'.
 
-The "git checkout" command above has created a branch named myweb.
-At the beginning, this branch is identical to web, but it will
+The 'git checkout' command above has created a branch named 'web'.  At
+the beginning, this branch is identical to 'origin/web', but it will
 differ as soon as you make changes, e.g. adding newly translated
-pages.  Whenever you pull, you merge the changes from web and your
-myweb branch since the last pulling.  If you do not have push
-(i.e. "write") access on git.sv.gnu.org, your myweb branch will always
-differ from web.  In this case, remember that other people
+pages.  Whenever you pull, you merge the changes from origin/web and
+your web branch since the last pulling.  If you do not have push
+(i.e. "write") access on git.sv.gnu.org, your web branch will always
+differ from origin/web.  In this case, remember that other people
 working like you on the remote web branch of
-git://git.sv.gnu.org/lilypond.git/ know nothing know nothing about
-your myweb branch: this means that whenever you use a committish or
-make a patch, others expect you to take the lastest web branch
-as a reference.
+git://git.sv.gnu.org/lilypond.git/ know nothing about your own web
+branch: this means that whenever you use a committish or make a patch,
+others expect you to take the lastest commit of origin/web branch as a
+reference.
 
 This README tries to explain most of Git commands needed for
 translating the web site.  However, you are invited to read further
 documentation to make git more familiar to you; for instance, take a
-look at http://git.or.cz/gitwiki/, especially GitDocumentation
-and GitGlossary.
+look at http://git.or.cz/gitwiki/, especially GitDocumentation and
+GitGlossary.
 
 
 BUILDING THE WEBSITE
@@ -235,7 +250,7 @@ apply.
 After updating a translation, also update the GIT committish in the
 updated translated pages; do
 
-    git-rev-parse web
+    git-rev-parse origin/web
 
 to see the last committish, and in each translated page you updated,
 replace the old Git committish with the new one.
@@ -369,7 +384,7 @@ patches to the lilypond-devel list, the Translation meister will take
 care of them. You can create patches like this
 (please do this after committing locally and after pulling):
 
-    git format-patch web
+    git format-patch origin/web
 
 You will get a number of patch files:
 
@@ -383,7 +398,7 @@ If the Translation meister complains your patches don't apply cleanly,
 try this alternative command to make a single clean patch (do it after
 committing local changes and after pulling)
 
-    git diff web myweb
+    git diff origin/web web
 
 
 COMMON ISSUES
