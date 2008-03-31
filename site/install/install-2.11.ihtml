@@ -151,7 +151,7 @@
   </td>
   <td>
     <strong>
-      _("Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>")
+      _("Go <a href='%s'>here</a>", "http://ivo.bouwmans.name/lilypondleopard")
     </strong>
   </td>
   <td></td>  

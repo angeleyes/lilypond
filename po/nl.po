@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-04 23:16+0100\n"
+"POT-Creation-Date: 2008-03-31 16:14+0200\n"
 "PO-Revision-Date: 2006-12-28 23:36+0100\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,22 +226,16 @@ msgstr "doe %s in een commandovenster."
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
-#: site/install/install-2.10.ihtml:102
-msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
-msgstr ""
-
-#: site/install/install-2.10.ihtml:107
-msgid "Johannes Sch&ouml;pfer"
-msgstr ""
+#: site/install/install-2.10.ihtml:102 site/install/install-2.10.ihtml:178
+#: site/install/install-2.8.ihtml:53 site/install/install-2.11.ihtml:154
+#, c-format
+msgid "Go <a href='%s'>here</a>"
+msgstr "Klik <a href='%s'>hier</a>"
 
 #: site/install/install-2.10.ihtml:116 site/install/install-2.8.ihtml:64
 #: site/install/install-2.11.ihtml:92
 msgid "Other"
 msgstr "Overige"
-
-#: site/install/install-2.10.ihtml:178 site/install/install-2.11.ihtml:154
-msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
-msgstr ""
 
 #: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
@@ -283,11 +277,6 @@ msgstr "Broncode"
 #: site/install/install-2.11.ihtml:253
 msgid "warning"
 msgstr "waarschuwing"
-
-#: site/install/install-2.8.ihtml:53
-#, c-format
-msgid "Go <a href='%s'>here</a>"
-msgstr "Klik <a href='%s'>hier</a>"
 
 #~ msgid "Using <A HREF='%s'>automatic language selection</A>."
 #~ msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."

@@ -11,13 +11,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-04 23:16+0100\n"
+"POT-Creation-Date: 2008-03-31 16:14+0200\n"
 "PO-Revision-Date: 2008-03-24 15:30+0200\n"
 "Last-Translator: Till Rettig <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: scripts/format-page.py:80
 #, python-format
@@ -107,15 +107,16 @@ msgid "Crash course"
 msgstr "Intensivkurs"
 
 #: site/graphics/annotate-example-1.svg:195
+msgid "Commands start with \\"
+msgstr ""
 
 # Breaks web compile:
-#msgfmt --output=out/locale/de/LC_MESSAGES/newweb.mo po/de.po
-#po/de.po:111: end-of-line within string
-#msgfmt: found 1 fatal error
+# msgfmt --output=out/locale/de/LC_MESSAGES/newweb.mo po/de.po
+# po/de.po:111: end-of-line within string
+# msgfmt: found 1 fatal error
 #
-#msgid "Commands start with \\""
-#msgstr "Befehle fangen mit \\ an"
-
+# msgid "Commands start with \\""
+# msgstr "Befehle fangen mit \\ an"
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
 msgstr "Buchstaben sind Noten"
@@ -235,22 +236,16 @@ msgstr "%s auf einer Konsole eingeben"
 msgid "LilyPond development team"
 msgstr "LilyPond-Entwicklerteam"
 
-#: site/install/install-2.10.ihtml:102
-msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
-msgstr "<a·href='http://www.johannes-schoepfer.de/lilypond/'>Hier</a> klicken"
-
-#: site/install/install-2.10.ihtml:107
-msgid "Johannes Sch&ouml;pfer"
-msgstr "Johannes Sch&ouml;pfer"
+#: site/install/install-2.10.ihtml:102 site/install/install-2.10.ihtml:178
+#: site/install/install-2.8.ihtml:53 site/install/install-2.11.ihtml:154
+#, c-format
+msgid "Go <a href='%s'>here</a>"
+msgstr "Siehe <a href='%s'>hier</a>"
 
 #: site/install/install-2.10.ihtml:116 site/install/install-2.8.ihtml:64
 #: site/install/install-2.11.ihtml:92
 msgid "Other"
 msgstr "Andere"
-
-#: site/install/install-2.10.ihtml:178 site/install/install-2.11.ihtml:154
-msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
-msgstr "<a·href='http://ivo.bouwmans.name/lilypondleopard'>Hier</a> klicken"
 
 #: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
@@ -292,10 +287,15 @@ msgstr "Quellcode"
 msgid "warning"
 msgstr "Warnung"
 
-#: site/install/install-2.8.ihtml:53
-#, c-format
-msgid "Go <a href='%s'>here</a>"
-msgstr "Siehe <a href='%s'>hier</a>"
+#~ msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
+#~ msgstr "<a·href='http://ivo.bouwmans.name/lilypondleopard'>Hier</a> klicken"
+
+#~ msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
+#~ msgstr ""
+#~ "<a·href='http://www.johannes-schoepfer.de/lilypond/'>Hier</a> klicken"
+
+#~ msgid "Johannes Sch&ouml;pfer"
+#~ msgstr "Johannes Sch&ouml;pfer"
 
 #~ msgid "Using <A HREF='%s'>automatic language selection</A>."
 #~ msgstr "Benutzung der <A HREF='%s'>automatischen Sprachauswahl</A>."

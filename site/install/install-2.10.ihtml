@@ -99,12 +99,12 @@
   <td>11.0</td>
   <td>
     <strong>
-      _("Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>")
+      _("Go <a href='%s'>here</a>", "http://www.johannes-schoepfer.de/lilypond/")
       <br>
     </strong>
   </td>
   <td>2.10.15</td>
-  <td><a href="mailto:info@johannes-schoepfer.de">_("Johannes Sch&ouml;pfer")</a></td>
+  <td><a href="mailto:info@johannes-schoepfer.de">Johannes Sch&ouml;pfer</a></td>
 </tr>
 
 
@@ -175,7 +175,7 @@
   </td>
   <td>
     <strong>
-      _("Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>")
+      _("Go <a href='%s'>here</a>", "http://ivo.bouwmans.name/lilypondleopard")
     </strong>
   </td>
   <td></td>  
