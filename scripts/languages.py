@@ -4,4 +4,5 @@
     ('es', 'Español'),
     ('fr', 'Fran&ccedil;ais'),
     ('nl', 'Nederlands'),
+    ('ja', 'Japanese'),
     )

@@ -1,7 +1,7 @@
 # -*-makefile-*-
 
 # Do not publish non-polished or non-finished or outdated translations.
-LANGUAGES = de es fr nl
+LANGUAGES = de es fr nl ja
 
 .PHONY: add all clean default dist menuify out scripts site TAGS tree $(LANGUAGES)
 
@@ -14,7 +14,7 @@ DISTDIR = lily-web-$(VERSION)
 
 READMES = ChangeLog README TRANSLATION
 SITE_HTML = $(shell find site -name '*.html')
-LOCAL_HTML = $(shell find de es fr nl -name '*.html')
+LOCAL_HTML = $(shell find $(LANGUAGES) -name '*.html')
 NO_TRANSLATION = '/announce-|/devel/|/donate|/old-|/older-|/search'
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
