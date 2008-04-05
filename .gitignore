@@ -9,5 +9,6 @@ es/graphics
 fr/graphics
 lilypond.versions
 nl/graphics
+ja/graphics
 out
 scripts/*.pyc
