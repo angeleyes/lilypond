@@ -1,0 +1,75 @@
+<!--
+    Translation of GIT committish: 737806bc27547eff0459851b4111ced5d81712d5
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<dl>
+  <dt>質問や意見があれば</dt>
+  <dd>
+御意見を<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">投稿</a>してください。
+<p> こちらが、
+ <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt>メーリングリストです。
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">インフォ</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-user/">アーカイブ</a>)
+    <br>
+  </dd>
+
+  <dt>バグリポートは</dt>
+  <dd>
+<a href="http://lilypond.org/web/devel/participating/bugs">バグの報告の仕方</a>を御覧下さい。
+
+
+   <p>
+    バグは次のメーリングリストで報告されてます。
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">インフォ</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">アーカイブ</a>)
+    <br>
+
+  </dd>
+
+  <dt>新しいリリースのお知らせが必要ですか?</dt>
+  <dd>
+我々の連絡網に<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">
+登録</a>して下さい。
+
+<p>こちらが、
+<tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
+メーリングリスト(<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">インフォ</a>,
+    <a href="http://mail.gnu.org/archive/html/info-lilypond/">アーカイブ</a>)です。
+  </dd>
+
+  
+  <dt>このページへの御意見がありますか?</dt>
+  <dd>
+バグリポートを<a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">投稿</a>して下さい。 
+<p>
+こちらが、
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+メーリングリスト
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">インフォ</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">アーカイブ</a>)
+  </dd>です。
+
+  
+  <dt>開発者とコンタクトしたいですか?<dt>
+  あなたの御意見を<dd><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">投稿</a>して下さい。
+<p>
+こちらが、
+<tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt>メーリングリスト
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">インフォ</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">アーカイブ</a>)
+  </dd>です。
+
+  <dt>
+    作者と直接コンタクトしたいですか?</dt>
+    <dd>
+    <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">
+      作者のリスト</a>を御覧下さい。
+    (<em>但し、極めて個人的な連絡が必要なときに限ります。
+      </em>)
+  </dd>
+</dl>
