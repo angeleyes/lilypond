@@ -27,6 +27,11 @@
 
     !-->
 
+   <dt><b>lilypond.org日本語訳 (lilypond.org Japanese translation)</b> - <em>2008年4月8日</em></dt>
+   <dd>
+     Lilypond.orgのいくつかのページの日本語訳が出来ました。
+   </dd>
+
   <dt>
     <b>LilyPond 2.11.43 available</b> -
     <em>March 31, 2008</em>
@@ -38,16 +43,6 @@
     fixed. <a
       href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_43&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
     <a href="install/#2.11">Download</a>.
-  </dd>
-
-  <dt>
-    <b>LilyPond 2.11.42 available</b> -
-    <em>March 9, 2008</em>
-  </dt>
-  <dd>
-    Release 2.11.42 is out. It fixes some formatting and spacing bugs. (<a
-      href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_42&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-    <a href="install/#2.11">Download</a>)
   </dd>
 
   <dt>
