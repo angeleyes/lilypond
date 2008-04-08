@@ -6,8 +6,8 @@ The HTML sources live in a GIT repository.  Git 1.4.4.1 or newer is
 required, and Git 1.5.x is highly recommended.  To get a fresh version
 run
 
-    mkdir web ; cd web ; mkdir .git/refs/remotes/origin
-    git init-db
+    mkdir web ; cd web ; git init-db
+    mkdir .git/remotes
 
 then write the two following lines to a text file named .git/remotes/web
 
