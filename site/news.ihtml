@@ -27,6 +27,17 @@
 
     !-->
 
+  <dt>
+    <b>LilyPond 2.11.44 available</b> -
+    <em>April 14, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.44 is available. Support for figured bass and chord
+    names has been added to the MusicXML
+    converter. <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_44&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
    <dt><b>lilypond.org日本語訳 (lilypond.org Japanese translation)</b> - <em>2008年4月8日</em></dt>
    <dd>
      Lilypond.orgのいくつかのページの日本語訳が出来ました。
@@ -43,21 +54,6 @@
     fixed. <a
       href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_43&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
     <a href="install/#2.11">Download</a>.
-  </dd>
-
-  <dt>
-    <b>Comparison of music engraving with Finale and LilyPond</b> -
-    <em>February 25, 2008</em>
-  </dt>
-  <dd>
-    In three articles, Andrew Hawryluk compares Finale and LilyPond in
-    general terms, and evaluates in detail engraving capabilities of
-    both pieces of software.  The second article is an instructive
-    analysis of Rachmaninoff's Piano Prelude 6 engraving, including
-    comparisons with a reference hand-engraved edition.
-
-    <p><a href="http://www.musicbyandrew.ca/finale-lilypond-1.html">Read
-    the articles</a>.
   </dd>
 
 </dl>
