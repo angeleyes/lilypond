@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-31 16:14+0200\n"
-"PO-Revision-Date: 2008-03-24 15:30+0200\n"
+"PO-Revision-Date: 2008-04-25 15:30+0200\n"
 "Last-Translator: Till Rettig <>\n"
-"Language-Team: \n"
+"Language-Team: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -108,15 +108,8 @@ msgstr "Intensivkurs"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
-msgstr ""
+msgstr "Befehle beginnen mit \\"
 
-# Breaks web compile:
-# msgfmt --output=out/locale/de/LC_MESSAGES/newweb.mo po/de.po
-# po/de.po:111: end-of-line within string
-# msgfmt: found 1 fatal error
-#
-# msgid "Commands start with \\""
-# msgstr "Befehle fangen mit \\ an"
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
 msgstr "Buchstaben sind Noten"
