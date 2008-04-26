@@ -28,6 +28,22 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.45 available</b> -
+    <em>April 26, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.45 fixes a couple of bugs in the formatting
+    engine. <code>lilypond-book</code> has been improved, with better
+    performance, a bugfix about included files, and more flexibility
+    for preprocessing documents with LaTeX variants. Support for
+    enclosing text in a rounded box has been contributed by Valentin
+    Villenave.
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_45&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.44 available</b> -
     <em>April 14, 2008</em>
   </dt>
@@ -42,19 +58,6 @@
    <dd>
      Lilypond.orgのいくつかのページの日本語訳が出来ました。
    </dd>
-
-  <dt>
-    <b>LilyPond 2.11.43 available</b> -
-    <em>March 31, 2008</em>
-  </dt>
-  <dd>
-    Release 2.11.43 has been available since March 27. It fixes a
-    couple of formatting bugs, and the font cache problem with
-    MS-Windows binaries which caused excessive slowness has been
-    fixed. <a
-      href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_43&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
-    <a href="install/#2.11">Download</a>.
-  </dd>
 
 </dl>
 
