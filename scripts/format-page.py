@@ -89,6 +89,9 @@ LANGUAGES_TEMPLATE = '''\
 </P>
 ''' % vars ()
 
+RSS_URL = "http://www.nabble.com/Gnu---Lilypond---Announce-f1721.xml"
+RSS_TITLE = "LilyPond - Latest releases"
+
 
 
 version_db_file_name = 'lilypond.versions'
@@ -255,7 +258,14 @@ def format_page (html, file_name, lang):
     location = LOCATION_SEP.join (map (locationize, locations))
     location_title = LOCATION_TITLE % ' - '.join (map (lambda x: x.name,
                                                        locations[1:]))
-                                           
+
+
+    # Make RSS feed.
+           # TODO: - generate a native RSS feed from news.ihtml
+           #       - localize rss_title
+    rss_url = RSS_URL
+    rss_title = RSS_TITLE
+                               
 
     # Ugh: title and script hacks.
     titles = [location_title]
@@ -315,6 +325,8 @@ def format_page (html, file_name, lang):
     page = re.sub ('@SCRIPT@', script, page)
     page = re.sub ('@TITLE@', titles[-1], page)
     page = re.sub ('@FILE_NAME@', file_name, page)
+    page = re.sub ('@RSS_TITLE@', rss_title, page)
+    page = re.sub ('@RSS@', rss_url, page)
     page = re.sub ('@ONLOAD@', onload, page)
     page = re.sub ('@ISO_LANG@', iso_lang, page)
     page = re.sub ('@LANG@', slang, page)
