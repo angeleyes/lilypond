@@ -1,0 +1,136 @@
+<!--
+    Translation of GIT committish: 66b694b385c72265638ff1a9a23199bf8a09b9e2
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<a name="introduction"></a>
+
+<h2>コンピュータによる楽譜制作の何が良くないのか?</h2>
+
+<!-- We like to call LilyPond an "automated engraving system." It will -->
+<!-- format music notation beautifully without requiring typographical -->
+<!-- expertise of its users. -->
+私たちは LilyPond を"自動譜刻システム"と呼びたいと思っています。
+組版の専門的知識の無いユーザでも楽譜を美しく仕上げるからです。
+<p>
+
+<!-- LilyPond is not unique in making music notation: there are a lot of -->
+<!-- programs that print music, and nowadays most of the newly printed -->
+<!-- music is made with computers.  Unfortunately, that also shows: just -->
+<!-- ask any musician that plays classical music: new scores do not look as -->
+<!-- nice as old (from before, say, 1970) scores: the new ones have a -->
+<!-- bland, mechanical look. They are not at all pleasurable to play from. -->
+LilyPondは楽譜の作成ソフトとして唯一ではありません。
+楽譜を印刷できるプログラムはたくさんありますし、今日新しく印刷される楽譜はコンピュータで制作されています。
+残念なことに(クラシック音楽を演奏する音楽家に聞けば分かりますが)、
+それが故に新しい楽譜は古い物(大体1970年以前)より見映えが良くありません。
+新しい物は退屈で機械的な見映えです。つまり演奏が楽しくなるようなものではありません。
+<p>
+
+<!-- To illustrate this, take a look at the following examples. Both are -->
+<!-- editions of the 1st Cello Suite by J.S.Bach. The one on the left is a -->
+<!-- very beautifully hand-engraved edition from 1950, the one on the right -->
+<!-- is a typical contemporary computer product. Take a few seconds to let -->
+<!-- the looks of both pages sink in. Which one do you like better, and -->
+<!-- why? -->
+このことを示すのに、次の例を見てください。両方共 J.S.Bach のチェロ組曲第1番です。
+左側のは1950年代の非常に美しく手で彫られた物で、右のは典型的な現代のコンピュータ製です。
+しばらくの間、それぞれの見映えが深く記憶されるまで見てください。
+どちらが良いと思いますか? そして何故ですか?
+<p>
+<table>
+<tr><td align="center">
+<img src="@IMAGES@baer-suite1-fullpage.png">
+</td><td align="center">
+<img src="@IMAGES@henle-suite1-fullpage.png">
+</td></tr>
+<tr><td align="center">B&auml;renreiter (BA 320, (c) 1950)</td>
+<td align="center">Henle (nr. 666 (c) 2000)</td>
+ </tr>
+</table>
+<p>
+
+<!-- The left picture looks nice: it has flowing lines and movement. It's -->
+<!-- music, and it's alive.  Now, the picture on the right shows the same -->
+<!-- music, and it was written by Bach.  His music surely has liveliness -->
+<!-- and flowing lines.... Except, the score doesn't show it: it looks -->
+<!-- rigid and mechanical.  To understand better why that is, let's blow up -->
+<!-- a fragment of both pieces: -->
+左の方が良いでしょう。流れるような線と動きがあります。まさに音楽、生き生きとしています。
+さて右のも Bach によって書かれた同じ音楽を表しています。
+Bachの音楽は生き生きとしていて流れるようです....ただ、楽譜がそれを表していません。
+ガチガチで機械的です。
+もっと良くその理由を理解するために、それぞれの部分を拡大してみましょう。
+
+<p align="center">
+
+<img src="@IMAGES@baer-suite1-line.png">
+
+<p align="center"> 手製
+<p><br>
+
+<p align="center">
+
+<img src="@IMAGES@henle-suite1-line.png">
+<p align="center">コンピュータ製
+
+<p>
+
+<!-- The location of the bar lines is a giveaway.  In the new edition, -->
+<!-- both barlines are on exactly the same horizontal location. Also, the -->
+<!-- note heads are on the exact same horizontal location.  When you look -->
+<!-- back at the whole page, you can easily verify that almost all barlines -->
+<!-- are in the same location, as are most of the note heads. The entire -->
+<!-- thing is spaced as if it were put to a big grid, which is what causes -->
+<!-- the mechanical impression. -->
+小節線の位置で、もろバレです。新しい方ではそれぞれの小節線が全く同じ横方向の位置にあります。
+符頭の位置も横方向では全く同じです。ページ全体を見直すと、ほとんど全部の小節線が同じ位置にあって、
+符頭の大部分もそうだということが簡単に分かるでしょう。
+全てが大きな枡目に揃えて入れたかのようで、そのせいで機械的な印象を受けます。
+<p>
+
+<!-- This is not the only error on this example, and more importantly, this -->
+<!-- piece is not the only one with typographical errors.  Sadly, almost -->
+<!-- all music printed nowadays is full of basic typographical mistakes. -->
+これがこの例の唯一の誤りではないですし、またもっと重要な事には、この曲だけに組版の誤りがあるわけではありません。
+嘆かわしいことに昨今印刷されるほとんど全ての楽譜がこういった基本的な組版の過ちだらけなのです。
+
+<p>
+
+<!-- Musicians are usually more absorbed with performing the music than -->
+<!-- with studying its looks, so this nitpicking about typographical -->
+<!-- details may seem academical. That is not justified.  This piece here -->
+<!-- has a monotonous rhythm. If all lines look the same, they become like -->
+<!-- a labyrinth. If the musician looks away once or has a lapse in his -->
+<!-- concentration, he will be lost on the page. -->
+音楽家は普段、楽譜の観察よりもその演奏に気を取られているものなので、
+こういった組版の細部をつつくことは学術的すぎると思われるかもしれません。
+しかし、それは正当化されません。
+ここに挙げた曲は単調なリズムになっています。
+もし、全ての段が同じに見えると、全体は迷路のようになってしまうでしょう。
+音楽家がちょっと別の場所を見たり、ちょっとした集中力の低下があった場合に、
+ページの中の場所を見失ってしまうでしょう。
+
+<p>
+<!-- In general, this is a common characteristic of typography. Layout -->
+<!-- should be pretty, not only for its own sake, but especially because it -->
+<!-- helps the reader in his task. For performance material like sheet -->
+<!-- music, this is doubly important: musicians have a limited amount of -->
+<!-- attention. The less attention they need for reading, the more they can -->
+<!-- focus on playing itself.  In other words, better typography translates -->
+<!-- to better performances. -->
+一般的に、これは組版に共通する特徴です。
+レイアウトは、それ自身のためにだけでなく、とりわけそれを読む人が仕事をしやすいように、良くなければなりません。
+このことは、楽譜のように表現に使われる道具については、二重の意味で重要です。
+人間の集中力には限界がありますので、読むために必要な集中が少なければより演奏に注意を向けることが出来ます。
+別の言いかたをすれば、組版の善し悪しは演奏の善し悪しに結び付いているのです。
+
+<p align="right">
+
+<!-- Next: <a href="software.html">What's wrong with software</a>, or how -->
+<!-- Finale is not the end-all of music software. -->
+次:<a href="software.html">ソフトのどこが悪いのか</a>、
+あるいはFinaleが楽譜ソフトの終わりでも全てでもないこと。
