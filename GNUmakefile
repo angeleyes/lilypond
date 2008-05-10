@@ -78,13 +78,15 @@ po-replace: po-update
 	$(LANG_LOOP)
 endif
 
-EXT = .jpeg .ly .pdf .png
+EXT = .jpeg .ly .pdf .png .xml
 HTML = $(shell find $(SITE) -name '*.html')
 IHTML = $(shell find site -name '*.ihtml')
 NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
 TREE = $(shell cd site && find . -type d -not -name CVS)
 PY = $(shell find scripts site -name '*.py')
 SVG = $(shell find site -name '*.svg')
+
+NEWS_FILES = site/top-news.ihtml site/old-news.html site/lilypond-rss-feed.xml
 
 all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
 
@@ -168,10 +170,13 @@ tree:
 	mkdir -p out/site
 	cd out/site && mkdir -p $(TREE)
 
-menuify: $(mo)
+menuify: $(mo) $(NEWS_FILES)
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --version-db lilypond.versions --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
-linktree: tree
+$(NEWS_FILES): site/lilypond-rss-feed.xml.in site/news.html.in site/old-news.html.in
+	LANG= $(PYTHON) $(SCRIPTDIR)/make-news.py $^
+
+linktree: tree $(NEWS_FILES)
 	$(foreach i, $(NON_HTML), ln -f $i out/$i &&) true
 	cd out && touch .xvpics && rm -rf $$(find -name .xvpics)
 	ln -f newweb.css out/site

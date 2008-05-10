@@ -1,25 +1,78 @@
+<!-- -*- html -*- -->
 <!--
     Translation of GIT committish: <FILL-IN-HEAD-COMMITTISH>  
+    
+    Translators must leave this comment intact, but remove any dollar
+    signs ($) from the CVS Revision indicator.
 
-    When revising a translation, copy the HEAD committish of the
-    version that you are working on.  Refer to `UPDATE A TRANSLATION'
-    in README for details.
-!-->
+    When revising a translation, copy the CVS Revision number from the
+    original source file.  !-->
 
-<!-- We use the table here to mimic the front page, so that news items
-     can be simply cut and pasted here and the source looks good
-     without re-indenting !-->
+<dl>
 
-<table rules="cols" cellpadding="6%">
+  <!--
 
-  <tr>
-    <th><h2>Old news</h2></th>
-  </tr>
+      NOTE:
 
-  <tr>
-    <td>
-      <dl>
-  <dt><b>lilypond.org日本語訳 (lilypond.org Japanese translation)</b> - <em>2008年4月8日</em></dt>
+      * avoid "HERE" as name for links, use descriptive link names like
+      <a href "">Download LilyPond 2.5.16</a>
+
+      * avoid putting links in running text. They make text harder to read.
+      Preferably: (<a href= .. >..</a>, etc. )
+
+      * use a descriptive title in <dt>
+
+      * writing date in "Month DD, YYYY" format is required for
+      generating the RSS feed; in case the message (and thus the date)
+      is not in English, you must write a well-formed date in English
+      like above in a comment between </em> and </dt>
+      (see "Japanese translation" below for an example).
+
+    * Split news items in small chunks. It's OK to have more than 1 item
+    on one day.
+
+    !-->
+
+  <dt>
+    <b>The LilyPond Report #8</b> -
+    <em>May 05, 2008</em>
+  </dt>
+  <dd>
+    Welcome to this eighth issue of the <em>LilyPond Report</em>!<br>
+    This short, informal, weekly opinion column is about the LilyPond project: its team, its world, its community.
+    Follow <a href="http://valentin.villenave.info/The-LilyPond-Report-8">this link</a> to read the full issue...
+  </dd>
+
+  <dt>
+    <b>LilyPond 2.11.45 available</b> -
+    <em>April 26, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.45 fixes a couple of bugs in the formatting
+    engine. <code>lilypond-book</code> has been improved, with better
+    performance, a bugfix about included files, and more flexibility
+    for preprocessing documents with LaTeX variants. Support for
+    enclosing text in a rounded box has been contributed by Valentin
+    Villenave.
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_45&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
+    <b>LilyPond 2.11.44 available</b> -
+    <em>April 14, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.44 is available. Support for figured bass and chord
+    names has been added to the MusicXML
+    converter. <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_44&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt class="sticky"><b>lilypond.org日本語訳 (lilypond.org Japanese translation)</b> -
+    <em>2008年4月8日</em>  <!-- April 4, 2008 -->
+  </dt>
 
   <dd>
 
@@ -129,10 +182,6 @@
 	href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_31&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
   </dd>
 
-<dt><b>LilyPond 2.11.28 for FreeBSD x86_64</b> - <em>August 10,
-2007</em></dt>
-
-
   <dt>
     <b>LilyPond 2.11.30 available</b> -
     <em>August 20, 2007</em>
@@ -141,7 +190,7 @@
     Release 2.11.30 is now available. It has various bugfixes among
     others in the new spacing code, MusicXML import and lots of updates
     for the translations.  (<a
-			       href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_30&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
+href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_30&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>, <a href="install/#2.11">Download</a>)
   </dd>
 
   <dt>
@@ -210,8 +259,8 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_25&am
 </dd>
 
 
-<dt><b>LilyPond 2.10.23 and 2.11.23 available</b> - <em>May 1,
-2007</em></dt> <dd> This has lots of bugfixes.  (<a
+<dt><b>LilyPond 2.10.23 and 2.11.23 available</b> - <em>May 1, 2007</em></dt>
+ <dd> This has lots of bugfixes.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
 2.11</a>, <a
 href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes
@@ -3120,8 +3169,5 @@ notes</a>.  Download <a href="install/#2.3">here</a>.
 	  1.7.29 - release candidate 4 has been released.  Packages for
 	  Red&nbsp;Hat, Debian, Cygwin are <a href="install/">available</a>.
 	</dd>
+</dl>
 
-      </dl>
-    </td>
-  </tr>
-</table>

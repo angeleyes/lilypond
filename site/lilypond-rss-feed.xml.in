@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>lilypond.org</title>
+    <link>http://lilypond.org</link>
+    <description>LilyPond news</description>
+    <language>en</language>
+    <managingEditor>lilypond-devel@gnu.org</managingEditor>
+    <webMaster>lilypond-devel@gnu.org</webMaster>
+    <pubDate>@DATE_TIME@</pubDate>
+    <ttl>120</ttl>
+    @NEWS@
+  </channel>
+</rss>

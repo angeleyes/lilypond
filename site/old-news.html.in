@@ -1,0 +1,26 @@
+<!--
+    Translation of GIT committish: <FILL-IN-HEAD-COMMITTISH>  
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<!-- We use the table here to mimic the front page, so that news items
+     can be simply cut and pasted here and the source looks good
+     without re-indenting !-->
+
+<table rules="cols" cellpadding="6%">
+
+  <tr>
+    <th><h2>Old news</h2></th>
+  </tr>
+
+  <tr>
+    <td>
+      <dl>
+	@NEWS@
+      </dl>
+    </td>
+  </tr>
+</table>

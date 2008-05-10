@@ -89,7 +89,7 @@ LANGUAGES_TEMPLATE = '''\
 </P>
 ''' % vars ()
 
-RSS_URL = "http://www.nabble.com/Gnu---Lilypond---Announce-f1721.xml"
+RSS_URL = "http://lilypond.org/web/lilypond-rss-feed.xml"
 RSS_TITLE = "LilyPond - Latest releases"
 
 
@@ -261,8 +261,7 @@ def format_page (html, file_name, lang):
 
 
     # Make RSS feed.
-           # TODO: - generate a native RSS feed from news.ihtml
-           #       - localize rss_title
+    # TODO: - localize rss_title
     rss_url = RSS_URL
     rss_title = RSS_TITLE
                                
