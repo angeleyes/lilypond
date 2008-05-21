@@ -34,6 +34,21 @@
     !-->
 
   <dt>
+    <b>RSS feed</b> - <em>May 21, 2008</em>
+  </dt>
+  <dd>
+    <p>A RSS feed is now available on lilypond.org.  It contains all
+    news announced on the web site start page: releases, LilyPond
+    report, new translations of the site and publications.
+    <a href="http://lilypond.org/web/lilypond-rss-feed.xml">Feed
+    URL</a>.</p>
+
+    <p>The mailing list <a
+    href="http://mail.gnu.org/mailman/listinfo/info-lilypond">info-lilypond</a>
+    is still used to announce releases and special events.</p>
+  </dd>
+
+  <dt>
     <b>The LilyPond Report #9</b> -
     <em>May 05, 2008</em>
   </dt>
