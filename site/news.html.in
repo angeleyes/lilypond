@@ -34,11 +34,23 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.47 released</b> -
+    <em>May 28, 2008</em>
+  </dt>
+  <dd>
+    LilyPond now allows all text context properties to be markups,
+    except in <code>\lyricmode</code>.  This release also fixes
+    regression tests maintenance for developers.
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_47&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.46 available</b> -
     <em>May 22, 2008</em>
   </dt>
   <dd>
-    Release 2.11.45 fixes a lot of bugs and includes a rewrite of
+    Release 2.11.46 fixes a lot of bugs and includes a rewrite of
     dynamics engravers.  Support for slur-shaped arpeggios has been added.
     <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
     <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_46&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
