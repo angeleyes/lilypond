@@ -34,6 +34,15 @@
     !-->
 
   <dt>
+    <b>The LilyPond Report #10</b> -
+    <em>June 1st, 2008</em>
+  </dt>
+  <dd>
+    Welcome to this special tenth issue of the <em>LilyPond Report</em>, entirely dedicated to Algorithmic Composition systems.<br>
+    Follow <a href="http://valentin.villenave.info/The-LilyPond-Report-10">this link</a> to read the full issue...
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.47 released</b> -
     <em>May 28, 2008</em>
   </dt>
