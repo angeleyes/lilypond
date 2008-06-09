@@ -34,6 +34,18 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.48 released</b> -
+    <em>June 9, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.48 is out.  This release fixes a few bugs, and
+    <code>\compressMusic</code> has been renamed
+    to <code>\scaleDurations</code>.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_48&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>The LilyPond Report #11</b> -
     <em>June 9, 2008</em>
   </dt>
