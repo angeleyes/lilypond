@@ -34,6 +34,16 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.49 released</b> -
+    <em>June 12, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.49 is out.  It fixes a number of bugs, including bugs in beams formatting.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_49&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.48 released</b> -
     <em>June 9, 2008</em>
   </dt>
