@@ -234,7 +234,7 @@ LY_DEFINE (ly_key_entry_pitch, "ly:key-entry-pitch",
 
   Key_entry *ent = unsmob_key_entry (entry);
 
-  return ent->get_pitchclass()->virtual_smobbed_copy();
+  return ent->get_pitchclass()->smobbed_clone();
 }
 
 

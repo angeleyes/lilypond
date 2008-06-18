@@ -18,7 +18,7 @@
 
 
   In LilyPond, smobs are created from C++ objects through macros.
-  There are two types of smob objects.
+  There are three types of smob objects.
 
   1. Simple smobs are intended for simple objects like numbers:
   immutable objects that can be copied without change of meaning.
@@ -29,7 +29,20 @@
   Simple smobs are created by adding the
   DECLARE_SIMPLE_SMOBS(Classname) to the declaration
 
-  2. Complex smobs are objects that have an identity. These objects
+  2. Virtual smobs are simple smobs that support subclassing.
+
+  To obtain an SCM version of a virtual smob, use the member function
+  SCM smobbed_clone ().
+
+  Virtual smobs are created by:
+
+  - adding DECLARE_VIRTUAL_SMOBS(Classname) *only* to the base class
+    declaration
+
+  - declaring a virtual clone () method in the base class, and clone ()
+    methods in all subclasses
+
+  3. Complex smobs are objects that have an identity. These objects
   carry this identity in the form of a self_scm () method, which is a
   SCM pointer to the object itself.
 
@@ -84,9 +97,17 @@
   - a print_smob () function, that displays a representation for
   debugging purposes
 
-  - A call to one of the IMPLEMENT_SMOBS or IMPLEMENT_SIMPLE_SMOBS macros
-  from file "ly-smobs.icc"
+  - in the case of virtual smobs, a virtual clone () method that
+  returns a clone of the object.
+
+  - A call to one of the IMPLEMENT_SMOBS, IMPLEMENT_SIMPLE_SMOBS or
+  IMPLEMENT_VIRTUAL_SMOBS macros from file "ly-smobs.icc"
 */
+
+#define DECLARE_VIRTUAL_SMOBS(CL)		\
+  public:					\
+  SCM smobbed_clone () const;			\
+  DECLARE_BASE_SMOBS (CL)
 
 #define DECLARE_SIMPLE_SMOBS(CL)		\
   public:					\

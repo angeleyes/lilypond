@@ -77,6 +77,18 @@
     return s;								\
   }
 
+#define IMPLEMENT_VIRTUAL_SMOBS(CL)					\
+  IMPLEMENT_BASE_SMOBS (CL);						\
+  SCM CL::smobbed_clone () const					\
+  {									\
+    CL *ptr = this->clone();						\
+    SCM s;								\
+    s = scm_cons (SCM_PACK (CL::smob_tag_), SCM_PACK (ptr));		\
+    scm_gc_register_collectable_memory ((CL *)this, sizeof (CL), #CL " smob"); \
+									\
+    return s;								\
+  }
+
 #define IMPLEMENT_SMOBS(CL)						\
   IMPLEMENT_BASE_SMOBS (CL)						\
     void								\

@@ -295,7 +295,8 @@ The syntax is the same as `define*-public'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; init pitch system
 
-(ly:set-default-scale (ly:make-scale #(0 1 2 5/2 7/2 9/2 11/2)))
+(ly:set-default-scale (ly:make-scale #(0 1 2 5/2 7/2 9/2 11/2)
+				     #(1 3 5 0   2   4   6 )))
 
 
 

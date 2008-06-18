@@ -1,9 +1,10 @@
 /*
-  musical-pitch.cc -- implement Pitch
+  pitch.cc -- implement Pitch
 
   source file of the GNU LilyPond music typesetter
 
   (c) 1998--2007 Han-Wen Nienhuys <hanwen@xs4all.nl>
+  2007--2008 Rune Zedeler <rune@zedeler.dk>
 */
 
 #include "pitch.hh"
@@ -14,6 +15,14 @@
 #include "warn.hh"
 
 #include "ly-smobs.icc"
+
+Pitch::Pitch (Pitch const *p)
+{
+  notename_ = p->notename_;
+  alteration_ = p->alteration_;
+  octave_ = p->octave_;
+  scale_ = p->scale_;
+}
 
 Pitch::Pitch (int o, int n, Rational a)
 {
@@ -31,21 +40,42 @@ Pitch::Pitch ()
   octave_ = 0;
 }
 
-int
-Pitch::compare (Pitch const &m1, Pitch const &m2)
+Pitchclass *
+Pitch::clone () const
 {
-  int o = m1.octave_ - m2.octave_;
-  int n = m1.notename_ - m2.notename_;
-  Rational a = m1.alteration_ - m2.alteration_;
+  return new Pitch (this);
+}
 
-  if (o)
-    return o;
-  if (n)
-    return n;
-  if (a)
-    return a;
-  
-  return 0;
+string
+Pitch::get_class_name () const
+{
+  return "Pitch";
+}
+
+int
+Pitch::compare_to (Pitchclass const &m2) const
+{
+  const Pitch * m2p = dynamic_cast<const Pitch *> (&m2);
+  if (m2p)
+    {
+      int o = octave_ - m2p->octave_;
+      int n = notename_ - m2p->notename_;
+      Rational a = alteration_ - m2p->alteration_;
+      
+      if (o)
+	return o;
+      if (n)
+	return n;
+      if (a)
+	return a;
+      
+      return 0;
+    }
+  else
+    {
+      /* pitch comes after pitchclass */
+      return 1;
+    }
 }
 
 int
@@ -70,11 +100,9 @@ Pitch::tone_pitch () const
 void
 Pitch::normalize ()
 {
-  //  cout << "normalizing " << octave_ << " " << notename_ << " " << alteration_.to_string() << " -> ";
   Rational pitch = tone_pitch ();
   Pitchclass::normalize ();
   octave_ += ((pitch - tone_pitch ()) / Rational (6)).to_int ();
-  //  cout << octave_ << " " << notename_ << " " << alteration_.to_string() << endl;
 }
 
 void
@@ -89,17 +117,6 @@ Pitch::transpose (Pitch delta)
   normalize ();
 }
 
-Pitchclass *
-unsmob_pitch_or_pitchclass (SCM s, int number)
-{
-  Pitchclass *pc = unsmob_pitch (s);
-  if (pc==NULL)
-    {
-      LY_ASSERT_SMOB (Pitchclass, s, number);
-      pc = unsmob_pitchclass (s);
-    }
-  return pc;
-}
 
 // TODO: Merge pitch_interval and pitchclass_interval
 Pitch
@@ -180,49 +197,6 @@ Pitch::down_to (int notename)
 }
 
 IMPLEMENT_TYPE_P (Pitch, "ly:pitch?");
-SCM
-Pitch::mark_smob (SCM x)
-{
-  Pitch *p = (Pitch*) SCM_CELL_WORD_1 (x);
-  return p->scale_->self_scm ();
-}
-
-IMPLEMENT_SIMPLE_SMOBS (Pitch);
-int
-Pitch::print_smob (SCM s, SCM port, scm_print_state *)
-{
-  Pitch *r = (Pitch *) SCM_CELL_WORD_1 (s);
-  scm_puts ("#<Pitch ", port);
-  scm_display (ly_string2scm (r->to_string ()), port);
-  scm_puts (" >", port);
-  return 1;
-}
-
-SCM
-Pitch::equal_p (SCM a, SCM b)
-{
-  Pitch *p = (Pitch *) SCM_CELL_WORD_1 (a);
-  Pitch *q = (Pitch *) SCM_CELL_WORD_1 (b);
-
-  bool eq = p->notename_ == q->notename_
-    && p->octave_ == q->octave_
-    && p->alteration_ == q->alteration_;
-
-  return eq ? SCM_BOOL_T : SCM_BOOL_F;
-}
-
-MAKE_SCHEME_CALLBACK (Pitch, less_p, 2);
-SCM
-Pitch::less_p (SCM p1, SCM p2)
-{
-  Pitch *a = unsmob_pitch (p1);
-  Pitch *b = unsmob_pitch (p2);
-
-  if (compare (*a, *b) < 0)
-    return SCM_BOOL_T;
-  else
-    return SCM_BOOL_F;
-}
 
 int
 Pitch::get_octave () const
@@ -253,3 +227,12 @@ Pitch::negated () const
 {
   return pitch_interval (*this, Pitch ());
 }
+
+
+Pitch *
+unsmob_pitch (SCM s) {
+  Pitchclass *pc = unsmob_pitchclass (s);
+  Pitch *pitch = dynamic_cast<Pitch*> (pc);
+  return pitch;
+}
+

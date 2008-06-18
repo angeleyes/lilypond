@@ -1,10 +1,28 @@
+/*
+  pitchclass.hh -- declare Pitchclass
+
+  source file of the GNU LilyPond music typesetter
+
+  2007--2008 Rune Zedeler <rz@daimi.au.dk>
+*/
+
 #ifndef MUSICAL_PITCHCLASS_HH
 #define MUSICAL_PITCHCLASS_HH
 
 #include "lily-proto.hh"
 #include "smobs.hh"
 #include "rational.hh"
+#include <string>
 
+
+/** A "tonal" class of pitches with the same tonality.
+    Pitchclass is subclassed by Pitch, that adds octave information thereby
+    distingguishing pitches of the same pitchclass.
+    
+    Pitchclass is lexicographically ordered by fifths (Bb<F<C<G, etc),
+    Pitchclasses always coming before Pitches.
+
+*/
 
 class Pitchclass
 {
@@ -16,10 +34,14 @@ protected:
   void transpose (Pitchclass);
   void normalize ();
 
+  virtual Pitchclass * clone() const;
+  virtual string get_class_name () const;
+
 public:
   int get_notename () const;
   Rational get_alteration () const;
 
+  Pitchclass (Pitchclass const *pc);
   Pitchclass (int notename, Rational accidental);
   Pitchclass (int notename);
   Pitchclass ();
@@ -29,6 +51,7 @@ public:
   virtual Pitchclass transposed (Pitchclass) const;
 
   static int compare (Pitchclass const &, Pitchclass const &);
+  virtual int compare_to (Pitchclass const &) const;
 
   virtual Rational tone_pitch () const;
   int rounded_semitone_pitch () const;
@@ -36,12 +59,9 @@ public:
 
   Pitchclass negated () const;
   virtual string to_string () const;
-  virtual SCM virtual_smobbed_copy () { // AAARGH!
-    return smobbed_copy ();
-  }
 
   DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
-  DECLARE_SIMPLE_SMOBS (Pitchclass);
+  DECLARE_VIRTUAL_SMOBS (Pitchclass);
 };
 
 

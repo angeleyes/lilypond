@@ -4,6 +4,7 @@
   source file of the GNU LilyPond music typesetter
 
   (c) 1998--2007 Han-Wen Nienhuys <hanwen@xs4all.nl>
+  2007--2008 Rune Zedeler
 */
 
 #ifndef MUSICAL_PITCH_HH
@@ -34,9 +35,13 @@ private:
 
   void transpose (Pitch);
 
+  virtual Pitchclass * clone() const;
+  virtual string get_class_name () const;
+
 public:
   int get_octave () const;
 
+  Pitch (Pitch const *p);
   Pitch (int octave, int notename, Rational accidental);
   Pitch (int octave, int notename);
   Pitch ();
@@ -46,34 +51,25 @@ public:
 
   Pitch to_relative_octave (Pitch) const;
 
-  static int compare (Pitch const &, Pitch const &);
+  virtual int compare_to (Pitchclass const &) const;
 
   int steps () const;
   Rational tone_pitch () const;
-  //int rounded_semitone_pitch () const;
-  //int rounded_quartertone_pitch () const;
 
   Pitch negated () const;
   string to_string () const;
-  SCM virtual_smobbed_copy () { // AAARGH!
-    return smobbed_copy ();
-  }
 
-  DECLARE_SCHEME_CALLBACK (less_p, (SCM a, SCM b));
-  DECLARE_SIMPLE_SMOBS (Pitch);
+  SCM smobbed_copy () const { return smobbed_clone (); }
 };
 
 SCM ly_pitch_diff (SCM pitch, SCM root);
 SCM ly_pitch_transpose (SCM p, SCM delta);
-DECLARE_UNSMOB (Pitch, pitch);
 
-Pitchclass *
-unsmob_pitch_or_pitchclass (SCM s, int number);
+Pitch * unsmob_pitch (SCM s);
 
-INSTANTIATE_COMPARE (Pitch, Pitch::compare);
-
-extern SCM pitch_less_proc;
 Pitch pitch_interval (Pitch const &from, Pitch const &to);
+
+Pitch * unsmob_pitch (SCM s);
 
 #endif /* MUSICAL_PITCH_HH */
 

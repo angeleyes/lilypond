@@ -290,13 +290,14 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
 }
 
 LY_DEFINE (ly_find_accidentals_simple, "ly:find-accidentals-simple", 5, 0, 0,
-	   (SCM keysig, SCM p, SCM barnum, SCM laziness, SCM octaveness ),
+	   (SCM keysig, SCM pp, SCM barnum, SCM laziness, SCM octaveness ),
 	   "Temporary. Scm-wrapper around the old c++-function. Should be moved to scheme.")
 {
-  LY_ASSERT_SMOB (Pitch, p, 2);
+  LY_ASSERT_TYPE (unsmob_pitch, pp, 2);
   LY_ASSERT_TYPE (scm_is_integer, barnum, 3);
   LY_ASSERT_TYPE (ly_is_symbol, octaveness, 5);
-  Pitch * pitch = unsmob_pitch (p);
+  Pitch * pitch = unsmob_pitch (pp);
+
   int bar_number = scm_to_int (barnum);
   /* todo - check that otherwise octaveness=="same-octave" */
   bool ignore_octave = ly_symbol2scm ("any-octave") == octaveness; 

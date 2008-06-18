@@ -3,7 +3,7 @@
 
   source file of the GNU LilyPond music typesetter
 
-  (c) 2007 Rune Zedeler <rune@zedeler.dk>
+  (c) 2007--2008 Rune Zedeler <rune@zedeler.dk>
 */
 
 #include "pitchclass.hh"
@@ -14,6 +14,15 @@
 #include "warn.hh"
 
 #include "ly-smobs.icc"
+
+#include <typeinfo>
+
+Pitchclass::Pitchclass (Pitchclass const *pc)
+{
+  notename_ = pc->notename_;
+  alteration_ = pc->alteration_;
+  scale_ = pc->scale_;
+}
 
 Pitchclass::Pitchclass (int n, Rational a)
 {
@@ -30,20 +39,46 @@ Pitchclass::Pitchclass ()
   scale_ = default_global_scale; 
 }
 
+Pitchclass *
+Pitchclass::clone () const
+{
+  return new Pitchclass (this);
+}
+
+string 
+Pitchclass::get_class_name () const
+{
+  return "Pitchclass";
+}
+
+
 int
 Pitchclass::compare (Pitchclass const &m1, Pitchclass const &m2)
 {
-  int n = m1.notename_ - m2.notename_;
-  Rational a = m1.alteration_ - m2.alteration_;
-
-  if (n)
-    return n;
-  if (a)
-    return a;
-  
-  return 0;
+  return m1.compare_to (m2);
 }
 
+int
+Pitchclass::compare_to (Pitchclass const &m2) const
+{
+  if (typeid (m2) == typeid (Pitchclass))
+    {
+      Rational a = alteration_ - m2.alteration_;
+      
+      if (a)
+	return a;
+      
+      return scale_->order_steps (notename_, m2.notename_);
+    }
+  else
+    {
+      int anti = m2.compare_to (this);
+      /* we have antisymmetry */
+      return -anti;
+    }
+}
+
+/* pitch at octave 0 */
 Rational
 Pitchclass::tone_pitch () const
 {
@@ -144,27 +179,29 @@ Pitchclass::mark_smob (SCM x)
   return p->scale_->self_scm ();
 }
 
-IMPLEMENT_SIMPLE_SMOBS (Pitchclass);
+IMPLEMENT_VIRTUAL_SMOBS (Pitchclass);
 int
 Pitchclass::print_smob (SCM s, SCM port, scm_print_state *)
 {
   Pitchclass *r = (Pitchclass *) SCM_CELL_WORD_1 (s);
-  scm_puts ("#<Pitchclass ", port);
-  scm_display (ly_string2scm (r->to_string ()), port);
-  scm_puts (" >", port);
+  //scm_display ("#<"+r->get_class_name()+" ", port);
+  scm_display (ly_string2scm ("#<" + r->get_class_name() + " " +
+			      r->to_string () + " >"),
+	       port);
+  //scm_puts (" >", port);
   return 1;
 }
 
 SCM
-Pitchclass::equal_p (SCM a, SCM b)
+Pitchclass::equal_p (SCM p1, SCM p2)
 {
-  Pitchclass *p = (Pitchclass *) SCM_CELL_WORD_1 (a);
-  Pitchclass *q = (Pitchclass *) SCM_CELL_WORD_1 (b);
+  Pitchclass *a = unsmob_pitchclass (p1);
+  Pitchclass *b = unsmob_pitchclass (p2);
 
-  bool eq = p->notename_ == q->notename_
-    && p->alteration_ == q->alteration_;
-
-  return eq ? SCM_BOOL_T : SCM_BOOL_F;
+  if (compare (*a, *b) == 0)
+    return SCM_BOOL_T;
+  else
+    return SCM_BOOL_F;
 }
 
 MAKE_SCHEME_CALLBACK (Pitchclass, less_p, 2);
@@ -189,8 +226,7 @@ Pitchclass::get_notename () const
 Rational
 Pitchclass::get_alteration () const
 {
-  Rational result = alteration_;
-  return result;
+  return alteration_;
 }
 
 Pitchclass
