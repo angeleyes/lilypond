@@ -37,6 +37,7 @@ public:
   /* returns reference to the smobbed pitchclass.
      Unsafe - Will be gc'ed when the smob dies */
   Pitchclass * get_pitchclass_ref () const;
+  Pitch * get_pitch_ref () const;
   SCM get_smobbed_pitchclass () const;
   bool is_accidental () const;
   int get_bar_number () const;

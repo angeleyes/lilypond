@@ -95,6 +95,9 @@ Duration::compressed (Rational m) const
 Rational
 Duration::get_length () const
 {
+  if (this == NULL)
+    return 0;
+
   Rational mom (1 << abs (durlog_));
 
   if (durlog_ > 0)

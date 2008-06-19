@@ -12,6 +12,7 @@
 #include "context.hh"
 #include "dots.hh"
 #include "item.hh"
+#include "key-entry.hh"
 #include "note-head.hh"
 #include "pitch.hh"
 #include "pointer-group-interface.hh"
@@ -77,12 +78,24 @@ Pitched_trill_engraver::make_trill (Stream_event *ev)
 
   SCM keysig = get_property ("localKeySignature");
 
-  SCM key = scm_cons (scm_from_int (p->get_octave ()),
-		      scm_from_int (p->get_notename ()));
-
-  SCM handle = scm_assoc (key, keysig);
   bool print_acc
-    = (handle == SCM_BOOL_F) || p->get_alteration () == Rational (0);
+    = p->get_alteration () == Rational (0);
+  if (!print_acc)
+    {
+      print_acc = true;
+      for (SCM s = keysig; scm_is_pair (s); s = scm_cdr (s))
+	{
+	  Key_entry * entry = unsmob_key_entry (scm_car (s));
+	  Pitch * pitch = entry->get_pitch_ref ();
+	  if(pitch &&
+	     pitch->get_notename () == p->get_notename () &&
+	     pitch->get_octave () == p->get_octave ())
+	    {
+	      print_acc = false;
+	      break;
+	    }
+	}
+    }
 
   if (trill_head_)
     {

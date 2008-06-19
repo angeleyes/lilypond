@@ -21,6 +21,7 @@
 Key_entry::Key_entry ()
 {
   pitchclass_scm_ = SCM_BOOL_F;
+  //pitchclass_scm_ = Pitchclass ().smobbed_clone ();
   bar_number_ = 0;
   measure_position_ = Rational(0);
   is_tied_ = false;
@@ -116,8 +117,13 @@ Key_entry::to_name_alter_pair () const
 Pitchclass *
 Key_entry::get_pitchclass_ref () const
 {
-  Pitchclass * result = unsmob_pitchclass (pitchclass_scm_);
-  return result;
+  return unsmob_pitchclass (pitchclass_scm_);
+}
+
+Pitch *
+Key_entry::get_pitch_ref () const
+{
+  return unsmob_pitch (pitchclass_scm_);
 }
 
 SCM
