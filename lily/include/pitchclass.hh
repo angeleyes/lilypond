@@ -34,10 +34,10 @@ protected:
   void transpose (Pitchclass);
   void normalize ();
 
-  virtual Pitchclass * clone() const;
   virtual string get_class_name () const;
 
 public:
+  virtual Pitchclass * clone() const;
   int get_notename () const;
   Rational get_alteration () const;
 

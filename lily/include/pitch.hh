@@ -35,10 +35,10 @@ private:
 
   void transpose (Pitch);
 
-  virtual Pitchclass * clone() const;
-  virtual string get_class_name () const;
+  string get_class_name () const;
 
 public:
+  Pitchclass * clone() const;
   int get_octave () const;
 
   Pitch (Pitch const *p);
@@ -51,7 +51,7 @@ public:
 
   Pitch to_relative_octave (Pitch) const;
 
-  virtual int compare_to (Pitchclass const &) const;
+  int compare_to (Pitchclass const &) const;
 
   int steps () const;
   Rational tone_pitch () const;

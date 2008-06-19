@@ -1,13 +1,13 @@
 /*
-  key-entry.hh -- declare TODO
-
+  key-entry.hh -- declare Key_entry
+  
   source file of the GNU LilyPond music typesetter
 
-  (c) 2007 Rune Zedeler <rune@zedeler.dk>
+  (c) 2007-2008 Rune Zedeler <rune@zedeler.dk>
 */
 
-#ifndef MUSICAL_KEY_ENTRY_HH
-#define MUSICAL_KEY_ENTRY_HH
+#ifndef KEY_ENTRY_HH
+#define KEY_ENTRY_HH
 
 #include "lily-proto.hh"
 #include "smobs.hh"
@@ -23,10 +23,8 @@ Does it work with simple smobs when it contains a reference to a pitchclass_?
 class Key_entry
 {
 private:
-  /* This has to be a reference -
-     otherwise it cannot contain a pitch (subclass of pitchclass)
-   */
-  Pitchclass * pitchclass_;
+  //Pitchclass * pitchclass_;
+  SCM pitchclass_scm_;
 
   /* if false, this key_entry lasts until next key-sig-change */
   bool is_accidental_; 
@@ -37,6 +35,7 @@ private:
 public:
   string to_string () const;
   Pitchclass * get_pitchclass () const;
+  SCM get_smobbed_pitchclass () const;
   bool is_accidental () const;
   int get_bar_number () const;
   Moment get_measure_position () const;
@@ -48,11 +47,11 @@ public:
   Key_entry (int notename, Rational alteration, int octave, 
 		       int bar_number, Moment measure_position);
   Key_entry (SCM scm);
-  // todo: add constructors for other combinations of has_octave and has_position
+  //Key_entry (Key_entry const * entry);
+
   Key_entry ();
 
-  ~Key_entry();
-
+  //~Key_entry();
 
   SCM to_name_alter_pair () const;
 
@@ -65,7 +64,5 @@ DECLARE_UNSMOB (Key_entry, key_entry);
 
 INSTANTIATE_COMPARE (Key_entry, Key_entry::compare);
 
-//extern SCM pitch_less_proc;
-
-#endif /* MUSICAL_KEY_ENTRY_HH */
+#endif /* KEY_ENTRY_HH */
 
