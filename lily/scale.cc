@@ -11,7 +11,6 @@
 
 #include "ly-smobs.icc"
 
-#include <iostream>
 /*
   todo: put string <-> pitch here too.
 

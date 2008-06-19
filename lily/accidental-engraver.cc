@@ -225,6 +225,7 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
   int n = pitch.get_notename ();
   int o = pitch.get_octave ();
   Key_entry dummy_entry;
+  dummy_entry.set_pitchclass(Pitchclass ());
 
   Key_entry * previous_entry = NULL;
 
@@ -233,21 +234,21 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
   Key_entry * from_other_octaves = NULL;
   for (SCM s = key_signature; scm_is_pair (s); s = scm_cdr (s))
     {
-      Key_entry * entry = Key_entry::unsmob(scm_car (s));
-      Pitchclass * pitchclass = entry->get_pitchclass ();
+      Key_entry * entry = unsmob_key_entry (scm_car (s));
+      Pitchclass * pitchclass = entry->get_pitchclass_ref ();
       if(n == pitchclass->get_notename ())
 	{
 	  Pitch * entrypitch = dynamic_cast<Pitch *>(pitchclass);
-	  if (from_other_octaves == NULL)
+	  if (!from_other_octaves)
 	    {
 	      from_other_octaves = entry;
 	    }
-	  if (from_same_octave == NULL &&
+	  if ((!from_same_octave) &&
 	      (!entrypitch || entrypitch->get_octave () == o))
 	    {
 	      from_same_octave = entry;
 	    }
-	  if (from_key_signature == NULL &&
+	  if ((!from_key_signature) &&
 	      !entry->is_accidental())
 	    {
 	      from_key_signature = entry;
@@ -256,14 +257,14 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
     }
 
   if (!ignore_octave
-      && from_same_octave != NULL
+      && from_same_octave
       && recent_enough (bar_number, from_same_octave, laziness))
     previous_entry = from_same_octave;
   else if (ignore_octave
-	   && from_other_octaves != NULL
+	   && from_other_octaves
 	   && recent_enough (bar_number, from_other_octaves, laziness))
     previous_entry = from_other_octaves;
-  else if (from_key_signature != NULL)
+  else if (from_key_signature)
     previous_entry = from_key_signature;
   else
     previous_entry = &dummy_entry;
@@ -274,7 +275,7 @@ check_pitch_against_signature (SCM key_signature, Pitch const &pitch,
     }
   else
     {
-      Rational prev = previous_entry->get_pitchclass ()->get_alteration ();
+      Rational prev = previous_entry->get_pitchclass_ref ()->get_alteration ();
       Rational alter = pitch.get_alteration ();
 
       if (alter != prev)
@@ -559,20 +560,13 @@ Accidental_engraver::stop_translation_timestep ()
       while (origin
 	     && origin->where_defined (ly_symbol2scm ("localKeySignature"), &localsig))
 	{
-	  SCM entry_scm;
+	  Key_entry entry;
+	  entry.set_pitch (Pitch (o, n, a));
+	  entry.set_position (barnum, end_mp);
 	  if (accidentals_[i].tied_)
-	    {
-	      /*
-		Remember an alteration that is different both from
-		that of the tied note and of the key signature.
-	      */
-	      entry_scm = Key_entry (n, o, barnum, end_mp).smobbed_copy();
-	    }
-	  else
-	    {
-	      entry_scm = Key_entry (n, a, o, barnum, end_mp).smobbed_copy();
-	    }
-      
+	    entry.set_is_tied ();
+	  SCM entry_scm = entry.smobbed_copy ();
+
 	  /*
 	    not really really correct if there are more than one
 	    noteheads with the same notename.
@@ -582,8 +576,8 @@ Accidental_engraver::stop_translation_timestep ()
 	  /* delete old key_entry with same (n,o) from localsig */
 	  for (SCM s = localsig ; scm_is_pair (scm_cdr (s)) ; s = scm_cdr(s))
 	    {
-	      Key_entry *entry = Key_entry::unsmob(scm_cadr(s));
-	      Pitchclass * pitchclass = entry->get_pitchclass ();
+	      Key_entry * entry = unsmob_key_entry (scm_cadr(s));
+	      Pitchclass * pitchclass = entry->get_pitchclass_ref ();
 	      Pitch * entrypitch = dynamic_cast<Pitch *>(pitchclass);
 	      if (pitchclass->get_notename () == n
 		  && entrypitch && entrypitch->get_octave () == o)

@@ -8,7 +8,6 @@
 */
 
 #include "pitch.hh"
-#include <iostream>
 
 LY_DEFINE (ly_pitch_transpose, "ly:pitch-transpose",
 	   2, 0, 0, (SCM p, SCM delta),

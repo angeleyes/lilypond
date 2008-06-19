@@ -23,37 +23,35 @@ Does it work with simple smobs when it contains a reference to a pitchclass_?
 class Key_entry
 {
 private:
-  //Pitchclass * pitchclass_;
+  /* if the SCM contains a Pitch then it is considered a local accidental,
+     if it contains a Pitchclass then it is considered part of the global keysig
+     and hence lasts until the next keysig-change */
   SCM pitchclass_scm_;
 
-  /* if false, this key_entry lasts until next key-sig-change */
-  bool is_accidental_; 
   int bar_number_;
   Moment measure_position_;
   bool is_tied_;
 
 public:
   string to_string () const;
-  Pitchclass * get_pitchclass () const;
+  /* returns reference to the smobbed pitchclass.
+     Unsafe - Will be gc'ed when the smob dies */
+  Pitchclass * get_pitchclass_ref () const;
   SCM get_smobbed_pitchclass () const;
   bool is_accidental () const;
   int get_bar_number () const;
   Moment get_measure_position () const;
   bool is_tied () const;
 
-  Key_entry (int notename, Rational alteration);
-  Key_entry (int notename, int octave, 
-		       int bar_number, Moment measure_position);
-  Key_entry (int notename, Rational alteration, int octave, 
-		       int bar_number, Moment measure_position);
-  Key_entry (SCM scm);
-  //Key_entry (Key_entry const * entry);
-
   Key_entry ();
 
-  //~Key_entry();
+  void set_pitchclass (Pitchclass pc);
+  void set_pitch (Pitch p);
+  void set_position (int bar_number, Moment measure_position);
+  void set_is_tied (bool=true);
 
   SCM to_name_alter_pair () const;
+  static Key_entry from_name_alter_pair (SCM scm);
 
   static int compare (Key_entry const &, Key_entry const &);
   DECLARE_SIMPLE_SMOBS (Key_entry);

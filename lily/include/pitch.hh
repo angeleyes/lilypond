@@ -7,8 +7,8 @@
   2007--2008 Rune Zedeler
 */
 
-#ifndef MUSICAL_PITCH_HH
-#define MUSICAL_PITCH_HH
+#ifndef PITCH_HH
+#define PITCH_HH
 
 #include "lily-proto.hh"
 #include "smobs.hh"
@@ -71,5 +71,5 @@ Pitch pitch_interval (Pitch const &from, Pitch const &to);
 
 Pitch * unsmob_pitch (SCM s);
 
-#endif /* MUSICAL_PITCH_HH */
+#endif /* PITCH_HH */
 

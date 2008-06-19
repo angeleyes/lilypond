@@ -86,8 +86,8 @@ Key_engraver::create_key (bool is_default)
 	      for (SCM t = key; scm_is_pair (t); t = scm_cdr (t))
 		{
 		  Key_entry *entry = Key_entry::unsmob (scm_car (t));
-		  if (old_entry->get_pitchclass ()->get_notename () ==
-		      entry->get_pitchclass ()->get_notename ())
+		  if (old_entry->get_pitchclass_ref ()->get_notename () ==
+		      entry->get_pitchclass_ref ()->get_notename ())
 		    {
 		      new_entry = entry;
 		      break;
@@ -95,11 +95,11 @@ Key_engraver::create_key (bool is_default)
 		}
 	      /* Decide whether to add a key cancellation for s
 	       */
-	      Rational old_alter = old_entry->get_pitchclass ()->get_alteration ();
+	      Rational old_alter = old_entry->get_pitchclass_ref ()->get_alteration ();
 	      SCM old_alterpair = old_entry->to_name_alter_pair ();
 	      if (new_entry == NULL
 		  || extranatural
-		     && (new_entry->get_pitchclass ()->get_alteration () - old_alter)*old_alter
+		     && (new_entry->get_pitchclass_ref ()->get_alteration () - old_alter)*old_alter
 		        < Rational (0))
 		{
 		  *restore_tail = scm_cons (old_alterpair, *restore_tail);
@@ -198,7 +198,7 @@ Key_engraver::read_event (Stream_event const *r)
       
       if (scm_is_pair (head))
 	{
-	  SCM entry_scm = Key_entry(scm_car (head)). smobbed_copy ();
+	  SCM entry_scm = Key_entry::from_name_alter_pair(scm_car (head)). smobbed_copy ();
 	  entries = scm_cons (entry_scm, entries);
 	  alist = scm_delete_x (scm_car (head), alist);
 	}
@@ -211,7 +211,7 @@ Key_engraver::read_event (Stream_event const *r)
 	if (ly_scm2rational (scm_cdar (s)))
 	  {
 	    warn = true;
-	    SCM entry_scm = Key_entry(scm_car (s)). smobbed_copy ();
+	    SCM entry_scm = Key_entry::from_name_alter_pair(scm_car (s)). smobbed_copy ();
 	    entries = scm_cons (entry_scm, entries);
 	  }
 

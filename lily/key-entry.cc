@@ -1,5 +1,9 @@
 /*
-  ...
+  key-entry.cc -- implement Key_entry
+
+  source file of the GNU LilyPond music typesetter
+
+  (c) 2007-2008 Rune Zedeler <rune@zedeler.dk>
 */
 
 #include "key-entry.hh"
@@ -14,90 +18,45 @@
 
 #include "ly-smobs.icc"
 
-#include <iostream>
-
-Key_entry::Key_entry (int n, Rational a)
-{
-  pitchclass_scm_ = Pitchclass (n, a).smobbed_clone ();
-  bar_number_ = 0;
-  measure_position_ = Rational(0);
-  is_accidental_ = false;
-  is_tied_ = false;
-  //cout << "made 0 " << pitchclass_ << endl;
-}
-
-Key_entry::Key_entry (int n, Rational a, int o, int b, Moment mp)
-{
-  pitchclass_scm_ = Pitch (o, n, a).smobbed_clone ();
-  bar_number_ = b;
-  measure_position_ = mp;
-  is_accidental_ = true;
-  is_tied_ = false;
-  //cout << "made 1 " << pitchclass_ << endl;
-}
-
-Key_entry::Key_entry (int n, int o, int b, Moment mp)
-{
-  pitchclass_scm_ = Pitch (o, n, Rational (0)).smobbed_clone();
-  bar_number_ = b;
-  measure_position_ = mp;
-  is_accidental_ = true;
-  is_tied_ = true;
-  //cout << "made 2 " << pitchclass_ << endl;
-}
-
-Key_entry::Key_entry (SCM scm)
-{
-  assert (scm_is_pair (scm));
-  assert (scm_is_int (scm_car (scm)));
-  assert (scm_is_num (scm_cdr (scm)));
-  int n = scm_to_int (scm_car (scm));
-  Rational a = ly_scm2rational (scm_cdr (scm));
-  //  ::Key_entry (n, a);
-  pitchclass_scm_ = Pitchclass (n, a).smobbed_clone ();
-  bar_number_ = 0;
-  measure_position_ = Rational(0);
-  is_accidental_ = false;
-  is_tied_ = false;
-  //cout << "made 3 " << pitchclass_ << endl;
-}
-
-/*
-Key_entry::Key_entry (Key_entry const * entry)
-{
-  pitchclass_scm_ = entry->pitchclass_scm_;
-  bar_number_ = entry->bar_number_;
-  measure_position_ = entry->measure_position_;
-  is_accidental_ = entry->is_accidental_;
-  is_tied_ = entry->is_tied_;
-  //cout << "made 4 " << pitchclass_ << endl;
-}
-*/
-
 Key_entry::Key_entry ()
 {
-  pitchclass_scm_ = Pitchclass ().smobbed_clone ();
+  pitchclass_scm_ = SCM_BOOL_F;
   bar_number_ = 0;
   measure_position_ = Rational(0);
-  is_accidental_ = false;
   is_tied_ = false;
-  //cout << "made 5 " << pitchclass_ << endl;
 }
 
-/*
-Key_entry::~Key_entry ()
+
+void
+Key_entry::set_pitchclass (Pitchclass pc)
 {
-  //cout << "deleting " << pitchclass_ << endl;
-  //delete (pitchclass_);
+  pitchclass_scm_ = pc.smobbed_clone ();
 }
-*/
+
+void
+Key_entry::set_pitch (Pitch p)
+{
+  pitchclass_scm_ = p.smobbed_clone ();
+}
+
+void
+Key_entry::set_position (int bar_number, Moment measure_position) {
+  bar_number_ = bar_number;
+  measure_position_ = measure_position;
+}
+
+void
+Key_entry::set_is_tied (bool is_tied) {
+  is_tied_ = is_tied;
+}
 
 IMPLEMENT_TYPE_P (Key_entry, "ly:key-signature-entry?");
 
 SCM
 Key_entry::mark_smob (SCM x)
 {
-  return SCM_EOL;
+  Key_entry * entry = unsmob_key_entry (x);
+  return entry->pitchclass_scm_;
 }
 
 IMPLEMENT_SIMPLE_SMOBS (Key_entry);
@@ -118,7 +77,6 @@ Key_entry::equal_p (SCM a, SCM b)
   Key_entry *q = (Key_entry *) SCM_CELL_WORD_1 (b);
 
   bool eq = *(unsmob_pitchclass(p->pitchclass_scm_)) == *(unsmob_pitchclass(q->pitchclass_scm_))
-    && p->is_accidental_ == q->is_accidental_
     && p->is_tied_ == q->is_tied_
     && p->bar_number_ == q->bar_number_
     && p->measure_position_ == q->measure_position_;
@@ -129,7 +87,20 @@ Key_entry::equal_p (SCM a, SCM b)
 string
 Key_entry::to_string () const
 {
-  return get_pitchclass ()->to_string ();
+  return get_pitchclass_ref ()->to_string ();
+}
+
+Key_entry
+Key_entry::from_name_alter_pair (SCM scm)
+{
+  assert (scm_is_pair (scm));
+  assert (scm_is_int (scm_car (scm)));
+  assert (scm_is_num (scm_cdr (scm)));
+  int n = scm_to_int (scm_car (scm));
+  Rational a = ly_scm2rational (scm_cdr (scm));
+  Key_entry entry;
+  entry.set_pitchclass(Pitchclass (n,a));
+  return entry;
 }
 
 SCM
@@ -143,9 +114,10 @@ Key_entry::to_name_alter_pair () const
 }
 
 Pitchclass *
-Key_entry::get_pitchclass () const
+Key_entry::get_pitchclass_ref () const
 {
-  return unsmob_pitchclass(pitchclass_scm_);
+  Pitchclass * result = unsmob_pitchclass (pitchclass_scm_);
+  return result;
 }
 
 SCM
@@ -157,7 +129,7 @@ Key_entry::get_smobbed_pitchclass () const
 bool
 Key_entry::is_accidental () const
 {
-  return is_accidental_;
+  return unsmob_pitch (pitchclass_scm_);
 }
 
 bool
@@ -169,7 +141,7 @@ Key_entry::is_tied () const
 int
 Key_entry::get_bar_number () const
 {
-  if(!is_accidental_)
+  if(!is_accidental ())
     warning(_ ("getting non-existent bar_number"));
   return bar_number_;
 }
@@ -177,7 +149,7 @@ Key_entry::get_bar_number () const
 Moment
 Key_entry::get_measure_position () const
 {
-  if(!is_accidental_)
+  if(!is_accidental ())
     warning(_ ("getting non-existent measure_position"));
   return measure_position_;
 }
@@ -196,7 +168,8 @@ LY_DEFINE (ly_make_key_entry, "ly:make-key-entry",
 
   if (octave == SCM_BOOL_F)
     {
-      Key_entry e (scm_to_int (note), ly_scm2rational (alter));
+      Key_entry e;
+      e.set_pitchclass (Pitchclass(scm_to_int (note), ly_scm2rational (alter)));
       
       return e.smobbed_copy ();
     }
@@ -206,11 +179,9 @@ LY_DEFINE (ly_make_key_entry, "ly:make-key-entry",
       LY_ASSERT_TYPE (scm_is_integer, barnumber, 4);
       LY_ASSERT_TYPE (unsmob_moment, measurepos, 5);
       
-      Key_entry e (scm_to_int (octave),
-		   scm_to_int (note),
-		   scm_to_int (alter),
-		   scm_to_int (barnumber),
-		   * unsmob_moment (measurepos));
+      Key_entry e;
+      e.set_pitch (Pitch (scm_to_int (octave), scm_to_int (note), scm_to_int (alter)));
+      e.set_position (scm_to_int (barnumber), * unsmob_moment (measurepos));
       
       return e.smobbed_copy ();
     }
@@ -291,5 +262,4 @@ LY_DEFINE (ly_key_entry_measure_position, "ly:key-entry-measure-position",
   else
     return SCM_BOOL_F;
 }
-
 

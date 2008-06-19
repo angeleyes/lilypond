@@ -6,8 +6,8 @@
   2007--2008 Rune Zedeler <rz@daimi.au.dk>
 */
 
-#ifndef MUSICAL_PITCHCLASS_HH
-#define MUSICAL_PITCHCLASS_HH
+#ifndef PITCHCLASS_HH
+#define PITCHCLASS_HH
 
 #include "lily-proto.hh"
 #include "smobs.hh"
@@ -96,4 +96,4 @@ INSTANTIATE_COMPARE (Pitchclass, Pitchclass::compare);
 extern SCM pitchclass_less_proc;
 Pitchclass pitchclass_interval (Pitchclass const &from, Pitchclass const &to);
 
-#endif /* MUSICAL_PITCHCLASS_HH */
+#endif /* PITCHCLASS_HH */
