@@ -36,7 +36,7 @@
   いいえ。私達のシステムは入力データが実際のある形式を取っていると仮定しています。
   楽譜の印刷はそれ自体が非常に難しいので、他の問題までも持ち込みたくはないのです。
   人間の演奏をある形式に変換するのは難しい事です。
-  MIDIキーボードで正しいピッチが得られる(音をレコーディングするのの対極)としても、リズムを正しく演奏しないとなりません。
+  MIDIキーボードで正しいピッチが得られるとしても、リズムを正しく演奏しないとなりません(生音の録音ではピッチも定まりません)。
   例えば、コンピュータはどうやってスタッカートの四分音符とただの八分音符の区別をつければ良いのでしょう?
   さらには、そういったシステムでは演奏できない曲はどうやって印刷したら良いのでしょう?
 </p>
@@ -61,7 +61,7 @@
 <li>
 <!--   Computer printed scores often lack subtle variations in spacing, which -->
 <!--   results in mechanical appearance. -->
-  コンピュータプリントの楽譜はしばしば微妙な間隔調整を欠いており、そのせいで機械的に見えてしまいます。
+  コンピュータプリントの楽譜はしばしばきめ細かい間隔調整を欠いており、そのせいで機械的に見えてしまいます。
   <li>異なる記号同士の衝突を避けるために、とても広く間隔を空けてあることがあり、空疎な見た目になりがちです。
 <!--   To prevent clashes between different -->
 <!--   symbols, they are spaced very widely, which leads to an "airy" -->
@@ -91,8 +91,8 @@
 <!--   the reproduction process. -->
   通常、こういう細部は無意識に感じられています。違いを明確に認識するためには、
   同じ曲の伝統的な版とコンピュータのものとを、出来れば拡大鏡を使って、比べるのが最良の方法です。
-  どれが伝統的な版か不明な場合:伝統的な版は手作業の物を写真製版したものですので、
-  記号の配置の微妙なズレや再版時に生じた小さなシミがあることで分かります。
+  なお、伝統的な版は手作業の物を写真製版したものですので、
+  記号の配置の微妙なズレや再版時に生じた小さなシミがあることでそうと分かります。
 </p>
 
 <h3>譜刻って何?</h3>
@@ -102,10 +102,10 @@
 <!--   pressed to it, yielding a left-to-right printing.  Hence, professional -->
 <!--   music typography is now known as engraving, even when it is done with -->
 <!--   computers today.  People who do this are called engravers or copyists. -->
-  元々、音楽は金属板に記号を反転させて彫刻したもので判を押して印刷していました。
+  元々、楽譜は金属板に記号を反転させて彫刻したもので判を押して印刷していました。
   板にインクを乗せ、紙をそれに押しつけて左から右へ印刷していました。
-  ですから、専門の楽譜組版は今日コンピュータで作られたとしても、譜刻として知られています。
-  これを行う人は、エングレーバとかコピーイストと呼ばれています。
+  ですから、専門の楽譜組版は今日コンピュータで作られたとしても、譜刻(Engraving)といいます。
+  これを行う人は、エングレーバーとかコピーイストと呼ばれています。
 </p>
 
 <h3>何故譜刻にこだわるの?</h3>
@@ -153,16 +153,21 @@
   かつ、再配布、修正、販売、改変を許可します。
   言い替えると、LilyPondはオープンソースで、GNUプロジェクトの一部であり、
   <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public 
-    License.</a>の元に提供されています。
+    License.</a>で提供されています。
   
 </p>
 
 <p>
-  We think that this is much more important than cost.  It means that
-  you have the freedom to fix, modify and extend the program, or you
-  can pay someone else to do so.  We will not force you to upgrade
-  when your system is abandoned, and you are not lost when we abandon
-  the program.
+<!--   We think that this is much more important than cost.  It means that -->
+<!--   you have the freedom to fix, modify and extend the program, or you -->
+<!--   can pay someone else to do so.  We will not force you to upgrade -->
+<!--   when your system is abandoned, and you are not lost when we abandon -->
+<!--   the program. -->
+  私たちは料金よりもこのことの方が重要だと考えています。
+  あなたはプログラムの修正、改造、拡張を行う自由を持っていますし、
+  他の人にお金を払って代わりにやってもらうこともできるのです。
+  あなたのシステムが放棄されるのに私たちがあなたにアップグレードを強要することはありませんし、
+  私たちがプログラムを放棄しても、あなたが失う物はありません。
 </p>
 
 
@@ -170,258 +175,338 @@
 
 
 
-<h2>About the program</h2>
+<h2>プログラムについて</h2>
 
 
-<h3>How is LilyPond used?</h3>
+<h3>LilyPondはどうやって使うのですか?</h3>
 
 <p>
-  LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file.
-  When LilyPond is run on it the input is transformed into music
-  notation, which is written to disk as PostScript or SVG and
-  postprocessed to PDF and PNG.
+<!--   LilyPond is a compiler: the music is encoded in a <tt>.ly</tt> file. -->
+<!--   When LilyPond is run on it the input is transformed into music -->
+<!--   notation, which is written to disk as PostScript or SVG and -->
+<!--   postprocessed to PDF and PNG. -->
+  LilyPondはコンパイラです。音楽は<tt>.ly</tt>ファイルに記入します。
+  LilyPondがそのファイルを処理すると入力が楽譜に変換されます。
+  その結果は、PostScriptかSVG形式でディスクに書き込まれ、その後PDFやPNGに変換されます。
 </p>
 
-<h3>What is the input format?</h3>
+<h3>入力フォーマットは何ですか?</h3>
 <p>
-  We have designed our own input format, the <tt>.ly</tt> format.  It is
-  a language that encodes music using expressions.  These music
-  expressions are composed of simpler music expressions, where the
-  simplest expressions are notes and rests.  This is analogous to how
-  arithmetical expressions can be broken down in simpler expressions,
-  where the simplest expressions are numbers, operators.
+<!--   We have designed our own input format, the <tt>.ly</tt> format.  It is -->
+<!--   a language that encodes music using expressions.  These music -->
+<!--   expressions are composed of simpler music expressions, where the -->
+<!--   simplest expressions are notes and rests.  This is analogous to how -->
+<!--   arithmetical expressions can be broken down in simpler expressions, -->
+<!--   where the simplest expressions are numbers, operators. -->
+  私たちは<tt>.ly</tt>フォーマットという独自の入力フォーマットを設計しました。
+  それは楽譜を表現するための言語です。
+  その楽譜表現はより単純な楽譜表現から複合され、その中で最も単純な表現は音符と休符です。
+  このことは代数式の表現がより簡単な表現に分割でき、その最も簡単な要素が数と演算子であるということと類似しています。
 </p>
 
 
-<h3>There are lots of good formats, why not use ABC, MusicXML or
-  NIFF or DARMS?</h3>
+<h3>良いフォーマットが他にもあります。なぜ、ABC, MusicXML, NIFF, DARMSといったものを使わないのですか?
+<!-- There are lots of good formats, why not use ABC, MusicXML or NIFF or DARMS? -->
+</h3>
 
-We have the following requirements.  It must
+<!-- We have the following requirements.  It must -->
+私たちには次のような必要があるからです
 <ul>
   <li>
-    use ASCII,
+    ASCII(文字)であること
   </li>
   <li>
-    be concise enough to type by hand,
+    手入力出来る程度に簡潔であること
   </li>
   <li>
-    have a concise formal specification,
+    簡明で形式のしっかりした仕様であること
+    <!-- have a concise formal specification, -->
   </li>
   <li>
-    be expressive enough to support many types of notation and
-    printed formats.
+    様々な記譜法や印刷形式が可能なように表現力があること
   </li>
 </ul>
 
 <p>
-  We believe that none of the existing formats address all these
-  requirements.  For example, MusicXML cannot be typed by hand, DARMS is
-  limited in its application, ABC has no strict formal definition, and
-  NIFF is binary.  Nevertheless, this does not restrict you for using
-  those formats: there are filters that convert from various formats to
-  <tt>.ly</tt>.
+<!--   We believe that none of the existing formats address all these -->
+<!--   requirements.  For example, MusicXML cannot be typed by hand, DARMS is -->
+<!--   limited in its application, ABC has no strict formal definition, and -->
+<!--   NIFF is binary.  Nevertheless, this does not restrict you for using -->
+<!--   those formats: there are filters that convert from various formats to -->
+<!--   <tt>.ly</tt>. -->
+  既存のフォーマットでは、これらの要求に答える事が出来ないようです。
+  例えば、MusicXMLは手では入力できません。
+  DARMSは機能が限られています。ABCは形式が厳密ではなく、NIFFはバイナリです。
+  しかしながら、これらのフォーマットを使うことは可能です。
+  <tt>.ly</tt>に変換する各種のフィルタがあるからです。
 </p>
 
-<h3>How do I learn the syntax?</h3>
+<h3>文法はどう勉強すれば良いですか?</h3>
 <p>
-  Take a look at the
-  <a href="@DOC@stable/Documentation/user/lilypond/Tutorial.html">tutorial</a>.
-  It is pretty short, chopped in easily digestible chunks,
-  and we've spent a lot of time polishing it.
-  If you like to learn by fiddling around, then you can get input
-  examples, by clicking the music images in the tutorial.
+<!--   Take a look at the -->
+<!--   <a href="@DOC@stable/Documentation/user/lilypond/Tutorial.html">tutorial</a>. -->
+<!--   It is pretty short, chopped in easily digestible chunks, -->
+<!--   and we've spent a lot of time polishing it. -->
+<!--   If you like to learn by fiddling around, then you can get input -->
+<!--   examples, by clicking the music images in the tutorial. -->
+  <a href="@DOC@stable/Documentation/user/lilypond/Tutorial.html">チュートリアル</a>を見てください。
+  短くて、簡単なトピックごとにまとめたもので、これまで時間を掛けて磨きあげてきました。
+  実際に使ってみながら学びたいのであれば、チュートリアルの楽譜イメージをクリックするとその入力例を見ることが出来ます。
 </p>
 
-<h3>Stop changing the syntax all the time!</h3>
+<h3>構文を変えつづけないでください!</h3>
 <p>
-  We try to make LilyPond as good as possible, and that implies that we
-  continually improve the input format.  We change the syntax whenever we
-  feel that it will simplify the language as a whole, or ease the
-  learning curve.  Keep in mind that the syntax is as great as it is now
-  because we also did this in the past.
-</p>
-<p>
-  Most of the language changes can be handled by running the program
-  <tt>convert-ly</tt>, which is supplied with LilyPond.  However,
-  <tt>convert-ly</tt> can only do its job if it knows what version the
-  original file was written for.  Therefore, it is important to add
-  <code>version</code> statements to your files like this: <xmp>
-    \version "1.3.17" </xmp>
+<!--   We try to make LilyPond as good as possible, and that implies that we -->
+<!--   continually improve the input format.  We change the syntax whenever we -->
+<!--   feel that it will simplify the language as a whole, or ease the -->
+<!--   learning curve.  Keep in mind that the syntax is as great as it is now -->
+<!--   because we also did this in the past. -->
+  我々は常にLilyPondをもっと良くしようとしていますので、入力フォーマットも常に改良されることになります。
+  入力言語が全体として単純になるとか学習が楽になるなどと思われた場合には構文を変更することがありえます。
+  ずっとこのようにしてきたからこそ、今の優れた構文になっているのだということを御理解下さい。
 </p>
 <p>
-  Changes that cannot be handled by simple edits are marked by a bump in
-  the major version number: converting 1.8 to 2.0 files will need
-  overseeing.
+<!--   Most of the language changes can be handled by running the program -->
+<!--   <tt>convert-ly</tt>, which is supplied with LilyPond.  However, -->
+<!--   <tt>convert-ly</tt> can only do its job if it knows what version the -->
+<!--   original file was written for.  Therefore, it is important to add -->
+<!--   <code>version</code> statements to your files like this: <xmp> -->
+<!--     \version "1.3.17" </xmp> -->
+  ほとんどの構文変更はLilyPondと一緒に提供される<tt>convert-ly</tt>を実行して対応できます。
+  しかし<tt>convert-ly</tt>が正しく実行できるには、元のファイルがどのバージョン用で書かれたのかが分からなければなりません。
+  ですから<code>version</code>宣言を次のようにファイルに書いておくことが大事です。<xmp>
+  \version "1.3.17" </xmp>
+</p>
+<p>
+<!--   Changes that cannot be handled by simple edits are marked by a bump in -->
+<!--   the major version number: converting 1.8 to 2.0 files will need -->
+<!--   overseeing. -->
+  バージョンのメジャー番号の変わり目では、単純な編集では処理できない変更が起こりえます。
+  1.8から2.0へのファイルの変更などは中を良く確認する必要があります。
 </p>
 
-<h3>How quick is entering music with LilyPond?</h3>
+<h3>LilyPondで楽譜を入力する早さはどの程度ですか?</h3>
 
 <p>
-  There is no single answer to this, as the time spent depends on the
-  complexity of the music, and your fluency in LilyPond.  Music with
-  complicated constructs (cross-staff beaming, collisions) takes longer
-  to enter than simple monophonic music.  Experienced users have
-  reported average times of 3.5 pages per hour for typing
-  straightforward music monophonic with an editor only.  This time
-  includes corrections and minor layout tweaks.
+<!--   There is no single answer to this, as the time spent depends on the -->
+<!--   complexity of the music, and your fluency in LilyPond.  Music with -->
+<!--   complicated constructs (cross-staff beaming, collisions) takes longer -->
+<!--   to enter than simple monophonic music.  Experienced users have -->
+<!--   reported average times of 3.5 pages per hour for typing -->
+<!--   straightforward music monophonic with an editor only.  This time -->
+<!--   includes corrections and minor layout tweaks. -->
+  この答えは一つではありません。 
+  入力にかかる時間は、音楽の複雑さやあなたがLilyPondをどの程度使えるかに依るからです。
+  複雑な構造(段を跨ぐビームや衝突)をもつ音楽は単純な単旋律のを入力するより時間がかかります。
+  十分な経験のあるユーザーがエディタだけで入力して、
+  単旋律の音楽をそのまま入力するのに1時間で3.5ページ程度という報告があります。
+  これは誤入力の訂正やちょっとしたレイアウトのチューニングも含みます。
 </p>
 
 
-<h3>I want to use my MIDI keyboard for entry</h3>
+<h3>MIDIキーボードを入力に使いたいのですが</h3>
 
 
-Try the following:
-
+次を試してみて下さい:
 <ul>
   <li>
-    Hans Lub's
+    Hans Lubの
     <a href="http://mail.gnu.org/archive/html/gnu-music-discuss/2001-10/msg00018.html"> emacs/MIDI input mode</a>
   </li>
   <li>
-    Nicholas Sceaux'
+    Nicholas Sceauxの
     <a href="http://nicolas.sceaux.free.fr/lilypond">Emacs/MIDI input mode</a>
 
   <li>
     <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>
-    a command line monophonic MIDI/lilypond entry tool.
+    コマンドライン単声部のMIDI/lilypond入力ツール。
   </li>
 
   <li>
-    <a href="http://lilycomp.sf.net">LilyComp</a> a graphic entry
-    tool, for those that don't read music well.
+    <a href="http://lilycomp.sf.net">LilyComp</a>
+    楽譜を読むのが不得意な人向けのグラフィカルな入力ツール。
   </li>
 </ul>
 
-<h3>I don't want to learn another syntax.  Now what?</h3>
+<h3>新しい入力方法を覚えるのは面倒です。その場合は?</h3>
 <p>
-  There are other options: it is possible to create the music in another
-  format.  Supported formats include 
+<!--   There are other options: it is possible to create the music in another -->
+<!--   format.  Supported formats include --> 
+  他の方法もあります。別のフォーマットで楽譜を作成することが可能です。
+  サポートしているフォーマットは、
 </p>
 
 <dl>
   <dt>
-    MIDI</dt><dd> LilyPond includes midi2ly, a program that translates a MIDI
-    file to LilyPond.
+    MIDI</dt><dd> LilyPondにはMIDIファイルをLilyPondに変換するmidi2lyが付属しています。
+<!--     LilyPond includes midi2ly, a program that translates a MIDI -->
+<!--     file to LilyPond. -->
   </dd>
 
   <dt>
-    ETF</dt><dd> LilyPond includes etf2ly, a convertor for the Finale ETF
-    format (<a href="../devel/misc/etfformat.html">about ETF</a>)
+    ETF</dt><dd> LilyPondには、FinaleのETFフォーマット(<a href="../devel/misc/etfformat.html">ETFについて</a>)
+    を変換するetf2lyが付属しています。
+<!--     LilyPond includes etf2ly, a convertor for the Finale ETF -->
+<!--     format (<a href="../devel/misc/etfformat.html">about ETF</a>) -->
   </dd>
 
   <dt>
-    ABC</dt><dd> LilyPond includes abc2ly, a convertor for the popular ABC
-    format (<a href="http://www.gre.ac.uk/~c.walshaw/abc/">about ABC</a>).
+    ABC</dt><dd> LilyPondには、よく使われているABCフォーマット
+    (<a href="http://www.gre.ac.uk/~c.walshaw/abc/">ABCについて</a>)を変換するabc2lyが付属しています。
+<!--     LilyPond includes abc2ly, a convertor for the popular ABC -->
+<!--     format (<a href="http://www.gre.ac.uk/~c.walshaw/abc/">about ABC</a>). -->
   </dd>
 
   <dt>
-    MusicXML</dt><dd> LilyPond includes <code>musicxml2ly</code> a
-    partial convertor from MusicXML, and Guido Amoruso's <a
+    MusicXML</dt><dd> LilyPondにはMusicXML(<a
+    href="http://www.musicxml.org/">MusicXMLについて</a>)の部分的コンバータの<code>musicxml2ly</code>と、
+    MusicXMLを変換するGuido Amoruso氏の<a 
     href="http://lists.gnu.org/archive/html/lilypond-user/2005-12/msg00107.html">xml2ly</a>
-    will convert MusicXML to LilyPond.  (<a
-    href="http://www.musicxml.org/">About MusicXML</a>).  </dd>
+    とが付属しています。
+<!--     LilyPond includes <code>musicxml2ly</code> a -->
+<!--     partial convertor from MusicXML, and Guido Amoruso's <a -->
+<!--     href="http://lists.gnu.org/archive/html/lilypond-user/2005-12/msg00107.html">xml2ly</a> -->
+<!--     will convert MusicXML to LilyPond.  (<a -->
+<!--     href="http://www.musicxml.org/">About MusicXML</a>).   -->
+       </dd>
 
   <dt>
-    NoteWorthy</dt><dd>  Mike Wiering's <a
-    href="http://nwc2ly.sourceforge.net/">nwc2ly</a> will convert NWC
-    format to LilyPond.  </dd>
+    NoteWorthy</dt><dd> Mike Wiering氏の<a
+    href="http://nwc2ly.sourceforge.net/">nwc2ly</a>はNWCフォーマットをLilyPondに変換してくれます。
+<!--     Mike Wiering's <a -->
+<!--     href="http://nwc2ly.sourceforge.net/">nwc2ly</a> will convert NWC -->
+<!--     format to LilyPond.  -->
+       </dd> 
 
-  <dt>
-  Band In A Box</dt><dd>  Alain Brenzikofer's <a
+  <dt>Band In A Box</dt><dd>  Alain Brenzikofer氏の<a
      href="http://www.brenzi.ch/builder.php?content=projects_biabconverter">biabconverter</a>
-     will convert Band-in-a-box files to LilyPond.
-
+     はBand-in-a-boxのファイルをLilyPond用に変換します。
+<!--      Alain Brenzikofer's <a -->
+<!--      href="http://www.brenzi.ch/builder.php?content=projects_biabconverter">biabconverter</a> -->
+<!--      will convert Band-in-a-box files to LilyPond. -->
      </dd>
 
 </ul>
 
 
-<h3>I want to have an Graphical User Interface!</h3>
+<h3>グラフィカルユーザーインターフェースが欲しいのですが!</h3>
+<!-- <h3>I want to have an Graphical User Interface!</h3> -->
 <p>
-  We have no time to also make a graphical user interface.  Luckily,
-  other people have filled the gap.  The following programs have
-  competent LilyPond export functions and are actively being developed.
+  私達にはGUIを作る程までの時間がありません。
+  幸いなことに、そのギャップは他の人が埋めてくれています。
+  以下は活発に開発されているLilyPondへの優れた出力機能を持つプログラムです。
+<!--   We have no time to also make a graphical user interface.  Luckily, -->
+<!--   other people have filled the gap.  The following programs have -->
+<!--   competent LilyPond export functions and are actively being developed. -->
 </p>
 
 <ul>
   <li>
     <a href="http://noteedit.berlios.de/">
-      NoteEdit</a> (development stopped)
+      NoteEdit</a> (開発は中止されています)
   </li>
   <li>
-    <a href="https://canorus.berlios.de/">Canorus</a>,
-      actively developed successor of NoteEdit.
+    <a href="https://canorus.berlios.de/">Canorus</a>
+      活発に開発されている NoteEdit の後継。
   </li>
   <li>
     <a href="http://www.all-day-breakfast.com/rosegarden/">RoseGarden</a>
   </li>
 </ul>
-There are also different, non-graphical interfaces:
+さらに、別のグラフィカルでない入力インターフェースもあります。
+<!-- There are also different, non-graphical interfaces: -->
 
 <ul>
   <li> <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>
-    is an interface to generate LilyPond input with a MIDI keyboard.
+       はLilyPond入力ファイルをMIDIキーボードで作成するインターフェースです。
+<!--     is an interface to generate LilyPond input with a MIDI keyboard. -->
   </li>
-  <li><a
-	 href="http://nicolas.sceaux.free.fr/lilypond/lyqi.html">LyQI</a>
-    provides a piano-like keyboard interface using the normal keyboard in
-    emacs.  It can also use RUMOR.
+  <li><a href="http://nicolas.sceaux.free.fr/lilypond/lyqi.html">LyQI</a>
+       は、emacsで通常のキーボードをピアノのようなキーボード配列で使う機能を提供します。
+       また、RUMORも併用出来ます。
+<!--     provides a piano-like keyboard interface using the normal keyboard in -->
+<!--     emacs.  It can also use RUMOR. -->
   </li>
 </ul>
 
 
-<h2>Support</h2>
+<h2>サポート</h2>
 
-<h3>Help, I can't get it to install or compile.  Where do I get help?</h3>
+<h3>インストールやコンパイルがうまくいきません。どうしたら良いでしょう。</h3>
+<!-- <h3>Help, I can't get it to install or compile.  Where do I get help?</h3> -->
 <p>
-  If you have a binary package which does not install correctly, or if
-  you have trouble while following the instructions, then send a full
-  bug-report to <a
+  もし、バイナリファイルが正しくインストール出来なかったり、
+  指示どおりやってもうまくいかない場合は、バグレポートを<a
   href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">
-  our bug list</a>.  Of course you can also write to the <a
-  href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypond-user</a>
-  list for help.  <!-- !-->
+  バグリスト</a>まで送ってください。
+  勿論、<a
+  href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypondユーザメーリングリスト</a>に
+  書いてもらっても構いません。
+<!--   If you have a binary package which does not install correctly, or if -->
+<!--   you have trouble while following the instructions, then send a full -->
+<!--   bug-report to <a -->
+<!--   href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs"> -->
+<!--   our bug list</a>.  Of course you can also write to the <a -->
+<!--   href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypond-user</a> -->
+<!--   list for help.  <\!-- !-\-> -->
 </p>
 
-<h3>Help, I can't get it to do something.  Where do I get help?</h3>
+<h3>やりたいことが出来ません。どこに聞けば良いですか?</h3>
+<!-- <h3>Help, I can't get it to do something.  Where do I get help?</h3> -->
 <p>
-  You can write to the lilypond-user mailing list (which is at <a
-href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>).
-It is also a good idea to check the archives of the mailing list,
-which are at <a
-href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a>.
+  lilypondユーザメーリングリスト(<a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>)にメールしてみて下さい。
+  リストの過去メール(<a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>))をチェックしてみるのも良い方法です。
+<!--   You can write to the lilypond-user mailing list (which is at <a -->
+<!-- href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>). -->
+<!-- It is also a good idea to check the archives of the mailing list, -->
+<!-- which are at <a -->
+<!-- href="http://mail.gnu.org/archive/html/lilypond-user/">http://mail.gnu.org/archive/html/lilypond-user/</a>. -->
 </p>
 
 <a name="bugreport"></a>
 
-<h3>I found a bug.</h3>
+<h3>バグを見付けました</h3>
 
 <p>
-  If you have input that results in a crash or erroneous output, then
-  that is a bug.  Please help us by sending a good bug-report: an
-  input file that will reproduce the problem.  Please make it small,
-  so we can easily isolate the problem.  Don't forget to tell which
-  version you use, and on which platform you run it.  Please follow
-  <a href="@DEPTH@/devel/participating/bugs">bug reporting hints</a>,
-  and send your report to <a
-  href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">bug-lilypond@gnu.org</a>.
+  もし、クラッシュやおかしな出力になるインプットがあれば、それはバグです。
+  良いバグレポートを私達に送ってください。
+  必ず同じ問題を発生させる入力ファイルを送ってもらうのが良いです。
+  原因を特定し易くするため必要最小限としてください。
+  使っているバージョンとコンピュータの情報を含めるのも忘れずに。
+  <a href="@DEPTH@/devel/participating/bugs">バグレポートの仕方</a>を参考にして、
+  <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">bug-lilypond@gnu.org</a>に送ってください。
+<!--   If you have input that results in a crash or erroneous output, then -->
+<!--   that is a bug.  Please help us by sending a good bug-report: an -->
+<!--   input file that will reproduce the problem.  Please make it small, -->
+<!--   so we can easily isolate the problem.  Don't forget to tell which -->
+<!--   version you use, and on which platform you run it.  Please follow -->
+<!--   <a href="@DEPTH@/devel/participating/bugs">bug reporting hints</a>, -->
+<!--   and send your report to <a -->
+<!--   href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">bug-lilypond@gnu.org</a>. -->
 </p>
 
-<h3>Could you add this feature for me?</h3>
+<h3>ある機能を追加してもらえますか?</h3>
 
 <p>
-  Sure! Read <a href="../sponsor">sponsoring</a> for more about
-  getting custom functionality.
+  勿論! 特別な機能が必要でしたら<a href="../sponsor">スポンサーについて</a>をお読み下さい。
+<!--   Sure! Read <a href="../sponsor">sponsoring</a> for more about -->
+<!--   getting custom functionality. -->
 
   
 </p>
 
-<h3>But it is very easy, just extend the syntax like this...</h3>
+<h3>ただ、言語仕様をちょっと変えるだけなのですが...</h3>
+<!-- <h3>But it is very easy, just extend the syntax like this...</h3> -->
 
 <p>
-  It is a tempting to think that inventing the syntax solves the
-  problem.  In practice, less than 10% of the program is involved with
-  handling input and the syntax.  Almost always, adding features
-  involves a lot more than syntax, and is also much more complicated.
+  言語仕様を作ることで、問題が解決すると思いがちですが、
+  実際には入力と言語の処理はプログラムの中では10%以下です。
+  常に、機能の追加は言語仕様だけよりももっと多くの変更が必要で非常に複雑なのです。
+<!--   It is a tempting to think that inventing the syntax solves the -->
+<!--   problem.  In practice, less than 10% of the program is involved with -->
+<!--   handling input and the syntax.  Almost always, adding features -->
+<!--   involves a lot more than syntax, and is also much more complicated. -->
 </p>
 
