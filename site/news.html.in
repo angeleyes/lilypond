@@ -34,6 +34,17 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.50 available</b> -
+    <em>July 2, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.50 adds support for metronome marks with text, contributed by
+    Reinhold Kainhofer.
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_50&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>The LilyPond Report #13</b> -
     <em>June 23, 2008</em>
   </dt>
