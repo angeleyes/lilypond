@@ -874,9 +874,15 @@ if appropriate.
 (define-public ((make-accidental-rule octaveness lazyness) context pitch barnum measurepos)
   "Function that returns an accidental rule using the Lilypond 2.10 c++-function.
   octaveness is either 'same-octave or 'any-octave and defines whether the rule should
-  respond to accidental changes in other octaves than the current.
+  respond to accidental changes in other octaves than the current. 'same-octave is the
+  normal way to typeset accidentals - an accidental is made if the alteration is different
+  from the last active pitch in the same octave. 'any-octave looks at the last active pitch
+  in any octave.
   lazyness states over how many bars an accidental should be remembered.
-  0 is default. -1 is 'forget immidiately' - that is - only look at key signature."
+  0 is default - accidental lasts over 0 bar lines, that is, to the end of current measure.
+  A positive integer means that the accidental lasts over that many bar lines.
+  -1 is 'forget immidiately', that is, only look at key signature.
+  #t is forever."
   (let ((keysig (ly:context-property context 'localKeySignature)))
     (ly:find-accidentals-simple keysig pitch barnum lazyness octaveness)))
 
