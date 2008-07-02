@@ -222,6 +222,10 @@ uneven vertical spacing.
 @item Nested contexts of the same type are now allowed.
 This deprecates @code{InnerStaffGroup} and @code{InnerChoirStaff}.
 
+@item
+More flexible accidentals. Added accidental rules @code{'neo-modern},
+@code{'neo-modern-cautionary} and @code{'dodecaphonic}.
+
 @end itemize
 
 @ifhtml
