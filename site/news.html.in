@@ -34,6 +34,19 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.51 available</b> -
+    <em>July 8, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.51 has a couple of bugfixes, and a lot of changes in
+    predefined command names.  Fret diagrams formatting has been
+    improved by Carl Sorensen, it is now controlled
+    by <code>fret-diagram-details</code> property.
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_51&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.50 available</b> -
     <em>July 2, 2008</em>
   </dt>
