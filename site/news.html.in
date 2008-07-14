@@ -34,6 +34,19 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.52 available</b> -
+    <em>July 14, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.52 fixes wrong offset of a bar number when it follows
+    a breath mark, and syntax changes made in recent development
+    releases are now fully listed on the News page.
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">News page</a>,
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_52&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.51 available</b> -
     <em>July 8, 2008</em>
   </dt>
