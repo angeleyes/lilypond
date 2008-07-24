@@ -34,6 +34,16 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.53 available</b> -
+    <em>July 23, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.53 is out.  This release fixes a lot of bugs.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_53&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.52 available</b> -
     <em>July 14, 2008</em>
   </dt>
