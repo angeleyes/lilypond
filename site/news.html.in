@@ -41,7 +41,7 @@
     LilyPond 2.11.54 is out.  This release fixes a bug in tie formatting
     following a line break, and changes the behavior of <code>short-indent</code>
     so that short instrument names are no longer indented in the margin.
-    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_54&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_54&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
     <a href="install/#2.11">Download</a>.
   </dd>
 
