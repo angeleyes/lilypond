@@ -34,6 +34,17 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.55 available</b> -
+    <em>August 6, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.55 is out.  This release fixes several bugs, and for octavation brackets
+    <code>set-octavation</code> has been replaced by a more user-friendly command, <code>\ottava</code>.  
+    <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_55&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.54 available</b> -
     <em>July 30, 2008</em>
   </dt>
