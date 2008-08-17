@@ -34,6 +34,20 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.56 available</b> -
+    <em>August 17, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.56 is out.  This release features transposable fret
+    diagrams, contributed by Carl Sorensen.  Translations status pages
+    are now available from the documentation start page.  Two
+    predefined commands <code>\pointAndClickOn</code>,
+    <code>\pointAndClickOff</code> have also been added.
+    <br><a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.55 available</b> -
     <em>August 6, 2008</em>
   </dt>
