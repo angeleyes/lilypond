@@ -34,6 +34,18 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.57 available</b> -
+    <em>August 27, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.57 is out.  This release adds support for harp pedal
+    diagrams, contributed by Reinhold Kainhofer, and some changes in
+    markup command names have been made.
+    <br><a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.56 available</b> -
     <em>August 17, 2008</em>
   </dt>
