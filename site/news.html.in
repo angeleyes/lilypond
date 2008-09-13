@@ -34,6 +34,25 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.58 available</b> -
+    <em>September 13, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.58 is a beta release, which means the next stable
+    release is expected in a few weeks.  This release is also special,
+    as it includes code which supports more flexible automatic
+    accidentals rules, written several months ago by Rune Zedeler,
+    deceased since then.  All the development team express their
+    condolences to his family and his friends.  Besides this,
+    automatic beaming has been improved by Carl Sorensen, support
+    for creating stem flags in a new style has been contributed by
+    Reinhold Kainhofer, and a few bugs have been fixed.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_58&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.57 available</b> -
     <em>August 27, 2008</em>
   </dt>
