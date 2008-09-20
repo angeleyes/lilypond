@@ -34,6 +34,18 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.59 available</b> -
+    <em>September 20, 2008</em>
+  </dt>
+  <dd>
+    Release 2.11.59 is out. LilyPond now uses 64 bit integers for
+    rational numbers, which allows typesetting more complex polymetric
+    music.  This release also has updates to German and Spanish
+    translations of the documentation.
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.58 available</b> -
     <em>September 13, 2008</em>
   </dt>
