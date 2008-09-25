@@ -34,6 +34,17 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.60 available</b> -
+    <em>September 25, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.60 has been released. A new style of double repeat
+    bar line has been added, and <code>printallheaders</code> variable in
+    score block has been renamed to <code>print-all-headers</code>.
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.59 available</b> -
     <em>September 20, 2008</em>
   </dt>
