@@ -1,0 +1,142 @@
+<!--
+    Translation of GIT committish: ca46ef5a244d2f3c927f7ed437b1b7eef1a31ac9
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<a name="software"></a>
+<!-- <h2>What's wrong with music notation software</h2> -->
+<h2>ソフトの何が良くないのか</h2>
+<p>
+<!-- Computers have made music printing accessible to the masses, but they -->
+<!-- tend to deliver mediocre typography.  Apparently, programmers have -->
+<!-- been doing a shoddy job on notation programs.  To illustrate that, we -->
+<!-- had an amateur user set a piece of music in one of the most popular -->
+<!-- &lsquo;professional&rsquo; notation programs sold today, Finale -->
+<!-- 2003. It was made with all of the default settings. The music is from -->
+<!-- the Sarabande of the 2nd Cello Suite by J. S. Bach. -->
+コンピュータによって多くの人に楽譜印刷が出来るようになりましたが、傾向としてそれらの組版は凡庸でした。
+明らかに、楽譜作成プログラムにおいてプログラマー達は安っぽい仕事をしてきました。
+それを説明するために、アマチュアユーザに楽譜の一部を&lsquo;プロ用&rsquo;
+として今日販売されているもっともよく知られているソフト、Finale 2003で打ってもらいました。
+設定は全てデフォルトのままです。曲はJ.S.バッハのチェロ組曲2番からサラバンドを使いました。
+<p>
+<em>
+(FinaleはMakeMsic! Inc.の登録商標です)
+</em>
+
+
+<p align="center" >
+
+<img align="center"  src="@IMAGES@finale-sarabande-full.png">
+
+<p> 
+
+<!-- This example far surpasses the previous one when it comes to -->
+<!-- formatting errors: there are serious errors in literally -->
+<!-- <em>every</em> measure. The errors come in all sizes: a big one is the -->
+<!-- oddly s p a c e d &nbsp o u t last line. A smaller one is the flat in -->
+<!-- measure 13, which is covered by the note preceding it. Here is a -->
+<!-- magnification of that measure: --> 
+この例は整形の誤りに関して言えば先ほどの例を凌駕しています。
+まさに重大な欠陥が<em>全ての</em>小節に在ります。
+欠陥は大から小まで様々ですが、大きな物としては奇妙に間　隔　の　開　い　た　最後の段があります。
+もう少し小さい物としては13小節目のフラットで、その前の音符がかぶさっています。
+その小節を拡大した物が次です。<p align="center" > <img align="center"
+src="@IMAGES@finale-flat-detail.png">
+<p>
+<!-- The errors go down to the teensy details: below is a blowup of the -->
+<!-- beam in that measure. Of course, in proper typography the beam should -->
+<!-- not stick out to the right of the stem, and the ribbles provide a -->
+<!-- telling glimpse into Coda Music Technology programmers' aptness (or -->
+<!-- lack thereof) with the underlying PostScript technology. -->
+欠陥は非常に細かい部分にも及びます。下図は同じ小節のビーム(連桁)の拡大です。
+勿論適切な組版では、ビームは棒の右側に飛び出してはなりません。
+そこのぼこぼこしたものは、基礎となるポストスクリプトに関するCoda Music Technology
+のプログラマーの適性(もしくはその欠如)をかいま見せています。
+<p align="center" >
+<img src="@IMAGES@finale-beam-detail.png">
+<p>
+
+<!-- Now, one could refute that Finale has a graphical interface, and it -->
+<!-- lets you easily move about elements to correct errors, or use plug-ins -->
+<!-- to do so.  This is certainly true: in fact, good professional -->
+<!-- engravers that use Finale typically spend the majority of their time -->
+<!-- correcting all the errors that Finale routinely makes.  But do you -->
+<!-- want to spend your time on correcting all glaring errors?  For the -->
+<!-- spaced out line, it is doable, but imagine that you have to correct -->
+<!-- each and every beam that sticks out of the stems....  by hand? -->
+Finaleはグラフィカルインターフェースであり、要素を簡単に移動して欠点を修正できるし、
+そういうプラグインを使うこともできる、と反論する人もいるでしょう。
+確かにその通りで、実際良いプロの譜刻師はFinaleが作る欠点を修正してまわるのに大変な時間を費しています。
+ですが、あなたはこういったひどい欠陥を訂正するのに時間を費したいですか?
+間隔の開いてしまった段を訂正するくらいなら良いでしょう、しかし棒からはみだす全てのビームを修正するのでしょうか?
+しかも、手作業で?
+<p>
+<!-- There is a less obvious reason why correcting things by hand is a bad -->
+<!-- idea. Consider again measure 13 reproduced above.  The misplaced flat -->
+<!-- is pretty obvious, but did you notice that repeat bar? Its lines are -->
+<!-- too far apart. Did you notice that the eighth rest is too far down? -->
+<!-- Did it occur to you that the stem of the last eighth note is too long? -->
+手作業で修正するのが望ましくないそれほど明白でない理由もあります。
+もう一度先ほどの13小節目を考えてみましょう。
+フラットの位置がおかしいのはわりと明白ですが、繰り返し記号には気づきましたか?
+実は、縦線同士が離れすぎています。
+8分休符が下に離れすぎているのには気づきましたか?
+最後の8分音符の棒が長すぎるのについてはどうでしたか?
+<p align="center" >
+<img src="@IMAGES@finale-flat-correct.png">
+<p>
+<!-- Unless you are an expert, typographical errors will irk you without -->
+<!-- being obvious. Many of them will go uncorrected and will still be in the -->
+<!-- final print. -->
+組版の欠陥が明白でないため、専門家でない限りあなたは閉口することでしょう。
+ほとんど全部が訂正されないままとなり、そのまま印刷されてしまわれるでしょう。
+<p>
+
+<!-- This example may seem contrived, but in fact, it's not.  All -->
+<!-- major producers of notation software claim to follow engraving -->
+<!-- standards, but we have not seen any that gets the basics right; all of -->
+<!-- them make systematic mistakes.  If you want to assess the output of your -->
+<!-- favorite program, then buy a decent hand-made score from a respectable -->
+<!-- publisher, and try to reproduce one page of it. Then compare them: -->
+この例はでっちあげだと思われるかもしれませんが、そうではありません。
+全ての楽譜作成ソフトのプロデューサーは譜刻の標準仕様を満たしているといいますが、
+基本を満たしている物を見たことがありません。
+全てがシステム上の間違いを犯しています。
+気に入っているプログラムの評価をしたければ、信頼できる出版社のきちんとした手作業によるスコアを
+購入し、その1ページを作りなおしてみて比較すると良いでしょう。
+<ul>
+<li>
+<!-- How does the page layout compare? Typically, computer scores are more -->
+<!-- widely spaced so they take up more pages, meaning more annoying page -->
+<!-- turns. -->
+ページレイアウトはどうでしょうか? 典型的には、コンピュータのスコアは
+より幅が広く、そのためページが余計に必要で、そのため嫌なページめくりが多くなります。
+<li>
+<!-- How does the spacing compare?  Is it as lively and flowing as the -->
+<!-- hand-made score? If in doubt, try measuring both with a ruler. -->
+間隔の取りかたはどうでしょうか? 手作業のスコアのように生き生きと流れるようですか?
+疑うのでしたら、両者を定規で測り比べてみましょう。
+<li>
+<!-- Put both on a music stand, 1 meter away; that is not uncommon when -->
+<!-- performing. Can you read both pages? Almost all computer scores have -->
+<!-- an anemic look: they use lines which are too thin, and symbols which -->
+<!-- are too light. That makes them hard to read from a distance. If in -->
+<!-- doubt, measure the difference with a magnifying glass. -->
+両方を譜面台に乗せて演奏でよくあるように1メートル離れてみましょう。
+両方とも読めますか? ほとんど全てのコンピュータスコアは生気の無い見映えをしています。
+線が細すぎますし、記号類は軽すぎます。ですので、遠くからだと読みにくいのです。
+疑うのでしたら、虫眼鏡を使って比べてみましょう。
+
+</ul>
+
+
+
+<p align="right">
+次は<a href="problem-statement.html">ソフトのデザイン上避けるべき点</a>、
+あるいは楽譜作成のモデリング。
+
+
