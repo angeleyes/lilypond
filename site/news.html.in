@@ -34,6 +34,19 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.61 available</b> -
+    <em>October 1, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.61 has been released. It has updates to
+    documentation translations, and a new automatic accidentals style
+    (teaching) has been added.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_61&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.60 available</b> -
     <em>September 25, 2008</em>
   </dt>
