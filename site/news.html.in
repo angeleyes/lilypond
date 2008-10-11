@@ -34,6 +34,20 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.62 &ndash; Release Candidate</b> -
+    <em>October 11, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.62 is available. This is is one of the last releases
+    before 2.12, so testing it is encouraged. In addition to a bugfix
+    in <code>\tempo</code> command, this release has lot of updates
+    to Spanish and German documentation translations, and the
+    stylesheet for HTML documentation has been improved.
+    <br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_62&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.61 available</b> -
     <em>October 1, 2008</em>
   </dt>
