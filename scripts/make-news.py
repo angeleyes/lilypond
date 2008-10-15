@@ -49,11 +49,17 @@ def incomplete_href_replace (m):
 rss_news_items = []
 for (full_item, sticky, title, date, alt_date, text) in news_items[:rss_items_count]:
     try:
-        parsed_date = datetime.datetime.strptime (date, '%B %d, %Y')
+        if sys.hexversion >= 0x02050000:
+            parsed_date = datetime.datetime.strptime (date, '%B %d, %Y')
+        else:
+            parsed_date = datetime.datetime(*(time.strptime(date, '%B %d, %Y')[0:6]))
     except ValueError:
         try:
             alt_date = alt_date. replace ('<!--', ''). replace ('-->', '').strip ()
-            parsed_date = datetime.datetime.strptime (alt_date, '%B %d, %Y')
+            if sys.hexversion >= 0x02050000:
+                parsed_date = datetime.datetime.strptime (alt_date, '%B %d, %Y')
+            else:
+                parsed_date = datetime.datetime(*(time.strptime(alt_date, '%B %d, %Y')[0:6]))
         except ValueError:
             sys.stderr.write ("`%s': cannot parse date in \"Month DD, YYYY\" \
 format, junking this news item\n" % (alt_date or date))
