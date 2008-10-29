@@ -34,6 +34,16 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.63</b> -
+    <em>October 29, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.63 is available. This release has lots of updates to the
+    documentation and translations.
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.62 &ndash; Release Candidate</b> -
     <em>October 11, 2008</em>
   </dt>
