@@ -34,6 +34,21 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.64</b> -
+    <em>November 18, 2008</em>
+  </dt>
+  <dd>
+    LilyPond 2.11.64 is available. MusicXML import has been improved,
+    including church modes support, and a few bugs in the compilation
+    and documentation building processes are fixed.  The three
+    documentation manuals are now fully translated in Spanish, thanks
+    to Francisco Vila.  The font cache problem in Windows binaries
+    which used to cause excessive slowness should be fixed.
+    <br><a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.63</b> -
     <em>October 29, 2008</em>
   </dt>
