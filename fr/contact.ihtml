@@ -1,10 +1,6 @@
 <!--
     Translation of GIT Committish: dfac495ce530710defeff84032b9d75b12bac373
 
-
-
-
-
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
     in README for details.
@@ -19,11 +15,10 @@ souscrit &agrave; la liste en question, votre courrier sera confi&eacute; &agrav
   <dt>Contacter les traducteurs et utilisateurs francophones&nbsp;?</dt>
   <dd>
 
-<!-- LIEN MORT !-->
     Envoyez un courriel &agrave; <tt><a href="mailto:lilypond-user-fr@gnu.org">lilypond-user-fr@gnu.org</a></tt>
     (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user-fr/">infos</a>
     sur la liste, 
-    <a href="http://mail.gnu.org/archive/html/lilypond-user-fr/">archives</a>).
+    <a href="http://n2.nabble.com/LilyPond-French-Users-f1298960.html">archives</a>).
     <br><em>Concernant des sujets tr&egrave;s pointus ou techniques comme les
     rapports de bogue ou les discussions sur le d&eacute;veloppement,
     adressez-vous de pr&eacute;f&eacute;rence aux listes de diffusion ci-dessous :
