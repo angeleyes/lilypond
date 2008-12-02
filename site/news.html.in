@@ -34,6 +34,25 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.11.65 — Release Candidate</b> -
+    <em>December 2, 2008</em>
+  </dt>
+  <dd>
+This release has improvements to MusicXML import, contributed by
+Reinhold Kainhofer, and adds support for splitting a book in several
+book parts, contributed by Nicolas Sceaux.
+Nested contexts of the same type are now allowed with any depth, and
+overriding nested properties can be done with list syntax, thanks to
+Neil Puttock.
+This is hopefully the last Release Candidate before stable release 2.12,
+so you are welcome to test this release if you can to report new
+issues.
+<br><a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_65&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
+    <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.11">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.64</b> -
     <em>November 18, 2008</em>
   </dt>
