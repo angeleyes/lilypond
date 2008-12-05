@@ -12,4 +12,5 @@
  ("install", _ ("Download")),
  ("documentation.html", _ ("Documentation")),
  ("devel", _ ("Development")),
+ ("help", _ ("Help")),
  ]
