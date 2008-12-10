@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-31 16:14+0200\n"
+"POT-Creation-Date: 2008-12-11 00:53+0100\n"
 "PO-Revision-Date: 2006-12-28 23:36+0100\n"
 "Last-Translator: Tineke de Munnik <tdm@dds.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,9 +25,70 @@ msgstr "Andere talen: %s."
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "Gebruik van <A HREF='%s'>automatische taalkeuze</A>."
 
-#: scripts/format-page.py:252 site/menu-entries.py:9
+#: scripts/format-page.py:255 site/menu-entries.py:9
 msgid "Home"
 msgstr "Startpagina"
+
+#: site/sponsor/menu-entries.py:2
+msgid "Options"
+msgstr "Opties"
+
+#: site/sponsor/menu-entries.py:3
+msgid "In natura"
+msgstr "In natura"
+
+#: site/install/menu-entries.py:2
+msgid "First use"
+msgstr "Eerste gebruik"
+
+#: site/install/menu-entries.py:3
+msgid "User help"
+msgstr "Gebruikershulp"
+
+#: site/help/menu-entries.py:2
+msgid "Getting Help"
+msgstr ""
+
+#: site/menu-entries.py:10
+msgid "Introduction"
+msgstr "Introductie"
+
+#: site/menu-entries.py:11
+msgid "About"
+msgstr "Over LilyPond"
+
+#: site/menu-entries.py:12
+msgid "Download"
+msgstr "Download"
+
+#: site/menu-entries.py:13 site/install/install-2.11.ihtml:231
+#: site/install/install-2.10.ihtml:254 site/install/install-2.8.ihtml:154
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: site/menu-entries.py:14
+msgid "Development"
+msgstr "Ontwikkeling"
+
+#: site/menu-entries.py:15
+msgid "Help"
+msgstr ""
+
+#: site/switch/menu-entries.py:2
+msgid "Why use LilyPond?"
+msgstr "Waarom LilyPond?"
+
+#: site/switch/menu-entries.py:3
+msgid "Testimonials"
+msgstr "Gebruikerservaringen"
+
+#: site/switch/menu-entries.py:4
+msgid "A short tour"
+msgstr "Korte rondleiding"
+
+#: site/switch/menu-entries.py:5
+msgid "Crash course"
+msgstr "Stoomcursus"
 
 #: site/about/menu-entries.py:2
 msgid "Features"
@@ -49,82 +110,17 @@ msgstr "Publicaties"
 msgid "Acknowledgements"
 msgstr "Met dank aan"
 
-#: site/install/menu-entries.py:2
-msgid "First use"
-msgstr "Eerste gebruik"
+#: site/graphics/annotate-example-single-part.svg:119
+msgid "Condense multi-rests"
+msgstr "Voeg meermaatse rusten samen"
 
-#: site/install/menu-entries.py:3
-msgid "User help"
-msgstr "Gebruikershulp"
+#: site/graphics/annotate-example-single-part.svg:132
+msgid "Transpose for F instrument"
+msgstr "Transponeer voor F-instrument"
 
-#: site/menu-entries.py:10
-msgid "Introduction"
-msgstr "Introductie"
-
-#: site/menu-entries.py:11
-msgid "About"
-msgstr "Over LilyPond"
-
-#: site/menu-entries.py:12
-msgid "Download"
-msgstr "Download"
-
-#: site/menu-entries.py:13 site/install/install-2.10.ihtml:254
-#: site/install/install-2.8.ihtml:154 site/install/install-2.11.ihtml:231
-msgid "Documentation"
-msgstr "Documentatie"
-
-#: site/menu-entries.py:14
-msgid "Development"
-msgstr "Ontwikkeling"
-
-#: site/sponsor/menu-entries.py:2
-msgid "Options"
-msgstr "Opties"
-
-#: site/sponsor/menu-entries.py:3
-msgid "In natura"
-msgstr "In natura"
-
-#: site/switch/menu-entries.py:2
-msgid "Why use LilyPond?"
-msgstr "Waarom LilyPond?"
-
-#: site/switch/menu-entries.py:3
-msgid "Testimonials"
-msgstr "Gebruikerservaringen"
-
-#: site/switch/menu-entries.py:4
-msgid "A short tour"
-msgstr "Korte rondleiding"
-
-#: site/switch/menu-entries.py:5
-msgid "Crash course"
-msgstr "Stoomcursus"
-
-#: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\"
-msgstr "Commando's beginnen met \\"
-
-#: site/graphics/annotate-example-1.svg:205
-msgid "Letters are notes"
-msgstr "Letters zijn noten"
-
-#: site/graphics/annotate-example-1.svg:227
-msgid "Numbers are durations"
-msgstr "Getallen zijn nootlengtes"
-
-#: site/graphics/annotate-example-2.svg:181
-msgid "Add articulations"
-msgstr "Voeg articulaties toe"
-
-#: site/graphics/annotate-example-2.svg:191
-msgid "Add -es for flat, -is for sharp"
-msgstr "Gebruik -es voor mol, -is voor kruis"
-
-#: site/graphics/annotate-example-2.svg:201
-msgid "Enclose pitches in &lt; &gt; for chords"
-msgstr "Groepeer noten tussen &lt; &gt; voor akkoorden"
+#: site/graphics/annotate-example-single-part.svg:142
+msgid "Reuse variable"
+msgstr "Hergebruik variabele"
 
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
@@ -160,26 +156,6 @@ msgstr "Voer meermaatse rust in"
 msgid "Store notes in variable"
 msgstr "Bewaar noten in variabele"
 
-#: site/graphics/annotate-example-score.svg:115
-msgid "Create staff"
-msgstr "Maak notenbalk"
-
-#: site/graphics/annotate-example-score.svg:126
-msgid "Combine staffs in parallel"
-msgstr "Combineer notenbalken parallel"
-
-#: site/graphics/annotate-example-single-part.svg:119
-msgid "Condense multi-rests"
-msgstr "Voeg meermaatse rusten samen"
-
-#: site/graphics/annotate-example-single-part.svg:132
-msgid "Transpose for F instrument"
-msgstr "Transponeer voor F-instrument"
-
-#: site/graphics/annotate-example-single-part.svg:142
-msgid "Reuse variable"
-msgstr "Hergebruik variabele"
-
 #: site/graphics/naive-notation.svg:675
 #, fuzzy
 msgid "measures"
@@ -189,26 +165,63 @@ msgstr "Functies"
 msgid "staff"
 msgstr ""
 
-#: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
-#: site/install/install-2.10.ihtml:80 site/install/install-2.10.ihtml:134
-#: site/install/install-2.10.ihtml:158 site/install/install-2.8.ihtml:33
-#: site/install/install-2.8.ihtml:82 site/install/install-2.11.ihtml:33
-#: site/install/install-2.11.ihtml:55 site/install/install-2.11.ihtml:78
-#: site/install/install-2.11.ihtml:110 site/install/install-2.11.ihtml:134
+#: site/graphics/annotate-example-1.svg:195
+msgid "Commands start with \\"
+msgstr "Commando's beginnen met \\"
+
+#: site/graphics/annotate-example-1.svg:205
+msgid "Letters are notes"
+msgstr "Letters zijn noten"
+
+#: site/graphics/annotate-example-1.svg:227
+msgid "Numbers are durations"
+msgstr "Getallen zijn nootlengtes"
+
+#: site/graphics/annotate-example-2.svg:181
+msgid "Add articulations"
+msgstr "Voeg articulaties toe"
+
+#: site/graphics/annotate-example-2.svg:191
+msgid "Add -es for flat, -is for sharp"
+msgstr "Gebruik -es voor mol, -is voor kruis"
+
+#: site/graphics/annotate-example-2.svg:201
+msgid "Enclose pitches in &lt; &gt; for chords"
+msgstr "Groepeer noten tussen &lt; &gt; voor akkoorden"
+
+#: site/graphics/annotate-example-score.svg:115
+msgid "Create staff"
+msgstr "Maak notenbalk"
+
+#: site/graphics/annotate-example-score.svg:126
+msgid "Combine staffs in parallel"
+msgstr "Combineer notenbalken parallel"
+
+#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
+#: site/install/install-2.11.ihtml:78 site/install/install-2.11.ihtml:110
+#: site/install/install-2.11.ihtml:134 site/install/install-2.10.ihtml:33
+#: site/install/install-2.10.ihtml:55 site/install/install-2.10.ihtml:80
+#: site/install/install-2.10.ihtml:134 site/install/install-2.10.ihtml:158
+#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
 #, c-format
 msgid "Download <a href='%s'>the installer</a>"
 msgstr "Download <a href='%s'>de installer</a>"
 
-#: site/install/install-2.10.ihtml:37 site/install/install-2.10.ihtml:59
-#: site/install/install-2.10.ihtml:84 site/install/install-2.10.ihtml:138
-#: site/install/install-2.10.ihtml:162 site/install/install-2.8.ihtml:37
-#: site/install/install-2.8.ihtml:86 site/install/install-2.11.ihtml:37
-#: site/install/install-2.11.ihtml:59 site/install/install-2.11.ihtml:82
-#: site/install/install-2.11.ihtml:114 site/install/install-2.11.ihtml:138
+#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
+#: site/install/install-2.11.ihtml:82 site/install/install-2.11.ihtml:114
+#: site/install/install-2.11.ihtml:138 site/install/install-2.10.ihtml:37
+#: site/install/install-2.10.ihtml:59 site/install/install-2.10.ihtml:84
+#: site/install/install-2.10.ihtml:138 site/install/install-2.10.ihtml:162
+#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
 #, c-format
 msgid "do %s in a command window."
 msgstr "doe %s in een commandovenster."
 
+#: site/install/install-2.11.ihtml:40 site/install/install-2.11.ihtml:62
+#: site/install/install-2.11.ihtml:85 site/install/install-2.11.ihtml:117
+#: site/install/install-2.11.ihtml:141 site/install/install-2.11.ihtml:180
+#: site/install/install-2.11.ihtml:201 site/install/install-2.11.ihtml:218
+#: site/install/install-2.11.ihtml:240 site/install/install-2.11.ihtml:257
 #: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
 #: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:141
 #: site/install/install-2.10.ihtml:165 site/install/install-2.10.ihtml:204
@@ -217,64 +230,59 @@ msgstr "doe %s in een commandovenster."
 #: site/install/install-2.8.ihtml:41 site/install/install-2.8.ihtml:90
 #: site/install/install-2.8.ihtml:110 site/install/install-2.8.ihtml:131
 #: site/install/install-2.8.ihtml:148 site/install/install-2.8.ihtml:163
-#: site/install/install-2.8.ihtml:179 site/install/install-2.11.ihtml:40
-#: site/install/install-2.11.ihtml:62 site/install/install-2.11.ihtml:85
-#: site/install/install-2.11.ihtml:117 site/install/install-2.11.ihtml:141
-#: site/install/install-2.11.ihtml:180 site/install/install-2.11.ihtml:201
-#: site/install/install-2.11.ihtml:218 site/install/install-2.11.ihtml:240
-#: site/install/install-2.11.ihtml:257
+#: site/install/install-2.8.ihtml:179
 msgid "LilyPond development team"
 msgstr "LilyPond ontwikkelteam"
 
-#: site/install/install-2.10.ihtml:102 site/install/install-2.10.ihtml:178
-#: site/install/install-2.8.ihtml:53 site/install/install-2.11.ihtml:154
+#: site/install/install-2.11.ihtml:92 site/install/install-2.10.ihtml:116
+#: site/install/install-2.8.ihtml:64
+msgid "Other"
+msgstr "Overige"
+
+#: site/install/install-2.11.ihtml:154 site/install/install-2.10.ihtml:102
+#: site/install/install-2.10.ihtml:178 site/install/install-2.8.ihtml:53
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Klik <a href='%s'>hier</a>"
 
-#: site/install/install-2.10.ihtml:116 site/install/install-2.8.ihtml:64
-#: site/install/install-2.11.ihtml:92
-msgid "Other"
-msgstr "Overige"
-
+#: site/install/install-2.11.ihtml:173 site/install/install-2.11.ihtml:194
 #: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
-#: site/install/install-2.11.ihtml:173 site/install/install-2.11.ihtml:194
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Download <a href='%s'>%s</a>"
 
-#: site/install/install-2.10.ihtml:214 site/install/install-2.8.ihtml:99
-#: site/install/install-2.11.ihtml:190
+#: site/install/install-2.11.ihtml:190 site/install/install-2.10.ihtml:214
+#: site/install/install-2.8.ihtml:99
 #, c-format
 msgid "%s and newer"
 msgstr "%s en nieuwer"
 
-#: site/install/install-2.10.ihtml:237 site/install/install-2.8.ihtml:143
-#: site/install/install-2.11.ihtml:213
+#: site/install/install-2.11.ihtml:213 site/install/install-2.10.ihtml:237
+#: site/install/install-2.8.ihtml:143
 #, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>Installeer</a>"
 
-#: site/install/install-2.10.ihtml:248 site/install/install-2.11.ihtml:225
+#: site/install/install-2.11.ihtml:225 site/install/install-2.10.ihtml:248
 #, fuzzy
 msgid "Documentation and Source code"
 msgstr "Documentatie"
 
+#: site/install/install-2.11.ihtml:235 site/install/install-2.11.ihtml:251
 #: site/install/install-2.10.ihtml:258 site/install/install-2.10.ihtml:274
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
-#: site/install/install-2.11.ihtml:235 site/install/install-2.11.ihtml:251
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Download <a href='%s'>tarbal</a>"
 
-#: site/install/install-2.10.ihtml:270 site/install/install-2.8.ihtml:169
-#: site/install/install-2.11.ihtml:247
+#: site/install/install-2.11.ihtml:247 site/install/install-2.10.ihtml:270
+#: site/install/install-2.8.ihtml:169
 msgid "Source code"
 msgstr "Broncode"
 
-#: site/install/install-2.10.ihtml:276 site/install/install-2.8.ihtml:175
-#: site/install/install-2.11.ihtml:253
+#: site/install/install-2.11.ihtml:253 site/install/install-2.10.ihtml:276
+#: site/install/install-2.8.ihtml:175
 msgid "warning"
 msgstr "waarschuwing"
 
