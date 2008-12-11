@@ -47,12 +47,12 @@
   </li>
   <li>
     <p>
-      Messages to be localised must be encapsulated in `__(STRING)' or
+      Messages to be localised must be encapsulated in `_ (STRING)' or
       `_f (FORMAT, ...)'.  Eg:
     </p>
     <pre>
-      warning (__("need music in a score"));
-      error (_f ("cannot open file: `%s'", file_name));
+      warning (_ (&quot;need music in a score&quot;));
+      error (_f (&quot;cannot open file: `%s'&quot;, file_name));
     </pre>
     <p>
       In some rare cases you may need to call `gettext ()' by hand.
@@ -87,7 +87,7 @@
       message
     </p>
     <pre>
-      message (__("Calculating line breaks...") + " ");
+      message (_ ("Calculating line breaks...") + " ");
     </pre>
   </li>
   <li>
@@ -129,7 +129,7 @@
       on the translator.  So, instead of
     </p>
     <pre>
-      __ ("stem at ") + moment.str () + __(" does not fit in beam")
+      _ ("stem at ") + moment.str () + _ (" does not fit in beam")
     </pre>
     <p>
       have
@@ -149,7 +149,7 @@
       rather say:
     </p>
     <pre>
-      warning (__("out of tune:");
+      warning (_ ("out of tune:");
       warning (_f ("cannot find: `%s', "Key_engraver"));
       warning (_f ("cannot find font: `%s', font_name));
       warning (_f ("Loading default font"));
@@ -162,7 +162,7 @@
     </p>
     <pre>
       _f ("Non-matching braces in text `%s', adding braces", text)
-      __("Debug output disabled.  Compiled with NPRINT.")
+      _ ("Debug output disabled.  Compiled with NPRINT.")
       _f ("Huh?  Not a Request: `%s'.  Ignoring.", request)
     </pre>
   <li>
