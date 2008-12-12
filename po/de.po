@@ -5,14 +5,14 @@
 # files, eg, use
 # msgid "Add -es for flat, -is for sharp"
 # msgstr "Dann -es für ein b und -is für ein Kreuz"
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2008-04-25 15:30+0200\n"
+"PO-Revision-Date: 2008-12-12 23:39+0200\n"
 "Last-Translator: Till Rettig <>\n"
 "Language-Team: de\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "Hilfe"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
-msgstr ""
+msgstr "Wo erhalte ich Hilfe"
 
 #: site/menu-entries.py:10
 msgid "Introduction"
@@ -76,7 +76,7 @@ msgstr "Entwicklung"
 
 #: site/menu-entries.py:15
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
@@ -169,8 +169,8 @@ msgid "staff"
 msgstr "System"
 
 #: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\"
-msgstr "Befehle beginnen mit \\"
+msgid "Commands start with \\""
+msgstr "Befehle beginnen mit \\""
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
