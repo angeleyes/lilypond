@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2008-03-31 16:06+0200\n"
+"PO-Revision-Date: 2008-12-13 13:45+0100\n"
 "Last-Translator: Jean-Charles Malahieude <lolyfan-AT-wanadoo-DOT-fr>\n"
 "Language-Team: Français <lilypond-user-fr@gnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "Aide pour l'utilisateur"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
-msgstr ""
+msgstr "Obtenir de l'aide"
 
 #: site/menu-entries.py:10
 msgid "Introduction"
@@ -79,7 +79,7 @@ msgstr "Développement"
 
 #: site/menu-entries.py:15
 msgid "Help"
-msgstr ""
+msgstr "Aide"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
