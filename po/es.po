@@ -1,17 +1,17 @@
-# translation of es.po to Spanish
+# translation of es.po to Español
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Daniel Tonda Castillo <daniel.tonda@gmail.com>, 2006, 2007.
-# Francisco Vila <francisco.vila@hispalinux.es>, 2007.
+# Francisco Vila <francisco.vila@hispalinux.es>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2007-09-24 20:20+0200\n"
+"PO-Revision-Date: 2008-12-24 09:23+0100\n"
 "Last-Translator: Francisco Vila <francisco.vila@hispalinux.es>\n"
-"Language-Team: Spanish <traductores@es.gnome.org>\n"
+"Language-Team: Español\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,7 +50,7 @@ msgstr "Ayuda para el usuario"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
-msgstr ""
+msgstr "Obtener ayuda"
 
 #: site/menu-entries.py:10
 msgid "Introduction"
@@ -75,7 +75,7 @@ msgstr "Desarrollo"
 
 #: site/menu-entries.py:15
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
@@ -160,17 +160,16 @@ msgid "Store notes in variable"
 msgstr "Almacenar notas en una variable"
 
 #: site/graphics/naive-notation.svg:675
-#, fuzzy
 msgid "measures"
-msgstr "Características"
+msgstr "compases"
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
-msgstr ""
+msgstr "pentagrama"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
-msgstr "Los comandos empiezan por \\"
+msgstr "Las instrucciones empiezan por \\"
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
@@ -287,3 +286,4 @@ msgstr "Código fuente"
 #: site/install/install-2.8.ihtml:175
 msgid "warning"
 msgstr "advertencia"
+
