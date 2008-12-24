@@ -87,7 +87,9 @@ This README tries to explain most of Git commands needed for
 translating the web site.  However, you are invited to read further
 documentation to make git more familiar to you; for instance, take a
 look at http://git.or.cz/gitwiki/, especially GitDocumentation and
-GitGlossary.
+GitGlossary; a good alternative to reading the wiki is reading the
+first two chapters of Git User's Manual at
+http://www.kernel.org/pub/software/scm/git/docs/user-manual.html
 
 
 BUILDING THE WEBSITE
