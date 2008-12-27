@@ -6,17 +6,8 @@ The HTML sources live in a GIT repository.  Git 1.4.4.1 or newer is
 required, and Git 1.5.x is highly recommended.  To get a fresh version
 run
 
-    mkdir web ; cd web ; git init-db
-    mkdir .git/remotes
-
-then write the two following lines to a text file named .git/remotes/web
-
-URL: git://git.sv.gnu.org/lilypond.git/
-Pull: web:refs/remotes/origin/web
-
-then run
-
-    git fetch web
+    mkdir lilyweb ; cd lilyweb ; git init-db
+    git remote add -f -t web -m web origin git://git.sv.gnu.org/lilypond.git/
     git checkout -b web origin/web
 
 
@@ -36,11 +27,9 @@ Whenever you are asked in this README to pull, it means you should
 update your local copy of the repository with the changes made by
 others on the remote git.sv.gnu.org repository; run
 
-    git pull web
+    git pull origin
 
-which tells Git to pull using the remote file .git/remotes/web; with
-this remote file already created, the 'pull' command above is in fact
-equivalent to
+which is equivalent to the longer form
 
     git pull git://git.sv.gnu.org/lilypond.git/ web:origin/web
 
