@@ -1,0 +1,8 @@
+@node Download
+@unnumbered Download
+
+@warning{To be replaced with pure HTML post-texi2html.  This will
+therefore only be displayed in pdf:}
+
+Download LilyPond at @uref{http://lilypond.org/web/download/}.
+
