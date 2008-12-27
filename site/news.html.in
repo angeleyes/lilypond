@@ -34,6 +34,17 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.12.0 &ldquo;Rune&rdquo;</b> -
+    <em>December 27, 2008</em>
+  </dt>
+  <dd>
+    A new stable release of LilyPond is available.
+    <br><a href="announce-v2.12.html">Announcement</a>,
+    <a href="@DOC@v2.12/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.12">Download</a>.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.11.65 — Release Candidate</b> -
     <em>December 2, 2008</em>
   </dt>

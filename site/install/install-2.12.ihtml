@@ -31,12 +31,12 @@
   <td>
     <strong>
       _("Download <a href='%s'>the installer</a>",
-      "@v2.11-linux-x86-URL@");
+      "@v2.12-linux-x86-URL@");
       <br>
     </strong>
     <em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-x86.sh</tt>")</em>
   </td>
-  <td>@v2.11-linux-x86-VERSION@</td>
+  <td>@v2.12-linux-x86-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -53,12 +53,12 @@
   <td>
     <strong>
       _("Download <a href='%s'>the installer</a>",
-      "@v2.11-linux-64-URL@");
+      "@v2.12-linux-64-URL@");
       <br>
     </strong>
     <em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-64.sh</tt>")</em>
   </td>
-  <td>@v2.11-linux-64-VERSION@</td>
+  <td>@v2.12-linux-64-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -76,12 +76,12 @@
   <td>
     <strong>
       _("Download <a href='%s'>the installer</a>",
-      "@v2.11-linux-ppc-URL@");
+      "@v2.12-linux-ppc-URL@");
       <br>
     </strong>
     <em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.linux-ppc.sh</tt>")</em>
   </td>
-  <td>@v2.11-linux-ppc-VERSION@</td>
+  <td>@v2.12-linux-ppc-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -108,12 +108,12 @@
   <td>
     <strong>
       _("Download <a href='%s'>the installer</a>",
-      "@v2.11-freebsd-x86-URL@")
+      "@v2.12-freebsd-x86-URL@")
       <br>
     </strong>
     <em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.freebsd-x86.sh</tt>")</em>
   </td>
-  <td>@v2.11-freebsd-x86-VERSION@</td>
+  <td>@v2.12-freebsd-x86-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -132,12 +132,12 @@
   <td>
     <strong>
       _("Download <a href='%s'>the installer</a>",
-      "@v2.11-freebsd-64-URL@")
+      "@v2.12-freebsd-64-URL@")
       <br>
     </strong>
     <em>_("do %s in a command window.", "<tt>sh lilypond-X.Y.Z.freebsd-64.sh</tt>")</em>
   </td>
-  <td>@v2.11-freebsd-64-VERSION@</td>
+  <td>@v2.12-freebsd-64-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -171,11 +171,11 @@
   <td>
     <strong>
       _("Download <a href='%s'>%s</a>",
-      "@v2.11-darwin-x86-URL@",
+      "@v2.12-darwin-x86-URL@",
       "LilyPond")
     </strong>
   </td>
-  <td>@v2.11-darwin-x86-VERSION@</td>  
+  <td>@v2.12-darwin-x86-VERSION@</td>  
   <td>
     <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
   </td> 
@@ -192,11 +192,11 @@
   <td>
     <strong>
       _("Download <a href='%s'>%s</a>",
-      "@v2.11-darwin-ppc-URL@",
+      "@v2.12-darwin-ppc-URL@",
       "LilyPond")
     </strong>
   </td>
-  <td>@v2.11-darwin-ppc-VERSION@</td>  
+  <td>@v2.12-darwin-ppc-VERSION@</td>  
   <td>
     <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a>
   </td> 
@@ -211,10 +211,10 @@
   <td>
     <strong>
       _("<a href='%s'>Install</a>",
-      "@v2.11-mingw-URL@")
+      "@v2.12-mingw-URL@")
     </strong>
   </td>
-  <td>@v2.11-mingw-VERSION@</td>
+  <td>@v2.12-mingw-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -233,10 +233,10 @@
   <td>
     <strong>
       _("Download <a href='%s'>tarball</a>",
-      "@v2.11-documentation-URL@")
+      "@v2.12-documentation-URL@")
     </strong>
   </td>
-  <td>@v2.11-documentation-VERSION@</td>
+  <td>@v2.12-documentation-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
@@ -249,11 +249,11 @@
   <td>
     <strong>
       _("Download <a href='%s'>tarball</a>",
-      "@v2.11-source-URL@")
+      "@v2.12-source-URL@")
       (<a href="../devel/#warning">_("warning")</a>)
     </strong>
   </td>
-  <td>@v2.11-source-VERSION@</td>
+  <td>@v2.12-source-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
 </tr>
 
