@@ -39,7 +39,7 @@
   </dt>
   <dd>
     A new stable release of LilyPond is available.
-    <br><a href="announce-v2.12.html">Announcement</a>,
+    <br><a href="announce-v2.12">Announcement</a>,
     <a href="@DOC@v2.12/Documentation/topdocs/NEWS.html">Changes</a>,
     <a href="install/#2.12">Download</a>.
   </dd>
