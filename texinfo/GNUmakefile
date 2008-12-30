@@ -3,7 +3,7 @@ outdir = out
 imagedir = $(depth)/site/images
 
 all: $(outdir)
-	texi2html -I=$(imagedir) --output=$(outdir) --split=node newweb.tely 
+	texi2html -I=$(imagedir) --output=$(outdir) --split=section newweb.tely 
 
 $(outdir):
 	mkdir -p $@
