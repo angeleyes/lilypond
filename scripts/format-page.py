@@ -119,7 +119,6 @@ def dir_lang (file, lang):
 
 def file_lang (file, lang):
     (base, ext) = os.path.splitext (file)
-    base = os.path.splitext (base)[0]
     if lang and lang != C:
         return base + '.' + lang + ext
     return base + ext
