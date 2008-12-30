@@ -1,6 +1,59 @@
+@c -*- coding: us-ascii; mode: texinfo; -*-
 @node Development
 @unnumbered Development 
 
-@warning{Placeholder.}
+@menu
+* Getting code::                
+@end menu
+
+
+@node Getting code
+@unnumberedsec Getting code
+
+The source code is kept in a git respository.  To get started,
+
+@example
+git clone git://git.sv.gnu.org/lilypond.git
+@end example
+
+This gives you the @code{master} branch.  Now set up your user
+information:
+
+@example
+git config --global user.name "MYNAME"
+git config --global user.email myemail@@example.net
+@end example
+
+To get another branch,
+
+@example
+git checkout -b BRANCHNAME
+@end example
+
+
+@subsubheading Branches
+
+The main branches are:
+
+@itemize
+
+@item @code{master}:
+This is the main branch for source code and documentation.
+
+@item @code{lilypond/translation}:
+This stores the translations for the documentation.
+
+@item @code{web}:
+This stores the website, including its translations.
+
+@item @code{gub}:
+This stores the Grand Unified Binary, our cross-platform building
+tool.
+
+@end itemize
+
+Branches such as @code{stable/2.10} are kept for archival reasons,
+and branches such as @code{dev/NAME} are branches for individual
+developers.
 
 
