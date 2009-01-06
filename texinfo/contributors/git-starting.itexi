@@ -3,8 +3,10 @@
 @chapter Starting with git
 
 @menu
-* Getting the main source::     
-* Producing a patch::           
+* Getting the source code::     
+* Updating the source code::    
+* Sharing your changes::        
+* Other interesting Git commands::  
 * Git on Windows::              
 @end menu
 
@@ -58,6 +60,11 @@ git checkout -b web origin/web
 @end example
 
 
+@menu
+* Other branches::              
+* Git user configuration::      
+@end menu
+
 @node Other branches
 @subsection Other branches
 
@@ -100,6 +107,17 @@ git config --global user.email myemail@@example.net
 @node Updating the source code
 @section Updating the source code
 
+@subsection Importance of updating
+
+In a large project like LilyPond, contributors sometimes edit the
+same file at the same time.  As long as everybody updates their
+version of the file with the most recent changes (@qq{pull}ing),
+there are generally no problems with this multiple-person editing.
+However, serious problems can arise if you do not pull before
+attempting commit.
+
+@subsection Command
+
 Whenever you are asked to pull, it means you should update your
 local copy of the repository with the changes made by others on
 the remote @code{git.sv.gnu.org} repository:
@@ -108,17 +126,27 @@ the remote @code{git.sv.gnu.org} repository:
 git pull origin
 @end example
 
-@noindent
-which is equivalent to the longer form
+@subsection Resolving conflicts
+
+Occasionally an update may result in conflicts -- this happens
+when you and somebody else hae modified the same part of the same
+file and git cannot figure out how to merge the two versions
+together.  When this happens, you must manually merge the two
+versions.
 
 @example
-git pull git://git.sv.gnu.org/lilypond.git/ MY-BRANCH:origin/MY-BRANCH
+TODO
 @end example
 
 
 @subsection Technical notes
 
-Let's explain a bit of Git vocabulary.
+Let's explain a bit of Git vocabulary.  The @code{git pull
+origin} command is just a shortcut for this command:
+
+@example
+git pull git://git.sv.gnu.org/lilypond.git/ MY-BRANCH:origin/MY-BRANCH
+@end example
 
 A commit is a set of changes made to the sources; it also includes the
 committish of the parent commit, the name and e-mail of the author
@@ -168,9 +196,11 @@ Manual at
 
 
 
+@node Sharing your changes
+@section Sharing your changes
 
-@node Producing a patch
-@section Producing a patch
+
+@subsection Producing a patch
 
 Once you have finished editing your files, checked that your
 changes meet the @ref{Code style} and/or @ref{Documentation
