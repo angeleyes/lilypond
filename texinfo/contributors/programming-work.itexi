@@ -1,6 +1,6 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
 @node Programming work
-@unnumbered Programming work
+@chapter Programming work
 
 @menu
 * Introduction to programming::  
@@ -9,19 +9,19 @@
 
 
 @node Introduction to programming
-@unnumberedsec Introduction to programming 
+@section Introduction to programming 
 
 blah blah
 
 
 @node Code style
-@unnumberedsec Code style 
+@section Code style 
 @c email to wl@gnu.org when I get here.
 
 @menu
 @end menu
 
-@unnumberedsubsec Outputting errors
+@subsection Outputting errors
 
 As a general rule, you should always try to continue computations,
 even if there is some kind of error.  When the program stops, it
@@ -32,11 +32,11 @@ some viewable output.
 So functions and methods do not return errorcodes, they never
 crash, but report a programming_error and try to carry on.
 
-@unnumberedsubsec Languages
+@subsection Languages
 
 C++ and Python are preferred.  Python code should use PEP 8.
 
-@unnumberedsubsec Filenames
+@subsection Filenames
 
 Definitions of classes that are only accessed via pointers (*) or
 references (&) shall not be included as include files.
@@ -64,7 +64,7 @@ references (&) shall not be included as include files.
 
 The class Class_name is coded in @q{class-name.*}
 
-@unnumberedsubsec Indentation
+@subsection Indentation
 
 Standard GNU coding style is used. In emacs:
 
@@ -87,14 +87,14 @@ If you like using font-lock, you can also add this to your
 @end verbatim
 
 
-@unnumberedsubsec Classes and Types
+@subsection Classes and Types
 
 @verbatim
              This_is_a_class
 @end verbatim
 
 
-@unnumberedsubsec Members
+@subsection Members
 
 Member variable names end with an underscore:
 
@@ -103,12 +103,12 @@ Member variable names end with an underscore:
 @end verbatim
 
 
-@unnumberedsubsec Macros
+@subsection Macros
 
 Macro names should be written in uppercase completely.
 
 
-@unnumberedsubsec Broken code
+@subsection Broken code
 
 Do not write broken code.  This includes hardwired dependencies,
 hardwired constants, slow algorithms and obvious limitations.  If
@@ -117,15 +117,15 @@ explaining shortcomings of the code.
 
 We reject broken-in-advance on principle.
 
-@unnumberedsubsec Naming
+@subsection Naming
 
 
-@unnumberedsubsec Messages
+@subsection Messages
 
 Messages need to follow Localization.
 
 
-@unnumberedsubsec Localization
+@subsection Localization
 
 This document provides some guidelines for programmers write user
 messages.  To help translations, user messages must be

@@ -1,6 +1,6 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
 @node Documentation work
-@unnumbered Documentation work
+@chapter Documentation work
 
 @menu
 * Introduction to documentation work::  
@@ -11,13 +11,13 @@
 
 
 @node Introduction to documentation work
-@unnumberedsec Introduction to documentation work
+@section Introduction to documentation work
 
 
 
 
 @node Texinfo crash course
-@unnumberedsec Texinfo crash course
+@section Texinfo crash course
 
 The language is called texinfo; you can see its manual here:
 @uref{http://www.gnu.org/software/texinfo/manual/texinfo/}
@@ -32,7 +32,7 @@ You can learn most of what you need to know from this; if you want
 to do anything fancy, discuss it on @code{lilypond-devel} first.}
 
 
-@unnumberedsubsec Sectioning commands
+@subsection Sectioning commands
 
 Most of the manual operates at the
 	@@node Foo
@@ -50,7 +50,7 @@ commands.
 
 
 
-@unnumberedsubsec LilyPond formatting
+@subsection LilyPond formatting
 
 * Use two spaces for indentation in lilypond examples.  (no tabs)
 
@@ -133,7 +133,7 @@ commands.
   Documentation Editor.
 
 
-@unnumberedsubsec Text formatting
+@subsection Text formatting
 
 * Lines should be less than 72 characters long.  (I personally
   recommend writing with 66-char lines, but don't bother modifying
@@ -231,7 +231,7 @@ commands.
   to prevent an ugly line break in PDF output.
 
 
-@unnumberedsubsec Syntax survey
+@subsection Syntax survey
 
 @@c - single line comments
   "@@c NOTE:" is a comment which should remain in the final
@@ -272,7 +272,7 @@ commands.
 
 
 
-@unnumberedsubsec Other text concerns
+@subsection Other text concerns
 
 * References must occur at the end of a sentence, for more
   information see @@ref@{the texinfo manual@}.  Ideally this should
@@ -304,10 +304,10 @@ commands.
 
 
 @node Documentation policy
-@unnumberedsec Documentation policy
+@section Documentation policy
 
 
-@unnumberedsubsec Books
+@subsection Books
 
 There are four parts to the documentation: the Learning Manual,
 the Notation Reference, the Program Reference, and the Music
@@ -380,7 +380,7 @@ Users are not expected to read this manual from start to finish.
   name.
 
 
-@unnumberedsubsec Section organization
+@subsection Section organization
 
 The order of headings inside documentation sections should be:
 
@@ -447,7 +447,7 @@ main docs
   (ie 1.1.1 Writing Pitches).
 
 
-@unnumberedsubsec Checking cross-references
+@subsection Checking cross-references
 
 Cross-references between different manuals are heavily used in the
 documentation, but they are not checked during compilation.  However,
@@ -461,7 +461,7 @@ documentation such as the Internals Reference; e.g. you can grep
 scm/ and lily/.
 
 
-@unnumberedsubsec General writing
+@subsection General writing
 
 * Do not forget to create @@cindex entries for new sections of text.
   Enter commands with @@funindex, i.e.
@@ -494,7 +494,7 @@ note head   NOT notehead
 chord construct   NOT chord (when referring to <>)
 
 
-@unnumberedsubsec Technical writing style
+@subsection Technical writing style
 
 * Do not refer to LilyPond in the text.  The reader knows what the
   manual is about.  If you do, capitalization is LilyPond.
@@ -519,7 +519,7 @@ chord construct   NOT chord (when referring to <>)
 
 
 @node Updating docs
-@unnumberedsec Updating doc
+@section Updating doc
 
 cd into Documentation and run
 

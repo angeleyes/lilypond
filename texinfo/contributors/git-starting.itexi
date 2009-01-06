@@ -1,29 +1,41 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
 @node Starting with git
-@unnumbered Starting with git
+@chapter Starting with git
 
 @menu
-* Contributing code and documentation::  
-* Code style::                  
+* Getting the source::          
+* Git on Windows::              
 @end menu
 
 
-@node Contributing code and documentation
-@unnumberedsec Contributing code and documentation
+@node Getting the source
+@section Getting the source
 
-@menu
-@end menu
+The source code is kept in a git respository.
 
-@unnumberedsubsec Getting the source
+@warning{These instructions assume that you are using the
+command-line version of git 1.5 or higher.}
 
-The source code is kept in a git respository.  To get started,
+
+@subsection Main source code
+
+To get started with
+the main source code,
 
 @example
-git clone git://git.sv.gnu.org/lilypond.git
+mkdir lilypond
+cd lilypond
+git init-db
+git remote add -f -t master -m master origin git://git.sv.gnu.org/lilypond.git/
+git checkout -b master origin/master
 @end example
 
-This gives you the @code{master} branch.  Now set up your user
-information:
+@subsection Website source code
+
+
+
+This gives you the main source code repository.  Now set up your
+user information:
 
 @example
 git config --global user.name "MYNAME"
@@ -37,7 +49,8 @@ git checkout -b BRANCHNAME
 @end example
 
 
-@unnumberedsubsec Branches
+@subsection Branches
+
 
 The main branches are:
 
@@ -63,7 +76,7 @@ and branches such as @code{dev/NAME} are branches for individual
 developers.
 
 
-@unnumberedsubsec Producing a patch
+@subsection Producing a patch
 
 Once you have finished editing your files, checked that your
 changes meet the @ref{Code style} and/or
@@ -79,7 +92,7 @@ git-format-patch HEAD
 Send an email to @email{lilypond-devel@@gnu.org} with the attached
 diff as an attachment.
 
-@unnumberedsubsec Committing directly
+@subsection Committing directly
 
 Most contributors do not have permission to commit directly.  If
 you do, edit @file{.git/config} to contain
@@ -88,6 +101,11 @@ you do, edit @file{.git/config} to contain
 @end example
 
 You may then @code{git push}.
+
+
+
+@node Git on Windows
+@section Git on Windows
 
 
 
