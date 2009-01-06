@@ -20,6 +20,15 @@ The source code is kept in a git respository.
 command-line version of git 1.5 or higher.}
 
 
+@menu
+* Main source code::            
+* Website source code::         
+* Documentation translations source code::  
+* Other branches::              
+* Git user configuration::      
+@end menu
+
+@node Main source code
 @subsection Main source code
 
 To get the main source code and documentation,
@@ -34,6 +43,7 @@ git checkout -b master origin/master
 @end example
 
 
+@node Website source code
 @subsection Website source code
 
 To get the website (including translations),
@@ -46,6 +56,7 @@ git checkout -b web origin/web
 @end example
 
 
+@node Documentation translations source code
 @subsection Documentation translations source code
 
 To translate the documentation (@emph{not} the website),
@@ -107,6 +118,14 @@ git config --global user.email myemail@@example.net
 @node Updating the source code
 @section Updating the source code
 
+@menu
+* Importance of updating::      
+* Update command::              
+* Resolving conflicts::         
+* Technical notes::             
+@end menu
+
+@node Importance of updating
 @subsection Importance of updating
 
 In a large project like LilyPond, contributors sometimes edit the
@@ -116,7 +135,8 @@ there are generally no problems with this multiple-person editing.
 However, serious problems can arise if you do not pull before
 attempting commit.
 
-@subsection Command
+@node Update command
+@subsection Updating command
 
 Whenever you are asked to pull, it means you should update your
 local copy of the repository with the changes made by others on
@@ -126,6 +146,7 @@ the remote @code{git.sv.gnu.org} repository:
 git pull origin
 @end example
 
+@node Resolving conflicts
 @subsection Resolving conflicts
 
 Occasionally an update may result in conflicts -- this happens
@@ -139,6 +160,7 @@ TODO
 @end example
 
 
+@node Technical notes
 @subsection Technical notes
 
 Let's explain a bit of Git vocabulary.  The @code{git pull
@@ -200,6 +222,12 @@ Manual at
 @section Sharing your changes
 
 
+@menu
+* Producing a patch::           
+* Committing directly::         
+@end menu
+
+@node Producing a patch
 @subsection Producing a patch
 
 Once you have finished editing your files, checked that your
@@ -215,6 +243,7 @@ Send an email to @email{lilypond-devel@@gnu.org} with the diff as
 an attachment.
 
 
+@node Committing directly
 @subsection Committing directly
 
 Most contributors do not have permission to commit directly.  If
