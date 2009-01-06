@@ -122,6 +122,7 @@ of this and other documentation.
 * Documentation work::
 * Translation work::
 * Programming work::
+* Release work::
 @end menu
 @end ifnottex
 
@@ -132,6 +133,7 @@ of this and other documentation.
 @include doc-work.itexi
 @include translation-work.itexi
 @include programming-work.itexi
+@include release-work.itexi
 
 @bye
 
