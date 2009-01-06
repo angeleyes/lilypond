@@ -121,6 +121,8 @@ of this and other documentation.
 * Compiling::
 * Documentation work::
 * Translation work::
+* LSR work::
+* Issues::
 * Programming work::
 * Release work::
 @end menu
@@ -132,6 +134,8 @@ of this and other documentation.
 @include compiling.itexi
 @include doc-work.itexi
 @include translation-work.itexi
+@include lsr-work.itexi
+@include issues.itexi
 @include programming-work.itexi
 @include release-work.itexi
 
