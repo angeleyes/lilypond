@@ -6,13 +6,49 @@
 * Introduction to documentation work::  
 * Texinfo crash course::        
 * Documentation policy::        
-* Updating docs::               
+* Tips for writing docs::       
+* Updating docs with convert-ly::  
 @end menu
 
 
 @node Introduction to documentation work
 @section Introduction to documentation work
 
+Our documentation tries to adhere to the @ref{Documentation
+policy} as strictly as possible.  One policy in particular is
+often questioned by potential contributors: we do not repeat
+material in the Notation Reference, and instead provide links to
+the @qq{definitive} presentation of that information.
+
+Some people point out, with good reason, that this makes the
+documentation harder to read.  If we repeated certain information
+in relevant places, readers would be less likely to miss that
+information.
+
+That reasoning is sound, but we have two counter-arguments.
+First, the Notation Reference -- one of @emph{five} manuals for
+users to read -- is already over 500 pages long.  If we repeated
+material, we could easily exceed 1000 pages!  Second, and much
+more importantly, LilyPond is an evolving project.  New features
+are added, bugs are fixed, and bugs are discovered and documented.
+If features are discussed in multiple places, the documentation
+team must find every instance.  Since the manual is so large, it
+is impossible for one person to have the location of every piece
+of information memorized, so any attempt to update the
+documentation will invariably omit a few places.  This second
+concern is not at all theoretical; the documentation used to be
+plagued with inconsistent information.
+
+If the documentation were targeted for a specific version -- say,
+LilyPond 2.10.5 -- and we had unlimited resources to spend on
+documentation, then we could avoid this second problem.  But since
+LilyPond evolves (and that is a very good thing!), and since we
+have quite limited resources, this policy remains in place.
+
+A few other policies (such as not permitting the use of tweaks in
+the main portion of NR 1+2) may also seem counter-intuitive, but
+they also stem from attempting to find the most effective use of
+limited documentation help.
 
 
 
@@ -517,9 +553,99 @@ chord construct   NOT chord (when referring to <>)
   Say `invalid' instead.
 
 
+@node Tips for writing docs
+@section Tips for writing docs
 
-@node Updating docs
-@section Updating doc
+In the NR, I highly recommend working on one subsection at a time.
+For each subsection,
+
+- check the mundane formatting.  Are the headings (@@predefined,
+  @@seealso, etc) in the right order?
+- add any appropriate index entries.
+- check the links in the @@seealso section -- links to music
+  glossary, internal references, and other NR sections are the
+  main concern.  Check for potential additions.
+- move LSR-worthy material into LSR.  Add the snippet (or
+  just send it to Valentin for adding), delete the material from
+  the .itely file, and add a @@lilypondfile command.
+
+- check the examples and descriptions.  Do they still work?
+  *Do not* assume that the existing text is accurate/complete;
+  some of the manual is highly out of date.
+- is the material in the @@knownissues  still accurate?
+- process anything on the TODO list on the GDP web site.
+- can the examples be improved (made more explanatory), or is
+  there any missing info?  (feel free to ask specific questions
+  on -user; a couple of people claimed to be interesting in being
+  "consultants" who would help with such questions)
+
+In general, I favor short text explanations with good examples --
+"an example is worth a thousand words".  When I worked on the
+docs, I spent about half my time just working on those tiny
+lilypond examples.  Making easily-understandable examples is much
+harder than it looks.
+
+
+TWEAKS
+
+In general, any \set or \override commands should go in the
+"select snippets" section, which means that they should go in LSR
+and not the .itely file.  For some cases, the command obviously
+belongs in the "main text" (ie not inside @@predefined or @@seealso
+or whatever) -- instrument names are a good example of this.
+  \set Staff.instrumentName = #"foo"
+On the other side of this,
+  \override Score.Hairpin #'after-line-breaking = ##t
+clearly belongs in LSR.
+
+I'm quite willing to discuss specific cases if you think that a
+tweaks needs to be in the main text.  But items that can go into
+LSR are easier to maintain, so I'd like to move as much as
+possible into there.
+
+
+It would be "nice" if you spent a lot of time crafting nice tweaks
+for users... but my recommendation is *not* to do this.  There's a
+lot of doc work to do without adding examples of tweaks.  Tweak
+examples are trivial to add later -- they could be made by normal
+users, or by you after GDP is over.
+
+Basically, it's not something that needs to be done while I'm
+around.  Remember that I'm gone in August at the latest; there's a
+*lot* of doc work that should be done before then.  I strongly
+recommend that you save all the tweaks until later.
+
+
+FINAL
+
+- when you think you're finished, let me know.  I'll spend a few
+  minutes and send you a list of mistakes to fix.
+  (there's a *lot* of details to cover; we'll probably spend a
+  week going back and forth like this.  See earlier warning about
+  hating me by the time you're done with a doc section :)
+- I'll ask people on -user to review the Snippet list at this
+  time; correcting things on the Snippet list is much easier than
+  getting comments on the integrated snippets.
+- when we're both satisfied with the section, we'll invite
+  comments from -user.  Judging from my experience with Pitches,
+  it will take between three and five weeks to keep on revising
+  the "final" version.
+
+I personally found it quite frustrating to still be fixing
+problems in a doc section which I thought was "perfect" a whole
+bloody *month* ago.  Don't get me wrong; it's great that we get so
+many comments from -user.  :)   But just be aware that when you
+think you're finally done with a section, you're actually only
+halfway there.
+
+
+
+
+
+
+
+@node Updating docs with convert-ly
+@section Updating doc with convert-ly
 
 cd into Documentation and run
 
