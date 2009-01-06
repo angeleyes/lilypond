@@ -118,6 +118,7 @@ of this and other documentation.
 
 @menu
 * Starting with git::
+* Compiling::
 * Documentation work::
 * Translation work::
 * Programming work::
@@ -127,6 +128,7 @@ of this and other documentation.
 @contents
 
 @include git-starting.itexi
+@include compiling.itexi
 @include doc-work.itexi
 @include translation-work.itexi
 @include programming-work.itexi
