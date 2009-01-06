@@ -117,14 +117,19 @@ More information can be found at
 of this and other documentation.
 
 @menu
-* Development::      Giving back to the community.
+* Starting with git::
+* Documentation work::
+* Translation work::
+* Programming work::
 @end menu
 @end ifnottex
 
 @contents
 
-
-@include development.itely
+@include git-starting.itexi
+@include doc-work.itexi
+@include translation-work.itexi
+@include programming-work.itexi
 
 @bye
 

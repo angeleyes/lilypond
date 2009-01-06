@@ -1,101 +1,21 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
-@node Development
-@unnumbered Development 
+@node Programming work
+@unnumbered Programming work
 
 @menu
-* Contributing code and documentation::  
+* Introduction to programming::  
 * Code style::                  
-* Documentation suggestions::   
-* Documentation style::         
 @end menu
 
 
-@node Contributing code and documentation
-@unnumberedsec Contributing code and documentation
+@node Introduction to programming
+@unnumberedsec Introduction to programming 
 
-@menu
-@end menu
-
-@unnumberedsubsec Getting the source
-
-The source code is kept in a git respository.  To get started,
-
-@example
-git clone git://git.sv.gnu.org/lilypond.git
-@end example
-
-This gives you the @code{master} branch.  Now set up your user
-information:
-
-@example
-git config --global user.name "MYNAME"
-git config --global user.email myemail@@example.net
-@end example
-
-To get another branch,
-
-@example
-git checkout -b BRANCHNAME
-@end example
-
-
-@unnumberedsubsec Branches
-
-The main branches are:
-
-@itemize
-
-@item @code{master}:
-This is the main branch for source code and documentation.
-
-@item @code{lilypond/translation}:
-This stores the translations for the documentation.
-
-@item @code{web}:
-This stores the website, including its translations.
-
-@item @code{gub}:
-This stores the Grand Unified Binary, our cross-platform building
-tool.
-
-@end itemize
-
-Branches such as @code{stable/2.10} are kept for archival reasons,
-and branches such as @code{dev/NAME} are branches for individual
-developers.
-
-
-@unnumberedsubsec Producing a patch
-
-Once you have finished editing your files, checked that your
-changes meet the @ref{Code style} and/or
-@ref{Documentation style}, and checked that the entire thing
-compiles,
-
-@example
-git commit -a 
-git-format-patch HEAD
-@end example
-
-Send an email to @email{lilypond-devel@@gnu.org} with the attached
-diff as an attachment.
-
-
-@unnumberedsubsec Committing directly
-
-Most contributors do not have permission to commit directly.  If
-you do, edit @file{.git/config} to contain
-
-@example
-@end example
-
-You may then @code{git push}.
-
+blah blah
 
 
 @node Code style
-@unnumberedsec Code style
-
+@unnumberedsec Code style 
 @c email to wl@gnu.org when I get here.
 
 @menu
@@ -386,94 +306,6 @@ dutch). I guess we'd prefer something like (2) or (3).
 Do not run make po/po-update with GNU gettext < 0.10.35
 
 @end itemize
-
-
-
-@node Documentation suggestions
-@unnumberedsec Documentation suggestions
-
-@menu
-@end menu
-
-@unnumberedsubsec Small additions
-
-For additions to the documentation,
-
-@itemize
-@item
-Tell us where the addition should be placed. Please include both
-the section number and title (i.e. "2.13 Printing lyrics").
-
-@item
-Please write exact changes to the text.
-
-@item
-A formal patch to the source code is not required; we can take
-care of the technical details. Here is an example of a perfect
-documentation report:
-
-@verbatim
-To: lilypond-devel@gnu.org
-From: helpful-user@example.net
-Subject: doc addition 
-
-In section 2.13 (printing lyrics), above the last line ("More
-options, like..."),
-please add:
-    
-----
-To add lyrics to a divided part, use blah blah blah.  For example,
-
-\score {
- \notes {blah <<blah>> }
- \lyrics {blah <<blah>> }
- blah blah blah
-}
-----
-
-In addition, the second sentence of the first paragraph is
-confusing.  Please delete that sentence (it begins "Users
-often...") and replace it with this:
-----
-To align lyrics with something, do this thing.
-----
-
-Have a nice day,
-Helpful User
-@end verbatim
-
-@end itemize
-
-
-@unnumberedsubsec Larger contributions
-
-To replace large sections of the documentation, the guidelines are
-stricter. We cannot remove parts of the current documentation
-unless we are certain that the new version is an improvement.
-
-@itemize
-@item
-Split your work into small sections; this makes it much easier to
-compare the new and old documentation.
-
-@item
-Ask on the @code{lilypond-devel} maillist if such a rewrite is
-necessary.
-
-@item
-Please prepare a formal patch according to
-@ref{Contributing code and documentation}.
-
-@end itemize
-
-We may edit your suggestion for spelling, grammar, or style, and
-we may not place the material exactly where you suggested, but if
-you give us some material to work with, we can improve the manual
-much faster.  Thanks for your interest! 
-
-
-@node Documentation style
-@unnumberedsec Documentation style
 
 
 

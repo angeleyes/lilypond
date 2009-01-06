@@ -1,0 +1,93 @@
+@c -*- coding: us-ascii; mode: texinfo; -*-
+@node Starting with git
+@unnumbered Starting with git
+
+@menu
+* Contributing code and documentation::  
+* Code style::                  
+@end menu
+
+
+@node Contributing code and documentation
+@unnumberedsec Contributing code and documentation
+
+@menu
+@end menu
+
+@unnumberedsubsec Getting the source
+
+The source code is kept in a git respository.  To get started,
+
+@example
+git clone git://git.sv.gnu.org/lilypond.git
+@end example
+
+This gives you the @code{master} branch.  Now set up your user
+information:
+
+@example
+git config --global user.name "MYNAME"
+git config --global user.email myemail@@example.net
+@end example
+
+To get another branch,
+
+@example
+git checkout -b BRANCHNAME
+@end example
+
+
+@unnumberedsubsec Branches
+
+The main branches are:
+
+@itemize
+
+@item @code{master}:
+This is the main branch for source code and documentation.
+
+@item @code{lilypond/translation}:
+This stores the translations for the documentation.
+
+@item @code{web}:
+This stores the website, including its translations.
+
+@item @code{gub}:
+This stores the Grand Unified Binary, our cross-platform building
+tool.
+
+@end itemize
+
+Branches such as @code{stable/2.10} are kept for archival reasons,
+and branches such as @code{dev/NAME} are branches for individual
+developers.
+
+
+@unnumberedsubsec Producing a patch
+
+Once you have finished editing your files, checked that your
+changes meet the @ref{Code style} and/or
+FIXME
+@c @ref{Documentation style}, and checked that the entire thing
+compiles,
+
+@example
+git commit -a 
+git-format-patch HEAD
+@end example
+
+Send an email to @email{lilypond-devel@@gnu.org} with the attached
+diff as an attachment.
+
+@unnumberedsubsec Committing directly
+
+Most contributors do not have permission to commit directly.  If
+you do, edit @file{.git/config} to contain
+
+@example
+@end example
+
+You may then @code{git push}.
+
+
+
