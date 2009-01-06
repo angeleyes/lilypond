@@ -8,6 +8,7 @@
 * Documentation policy::        
 * Tips for writing docs::       
 * Updating docs with convert-ly::  
+* Translating the documentation::  
 @end menu
 
 
@@ -656,5 +657,10 @@ find . -name '*.itely' | xargs convert-ly -e
 @noindent
 (This also updates translated docs.)
 
+
+
+
+@node Translating the documentation
+@section Translating the documentation
 
 

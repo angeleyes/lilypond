@@ -120,7 +120,7 @@ of this and other documentation.
 * Starting with git::
 * Compiling::
 * Documentation work::
-* Translation work::
+* Website work::
 * LSR work::
 * Issues::
 * Programming work::
@@ -133,7 +133,7 @@ of this and other documentation.
 @include git-starting.itexi
 @include compiling.itexi
 @include doc-work.itexi
-@include translation-work.itexi
+@include website-work.itexi
 @include lsr-work.itexi
 @include issues.itexi
 @include programming-work.itexi
