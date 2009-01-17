@@ -1,5 +1,5 @@
 # de.po -- LilyPond German website language file
-# Copyright (C) 2006 Till Rettig
+# Copyright (C) 2006--2009 Till Rettig
 # This file is distributed under the same license as the LilyPond package.
 # NOTE: Use &...; entries for strings in HTML files, but not for .svg
 # files, eg, use
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2008-12-12 23:39+0200\n"
+"PO-Revision-Date: 2009-01-17 23:39+0200\n"
 "Last-Translator: Till Rettig <>\n"
 "Language-Team: de\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Erste Benutzung"
 
 #: site/install/menu-entries.py:3
 msgid "User help"
-msgstr "Hilfe"
+msgstr "Hilfestellung f&uuml; den ersten Anfang"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
