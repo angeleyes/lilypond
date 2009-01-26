@@ -95,10 +95,12 @@
   </td>
   <td>
     <em>_("Included <a href='%s'>with distribution</a>",
-      "http://fedoraproject.org?fixme=urg-no-lilypond-package-page")</em>
+      "https://admin.fedoraproject.org/pkgdb/packages/name/lilypond")</em>
   </td>
   <td>2.12.0</td>
-  <td>FIXME</td>
+  <td>
+       <a href="https://admin.fedoraproject.org/pkgdb/packages/bugs/lilypond">bugz.fedoraproject.org
+  </td>
 </tr>
 
 <tr>
