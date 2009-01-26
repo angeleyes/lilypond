@@ -88,6 +88,60 @@
 </tr>
 
 <tr>
+  <td><p align="center"><img src="@IMAGES@debian-logo.png"></p></td>
+  <td>
+    Debian
+  </td>
+  <td>
+    Lenny
+  </td>
+  <td>
+    <em>_("Included <a href='%s'>with distribution</a>",
+      "http://packages.debian.org/search?keywords=lilypond")</em>
+  </td>
+  <td>2.10.33</td>
+  <td>
+       <a href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?package=lilypond">bugs.debian.org</a>
+  </td>
+</tr>
+
+<tr>
+  <td><p align="center"><img src="@IMAGES@suse-logo.png"></p></td>
+  <td>
+    openSUSE
+  </td>
+  <td>
+    11.1
+  </td>
+  <td>
+    <em>_("Included <a href='%s'>with distribution</a>",
+      "http://opensuse.org/?fixme=urg-no-lilypond-package-page")</em>
+  </td>
+  <td>2.10.33</td>
+  <td>
+       <a href="http://bugzilla.novell.com">bugzilla.novell.com</a>
+  </td>
+</tr>
+
+<tr>
+  <td><p align="center"><img src="@IMAGES@ubuntu-logo.png"></p></td>
+  <td>
+    Ubuntu
+  </td>
+  <td>
+    Intrepid
+  </td>
+  <td>
+    <em>_("Included <a href='%s'>with distribution</a>",
+      "http://https://launchpad.net/ubuntu/+source/lilypond")</em>
+  </td>
+  <td>2.10.33</td>
+  <td>
+       <a href="https://bugs.launchpad.net/ubuntu/+source/lilypond">bugs.launchpad.net</a>
+  </td>
+</tr>
+
+<tr>
   <td>
     <p align="center">
       <img src="@IMAGES@slackware-logo.png">
