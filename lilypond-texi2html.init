@@ -101,6 +101,7 @@ sub ly_get_string () {
 ###  SETTINGS FOR TEXI2HTML
 #############################################################################
 
+my $bigpage = 0;
 @Texi2HTML::Config::CSS_REFS      = (
     {FILENAME => "lilypond-mccarty.css", TITLE => "Patrick McCarty's design"}
 );
@@ -115,6 +116,9 @@ $Texi2HTML::Config::SPLIT_INDEX   = 0;
 $Texi2HTML::Config::SEPARATED_FOOTNOTES = 0; # Print footnotes on same page, not separated
 if ($Texi2HTML::Config::SPLIT eq 'section') {
   $Texi2HTML::Config::element_file_name    = \&lilypond_element_file_name;
+  $bigpage = 0;
+} else {
+  $bigpage = 1;
 }
 $Texi2HTML::Config::element_target_name  = \&lilypond_element_target_name;
 $Texi2HTML::Config::print_element_header = \&lilypond_print_element_header;
@@ -288,6 +292,9 @@ sub lilypond_css_lines ($$)
         $Texi2HTML::THISDOC{'CSS_LINES'} .= "<link rel=\"alternate stylesheet\" type=\"text/css\" href=\"$ref->{FILENAME}\" title=\"$ref->{TITLE}\">\n";
     }
     $Texi2HTML::THISDOC{'CSS_LINES'} .= "<!--[if lte IE 7]>\n<link href=\"lilypond-ie-fixes.css\" rel=\"stylesheet\" type=\"text/css\">\n<![endif]-->\n";
+    my $reldir = "";
+    $reldir = "../" unless $bigpage;
+    $Texi2HTML::THISDOC{'CSS_LINES'} .= "<script language=\"JavaScript\" src=\"${reldir}lily_search.js\"></script>\n";
 }
 
 
@@ -312,7 +319,7 @@ my $node_to_filename_map = ();
 # according to node titles, which works by simply overriding the id element of
 # the $element hash.
 # If an external nodename<=>filename/anchor map file is found (loaded in
-# lilypond_init_out, use the externally created values, otherwise use the
+# lilypond_init_map), use the externally created values, otherwise use the
 # same logic here.
 sub lilypond_element_file_name($$$)
 {
@@ -666,13 +673,19 @@ sub lilypond_print_toc_div ($$)
       $lang = "";
     }
     my $reldir = "";
-    $reldir = "../" if ($Texi2HTML::Config::SPLIT eq 'section');
+    $reldir = "../" if (not $bigpage);
     my $uplink = $reldir."index.${lang}html";
 
     print $fh "<p class=\"toc_uplink\"><a href=\"$uplink\" 
          title=\"Documentation Index\">&lt;&lt; " .
 	 &ly_get_string ('Back to Documentation Index') .
 	 "</a></p>\n";
+
+    # AJAX search box, written in JavaScript
+    my ($docu_dir, $docu_name) = split_texi_filename ($Texi2HTML::THISDOC{'input_file_name'});
+    print $fh '<script language="JavaScript">print_search_field ("' . 
+         $Texi2HTML::THISDOC{current_lang} . '", "' . 
+         $docu_name . "\", " . $bigpage . ")</script>\n";
 
     print $fh '<h4 class="toc_header"> ' . &$anchor('',
                                     $Texi2HTML::HREF{'Top'},
@@ -1062,6 +1075,97 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
     }
     return $open.'>'.$footnote_text.$text.'</p>';
 }
+
+
+#############################################################################
+###  WRITING OUT THE INDEX FOR THE AJAX SEARCH FIELD
+#############################################################################
+
+$Texi2HTML::Config::IDX_SUMMARY   = 1;
+$Texi2HTML::Config::init_out                  = \&lilypond_init_out;
+$Texi2HTML::Config::finish_out                = \&lilypond_finish_out;
+$Texi2HTML::Config::index_summary_file_begin  = \&lilypond_index_summary_file_begin;
+$Texi2HTML::Config::index_summary_file_entry  = \&lilypond_index_summary_file_entry;
+$Texi2HTML::Config::index_summary_file_end    = \&lilypond_index_summary_file_end;
+
+sub lilypond_init_out ()
+{
+  t2h_default_init_out ();
+  # TODO: Check whether we have an index at all! If not -> don't print out a search box!
+}
+
+my @index_entries;
+# index_summary_file_begin $index_name $is_printed $manual_name
+# $index_name is the two letters name for the index. This function is called 
+# for each index appearing in the document, before index_summary_file_entry. 
+# $is_printed is true if there is a @printindex for that index. $manual_name 
+# is the manual basename. 
+sub lilypond_index_summary_file_begin ($$$)
+{
+  my $index_name = shift;
+  my $is_printed = shift;
+  my $manual_name = shift;
+
+}
+
+# index_summary_file_entry $index_name $entry_text $entry_reference 
+#      $formatted_entry $texi_entry $entry_element_reference 
+#      $entry_element_header $is_printed $manual_name
+# This function is called for each entry of an index. index_name is the name 
+# of the index. $entry_text is the entry in plain text, $formatted_entry is 
+# the index entry formatted, $texi_entry is the entry with texinfo commands. 
+# $entry_reference is the reference placed at the index entry place, in the 
+# form ‘file_id’. $entry_element_header is the formatted header of the element 
+# containing the index entry. entry_element_header is the reference to the 
+# beginning of the element containing the index entry, in the form ‘file_id’. 
+# $is_printed is true if there is a @printindex for that index. $manual_name 
+# is the manual basename. 
+sub lilypond_index_summary_file_entry ($$$$$$$$$)
+{
+  my $index_name = shift;
+  my $entry_text = shift;
+  my $entry_reference = shift;
+  my $formatted_entry = shift;
+  my $texi_entry = shift;
+  my $entry_element_reference = shift;
+  my $entry_element_header = shift;
+  my $is_printed = shift;
+  my $manual_name = shift;
+
+  if ($index_name eq "cp")
+  {
+    # The entries in the index file have the form:
+    # SearchText \t FormattedText \t EntryURL \t SectionText \t SectionURL
+    push @index_entries, "$entry_text\t$formatted_entry\t$entry_reference\t$entry_element_header\t$entry_element_reference\n";
+  }
+}
+
+# index_summary_file_end $index_name $is_printed $manual_name
+# $index_name is the two letters name for the index. This function is called 
+# for each index appearing in the document, after index_summary_file_entry. 
+# $is_printed is true if there is a @printindex for that index. $manual_name 
+# is the manual basename.
+sub lilypond_index_summary_file_end ($$$)
+{
+  my $index_name = shift;
+  my $is_printed = shift;
+  my $manual_name = shift;
+
+}
+
+sub lilypond_finish_out ()
+{
+  my $lang = $Texi2HTML::THISDOC{current_lang};
+  my $big = "";
+  $big = "-big-page" if $bigpage;
+  my ($docu_dir, $docu_name) = split_texi_filename ($Texi2HTML::THISDOC{'input_file_name'});
+  my $idx_file = "$docu_dir/$docu_name$big.$lang.idx";
+#   print "Index file name: $idx_file for $docu_name, big=$bigpage / $big, lang=$lang\n";
+  open IDXOUTFILE, ">:utf8", $idx_file;
+  print IDXOUTFILE @index_entries;
+  close IDXOUTFILE;
+}
+
 
 
 #############################################################################

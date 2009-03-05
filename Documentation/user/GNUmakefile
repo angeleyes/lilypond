@@ -9,6 +9,7 @@ EXTRA_DIST_FILES += README.txt writing-texinfo.txt policy.txt writing-sections.t
 IMAGES=$(call src-wildcard,*.png)
 EPS_ILLUSTRATIONS=context-example.eps
 PDF_ILLUSTRATIONS=context-example.pdf
+PHP_FILES=$(call src-wildcard,*.php)
 
 OUT_PDF_IMAGES=$(IMAGES:%.png=$(outdir)/%.pdf) $(addprefix $(outdir)/,$(PDF_ILLUSTRATIONS))
 
@@ -17,6 +18,8 @@ OUT_PNG_IMAGES=$(OUT_PDF_IMAGES:%.pdf=%.png)
 OUT_MASTER_TEXI_FILES = $(outdir)/lilypond-internals.texi
 OUT_TEXI_FILES=$(ITEXI_FILES:%.itexi=$(outdir)/%.texi)\
  $(ITELY_FILES:%.itely=$(outdir)/%.texi)
+OUT_JS_FILES= $(JS_FILES:%.js=$(outdir)/%.js)
+OUT_PHP_FILES=$(PHP_FILES:%.php=$(outdir)/%.php)
 
 HTML_FILES = $(TELY_FILES:%.tely=$(outdir)/%-big-page.html)\
  $(outdir)/lilypond-internals-big-page.html
@@ -124,9 +127,15 @@ $(outdir)/%/source:
 
 local-WWW-1: $(MASTER_TEXI_FILES) $(PDF_FILES) info
 
-local-WWW-2: $(HTML_FILES) $(DEEP_HTML_FILES) $(source-links)
+local-WWW-2: $(HTML_FILES) $(OUT_JS_FILES) $(OUT_PHP_FILES) $(DEEP_HTML_FILES) $(source-links)
 
 $(outdir)/%.bib: %.bib
+	ln -f $< $@
+
+$(outdir)/%.js: %.js
+	ln -f $< $@
+
+$(outdir)/%.php: %.php
 	ln -f $< $@
 
 # lilypond.texi deps

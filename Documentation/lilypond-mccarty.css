@@ -418,3 +418,12 @@ table.menu {
   #tocframe { display: none; }
   .nav_table { display: none; }
 }
+
+/***********************************************************/
+/*           FORMATTING of AJAX SEARCH BOX                 */
+/***********************************************************/
+
+div#search {
+  border: 2pt solid #C5972C;
+  background: #E8E3AC;
+}
