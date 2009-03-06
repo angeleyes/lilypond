@@ -17,7 +17,7 @@ function erzXMLHttpRequestObject ()
         resObject = new ActiveXObject ("MSXML2.XMLHTTP");
       }
       catch (Error) {
-        alert ("Unable to create XMLHttpRequect object for the search function!");
+        alert ("Unable to create XMLHttpRequest object for the search function!");
       }
     }
   }
@@ -26,7 +26,7 @@ function erzXMLHttpRequestObject ()
 
 function searchResult (language, manual, bigpage)
 {
-  search_string = this.document.search_form.search_field.value;
+  search_string = this.document.search_form.q.value;
   if (useAjax && previous_search != search_string) {
     if (useAjax && search_string.length >= 3) {
       var reldir = "";
@@ -59,10 +59,22 @@ function clearResults ()
 function print_search_field (language, manual, bigpage)
 {
   if (useAjax) {
+    // If the user presses enter and submits the form, also call the search 
+    // script to print out the results in a separate page
+    search_call = "searchResult('" + language + "', '" + manual + "', " + bigpage + ")";
+    var reldir = "";
+    if (bigpage == 0) {
+      reldir = "../"
+    }
+    search_script = reldir + 'lily_index_search.php';
     document.write("<div id=\"search\">");
-    document.write("<form name=\"search_form\">");
+    document.write("<form name=\"search_form\" action=\"" + search_script + "\" onsubmit=\"" + search_call + "; return false;\">");
+    document.write("<input type=\"hidden\" name=\"lang\" value=\"" + escape(language) + "\" >");
+    document.write("<input type=\"hidden\" name=\"manual\" value=\"" + escape(manual) + "\" >");
+    document.write("<input type=\"hidden\" name=\"bigpage\" value=\"" + bigpage + "\" >");
+    document.write("<input type=\"hidden\" name=\"form_submitted\" value=\"1\" >");
     document.write("<p class=\"searchbar\">Search: ");
-    document.write("  <input name=\"search_field\" onkeyup=\"searchResult('" + language + "', '" + manual + "', " + bigpage + ")\" size=25></input>");
+    document.write("  <input name=\"q\" onkeyup=\"" + search_call + "\" size=25></input>");
     document.write("    <span id=\"search_results\"></span>");
     document.write("</p>");
     document.write("  </form>");
