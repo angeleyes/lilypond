@@ -43,16 +43,24 @@ function searchResult (language, manual, bigpage)
   }
 }
 
+function result_field ()
+{
+  return document.getElementById ('search_results');
+}
 function handleResponse ()
 {
   if (resObject.readyState == 4 ) {
-    document.getElementById ('search_results').innerHTML = resObject.responseText;
+    field = result_field ();
+    field.innerHTML = resObject.responseText;
+    field.style.display = 'block';
   }
 }
 
 function clearResults ()
 {
-    document.getElementById ('search_results').innerHTML = "";
+    field = result_field ();
+    field.innerHTML = 0;
+    field.style.display = 'none';
 }
 
 
@@ -74,10 +82,9 @@ function print_search_field (language, manual, bigpage)
     document.write("<input type=\"hidden\" name=\"bigpage\" value=\"" + bigpage + "\" >");
     document.write("<input type=\"hidden\" name=\"form_submitted\" value=\"1\" >");
     document.write("<p class=\"searchbar\">Search: ");
-    document.write("  <input name=\"q\" onkeyup=\"" + search_call + "\" size=25></input>");
-    document.write("    <span id=\"search_results\"></span>");
-    document.write("</p>");
-    document.write("  </form>");
+    document.write("  <input name=\"q\" onkeyup=\"" + search_call + "\" size=25></input></p>");
+    document.write("  <div id=\"search_results\"></div>");
+    document.write("</form>");
     document.write("</div>");
   }
 }

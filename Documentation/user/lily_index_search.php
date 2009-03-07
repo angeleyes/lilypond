@@ -39,7 +39,7 @@
   if ($found > 0) {
     echo "</table>\n";
   } else {
-    echo "<br>No results found in the index.\n";
+    echo "No results found in the index.\n";
   }
   echo "</p>";
   fclose($file); 
