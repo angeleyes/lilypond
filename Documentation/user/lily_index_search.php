@@ -18,31 +18,35 @@
   $filename .= ".$lang.idx";
 
   $found = 0;
-  $file = fopen($filename, "r");
-  while ( (($line=fgets($file)) !== false) ) {
-    $line = rtrim($line);
-    $entries = split ("\t", $line);
-    if (stripos ($entries[0], $search_string) !== false) {
-      if ($found == 0) {
-        echo "<p><b>Search results for &quot;".htmlentities($search_string, ENT_QUOTES)."&quot;:</b><br>\n";
-        echo "<table id=\"search_result_table\">\n";
-      } else if ($found > 50) {
-        echo "<tr><td colspan=2>Too many hits, displaying only 50 results</td></tr>\n";
-        break;
+  $file = @fopen($filename, "r");
+  if ($file ) {
+    while ( (($line=fgets($file)) !== false) ) {
+      $line = rtrim($line);
+      $entries = split ("\t", $line);
+      if (stripos ($entries[0], $search_string) !== false) {
+        if ($found == 0) {
+          echo "<p><b>Search results for &quot;".htmlentities($search_string, ENT_QUOTES)."&quot;:</b><br>\n";
+          echo "<table id=\"search_result_table\">\n";
+        } else if ($found > 50) {
+          echo "<tr><td colspan=2>Too many hits, displaying only 50 results</td></tr>\n";
+          break;
+        }
+        // format the entry and print it out
+        echo "<tr><td><a href=\"$relpath$entries[2]\">$entries[1]</a></td>\n";
+        echo "    <td><a href=\"$relpath$entries[4]\">$entries[3]</a></td></tr>\n";
+        $found++;
       }
-      // format the entry and print it out
-      echo "<tr><td><a href=\"$relpath$entries[2]\">$entries[1]</a></td>\n";
-      echo "    <td><a href=\"$relpath$entries[4]\">$entries[3]</a></td></tr>\n";
-      $found++;
     }
-  }
-  if ($found > 0) {
-    echo "</table>\n";
+    if ($found > 0) {
+      echo "</table>\n";
+    } else {
+      echo "No results found in the index.\n";
+    }
+    echo "</p>";
+    fclose($file); 
   } else {
-    echo "No results found in the index.\n";
+    echo "<p>Unable to open search index $filename</p>";
   }
-  echo "</p>";
-  fclose($file); 
   if ($form_submitted) {
     echo "</body></html>\n";
   }
