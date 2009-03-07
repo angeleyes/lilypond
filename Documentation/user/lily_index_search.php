@@ -24,7 +24,7 @@
     $entries = split ("\t", $line);
     if (stripos ($entries[0], $search_string) !== false) {
       if ($found == 0) {
-        echo "<p><b>Search results for &quot;$search_string&quot;:</b><br>\n";
+        echo "<p><b>Search results for &quot;".htmlentities($search_string, ENT_QUOTES)."&quot;:</b><br>\n";
         echo "<table id=\"search_result_table\">\n";
       } else if ($found > 50) {
         echo "<tr><td colspan=2>Too many hits, displaying only 50 results</td></tr>\n";
