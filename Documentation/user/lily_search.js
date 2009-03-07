@@ -1,5 +1,7 @@
 var resObject = null;
 var useAjax = (document.location.protocol.toLowerCase() == 'http:');
+var isLocal = !useAjax;
+
 var previous_search = "";
 
 function erzXMLHttpRequestObject ()
@@ -48,12 +50,17 @@ function result_field ()
 {
   return document.getElementById ('search_results');
 }
-function handleResponse ()
+function assignResults (results)
 {
-  if (resObject.readyState == 4 ) {
     field = result_field ();
     field.innerHTML = resObject.responseText;
     field.style.display = 'block';
+}
+
+function handleResponse ()
+{
+  if (resObject.readyState == 4 ) {
+    assignResults (resObject.responseText);
   }
 }
 
