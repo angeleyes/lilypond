@@ -18,6 +18,7 @@ function erzXMLHttpRequestObject ()
       }
       catch (Error) {
         alert ("Unable to create XMLHttpRequest object for the search function!");
+        useAjax = false;
       }
     }
   }
