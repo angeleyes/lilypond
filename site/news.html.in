@@ -34,6 +34,16 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.12.2 and 2.13.0</b> —
+    <em>March 21, 2009</em>
+  </dt>
+  <dd>
+As a very belated announcement, the stable version of LilyPond is
+now 2.12.2, and the next development version has begun with
+2.13.0.
+  </dd>
+
+  <dt>
     <b>LilyPond 2.12.0 &ldquo;Rune&rdquo;</b> —
     <em>December 27, 2008</em>
   </dt>
