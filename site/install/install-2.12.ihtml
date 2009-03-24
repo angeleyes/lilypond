@@ -263,7 +263,13 @@
     <strong>
       _("<a href='%s'>Install</a>",
       "@v2.12-mingw-URL@")
+      <br>
     </strong>
+    <em>
+    _("A text-based program, not graphical.  For more information, see <a href='%s'>%s</a>.",
+   "http://lilypond.gnu.org/web/help/",
+   "the LilyPond help page")
+   </em>
   </td>
   <td>@v2.12-mingw-VERSION@</td>
   <td><a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">_("LilyPond development team")</a></td>
