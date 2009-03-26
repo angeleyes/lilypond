@@ -267,7 +267,7 @@
     </strong>
     <em>
     _("A text-based program, not graphical.  For more information, see <a href='%s'>%s</a>.",
-   "http://lilypond.gnu.org/web/help/",
+   "http://lilypond.org/web/help/",
    "the LilyPond help page")
    </em>
   </td>
