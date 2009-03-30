@@ -17,13 +17,13 @@
 <!-- First search block !-->
 
 <h2>Search lilypond.org</h2>
-<form action="http://www.google.com/search" method="get"
+<form action="http://google.com/search" method="get"
       name="f_lily_google"
-      onSubmit="f_lily_google.q.value='site:lilypond.org '
+      onSubmit="f_lily_google.q.value='site:lilypond.org +v2.12'
 		+ f_lily_google.brute_query.value"
-      onMouseMove="f_lily_google.q.value='site:lilypond.org '
+      onMouseMove="f_lily_google.q.value='site:lilypond.org +v2.12'
 		   + f_lily_google.brute_query.value"
-      onKeyUp="f_lily_google.q.value='site:lilypond.org '
+      onKeyUp="f_lily_google.q.value='site:lilypond.org +v2.12'
 	       + f_lily_google.brute_query.value">
   <input name="btnG" type="hidden" value="Google Search">
   <input type="text" name="brute_query" size="40">
@@ -66,7 +66,7 @@
 
 <h3>Search all lists </h3>
 
-<form action="http://www.google.com/search" method="get"
+<form action="http://google.com/search" method="get"
       name="f_mail_google"
       onSubmit="f_mail_google.q.value='site:mail.gnu.org +lilypond ' + f_mail_google.brut_query.value"
       onMouseMove="f_mail_google.q.value='site:mail.gnu.org +lilypond ' + f_mail_google.brut_query.value"
@@ -78,6 +78,6 @@
 </form>
 
 <p>
-  <font size="-1">This uses <a href="http://www.google.com/">Google</a> to all lists.</font>
+  <font size="-1">This uses <a href="http://google.com/">Google</a> to all lists.</font>
 </p>
 
