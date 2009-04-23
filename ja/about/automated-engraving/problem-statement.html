@@ -1,0 +1,101 @@
+<!--
+    Translation of GIT committish: 14e587844ddc571eebab170d0e638aa00cbd3430
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+
+<a name="problem-statement"></a>
+<!-- <h2>Designing notation software: how not to do it</h2> -->
+<h2>ソフトのデザイン上避けるべき点</h2>
+<p>
+
+
+<!-- It would be nice if notation software didn't need any babysitting to -->
+<!-- produce acceptable output.  -->
+
+<!-- Our goal with <em>LilyPond</em> was to write such a system: a program -->
+<!-- that will produce beautiful music ("engraving") automatically. -->
+
+楽譜作成ソフトによる出来栄えが十分で、お守りの必要が無いとしたら素敵です。
+
+<em>LilyPond</em>の目的はそういうシステム、美しい楽譜("譜面")を自動的に作るプログラム、を作ることでした。
+
+<p>
+<!-- At first sight, music notation follows a straightforward hierarchical -->
+<!-- pattern.  Consider the example below, with two staves containing two -->
+<!-- measures. -->
+ちょっと見には、楽譜の記譜は直線的な階層構造に従います。
+次の2小節からなる2段譜の例を見てみましょう。
+</p>
+<img src="@IMAGES@naive-notation.png">
+
+<p>
+<!-- Isn't writing software all about finding hierarchies and modeling the -->
+<!-- real world in terms of trees? In the view of a naive programmer, the -->
+<!-- above fragment of notation is easily abstracted to a nested set of -->
+<!-- boxes -->
+ソフトを書くということは階層構造を見つけ、現実世界を木構造でモデリングすることじゃ無かったでしょうか?
+単純なプログラマーにとっては、上の楽譜の断片は安直に入れ子になった箱に抽象化されます。
+
+<p>
+<img src="@IMAGES@naive-notation-uml.png">
+</p>
+
+<!-- It's easy to follow this model when writing software.  It's obvious -->
+<!-- how to store this data in memory, and writing on disk can be easily -->
+<!-- mirrored. In an XML-file you could write something like -->
+ソフトを書くときにこのモデルに従うのは簡単です。
+このデータをメモリに保存する方法は明白で、それをディスクに保存するのも簡単です。
+XMLファイルでは、次のような感じに書けるでしょう。
+<PRE>
+  &lt;score&gt;
+    &lt;staff&gt;
+      &lt;measure id="1"&gt;
+         &lt;chord length="1/2"&gt;
+	   &lt;pitch name="c"&gt;
+         &lt;/chord&gt;
+         &lt;chord&gt;
+	 
+	 ....
+      &lt;/measure&gt;
+    &lt;/staff&gt;
+  &lt;/score&gt;
+</PRE>
+
+<p>
+<!-- In short, this model is obvious, simple and neat.  It's the format -->
+<!-- used by a lot software. Unfortunately, it's also wrong.  The -->
+<!-- hierarchical representation works for a lot of simpler music, but it -->
+<!-- falls apart for advanced use. Consider the following example: -->
+端的に、このモデルは明白で簡単、すっきりしています。
+多くのソフトで使われているフォーマットです。しかし残念ながら、それは間違っています。
+多くの単純な音楽には、階層構造による表現が使えますが、高度なものだと破綻します。
+次の事例を考えてみましょう。
+</p>
+
+<img src="@IMAGES@nonnaive-notation.png">
+
+<p>
+<!-- In this example, several assumptions of the previous model are -->
+<!-- violated: staves start and stop at will, voices jump around between -->
+<!-- staves, and sometimes span two staves. -->
+この例では、前述のモデルのいくつかの仮定が崩れています。
+段が途中で終わったりまた始まったりしていますし、声部が違う段に移動したり、時々2つの段に跨っています。
+<p>
+
+<!-- Music notation is really different from music itself. Notation is an -->
+<!-- intricate symbolic diagramming language for visualizing an often much -->
+<!-- simpler musical concept. Hence, software should reflect that separation. -->
+
+音楽の記譜は、音楽そのものとは大変違います。
+楽譜は音楽の概念を視覚化する為の記号図式による言語で、簡単な音楽を表すのに複雑な表現になることがしばしばあります。
+ですので、ソフトはこの2つの違いを反映する必要があります。
+
+<p align="right">
+<!-- Next: <a href="divide-and-conquer.html">Divide and conqueror</a>, -->
+<!-- a blue print for automated notation -->
+
+次は<a href="divide-and-conquer.html">分割と統治</a>、自動楽譜作成の設計図。
