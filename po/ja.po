@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2007-11-19 23:47+0900\n"
+"PO-Revision-Date: 2009-02-08 15:29+0900\n"
 "Last-Translator: Yoshinobu Ishizaki <isizaki@mte.biglobe.ne.jp>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,7 +35,7 @@ msgstr "オプション"
 
 #: site/sponsor/menu-entries.py:3
 msgid "In natura"
-msgstr ""
+msgstr "自然に"
 
 #: site/install/menu-entries.py:2
 msgid "First use"
@@ -48,7 +47,7 @@ msgstr "ユーザーヘルプ"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: site/menu-entries.py:10
 msgid "Introduction"
@@ -73,7 +72,7 @@ msgstr "開発"
 
 #: site/menu-entries.py:15
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: site/switch/menu-entries.py:2
 msgid "Why use LilyPond?"
@@ -158,9 +157,8 @@ msgid "Store notes in variable"
 msgstr "音を変数に入れる"
 
 #: site/graphics/naive-notation.svg:675
-#, fuzzy
 msgid "measures"
-msgstr "内容"
+msgstr ""
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
