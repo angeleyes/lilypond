@@ -5,4 +5,5 @@
     ('fr', 'Fran&ccedil;ais'),
     ('nl', 'Nederlands'),
     ('ja', 'Japanese'),
+    ('hu', 'Magyar'),
     )

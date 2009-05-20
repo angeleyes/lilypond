@@ -1,0 +1,73 @@
+<!--
+    Translation of GIT committish: 15edeaaf2e91dc94cb0e8bc00d954e158936c064
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<dl>
+  <dt>Kérdések, megjegyzések:</dt>
+  <dd>
+Kérdésedet <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general">itt</a> teheted fel.
+<p>Ez a
+ <tt><a href="mailto:lilypond-user@gnu.org">lilypond-user@gnu.org</a></tt> levelezőlista.
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-user">információ</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-user/">archívum</a>)
+    <br>
+  </dd>
+
+  <dt>Hibabejelentés:</dt>
+  <dd>
+<a href="http://lilypond.org/web/devel/participating/bugs">Hogyan jelenthetek be egy hibát?</a>
+
+
+   <p>
+    A hibabejelentés a következő levelezőlistán lehetséges:
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>.
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">információ</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archívum</a>)
+    <br>
+
+  </dd>
+
+  <dt>Értesítés új verziókról:</dt>
+  <dd>
+<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">
+Iratkozz fel</a> hírlevelünkre!
+
+<p>Ez az
+<tt><a href="mailto:info-lilypond@gnu.org">info-lilypond@gnu.org</a></tt>
+levelezőlista. (<a href="http://mail.gnu.org/mailman/listinfo/info-lilypond">információ</a>,
+    <a href="http://mail.gnu.org/archive/html/info-lilypond/">archívum</a>)
+  </dd>
+
+  
+  <dt>Megjegyzések a honlappal kapcsolatban:</dt>
+  <dd>
+Észrevételeidet <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">ide</a> küldheted.
+<p>
+Ez a
+    <tt><a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a></tt>
+ levelezőlista.
+    (<a href="http://mail.gnu.org/mailman/listinfo/bug-lilypond">információ</a>,
+    <a href="http://mail.gnu.org/archive/html/bug-lilypond/">archívum</a>)
+  </dd>
+
+  
+  <dt>Kapcsolat felvétele a fejlesztőkkel:<dt>
+  <dd>A fejlesztőkkel <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">itt</a> veheted fel a kapcsolatot.
+<p>
+Ez a
+<tt><a href="mailto:lilypond-devel@gnu.org">lilypond-devel@gnu.org</a></tt> levelezőlista.
+    (<a href="http://mail.gnu.org/mailman/listinfo/lilypond-devel">információ</a>,
+    <a href="http://mail.gnu.org/archive/html/lilypond-devel/">archívum</a>)
+  </dd>
+
+  <dt>Közvetlen üzenet küldése a fejlesztőknek:</dt>
+    <dd>
+    Lásd a
+    <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">fejlesztők listáját</a>.
+    (<em>Kizárólag személyes kommunikáció céljára!</em>)
+  </dd>
+</dl>

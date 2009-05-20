@@ -1,0 +1,105 @@
+<!--
+    Translation of GIT committish: 15edeaaf2e91dc94cb0e8bc00d954e158936c064
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<h1>LilyPond gyorstalpaló</h1>
+
+<h2>Működés közben</h2> 
+
+<p>
+  A LilyPond <em>parancssori</em> program: meg kell adni neki egy szöveges fájlt, ami a zene leírását tartalmazza.
+	Az eredményül kapott kotta képernyőn megtekinthető vagy kinyomtatható.
+	A LilyPond használat közben tipikusan így néz ki:
+</p>
+
+<p align="center">
+  <a href="@IMAGES@nereid-shot.png">
+    <img src="@IMAGES@nereid-shot-small.png" alt="Példa munkamenet">
+  </a>
+</p>
+<p align="center">
+  <em>(Kattints a képre a nagyításhoz)</em>
+</p>
+
+
+<h2>Egyszerű, mint az abc</h2>
+
+A hangok betűkkel és számokkal írhatók le. A speciális parancsok a <tt>\</tt> karakterrel kezdődnek.
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-1@.LANG@.png"
+       alt="annotate-example-1">
+  <br>
+  <img src="@IMAGES@example-1.png" alt="1. példa"> 
+
+<p>
+A módosításokat a hangnevek módosításával lehet elérni: a keresztes hang neve után -is, a bés hang neve után -es írandó.
+(Más nyelveknek megfelelő jelölések is alkalmazhatóak.)
+A LilyPond kitalálja, hova rakjon módosítójelet.
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-2@.LANG@.png"
+       alt="annotate-example-2">
+  <br>
+  <img src="@IMAGES@example-2.png" alt="2. példa">
+</p>
+
+<h2>Popzene</h2>
+
+<p>
+Könnyen írhatsz dalszöveget és akkordokat a dallam mellé:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-lead@.LANG@.png"
+       alt="annotate-example-lead">
+  <br>
+  <img src="@IMAGES@example-lead.png" alt="example-lead">
+</p>
+
+<h2>Zenekari művek</h2>
+
+<p>
+<a name="orchestral"></a>
+A bemeneti fájl a mű összes hangját tartalmazza. A partitúra és a szólamkották egyetlen forrásból származnak.
+Így a változások mind a partitúrában, mind az egyes szólamokban tükröződnek.
+A szólamok hangjainak újrafelhasználásához el kell nevezni őket:
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-parts@.LANG@.png"
+       alt="annotate-example-parts">
+  <br>
+</p>
+
+<p>
+Az így létrejött változóra később lehet hivatkozni (akár transzponálva és összevonva a több ütemes szüneteket, mint itt):
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-single-part@.LANG@.png"
+       alt="annotate-example-single-part">
+  <br>
+  <img src="@IMAGES@example-singlepart.png" alt="example-singlepart">
+</p>
+
+<p>
+Ugyanazt a változót használhatjuk a partitúrában (ez alkalommal hangzó magasságban):
+</p>
+
+<p align="center">
+  <img src="@DEPTH@/graphics/annotate-example-score@.LANG@.png"
+       alt="annotate-example-score">
+  <br>
+  <img src="@IMAGES@example-score.png" alt="example-score">
+</p>
+
+
+<h2>Hogyan tovább?</h2>
+
+<a href="../install">Töltsd le</a> a LilyPondot és kezdd el a <a href="@DOC@stable/Documentation/user/lilypond-learning/Tutorial">tanfolyamot</a>!

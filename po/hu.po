@@ -1,0 +1,390 @@
+# hu.po -- LilyPond Hungarian website language file
+# Copyright (C) 2006--2009 Till Rettig
+# This file is distributed under the same license as the LilyPond package.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-11 00:53+0100\n"
+"PO-Revision-Date: 2009-01-17 23:39+0200\n"
+"Last-Translator: Dénes Harmath <>\n"
+"Language-Team: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: scripts/format-page.py:80
+#, python-format
+msgid "Other languages: %s."
+msgstr "Más nyelvek: %s."
+
+#: scripts/format-page.py:81
+#, python-format
+msgid "About <A HREF='%s'>automatic language selection</A>."
+msgstr "Az <A HREF='%s'>automatikus nyelvválasztásról</A>."
+
+#: scripts/format-page.py:255 site/menu-entries.py:9
+msgid "Home"
+msgstr "Kezdőlap"
+
+#: site/sponsor/menu-entries.py:2
+msgid "Options"
+msgstr "Opciók"
+
+#: site/sponsor/menu-entries.py:3
+msgid "In natura"
+msgstr "In natura"
+
+#: site/install/menu-entries.py:2
+msgid "First use"
+msgstr "Első lépések"
+
+#: site/install/menu-entries.py:3
+msgid "User help"
+msgstr "Használat"
+
+#: site/help/menu-entries.py:2
+msgid "Getting Help"
+msgstr "Segítségkérés"
+
+#: site/menu-entries.py:10
+msgid "Introduction"
+msgstr "Bevezetés"
+
+#: site/menu-entries.py:11
+msgid "About"
+msgstr "A LilyPondról"
+
+#: site/menu-entries.py:12
+msgid "Download"
+msgstr "Letöltés"
+
+#: site/menu-entries.py:13 site/install/install-2.11.ihtml:231
+#: site/install/install-2.10.ihtml:254 site/install/install-2.8.ihtml:154
+msgid "Documentation"
+msgstr "Dokumentáció"
+
+#: site/menu-entries.py:14
+msgid "Development"
+msgstr "Fejlesztés"
+
+#: site/menu-entries.py:15
+msgid "Help"
+msgstr "Segítség"
+
+#: site/switch/menu-entries.py:2
+msgid "Why use LilyPond?"
+msgstr "Miért használd a LilyPondot?"
+
+#: site/switch/menu-entries.py:3
+msgid "Testimonials"
+msgstr "Ajánlások"
+
+#: site/switch/menu-entries.py:4
+msgid "A short tour"
+msgstr "Bemutató"
+
+#: site/switch/menu-entries.py:5
+msgid "Crash course"
+msgstr "Gyorstalpaló"
+
+#: site/about/menu-entries.py:2
+msgid "Features"
+msgstr "Képességek"
+
+#: site/about/menu-entries.py:3
+msgid "FAQ"
+msgstr "GyIK"
+
+#: site/about/menu-entries.py:4
+msgid "Essay"
+msgstr "Esszé"
+
+#: site/about/menu-entries.py:5
+msgid "Publications"
+msgstr "Publikációk"
+
+#: site/about/menu-entries.py:6
+msgid "Acknowledgements"
+msgstr "Köszönetnyilvánítás"
+
+#: site/graphics/annotate-example-single-part.svg:119
+msgid "Condense multi-rests"
+msgstr "Több ütemes szünetek összevonása"
+
+#: site/graphics/annotate-example-single-part.svg:132
+msgid "Transpose for F instrument"
+msgstr "Transzpozíció az F-kürt számára"
+
+#: site/graphics/annotate-example-single-part.svg:142
+msgid "Reuse variable"
+msgstr "Egy változó újrafelhasználása"
+
+#: site/graphics/annotate-example-lead.svg:158
+msgid "Enter chord names"
+msgstr "Akkordnevek megadása"
+
+#: site/graphics/annotate-example-lead.svg:169
+msgid "Enter melody"
+msgstr "Dallam megadása"
+
+#: site/graphics/annotate-example-lead.svg:177
+msgid "Enter lyrics"
+msgstr "Dalszöveg megadása"
+
+#: site/graphics/annotate-example-lead.svg:198
+msgid "Combine melody and lyrics"
+msgstr "Dallam és dalszöveg összekapcsolása"
+
+#: site/graphics/annotate-example-parts.svg:42
+#: site/graphics/annotate-example-score.svg:50
+msgid "hornNotes"
+msgstr "Kurt"
+
+#: site/graphics/annotate-example-parts.svg:70
+#: site/graphics/annotate-example-score.svg:54
+msgid "bassoonNotes"
+msgstr "Fagott"
+
+#: site/graphics/annotate-example-parts.svg:163
+msgid "Enter multi-rest"
+msgstr "Több ütemes szünet"
+
+#: site/graphics/annotate-example-parts.svg:175
+msgid "Store notes in variable"
+msgstr "Hangok eltárolása egy változóban"
+
+#: site/graphics/naive-notation.svg:675
+msgid "measures"
+msgstr "ütemek"
+
+#: site/graphics/naive-notation.svg:695
+msgid "staff"
+msgstr "kottasor"
+
+#: site/graphics/annotate-example-1.svg:195
+msgid "Commands start with \\"
+msgstr "A parancsok a \\ karakterrel kezdődnek"
+
+#: site/graphics/annotate-example-1.svg:205
+msgid "Letters are notes"
+msgstr "A betűk hangokat jelölnek"
+
+#: site/graphics/annotate-example-1.svg:227
+msgid "Numbers are durations"
+msgstr "A számok jelzik a ritmusértéket"
+
+#: site/graphics/annotate-example-2.svg:181
+msgid "Add articulations"
+msgstr "Artikulációs jelek"
+
+#: site/graphics/annotate-example-2.svg:191
+msgid "Add -es for flat, -is for sharp"
+msgstr "A bé megfelelője -es, a kereszté -is"
+
+#: site/graphics/annotate-example-2.svg:201
+msgid "Enclose pitches in &lt; &gt; for chords"
+msgstr "Az akkordok hangjait &lt; &gt; közé kell zárni"
+
+#: site/graphics/annotate-example-score.svg:115
+msgid "Create staff"
+msgstr "Kottasor létrehozása"
+
+#: site/graphics/annotate-example-score.svg:126
+msgid "Combine staffs in parallel"
+msgstr "Kottasorok egymás alá írása"
+
+#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
+#: site/install/install-2.11.ihtml:78 site/install/install-2.11.ihtml:110
+#: site/install/install-2.11.ihtml:134 site/install/install-2.10.ihtml:33
+#: site/install/install-2.10.ihtml:55 site/install/install-2.10.ihtml:80
+#: site/install/install-2.10.ihtml:134 site/install/install-2.10.ihtml:158
+#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
+#, c-format
+msgid "Download <a href='%s'>the installer</a>"
+msgstr "<a href='%s'>Telepítő</a> letöltése"
+
+#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
+#: site/install/install-2.11.ihtml:82 site/install/install-2.11.ihtml:114
+#: site/install/install-2.11.ihtml:138 site/install/install-2.10.ihtml:37
+#: site/install/install-2.10.ihtml:59 site/install/install-2.10.ihtml:84
+#: site/install/install-2.10.ihtml:138 site/install/install-2.10.ihtml:162
+#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
+#, c-format
+msgid "do %s in a command window."
+msgstr "Írd be a következő parancsot: %s"
+
+#: site/install/install-2.11.ihtml:40 site/install/install-2.11.ihtml:62
+#: site/install/install-2.11.ihtml:85 site/install/install-2.11.ihtml:117
+#: site/install/install-2.11.ihtml:141 site/install/install-2.11.ihtml:180
+#: site/install/install-2.11.ihtml:201 site/install/install-2.11.ihtml:218
+#: site/install/install-2.11.ihtml:240 site/install/install-2.11.ihtml:257
+#: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
+#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:141
+#: site/install/install-2.10.ihtml:165 site/install/install-2.10.ihtml:204
+#: site/install/install-2.10.ihtml:225 site/install/install-2.10.ihtml:242
+#: site/install/install-2.10.ihtml:263 site/install/install-2.10.ihtml:280
+#: site/install/install-2.8.ihtml:41 site/install/install-2.8.ihtml:90
+#: site/install/install-2.8.ihtml:110 site/install/install-2.8.ihtml:131
+#: site/install/install-2.8.ihtml:148 site/install/install-2.8.ihtml:163
+#: site/install/install-2.8.ihtml:179
+msgid "LilyPond development team"
+msgstr "A LilyPond fejlesztőcsapata"
+
+#: site/install/install-2.11.ihtml:92 site/install/install-2.10.ihtml:116
+#: site/install/install-2.8.ihtml:64
+msgid "Other"
+msgstr "Más operációs rendszerek"
+
+#: site/install/install-2.11.ihtml:154 site/install/install-2.10.ihtml:102
+#: site/install/install-2.10.ihtml:178 site/install/install-2.8.ihtml:53
+#, c-format
+msgid "Go <a href='%s'>here</a>"
+msgstr "Lásd <a href='%s'>ezt az oldalt</a>"
+
+#: site/install/install-2.11.ihtml:173 site/install/install-2.11.ihtml:194
+#: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
+#: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
+#, c-format
+msgid "Download <a href='%s'>%s</a>"
+msgstr "<a href='%s'>%s</a> letöltése"
+
+#: site/install/install-2.11.ihtml:190 site/install/install-2.10.ihtml:214
+#: site/install/install-2.8.ihtml:99
+#, c-format
+msgid "%s and newer"
+msgstr "%s és újabb"
+
+#: site/install/install-2.11.ihtml:213 site/install/install-2.10.ihtml:237
+#: site/install/install-2.8.ihtml:143
+#, c-format
+msgid "<a href='%s'>Install</a>"
+msgstr "<a href='%s'>Telepítés</a>"
+
+#: site/install/install-2.11.ihtml:225 site/install/install-2.10.ihtml:248
+msgid "Documentation and Source code"
+msgstr "Dokumentáció és forráskód"
+
+#: site/install/install-2.11.ihtml:235 site/install/install-2.11.ihtml:251
+#: site/install/install-2.10.ihtml:258 site/install/install-2.10.ihtml:274
+#: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
+#, c-format
+msgid "Download <a href='%s'>tarball</a>"
+msgstr "<a href='%s'>Tarball</a> letöltése"
+
+#: site/install/install-2.11.ihtml:247 site/install/install-2.10.ihtml:270
+#: site/install/install-2.8.ihtml:169
+msgid "Source code"
+msgstr "Forráskód"
+
+#: site/install/install-2.11.ihtml:253 site/install/install-2.10.ihtml:276
+#: site/install/install-2.8.ihtml:175
+msgid "warning"
+msgstr "figyelmeztetés"
+
+#~ msgid "Go <a href='http://ivo.bouwmans.name/lilypondleopard'>here</a>"
+#~ msgstr "Lásd <a·href='http://ivo.bouwmans.name/lilypondleopard'>ezt az oldalt</a>"
+
+#~ msgid "Go <a href='http://www.johannes-schoepfer.de/lilypond/'>here</a>"
+#~ msgstr ""
+#~ "Lásd <a·href='http://www.johannes-schoepfer.de/lilypond/'>ezt az oldalt</a>"
+
+#~ msgid "Johannes Sch&ouml;pfer"
+#~ msgstr "Johannes Sch&ouml;pfer"
+
+#~ msgid "Using <A HREF='%s'>automatic language selection</A>."
+#~ msgstr "Az <A HREF='%s'>automatikus nyelvválasztás használata</A>."
+
+#~ msgid "Donate"
+#~ msgstr "Adomány"
+
+#~ msgid "Older news"
+#~ msgstr "Hírarchívum"
+
+#~ msgid "Participate"
+#~ msgstr "Részvétel"
+
+#~ msgid "Packaging"
+#~ msgstr "Csomagolás"
+
+#~ msgid "Finale ETF format"
+#~ msgstr "A Finale ETF formátuma"
+
+#~ msgid "Conferences relevant to LilyPond"
+#~ msgstr "Konferenciák a LilyPondról"
+
+#~ msgid "Related online resources"
+#~ msgstr "Kapcsolódó honlapok"
+
+#~ msgid "appogiatura"
+#~ msgstr "előke"
+
+#~ msgid "Basso Continuo"
+#~ msgstr "Basso Continuo"
+
+#~ msgid "Color"
+#~ msgstr "Szín"
+
+#~ msgid "Ligature"
+#~ msgstr "Ligatúra"
+
+#~ msgid "Help wanted!"
+#~ msgstr "Segítségre van szükségünk!"
+
+#~ msgid "Localization"
+#~ msgstr "Honosítás"
+
+#~ msgid "Standards"
+#~ msgstr "Szabványok"
+
+#~ msgid " Cygwin"
+#~ msgstr "Cygwin"
+
+#~ msgid "Troubleshooting"
+#~ msgstr "Hibakeresés"
+
+#~ msgid "MacOS X"
+#~ msgstr "Mac OS X"
+
+#~ msgid "Windows"
+#~ msgstr "Windows"
+
+#~ msgid "Reuse identifier"
+#~ msgstr "Azonosító újrafelhasználása"
+
+#~ msgid "NOTE"
+#~ msgstr "MEGJEGYZÉS"
+
+#~ msgid "Included with distribution"
+#~ msgstr "A disztribúció tartalmazza"
+
+#~ msgid "Included <a href='%s'>with distribution</a>"
+#~ msgstr "A <a href='%s'>disztribúció</a> tartalmazza"
+
+#~ msgid "documentation"
+#~ msgstr "Dokumentáció"
+
+#~ msgid "Download the installer <a href='%s'>here</a>"
+#~ msgstr "Telepítő letöltése <a href='%s'>itt</a>"
+
+#~ msgid "Go to <a href='%s'>%s</a>"
+#~ msgstr "Lásd: <a href='%s'>%s</a>"
+
+#~ msgid "compatibility libraries"
+#~ msgstr "kompatibilitási könyvtárak"
+
+#~ msgid "Fink"
+#~ msgstr "Fink"
+
+#~ msgid "Cygwin"
+#~ msgstr "Cygwin"
+
+#, fuzzy
+#~ msgid "<a href='%s'>Install</a> or <a href='%s'>upgrade</a>"
+#~ msgstr "<a href='%s'>Telepítés</a> vagy <a href='%s'>frissítés</a>"
+
+#, fuzzy
+#~ msgid "<a href='%s'>the installer</a>"
+#~ msgstr "<a href='%s'>telepítő</a>"

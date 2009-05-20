@@ -1,7 +1,7 @@
 # -*-makefile-*-
 
 # Do not publish non-polished or non-finished or outdated translations.
-LANGUAGES = de es fr nl ja
+LANGUAGES = de es fr nl ja hu
 
 .PHONY: add all clean default dist menuify out scripts site TAGS tree $(LANGUAGES)
 
