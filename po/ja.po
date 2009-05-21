@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 00:53+0100\n"
-"PO-Revision-Date: 2009-02-08 15:29+0900\n"
+"PO-Revision-Date: 2009-05-21 15:32+0200\n"
 "Last-Translator: Yoshinobu Ishizaki <isizaki@mte.biglobe.ne.jp>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -158,11 +158,11 @@ msgstr "音を変数に入れる"
 
 #: site/graphics/naive-notation.svg:675
 msgid "measures"
-msgstr ""
+msgstr "小節"
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
-msgstr ""
+msgstr "段"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
