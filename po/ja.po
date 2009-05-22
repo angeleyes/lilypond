@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-11 00:53+0100\n"
+"POT-Creation-Date: 2009-05-22 22:49+0200\n"
 "PO-Revision-Date: 2009-05-21 15:32+0200\n"
 "Last-Translator: Yoshinobu Ishizaki <isizaki@mte.biglobe.ne.jp>\n"
 "Language-Team: \n"
@@ -25,17 +25,9 @@ msgstr "他の言語: %s"
 msgid "About <A HREF='%s'>automatic language selection</A>."
 msgstr "<A HREF='%s'>自動言語選択</A>について。"
 
-#: scripts/format-page.py:255 site/menu-entries.py:9
+#: scripts/format-page.py:254 site/menu-entries.py:9
 msgid "Home"
 msgstr "ホーム"
-
-#: site/sponsor/menu-entries.py:2
-msgid "Options"
-msgstr "オプション"
-
-#: site/sponsor/menu-entries.py:3
-msgid "In natura"
-msgstr "自然に"
 
 #: site/install/menu-entries.py:2
 msgid "First use"
@@ -61,8 +53,9 @@ msgstr "概要"
 msgid "Download"
 msgstr "ダウンロード"
 
-#: site/menu-entries.py:13 site/install/install-2.11.ihtml:231
-#: site/install/install-2.10.ihtml:254 site/install/install-2.8.ihtml:154
+#: site/menu-entries.py:13 site/install/install-2.10.ihtml:308
+#: site/install/install-2.8.ihtml:154 site/install/install-2.12.ihtml:287
+#: site/install/install-2.13.ihtml:258
 msgid "Documentation"
 msgstr "ドキュメント"
 
@@ -196,90 +189,129 @@ msgstr "段の作成"
 msgid "Combine staffs in parallel"
 msgstr "同時に複数の段をまとめる"
 
-#: site/install/install-2.11.ihtml:33 site/install/install-2.11.ihtml:55
-#: site/install/install-2.11.ihtml:78 site/install/install-2.11.ihtml:110
-#: site/install/install-2.11.ihtml:134 site/install/install-2.10.ihtml:33
-#: site/install/install-2.10.ihtml:55 site/install/install-2.10.ihtml:80
-#: site/install/install-2.10.ihtml:134 site/install/install-2.10.ihtml:158
-#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
+#: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
+#: site/install/install-2.10.ihtml:80 site/install/install-2.10.ihtml:188
+#: site/install/install-2.10.ihtml:212 site/install/install-2.8.ihtml:33
+#: site/install/install-2.8.ihtml:82 site/install/install-2.12.ihtml:33
+#: site/install/install-2.12.ihtml:55 site/install/install-2.12.ihtml:78
+#: site/install/install-2.12.ihtml:161 site/install/install-2.12.ihtml:185
+#: site/install/install-2.13.ihtml:33 site/install/install-2.13.ihtml:58
+#: site/install/install-2.13.ihtml:84 site/install/install-2.13.ihtml:119
+#: site/install/install-2.13.ihtml:146
 #, c-format
 msgid "Download <a href='%s'>the installer</a>"
 msgstr "<a href='%s'>インストーラ</a>のダウンロード"
 
-#: site/install/install-2.11.ihtml:37 site/install/install-2.11.ihtml:59
-#: site/install/install-2.11.ihtml:82 site/install/install-2.11.ihtml:114
-#: site/install/install-2.11.ihtml:138 site/install/install-2.10.ihtml:37
-#: site/install/install-2.10.ihtml:59 site/install/install-2.10.ihtml:84
-#: site/install/install-2.10.ihtml:138 site/install/install-2.10.ihtml:162
-#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
+#: site/install/install-2.10.ihtml:37 site/install/install-2.10.ihtml:59
+#: site/install/install-2.10.ihtml:84 site/install/install-2.10.ihtml:192
+#: site/install/install-2.10.ihtml:216 site/install/install-2.8.ihtml:37
+#: site/install/install-2.8.ihtml:86 site/install/install-2.12.ihtml:37
+#: site/install/install-2.12.ihtml:59 site/install/install-2.12.ihtml:82
+#: site/install/install-2.12.ihtml:165 site/install/install-2.12.ihtml:189
+#: site/install/install-2.13.ihtml:150 site/install/install-2.13.ihtml:123
+#: site/install/install-2.13.ihtml:88 site/install/install-2.13.ihtml:62
+#: site/install/install-2.13.ihtml:37
 #, c-format
 msgid "do %s in a command window."
 msgstr "コマンドウィンドウで%sを実行"
 
-#: site/install/install-2.11.ihtml:40 site/install/install-2.11.ihtml:62
-#: site/install/install-2.11.ihtml:85 site/install/install-2.11.ihtml:117
-#: site/install/install-2.11.ihtml:141 site/install/install-2.11.ihtml:180
-#: site/install/install-2.11.ihtml:201 site/install/install-2.11.ihtml:218
-#: site/install/install-2.11.ihtml:240 site/install/install-2.11.ihtml:257
 #: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
-#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:141
-#: site/install/install-2.10.ihtml:165 site/install/install-2.10.ihtml:204
-#: site/install/install-2.10.ihtml:225 site/install/install-2.10.ihtml:242
-#: site/install/install-2.10.ihtml:263 site/install/install-2.10.ihtml:280
+#: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:195
+#: site/install/install-2.10.ihtml:219 site/install/install-2.10.ihtml:258
+#: site/install/install-2.10.ihtml:279 site/install/install-2.10.ihtml:296
+#: site/install/install-2.10.ihtml:317 site/install/install-2.10.ihtml:334
 #: site/install/install-2.8.ihtml:41 site/install/install-2.8.ihtml:90
 #: site/install/install-2.8.ihtml:110 site/install/install-2.8.ihtml:131
 #: site/install/install-2.8.ihtml:148 site/install/install-2.8.ihtml:163
-#: site/install/install-2.8.ihtml:179
+#: site/install/install-2.8.ihtml:179 site/install/install-2.12.ihtml:40
+#: site/install/install-2.12.ihtml:62 site/install/install-2.12.ihtml:85
+#: site/install/install-2.12.ihtml:168 site/install/install-2.12.ihtml:192
+#: site/install/install-2.12.ihtml:231 site/install/install-2.12.ihtml:252
+#: site/install/install-2.12.ihtml:274 site/install/install-2.12.ihtml:296
+#: site/install/install-2.12.ihtml:313
 msgid "LilyPond development team"
 msgstr "LilyPond開発チーム"
 
-#: site/install/install-2.11.ihtml:92 site/install/install-2.10.ihtml:116
-#: site/install/install-2.8.ihtml:64
-msgid "Other"
-msgstr "その他"
+#: site/install/install-2.10.ihtml:99 site/install/install-2.10.ihtml:117
+#: site/install/install-2.10.ihtml:135 site/install/install-2.12.ihtml:97
+#: site/install/install-2.12.ihtml:115
+#, fuzzy, c-format
+msgid "Included <a href='%s'>with distribution</a>"
+msgstr "<a href='%s'>インストーラ</a>のダウンロード"
 
-#: site/install/install-2.11.ihtml:154 site/install/install-2.10.ihtml:102
-#: site/install/install-2.10.ihtml:178 site/install/install-2.8.ihtml:53
+#: site/install/install-2.10.ihtml:156 site/install/install-2.10.ihtml:232
+#: site/install/install-2.8.ihtml:53 site/install/install-2.12.ihtml:133
+#: site/install/install-2.12.ihtml:205 site/install/install-2.13.ihtml:170
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "<a href='%s'>ここに</a>行きましょう"
 
-#: site/install/install-2.11.ihtml:173 site/install/install-2.11.ihtml:194
-#: site/install/install-2.10.ihtml:197 site/install/install-2.10.ihtml:218
+#: site/install/install-2.10.ihtml:170 site/install/install-2.8.ihtml:64
+#: site/install/install-2.12.ihtml:143 site/install/install-2.13.ihtml:101
+msgid "Other"
+msgstr "その他"
+
+#: site/install/install-2.10.ihtml:251 site/install/install-2.10.ihtml:272
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
+#: site/install/install-2.12.ihtml:224 site/install/install-2.12.ihtml:245
+#: site/install/install-2.13.ihtml:192 site/install/install-2.13.ihtml:216
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "<a href='%s'>%s</a>のダウンロード"
 
-#: site/install/install-2.11.ihtml:190 site/install/install-2.10.ihtml:214
-#: site/install/install-2.8.ihtml:99
+#: site/install/install-2.10.ihtml:268 site/install/install-2.8.ihtml:99
+#: site/install/install-2.12.ihtml:241 site/install/install-2.13.ihtml:212
 #, c-format
 msgid "%s and newer"
 msgstr "%sとより新しい物"
 
-#: site/install/install-2.11.ihtml:213 site/install/install-2.10.ihtml:237
-#: site/install/install-2.8.ihtml:143
+#: site/install/install-2.10.ihtml:291 site/install/install-2.8.ihtml:143
+#: site/install/install-2.12.ihtml:264 site/install/install-2.13.ihtml:238
 #, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>インストール</a>"
 
-#: site/install/install-2.11.ihtml:225 site/install/install-2.10.ihtml:248
+#: site/install/install-2.10.ihtml:302 site/install/install-2.12.ihtml:281
+#: site/install/install-2.13.ihtml:252
 msgid "Documentation and Source code"
 msgstr "ドキュメントとソースコード"
 
-#: site/install/install-2.11.ihtml:235 site/install/install-2.11.ihtml:251
-#: site/install/install-2.10.ihtml:258 site/install/install-2.10.ihtml:274
+#: site/install/install-2.10.ihtml:312 site/install/install-2.10.ihtml:328
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
+#: site/install/install-2.12.ihtml:291 site/install/install-2.12.ihtml:307
+#: site/install/install-2.13.ihtml:262 site/install/install-2.13.ihtml:280
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "<a href='%s'>tarファイル</a>のダウンロード"
 
-#: site/install/install-2.11.ihtml:247 site/install/install-2.10.ihtml:270
-#: site/install/install-2.8.ihtml:169
+#: site/install/install-2.10.ihtml:324 site/install/install-2.8.ihtml:169
+#: site/install/install-2.12.ihtml:303 site/install/install-2.13.ihtml:276
 msgid "Source code"
 msgstr "ソースコード"
 
-#: site/install/install-2.11.ihtml:253 site/install/install-2.10.ihtml:276
-#: site/install/install-2.8.ihtml:175
+#: site/install/install-2.10.ihtml:330 site/install/install-2.8.ihtml:175
+#: site/install/install-2.12.ihtml:309 site/install/install-2.13.ihtml:282
 msgid "warning"
 msgstr "警告"
+
+#: site/install/install-2.12.ihtml:269
+#, c-format
+msgid ""
+"A text-based program, not graphical.  For more information, see <a href='%"
+"s'>the LilyPond help page</a>."
+msgstr ""
+
+#: site/install/install-2.13.ihtml:287 site/install/install-2.13.ihtml:268
+#: site/install/install-2.13.ihtml:244 site/install/install-2.13.ihtml:224
+#: site/install/install-2.13.ihtml:200 site/install/install-2.13.ihtml:155
+#: site/install/install-2.13.ihtml:128 site/install/install-2.13.ihtml:93
+#: site/install/install-2.13.ihtml:67 site/install/install-2.13.ihtml:42
+#, fuzzy
+msgid "LilyPond"
+msgstr "何故LilyPondを使うのか?"
+
+#~ msgid "Options"
+#~ msgstr "オプション"
+
+#~ msgid "In natura"
+#~ msgstr "自然に"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 11:11+0100\n"
+"POT-Creation-Date: 2009-05-22 22:49+0200\n"
 "PO-Revision-Date: 2009-02-09 11:12+0100\n"
 "Last-Translator: Francisco Vila <francisco.vila@hispalinux.es>\n"
 "Language-Team: Español\n"
@@ -32,14 +32,6 @@ msgstr "Acerca de la <A HREF='%s'>selección automática de idioma</A>."
 msgid "Home"
 msgstr "Inicio"
 
-#: site/sponsor/menu-entries.py:2
-msgid "Options"
-msgstr "Opciones"
-
-#: site/sponsor/menu-entries.py:3
-msgid "In natura"
-msgstr "En especie"
-
 #: site/install/menu-entries.py:2
 msgid "First use"
 msgstr "Primer uso"
@@ -47,26 +39,6 @@ msgstr "Primer uso"
 #: site/install/menu-entries.py:3
 msgid "User help"
 msgstr "Ayuda para el usuario"
-
-#: site/about/menu-entries.py:2
-msgid "Features"
-msgstr "Características"
-
-#: site/about/menu-entries.py:3
-msgid "FAQ"
-msgstr "FAQ"
-
-#: site/about/menu-entries.py:4
-msgid "Essay"
-msgstr "Ensayo"
-
-#: site/about/menu-entries.py:5
-msgid "Publications"
-msgstr "Publicaciones"
-
-#: site/about/menu-entries.py:6
-msgid "Acknowledgements"
-msgstr "Agradecimientos"
 
 #: site/help/menu-entries.py:2
 msgid "Getting Help"
@@ -84,8 +56,9 @@ msgstr "Acerca de"
 msgid "Download"
 msgstr "Descargar"
 
-#: site/menu-entries.py:13 site/install/install-2.12.ihtml:282
-#: site/install/install-2.10.ihtml:308 site/install/install-2.8.ihtml:154
+#: site/menu-entries.py:13 site/install/install-2.10.ihtml:308
+#: site/install/install-2.8.ihtml:154 site/install/install-2.12.ihtml:287
+#: site/install/install-2.13.ihtml:258
 msgid "Documentation"
 msgstr "Documentación"
 
@@ -112,6 +85,38 @@ msgstr "Una breve visita guiada"
 #: site/switch/menu-entries.py:5
 msgid "Crash course"
 msgstr "Curso intensivo"
+
+#: site/about/menu-entries.py:2
+msgid "Features"
+msgstr "Características"
+
+#: site/about/menu-entries.py:3
+msgid "FAQ"
+msgstr "FAQ"
+
+#: site/about/menu-entries.py:4
+msgid "Essay"
+msgstr "Ensayo"
+
+#: site/about/menu-entries.py:5
+msgid "Publications"
+msgstr "Publicaciones"
+
+#: site/about/menu-entries.py:6
+msgid "Acknowledgements"
+msgstr "Agradecimientos"
+
+#: site/graphics/annotate-example-single-part.svg:119
+msgid "Condense multi-rests"
+msgstr "Condensar silencios multi-compás"
+
+#: site/graphics/annotate-example-single-part.svg:132
+msgid "Transpose for F instrument"
+msgstr "Transportar para instrumento en Fa"
+
+#: site/graphics/annotate-example-single-part.svg:142
+msgid "Reuse variable"
+msgstr "Reutilizar variable"
 
 #: site/graphics/annotate-example-lead.svg:158
 msgid "Enter chord names"
@@ -147,6 +152,27 @@ msgstr "Escribir un silencio multi-compás"
 msgid "Store notes in variable"
 msgstr "Almacenar notas en una variable"
 
+#: site/graphics/naive-notation.svg:675
+#, fuzzy
+msgid "measures"
+msgstr "Características"
+
+#: site/graphics/naive-notation.svg:695
+msgid "staff"
+msgstr ""
+
+#: site/graphics/annotate-example-1.svg:195
+msgid "Commands start with \\"
+msgstr "Las instrucciones empiezan por \\"
+
+#: site/graphics/annotate-example-1.svg:205
+msgid "Letters are notes"
+msgstr "Las letras son notas"
+
+#: site/graphics/annotate-example-1.svg:227
+msgid "Numbers are durations"
+msgstr "Los números son duraciones"
+
 #: site/graphics/annotate-example-2.svg:181
 msgid "Add articulations"
 msgstr "Añadir articulaciones"
@@ -167,55 +193,32 @@ msgstr "Crear pentagrama"
 msgid "Combine staffs in parallel"
 msgstr "Combinar pentagramas en paralelo"
 
-#: site/graphics/annotate-example-single-part.svg:119
-msgid "Condense multi-rests"
-msgstr "Condensar silencios multi-compás"
-
-#: site/graphics/annotate-example-single-part.svg:132
-msgid "Transpose for F instrument"
-msgstr "Transportar para instrumento en Fa"
-
-#: site/graphics/annotate-example-single-part.svg:142
-msgid "Reuse variable"
-msgstr "Reutilizar variable"
-
-#: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\"
-msgstr "Las instrucciones empiezan por \\"
-
-#: site/graphics/annotate-example-1.svg:205
-msgid "Letters are notes"
-msgstr "Las letras son notas"
-
-#: site/graphics/annotate-example-1.svg:227
-msgid "Numbers are durations"
-msgstr "Los números son duraciones"
-
-#: site/install/install-2.12.ihtml:33 site/install/install-2.12.ihtml:55
-#: site/install/install-2.12.ihtml:78 site/install/install-2.12.ihtml:161
-#: site/install/install-2.12.ihtml:185 site/install/install-2.10.ihtml:33
-#: site/install/install-2.10.ihtml:55 site/install/install-2.10.ihtml:80
-#: site/install/install-2.10.ihtml:188 site/install/install-2.10.ihtml:212
-#: site/install/install-2.8.ihtml:33 site/install/install-2.8.ihtml:82
+#: site/install/install-2.10.ihtml:33 site/install/install-2.10.ihtml:55
+#: site/install/install-2.10.ihtml:80 site/install/install-2.10.ihtml:188
+#: site/install/install-2.10.ihtml:212 site/install/install-2.8.ihtml:33
+#: site/install/install-2.8.ihtml:82 site/install/install-2.12.ihtml:33
+#: site/install/install-2.12.ihtml:55 site/install/install-2.12.ihtml:78
+#: site/install/install-2.12.ihtml:161 site/install/install-2.12.ihtml:185
+#: site/install/install-2.13.ihtml:33 site/install/install-2.13.ihtml:58
+#: site/install/install-2.13.ihtml:84 site/install/install-2.13.ihtml:119
+#: site/install/install-2.13.ihtml:146
 #, c-format
 msgid "Download <a href='%s'>the installer</a>"
 msgstr "Descargue <a href='%s'>el instalador</a>"
 
-#: site/install/install-2.12.ihtml:37 site/install/install-2.12.ihtml:59
-#: site/install/install-2.12.ihtml:82 site/install/install-2.12.ihtml:165
-#: site/install/install-2.12.ihtml:189 site/install/install-2.10.ihtml:37
-#: site/install/install-2.10.ihtml:59 site/install/install-2.10.ihtml:84
-#: site/install/install-2.10.ihtml:192 site/install/install-2.10.ihtml:216
-#: site/install/install-2.8.ihtml:37 site/install/install-2.8.ihtml:86
+#: site/install/install-2.10.ihtml:37 site/install/install-2.10.ihtml:59
+#: site/install/install-2.10.ihtml:84 site/install/install-2.10.ihtml:192
+#: site/install/install-2.10.ihtml:216 site/install/install-2.8.ihtml:37
+#: site/install/install-2.8.ihtml:86 site/install/install-2.12.ihtml:37
+#: site/install/install-2.12.ihtml:59 site/install/install-2.12.ihtml:82
+#: site/install/install-2.12.ihtml:165 site/install/install-2.12.ihtml:189
+#: site/install/install-2.13.ihtml:150 site/install/install-2.13.ihtml:123
+#: site/install/install-2.13.ihtml:88 site/install/install-2.13.ihtml:62
+#: site/install/install-2.13.ihtml:37
 #, c-format
 msgid "do %s in a command window."
 msgstr "haga %s en una terminal de órdenes."
 
-#: site/install/install-2.12.ihtml:40 site/install/install-2.12.ihtml:62
-#: site/install/install-2.12.ihtml:85 site/install/install-2.12.ihtml:168
-#: site/install/install-2.12.ihtml:192 site/install/install-2.12.ihtml:231
-#: site/install/install-2.12.ihtml:252 site/install/install-2.12.ihtml:269
-#: site/install/install-2.12.ihtml:291 site/install/install-2.12.ihtml:308
 #: site/install/install-2.10.ihtml:40 site/install/install-2.10.ihtml:62
 #: site/install/install-2.10.ihtml:87 site/install/install-2.10.ihtml:195
 #: site/install/install-2.10.ihtml:219 site/install/install-2.10.ihtml:258
@@ -224,66 +227,95 @@ msgstr "haga %s en una terminal de órdenes."
 #: site/install/install-2.8.ihtml:41 site/install/install-2.8.ihtml:90
 #: site/install/install-2.8.ihtml:110 site/install/install-2.8.ihtml:131
 #: site/install/install-2.8.ihtml:148 site/install/install-2.8.ihtml:163
-#: site/install/install-2.8.ihtml:179
+#: site/install/install-2.8.ihtml:179 site/install/install-2.12.ihtml:40
+#: site/install/install-2.12.ihtml:62 site/install/install-2.12.ihtml:85
+#: site/install/install-2.12.ihtml:168 site/install/install-2.12.ihtml:192
+#: site/install/install-2.12.ihtml:231 site/install/install-2.12.ihtml:252
+#: site/install/install-2.12.ihtml:274 site/install/install-2.12.ihtml:296
+#: site/install/install-2.12.ihtml:313
 msgid "LilyPond development team"
 msgstr "Equipo de desarrollo de LilyPond"
 
-#: site/install/install-2.12.ihtml:97 site/install/install-2.12.ihtml:115
 #: site/install/install-2.10.ihtml:99 site/install/install-2.10.ihtml:117
-#: site/install/install-2.10.ihtml:135
+#: site/install/install-2.10.ihtml:135 site/install/install-2.12.ihtml:97
+#: site/install/install-2.12.ihtml:115
 #, c-format
 msgid "Included <a href='%s'>with distribution</a>"
 msgstr "Incluido <a href='%s'>con la distribución</a>"
 
-#: site/install/install-2.12.ihtml:133 site/install/install-2.12.ihtml:205
 #: site/install/install-2.10.ihtml:156 site/install/install-2.10.ihtml:232
-#: site/install/install-2.8.ihtml:53
+#: site/install/install-2.8.ihtml:53 site/install/install-2.12.ihtml:133
+#: site/install/install-2.12.ihtml:205 site/install/install-2.13.ihtml:170
 #, c-format
 msgid "Go <a href='%s'>here</a>"
 msgstr "Vaya <a href='%s'>aquí</a>"
 
-#: site/install/install-2.12.ihtml:143 site/install/install-2.10.ihtml:170
-#: site/install/install-2.8.ihtml:64
+#: site/install/install-2.10.ihtml:170 site/install/install-2.8.ihtml:64
+#: site/install/install-2.12.ihtml:143 site/install/install-2.13.ihtml:101
 msgid "Other"
 msgstr "Otros"
 
-#: site/install/install-2.12.ihtml:224 site/install/install-2.12.ihtml:245
 #: site/install/install-2.10.ihtml:251 site/install/install-2.10.ihtml:272
 #: site/install/install-2.8.ihtml:103 site/install/install-2.8.ihtml:124
+#: site/install/install-2.12.ihtml:224 site/install/install-2.12.ihtml:245
+#: site/install/install-2.13.ihtml:192 site/install/install-2.13.ihtml:216
 #, c-format
 msgid "Download <a href='%s'>%s</a>"
 msgstr "Descargar <a href='%s'>%s</a>"
 
-#: site/install/install-2.12.ihtml:241 site/install/install-2.10.ihtml:268
-#: site/install/install-2.8.ihtml:99
+#: site/install/install-2.10.ihtml:268 site/install/install-2.8.ihtml:99
+#: site/install/install-2.12.ihtml:241 site/install/install-2.13.ihtml:212
 #, c-format
 msgid "%s and newer"
 msgstr "%s y más reciente"
 
-#: site/install/install-2.12.ihtml:264 site/install/install-2.10.ihtml:291
-#: site/install/install-2.8.ihtml:143
+#: site/install/install-2.10.ihtml:291 site/install/install-2.8.ihtml:143
+#: site/install/install-2.12.ihtml:264 site/install/install-2.13.ihtml:238
 #, c-format
 msgid "<a href='%s'>Install</a>"
 msgstr "<a href='%s'>Instalar</a>"
 
-#: site/install/install-2.12.ihtml:276 site/install/install-2.10.ihtml:302
+#: site/install/install-2.10.ihtml:302 site/install/install-2.12.ihtml:281
+#: site/install/install-2.13.ihtml:252
 msgid "Documentation and Source code"
 msgstr "Documentación y código fuente"
 
-#: site/install/install-2.12.ihtml:286 site/install/install-2.12.ihtml:302
 #: site/install/install-2.10.ihtml:312 site/install/install-2.10.ihtml:328
 #: site/install/install-2.8.ihtml:158 site/install/install-2.8.ihtml:173
+#: site/install/install-2.12.ihtml:291 site/install/install-2.12.ihtml:307
+#: site/install/install-2.13.ihtml:262 site/install/install-2.13.ihtml:280
 #, c-format
 msgid "Download <a href='%s'>tarball</a>"
 msgstr "Descargar <a href='%s'>tarball</a>"
 
-#: site/install/install-2.12.ihtml:298 site/install/install-2.10.ihtml:324
-#: site/install/install-2.8.ihtml:169
+#: site/install/install-2.10.ihtml:324 site/install/install-2.8.ihtml:169
+#: site/install/install-2.12.ihtml:303 site/install/install-2.13.ihtml:276
 msgid "Source code"
 msgstr "Código fuente"
 
-#: site/install/install-2.12.ihtml:304 site/install/install-2.10.ihtml:330
-#: site/install/install-2.8.ihtml:175
+#: site/install/install-2.10.ihtml:330 site/install/install-2.8.ihtml:175
+#: site/install/install-2.12.ihtml:309 site/install/install-2.13.ihtml:282
 msgid "warning"
 msgstr "advertencia"
 
+#: site/install/install-2.12.ihtml:269
+#, c-format
+msgid ""
+"A text-based program, not graphical.  For more information, see <a href='%"
+"s'>the LilyPond help page</a>."
+msgstr ""
+
+#: site/install/install-2.13.ihtml:287 site/install/install-2.13.ihtml:268
+#: site/install/install-2.13.ihtml:244 site/install/install-2.13.ihtml:224
+#: site/install/install-2.13.ihtml:200 site/install/install-2.13.ihtml:155
+#: site/install/install-2.13.ihtml:128 site/install/install-2.13.ihtml:93
+#: site/install/install-2.13.ihtml:67 site/install/install-2.13.ihtml:42
+#, fuzzy
+msgid "LilyPond"
+msgstr "¿Por qué usar LilyPond?"
+
+#~ msgid "Options"
+#~ msgstr "Opciones"
+
+#~ msgid "In natura"
+#~ msgstr "En especie"
