@@ -266,9 +266,8 @@
       <br>
     </strong>
     <em>
-    _("A text-based program, not graphical.  For more information, see <a href='%s'>%s</a>.",
-   "http://lilypond.org/web/help/",
-   "the LilyPond help page")
+    _("A text-based program, not graphical.  For more information, see <a href='%s'>the LilyPond help page</a>.",
+   "http://lilypond.org/web/help/")
    </em>
   </td>
   <td>@v2.12-mingw-VERSION@</td>
