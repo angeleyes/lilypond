@@ -23,11 +23,11 @@ RedirectMatch ^(/doc/(v2.[67]|latest).*)/out-www(.*)$ $1$3
 RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3
 RedirectMatch ^(.*/)(news)(.[.a-z]*html)$ $1NEWS$3
 
-RedirectMatch ^/music-glossary /doc/v2.10/Documentation/user/music-glossary/index.html
-RedirectMatch ^/tutorial /doc/v2.10/Documentation/user/lilypond/Tutorial.html
-RedirectMatch ^/documentation /doc/v2.10/
+RedirectMatch ^/music-glossary /doc/v2.12/Documentation/user/music-glossary/index.html
+RedirectMatch ^/tutorial /doc/v2.12/Documentation/user/lilypond/Tutorial.html
+RedirectMatch ^/documentation /doc/v2.12/
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
-RedirectMatch ^/wiki	http://afavant.elte.hu/lywiki
+RedirectMatch ^/wiki	http://wiki.lilynet.net
 
 # ./web redirects
 RedirectMatch ^/pdflink$ /web/switch/advantages.html
@@ -51,11 +51,11 @@ RedirectMatch ^/download/(v[0-9][.][0-9].*)$ /download/sources/$1
 # default doc dir
 RedirectMatch ^/doc/*$ /doc/v2.10
 # make attempt at `latest' symlink avoid ^v catch-all doc fix rule below
-RedirectMatch ^/doc//*latest/*(.*)$ /doc/v2.11/$1
-RedirectMatch ^/doc//*development/*(.*)$ /doc/v2.11/$1
-RedirectMatch ^/doc//*stable/*(.*)$ /doc/v2.10/$1
-RedirectMatch ^/doc//*([^v].*)$ /doc/v2.10/$1
-RedirectMatch ^(/Documentation.*)$ /doc/v2.10$1
+RedirectMatch ^/doc//*latest/*(.*)$ /doc/v2.13/$1
+RedirectMatch ^/doc//*development/*(.*)$ /doc/v2.13/$1
+RedirectMatch ^/doc//*stable/*(.*)$ /doc/v2.12/$1
+RedirectMatch ^/doc//*([^v].*)$ /doc/v2.12/$1
+RedirectMatch ^(/Documentation.*)$ /doc/v2.12$1
 
 # fix root calculation: no double slashes
 RedirectMatch ^(.*/)/+(.*)$ $1$2
@@ -69,3 +69,6 @@ AddCharset utf-8 .es
 AddCharset utf-8 .fr
 AddCharset utf-8 .nl
 AddCharset utf-8 .txt
+
+# fix broken auto language selection for Hungarian
+AddLanguage hu .hu
