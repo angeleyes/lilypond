@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-22 22:49+0200\n"
-"PO-Revision-Date: 2009-02-09 11:12+0100\n"
+"PO-Revision-Date: 2009-05-25 16:42+0200\n"
 "Last-Translator: Francisco Vila <francisco.vila@hispalinux.es>\n"
-"Language-Team: Español\n"
+"Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -153,13 +153,12 @@ msgid "Store notes in variable"
 msgstr "Almacenar notas en una variable"
 
 #: site/graphics/naive-notation.svg:675
-#, fuzzy
 msgid "measures"
-msgstr "Características"
+msgstr "compases"
 
 #: site/graphics/naive-notation.svg:695
 msgid "staff"
-msgstr ""
+msgstr "pentagrama"
 
 #: site/graphics/annotate-example-1.svg:195
 msgid "Commands start with \\"
@@ -304,18 +303,14 @@ msgid ""
 "A text-based program, not graphical.  For more information, see <a href='%"
 "s'>the LilyPond help page</a>."
 msgstr ""
+"Un programa basado en texto, no gráfico. Para más información consulte <a href='%"
+"s'>la página de ayuda de LilyPond</a>."
 
 #: site/install/install-2.13.ihtml:287 site/install/install-2.13.ihtml:268
 #: site/install/install-2.13.ihtml:244 site/install/install-2.13.ihtml:224
 #: site/install/install-2.13.ihtml:200 site/install/install-2.13.ihtml:155
 #: site/install/install-2.13.ihtml:128 site/install/install-2.13.ihtml:93
 #: site/install/install-2.13.ihtml:67 site/install/install-2.13.ihtml:42
-#, fuzzy
 msgid "LilyPond"
-msgstr "¿Por qué usar LilyPond?"
+msgstr "LilyPond"
 
-#~ msgid "Options"
-#~ msgstr "Opciones"
-
-#~ msgid "In natura"
-#~ msgstr "En especie"
