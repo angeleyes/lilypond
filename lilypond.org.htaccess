@@ -28,6 +28,7 @@ RedirectMatch ^/tutorial /doc/v2.12/Documentation/user/lilypond/Tutorial.html
 RedirectMatch ^/documentation /doc/v2.12/
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
 RedirectMatch ^/wiki	http://wiki.lilynet.net
+RedirectMatch ^/news   /doc/v2.12/Documentation/topdocs/NEWS
 
 # ./web redirects
 RedirectMatch ^/pdflink$ /web/switch/advantages.html
@@ -49,7 +50,7 @@ RedirectMatch ^/web/doawnload(.*)$ /web/install$1
 RedirectMatch ^/download/(v[0-9][.][0-9].*)$ /download/sources/$1
 
 # default doc dir
-RedirectMatch ^/doc/*$ /doc/v2.10
+RedirectMatch ^/doc/*$ /doc/v2.12
 # make attempt at `latest' symlink avoid ^v catch-all doc fix rule below
 RedirectMatch ^/doc//*latest/*(.*)$ /doc/v2.13/$1
 RedirectMatch ^/doc//*development/*(.*)$ /doc/v2.13/$1
