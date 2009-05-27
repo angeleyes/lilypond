@@ -20,17 +20,19 @@ RedirectMatch ^(/doc/(v2.[67]|latest).*)/out-www(.*)$ $1$3
 ## UGH breaks documentation binary platform
 #RedirectMatch ^(.*/)(documentation)(/.*)$ $1Documentation$3
 #RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3?warning=your-browser-is-broken [L,QSA]
-RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3
-RedirectMatch ^(.*/)(news)(.[.a-z]*html)$ $1NEWS$3
+RedirectMatch ^(.+/)(authors)(.[.a-z]*html)?$ $1AUTHORS$3
+RedirectMatch ^(.+/)(news)(.[.a-z]*html)?$ $1NEWS$3
 
-RedirectMatch ^/music-glossary /doc/v2.12/Documentation/user/music-glossary/index.html
-RedirectMatch ^/tutorial /doc/v2.12/Documentation/user/lilypond/Tutorial.html
-RedirectMatch ^/documentation /doc/v2.12/
+# Permanent top level entry points -- ./doc
+RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary/index.html
+RedirectMatch ^/tutorial /doc/Documentation/user/lilypond/Tutorial.html
+RedirectMatch ^/documentation /doc
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
 RedirectMatch ^/wiki	http://wiki.lilynet.net
-RedirectMatch ^/news   /doc/v2.12/Documentation/topdocs/NEWS
+RedirectMatch ^/authors /doc/Documentation/topdocs/AUTHORS
+RedirectMatch ^/news    /doc/Documentation/topdocs/NEWS
 
-# ./web redirects
+# Permanent top level entry points -- ./web
 RedirectMatch ^/pdflink$ /web/switch/advantages.html
 RedirectMatch ^/$ /web
 RedirectMatch ^/mingit.* /git/binaries/mingw/
