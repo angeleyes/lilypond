@@ -145,6 +145,10 @@ endef
 $(foreach lang,$(LANGUAGES),$(eval $(call LANGUAGE_template,$(lang))))
 
 check-translation:
+	@echo Master site/ is at:
+	@echo
+	@git rev-parse origin/web
+	@echo
 	python $(SCRIPTDIR)/check-translation.py $(HTML)
 
 diff: check-translation
