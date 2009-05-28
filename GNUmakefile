@@ -3,7 +3,9 @@
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = de es fr nl ja hu
 
-.PHONY: add all clean default dist menuify out scripts site TAGS tree $(LANGUAGES)
+.PHONY: add all clean default dist menuify out scripts site TAGS tree
+.PHONY: $(LANGUAGES)
+.PHONY: check-translation diff
 
 PYTHON = python
 SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
@@ -144,6 +146,8 @@ $(foreach lang,$(LANGUAGES),$(eval $(call LANGUAGE_template,$(lang))))
 
 check-translation:
 	python $(SCRIPTDIR)/check-translation.py $(HTML)
+
+diff: check-translation
 
 png: $(SVG:site/graphics/%.svg=out/site/graphics/%.$(LANG).png)
 
