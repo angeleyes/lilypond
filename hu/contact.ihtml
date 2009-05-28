@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT committish: 15edeaaf2e91dc94cb0e8bc00d954e158936c064
+    Translation of GIT committish: 8f7fd0d40dc30800bf94a53f8a3ba5e44d25322c
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -64,10 +64,10 @@ Ez a
     <a href="http://mail.gnu.org/archive/html/lilypond-devel/">archívum</a>)
   </dd>
 
-  <dt>Közvetlen üzenet küldése a fejlesztőknek:</dt>
+  <dt>Közvetlen üzenet küldése a készítőknek:</dt>
     <dd>
     Lásd a
-    <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">fejlesztők listáját</a>.
+    <a href="@DOC@stable/Documentation/topdocs/AUTHORS.html">közreműködők listáját</a>.
     (<em>Kizárólag személyes kommunikáció céljára!</em>)
   </dd>
 </dl>
