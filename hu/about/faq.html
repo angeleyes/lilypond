@@ -1,0 +1,312 @@
+<!--
+    Translation of GIT committish: 9585a1c690f11a983bba45108560600a4d9d2f33
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<title>Gyakran Ismételt Kérdések</title>
+<h1>Gyakran Ismételt Kérdések</h1>
+
+<h2>Bevezetés</h2>
+
+<h3>Mi a LilyPond?</h3>
+<p>
+A LilyPond egy automatizált kottaszedő rendszer.
+Gyönyörűen formázza meg a kottát anélkül, hogy tipográfiai szaktudást igényelne a felhasználóktól.
+</p>
+
+
+<h3>Automatikus kottázás &ndash; tehát ez azt jelenti, hogy lejátszom a lekottázandó darabot, és egyből látom nyomtatásban?</h3>
+
+<p>
+Nem. A rendszer a bemeneti adatokat egy pontosan meghatározott szöveges formában várja.
+A kottanyomtatás már önmagában elég bonyolult feladat, és nem akartuk még egy problémával bonyolítani a helyzetet.
+Egy zenész játékát lekottázni nagyon nehéz, és nem is mindig tehető meg egyértelműen.
+Tegyük fel, hogy egy MIDI-billentyűzeten játszik a zenész (egy többszólamú hangfelvétel lekottázása meghaladja a jelenlegi technológia képességeit).
+Sem a hangmagasság, sem a ritmus nem egyértelmű. Például hogyan tegyünk különbséget egy <i>fisz</i> és egy <i>gesz</i> hang, vagy egy nyolcad és egy staccato negyed között?
+A másik gond, hogy az a személy, aki a kottát betáplálja a gépbe, nem biztos, hogy el tudja egyáltalán játszani azt.
+</p>
+
+<h3>Sok más program létezik, ami a számítógépes kottanyomtatással foglalkozik. Mi olyan különleges a tiétekben?</h3>
+
+<p>
+A mai számítógéppel szedett kották nem néznek ki jól: üres, mechanikus kinézetük van.
+Ezzel szemben mi a hagyományos, kézzel történő szedési technikákat próbáltuk reprodukálni, minden apróságra figyelve, mint például a kottaelemek elhelyezése, a kottakép által keltett első benyomás vagy a kotta szimbólumainak gondos megtervezése.
+Ebből kifolyólag a LilyPond kimenetének szépsége és olvashatósága messze felülmúlja versenytársaiét.
+</p>
+
+<h3>Mi a gond a többi program által előállított kottával?</h3>
+<p>
+<ul>
+<li>
+Ezekből a kottákból hiányoznak az elrendezés apró egyenetlenségei, s ez a kottának mechanikus megjelenést kölcsönöz.
+<li>A különböző szimbólumok közötti ütközések elkerülése végett ezek messze kerülnek egymástól, aminek az az eredménye, hogy a kotta túl szellős lesz.
+<li>A szellősséghez a vonalvastagság is hozzájárul: a jelek túl karcsúak, a vonalak túl vékonyak.
+<li>A gerendák nem fedik le teljesen a vonalakat, míg az ívekkel gyakran érintkeznek, és ez zavaró fekete foltokhoz és kicsi fehér háromszögletű területekhez vezet az ilyen helyeken.
+</ul>
+</p>
+
+<p>
+Ezeket a részleteket csak tudat alatt érzékeli az ember. A legjobb módszer, hogy ezekre a különbségekre felfigyeljünk, ha összehasonlítunk egy kézzel és egy számítógéppel készült kottakiadást. Ha nagyítót használunk, a különbség még szembetűnőbb. Amiről biztosan felismerjük a fotografikus igényességel elvégzett kézi szedést, hogy a jelek elhelyezése nem teljesen egyenletes, valamint aprócska foltok figyelhetők meg rajta, melyek a sokszorosítási folyamat velejárói.
+</p>
+
+<h3>Mi az a kottaszedés?</h3>
+<p>
+Kezdetben a kottákat hagyományos, kézi nyomdai módszerekkel nyomtatták.
+A kottát tükrözött formában vitték fel tintával fémlemezekre, rányomták a papírlapot, majd leszedték róla.
+Akkoriban ez a szedés jelentette a professzionális tipográfiát.
+Manapság a kotta már számítógéppel készül, de az elnevezés megmaradt.
+Az ezzel foglalkozó emberek a kottaszedők vagy kottamásolók.
+</p>
+
+<h3>Miért törődtök ennyire a kottaszedéssel?</h3>
+<p>
+Úgy gondoljuk, hogy a gyönyörű zene gyönyörű kottaképet érdemel.
+</p>
+
+<h3>Miért törődjek én ennyire a kottaszedéssel?</h3>
+<p>
+A jó kottakép segít a kottaolvasásban, és megkönnyíti a kottából történő játékot.
+Például ha a kotta elrendezése a darab karakterét tükrözi, akkor könnyebb azonosulni vele.
+Az is előnyös, ha kevesebb oldalra fér ki a kotta, hisz így kevesebbet kell lapozni.
+Ha egy szisztéma kinézete jól megkülönböztethető a többiétől, akkor könnyebb visszatalálni rá, miután a karmesterre nézett az ember.
+A vastag vonalakkal rendelkező kottát pedig könnyebb elolvasni messziről.
+</p>
+
+<p>
+<h3>Azt állítjátok, hogy a programotok különleges; csak nem akarjátok eladni?</h3>
+
+<p>
+Nem. A program ingyenes. <a href="../install">Itt</a> máris letöltheted.
+</p>
+
+<h3>Most még lehet, hogy ingyenes, de később fogtok érte pénzt kérni?</h3>
+
+<p>
+Nem. Nem csak hogy ingyenes a program, de a teljes forráskódja elérhető, szabadon terjeszthető és módosítható.
+Más szóval a LilyPond szabad szoftver; a GNU projekt része, és a <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License</a> feltételeinek megfelelően terjeszthető.
+</p>
+
+<p>
+Véleményünk szerint ez még sokkal fontosabb, mint az ingyenesség.
+Mindez azt jelenti, hogy szabadon javíthatod és bővítheted a programot, vagy akár másnak fizethetsz annyit, amennyit te szeretnél, hogy ezt megtegye.
+Nem kényszerítünk arra, hogy frissítsd a rendszeredet a program miatt, és nincs mindennek vége, ha a kezdeti fejlesztők már nem fejlesztik tovább, mert mások átveszik tőlük a feladatot.
+</p>
+
+<h2>A programról</h2>
+
+
+<h3>Hogyan kell használni a LilyPondot?</h3>
+
+<p>
+A LilyPond olyan, mint egy fordítóprogram: a kottát szöveges formában kell leírni egy <tt>.ly</tt> kiterjesztésű fájlban.
+A LilyPond ezt alakítja át nyomtatható kottává, amit PDF, PostScript, SVG vagy PNG formátumban ment el.
+</p>
+
+<h3>Milyen a bemeneti formátum?</h3>
+<p>
+Kialakítottunk egy saját leíró nyelvet, az <tt>.ly</tt> formátumot.
+Ez egy olyan nyelv, ami ún. zenei kifejezésekből épül fel.
+Ezek a zenei kifejezések egyszerűbb kifejezésekből állnak, a legegyszerűbb elemek a hangok és szünetek.
+Mindez a matematikai kifejezésekhez hasonló, amik zárójelek segítségével egyszerűbb kifejezésekből építhetőek fel, a legegyszerűbb kifejezések pedig a számok és a műveletek.
+</p>
+
+
+<h3>Már sok jó formátum létezik, miért nem használjátok az ABC-t, a MusicXML-t, a NIFF-et vagy a DARMS-ot?</h3>
+
+A következő követelményeink vannak a formátummal szemben:
+<ul>
+  <li>
+    legyen szöveges,
+  </li>
+  <li>
+  legyen elég tömör ahhoz, hogy kézzel lehessen szerkeszteni,
+  </li>
+  <li>
+  legyen formálisan specifikálva,
+  </li>
+  <li>
+  legyen elég kifejező ahhoz, hogy sokfajta kottaelemet és stílust támogasson.
+  </li>
+</ul>
+
+<p>
+Sajnos a jelenlegi formátumok közül egy sem teljesíti az összes követelményt.
+Például a MusicXML alkalmatlan emberi szerkesztésre, a DARMS alkalmazása behatárolt, az ABC-nek nincs formális definíciója, a NIFF pedig bináris formátum.
+Mindazonáltal ettől még használhatod ezeket a formátumokat: léteznek olyan szűrők, melyek sokfajta állományt képesek <tt>.ly</tt> formátumúvá alakítani.
+</p>
+
+<h3>Hogy tanulhatom meg a nyelvtant?</h3>
+<p>
+Olvasd el az <a href="@DOC@stable/Documentation/user/lilypond-learning/Tutorial.html">első leckét</a> a tankönyvből.
+Elég rövid, könnyen megemészthető részekből áll, és sok munkát fektettünk a tökéletesítésébe.
+Ha úgy tudsz könnyebben tanulni, hogy meglévő példákat próbálsz ki, ezt a dokumentáció kottát ábrázoló képeire kattintva megteheted.
+</p>
+
+<h3>Miért változtatjátok meg folyton a szintaxist?</h3>
+<p>
+Szeretnénk, ha a LilyPond a lehető legjobb lenne, és ehhez sajnos a bemeneti formátumát is folyamatosan fejlesztenünk kell.
+Természetesen csak akkor változtatjuk meg a nyelvtant, ha úgy érezzük, hogy ez leegyszerűsíti a nyelvet, vagy megkönnyíti a tanulási folyamatot.
+A nyelv jelenlegi formája azért ilyen jó, mert régen így jártunk el.
+</p>
+<p>
+A nyelv változásainak legtöbbje egyszerűen kezelhető a LilyPond mellé adott <tt>convert-ly</tt> segédprogrammal.
+Azonban a <tt>convert-ly</tt> csak akkor tudja elvégezni a dolgát, ha tudja, hogy az eredeti fájl melyik verzióhoz készült.
+Emiatt fontos, hogy minden fájl elejére odaírjuk a verziómegjelölést, például:
+<xmp>
+    \version "1.3.17" </xmp>
+</p>
+<p>
+Csak a fő verziószám növelése esetén vezetünk be olyan változásokat, amik nem kezelhetőek le egyszerű szöveges helyettesítéssel:
+az 1.8 verzióról a 2.0 verzióra konvertált fájlok utólagos ellenőrzést kívánnak.
+</p>
+
+<h3>Milyen gyorsan lehet kottát írni a LilyPonddal?</h3>
+
+<p>
+Erre nincs egyértelmű válasz, mert az igénybe vett idő függ a zene bonyolultságától és attól, hogy milyen folyékonyan tudsz a LilyPond nyelvén írni.
+A bonyolult jelenségeket (kottasorok közötti gerendázás, polifonikus ütközések) tartalmazó zene bevitele több ideig tart, mint az egyszerű, egyszólamú zenéé.
+Tapasztalt felhasználók arról számoltak be, hogy teljesen egyszerű, egyszólamú zenei idézetek begépelésénél akár 3,5 oldal/óra átlagos sebességet is elértek mindössze egy szövegszerkesztő segítségével.
+Ez az idő már magában foglal hibajavításokat és kisebb finomhangolásokat is.
+</p>
+
+
+<h3>Mit tegyek, ha szeretném a MIDI-billentyűzetemet használni a bevitelre?</h3>
+
+
+Próbáld ki a következő megoldások valamelyikét:
+
+<ul>
+  <li>
+    Hans Lub
+    <a href="http://mail.gnu.org/archive/html/gnu-music-discuss/2001-10/msg00018.html">emacs/MIDI beviteli módja</a>
+  </li>
+  <li>
+    Nicholas Sceaux
+    <a href="http://nicolas.sceaux.free.fr/lilypond">Emacs/MIDI beviteli módja</a>
+
+  <li>
+    <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>,
+    egy parancssori egyszólamú MIDI/lilypond beviteli eszköz
+  </li>
+
+  <li>
+    <a href="http://lilycomp.sf.net">LilyComp</a>, egy grafikus beviteli segéd azok számára, akik nem tudnak olyan jól kottát olvasni
+  </li>
+</ul>
+
+<h3>Mi legyen akkor, ha nem akarok még egy nyelvtant megtanulni?</h3>
+<p>
+Vannak más lehetőségek is: más formátumokból át lehet konvertálni a kottát LilyPondba. A támogatott formátumok többek között:
+</p>
+
+<dl>
+  <dt>
+    MIDI</dt><dd>A LilyPond midi2ly segédprogramja a MIDI fájlokat LilyPonddá alakítja.
+  </dd>
+
+  <dt>
+    ETF</dt><dd>A LilyPond etf2ly segédprogramja a Finale ETF fájljait LilyPonddá alakítja (<a href="../devel/misc/etfformat.html">az ETF-ről itt olvashatsz</a>).
+  </dd>
+
+  <dt>
+    ABC</dt><dd>A LilyPond abc2ly segédprogramja a népszerű ABC formátumot alakítja át LilyPonddá
+(<a href="http://www.gre.ac.uk/~c.walshaw/abc/">az ABC-ről itt olvashatsz</a>).
+  </dd>
+
+  <dt>
+    MusicXML</dt><dd>A LilyPond musicxml2ly segédprogramja, ill. Guido Amoruso <a
+    href="http://lists.gnu.org/archive/html/lilypond-user/2005-12/msg00107.html">xml2ly</a> nevű programja
+képes a MusicXML-LilyPond konverzióra (<a
+    href="http://www.musicxml.org/">a MusicXML-ről itt olvashatsz</a>).</dd>
+
+  <dt>
+    NoteWorthy</dt><dd>Mike Wiering <a
+    href="http://nwc2ly.sourceforge.net/">nwc2ly</a> beépülő moduljával az NWC fájlok LilyPonddá alakíthatóak.</dd>
+
+  <dt>
+  Band In A Box</dt><dd>  Alain Brenzikofer <a
+     href="http://www.brenzi.ch/builder.php?content=projects_biabconverter">biabconverter</a> nevű programja
+     képes a Band-in-a-box fájlok LilyPonddá alakítására.
+
+     </dd>
+
+</ul>
+
+
+<h3>Nem lehetne egy grafikus felhasználói felülete a programnak?</h3>
+<p>
+Nincs időnk arra, hogy grafikus felületet is készítsünk.
+Szerencsére más emberek pótolták ezt a hiányosságot.
+A következő programok alkalmasak a LilyPond-exportálásra, és legtöbbjüket aktívan fejlesztik:
+</p>
+
+<ul>
+  <li>
+    <a href="http://noteedit.berlios.de/">
+      NoteEdit</a> (már nem fejlesztik)
+  </li>
+  <li>
+    <a href="https://canorus.berlios.de/">Canorus</a>,
+      a NoteEdit fejlesztés alatt álló utódja
+  </li>
+  <li>
+    <a href="http://www.rosegardenmusic.com/">RoseGarden</a>
+  </li>
+</ul>
+Vannak más, nem WYSIWYG felületek is:
+
+<ul>
+  <li> <a href="http://www.volny.cz/smilauer/rumor/rumor.html">RUMOR</a>,
+  egy olyan felület, ami megkönnyíti a LilyPond MIDI-billentyűzetről történő bevitelét.
+  </li>
+  <li><a
+	 href="http://nicolas.sceaux.free.fr/lilypond/lyqi.html">LyQI</a>, egy olyan emacs modul, amely
+	 a számítógép billentyűzetét egy zongora billentyűzetére képezi le. Képes a RUMOR-ral együttműködni.
+  </li>
+</ul>
+
+
+<h2>Támogatás</h2>
+
+<h3>Honnan kaphatok segítséget, ha nem sikerül telepítenem vagy lefordítanom a programot?</h3>
+<p>
+Ha letöltöttél egy futtatható csomagot, de nem sikerül telepíteni, vagy nem tudod követni az utasításokat, küldj egy teljes hibajelentést a <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">hibalistára</a>. Bármikor segítséget kérhetsz a <a
+href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypond-user</a> levelezőlistán.
+</p>
+
+<h3>Hova forduljak segítségért, ha nem sikerül valami?</h3>
+<p>
+Írhatsz a lilypond-user levelezőlistára (címe: <a
+href="http://mail.gnu.org/mailman/listinfo/lilypond-user">http://mail.gnu.org/mailman/listinfo/lilypond-user</a>).
+Mindenképpen először a lista archívumában keresd a megoldást,
+ennek címe <a
+href="http://mail.gnu.org/archive/html/lilypond-user">http://mail.gnu.org/archive/html/lilypond-user</a>.
+</p>
+
+<a name="bugreport"></a>
+
+<h3>Kinek mondjam el, ha találtam egy szoftverhibát?</h3>
+
+<p>
+Ha van egy olyan bemeneti fájlod, amelytől elszáll vagy hibás kimenetet ad a program, akkor az egy szoftverhiba.
+Segíts azzal, hogy jól leírod a problémát: küldesz egy rövid bemeneti fájlt, ami csak a problémás részt tartalmazza, megmondod, melyik verziót használod, és milyen operációs rendszeren. Fontold meg a <a href="@DEPTH@/devel/participating/bugs">tanácsokat</a>, és küldd el a hibajelentést a <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">bug-lilypond@gnu.org</a> címre.
+</p>
+
+<h3>Nem lehetne ezt és ezt a funkciót megvalósítani?</h3>
+
+<p>
+Dehogynem! <a href="../sponsor">Itt</a> tudsz érdeklődni arról, hogy kérheted egy új funkció megvalósítását.
+
+  
+</p>
+
+<h3>Mi ebben a nehéz, hisz csak így meg így ki kell bővíteni a nyelvtant?</h3>
+
+<p>
+Azt gondolná az ember, hogy mindössze az új funkció szintaxisának kitalálása megoldja a problémát.
+A valóságban a program kevesebb, mint 10%-a foglalkozik a nyelvtan értelmezésével.
+Az új funkciók hozzáadása szinte mindig sokkal többet jelent, mint a hozzá tartozó parancs felismerése, és legtöbbször sokkal bonyolultabb annál.
+</p>

@@ -1,0 +1,80 @@
+<!--
+    Translation of GIT committish: 9585a1c690f11a983bba45108560600a4d9d2f33
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<title>Kortárs notáció</title>
+
+
+<body>
+Az ember, látván, hogy a LilyPond a klasszikus zene lejegyzésére összpontosít, elbizonytalanodhat afelől, hogy vajon képes-e modern zene lekottázására.
+Szerencsére a válasz egy határozott <b>igen</b>.
+
+
+<h2>&bdquo;Nézd, mama, hackelés nélkül ment!&rdquo;</h2>
+
+Bármilyen kotta generálása egyszerű szöveges parancsokkal lehetséges.
+Ha <em>avantgarde</em> zenét kottázol, biztosan tetszeni fog a Lily rugalmassága az ütemek és az ütemmutatók kezelésében.
+Íme, itt egy példa, mely egymásba ágyazott n-olákat tartalmaz.
+A hangok vízszintes elhelyezése pontosan a hosszúságukkal arányos.
+A hangoknak nem kell pontosan kitölteniük az ütemet, és két hang csak akkor kerül egymás alá, ha pontosan egyszerre szólalnának meg.
+
+<p>
+<center>
+<a href="http://lilypond.org/doc/latest/input/proportional.pdf">
+<img src="@IMAGES@proportional-fragment.png"></a>
+<p>
+Kattints ide a PDF letöltéséhez</center>
+<p>
+
+Bármely más programban ez jelentős mennyiségű pepecselést igényelne.
+A LilyPondban egyszerűen csak be kell írni a hangokat a ritmusukkal együtt.
+
+<blockquote>
+
+<pre>
+\times 7/9 {
+  \times 4/6 {
+     r8 c32[ c c c c c c c] r4
+     c32[ c32 c16
+  }
+  \times 5/4 {
+    c16 c c] c32[ c32 c16 c] r8
+  }
+}
+</pre>
+</blockquote>
+
+<p>
+
+Ha jártas vagy a Scheme programozási nyelvben, akár algoritmikusan komponálhatsz a LilyPondon belül!
+
+<h2>&ldquo;Nézd, mama, igazán könnyű hackek segítségével ment!&rdquo;</h2>
+
+Bármilyen nem szabványos jelenségre lenne szükséged? Apró trükkök segítségével a LilyPond határtalan rugalmasságából szinte bármit ki tudsz hozni, pl. <a
+href="http://www.shaffermusic.com/doc/schenker/index.html">Schenker-diagramokat</a>.
+
+<p>
+<center>
+<img src="@IMAGES@bach-schenker.png">
+</center>
+
+
+<h2>Grafikai utómunkák</h2>
+
+Ha ez még mindig nem elég, bármikor ráveheted a Lilyt, hogy SVG fájlt generáljon, és ezt bármelyik SVG-szerkesztő programmal, pl. az <a href="http://www.inkscape.org">Inkscape</a> segítségével szerkesztheted!
+
+<p>
+
+<center>
+<img src="@IMAGES@lily-in-inkscape.png">
+</center>
+
+
+<p>
+Vissza a <a href="tour">bemutatóhoz</a>
+
+</body>
