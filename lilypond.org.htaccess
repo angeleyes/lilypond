@@ -24,8 +24,8 @@ RedirectMatch ^(.+/)(authors)(.[.a-z]*html)?$ $1AUTHORS$3
 RedirectMatch ^(.+/)(news)(.[.a-z]*html)?$ $1NEWS$3
 
 # Permanent top level entry points -- ./doc
-RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary/index.html
-RedirectMatch ^/tutorial /doc/Documentation/user/lilypond/Tutorial.html
+RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary
+RedirectMatch ^/tutorial /doc/Documentation/user/lilypond-learning/Tutorial
 RedirectMatch ^/documentation /doc
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
 RedirectMatch ^/wiki	http://wiki.lilynet.net
