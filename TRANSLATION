@@ -13,85 +13,66 @@ The initial delivery of a translation for LILYPOND.ORG is about 3000 words.
 
 Priorities:  1. delivery, 2. later, 3. optional, 4. not to be translated*)
 
-1 about/index.html  --  http://lilypond.org/web/about/index.html
-1 contact.ihtml  --  in http://lilypond.org/web/about/index.html and in http://lilypond.org/web/documentation.html
-1 index.html  --  http://lilypond.org/web/index.html
-1 install/getting-started.html  --  http://lilypond.org/web/install/getting-started.html
-1 install/index.html  --  http://lilypond.org/web/install/index.html
-1 install/macos.html  --  http://lilypond.org/web/install/macos.html
-1 install/using.html  --  http://lilypond.org/web/install/using.html
-1 po/LANGUAGE.po  -- menus and http://lilypond.org/web/switch/howto.html
-1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages.html
-1 switch/howto.html  --  http://lilypond.org/web/switch/howto.html
-1 switch/index.html  --  http://lilypond.org/web/switch/index.html
-1 switch/tour.html  --  http://lilypond.org/web/switch/tour.html
+1 about/index.html  --  http://lilypond.org/web/about/index
+1 contact.ihtml  --  in http://lilypond.org/web/about/index and in http://lilypond.org/web/documentation
+1 index.html  --  http://lilypond.org/web/
+1 install/getting-started.html  --  http://lilypond.org/web/install/getting-started
+1 install/index.html  --  http://lilypond.org/web/install/
+1 install/using.html  --  http://lilypond.org/web/install/using
+1 po/LANGUAGE.po  -- menus and http://lilypond.org/web/switch/howto
+1 switch/advantages.html  --  http://lilypond.org/web/switch/advantages
+1 switch/howto.html  --  http://lilypond.org/web/switch/howto
+1 switch/index.html  --  http://lilypond.org/web/switch/
+1 switch/tour.html  --  http://lilypond.org/web/switch/tour
 
-2 about/browser-language.html -- http://lilypond.org/web/about/browser-language.html
-2 about/features.html  --  http://lilypond.org/web/about/features.html
-2 about/thanks.html  --  http://lilypond.org/web/about/thanks.html
-2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials.html
+2 about/browser-language.html -- http://lilypond.org/web/about/browser-language
+2 about/features.html  --  http://lilypond.org/web/about/features
+2 about/name.html -- http://lilypond.org/web/about/name
+2 about/thanks.html  --  http://lilypond.org/web/about/thanks
+2 switch/new-notation.html -- http://lilypond.org/web/switch/new-notation
+2 switch/testimonials.html  --  http://lilypond.org/web/switch/testimonials
 
-3 about/automated-engraving/*.html -- http://lilypond.org/web/about/automated-engraving/
-3 about/faq.html  --  http://lilypond.org/web/about/faq.html
-3 about/pubs.html  --  http://lilypond.org/web/about/pubs.html 
-3 documentation.html  --  http://lilypond.org/web/documentation.html
-3 install/cygwin.html  --  http://lilypond.org/web/install/cygwin.html
-3 sponsor/index.html  -- http://lilypond.org/web/sponsor/index.html
-3 sponsor/natura.html  -- http://lilypond.org/web/sponsor/natura.html
-3 sponsor/options.html  -- http://lilypond.org/web/sponsor/options.html
+3 about/faq.html  --  http://lilypond.org/web/about/faq
+3 about/pubs.html  --  http://lilypond.org/web/about/pubs
+3 documentation.html  --  http://lilypond.org/web/documentation
 
-4 about/automated-engraving/big-page.html -- http://lilypond.org/web/about/automated-engraving/big-page.html
-4 about/applications/index.html  --  http://lilypond.org/web/about/applications/index.html
+4 about/automated-engraving/*.html -- http://lilypond.org/web/about/automated-engraving/
+4 install/cygwin.html  --  http://lilypond.org/web/install/cygwin
+4 install/macos.html  --  http://lilypond.org/web/install/macos
+4 about/automated-engraving/big-page.html -- http://lilypond.org/web/about/automated-engraving/big-page
+4 about/applications/index.html  --  http://lilypond.org/web/about/applications/
 4 site/devel/*.html
 
  *) The pages marked `4. not to be translated' are mostly out of date,
     need a revision or should be removed before considering a
-    translation.
+    translation. site/devel is a notable exception.
 
 WORD COUNTS FOR CATEGORIES
 
 LANG=C wc --words $(grep ^1 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
-  210 site/about/index.html
-  164 site/contact.ihtml
-  290 site/index.html
-  457 site/install/getting-started.html
-  213 site/install/index.html
-   91 site/install/macos.html
+  211 site/about/index.html
+  168 site/contact.ihtml
+  295 site/index.html
+  165 site/install/getting-started.html
+  257 site/install/index.html
   156 site/install/using.html
   490 site/switch/advantages.html
   293 site/switch/howto.html
-  206 site/switch/index.html
+  219 site/switch/index.html
   479 site/switch/tour.html
- 3049 total
+ 2733 total
 
 LANG=C wc --words $(grep ^2 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
   250 site/about/browser-language.html
-  505 site/about/features.html
-  331 site/about/thanks.html
+  520 site/about/features.html
+  235 site/about/name.html
+  348 site/about/thanks.html
+  288 site/switch/new-notation.html
   730 site/switch/testimonials.html
- 1816 total
+ 2371 total
 
 LANG=C wc --words $(grep ^3 TRANSLATION | cut -d ' ' -f 2 | sed 's@^@site/@')
-  345 site/about/automated-engraving/benchmarking.html
-   89 site/about/automated-engraving/conclusion.html
-  168 site/about/automated-engraving/divide-and-conquer.html
-  259 site/about/automated-engraving/engraving.html
-  241 site/about/automated-engraving/formatting-architecture.html
-  460 site/about/automated-engraving/implementing-notation.html
-  352 site/about/automated-engraving/implementing-typography.html
-  299 site/about/automated-engraving/index.html
-  477 site/about/automated-engraving/input-format.html
-  579 site/about/automated-engraving/introduction.html
-  310 site/about/automated-engraving/problem-statement.html
-  177 site/about/automated-engraving/schubert.html
-  469 site/about/automated-engraving/scoring-esthetics.html
-  666 site/about/automated-engraving/software.html
-  425 site/about/automated-engraving/typography-features.html
- 1799 site/about/faq.html
-  556 site/about/pubs.html
-  173 site/documentation.html
-  501 site/install/cygwin.html
-  200 site/sponsor/index.html
-  134 site/sponsor/natura.html
-  238 site/sponsor/options.html
- 8917 total
+ 1817 site/about/faq.html
+  607 site/about/pubs.html
+  230 site/documentation.html
+ 2654 total
