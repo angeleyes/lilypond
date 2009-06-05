@@ -162,8 +162,8 @@ msgid "staff"
 msgstr "System"
 
 #: site/graphics/annotate-example-1.svg:195
-msgid "Commands start with \\""
-msgstr "Befehle beginnen mit \\""
+msgid "Commands start with \\"
+msgstr "Befehle beginnen mit \\"
 
 #: site/graphics/annotate-example-1.svg:205
 msgid "Letters are notes"
