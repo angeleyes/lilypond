@@ -1,4 +1,4 @@
-<!--
+<!-- -*-html-*-
     Translation of GIT committish: <FILL-IN-HEAD-COMMITTISH>  
 
     When revising a translation, copy the HEAD committish of the
@@ -17,6 +17,14 @@
     <br>
   </dd>
 
+  <dt>Linger with users/developers on #lilypond@irc.freenode.net</dt>
+  <dd>
+    Some level of support is provided on the #lilypond IRC channel at
+    irc.freenode.net.  This channel has no public archive, so any
+    question that may be useful for others would better be posted to
+    one of the mailing lists.
+  </dd>
+  
   <dt>Bug report?</dt>
   <dd>
 <a href="http://lilypond.org/web/devel/participating/bugs">How to report a bug</a>.
