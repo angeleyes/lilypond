@@ -8,7 +8,7 @@
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
     <LINK REL="stylesheet" TYPE="text/css" HREF="@DEPTH@newweb.css">
     <LINK REL="shortcut icon" HREF="@IMAGES@shortcut.png">
-    <LINK REL="alternate" TYPE="application/rss+xml" TITLE="@RSS_TITLE@" HREF="@RSS@"/>
+    <LINK REL="alternate" TYPE="application/rss+xml" TITLE="@RSS_TITLE@" HREF="@RSS@">
     @SCRIPT@
 
 <!-- Google tracking !-->
