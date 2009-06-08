@@ -81,6 +81,8 @@ po-replace: po-update
 endif
 
 EXT = .jpeg .ly .pdf .png .xml
+SOURCE_HTML = $(shell find site -name '*.html')
+SOURCE_IHTML = $(shell find site -name '*.ihtml')
 HTML = $(shell find $(SITE) -name '*.html')
 IHTML = $(shell find site -name '*.ihtml')
 NON_HTML = $(shell find site -false $(EXT:%=-or -name '*%'))
@@ -148,6 +150,12 @@ check-translation:
 	@echo Master site/ is at:
 	@echo
 	@git rev-parse origin/web
+	@echo "$(SITE_HTML)" | tr ' ' '\n' | grep -Ev $(NO_TRANSLATION) | sed 's@^[^/]*/@@' | sort -u > .site.html
+	@echo "$(HTML)" | tr ' ' '\n' | sed 's@^[^/]*/@@' | sort -u > .html
+	@echo
+	@echo Untranslated:
+	@-diff -u .html .site.html | grep '^+[^+]' | sed 's@^+@    @'
+	@rm -f .site.html .html
 	@echo
 	python $(SCRIPTDIR)/check-translation.py $(HTML)
 
