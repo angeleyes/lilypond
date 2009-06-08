@@ -5,7 +5,7 @@ LANGUAGES = de es fr nl ja hu
 
 .PHONY: add all clean default dist menuify out scripts site TAGS tree
 .PHONY: $(LANGUAGES)
-.PHONY: check-translation diff
+.PHONY: check-translation diff new
 
 PYTHON = python
 SCRIPTS = $(wildcard scripts/*.py scripts/*.scm scripts/*.sh)
@@ -153,7 +153,7 @@ check-translation:
 	@echo "$(SITE_HTML)" | tr ' ' '\n' | grep -Ev $(NO_TRANSLATION) | sed 's@^[^/]*/@@' | sort -u > .site.html
 	@echo "$(HTML)" | tr ' ' '\n' | sed 's@^[^/]*/@@' | sort -u > .html
 	@echo
-	@echo Untranslated:
+	@echo Untranslated [run make LANG=$(LANG) new to populate]:
 	@-diff -u .html .site.html | grep '^+[^+]' | sed 's@^+@    @'
 	@rm -f .site.html .html
 	@echo
@@ -167,14 +167,14 @@ show-committish:
 	@$(foreach a, $(wordlist 2,1000,$(MAKECMDGOALS)), \
 		echo -e '\n$(a):\n\n' && \
 		echo -n '    Translation of GIT committish: ';\
-		git-rev-list --max-count=1 HEAD $(a) &&  \
+		git rev-list --max-count=1 HEAD $(a) &&  \
 		echo -e '\n' && ) true\
 	$(eval MAKECMDGOALS=)
 
 new:
 	mkdir -p $(LANG)
 	cd $(LANG) && mkdir -p $(TREE)
-	HEAD=`git-rev-list --max-count=1 HEAD` && \
+	HEAD=`git rev-list --max-count=1 HEAD` && \
 	$(foreach i, $(SITE_HTML), \
 		(test -e $(LANG)/$(i:site/%=%) \
 			|| sed 's/<FILL[^>]*>/'$$HEAD'/g' < $(i) \
