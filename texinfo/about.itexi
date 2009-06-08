@@ -1,35 +1,27 @@
-@node Introduction
-@unnumbered Introduction
-
-@qq{The name is Pond... LilyPond}
-
-@emph{@qq{A thing of beauty is a joy forever} --John Keats}
-
-@image{double-lily}
-
-The inspiration for LilyPond came when two befriended musicians
-got annoyed with the bland and boring look of computer print-outs.
-Every musician prefers reading beautiful music, so couldn't we
-programmers solve that printing problem?
-
-LilyPond just does that: it prints music in the best traditions of
-classical engraving with minimum fuss. Don't waste time on tuning
-spacing, moving around symbols, or shaping slurs. Impress friends
-and colleagues with sharp sheet music!
-
-Have fun!
-
-Han-Wen Nienhuys & Jan Nieuwenhuizen.
+@c -*- coding: utf-8; mode: texinfo; -*-
+@c This file is part of lilypond-general.tely
+@node About
+@unnumbered About
 
 
 @menu
-* Background::                  
+* Automatic engraving essay::   
+* Comparisons::                 
+* Press::                       
+* Acknowledgements::            
+* Dedication::                  
 @end menu
 
 
 
-@node Background
-@unnumberedsec Background
+@node Automatic engraving essay
+@unnumberedsec Automatic engraving essay
+
+@warning{this section came directly from LM 1, with all @@lilypond
+turned into @@verbatim so it would compile.  -gp}
+
+@warning{combine with
+http://lilypond.org/web/about/automated-engraving/ }
 
 This section covers the overall goals and architecture of
 LilyPond.
@@ -840,5 +832,43 @@ By means of a special program, the input fragments can be replaced
 by music images in the resulting PDF or HTML output files.  This
 makes it easy to mix music and text in documents.
 
+
+@node Comparisons
+@unnumberedsec Comparisons
+
+(maybe)  scans comparing lilypond with sibelius, finale, etc.
+
+
+
+@node Press
+@unnumberedsec Press
+
+http://lilypond.org/web/about/pubs
+
+@menu
+* Testimonials::                
+@end menu
+
+@node Testimonials
+@unnumberedsubsec Testimonials
+
+http://lilypond.org/web/switch/testimonials
+
+
+@node Acknowledgements
+@unnumberedsec Acknowledgements
+
+combo of:
+
+http://lilypond.org/web/about/thanks
+
+Documentation/topdocs/AUTHORS.texi
+
+
+@node Dedication
+@unnumberedsec Dedication
+
+taken from:
+http://lilypond.org/web/switch/
 
 

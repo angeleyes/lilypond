@@ -1,0 +1,72 @@
+@c -*- coding: utf-8; mode: texinfo; -*-
+@c This file is part of lilypond-general.tely
+@node Download
+@unnumbered Download
+
+@c @warning{this might replaced with pure HTML post-texi2html.}
+
+@@ifnothtml
+Download LilyPond at @uref{http://lilypond.org/web/download/}.
+@@end ifnothtml
+
+Note: these pages will include links to the STABLE versions only.
+
+@warning{LilyPond is a @strong{text-based} music engraver; it is
+more similar to a programming language than a graphical score
+editing program.  Before downloading LilyPond, please read the
+@ref{Crash course}.}
+
+@menu
+* Linux download::              
+* MacOS X download::            
+* Windows download::            
+* FreeBSD download::            
+* Source download::             
+@end menu
+
+If you consider working software to be overrated, you are welcome
+to download our @ref{Unstable versions}.
+
+
+@node Linux download
+@unnumberedsec Linux download
+
+linux-x86
+
+linux-ppc
+
+linux-64
+
+
+@node MacOS X download
+@unnumberedsec MacOS X download
+
+@warning{Due to changes in MacOS X 10.5 Leopard, the menus in the
+LilyPond Application no longer function.  For information about
+how to use lilypond in 10.5, see @@ref@{something@}.}
+
+darwin-x86
+
+darwin-ppc
+
+
+@node Windows download
+@unnumberedsec Windows download
+
+
+@node FreeBSD download
+@unnumberedsec FreeBSD download
+
+
+
+@node Source download
+@unnumberedsec Source download
+
+We @strong{do not} recommend that you attempt to build LilyPond
+yourself; almost all user needs are better met with the pre-built
+version.  If you have a particular need which requires compiling,
+please see @@ref@{development-install@}.
+
+lilypond-x.y.z-source.tar.bz2
+
+

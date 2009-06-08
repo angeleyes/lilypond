@@ -122,19 +122,19 @@ of this and other documentation.
 * Download::         Get LilyPond.
 * Documentation::    RTFM.
 * Development::      Giving back to the community.
-* About::            Publications and Promotions.
+* About::            Other info
 @end menu
 @end ifnottex
 
 @contents
 
 
-@include home.itely
-@include introduction.itely
-@include download.itely
-@include documentation.itely
-@include development.itely
-@include about.itely
+@include home.itexi
+@include introduction.itexi
+@include download.itexi
+@include documentation.itexi
+@include development.itexi
+@include about.itexi
 
 @bye
 

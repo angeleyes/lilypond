@@ -1,0 +1,45 @@
+@c -*- coding: utf-8; mode: texinfo; -*-
+@c This file is part of lilypond-general.tely
+@node Introduction
+@unnumbered Introduction
+
+LilyPond is a
+...blah blah
+
+@menu
+* Features::                    
+* Examples::                    
+* Crash course::                
+@end menu
+
+
+@node Features
+@unnumberedsec Features
+
+combo of:
+
+http://lilypond.org/web/switch/advantages
+
+http://lilypond.org/web/switch/tour
+
+http://lilypond.org/web/about/features
+
+@node Examples
+@unnumberedsec Examples
+
+Final resting place of the current input/*.ly ghetto.
+
+
+
+
+
+@node Crash course
+@unnumberedsec Crash course
+
+
+(combo of the "Help" page and the "where is the app" from the
+wiki)
+
+
+
+
