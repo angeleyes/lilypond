@@ -96,31 +96,31 @@ much thicker than lines in the computer edition.
 @item @tab
 @ifnotinfo
 @iftex
-@image{henle-flat-gray-big,,4cm}
+@c @image{henle-flat-gray-big,,4cm}
 @end iftex
 @ifnottex
-@image{henle-flat-gray-big,,,png}
+@c @image{henle-flat-gray-big,,,png}
 @end ifnottex
 
 @tab
 @iftex
-@image{baer-flat-gray-big,,4cm}
+@c @image{baer-flat-gray-big,,4cm}
 @end iftex
 @ifnottex
-@image{baer-flat-gray-big,,,png}
+@c @image{baer-flat-gray-big,,,png}
 @end ifnottex
 
 @tab
 @iftex
-@image{lily-flat-bw-big,,4cm}
+@c @image{lily-flat-bw-big,,4cm}
 @end iftex
 @ifnottex
-@image{lily-flat-bw-big,,,png}
+@c @image{lily-flat-bw-big,,,png}
 @end ifnottex
 @end ifnotinfo
 @ifinfo
-@image{lilypond/henle-flat-bw-big,,,png} @image{lilypond/baer-flat-bw-big,,,png}
-@image{lilypond/lily-flat-bw-big,,,png}
+@c @image{lilypond/henle-flat-bw-big,,,png} @image{lilypond/baer-flat-bw-big,,,png}
+@c @image{lilypond/lily-flat-bw-big,,,png}
 @end ifinfo
 
 @item @tab
