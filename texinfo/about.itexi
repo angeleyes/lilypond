@@ -5,12 +5,22 @@
 
 
 @menu
+* Community::                   
 * Automatic engraving essay::   
 * Comparisons::                 
 * Press::                       
+* Testimonials::                
 * Acknowledgements::            
 * Dedication::                  
 @end menu
+
+
+@node Community
+@unnumberedsec Community
+
+mailing lists, irc chat, etc.
+
+http://lilypond.org/web/about/
 
 
 
@@ -845,12 +855,9 @@ makes it easy to mix music and text in documents.
 
 http://lilypond.org/web/about/pubs
 
-@menu
-* Testimonials::                
-@end menu
 
 @node Testimonials
-@unnumberedsubsec Testimonials
+@unnumberedsec Testimonials
 
 http://lilypond.org/web/switch/testimonials
 

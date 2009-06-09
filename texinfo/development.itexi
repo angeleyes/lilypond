@@ -5,19 +5,94 @@
 
 
 @menu
-* Unstable versions::  
+* Help wanted!::                
+* Unstable download::           
+* Unstable documentation::      
+* Contributors' Guide::         
+* Documentation suggestions::       
+* Translations::                
+* Regression tests::            
+* Bibliography::                
 @end menu
 
 
-@node Unstable versions
-@unnumberedsec Unstable versions
+@node Help wanted!
+@unnumberedsec Help wanted!
 
+
+
+@node Unstable download
+@unnumberedsec Unstable download
 
 ... list all 2.13 downloads (no split-page or individual warnings
 here)
 
 
+@node Unstable documentation
+@unnumberedsec Unstable documentation
 
+link to 2.13 stuff, no intros.
+
+
+
+@node Contributors' Guide
+@unnumberedsec Contributors' Guide
+
+
+
+
+@node Documentation suggestions
+@unnumberedsec Documentation suggestions
+
+
+
+@node Translations
+@unnumberedsec Translations
+
+
+@menu
+* Translation status::          
+* Translation guidelines::      
+@end menu
+
+
+@node Translation status
+@unnumberedsubsec Translation status
+
+
+@node Translation guidelines
+@unnumberedsubsec Translation guidelines
+
+CG x.y
+
+
+
+@node Regression tests
+@unnumberedsec Regression tests
+
+@menu
+* Current regtest output::      
+* Comparison regtest output::   
+* MusicXML tests::              
+@end menu
+
+@node Current regtest output
+@unnumberedsubsec Current regtest output
+
+
+@node Comparison regtest output
+@unnumberedsubsec Comparison regtest output
+
+
+@node MusicXML tests
+@unnumberedsubsec MusicXML tests
+
+
+
+@node Bibliography
+@unnumberedsec Bibliography
+
+maybe move into About, or Essay?  probably Essay.
 
 
 
