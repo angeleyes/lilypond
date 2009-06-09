@@ -42,6 +42,7 @@ LilyPond.
 * What symbols to engrave?::    
 * Music representation::        
 * Example applications::        
+* Bibliography::                
 @end menu
 
 
@@ -841,6 +842,12 @@ such as @LaTeX{}, HTML, or in the case of this manual, Texinfo.
 By means of a special program, the input fragments can be replaced
 by music images in the resulting PDF or HTML output files.  This
 makes it easy to mix music and text in documents.
+
+@node Bibliography
+@unnumberedsubsec Bibliography
+
+maybe move into About, or Essay?  probably Essay.
+
 
 
 @node Comparisons

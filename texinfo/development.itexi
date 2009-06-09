@@ -9,10 +9,8 @@
 * Unstable download::           
 * Unstable documentation::      
 * Contributors' Guide::         
-* Documentation suggestions::       
 * Translations::                
 * Regression tests::            
-* Bibliography::                
 @end menu
 
 
@@ -41,14 +39,10 @@ link to 2.13 stuff, no intros.
 
 
 
-@node Documentation suggestions
-@unnumberedsec Documentation suggestions
-
-
-
 @node Translations
 @unnumberedsec Translations
 
+move into CG?
 
 @menu
 * Translation status::          
@@ -87,12 +81,6 @@ CG x.y
 @node MusicXML tests
 @unnumberedsubsec MusicXML tests
 
-
-
-@node Bibliography
-@unnumberedsec Bibliography
-
-maybe move into About, or Essay?  probably Essay.
 
 
 
