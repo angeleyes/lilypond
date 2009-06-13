@@ -110,6 +110,12 @@ Spring::set_min_distance (Real d)
 }
 
 void
+Spring::ensure_min_distance (Real d)
+{
+  set_min_distance (max (d, min_distance_));
+}
+
+void
 Spring::set_inverse_stretch_strength (Real f)
 {
   if (isinf (f) || isnan (f) || f < 0)

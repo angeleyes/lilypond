@@ -2160,9 +2160,6 @@
      . (
 	(after-line-breaking . ,ly:align-interface::stretch-after-break)
 	(axes . (,Y))
-	(max-stretch . 0)
-	(padding . 0.5)
-	(positioning-done . ,ly:align-interface::calc-positioning-done)
 	(stacking-dir . -1)
 	(vertical-skylines . ,ly:axis-group-interface::combine-skylines)
 	(X-extent . ,ly:axis-group-interface::width)

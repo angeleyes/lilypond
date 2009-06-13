@@ -68,6 +68,7 @@
 #include "international.hh"
 #include "item.hh"
 #include "output-def.hh"
+#include "page-layout-problem.hh"
 #include "page-spacing.hh"
 #include "paper-book.hh"
 #include "paper-score.hh"
@@ -331,23 +332,31 @@ Page_breaking::systems ()
   return scm_append (scm_reverse (ret));
 }
 
-Real
-Page_breaking::page_height (int page_num, bool last) const
+SCM
+Page_breaking::make_page (int page_num, bool last) const
 {
   bool last_part = ly_scm2bool (book_->paper_->c_variable ("is-last-bookpart"));
   SCM mod = scm_c_resolve_module ("scm page");
+  SCM make_page_scm = scm_c_module_lookup (mod, "make-page");
+
+  make_page_scm = scm_variable_ref (make_page_scm);
+
+  return scm_apply_0 (make_page_scm,
+		      scm_list_n (book_->self_scm (),
+				  ly_symbol2scm ("page-number"), scm_from_int (page_num),
+				  ly_symbol2scm ("is-last-bookpart"), scm_from_bool (last_part),
+				  ly_symbol2scm ("is-bookpart-last-page"), scm_from_bool (last),
+				  SCM_UNDEFINED));
+}
+
+Real
+Page_breaking::page_height (int page_num, bool last) const
+{
+  SCM mod = scm_c_resolve_module ("scm page");
+  SCM page = make_page (page_num, last);
   SCM calc_height = scm_c_module_lookup (mod, "calc-printable-height");
-  SCM make_page = scm_c_module_lookup (mod, "make-page");
-
   calc_height = scm_variable_ref (calc_height);
-  make_page = scm_variable_ref (make_page);
 
-  SCM page = scm_apply_0 (make_page, scm_list_n (
-                  book_->self_scm (),
-                  ly_symbol2scm ("page-number"), scm_from_int (page_num),
-                  ly_symbol2scm ("is-last-bookpart"), scm_from_bool (last_part),
-                  ly_symbol2scm ("is-bookpart-last-page"), scm_from_bool (last),
-                  SCM_UNDEFINED));
   SCM height = scm_apply_1 (calc_height, page, SCM_EOL);
   return scm_to_double (height) - page_top_space_;
 }
@@ -365,20 +374,57 @@ Page_breaking::breakpoint_property (vsize breakpoint, char const *str)
 }
 
 SCM
-Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
+Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last)
 {
-  SCM layout_module = scm_c_resolve_module ("scm layout-page-layout");
-  SCM page_module = scm_c_resolve_module ("scm page");
+  // Find the correct layout for the systems.
+  Real height = page_height (page_num, last);
+  Page_layout_problem layout (book_, systems);
+  SCM configuration = scm_is_pair (systems) ? layout.solution (height, ragged) : SCM_EOL;
 
-  SCM make_page = scm_c_module_lookup (layout_module, "stretch-and-draw-page");
+  // Create a stencil for each system.
+  SCM paper_systems = SCM_EOL;
+  for (SCM s = scm_reverse (systems); scm_is_pair (s); s = scm_cdr (s))
+    {
+      SCM paper_system = scm_car (s);
+      if (Grob *g = unsmob_grob (scm_car (s)))
+	{
+	  System *sys = dynamic_cast<System*> (g);
+	  paper_system = sys->get_paper_system ();
+	}
+
+      paper_systems = scm_cons (paper_system, paper_systems);
+    }
+
+  // Add a space at the top of the page, if the first system is not a title.
+  if (scm_is_pair (systems) && unsmob_grob (scm_car (systems)))
+    {
+      Prob *p = unsmob_prob (scm_car (paper_systems));
+      Interval staff_extent = robust_scm2interval (p->get_property ("staff-refpoint-extent"),
+						   Interval (0, 0));
+      Real extra_space = max (0.0, page_top_space_ + staff_extent[UP]);
+      for (SCM c = configuration; scm_is_pair (c); c = scm_cdr (c))
+	*SCM_CARLOC (c) = scm_from_double (scm_to_double (scm_car (c)) + extra_space);
+    }
+
+  // Create the page and draw it.
+  SCM page = make_page (page_num, last);
+  SCM page_module = scm_c_resolve_module ("scm page");
   SCM page_stencil = scm_c_module_lookup (page_module, "page-stencil");
-  make_page = scm_variable_ref (make_page);
   page_stencil = scm_variable_ref (page_stencil);
 
-  SCM book = book_->self_scm ();
+  Prob *p = unsmob_prob (page);
+  p->set_property ("lines", paper_systems);
+  p->set_property ("configuration", configuration);
+  scm_apply_1 (page_stencil, page, SCM_EOL);
+
+  return page;
+}
+
+SCM
+Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
+{
   int first_page_number
     = robust_scm2int (book_->paper_->c_variable ("first-page-number"), 1);
-  bool last_bookpart = ly_scm2bool (book_->paper_->c_variable ("is-last-bookpart"));
   SCM ret = SCM_EOL;
   SCM label_page_table = book_->top_paper ()->c_variable ("label-page-table");
   if (label_page_table == SCM_UNDEFINED)
@@ -386,17 +432,15 @@ Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
 
   for (vsize i = 0; i < lines_per_page.size (); i++)
     {
-      SCM page_num = scm_from_int (i + first_page_number);
-      bool partbook_last_page = (i == lines_per_page.size () - 1);
-      SCM rag = scm_from_bool (ragged () || ( partbook_last_page && ragged_last ()));
+      int page_num = i + first_page_number;
+      bool bookpart_last_page = (i == lines_per_page.size () - 1);
+      bool rag = scm_from_bool (ragged () || ( bookpart_last_page && ragged_last ()));
       SCM line_count = scm_from_int (lines_per_page[i]);
       SCM lines = scm_list_head (systems, line_count);
-      SCM page = scm_apply_0 (make_page,
-			      scm_list_n (book, lines, page_num, rag,
-					  scm_from_bool (last_bookpart),
-					  scm_from_bool (partbook_last_page),
-					  SCM_UNDEFINED));
+      SCM page = stretch_and_draw_page (lines, page_num, rag, bookpart_last_page);
+
       /* collect labels */
+      SCM page_num_scm = scm_from_int (page_num);
       for (SCM l = lines ; scm_is_pair (l)  ; l = scm_cdr (l))
 	{
 	  SCM labels = SCM_EOL;
@@ -409,11 +453,10 @@ Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
 	    labels = prob->get_property ("labels");
 
 	  for (SCM lbls = labels ; scm_is_pair (lbls) ; lbls = scm_cdr (lbls))
-	    label_page_table = scm_cons (scm_cons (scm_car (lbls), page_num),
+	    label_page_table = scm_cons (scm_cons (scm_car (lbls), page_num_scm),
 					 label_page_table);
 	}
 
-      scm_apply_1 (page_stencil, page, SCM_EOL);
       ret = scm_cons (page, ret);
       systems = scm_list_tail (systems, line_count);
     }
