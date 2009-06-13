@@ -36,10 +36,137 @@ Final resting place of the current input/*.ly ghetto.
 @node Crash course
 @unnumberedsec Crash course
 
-
 (combo of the "Help" page and the "where is the app" from the
-wiki)
+wiki?)
 
+@subheading Screenshot
+
+LilyPond is a @emph{batch} system: it is run on a text-file
+containing the notes.  The resulting output is viewed on-screen or
+printed.  A screenshot of practical use might look like
+
+@center
+@image{nereid-shot}
+(click to enlarge)
+
+
+@ignore
+<h2>It's as simple as A B C</h2>
+
+Notes are encoded with letters and numbers.  Special commands are
+entered with backslashes.
+
+<p align="center">
+
+  <img src="..//graphics/annotate-example-1"
+       alt="annotate-example-1">
+  <br>
+  <img src="../images/example-1" alt="example-1"> 
+
+<p>
+  Alterations are made with different names: add -is for sharp,
+and -es
+  for flat (these are Dutch note names, other languages are
+  available).  LilyPond figures out where to put accidentals.
+</p>
+
+<p align="center">
+  <img src="..//graphics/annotate-example-2"
+       alt="annotate-example-2">
+  <br>
+  <img src="../images/example-2" alt="example-2">
+
+</p>
+
+<h2>Pop music</h2>
+
+<p>
+ Put chords and lyrics together to get a lead sheet:
+</p>
+
+<p align="center">
+  <img src="..//graphics/annotate-example-lead"
+       alt="annotate-example-lead">
+  <br>
+  <img src="../images/example-lead" alt="example-lead">
+
+</p>
+
+<h2>Orchestral parts</h2>
+
+<p>
+  <a name="orchestral"></a> The input file contains the notes of
+  piece. Score and parts can be made from a single input file. So,
+  changing a note always affects both parts and score. To  share
+the
+  notes, the music is assigned to a variable:
+</p>
+
+<p align="center">
+  <img src="..//graphics/annotate-example-parts"
+       alt="annotate-example-parts">
+  <br>
+</p>
+
+<p>
+  This variable is then used in a single part (here transposed,
+with
+  condensed multi rests):
+</p>
+
+<p align="center">
+  <img src="..//graphics/annotate-example-single-part"
+       alt="annotate-example-single-part">
+  <br>
+  <img src="../images/example-singlepart"
+alt="example-singlepart">
+</p>
+
+<p>
+  The same variable is used in the full score (here in concert
+pitch):
+
+</p>
+
+<p align="center">
+  <img src="..//graphics/annotate-example-score"
+       alt="annotate-example-score">
+  <br>
+  <img src="../images/example-score" alt="example-score">
+</p>
+
+
+<h2>Learning more</h2>
+
+<a href="../install">Download</a> LilyPond and try the
+
+<a
+href="../../doc/stable/Documentation/user/lilypond-learning/Tutorial">tutorial</a>.
+
+      <!-- END !-->
+      <BR clear="all">
+      <HR>
+    </DIV>
+    <P class="location"><a href="../">Home</a> &gt; <a
+href="../switch">Introduction</a> &gt; <a href="howto">Crash
+course</a></P>
+
+    <P>
+ Other languages: <a href="howto.de.html">Deutsch</a>, <a
+href="howto.es.html">Español</a>, <a
+href="howto.fr.html">Fran&ccedil;ais</a>, <a
+href="howto.nl.html">Nederlands</a>, <a
+href="howto.ja.html">Japanese</a>, <a
+href="howto.hu.html">Magyar</a>.
+ <BR>
+
+ About <A HREF='../about/browser-language'>automatic language
+selection</A>.
+</P>
+
+  </BODY>
+</HTML>
+@end ignore
 
 
 

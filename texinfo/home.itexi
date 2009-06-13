@@ -3,6 +3,43 @@
 @node Home
 @unnumbered Home 
 
-@warning{This is just here to get the "top menu bar" thing.}
+@div-pageHeader
+@heading LilyPond
 
+... music notation for everyone
+@div-end
+
+
+@div-quickSummary
+@subheading Fargle Blag
+
+LilyPond is an open-source music engraving program, devoted to
+producing the highest-quality sheet music possible.
+@div-end
+
+
+@include news.itexi
+
+
+@div-linkList
+@subheading Quick links
+
+@ref{Download, Download 2.12.3}.
+
+@smallspace
+
+@ref{Documentation,Docs 2.12.3}.
+@div-end
+
+
+@div-linkList2
+@subheading Language selection
+
+English
+
+French
+
+TBA
+
+@div-end
 

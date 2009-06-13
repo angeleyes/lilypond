@@ -6,6 +6,42 @@
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
+@macro div-end
+@html
+</div>
+@end html
+@end macro
+
+@macro div-pageHeader
+@html
+<div id="pageHeader">
+@end html
+@end macro
+
+@macro div-quickSummary
+@html
+<div id="quickSummary">
+@end html
+@end macro
+
+@macro div-preamble
+@html
+<div id="preamble">
+@end html
+@end macro
+
+@macro div-linkList
+@html
+<div id="linkList">
+@end html
+@end macro
+
+@macro div-linkList2
+@html
+<div id="linkList2">
+@end html
+@end macro
+
 
 @c @include version.itexi
 
