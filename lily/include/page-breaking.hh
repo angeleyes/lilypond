@@ -195,5 +195,7 @@ private:
   Page_spacing_result finalize_spacing_result (vsize configuration_index, Page_spacing_result);
   void create_system_list ();
   void find_chunks_and_breaks (Break_predicate);
+  SCM make_page (int page_num, bool last) const;
+  SCM stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last);
 };
 #endif /* PAGE_BREAKING_HH */

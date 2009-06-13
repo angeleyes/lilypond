@@ -176,10 +176,10 @@ get_skylines (Grob *me,
 }
 
 vector<Real>
-Align_interface::get_extents_aligned_translates (Grob *me,
-						 vector<Grob*> const &all_grobs,
-						 Axis a,
-						 bool pure, int start, int end)
+Align_interface::get_minimum_translations (Grob *me,
+					   vector<Grob*> const &all_grobs,
+					   Axis a,
+					   bool pure, int start, int end)
 {
   Spanner *me_spanner = dynamic_cast<Spanner *> (me);
 
@@ -271,7 +271,7 @@ Align_interface::align_elements_to_extents (Grob *me, Axis a)
 {
   extract_grob_set (me, "elements", all_grobs);
 
-  vector<Real> translates = get_extents_aligned_translates (me, all_grobs, a, false, 0, 0);
+  vector<Real> translates = get_minimum_translations (me, all_grobs, a, false, 0, 0);
   if (translates.size ())
     for (vsize j = 0; j < all_grobs.size (); j++)
       all_grobs[j]->translate_axis (translates[j], a);
@@ -317,7 +317,7 @@ Align_interface::get_pure_child_y_translation (Grob *me, Grob *ch, int start, in
     }
   else
     {
-      vector<Real> translates = get_extents_aligned_translates (me, all_grobs, Y_AXIS, true, start, end);
+      vector<Real> translates = get_minimum_translations (me, all_grobs, Y_AXIS, true, start, end);
 
       if (translates.size ())
 	{
@@ -329,7 +329,7 @@ Align_interface::get_pure_child_y_translation (Grob *me, Grob *ch, int start, in
 	return 0;
     }
 
-  programming_error (_ ("tried to get a translation for something that is no child of mine"));
+  programming_error ("tried to get a translation for something that is no child of mine");
   return 0;
 }
 
