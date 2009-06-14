@@ -377,6 +377,7 @@ SCM
 Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last)
 {
   // Find the correct layout for the systems.
+  // FIXME: add page_top_space_ to the height if the first system is a title.
   Real height = page_height (page_num, last);
   Page_layout_problem layout (book_, systems);
   SCM configuration = scm_is_pair (systems) ? layout.solution (height, ragged) : SCM_EOL;
@@ -398,12 +399,8 @@ Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bo
   // Add a space at the top of the page, if the first system is not a title.
   if (scm_is_pair (systems) && unsmob_grob (scm_car (systems)))
     {
-      Prob *p = unsmob_prob (scm_car (paper_systems));
-      Interval staff_extent = robust_scm2interval (p->get_property ("staff-refpoint-extent"),
-						   Interval (0, 0));
-      Real extra_space = max (0.0, page_top_space_ + staff_extent[UP]);
       for (SCM c = configuration; scm_is_pair (c); c = scm_cdr (c))
-	*SCM_CARLOC (c) = scm_from_double (scm_to_double (scm_car (c)) + extra_space);
+	*SCM_CARLOC (c) = scm_from_double (scm_to_double (scm_car (c)) + page_top_space_);
     }
 
   // Create the page and draw it.
@@ -434,7 +431,7 @@ Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
     {
       int page_num = i + first_page_number;
       bool bookpart_last_page = (i == lines_per_page.size () - 1);
-      bool rag = scm_from_bool (ragged () || ( bookpart_last_page && ragged_last ()));
+      bool rag = ragged () || ( bookpart_last_page && ragged_last ());
       SCM line_count = scm_from_int (lines_per_page[i]);
       SCM lines = scm_list_head (systems, line_count);
       SCM page = stretch_and_draw_page (lines, page_num, rag, bookpart_last_page);

@@ -31,14 +31,16 @@ protected:
   static void build_system_skyline (vector<Grob*> const&, vector<Real> const&, Skyline* up, Skyline* down);
 
   // This is a union (in spirit).
-  // Either axis_groups must be empty or prob must be null.
+  // Either staves must be empty or prob must be null.
   typedef struct Element {
-    vector<Grob*> axis_groups;
     Prob *prob;
+    vector<Grob*> staves;
+    Real first_staff_min_translation;
 
-    Element (vector<Grob*> const& a)
+    Element (vector<Grob*> const& a, Real r)
     {
-      axis_groups = a;
+      staves = a;
+      first_staff_min_translation = r;
       prob = 0;
     }
 
@@ -47,6 +49,10 @@ protected:
       prob = p;
     }
   } Element;
+
+  static Interval first_staff_extent (Element const&);
+  static Interval last_staff_extent (Element const&);
+  static Interval prob_extent (Prob*);
 
   vector<Spring> springs_;
   vector<Element> elements_;
