@@ -164,12 +164,6 @@ div#main {
 	text-align:center;
 	}
 
-#preamble {
-	clear: right; 
-	padding: 0px 10px 0 10px;
-	border: 1px solid yellow;
-	}
-
 
 /* specific divs */
 #intro { 
@@ -274,6 +268,29 @@ div#main {
 .accesskey {
 	text-decoration: underline;
 	}
+
+#news {
+  clear: right;
+  padding: 0px 10px 0 10px;
+  border: 3px solid red;
+}
+
+.news-item {
+	clear: right; 
+	padding: 0px 10px 0 10px;
+	border: 2px solid yellow;
+}
+
+.news-title {
+  font-size: large;
+  color: purple;
+  font-weight: bold; 
+}
+
+.news-text p {
+  font: italic normal 1.4em georgia, sans-serif;
+  color: blue;
+}
 
 
 

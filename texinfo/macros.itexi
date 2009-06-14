@@ -6,6 +6,32 @@
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
+@macro news-title{NEWS-TITLE, NEWS-DATE}
+@html
+<div class="news-item">
+  <div class="news-title">\NEWS-TITLE\ (\NEWS-DATE\)</div>
+@end html
+@ifnothtml
+@subsubheading \NEWS-TITLE\ -- \NEWS-DATE\
+@end ifnothtml
+@end macro
+
+@macro news-text
+@html
+  <div class="news-text">
+@end html
+@end macro
+
+@macro news-end
+@html
+  </div>
+</div>
+@end html
+@end macro
+
+
+
+
 @macro div-end
 @html
 </div>
@@ -24,9 +50,9 @@
 @end html
 @end macro
 
-@macro div-preamble
+@macro div-news
 @html
-<div id="preamble">
+<div id="news">
 @end html
 @end macro
 

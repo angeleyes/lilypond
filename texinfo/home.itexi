@@ -18,7 +18,9 @@ producing the highest-quality sheet music possible.
 @div-end
 
 
+@div-news
 @include news.itexi
+@div-end
 
 
 @div-linkList
