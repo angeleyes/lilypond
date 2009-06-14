@@ -45,6 +45,15 @@ layout. Clashes between lyrics, notes, and chords are resolved and
 slurs and beams are sloped, automatically! 
 
 
+@subsubheading Even better than part extraction!
+
+Parts and score are made from the same source file, so every
+change always gets into both score and parts. (demo). In addition,
+LilyPond can combine staves in scores and insert cue-notes from
+other parts.
+
+
+
 @subsubheading Mix music and text
 
 @image-right{lilypond-book}
@@ -53,13 +62,6 @@ Put fragments of music into texts with without cutting and pasting
 pictures. Integrate music into LaTeX or HTML seamlessly, or add
 music to OpenOffice.org with ooolilypond.
 
-
-@subsubheading Even better than part extraction!
-
-Parts and score are made from the same source file, so every
-change always gets into both score and parts. (demo). In addition,
-LilyPond can combine staves in scores and insert cue-notes from
-other parts.
 
 
 @subsubheading Free software
@@ -117,9 +119,11 @@ LilyPond is a @emph{batch} system: it is run on a text-file
 containing the notes.  The resulting output is viewed on-screen or
 printed.  A screenshot of practical use might look like
 
-@center
-@image{nereid-shot}
-(click to enlarge)
+@web-image{nereid-shot-small.png, (click to enlarge), nereid-shot.png, right}
+
+@c @center
+@c @image{nereid-shot}
+@c (click to enlarge)
 
 
 @ignore

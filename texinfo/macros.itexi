@@ -43,6 +43,23 @@
 @end macro
 
 
+@macro web-image{IMAGE-FILE, MORE-TEXT, CLICK-FILE, POSITION}
+@html
+<div id="float-\POSITION\">
+  <a href=\CLICK-FILE\>
+    <img src=\IMAGE-FILE\ alt="\IMAGE-FILE\">
+  </a>
+  <p style="text-align: center">
+    \MORE-TEXT\
+  </p>
+</div>
+@end html
+@ifnothtml
+@image{IMAGE-FILE}
+@end ifnothtml
+@end macro
+
+
 @macro image-right{IMAGE-FILE}
 @html
 <div id="float-right">
@@ -52,6 +69,22 @@
 </div>
 @end html
 @end macro
+
+@macro image-left{IMAGE-FILE}
+@html
+<div id="float-left">
+@end html
+@image{\IMAGE-FILE\}
+@html
+</div>
+@end html
+@end macro
+
+@macro image-center{IMAGE-FILE}
+@center @image{\IMAGE-FILE\}
+@end macro
+
+
 
 @c @include version.itexi
 
