@@ -281,15 +281,15 @@ div#main {
 	border: 2px solid yellow;
 }
 
-.news-title {
+.news-item h3 {
   font-size: large;
-  color: purple;
+  color: red;
   font-weight: bold; 
 }
 
-.news-text p {
+.news-item p {
   font: italic normal 1.4em georgia, sans-serif;
-  color: blue;
+  color: green;
 }
 
 
