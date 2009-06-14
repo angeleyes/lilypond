@@ -10,6 +10,7 @@
 #include "page-layout-problem.hh"
 
 #include "align-interface.hh"
+#include "item.hh"
 #include "output-def.hh"
 #include "paper-book.hh"
 #include "pointer-group-interface.hh"
@@ -28,6 +29,7 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   Real between_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
   bool last_system_was_title = false;
 
+  // FIXME: support the variables in line-break-system-details.
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
     {
       if (Grob *g = unsmob_grob (scm_car (s)))
@@ -39,7 +41,6 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	      continue;
 	    }
 
-	  // TODO: support 'next-space
 	  Spring spring (last_system_was_title ? after_title_space
 			                       : (between_system_space + between_system_padding),
 			 between_system_padding);
@@ -49,6 +50,11 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
       else if (Prob *p = unsmob_prob (scm_car (s)))
 	{
 	  Spring spring (last_system_was_title ? between_title_space : before_title_space, 0.0);
+
+	  SCM next_space = p->get_property ("next-space");
+	  if (scm_is_number (next_space))
+	    spring.set_distance (scm_to_double (next_space));
+
 	  append_prob (p, spring);
 	  last_system_was_title = true;
 	}
@@ -77,27 +83,37 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
     }
 
   extract_grob_set (align, "elements", elts);
-  elements_.push_back (Element (elts));
   vector<Real> minimum_offsets = Align_interface::get_minimum_translations (align, elts, Y_AXIS,
 									    false, 0, 0);
+  Real first_staff_translation = minimum_offsets.size () ? minimum_offsets[0] : 0;
 
   Skyline up_skyline (UP);
   Skyline down_skyline (DOWN);
-  build_system_skyline (elts, minimum_offsets, &up_skyline, &bottom_skyline_);
+  build_system_skyline (elts, minimum_offsets, &up_skyline, &down_skyline);
 
   // The first system doesn't get a spring before it.
-  if (elements_.size () > 1)
+  if (elements_.size ())
     {
       Real minimum_distance = up_skyline.distance (bottom_skyline_);
+
+      // If the previous system is a title, then distances should be measured
+      // relative to the top of this system, not the refpoint of its first
+      // staff.
       Spring spring_copy = spring;
+      if (elements_.size () && elements_.back ().prob)
+	{
+	  Real shift = -first_staff_translation;
+	  spring_copy.set_distance (spring_copy.distance () + shift);
+	  minimum_distance += shift;
+	}
       spring_copy.ensure_min_distance (minimum_distance);
 
       springs_.push_back (spring_copy);
     }
   bottom_skyline_ = down_skyline;
+  elements_.push_back (Element (elts, first_staff_translation));
 
   // Add the springs for the VerticalAxisGroups in this system.
-
   Spring *default_spring_ptr = unsmob_spring (align->get_property ("default-spring"));
   Spring default_spring = default_spring_ptr ? *default_spring_ptr : Spring (1.0, 0.0);
 
@@ -107,8 +123,8 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
       if (elts[i]->is_live ())
 	{
 	  springs_.push_back (default_spring);
-	  Real min_distance = minimum_offsets[i] - minimum_offsets[i-1];
-	  springs_.back ().set_min_distance (max (springs_.back ().min_distance (), min_distance));
+	  Real min_distance = minimum_offsets[i-1] - minimum_offsets[i];
+	  springs_.back ().ensure_min_distance (min_distance);
 	}
     }
 }
@@ -116,25 +132,25 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
 void
 Page_layout_problem::append_prob (Prob *prob, Spring const& spring)
 {
+  Skyline_pair *sky = Skyline_pair::unsmob (prob->get_property ("vertical-skylines"));
+  Real minimum_distance = 0;
+  if (sky)
+    {
+      minimum_distance = (*sky)[UP].distance (bottom_skyline_);
+      bottom_skyline_ = (*sky)[DOWN];
+    }
+  else if (Stencil *sten = unsmob_stencil (prob->get_property ("stencil")))
+    {
+      Interval iv = sten->extent (Y_AXIS);
+      minimum_distance = iv[UP] - bottom_skyline_.max_height ();
+
+      bottom_skyline_.clear ();
+      bottom_skyline_.set_minimum_height (iv[DOWN]);
+    }
+
   // The first system doesn't get a spring before it.
   if (elements_.size ())
     {
-      Skyline_pair *sky = Skyline_pair::unsmob (prob->get_property ("vertical-skylines"));
-      Real minimum_distance = 0;
-      if (sky)
-	{
-	  minimum_distance = (*sky)[UP].distance (bottom_skyline_);
-	  bottom_skyline_ = (*sky)[DOWN];
-	}
-      else if (Stencil *sten = unsmob_stencil (prob->get_property ("stencil")))
-	{
-	  Interval iv = sten->extent (Y_AXIS);
-	  minimum_distance = iv[UP] - bottom_skyline_.max_height ();
-
-	  bottom_skyline_.clear ();
-	  bottom_skyline_.set_minimum_height (iv[DOWN]);
-	}
-
       Spring spring_copy = spring;
       spring_copy.ensure_min_distance (minimum_distance);
       springs_.push_back (spring_copy);
@@ -151,10 +167,44 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
   for (vsize i = 0; i < springs_.size (); ++i)
     spacer.add_spring (springs_[i]);
 
-  spacer.solve (page_height, ragged);
+  // TODO: currently, we space things so that the bottom of the last
+  // system will touch the bottom of the printable area. Perhaps we
+  // should add a spring to the last system so that we don't quite
+  // fill the area (it might look better when spacing is very loose).
+  Real bottom_padding = 0;
+  Interval first_staff_iv (0, 0);
+  Interval last_staff_iv (0, 0);
+  if (elements_.size ())
+    {
+      first_staff_iv = first_staff_extent (elements_[0]);
+      last_staff_iv = last_staff_extent (elements_.back ());
+
+      // NOTE: bottom-space is misnamed since it is not stretchable space.
+      if (Prob *p = elements_.back ().prob)
+	bottom_padding = robust_scm2double (p->get_property ("bottom-space"), 0);
+      else if (elements_.back ().staves.size ())
+	{
+	  Grob *last_staff = elements_.back ().staves.back ();
+	  System *sys = last_staff->get_system ();
+	  Grob *left_bound = sys->get_bound (LEFT);
+
+	  SCM details = left_bound->get_property ("line-break-system-details");
+	  SCM padding_handle = scm_assoc (ly_symbol2scm ("bottom-space"), details);
+	  bottom_padding = robust_scm2double (scm_is_pair (padding_handle)
+					      ? scm_cdr (padding_handle)
+					      : SCM_EOL,
+					      0.0);
+	}
+    }
+
+  spacer.solve (page_height - bottom_padding + last_staff_iv[DOWN] - first_staff_iv[UP], ragged);
   solution_ = spacer.spring_positions ();
 
-  // TODO: if it doesn't fit, try again without padding.
+  // Ensure that the top of the top staff is at the top the space we were given.
+  for (vsize i = 0; i < solution_.size (); ++i)
+    solution_[i] += first_staff_iv[UP];
+
+  // TODO: (maybe) if it doesn't fit, try again without padding.
 }
 
 // The solution_ vector stores the position of every live VerticalAxisGroup
@@ -178,16 +228,26 @@ Page_layout_problem::find_system_offsets ()
 	}
       else
 	{
-	  Real system_start = solution_[spring_idx];
-	  // FIXME: the position of the top staff is not the position of the system.
-	  *tail = scm_cons (scm_from_double (solution_[spring_idx]), SCM_EOL);
+	  // Getting this signs right here is a little tricky. The configuration
+	  // we return has zero at the top of the page and positive numbers further
+	  // down, as does the solution_ vector.  Within a staff, however, positive
+	  // numbers are up.
+	  // TODO: perhaps change the way the page 'configuration variable works so
+	  // that it is consistent with the usual up/down sign conventions in
+	  // Lilypond. Then this would be less confusing.
+
+	  // These two positions are relative to the page (with positive numbers being
+	  // down).
+	  Real first_staff_position = solution_[spring_idx];
+	  Real system_position = first_staff_position + elements_[i].first_staff_min_translation;
+	  *tail = scm_cons (scm_from_double (system_position), SCM_EOL);
 	  tail = SCM_CDRLOC (*tail);
 
 	  // Position the staves within this system.
 	  Real translation = 0;
-	  for (vsize staff_idx = 0; staff_idx < elements_[i].axis_groups.size (); ++staff_idx)
+	  for (vsize staff_idx = 0; staff_idx < elements_[i].staves.size (); ++staff_idx)
 	    {
-	      Grob *staff = elements_[i].axis_groups[staff_idx];
+	      Grob *staff = elements_[i].staves[staff_idx];
 
 	      // Dead VerticalAxisGroups didn't participate in the rod-and-spring
 	      // problem, but they still need to be translated. We translate them
@@ -195,7 +255,8 @@ Page_layout_problem::find_system_offsets ()
 	      // (but we don't increment spring_idx!)
 	      if (staff->is_live ())
 		{
-		  translation = solution_[spring_idx] - system_start;
+		  // this is relative to the system: negative numbers are down.
+		  translation = system_position - solution_[spring_idx];
 		  spring_idx++;
 		}
 	      staff->translate_axis (translation, Y_AXIS);
@@ -204,7 +265,7 @@ Page_layout_problem::find_system_offsets ()
 	  // Corner case: even if a system has no live staves, it still takes up
 	  // one spring (a system with one live staff also takes up one spring),
 	  // which we need to increment past.
-	  if (elements_[i].axis_groups.empty ())
+	  if (elements_[i].staves.empty ())
 	    spring_idx++;
 	}
     }
@@ -245,17 +306,46 @@ Page_layout_problem::build_system_skyline (vector<Grob*> const& staves,
       Skyline_pair *sky = Skyline_pair::unsmob (g->get_property ("vertical-skylines"));
       if (sky)
 	{
-	  up->raise (dy);
-	  up->merge ((*sky)[UP]);
 	  up->raise (-dy);
+	  up->merge ((*sky)[UP]);
+	  up->raise (dy);
 
-	  down->raise (dy);
+	  down->raise (-dy);
 	  down->merge ((*sky)[DOWN]);
 
 	  // The last time through, leave the down skyline at a position
 	  // relative to the bottom staff.
 	  if (i < staves.size () - 1)
-	    down->raise (-dy);
+	    down->raise (dy);
 	}
     }
+}
+
+Interval
+Page_layout_problem::prob_extent (Prob *p)
+{
+  Stencil *sten = unsmob_stencil (p->get_property ("stencil"));
+  return sten ? sten->extent (Y_AXIS) : Interval (0, 0);
+}
+
+Interval
+Page_layout_problem::first_staff_extent (Element const& e)
+{
+  if (e.prob)
+    return prob_extent (e.prob);
+  else if (e.staves.size ())
+    return e.staves[0]->extent (e.staves[0], Y_AXIS);
+
+  return Interval (0, 0);
+}
+
+Interval
+Page_layout_problem::last_staff_extent (Element const& e)
+{
+  if (e.prob)
+    return prob_extent (e.prob);
+  else if (e.staves.size ())
+    return e.staves.back ()->extent (e.staves.back (), Y_AXIS);
+
+  return Interval (0, 0);
 }
