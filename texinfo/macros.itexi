@@ -43,6 +43,16 @@
 @end macro
 
 
+@macro image-right{IMAGE-FILE}
+@html
+<div id="float-right">
+@end html
+@image{\IMAGE-FILE\}
+@html
+</div>
+@end html
+@end macro
+
 @c @include version.itexi
 
 

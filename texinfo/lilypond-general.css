@@ -1,6 +1,6 @@
 /*   FIXME test; will be completely changed later */
 
-div#tocframe {
+#tocframe div {
   position:absolute;
   top:0;
   width:100%;
@@ -16,7 +16,7 @@ div#tocframe {
   border:1px solid black;
 }
 
-li {
+#tocframe li {
   color:inherit;
   font-size:inherit;
 }
@@ -27,26 +27,25 @@ li.toc_current {
   display:inline;
 }
 
-ul
-{
-width:inherit;
-padding:inherit;
-margin:inherit;
-list-style-type:inherit;
+#tocframe ul {
+  width:inherit;
+  padding:inherit;
+  margin:inherit;
+  list-style-type:inherit;
   float:inherit;
   color:inherit;
 }
 
-a
+#tocframe a
 {
-width:16%;
+  width:16%;
   text-decoration:none;
   color:inherit;
   background-color:inherit;
   border:inherit;
-float:left;
+  float:left;
 }
-a:hover {background-color:#ff3300}
+#tocframe a:hover {background-color:#ff3300}
 
 
 /* css Zen Garden default style v1.02 */
@@ -75,6 +74,9 @@ body {
 	margin: 0; 
 	padding: 0;
 	}
+#float-right {
+  float:right;
+}
 p { 
 	margin-top: 0; 
 	text-align: justify;
@@ -268,6 +270,5 @@ div#main {
 	text-decoration: underline;
 	}
 
-*/
 
 
