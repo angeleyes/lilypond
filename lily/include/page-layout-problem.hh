@@ -53,6 +53,8 @@ protected:
   static Interval first_staff_extent (Element const&);
   static Interval last_staff_extent (Element const&);
   static Interval prob_extent (Prob*);
+  static SCM get_details (Element const&);
+  static SCM details_get_property (SCM details, const char*);
 
   vector<Spring> springs_;
   vector<Element> elements_;
