@@ -16,24 +16,18 @@
   border:1px solid black;
 }
 
-#tocframe li {
-  color:inherit;
-  font-size:inherit;
-}
-
-li.toc_current {
-  background-color:yellow;
-  color:black;
-  display:inline;
-}
-
 #tocframe ul {
   width:inherit;
   padding:inherit;
   margin:inherit;
   list-style-type:inherit;
-  float:inherit;
+/*  float:inherit;*/
   color:inherit;
+}
+
+#tocframe li {
+  color:inherit;
+  font-size:inherit;
 }
 
 #tocframe a
@@ -45,7 +39,17 @@ li.toc_current {
   border:inherit;
   float:left;
 }
+
 #tocframe a:hover {background-color:#ff3300}
+
+
+li.toc_current {
+  background-color:yellow;
+  color:black;
+  display:inline;
+}
+
+
 
 
 /* css Zen Garden default style v1.02 */
@@ -74,12 +78,23 @@ body {
 	margin: 0; 
 	padding: 0;
 	}
-#float-right {
+
+.float-right {
   float:right;
 }
 
-#float-left {
+.float-left {
   float:left;
+}
+
+.float-center {
+  text-align:center;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+/*
+  float:center;
+*/
 }
 
 p { 
@@ -292,5 +307,10 @@ div#main {
   color: green;
 }
 
+.warning {
+  background-color: #FF0000;
+  font-weight: bold;
+  border: 2px solid black;
+}
 
 

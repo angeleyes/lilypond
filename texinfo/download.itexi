@@ -17,29 +17,33 @@ editing program.  Before downloading LilyPond, please read the
 @ref{Crash course}.}
 
 @menu
-* Linux download::              
-* MacOS X download::            
-* Windows download::            
-* FreeBSD download::            
-* Source download::             
+* Linux::                       
+* MacOS X::                     
+* Windows::                     
+* FreeBSD::                     
+* Source::            
 @end menu
 
 If you consider working software to be overrated, you are welcome
 to try our @ref{Unstable download}.
 
 
-@node Linux download
-@unnumberedsec Linux download
+@node Linux
+@unnumberedsec Linux
 
+Links:
 linux-x86
-
 linux-ppc
-
 linux-64
 
+Install instructions:
 
-@node MacOS X download
-@unnumberedsec MacOS X download
+
+Upgrade instructions:
+
+
+@node MacOS X
+@unnumberedsec MacOS X
 
 @warning{Due to changes in MacOS X 10.5 Leopard, the menus in the
 LilyPond Application no longer function.  For information about
@@ -50,17 +54,19 @@ darwin-x86
 darwin-ppc
 
 
-@node Windows download
-@unnumberedsec Windows download
+@node Windows
+@unnumberedsec Windows
 
 
-@node FreeBSD download
-@unnumberedsec FreeBSD download
+@node FreeBSD
+@unnumberedsec FreeBSD
 
 
 
-@node Source download
-@unnumberedsec Source download
+
+
+@node Source
+@unnumberedsec Source
 
 We @strong{do not} recommend that you attempt to build LilyPond
 yourself; almost all user needs are better met with the pre-built

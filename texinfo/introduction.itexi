@@ -6,6 +6,8 @@
 LilyPond is a
 ...blah blah
 
+@warning{I don't know what to do with these top-level sections.}
+
 @menu
 * Features::                    
 * Examples::                    
@@ -15,6 +17,10 @@ LilyPond is a
 
 @node Features
 @unnumberedsec Features
+
+@warning{hoping to delegate this.  Desired: an enthusiastic
+attempt to sway people towards trying lilypond.  The warnings come
+in Crash Course, not here.}
 
 @subheading Why switch to LilyPond?
 
@@ -29,7 +35,7 @@ later reference.
 
 @subsubheading Excellent classical engraving
 
-@image-right{flat-design}
+@image-float{flat-design,right}
 
 All style settings, font designs and algorithms have been inspired
 by the finest hand-engraved music. LilyPond output has that same
@@ -56,7 +62,7 @@ other parts.
 
 @subsubheading Mix music and text
 
-@image-right{lilypond-book}
+@image-float{lilypond-book,right}
 
 Put fragments of music into texts with without cutting and pasting
 pictures. Integrate music into LaTeX or HTML seamlessly, or add
@@ -101,8 +107,15 @@ http://lilypond.org/web/switch/tour
 @node Examples
 @unnumberedsec Examples
 
-Final resting place of the current input/*.ly ghetto.
+@warning{hoping to delegate this.  Desired: 5-8 really great
+examples, showing really distinct uses.  i.e. not just 5 Beethoven
+samples.  Maybe 1 gregorian, 1 late romantic, 1 20th century
+academic, 1 pop/lead sheet, ...?   Also show different languages,
+mixture of ensembles, etc.  The lilypond input will be available
+if they click on the link, but we're not encouraging them to look
+at it -- go ahead and be wild in the input files.  :)}
 
+Final resting place of the current input/*.ly ghetto.
 
 
 
@@ -110,139 +123,67 @@ Final resting place of the current input/*.ly ghetto.
 @node Crash course
 @unnumberedsec Crash course
 
-(combo of the "Help" page and the "where is the app" from the
-wiki?)
+@subheading @qq{Compiling} Music
 
-@subheading Screenshot
-
-LilyPond is a @emph{batch} system: it is run on a text-file
+LilyPond is a @emph{batch} system: it is run on a text file
 containing the notes.  The resulting output is viewed on-screen or
-printed.  A screenshot of practical use might look like
+printed.  In some ways, LilyPond is more similar to a programming
+language than graphical score editing software.
 
-@web-image{nereid-shot-small.png, (click to enlarge), nereid-shot.png, right}
+A screenshot of practical use might look like:
 
-@c @center
-@c @image{nereid-shot}
-@c (click to enlarge)
+@image-clickable{nereid-shot-small.png, (click to enlarge),
+nereid-shot.png, center}
 
 
-@ignore
-<h2>It's as simple as A B C</h2>
+@subheading It's as simple as A B C
 
 Notes are encoded with letters and numbers.  Special commands are
 entered with backslashes.
 
-<p align="center">
+@image-float{annotate-example-1.png,center}
+@image-float{example-1.png,center}
 
-  <img src="..//graphics/annotate-example-1"
-       alt="annotate-example-1">
-  <br>
-  <img src="../images/example-1" alt="example-1"> 
+Alterations are made with different names: add @code{-is} for
+sharp, and @code{-es} for flat (these are Dutch note names, other
+languages are available).  LilyPond figures out where to put
+accidentals.
 
-<p>
-  Alterations are made with different names: add -is for sharp,
-and -es
-  for flat (these are Dutch note names, other languages are
-  available).  LilyPond figures out where to put accidentals.
-</p>
+@image-float{annotate-example-2.png,center}
+@image-float{example-2.png,center}
 
-<p align="center">
-  <img src="..//graphics/annotate-example-2"
-       alt="annotate-example-2">
-  <br>
-  <img src="../images/example-2" alt="example-2">
 
-</p>
 
-<h2>Pop music</h2>
+@subheading Pop music
 
-<p>
- Put chords and lyrics together to get a lead sheet:
-</p>
+Put chords and lyrics together to get a lead sheet:
 
-<p align="center">
-  <img src="..//graphics/annotate-example-lead"
-       alt="annotate-example-lead">
-  <br>
-  <img src="../images/example-lead" alt="example-lead">
+@image-float{annotate-example-lead.png,center}
+@image-float{example-lead.png,center}
 
-</p>
 
-<h2>Orchestral parts</h2>
 
-<p>
-  <a name="orchestral"></a> The input file contains the notes of
-  piece. Score and parts can be made from a single input file. So,
-  changing a note always affects both parts and score. To  share
-the
-  notes, the music is assigned to a variable:
-</p>
+@subheading Orchestral parts
 
-<p align="center">
-  <img src="..//graphics/annotate-example-parts"
-       alt="annotate-example-parts">
-  <br>
-</p>
+The input file contains the notes of piece.  Score and parts can
+be made from a single input file.  So, changing a note always
+affects both parts and score.  To share the notes, the music is
+assigned to a variable:
 
-<p>
-  This variable is then used in a single part (here transposed,
-with
-  condensed multi rests):
-</p>
+@image-float{annotate-example-parts.png,center}
 
-<p align="center">
-  <img src="..//graphics/annotate-example-single-part"
-       alt="annotate-example-single-part">
-  <br>
-  <img src="../images/example-singlepart"
-alt="example-singlepart">
-</p>
 
-<p>
-  The same variable is used in the full score (here in concert
+This variable is then used in a single part (here transposed, with
+condensed multi rests):
+
+@image-float{annotate-example-single-part.png,center}
+@image-float{example-single-part.png,center}
+
+
+The same variable is used in the full score (here in concert
 pitch):
 
-</p>
-
-<p align="center">
-  <img src="..//graphics/annotate-example-score"
-       alt="annotate-example-score">
-  <br>
-  <img src="../images/example-score" alt="example-score">
-</p>
-
-
-<h2>Learning more</h2>
-
-<a href="../install">Download</a> LilyPond and try the
-
-<a
-href="../../doc/stable/Documentation/user/lilypond-learning/Tutorial">tutorial</a>.
-
-      <!-- END !-->
-      <BR clear="all">
-      <HR>
-    </DIV>
-    <P class="location"><a href="../">Home</a> &gt; <a
-href="../switch">Introduction</a> &gt; <a href="howto">Crash
-course</a></P>
-
-    <P>
- Other languages: <a href="howto.de.html">Deutsch</a>, <a
-href="howto.es.html">Español</a>, <a
-href="howto.fr.html">Fran&ccedil;ais</a>, <a
-href="howto.nl.html">Nederlands</a>, <a
-href="howto.ja.html">Japanese</a>, <a
-href="howto.hu.html">Magyar</a>.
- <BR>
-
- About <A HREF='../about/browser-language'>automatic language
-selection</A>.
-</P>
-
-  </BODY>
-</HTML>
-@end ignore
-
+@image-float{annotate-example-score.png,center}
+@image-float{example-score.png,center}
 
 

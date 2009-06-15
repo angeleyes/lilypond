@@ -1,6 +1,7 @@
 depth=..
 outdir = out/
-imagedir = $(depth)/site/images
+#imagedir = $(depth)/site/images
+imagedir = images/
 
 all: $(outdir)
 	texi2html -I=$(imagedir) --output=$(outdir) --init-file=web-texi2html.init --split=section lilypond-general.texi
