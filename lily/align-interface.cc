@@ -235,20 +235,6 @@ Align_interface::get_minimum_translations (Grob *me,
       translates.push_back (where);
     }
 
-  SCM offsets_handle = scm_assq (ly_symbol2scm ("alignment-offsets"),
-				 line_break_details);
-  if (scm_is_pair (offsets_handle))
-    {
-      vsize i = 0;
- 
-      for (SCM s = scm_cdr (offsets_handle);
-	   scm_is_pair (s) && i < translates.size (); s = scm_cdr (s), i++)
-	{
-	  if (scm_is_number (scm_car (s)))
-	    translates[i] = scm_to_double (scm_car (s));
-	}
-    }
-
   // So far, we've computed the translates for all the non-empty elements.
   // Here, we set the translates for the empty elements: an empty element
   // gets the same translation as the last non-empty element before it.

@@ -115,9 +115,15 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
 
   // Add the springs for the VerticalAxisGroups in this system.
   Spring *default_spring_ptr = unsmob_spring (align->get_property ("default-spring"));
-  Spring default_spring = default_spring_ptr ? *default_spring_ptr : Spring (1.0, 0.0);
+  Spring default_spring = default_spring_ptr ? *default_spring_ptr : Spring (0.5, 0.0);
 
   // FIXME: allow per-VerticalAxisGroup overriding of the springs.
+  // In particular, deal with keep-fixed-while-stretching or deprecate it.
+
+  // If the user has specified the offsets of the individual staves, fix the
+  // springs at the given distances. Otherwise, use stretchable springs.
+  SCM details = get_details (elements_.back ());
+  SCM manual_dists = details_get_property (details, "alignment-distances");
   for (vsize i = 1; i < elts.size (); ++i)
     {
       if (elts[i]->is_live ())
@@ -125,6 +131,21 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
 	  springs_.push_back (default_spring);
 	  Real min_distance = minimum_offsets[i-1] - minimum_offsets[i];
 	  springs_.back ().ensure_min_distance (min_distance);
+
+
+	  if (scm_is_pair (manual_dists))
+	    {
+	      if (scm_is_number (scm_car (manual_dists)))
+		{
+		  Real dy = scm_to_double (scm_car (manual_dists));
+
+		  springs_.back ().set_distance (-dy);
+		  springs_.back ().set_min_distance (-dy);
+		  springs_.back ().set_inverse_stretch_strength (0);
+		}
+	      manual_dists = scm_cdr (manual_dists);
+	    }
+
 	}
     }
 }
@@ -184,16 +205,8 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
 	bottom_padding = robust_scm2double (p->get_property ("bottom-space"), 0);
       else if (elements_.back ().staves.size ())
 	{
-	  Grob *last_staff = elements_.back ().staves.back ();
-	  System *sys = last_staff->get_system ();
-	  Grob *left_bound = sys->get_bound (LEFT);
-
-	  SCM details = left_bound->get_property ("line-break-system-details");
-	  SCM padding_handle = scm_assoc (ly_symbol2scm ("bottom-space"), details);
-	  bottom_padding = robust_scm2double (scm_is_pair (padding_handle)
-					      ? scm_cdr (padding_handle)
-					      : SCM_EOL,
-					      0.0);
+	  SCM details = get_details (elements_.back ());
+	  bottom_padding = robust_scm2double (details_get_property (details, "bottom-space"), 0.0);
 	}
     }
 
@@ -240,8 +253,6 @@ Page_layout_problem::find_system_offsets ()
 	  // down).
 	  Real first_staff_position = solution_[spring_idx];
 	  Real system_position = first_staff_position + elements_[i].first_staff_min_translation;
-	  *tail = scm_cons (scm_from_double (system_position), SCM_EOL);
-	  tail = SCM_CDRLOC (*tail);
 
 	  // Position the staves within this system.
 	  Real translation = 0;
@@ -249,10 +260,11 @@ Page_layout_problem::find_system_offsets ()
 	    {
 	      Grob *staff = elements_[i].staves[staff_idx];
 
-	      // Dead VerticalAxisGroups didn't participate in the rod-and-spring
-	      // problem, but they still need to be translated. We translate them
-	      // by the same amount as the VerticalAxisGroup directly before.
-	      // (but we don't increment spring_idx!)
+	      // Dead VerticalAxisGroups didn't participate in the
+	      // rod-and-spring problem, but they still need to be
+	      // translated. We translate them by the same amount as
+	      // the VerticalAxisGroup directly before.  (but we don't
+	      // increment spring_idx!)
 	      if (staff->is_live ())
 		{
 		  // this is relative to the system: negative numbers are down.
@@ -267,6 +279,9 @@ Page_layout_problem::find_system_offsets ()
 	  // which we need to increment past.
 	  if (elements_[i].staves.empty ())
 	    spring_idx++;
+
+	  *tail = scm_cons (scm_from_double (system_position), SCM_EOL);
+	  tail = SCM_CDRLOC (*tail);
 	}
     }
 
@@ -348,4 +363,22 @@ Page_layout_problem::last_staff_extent (Element const& e)
     return e.staves.back ()->extent (e.staves.back (), Y_AXIS);
 
   return Interval (0, 0);
+}
+
+SCM
+Page_layout_problem::get_details (Element const& elt)
+{
+  if (elt.staves.empty ())
+    return SCM_EOL;
+
+  System *sys = elt.staves.back ()->get_system ();
+  Grob *left_bound = sys->get_bound (LEFT);
+  return left_bound->get_property ("line-break-system-details");
+}
+
+SCM
+Page_layout_problem::details_get_property (SCM details, const char* property)
+{
+  SCM handle = scm_assoc (ly_symbol2scm (property), details);
+  return scm_is_pair (handle) ? scm_cdr (handle) : SCM_BOOL_F;
 }
