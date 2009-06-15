@@ -119,21 +119,26 @@ Final resting place of the current input/*.ly ghetto.
 
 
 
-
 @node Crash course
 @unnumberedsec Crash course
 
 @subheading @qq{Compiling} Music
+
+@image-clickable{nereid-shot-small.png, (click to enlarge),
+nereid-shot.png, right}
 
 LilyPond is a @emph{batch} system: it is run on a text file
 containing the notes.  The resulting output is viewed on-screen or
 printed.  In some ways, LilyPond is more similar to a programming
 language than graphical score editing software.
 
-A screenshot of practical use might look like:
+You do not write music by dragging notes from a graphical toolbar
+and placing them on a dynamically refreshing score; you write
+music by typing text.  This text is interpreted (or @qq{compiled})
+by LilyPond, which produces beautifully engraved sheet music.
 
-@image-clickable{nereid-shot-small.png, (click to enlarge),
-nereid-shot.png, center}
+People accustomed to graphical user interfaces might need to learn
+a new way of working, but the results are definitely worth it!
 
 
 @subheading It's as simple as A B C
@@ -185,5 +190,30 @@ pitch):
 
 @image-float{annotate-example-score.png,center}
 @image-float{example-score.png,center}
+
+
+@subheading Beginner Documentation
+
+We realize that many users find this way of entering music a bit
+odd.  For this reason, we have written extensive documentation to
+help new users, beginning with the @ref{Learning Manual}.
+
+Please read the Learning Manual before complaining about bugs!
+New users occasionally believe that LilyPond is not working
+correctly, when in fact it is working precisely as designed.
+
+
+@subheading Easier editing environments
+
+LilyPond is primarily concerned with producing top-quality
+engraved sheet music; creating a Graphical User Interface (GUI)
+would distract us from this goal.  However, there are other
+projects aimed at making it easier to create LilyPond input files.
+
+Some editing environments include syntax highlighting, automatic
+command completion, and pre-made templates.  Other programs
+actually provide a GUI which allows direct manipulation of a
+graphical score.  For more information, see our documentation
+about @@ref@{alternate editing environments@}.
 
 
