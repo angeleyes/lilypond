@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT committish: 8f7fd0d40dc30800bf94a53f8a3ba5e44d25322c
+    Translation of GIT committish: 0f41b3bf5ba2d02acb1f02f54aa1183d02c3133e
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -55,7 +55,7 @@ Ez a
   </dd>
 
   
-  <dt>Kapcsolat felvétele a fejlesztőkkel:<dt>
+  <dt>Kapcsolat felvétele a fejlesztőkkel:</dt>
   <dd>A fejlesztőkkel <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.devel">itt</a> veheted fel a kapcsolatot.
 <p>
 Ez a

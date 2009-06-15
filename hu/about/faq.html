@@ -1,5 +1,5 @@
 <!--
-    Translation of GIT committish: 9585a1c690f11a983bba45108560600a4d9d2f33
+    Translation of GIT committish: 0f41b3bf5ba2d02acb1f02f54aa1183d02c3133e
 
     When revising a translation, copy the HEAD committish of the
     version that you are working on.  Refer to `UPDATE A TRANSLATION'
@@ -23,7 +23,7 @@ Gyönyörűen formázza meg a kottát anélkül, hogy tipográfiai szaktudást i
 <p>
 Nem. A rendszer a bemeneti adatokat egy pontosan meghatározott szöveges formában várja.
 A kottanyomtatás már önmagában elég bonyolult feladat, és nem akartuk még egy problémával bonyolítani a helyzetet.
-Egy zenész játékát lekottázni nagyon nehéz, és nem is mindig tehető meg egyértelműen.
+Egy zenész játékát lekottázni nagyon nehéz, és nem is mindig végezhető el egyértelműen.
 Tegyük fel, hogy egy MIDI-billentyűzeten játszik a zenész (egy többszólamú hangfelvétel lekottázása meghaladja a jelenlegi technológia képességeit).
 Sem a hangmagasság, sem a ritmus nem egyértelmű. Például hogyan tegyünk különbséget egy <i>fisz</i> és egy <i>gesz</i> hang, vagy egy nyolcad és egy staccato negyed között?
 A másik gond, hogy az a személy, aki a kottát betáplálja a gépbe, nem biztos, hogy el tudja egyáltalán játszani azt.
@@ -33,7 +33,7 @@ A másik gond, hogy az a személy, aki a kottát betáplálja a gépbe, nem bizt
 
 <p>
 A mai számítógéppel szedett kották nem néznek ki jól: üres, mechanikus kinézetük van.
-Ezzel szemben mi a hagyományos, kézzel történő szedési technikákat próbáltuk reprodukálni, minden apróságra figyelve, mint például a kottaelemek elhelyezése, a kottakép által keltett első benyomás vagy a kotta szimbólumainak gondos megtervezése.
+Ezzel szemben mi a hagyományos, kézzel végzett szedési technikákat próbáltuk reprodukálni, minden apróságra figyelve, mint például a kottaelemek elhelyezése, a kottakép által keltett első benyomás vagy a kotta szimbólumainak gondos megtervezése.
 Ebből kifolyólag a LilyPond kimenetének szépsége és olvashatósága messze felülmúlja versenytársaiét.
 </p>
 
@@ -71,7 +71,7 @@ Az ezzel foglalkozó emberek a kottaszedők vagy kottamásolók.
 A jó kottakép segít a kottaolvasásban, és megkönnyíti a kottából történő játékot.
 Például ha a kotta elrendezése a darab karakterét tükrözi, akkor könnyebb azonosulni vele.
 Az is előnyös, ha kevesebb oldalra fér ki a kotta, hisz így kevesebbet kell lapozni.
-Ha egy szisztéma kinézete jól megkülönböztethető a többiétől, akkor könnyebb visszatalálni rá, miután a karmesterre nézett az ember.
+Ha egy sor kinézete jól megkülönböztethető a többiétől, akkor könnyebb visszatalálni rá, miután a karmesterre nézett az ember.
 A vastag vonalakkal rendelkező kottát pedig könnyebb elolvasni messziről.
 </p>
 
@@ -101,7 +101,7 @@ Nem kényszerítünk arra, hogy frissítsd a rendszeredet a program miatt, és n
 <h3>Hogyan kell használni a LilyPondot?</h3>
 
 <p>
-A LilyPond olyan, mint egy fordítóprogram: a kottát szöveges formában kell leírni egy <tt>.ly</tt> kiterjesztésű fájlban.
+A LilyPond olyan, mint egy <a href="http://hu.wikipedia.org/wiki/Ford%C3%ADt%C3%B3program">fordítóprogram</a>: a kottát szöveges formában kell leírni egy <tt>.ly</tt> kiterjesztésű fájlban.
 A LilyPond ezt alakítja át nyomtatható kottává, amit PDF, PostScript, SVG vagy PNG formátumban ment el.
 </p>
 
@@ -142,7 +142,7 @@ Mindazonáltal ettől még használhatod ezeket a formátumokat: léteznek olyan
 <p>
 Olvasd el az <a href="@DOC@stable/Documentation/user/lilypond-learning/Tutorial.html">első leckét</a> a tankönyvből.
 Elég rövid, könnyen megemészthető részekből áll, és sok munkát fektettünk a tökéletesítésébe.
-Ha úgy tudsz könnyebben tanulni, hogy meglévő példákat próbálsz ki, ezt a dokumentáció kottát ábrázoló képeire kattintva megteheted.
+Ha úgy tudsz könnyebben tanulni, hogy meglévő példákat próbálsz ki, ezt a dokumentáció kottapéldáira kattintva megteheted.
 </p>
 
 <h3>Miért változtatjátok meg folyton a szintaxist?</h3>
@@ -155,11 +155,11 @@ A nyelv jelenlegi formája azért ilyen jó, mert régen így jártunk el.
 A nyelv változásainak legtöbbje egyszerűen kezelhető a LilyPond mellé adott <tt>convert-ly</tt> segédprogrammal.
 Azonban a <tt>convert-ly</tt> csak akkor tudja elvégezni a dolgát, ha tudja, hogy az eredeti fájl melyik verzióhoz készült.
 Emiatt fontos, hogy minden fájl elejére odaírjuk a verziómegjelölést, például:
-<xmp>
-    \version "1.3.17" </xmp>
+<pre>
+    \version "1.3.17" </pre>
 </p>
 <p>
-Csak a fő verziószám növelése esetén vezetünk be olyan változásokat, amik nem kezelhetőek le egyszerű szöveges helyettesítéssel:
+Csak a fő verziószám növelése esetén vezetünk be olyan változásokat, amik nem kezelhetőek le egyszerű szöveghelyettesítéssel:
 az 1.8 verzióról a 2.0 verzióra konvertált fájlok utólagos ellenőrzést kívánnak.
 </p>
 
@@ -199,7 +199,7 @@ Próbáld ki a következő megoldások valamelyikét:
 
 <h3>Mi legyen akkor, ha nem akarok még egy nyelvtant megtanulni?</h3>
 <p>
-Vannak más lehetőségek is: más formátumokból át lehet konvertálni a kottát LilyPondba. A támogatott formátumok többek között:
+Vannak más lehetőségek is: különböző formátumokból át lehet konvertálni a kottát LilyPondba. A támogatott formátumok többek között:
 </p>
 
 <dl>
@@ -227,13 +227,13 @@ képes a MusicXML-LilyPond konverzióra (<a
     href="http://nwc2ly.sourceforge.net/">nwc2ly</a> beépülő moduljával az NWC fájlok LilyPonddá alakíthatóak.</dd>
 
   <dt>
-  Band In A Box</dt><dd>  Alain Brenzikofer <a
+  Band-in-a-Box</dt><dd>  Alain Brenzikofer <a
      href="http://www.brenzi.ch/builder.php?content=projects_biabconverter">biabconverter</a> nevű programja
      képes a Band-in-a-box fájlok LilyPonddá alakítására.
 
      </dd>
 
-</ul>
+</dl>
 
 
 <h3>Nem lehetne egy grafikus felhasználói felülete a programnak?</h3>
@@ -246,7 +246,7 @@ A következő programok alkalmasak a LilyPond-exportálásra, és legtöbbjüket
 <ul>
   <li>
     <a href="http://noteedit.berlios.de/">
-      NoteEdit</a> (már nem fejlesztik)
+      NoteEdit</a> (a Canorus váltotta fel)
   </li>
   <li>
     <a href="https://canorus.berlios.de/">Canorus</a>,
@@ -256,6 +256,7 @@ A következő programok alkalmasak a LilyPond-exportálásra, és legtöbbjüket
     <a href="http://www.rosegardenmusic.com/">RoseGarden</a>
   </li>
 </ul>
+
 Vannak más, nem WYSIWYG felületek is:
 
 <ul>
@@ -273,7 +274,7 @@ Vannak más, nem WYSIWYG felületek is:
 
 <h3>Honnan kaphatok segítséget, ha nem sikerül telepítenem vagy lefordítanom a programot?</h3>
 <p>
-Ha letöltöttél egy futtatható csomagot, de nem sikerül telepíteni, vagy nem tudod követni az utasításokat, küldj egy teljes hibajelentést a <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">hibalistára</a>. Bármikor segítséget kérhetsz a <a
+Ha letöltöttél egy futtatható csomagot, de nem sikerül telepíteni, vagy gondod akadt a megadott utasításokkal, küldj egy teljes hibajelentést a <a href="http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs">hibalistára</a>. Bármikor segítséget kérhetsz a <a
 href="http://postgmane.org/post.php?group=gmane.comp.gnu.lilypond.general">lilypond-user</a> levelezőlistán.
 </p>
 
