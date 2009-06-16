@@ -713,10 +713,11 @@ Page_breaking::cache_line_details (vsize configuration_index)
   if (cached_configuration_index_ != configuration_index)
     {
       cached_configuration_index_ = configuration_index;
-      SCM padding_scm = book_->paper_->c_variable ("page-breaking-between-system-padding");
-      if (!scm_is_number (padding_scm))
-	padding_scm = book_->paper_->c_variable ("between-system-padding");
-      Real padding = robust_scm2double (padding_scm, 0.0);
+      Real padding = 0;
+      SCM spacing_spec = book_->paper_->c_variable ("between-system-spacing");
+      SCM page_breaking_spacing_spec = book_->paper_->c_variable ("page-breaking-between-system-spacing");
+      Page_layout_problem::read_spacing_spec (spacing_spec, &padding, ly_symbol2scm ("padding"));
+      Page_layout_problem::read_spacing_spec (page_breaking_spacing_spec, &padding, ly_symbol2scm ("padding"));
 
       Line_division &div = current_configurations_[configuration_index];
       uncompressed_line_details_.clear ();

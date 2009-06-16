@@ -19,10 +19,11 @@ public:
   Page_layout_problem (Paper_book*, SCM systems);
 
   SCM solution (Real page_height, bool ragged);
+  static bool read_spacing_spec (SCM spec, Real* dest, SCM sym);
 
 protected:
-  void append_system (System*, Spring const&);
-  void append_prob (Prob*, Spring const&);
+  void append_system (System*, Spring const&, Real padding);
+  void append_prob (Prob*, Spring const&, Real padding);
 
   void solve_rod_spring_problem (Real page_height, bool ragged);
   SCM find_system_offsets ();
@@ -55,13 +56,12 @@ protected:
   static Interval prob_extent (Prob*);
   static SCM get_details (Element const&);
   static SCM details_get_property (SCM details, const char*);
+  static void alter_spring_from_spacing_spec (SCM spec, Spring* spring);
 
   vector<Spring> springs_;
   vector<Element> elements_;
   vector<Real> solution_;
   Skyline bottom_skyline_;
-  Real between_system_space_;
-  Real between_system_padding_;
 };
 
 #endif /* PAGE_LAYOUT_HH */

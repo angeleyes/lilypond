@@ -22,11 +22,10 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   : bottom_skyline_ (DOWN)
 {
   Output_def *paper = pb->paper_;
-  between_system_space_ = robust_scm2double (paper->c_variable ("between-system-space"), 1);
-  between_system_padding_ = robust_scm2double (paper->c_variable ("between-system-padding"), 0);
-  Real after_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
-  Real before_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
-  Real between_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
+  SCM between_system_spacing = paper->c_variable ("between-system-spacing");
+  SCM after_title_spacing = paper->c_variable ("after-title-spacing");
+  SCM before_title_spacing = paper->c_variable ("before-title-spacing");
+  SCM between_title_spacing = paper->c_variable ("between-title-spacing");
   bool last_system_was_title = false;
 
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
@@ -40,23 +39,28 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	      continue;
 	    }
 
-	  Spring spring (last_system_was_title ? after_title_space
-			                       : (between_system_space_ + between_system_padding_),
-			 between_system_padding_);
-	  append_system (sys, spring);
+	  SCM spec = last_system_was_title ? after_title_spacing : between_system_spacing;
+	  Spring spring (1.0, 0.0);
+	  Real padding = 0.0;
+	  alter_spring_from_spacing_spec (spec, &spring);
+	  read_spacing_spec (spec, &padding, ly_symbol2scm ("padding"));
+
+	  append_system (sys, spring, padding);
 	  last_system_was_title = false;
 	}
       else if (Prob *p = unsmob_prob (scm_car (s)))
 	{
-	  Spring spring (last_system_was_title ? between_title_space : before_title_space, 0.0);
+	  SCM spec = last_system_was_title ? between_title_spacing : before_title_spacing;
+	  Spring spring (1.0, 0.0);
+	  Real padding = 0.0;
+	  alter_spring_from_spacing_spec (spec, &spring);
+	  read_spacing_spec (spec, &padding, ly_symbol2scm ("padding"));
 
-	  SCM next_space = p->get_property ("next-space");
-	  if (scm_is_number (next_space))
-	    spring.set_distance (scm_to_double (next_space));
-
-	  append_prob (p, spring);
+	  append_prob (p, spring, padding);
 	  last_system_was_title = true;
 	}
+      else
+	programming_error ("got a system that was neither a Grob nor a Prob");
     }
 }
 
@@ -72,7 +76,7 @@ Page_layout_problem::find_vertical_alignment (System *sys)
 }
 
 void
-Page_layout_problem::append_system (System *sys, Spring const& spring)
+Page_layout_problem::append_system (System *sys, Spring const& spring, Real padding)
 {
   Grob *align = find_vertical_alignment (sys);
   if (!align)
@@ -93,7 +97,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
   // The first system doesn't get a spring before it.
   if (elements_.size ())
     {
-      Real minimum_distance = up_skyline.distance (bottom_skyline_) + between_system_padding_;
+      Real minimum_distance = up_skyline.distance (bottom_skyline_) + padding;
 
       // If the previous system is a title, then distances should be measured
       // relative to the top of this system, not the refpoint of its first
@@ -150,7 +154,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
 }
 
 void
-Page_layout_problem::append_prob (Prob *prob, Spring const& spring)
+Page_layout_problem::append_prob (Prob *prob, Spring const& spring, Real padding)
 {
   Skyline_pair *sky = Skyline_pair::unsmob (prob->get_property ("vertical-skylines"));
   Real minimum_distance = 0;
@@ -167,7 +171,7 @@ Page_layout_problem::append_prob (Prob *prob, Spring const& spring)
       bottom_skyline_.clear ();
       bottom_skyline_.set_minimum_height (iv[DOWN]);
     }
-  minimum_distance += between_system_padding_;
+  minimum_distance += padding;
 
   // The first system doesn't get a spring before it.
   if (elements_.size ())
@@ -381,4 +385,30 @@ Page_layout_problem::details_get_property (SCM details, const char* property)
 {
   SCM handle = scm_assoc (ly_symbol2scm (property), details);
   return scm_is_pair (handle) ? scm_cdr (handle) : SCM_BOOL_F;
+}
+
+bool
+Page_layout_problem::read_spacing_spec (SCM spec, Real* dest, SCM sym)
+{
+  SCM pair = scm_sloppy_assq (sym, spec);
+  if (scm_is_pair (pair) && scm_is_number (scm_cdr (pair)))
+    {
+      *dest = scm_to_double (scm_cdr (pair));
+      return true;
+    }
+  return false;
+}
+
+void
+Page_layout_problem::alter_spring_from_spacing_spec (SCM spec, Spring* spring)
+{
+  Real space;
+  Real stretch;
+  Real min_dist;
+  if (read_spacing_spec (spec, &space, ly_symbol2scm ("space")))
+    spring->set_distance (space);
+  if (read_spacing_spec (spec, &stretch, ly_symbol2scm ("stretchability")))
+    spring->set_inverse_stretch_strength (stretch);
+  if (read_spacing_spec (spec, &min_dist, ly_symbol2scm ("minimum-distance")))
+    spring->set_min_distance (min_dist);
 }
