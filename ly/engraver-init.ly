@@ -10,6 +10,7 @@
   \grobdescriptions #all-grob-descriptions
 }
 
+% FIXME: replace minimum-Y-extents with proper spacing commands.
 
 \context {
   \type "Engraver_group"
@@ -65,6 +66,7 @@
   localKeySignature = #'()
   createSpacing = ##t
   ignoreFiguredBassRest = ##t 
+  \override VerticalAxisGroup #'next-staff-spacing = #'((space . 10) (padding . 0.5) (minimum-distance . 7))
   \override VerticalAxisGroup #'minimum-Y-extent = #'(-4 . 4)
   
   %% explicitly set instrument, so we don't get 

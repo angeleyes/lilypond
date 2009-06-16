@@ -555,6 +555,25 @@ center of the staff.")
 to flip the direction of custos stem.")
      (next ,ly:grob? "Object that is next relation (e.g., the lyric
 syllable following an extender).")
+     (next-staff-spacing ,list? "An alist of properties used to position
+the next staff in the system. The symbols that can be defined in the alist
+are
+@itemize @bullet
+@item @var{space} -- the amount of stretchable space between the center
+of this staff and the center of the next staff;
+@item @var{padding} -- the minimum amount of whitespace that must be
+present between this staff and the next staff;
+@item @var{stretchability} -- the ease with which the stretchable
+space increases when the system to which this staff belongs is stretched.
+If this is zero, the distance to the next staff will be fixed at either
+@var{space} or at @var{padding} plus the minimum distance to ensure
+there is no overlap, whichever is larger;
+@item @var{minimum-distance} -- the minimum distance to place between
+the center of this staff and the center of the next. This differs
+from @var{padding} in that the height of a staff has no effect on
+the application of @var{minimum-distance} (whereas the height of a
+staff is crucial for @var{padding}).
+@end itemize")
      (no-alignment ,boolean? "If set, don't place this grob in a
 @code{VerticalAlignment}; rather, place it using its own
 @code{Y-offset} callback.")

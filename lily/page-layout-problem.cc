@@ -117,11 +117,6 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   elements_.push_back (Element (elts, first_staff_translation));
 
   // Add the springs for the VerticalAxisGroups in this system.
-  Spring *default_spring_ptr = unsmob_spring (align->get_property ("default-spring"));
-  Spring default_spring = default_spring_ptr ? *default_spring_ptr : Spring (0.5, 0.0);
-
-  // FIXME: allow per-VerticalAxisGroup overriding of the springs.
-  // In particular, deal with keep-fixed-while-stretching or deprecate it.
 
   // If the user has specified the offsets of the individual staves, fix the
   // springs at the given distances. Otherwise, use stretchable springs.
@@ -131,10 +126,13 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
     {
       if (elts[i]->is_live ())
 	{
-	  springs_.push_back (default_spring);
+	  Spring spring (0.5, 0.0);
+	  SCM spec = elts[i-1]->get_property ("next-staff-spacing");
+	  alter_spring_from_spacing_spec (spec, &spring);
+
+	  springs_.push_back (spring);
 	  Real min_distance = minimum_offsets[i-1] - minimum_offsets[i];
 	  springs_.back ().ensure_min_distance (min_distance);
-
 
 	  if (scm_is_pair (manual_dists))
 	    {

@@ -694,6 +694,7 @@ ADD_INTERFACE (Axis_group_interface,
 	       "elements "
 	       "keep-fixed-while-stretching "
 	       "max-stretch "
+	       "next-staff-spacing "
 	       "no-alignment "
 	       "pure-Y-common "
 	       "pure-relevant-items "
