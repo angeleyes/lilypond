@@ -60,6 +60,8 @@ protected:
   vector<Element> elements_;
   vector<Real> solution_;
   Skyline bottom_skyline_;
+  Real between_system_space_;
+  Real between_system_padding_;
 };
 
 #endif /* PAGE_LAYOUT_HH */

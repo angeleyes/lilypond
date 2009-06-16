@@ -22,14 +22,13 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   : bottom_skyline_ (DOWN)
 {
   Output_def *paper = pb->paper_;
-  Real between_system_space = robust_scm2double (paper->c_variable ("between-system-space"), 1);
-  Real between_system_padding = robust_scm2double (paper->c_variable ("between-system-padding"), 0);
+  between_system_space_ = robust_scm2double (paper->c_variable ("between-system-space"), 1);
+  between_system_padding_ = robust_scm2double (paper->c_variable ("between-system-padding"), 0);
   Real after_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
   Real before_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
   Real between_title_space = robust_scm2double (paper->c_variable ("after-title-space"), 1);
   bool last_system_was_title = false;
 
-  // FIXME: support the variables in line-break-system-details.
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
     {
       if (Grob *g = unsmob_grob (scm_car (s)))
@@ -42,8 +41,8 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	    }
 
 	  Spring spring (last_system_was_title ? after_title_space
-			                       : (between_system_space + between_system_padding),
-			 between_system_padding);
+			                       : (between_system_space_ + between_system_padding_),
+			 between_system_padding_);
 	  append_system (sys, spring);
 	  last_system_was_title = false;
 	}
@@ -94,7 +93,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring)
   // The first system doesn't get a spring before it.
   if (elements_.size ())
     {
-      Real minimum_distance = up_skyline.distance (bottom_skyline_);
+      Real minimum_distance = up_skyline.distance (bottom_skyline_) + between_system_padding_;
 
       // If the previous system is a title, then distances should be measured
       // relative to the top of this system, not the refpoint of its first
@@ -168,6 +167,7 @@ Page_layout_problem::append_prob (Prob *prob, Spring const& spring)
       bottom_skyline_.clear ();
       bottom_skyline_.set_minimum_height (iv[DOWN]);
     }
+  minimum_distance += between_system_padding_;
 
   // The first system doesn't get a spring before it.
   if (elements_.size ())
