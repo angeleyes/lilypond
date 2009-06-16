@@ -3,13 +3,8 @@
 @node Download
 @unnumbered Download
 
-@c @warning{this might replaced with pure HTML post-texi2html.}
-
-@@ifnothtml
-Download LilyPond at @uref{http://lilypond.org/web/download/}.
-@@end ifnothtml
-
-Note: these pages will include links to the STABLE versions only.
+These pages contain download links for 2.12.2; additional versions
+can be found in @ref{Other versions}.
 
 @warning{LilyPond is a @strong{text-based} music engraver; it is
 more similar to a programming language than a graphical score
@@ -17,30 +12,87 @@ editing program.  Before downloading LilyPond, please read the
 @ref{Crash course}.}
 
 @menu
-* Linux::                       
+* Unix::                        
 * MacOS X::                     
 * Windows::                     
-* FreeBSD::                     
-* Source::            
+* Source::                      
+* Other versions::
 @end menu
 
-If you consider working software to be overrated, you are welcome
-to try our @ref{Unstable download}.
+
+@subheading Sponsors
+
+Many thanks to @uref{http://www.vt.edu/, Virgina Tech} and
+@uref{http://www.linuxaudio.org/, linuxaudio.org} for sponsoring
+our bandwidth.
+
+@image{virginia-tech}
+@image{linuxaudio}
 
 
-@node Linux
-@unnumberedsec Linux
+@node Unix
+@unnumberedsec Unix
 
-Links:
-linux-x86
-linux-ppc
-linux-64
+@subsubheading Distribution-specific Packages
 
-Install instructions:
+Many distributions include LilyPond in their normal package
+system.  These versions are easier to install and uninstall than
+the version below, but they may be older.  If you wish to upgrade
+to a newer version, please uninstall the official version from
+your system using the normal package manager for your distrution.
+See your distribution's documentation about how to use their
+package manager.
 
 
-Upgrade instructions:
+@subsubheading Generic Packages
 
+@multitable {width of image} {lilypond-x.yy.z-a.longname-foo.bar}
+
+@item @image{tux-logo}
+@tab @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.12.2-1.linux-x86.sh,
+lilypond-2.12.2-1.linux-x86.sh}
+
+@item @image{tux-logo}
+@tab @uref{http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.12.2-1.linux-64.sh,
+lilypond-2.12.2-1.linux-64.sh}
+
+@item @image{tux-logo}
+@tab @uref{http://download.linuxaudio.org/lilypond/binaries/linux-ppc/lilypond-2.12.2-1.linux-ppc.sh,
+lilypond-2.12.2-1.linux-ppc.sh}
+
+@item @image{daemon}
+@tab @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
+lilypond-2.12.2-1.freebsd-x86.sh}
+
+@item @image{daemon}
+@tab @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
+lilypond-2.12.2-1.freebsd-64.sh}
+
+@end multitable
+
+
+@subsubheading Install
+
+In the shell, type:
+
+@example
+cd PATH-TO-DOWNLOAD-DIRECTORY
+sh lilypond-X.Y.Z-EXAMPLE.sh
+@end example
+
+
+@subsubheading Uninstall
+
+In the shell, type:
+
+@example
+uninstall-lilypond
+@end example
+
+@smallspace
+
+All logos and product images are copyright and trademark
+acknowledged. 
 
 @node MacOS X
 @unnumberedsec MacOS X
@@ -54,15 +106,22 @@ darwin-x86
 darwin-ppc
 
 
+@smallspace
+
+All logos and product images are copyright and trademark
+acknowledged. 
+
 @node Windows
 @unnumberedsec Windows
 
 
-@node FreeBSD
-@unnumberedsec FreeBSD
 
 
 
+@smallspace
+
+All logos and product images are copyright and trademark
+acknowledged. 
 
 
 @node Source
@@ -74,5 +133,12 @@ version.  If you have a particular need which requires compiling,
 please see @@ref@{development-install@}.
 
 lilypond-x.y.z-source.tar.bz2
+
+
+@node Other versions
+@unnumberedsec Other versions
+
+If you consider working software to be overrated, you are welcome
+to try our @ref{Unstable download}.
 
 
