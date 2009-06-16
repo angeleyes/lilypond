@@ -1,5 +1,5 @@
 \version "2.12.0"
-#(use-modules (scm layout-page-layout))
+
 \paper {
 
     %%% WARNING
@@ -86,8 +86,6 @@
 	(word-space . 0.6)))
 
     #(define page-breaking ly:optimal-breaking)
-    #(define page-breaking-wrapper page-breaking-wrapper)
-    #(define page-post-process post-process-pages)
 
     #(define write-page-layout (ly:get-option 'dump-tweaks))
     #(define system-maximum-stretch-procedure
