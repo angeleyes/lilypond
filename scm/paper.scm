@@ -6,12 +6,7 @@
 
 (define-public (set-paper-dimension-variables mod)
   (module-define! mod 'dimension-variables
-		  '(after-title-space
-		    before-title-space
-		    between-system-padding
-		    between-system-space
-		    between-title-space
-		    blot-diameter
+		  '(blot-diameter
 		    bottom-margin
 		    cm
 		    foot-separation

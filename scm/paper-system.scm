@@ -120,22 +120,23 @@
 						   (ly:grob-property grob 'pure-Y-extent)
 						   #f)
 			      #f)))
-    (let ((next-space (ly:prob-property
-		       system 'next-space
-		       (cond ((and next-system
-				   (paper-system-title? system)
-				   (paper-system-title? next-system))
-			      (ly:output-def-lookup layout 'between-title-space))
-			     ((paper-system-title? system)
-			      (ly:output-def-lookup layout 'after-title-space))
-			     ((and next-system
-				   (paper-system-title? next-system))
-			      (ly:output-def-lookup layout 'before-title-space))
-			     (else
-			      (ly:output-def-lookup layout 'between-system-space)))))
-	  (next-padding (ly:prob-property
-			 system 'next-padding
-			 (ly:output-def-lookup layout 'between-system-padding))))
+    (let* ((spacing-spec (cond ((and next-system
+				     (paper-system-title? system)
+				     (paper-system-title? next-system))
+				(ly:output-def-lookup layout 'between-title-spacing))
+			       ((paper-system-title? system)
+				(ly:output-def-lookup layout 'after-title-spacing))
+			       ((and next-system
+				     (paper-system-title? next-system))
+				(ly:output-def-lookup layout 'before-title-spacing))
+			       (else
+				(ly:output-def-lookup layout 'between-system-spacing))))
+	   (next-space (ly:prob-property
+			system 'next-space
+			(cdr (assq 'space spacing-spec))))
+	   (next-padding (ly:prob-property
+			  system 'next-padding
+			  (cdr (assq 'padding spacing-spec)))))
       (annotate-extent-and-space (lambda (sys)
 				   (paper-system-extent sys Y))
 				 next-padding

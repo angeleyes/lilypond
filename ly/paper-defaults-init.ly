@@ -41,22 +41,11 @@
 	(is-book-title . #t)
 	))
     
-    %%
-    %% this dimension includes the extent of the
-    %% staves themselves.
-    %%
-    between-system-space = #(* 20 mm)
-    
-    
-    %%
-    %% fixed space between systems.
-    %%
-    between-system-padding = #(* 4 mm)
-
-    after-title-space = 5 \mm
-    before-title-space = 10 \mm
-    between-title-space = 2 \mm
-
+    %% TODO: figure out how to get this to play nicely with scaling
+    between-system-spacing = #`((space . ,(* 20 mm)) (padding . ,(* 4 mm)))
+    after-title-spacing = #`((space . ,(* 5 mm)) (padding . ,(* 2 mm)))
+    before-title-spacing = #`((space . ,(* 10 mm)) (padding . ,(* 2 mm)))
+    between-title-spacing = #`((space . ,(* 2 mm)) (padding . ,(* 2 mm)))
 
     %%
     %% Small staves are aligned so they come out on the same place on
