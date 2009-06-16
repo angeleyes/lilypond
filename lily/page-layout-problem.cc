@@ -21,12 +21,24 @@
 Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   : bottom_skyline_ (DOWN)
 {
+  // Initially, bottom_skyline_ represents the top of the page. Make
+  // it solid, so that the top of the first system will be forced
+  // below the top of the printable area.
+  bottom_skyline_.set_minimum_height (0);
+
   Output_def *paper = pb->paper_;
   SCM between_system_spacing = paper->c_variable ("between-system-spacing");
   SCM after_title_spacing = paper->c_variable ("after-title-spacing");
   SCM before_title_spacing = paper->c_variable ("before-title-spacing");
   SCM between_title_spacing = paper->c_variable ("between-title-spacing");
   bool last_system_was_title = false;
+
+  // first_system_spacing controls the spring from the top of the printable
+  // area to the first staff. It allows the user to control the offset of
+  // the first staff (as opposed to the top of the first system) from the
+  // top of the page. Similarly for last_system_spacing.
+  SCM first_system_spacing = paper->c_variable ("first-system-spacing");
+  SCM last_system_spacing = paper->c_variable ("last-system-spacing");
 
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
     {
@@ -39,8 +51,10 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	      continue;
 	    }
 
-	  SCM spec = last_system_was_title ? after_title_spacing : between_system_spacing;
-	  Spring spring (1.0, 0.0);
+	  bool first = (s == systems);
+	  SCM spec = first ? first_system_spacing
+	    : (last_system_was_title ? after_title_spacing : between_system_spacing);
+	  Spring spring (first ? 0 : 1, 0.0);
 	  Real padding = 0.0;
 	  alter_spring_from_spacing_spec (spec, &spring);
 	  read_spacing_spec (spec, &padding, ly_symbol2scm ("padding"));
@@ -62,6 +76,13 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
       else
 	programming_error ("got a system that was neither a Grob nor a Prob");
     }
+
+  Spring last_spring (0, 0);
+  Real last_padding = 0;
+  alter_spring_from_spacing_spec (last_system_spacing, &last_spring);
+  read_spacing_spec (last_system_spacing, &last_padding, ly_symbol2scm ("padding"));
+  last_spring.ensure_min_distance (last_padding - bottom_skyline_.max_height ());
+  springs_.push_back (last_spring);
 }
 
 Grob*
@@ -94,25 +115,21 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   Skyline down_skyline (DOWN);
   build_system_skyline (elts, minimum_offsets, &up_skyline, &down_skyline);
 
-  // The first system doesn't get a spring before it.
-  if (elements_.size ())
+  Real minimum_distance = up_skyline.distance (bottom_skyline_) + padding;
+
+  // If the previous system is a title, then distances should be measured
+  // relative to the top of this system, not the refpoint of its first
+  // staff.
+  Spring spring_copy = spring;
+  if (elements_.size () && elements_.back ().prob)
     {
-      Real minimum_distance = up_skyline.distance (bottom_skyline_) + padding;
-
-      // If the previous system is a title, then distances should be measured
-      // relative to the top of this system, not the refpoint of its first
-      // staff.
-      Spring spring_copy = spring;
-      if (elements_.size () && elements_.back ().prob)
-	{
-	  Real shift = -first_staff_translation;
-	  spring_copy.set_distance (spring_copy.distance () + shift);
-	  minimum_distance += shift;
-	}
-      spring_copy.ensure_min_distance (minimum_distance);
-
-      springs_.push_back (spring_copy);
+      Real shift = -first_staff_translation;
+      spring_copy.set_distance (spring_copy.distance () + shift);
+      minimum_distance += shift;
     }
+  spring_copy.ensure_min_distance (minimum_distance);
+  springs_.push_back (spring_copy);
+
   bottom_skyline_ = down_skyline;
   elements_.push_back (Element (elts, first_staff_translation));
 
@@ -171,14 +188,9 @@ Page_layout_problem::append_prob (Prob *prob, Spring const& spring, Real padding
     }
   minimum_distance += padding;
 
-  // The first system doesn't get a spring before it.
-  if (elements_.size ())
-    {
-      Spring spring_copy = spring;
-      spring_copy.ensure_min_distance (minimum_distance);
-      springs_.push_back (spring_copy);
-    }
-
+  Spring spring_copy = spring;
+  spring_copy.ensure_min_distance (minimum_distance);
+  springs_.push_back (spring_copy);
   elements_.push_back (Element (prob));
 }
 
@@ -190,10 +202,6 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
   for (vsize i = 0; i < springs_.size (); ++i)
     spacer.add_spring (springs_[i]);
 
-  // TODO: currently, we space things so that the bottom of the last
-  // system will touch the bottom of the printable area. Perhaps we
-  // should add a spring to the last system so that we don't quite
-  // fill the area (it might look better when spacing is very loose).
   Real bottom_padding = 0;
   Interval first_staff_iv (0, 0);
   Interval last_staff_iv (0, 0);
@@ -202,6 +210,8 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
       first_staff_iv = first_staff_extent (elements_[0]);
       last_staff_iv = last_staff_extent (elements_.back ());
 
+      // TODO: junk bottom-space now that we have last-spring-spacing?
+      // bottom-space has the flexibility that one can do it per-system.
       // NOTE: bottom-space is misnamed since it is not stretchable space.
       if (Prob *p = elements_.back ().prob)
 	bottom_padding = robust_scm2double (p->get_property ("bottom-space"), 0);
@@ -215,11 +225,7 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
   spacer.solve (page_height - bottom_padding + last_staff_iv[DOWN] - first_staff_iv[UP], ragged);
   solution_ = spacer.spring_positions ();
 
-  // Ensure that the top of the top staff is at the top the space we were given.
-  for (vsize i = 0; i < solution_.size (); ++i)
-    solution_[i] += first_staff_iv[UP];
-
-  // TODO: (maybe) if it doesn't fit, try again without padding.
+  // TODO (maybe): if it doesn't fit, try again without padding.
 }
 
 // The solution_ vector stores the position of every live VerticalAxisGroup
@@ -232,7 +238,8 @@ Page_layout_problem::find_system_offsets ()
   SCM system_offsets = SCM_EOL;
   SCM *tail = &system_offsets;
 
-  vsize spring_idx = 0;
+  // spring_idx 0 is the top of the page. Interesting values start from 1.
+  vsize spring_idx = 1;
   for (vsize i = 0; i < elements_.size (); ++i)
     {
       if (elements_[i].prob)
@@ -287,7 +294,7 @@ Page_layout_problem::find_system_offsets ()
 	}
     }
 
-  assert (spring_idx == solution_.size ());
+  assert (spring_idx == solution_.size () - 1);
   return system_offsets;
 }
 
@@ -405,8 +412,13 @@ Page_layout_problem::alter_spring_from_spacing_spec (SCM spec, Spring* spring)
   Real min_dist;
   if (read_spacing_spec (spec, &space, ly_symbol2scm ("space")))
     spring->set_distance (space);
-  if (read_spacing_spec (spec, &stretch, ly_symbol2scm ("stretchability")))
-    spring->set_inverse_stretch_strength (stretch);
   if (read_spacing_spec (spec, &min_dist, ly_symbol2scm ("minimum-distance")))
     spring->set_min_distance (min_dist);
+  spring->set_default_strength ();
+
+  if (read_spacing_spec (spec, &stretch, ly_symbol2scm ("stretchability")))
+    {
+      spring->set_inverse_stretch_strength (stretch);
+      spring->set_inverse_compress_strength (stretch);
+    }
 }
