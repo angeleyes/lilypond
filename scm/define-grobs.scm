@@ -2150,6 +2150,7 @@
     (VerticalAlignment
      . (
 	(axes . (,Y))
+	(positioning-done . ,ly:align-interface::calc-positioning-done)
 	(Y-extent . ,ly:axis-group-interface::height)
 	(X-extent . ,ly:axis-group-interface::width)
 	(stacking-dir . -1)
