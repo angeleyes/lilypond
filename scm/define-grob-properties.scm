@@ -27,6 +27,10 @@
 ;;
      (add-stem-support ,boolean? "If set, the @code{Stem} object is
 included in this script's support.")
+     (after-last-staff-spacing ,list? "An alist of spacing variables
+that controls the spacing after the last staff in this staff group.
+See @var{next-staff-spacing} for a description of the elements of
+this alist.")
      (after-line-breaking ,boolean? "Dummy property, used to trigger
 callback for @code{after-line-breaking}.")
      (align-dir ,ly:dir? "Which side to align? @code{-1}: left side,
@@ -95,6 +99,10 @@ beamlet, as a proportion of the distance between two adjacent stems.")
      (before-line-breaking ,boolean? "Dummy property, used to trigger
 a callback function.")
      (between-cols ,pair? "Where to attach a loose column to.")
+     (between-staff-spacing ,list? "An alist of spacing variables
+that controls the spacing between staves within this staff group.
+See @var{next-staff-spacing} for a description of the elements of
+this alist.")
      (bound-padding ,number? "The amount of padding to insert around
 spanner bounds.")
      (bound-details ,list? "An alist of properties for determining
@@ -188,6 +196,10 @@ an ending t-value, a @code{dash-fraction}, and a @code{dash-period}.")
 whitespace.  If negative, no line is drawn at all.")
      (default-direction ,ly:dir? "Direction determined by note head
 positions.")
+     (default-next-staff-spacing ,list? "An alist of spacing variables
+that controls the spacing between this staff and the next.
+See @var{next-staff-spacing} for a description of the elements of
+this alist.")
      (details ,list? "Alist of parameters for detailed grob behavior.
 More information on the allowed parameters for a grob can be found by 
 looking at the top of the Internals Reference page for each interface
@@ -956,6 +968,7 @@ layout.")
      (spacing ,ly:grob? "The spacing spanner governing this section.")
      (spacing-wishes ,ly:grob-array? "List of note spacing or staff spacing
 objects.")
+     (staff-grouper ,ly:grob? "The staff grouper we belong to.")
      (staff-symbol ,ly:grob? "The staff symbol grob that we are in.")
      (stem ,ly:grob? "A pointer to a @code{Stem} object.")
      (stems ,ly:grob-array? "A list of stem objects, corresponding to the

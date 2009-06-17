@@ -6,34 +6,19 @@
   (c) 1997--2009 Han-Wen Nienhuys <hanwen@xs4all.nl>
 */
 
-#include "context.hh"
-#include "paper-column.hh"
+#include "vertical-align-engraver.hh"
+
 #include "align-interface.hh"
-#include "span-bar.hh"
 #include "axis-group-interface.hh"
+#include "context.hh"
 #include "engraver.hh"
-#include "spanner.hh"
-#include "pointer-group-interface.hh"
 #include "grob-array.hh"
+#include "paper-column.hh"
+#include "pointer-group-interface.hh"
+#include "span-bar.hh"
+#include "spanner.hh"
 
 #include "translator.icc"
-
-class Vertical_align_engraver : public Engraver
-{
-  Spanner *valign_;
-  bool qualifies (Grob_info) const;
-  SCM id_to_group_hashtab_;
-
-public:
-  TRANSLATOR_DECLARATIONS (Vertical_align_engraver);
-  DECLARE_ACKNOWLEDGER (axis_group);
-
-protected:
-  virtual void derived_mark () const;
-  void process_music ();
-  virtual void finalize ();
-  virtual void initialize ();
-};
 
 ADD_ACKNOWLEDGER (Vertical_align_engraver, axis_group);
 ADD_TRANSLATOR (Vertical_align_engraver,
@@ -74,11 +59,15 @@ void
 Vertical_align_engraver::process_music ()
 {
   if (!valign_)
-    {
-      valign_ = make_spanner ("VerticalAlignment", SCM_EOL);
-      valign_->set_bound (LEFT, unsmob_grob (get_property ("currentCommandColumn")));
-      Align_interface::set_ordered (valign_);
-    }
+    make_alignment ();
+}
+
+void
+Vertical_align_engraver::make_alignment ()
+{
+  valign_ = make_spanner ("VerticalAlignment", SCM_EOL);
+  valign_->set_bound (LEFT, unsmob_grob (get_property ("currentCommandColumn")));
+  Align_interface::set_ordered (valign_);
 }
 
 void
@@ -103,6 +92,12 @@ Vertical_align_engraver::qualifies (Grob_info i) const
 }
 
 void
+Vertical_align_engraver::add_element (Grob *elt)
+{
+  Align_interface::add_element (valign_, elt);
+}
+
+void
 Vertical_align_engraver::acknowledge_axis_group (Grob_info i)
 {
   if (qualifies (i))
@@ -121,7 +116,7 @@ Vertical_align_engraver::acknowledge_axis_group (Grob_info i)
       Grob *before_grob = unsmob_grob (before);
       Grob *after_grob = unsmob_grob (after);
 
-      Align_interface::add_element (valign_, i.grob ());
+      add_element (i.grob ());
 	
       if (before_grob || after_grob)
 	{
