@@ -42,6 +42,8 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
     {
+      bool first = (s == systems);
+
       if (Grob *g = unsmob_grob (scm_car (s)))
 	{
 	  System *sys = dynamic_cast<System*> (g);
@@ -51,7 +53,6 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	      continue;
 	    }
 
-	  bool first = (s == systems);
 	  SCM spec = first ? first_system_spacing
 	    : (last_system_was_title ? after_title_spacing : between_system_spacing);
 	  Spring spring (first ? 0 : 1, 0.0);
@@ -64,8 +65,9 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
 	}
       else if (Prob *p = unsmob_prob (scm_car (s)))
 	{
-	  SCM spec = last_system_was_title ? between_title_spacing : before_title_spacing;
-	  Spring spring (1.0, 0.0);
+	  SCM spec = first ? first_system_spacing
+	    : (last_system_was_title ? between_title_spacing : before_title_spacing);
+	  Spring spring (first ? 0 : 1, 0.0);
 	  Real padding = 0.0;
 	  alter_spring_from_spacing_spec (spec, &spring);
 	  read_spacing_spec (spec, &padding, ly_symbol2scm ("padding"));
