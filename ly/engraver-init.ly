@@ -65,8 +65,7 @@
 
   localKeySignature = #'()
   createSpacing = ##t
-  ignoreFiguredBassRest = ##t 
-  \override VerticalAxisGroup #'next-staff-spacing = #'((space . 10) (padding . 0.5) (minimum-distance . 7))
+  ignoreFiguredBassRest = ##t
   \override VerticalAxisGroup #'minimum-Y-extent = #'(-4 . 4)
   
   %% explicitly set instrument, so we don't get 
@@ -112,6 +111,7 @@
 \context {
   \type "Engraver_group"
   \name "ChoirStaff"
+  \consists "Staff_grouper_engraver"
   \consists "System_start_delimiter_engraver"
   systemStartDelimiter = #'SystemStartBracket
   vocalName = #'()
@@ -313,6 +313,7 @@ instrument names at the start of each system."
   \type "Engraver_group"
   \name "StaffGroup"
 
+  \consists "Staff_grouper_engraver"
   \consists "Span_bar_engraver"
   \consists "Span_arpeggio_engraver"
   \consists "Output_property_engraver"	

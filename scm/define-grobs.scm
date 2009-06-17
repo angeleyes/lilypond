@@ -1617,6 +1617,13 @@
 				font-interface
 				span-bar-interface))))))
 
+    (StaffGrouper
+     . (
+	(between-staff-spacing . ((space . 8) (minimum-distance . 7)))
+	(after-last-staff-spacing . ((space . 10) (minimum-distance . 7)))
+	(meta . ((class . Spanner)
+		 (interfaces . (staff-grouper-interface))))))
+
     (StaffSpacing
      . (
 	(non-musical . #t)
@@ -2174,7 +2181,9 @@
      . (
 	(adjacent-pure-heights . ,ly:axis-group-interface::adjacent-pure-heights)
 	(axes . (,Y))
+	(default-next-staff-spacing . ((space . 10) (minimum-distance . 7)))
 	(max-stretch . ,ly:axis-group-interface::calc-max-stretch)
+	(next-staff-spacing . ,ly:axis-group-interface::calc-next-staff-spacing)
 	(stencil . ,ly:axis-group-interface::print)
 	(vertical-skylines . ,ly:hara-kiri-group-spanner::calc-skylines)
 	(X-extent . ,ly:axis-group-interface::width)
