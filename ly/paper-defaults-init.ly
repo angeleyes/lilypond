@@ -41,11 +41,11 @@
 	(is-book-title . #t)
 	))
     
-    %% TODO: figure out how to get this to play nicely with scaling
-    between-system-spacing = #`((space . ,(* 20 mm)) (padding . ,(* 4 mm)))
-    after-title-spacing = #`((space . ,(* 5 mm)) (padding . ,(* 2 mm)))
-    before-title-spacing = #`((space . ,(* 10 mm)) (padding . ,(* 2 mm)))
-    between-title-spacing = #`((space . ,(* 2 mm)) (padding . ,(* 2 mm)))
+    %% Note: these are not scaled; they are in staff-spaces.
+    between-system-spacing = #'((space . 11) (minimum-distance . 7) (padding . 1))
+    after-title-spacing = #'((space . 2) (padding . 0.5))
+    before-title-spacing = #'((space . 5) (padding . 0.5))
+    between-title-spacing = #'((space . 1) (padding . 0.5))
 
     %%
     %% Small staves are aligned so they come out on the same place on
