@@ -139,10 +139,19 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   // springs at the given distances. Otherwise, use stretchable springs.
   SCM details = get_details (elements_.back ());
   SCM manual_dists = details_get_property (details, "alignment-distances");
-  for (vsize i = 1; i < elts.size (); ++i)
+  bool first_live_element = true;
+  for (vsize i = 0; i < elts.size (); ++i)
     {
       if (elts[i]->is_live ())
 	{
+	  // We don't add a spring for the first live element, since
+	  // we are only adding springs _between_ staves here.
+	  if (first_live_element)
+	    {
+	      first_live_element = false;
+	      continue;
+	    }
+
 	  Spring spring (0.5, 0.0);
 	  SCM spec = elts[i-1]->get_property ("next-staff-spacing");
 	  alter_spring_from_spacing_spec (spec, &spring);
