@@ -154,7 +154,7 @@ void
 Spring::set_default_strength ()
 {
   inverse_compress_strength_ = distance_ - min_distance_;
-  inverse_stretch_strength_ = distance_ - min_distance_;
+  inverse_stretch_strength_ = distance_;
 }
 
 Real
