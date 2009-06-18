@@ -13,6 +13,7 @@
 #include "international.hh"
 #include "item.hh"
 #include "page-layout-problem.hh"
+#include "paper-book.hh"
 #include "paper-column.hh"
 #include "pointer-group-interface.hh"
 #include "spanner.hh"
@@ -20,16 +21,10 @@
 #include "system.hh"
 #include "warn.hh"
 
-/*
-  TODO: for vertical spacing, should also include a rod & spring
-  scheme of sorts into this: the alignment should default to a certain
-  distance between element refpoints, unless bbox force a bigger
-  distance.
- */
 
-MAKE_SCHEME_CALLBACK (Align_interface, calc_positioning_done, 1);
+MAKE_SCHEME_CALLBACK (Align_interface, align_to_minimum_distances, 1);
 SCM
-Align_interface::calc_positioning_done (SCM smob)
+Align_interface::align_to_minimum_distances (SCM smob)
 {
   Grob *me = unsmob_grob (smob);
 
@@ -38,7 +33,20 @@ Align_interface::calc_positioning_done (SCM smob)
   SCM axis = scm_car (me->get_property ("axes"));
   Axis ax = Axis (scm_to_int (axis));
 
-  Align_interface::align_elements_to_extents (me, ax);
+  Align_interface::align_elements_to_minimum_distances (me, ax);
+
+  return SCM_BOOL_T;
+}
+
+MAKE_SCHEME_CALLBACK (Align_interface, align_to_ideal_distances, 1);
+SCM
+Align_interface::align_to_ideal_distances (SCM smob)
+{
+  Grob *me = unsmob_grob (smob);
+
+  me->set_property ("positioning-done", SCM_BOOL_T);
+
+  Align_interface::align_elements_to_ideal_distances (me);
 
   return SCM_BOOL_T;
 }
@@ -188,7 +196,16 @@ Align_interface::get_minimum_translations (Grob *me,
 }
 
 void
-Align_interface::align_elements_to_extents (Grob *me, Axis a)
+Align_interface::align_elements_to_ideal_distances (Grob *me)
+{
+  System *sys = me->get_system ();
+  Page_layout_problem layout (NULL, scm_list_1 (sys->self_scm ()));
+
+  layout.solution (100, true);
+}
+
+void
+Align_interface::align_elements_to_minimum_distances (Grob *me, Axis a)
 {
   extract_grob_set (me, "elements", all_grobs);
 

@@ -257,7 +257,7 @@
      . (
 	(axes . (,Y))
 	(threshold . (2 . 1000))
-	(positioning-done . ,ly:align-interface::calc-positioning-done)
+	(positioning-done . ,ly:align-interface::align-to-minimum-distances)
 	(Y-extent . ,ly:axis-group-interface::height)
 	(stacking-dir . ,DOWN)
 	(padding . 0.2)
@@ -1622,8 +1622,8 @@
 
     (StaffGrouper
      . (
-	(between-staff-spacing . ((space . 8) (minimum-distance . 7)))
-	(after-last-staff-spacing . ((space . 10) (minimum-distance . 7)))
+	(between-staff-spacing . ((space . 8) (minimum-distance . 8)))
+	(after-last-staff-spacing . ((space . 10) (minimum-distance . 8)))
 	(meta . ((class . Spanner)
 		 (interfaces . (staff-grouper-interface))))))
 
@@ -2157,7 +2157,7 @@
     (VerticalAlignment
      . (
 	(axes . (,Y))
-	(positioning-done . ,ly:align-interface::calc-positioning-done)
+	(positioning-done . ,ly:align-interface::align-to-ideal-distances)
 	(Y-extent . ,ly:axis-group-interface::height)
 	(X-extent . ,ly:axis-group-interface::width)
 	(stacking-dir . -1)
@@ -2180,7 +2180,7 @@
 	(stencil . ,ly:axis-group-interface::print)
 	(adjacent-pure-heights . ,ly:axis-group-interface::adjacent-pure-heights)
 	(next-staff-spacing . ,ly:axis-group-interface::calc-next-staff-spacing)
-	(default-next-staff-spacing . ((space . 10) (minimum-distance . 7)))
+	(default-next-staff-spacing . ((space . 10) (minimum-distance . 8)))
 	(meta . ((class . Spanner)
 		 (object-callbacks . ((X-common . ,ly:axis-group-interface::calc-x-common)))
 		 (interfaces . (axis-group-interface

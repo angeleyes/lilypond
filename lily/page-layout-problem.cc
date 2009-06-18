@@ -26,19 +26,29 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   // below the top of the printable area.
   bottom_skyline_.set_minimum_height (0);
 
-  Output_def *paper = pb->paper_;
-  SCM between_system_spacing = paper->c_variable ("between-system-spacing");
-  SCM after_title_spacing = paper->c_variable ("after-title-spacing");
-  SCM before_title_spacing = paper->c_variable ("before-title-spacing");
-  SCM between_title_spacing = paper->c_variable ("between-title-spacing");
-  bool last_system_was_title = false;
+  SCM between_system_spacing = SCM_EOL;
+  SCM after_title_spacing = SCM_EOL;
+  SCM before_title_spacing = SCM_EOL;
+  SCM between_title_spacing = SCM_EOL;
 
   // first_system_spacing controls the spring from the top of the printable
   // area to the first staff. It allows the user to control the offset of
   // the first staff (as opposed to the top of the first system) from the
   // top of the page. Similarly for last_system_spacing.
-  SCM first_system_spacing = paper->c_variable ("first-system-spacing");
-  SCM last_system_spacing = paper->c_variable ("last-system-spacing");
+  SCM first_system_spacing = SCM_EOL;
+  SCM last_system_spacing = SCM_EOL;
+  if (pb && pb->paper_)
+    {
+      Output_def *paper = pb->paper_;
+      between_system_spacing = paper->c_variable ("between-system-spacing");
+      after_title_spacing = paper->c_variable ("after-title-spacing");
+      before_title_spacing = paper->c_variable ("before-title-spacing");
+      between_title_spacing = paper->c_variable ("between-title-spacing");
+      first_system_spacing = paper->c_variable ("first-system-spacing");
+      last_system_spacing = paper->c_variable ("last-system-spacing");
+    }
+  bool last_system_was_title = false;
+
 
   for (SCM s = systems; scm_is_pair (s); s = scm_cdr (s))
     {
@@ -276,6 +286,7 @@ Page_layout_problem::find_system_offsets ()
 
 	  // Position the staves within this system.
 	  Real translation = 0;
+	  bool found_live_staff = false;
 	  for (vsize staff_idx = 0; staff_idx < elements_[i].staves.size (); ++staff_idx)
 	    {
 	      Grob *staff = elements_[i].staves[staff_idx];
@@ -289,6 +300,7 @@ Page_layout_problem::find_system_offsets ()
 		{
 		  // this is relative to the system: negative numbers are down.
 		  translation = system_position - solution_[spring_idx];
+		  found_live_staff = true;
 		  spring_idx++;
 		}
 	      staff->translate_axis (translation, Y_AXIS);
@@ -297,7 +309,7 @@ Page_layout_problem::find_system_offsets ()
 	  // Corner case: even if a system has no live staves, it still takes up
 	  // one spring (a system with one live staff also takes up one spring),
 	  // which we need to increment past.
-	  if (elements_[i].staves.empty ())
+	  if (!found_live_staff)
 	    spring_idx++;
 
 	  *tail = scm_cons (scm_from_double (system_position), SCM_EOL);
@@ -331,6 +343,9 @@ Page_layout_problem::build_system_skyline (vector<Grob*> const& staves,
 					   Skyline *up,
 					   Skyline *down)
 {
+  if (minimum_translations.empty ())
+    return;
+
   assert (staves.size () == minimum_translations.size ());
   Real first_translation = minimum_translations[0];
 

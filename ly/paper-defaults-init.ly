@@ -42,7 +42,7 @@
 	))
     
     %% Note: these are not scaled; they are in staff-spaces.
-    between-system-spacing = #'((space . 11) (minimum-distance . 7) (padding . 1))
+    between-system-spacing = #'((space . 11) (minimum-distance . 8) (padding . 1))
     after-title-spacing = #'((space . 2) (padding . 0.5))
     before-title-spacing = #'((space . 5) (padding . 0.5))
     between-title-spacing = #'((space . 1) (padding . 0.5))
