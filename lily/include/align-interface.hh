@@ -15,8 +15,10 @@
 
 struct Align_interface
 {
-  DECLARE_SCHEME_CALLBACK (calc_positioning_done, (SCM));
-  static void align_elements_to_extents (Grob *, Axis a);
+  DECLARE_SCHEME_CALLBACK (align_to_minimum_distances, (SCM));
+  DECLARE_SCHEME_CALLBACK (align_to_ideal_distances, (SCM));
+  static void align_elements_to_minimum_distances(Grob *, Axis a);
+  static void align_elements_to_ideal_distances(Grob *);
   static vector<Real> get_minimum_translations (Grob *, vector<Grob*> const&,
 						Axis a,
 						bool safe, int start, int end);
