@@ -10,6 +10,7 @@
 #include "page-layout-problem.hh"
 
 #include "align-interface.hh"
+#include "international.hh"
 #include "item.hh"
 #include "output-def.hh"
 #include "paper-book.hh"
@@ -121,7 +122,6 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   extract_grob_set (align, "elements", elts);
   vector<Real> minimum_offsets = Align_interface::get_minimum_translations (align, elts, Y_AXIS,
 									    false, 0, 0);
-  Real first_staff_translation = minimum_offsets.size () ? minimum_offsets[0] : 0;
 
   Skyline up_skyline (UP);
   Skyline down_skyline (DOWN);
@@ -135,7 +135,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   Spring spring_copy = spring;
   if (elements_.size () && elements_.back ().prob)
     {
-      Real shift = -first_staff_translation;
+      Real shift = -minimum_offsets[0];
       spring_copy.set_distance (spring_copy.distance () + shift);
       minimum_distance += shift;
     }
@@ -143,7 +143,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   springs_.push_back (spring_copy);
 
   bottom_skyline_ = down_skyline;
-  elements_.push_back (Element (elts, first_staff_translation));
+  elements_.push_back (Element (elts, minimum_offsets));
 
   // Add the springs for the VerticalAxisGroups in this system.
 
@@ -151,10 +151,11 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   // springs at the given distances. Otherwise, use stretchable springs.
   SCM details = get_details (elements_.back ());
   SCM manual_dists = details_get_property (details, "alignment-distances");
+  vsize last_spaceable_staff = 0;
   bool first_live_element = true;
   for (vsize i = 0; i < elts.size (); ++i)
     {
-      if (elts[i]->is_live ())
+      if (elts[i]->is_live () && is_spaceable (elts[i]))
 	{
 	  // We don't add a spring for the first live element, since
 	  // we are only adding springs _between_ staves here.
@@ -169,7 +170,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
 	  alter_spring_from_spacing_spec (spec, &spring);
 
 	  springs_.push_back (spring);
-	  Real min_distance = minimum_offsets[i-1] - minimum_offsets[i];
+	  Real min_distance = minimum_offsets[last_spaceable_staff] - minimum_offsets[i];
 	  springs_.back ().ensure_min_distance (min_distance);
 
 	  if (scm_is_pair (manual_dists))
@@ -184,7 +185,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
 		}
 	      manual_dists = scm_cdr (manual_dists);
 	    }
-
+	  last_spaceable_staff = i;
 	}
     }
 }
@@ -253,6 +254,7 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
 // and every title. From that information,
 // 1) within each system, stretch the staves so they land at the right position
 // 2) find the offset of each system (relative to the printable area of the page).
+// FIXME: this function is getting too long.
 SCM
 Page_layout_problem::find_system_offsets ()
 {
@@ -282,11 +284,18 @@ Page_layout_problem::find_system_offsets ()
 	  // These two positions are relative to the page (with positive numbers being
 	  // down).
 	  Real first_staff_position = solution_[spring_idx];
-	  Real system_position = first_staff_position + elements_[i].first_staff_min_translation;
+	  Real first_staff_min_translation = elements_[i].min_offsets.size () ? elements_[i].min_offsets[0] : 0;
+	  Real system_position = first_staff_position + first_staff_min_translation;
 
 	  // Position the staves within this system.
 	  Real translation = 0;
 	  bool found_live_staff = false;
+	  vector<Grob*> loose_lines;
+	  vector<Real> const& min_offsets = elements_[i].min_offsets;
+	  vector<Real> loose_line_min_distances;
+	  Grob *last_spaceable_line = 0;
+	  Real last_spaceable_line_translation = 0;
+	  vsize last_live_staff = 0;
 	  for (vsize staff_idx = 0; staff_idx < elements_[i].staves.size (); ++staff_idx)
 	    {
 	      Grob *staff = elements_[i].staves[staff_idx];
@@ -296,14 +305,49 @@ Page_layout_problem::find_system_offsets ()
 	      // translated. We translate them by the same amount as
 	      // the VerticalAxisGroup directly before.  (but we don't
 	      // increment spring_idx!)
-	      if (staff->is_live ())
+	      if (is_spaceable (staff) || !staff->is_live ())
 		{
-		  // this is relative to the system: negative numbers are down.
-		  translation = system_position - solution_[spring_idx];
-		  found_live_staff = true;
-		  spring_idx++;
+		  if (staff->is_live ())
+		    {
+		      // this is relative to the system: negative numbers are down.
+		      translation = system_position - solution_[spring_idx];
+		      found_live_staff = true;
+		      spring_idx++;
+
+		      // Lay out any non-spaceable lines between this line and
+		      // the last one.
+		      if (loose_lines.size ())
+			{
+			  loose_line_min_distances.push_back (min_offsets[last_live_staff] - min_offsets[staff_idx]);
+			  distribute_loose_lines (last_spaceable_line, last_spaceable_line_translation,
+						  loose_lines, loose_line_min_distances,
+						  staff, translation);
+			  loose_lines.clear ();
+			  loose_line_min_distances.clear ();
+			}
+		      last_spaceable_line = staff;
+		      last_spaceable_line_translation = translation;
+		      last_live_staff = staff_idx;
+		    }
+
+		  staff->translate_axis (translation, Y_AXIS);
 		}
-	      staff->translate_axis (translation, Y_AXIS);
+	      else
+		{
+		  loose_lines.push_back (staff);
+		  // FIXME: this might be wrong if we haven't yet had a live staff.
+		  loose_line_min_distances.push_back (min_offsets[last_live_staff] - min_offsets[staff_idx]);
+		  last_live_staff = staff_idx;
+		}
+	    }
+
+	  // Deal with loose lines that are not followed by spaceable lines.
+	  if (loose_lines.size ())
+	    {
+	      loose_line_min_distances.push_back (0);
+	      distribute_loose_lines (last_spaceable_line, last_spaceable_line_translation,
+				      loose_lines, loose_line_min_distances,
+				      0, 0);
 	    }
 
 	  // Corner case: even if a system has no live staves, it still takes up
@@ -319,6 +363,113 @@ Page_layout_problem::find_system_offsets ()
 
   assert (spring_idx == solution_.size () - 1);
   return system_offsets;
+}
+
+// Given two lines that are already spaced (line_before and line_after), distribute
+// some unspaced lines between them. If line_before is null, the unspaced lines
+// will be packed as closely as possible to line_after. If line_after is null, the
+// unspaced lines will be packed as closely as possible to line_before. If both are
+// null, the first loose_line will be translated to before_offset and the rest
+// of the loose_lines will be packed as closely as possible to it.
+//
+// min_distances has one more element than loose_lines; the first element of
+// min_distances contains the minimum skyline distance between line_before
+// and loose_lines[0].
+void
+Page_layout_problem::distribute_loose_lines (Grob *line_before, Real before_offset,
+					     vector<Grob*> const &loose_lines,
+					     vector<Real> const &min_distances,
+					     Grob *line_after, Real after_offset)
+{
+  vector<Real> offsets;
+  if (!line_before || !line_after)
+    {
+      // Work out the distances of the lines relative to each other. (ie.
+      // as close as possible).
+      offsets.push_back (0);
+      for (vsize i = 1; i < loose_lines.size (); ++i)
+	{
+	  Real min_dist = min_distances[i];
+	  Real padding = robust_scm2double (loose_lines[i-1]->get_property ("padding"), 0);
+	  offsets.push_back (-min_dist - padding);
+	}
+
+      // Work out the absolute offsets.
+      Real shift = before_offset;
+      if (line_before)
+	shift -= min_distances[0]; // TODO: add padding here
+      else if (line_after)
+	// after shifting, the last loose_line should be at after_offset + min_distances.back ()
+	shift = after_offset + min_distances.back () - offsets.back ();
+
+      for (vsize i = 0; i < offsets.size (); ++i)
+	offsets[i] += shift;
+    }
+  else
+    {
+      Simple_spacer spacer;
+      Direction last_affinity = UP;
+      for (vsize i = 0; i < loose_lines.size (); ++i)
+	{
+	  Direction affinity = robust_scm2dir (loose_lines[i]->get_property ("staff-affinity"), CENTER);
+	  SCM spec = loose_lines[i]->get_property ("inter-staff-spacing");
+	  Spring spring (1.0, 0.0);
+
+	  alter_spring_from_spacing_spec (spec, &spring);
+
+	  if (affinity > last_affinity)
+	    {
+	      warning (_ ("staff-affinities should only decrease"));
+	      affinity = last_affinity;
+	    }
+
+	  if (affinity != last_affinity)
+	    {
+	      if (affinity == CENTER)
+		{
+		  Spring up_spring = spring;
+		  up_spring.ensure_min_distance (min_distances[i]);
+
+		  spacer.add_spring (up_spring);
+		}
+	      else if (affinity == DOWN && last_affinity == UP)
+		{
+		  // Insert a very flexible spring, so it doesn't mess things up too much.
+		  Spring extra_spr (1.0, min_distances[i]);
+		  extra_spr.set_inverse_stretch_strength (100000);
+		  extra_spr.set_inverse_compress_strength (100000);
+		  spacer.add_spring (extra_spr);
+		}
+	    }
+	  if (affinity == UP)
+	    spring.ensure_min_distance (min_distances[i]);
+	  else
+	    spring.ensure_min_distance (min_distances[i+1]);
+
+	  spacer.add_spring (spring);
+	  last_affinity = affinity;
+	}
+
+      if (last_affinity == UP)
+	{
+	  Spring extra_spr (1.0, min_distances.back ());
+	  extra_spr.set_inverse_stretch_strength (100000);
+	  extra_spr.set_inverse_compress_strength (100000);
+	  spacer.add_spring (extra_spr);
+	}
+
+      // Remember: offsets are decreasing, since we're going from UP to DOWN!
+      spacer.solve (before_offset - after_offset, false);
+
+      vector<Real> solution = spacer.spring_positions ();
+      for (vsize i = 1; i + 1 < solution.size (); ++i)
+	offsets.push_back (before_offset - solution[i]);
+
+      assert (offsets.size () == loose_lines.size ());
+    }
+
+  for (vsize i = 0; i < offsets.size (); ++i)
+    loose_lines[i]->translate_axis (offsets[i], Y_AXIS);
 }
 
 SCM
@@ -416,6 +567,12 @@ Page_layout_problem::details_get_property (SCM details, const char* property)
 {
   SCM handle = scm_assoc (ly_symbol2scm (property), details);
   return scm_is_pair (handle) ? scm_cdr (handle) : SCM_BOOL_F;
+}
+
+bool
+Page_layout_problem::is_spaceable (Grob *g)
+{
+  return !scm_is_number (g->get_property ("staff-affinity"));
 }
 
 bool

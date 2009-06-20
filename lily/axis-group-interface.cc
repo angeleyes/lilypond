@@ -715,6 +715,7 @@ ADD_INTERFACE (Axis_group_interface,
 	       "axes "
 	       "default-next-staff-spacing "
 	       "elements "
+	       "inter-staff-spacing "
 	       "keep-fixed-while-stretching "
 	       "max-stretch "
 	       "next-staff-spacing "
@@ -722,6 +723,7 @@ ADD_INTERFACE (Axis_group_interface,
 	       "pure-Y-common "
 	       "pure-relevant-items "
 	       "pure-relevant-spanners "
+	       "staff-affinity "
 	       "staff-grouper "
 	       "vertical-skylines "
 	       );

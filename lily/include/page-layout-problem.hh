@@ -20,6 +20,7 @@ public:
 
   SCM solution (Real page_height, bool ragged);
   static bool read_spacing_spec (SCM spec, Real* dest, SCM sym);
+  static bool is_spaceable (Grob *g);
 
 protected:
   void append_system (System*, Spring const&, Real padding);
@@ -27,6 +28,7 @@ protected:
 
   void solve_rod_spring_problem (Real page_height, bool ragged);
   SCM find_system_offsets ();
+  void distribute_loose_lines (Grob*, Real, vector<Grob*> const&, vector<Real> const&, Grob*, Real);
 
   static Grob* find_vertical_alignment (System*);
   static void build_system_skyline (vector<Grob*> const&, vector<Real> const&, Skyline* up, Skyline* down);
@@ -36,12 +38,12 @@ protected:
   typedef struct Element {
     Prob *prob;
     vector<Grob*> staves;
-    Real first_staff_min_translation;
+    vector<Real> min_offsets;
 
-    Element (vector<Grob*> const& a, Real r)
+    Element (vector<Grob*> const& a, vector<Real> const& o)
     {
       staves = a;
-      first_staff_min_translation = r;
+      min_offsets = o;
       prob = 0;
     }
 

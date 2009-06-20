@@ -362,7 +362,8 @@ printing of a single line of lyrics."
 
   \override VerticalAxisGroup #'remove-first = ##t
   \override VerticalAxisGroup #'remove-empty = ##t
-  \override VerticalAxisGroup #'keep-fixed-while-stretching = ##t
+  \override VerticalAxisGroup #'staff-affinity = #UP
+  \override VerticalAxisGroup #'inter-staff-spacing = #'((space . 6))
   \override SeparationItem #'padding = #0.2
   \override InstrumentName #'self-alignment-Y = ##f
 
@@ -381,6 +382,8 @@ printing of a single line of lyrics."
   \consists "Axis_group_engraver"
 
   \override VerticalAxisGroup #'minimum-Y-extent = ##f
+  % FIXME: not sure what the default should be here.
+  \override VerticalAxisGroup #'staff-affinity = #DOWN
 
   
   \consists "Rest_swallow_translator" 
@@ -405,6 +408,7 @@ printing of a single line of lyrics."
   \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 2)
   \override VerticalAxisGroup #'remove-first = ##t
   \override VerticalAxisGroup #'remove-empty = ##t
+  \override VerticalAxisGroup #'staff-affinity = #DOWN
 }
 
 
@@ -639,6 +643,7 @@ automatically when an output definition (a @code{\score} or
 
   \override VerticalAxisGroup #'remove-empty = ##t
   \override VerticalAxisGroup #'remove-first = ##t
+  \override VerticalAxisGroup #'staff-affinity = #UP
   \override VerticalAxisGroup #'minimum-Y-extent = #'(0 . 2)
 }
 

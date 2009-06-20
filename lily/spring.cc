@@ -32,10 +32,16 @@ Spring::Spring (Real dist, Real min_dist)
 void
 Spring::update_blocking_force ()
 {
-  if (distance_ == min_distance_)
-    blocking_force_ = 0.0;
+  if (min_distance_ > distance_)
+    blocking_force_ = (min_distance_ - distance_) / inverse_stretch_strength_;
   else
     blocking_force_ = (min_distance_ - distance_) / inverse_compress_strength_;
+
+  if (isnan (blocking_force_) || blocking_force_ == infinity_f)
+    blocking_force_ = 0;
+
+  if (blocking_force_ >= 0)
+    inverse_compress_strength_ = 0;
 }
 
 /* scale a spring, but in a way that doesn't violate min_distance */
@@ -43,7 +49,7 @@ void
 Spring::operator*= (Real r)
 {
   distance_ = max (min_distance_, distance_ * r);
-  inverse_compress_strength_ = distance_ - min_distance_;
+  inverse_compress_strength_ = max (0.0, distance_ - min_distance_);
   inverse_stretch_strength_ *= 0.8;
 }
 
@@ -90,7 +96,6 @@ Spring::set_distance (Real d)
     programming_error ("insane spring distance requested, ignoring it");
   else
     {
-      min_distance_ = min (min_distance_, d);
       distance_ = d;
       update_blocking_force ();
     }
@@ -104,7 +109,6 @@ Spring::set_min_distance (Real d)
   else
     {
       min_distance_ = d;
-      distance_ = max (distance_, min_distance_);
       update_blocking_force ();
     }
 }
@@ -153,7 +157,7 @@ Spring::set_blocking_force (Real f)
 void
 Spring::set_default_strength ()
 {
-  inverse_compress_strength_ = distance_ - min_distance_;
+  inverse_compress_strength_ = (distance_ >= min_distance_) ? distance_ - min_distance_ : 0;
   inverse_stretch_strength_ = distance_;
 }
 
@@ -169,5 +173,5 @@ Spring::length (Real f) const
       force = 0.0;
     }
 
-  return distance_ + force * inv_k;
+  return max (min_distance_, distance_ + force * inv_k);
 }

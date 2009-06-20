@@ -462,6 +462,10 @@ resolution on this @code{NoteColumn}.")
 configuration to this index, and print the respective scores.")
      (inspect-quants ,number-pair? "If debugging is set, set beam and
 slur quants to this position, and print the respective scores.")
+     (inter-staff-spacing ,list? "Specifies how to vertically
+position a non-spaced line relative to the staff for which it
+has affinity.")
+
 
 
 ;;
@@ -738,6 +742,8 @@ duration.  Typically, the width of a note head.  See also
      (springs-and-rods ,boolean? "Dummy variable for triggering
 spacing routines.")
      (stacking-dir ,ly:dir? "Stack objects in which direction?")
+     (staff-affinity ,ly:dir? "The direction of the staff to which this
+line should stick.")
      (staff-padding ,ly:dimension? "Maintain this much space between
 reference points and the staff.  Its effect is to align objects of
 differing sizes (like the dynamics @b{p} and @b{f}) on their
