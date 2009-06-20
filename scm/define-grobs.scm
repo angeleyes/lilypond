@@ -1619,7 +1619,7 @@
 
     (StaffGrouper
      . (
-	(between-staff-spacing . ((space . 8) (minimum-distance . 8)))
+	(between-staff-spacing . ((space . 8) (minimum-distance . 8) (stretchability . 7)))
 	(after-last-staff-spacing . ((space . 10) (minimum-distance . 8)))
 	(meta . ((class . Spanner)
 		 (interfaces . (staff-grouper-interface))))))
