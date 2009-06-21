@@ -113,6 +113,12 @@ div#main {
   width: 100%;
 }
 
+#main > a:first-child {
+  position: absolute;
+  /* FIXME: Test in other browsers besides Firefox */
+  top: -10em;
+}
+
 div#pageHeader {
   position: absolute;
   top: 0;
