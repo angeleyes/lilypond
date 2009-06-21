@@ -621,6 +621,10 @@ sub generate_ly_toc_entries($$$)
     # are ignored, don't generate a list at all...
     if (@child_result) {
       push (@result, "\n$ind<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+      # GOP tweak:  (next 2 lines; alternates)
+      push (@result, "$ind<li$this_css_class>" . &$anchor ($element->{'tocid'}, "$element->{'file'}#$element->{'target'}","(main)"));
+      #push (@result, "$ind<li$this_css_class>" . &$anchor ($element->{'tocid'}, "$element->{'file'}#$element->{'target'}","(".$element->{'text'}." main)"));
+
       push (@result, @child_result);
       push (@result, "$ind</ul>\n");
     }
@@ -649,8 +653,8 @@ sub lilypond_generate_page_toc_body($)
     return () if not defined($current_element);
     # Create the toc entries recursively
 #FIXME
-#    my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
-    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+    my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+#    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
     my $children = $current_element->{'section_childs'};
 # FIXME: generate toc
     foreach ( @$children ) {
@@ -658,8 +662,8 @@ sub lilypond_generate_page_toc_body($)
     }
     push (@toc_entries, "</ul>\n");
 #FIXME
-    push (@toc_entries, "</div>\n");
-#    push (@toc_entries, "\n");
+#    push (@toc_entries, "</div>\n");
+    push (@toc_entries, "\n");
     return @toc_entries;
 }
 
@@ -673,7 +677,7 @@ sub lilypond_print_toc_div ($$)
   if (@lines) {
   
     print $fh "\n\n<div id=\"tocframe\">\n";
-    print $fh "<div class=\"contents\">\n";
+    #print $fh "<div class=\"contents\">\n";
     
     # Remove the leading "GNU LilyPond --- " from the manual title
     my $topname = $Texi2HTML::NAME{'Top'};
@@ -705,13 +709,6 @@ sub lilypond_print_toc_div ($$)
     foreach my $line (@lines) {
       print $fh $line;
     }
-
-# FIXME: do second layer
-#    print $fh "<br>\n";
-#    print $fh "<ul class=\"toc\">\n";
-#    print $fh "<li>FIXME Insert second-layer TOC frame here</li>\n";
-#    print $fh "</ul>\n";
-#    print $fh "</div>";
 
     print $fh "</div>\n\n";
   }
