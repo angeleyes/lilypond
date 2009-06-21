@@ -1,316 +1,295 @@
-/*   FIXME test; will be completely changed later */
-
-#tocframe div {
-  position:absolute;
-  top:0;
-  width:100%;
-  float:left;
-
-  list-style-type:none;
-  margin:0;
-
-  font-size:small;
-  color:black;
-  background-color:cyan;
-  padding:0.2em 0.6em;
-  border:1px solid black;
+/* Generic elements */
+html {
+  padding: 0;
+  margin: 0;
 }
 
-#tocframe ul {
-  width:inherit;
-  padding:inherit;
-  margin:inherit;
-  list-style-type:inherit;
-/*  float:inherit;*/
-  color:inherit;
+body {
+  font-size: 95%;
+  line-height: 1.5;
+  background: #fdfdfd;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  display: none;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin: 1em 10px;
+}
+
+/* Divs */
+div#tocframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 0 1em 0;
+}
+
+#tocframe ul.toc {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 #tocframe li {
-  color:inherit;
-  font-size:inherit;
+  float: left;
+  width: 16.666%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
-#tocframe a
-{
-  width:16%;
-  text-decoration:none;
-  color:inherit;
-  background-color:inherit;
-  border:inherit;
-  float:left;
+#tocframe li a {
+  width: 100%;
+  height: 1.5em;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  background: #ceffae;
+  padding: 0.5em 0;
+  margin: 0;
 }
 
-#tocframe a:hover {background-color:#ff3300}
-
-
-li.toc_current {
-  background-color:yellow;
-  color:black;
-  display:inline;
+#tocframe li a:hover {
+  background: #a6d178;
 }
 
-
-
-
-/* css Zen Garden default style v1.02 */
-/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
-
-/* This file based on 'Tranquille' by Dave Shea */
-/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
-/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
-
-/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
-
-/* basic elements */
-html {
-	margin: 0;
-	padding: 0;
-	}
-body { 
-	font: 75% georgia, sans-serif;
-	line-height: 1.88889;
-/*
-	color: #555753; 
-*/
-/*
-	background: #fff url(monet-fragment.jpg) no-repeat bottom right;
-*/
-	margin: 0; 
-	padding: 0;
-	}
-
-.float-right {
-  float:right;
+#tocframe li.toc_current {
 }
 
-.float-left {
-  float:left;
+#tocframe li.toc_current a {
+  background: #bdee9d;
 }
 
-.float-center {
-  text-align:center;
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-/*
-  float:center;
-*/
+#tocframe li.toc_current a:hover {
+  background: #a6d178;
 }
 
-p { 
-	margin-top: 0; 
-	text-align: justify;
-	}
-h3 { 
-	font: italic normal 1.4em georgia, sans-serif;
-	letter-spacing: 1px; 
-	margin-bottom: 0; 
-	color: #7D775C;
-	}
-a:link { 
-	font-weight: bold; 
-	text-decoration: none; 
-/*
-	color: #B7A5DF;
-*/
-	}
-a:visited { 
-	font-weight: bold; 
-	text-decoration: none; 
-/*
-	color: #D4CDDC;
-*/
-	}
-a:hover, a:active { 
-	text-decoration: underline; 
-/*
-	color: #9685BA;
-*/
-	}
-acronym {
-	border-bottom: none;
-	}
+/* second level toc (unnumberedsec) */
 
-
-
-div#main { 
-/*
-	background: url(lelie.jpg) no-repeat bottom right; 
-*/
-	/*padding: 0 175px 0 110px;  */
-	padding: 5px;
-	margin: 10px; 
-	position: relative;
+#tocframe .toc .toc {
+  position: absolute;
+  top: 2.95em;
+  left: 0;
+  font-size: 85%;
+  padding: 0;
+  margin: 0 0 1em 0;
 }
 
-#pageHeader {
-	width: 100%; 
-	height: 300px; 
-	background: transparent url(monet-fragment.jpg) no-repeat top center; 
-	padding-top: 20px;
-	color:white;
-	text-align:center;
-	font-size:larger;
-/*
-	display:none
-	float:left;
-*/
+#tocframe .toc .toc li {
+  float: left;
+  width: auto;
+  background: #bdee9d;
+  padding: 0;
+  margin: 0;
 }
+
+#tocframe .toc .toc li a {
+  width: auto;
+  display: block;
+  font-weight: normal;
+  padding: 0 1em;
+  margin: 0;
+}
+
+/* third level toc (unnumberedsubsec) */
+
+#tocframe .toc .toc .toc {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+}
+
+div#main {
+  position: absolute;
+  /* FIXME: Move to correct position when ready */
+  top: 4em;
+  left: 0;
+  width: 100%;
+}
+
+div#pageHeader {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  right: 25%;
+  height: 10em;
+  background: #fff url(double-lily-modified.png) no-repeat top
+left;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#pageHeader .heading {
+  font-size: 4em;
+  padding: 0;
+  margin: 0;
+}
+
 #pageHeader p {
-	text-align:center;
+  padding: 0;
+  margin: 0;
 }
 
-#quickSummary {
-	background: transparent url(lelie.jpg) top left repeat-y; 
-	clear:both; 
-	margin: 20px 20px 20px 10px; 
-	width: 160px; 
-	float: left;
-  border:2px solid blue;
-	}
+div#quickSummary {
+  float: left;
+  width: 20%;
+  background: #fefefe;
+  border: solid purple;
+  border-width: 2px 2px 2px 0;
+}
+
+#quickSummary .subheading {
+  background: purple;
+  color: #fff;
+  padding: 0 0 0 0.5em;
+  margin: 0;
+}
 
 #quickSummary p {
-	font: italic 10pt/22pt georgia; 
-	text-align:center;
-	}
-
-#quickSummary p {
-	font: italic 10pt/22pt georgia; 
-	text-align:center;
-	}
-
-
-/* specific divs */
-#intro { 
-	min-width: 470px;
-	}
-
-#supportingText {	
-	padding-left: 10px; 
-	margin-bottom: 40px;
-	}
-
-#footer { 
-	text-align: center; 
-	}
-#footer a:link, #footer a:visited { 
-	margin-right: 20px; 
-	}
-
-#linkList {
-  border:2px solid purple;
-	margin-left: 600px; 
-	background: url(lelie.jpg) no-repeat top right; 
-	position: absolute; 
-	top: 40px;
-	right: 0;
-	color:red;
-	}
-#linkList2 { 
-	font: 10px verdana, sans-serif; 
-	background: transparent url(lelie.jpg) top left repeat-y; 
-	padding: 10px; 
-	margin-top: 150px; 
-	width: 130px; 
-	border: 4px solid green;
-	}
-#linkList h3.select { 
-	background: transparent no-repeat top left; 
-	margin: 10px 0 5px 0; 
-	width: 97px; 
-	height: 16px; 
-	}
-#linkList h3.select span {
-	display:none
-	}
-#linkList h3.favorites { 
-	background: transparent url(h4.gif) no-repeat top left; 
-	margin: 25px 0 5px 0; 
-	width: 60px; 
-	height: 18px; 
-	}
-#linkList h3.favorites span {
-	display:none
-	}
-#linkList h3.archives { 
-	background: transparent url(h5.gif) no-repeat top left; 
-	margin: 25px 0 5px 0; 
-	width:57px; 
-	height: 14px; 
-	}
-#linkList h3.archives span {
-	display:none
-	}
-#linkList h3.resources { 
-	background: transparent url(h6.gif) no-repeat top left; 
-	margin: 25px 0 5px 0; 
-	width:63px; 
-	height: 10px; 
-	}
-#linkList h3.resources span {
-	display:none
-	}
-
-
-#linkList ul {
-	margin: 0;
-	padding: 0;
-	}
-#linkList li {
-	line-height: 2.5ex; 
-	background: transparent url(cr1.gif) no-repeat top center; 
-	display: block; 
-	padding-top: 5px; 
-	margin-bottom: 5px;
-	list-style-type: none;
-	}
-#linkList li a:link {
-	color: #988F5E;
-	}
-#linkList li a:visited {
-	color: #B3AE94;
-	}
-
-
-#extraDiv1 {
-	background: transparent url(cr2.gif) top left no-repeat; 
-	position: absolute; 
-	top: 40px; 
-	right: 0; 
-	width: 148px; 
-	height: 110px;
-	}
-.accesskey {
-	text-decoration: underline;
-	}
-
-#news {
-  clear: right;
-  padding: 0px 10px 0 10px;
-  border: 3px solid red;
+  padding: 0.5em;
+  margin: 0;
 }
 
-.news-item {
-	clear: right; 
-	padding: 0px 10px 0 10px;
-	border: 2px solid yellow;
+div#news {
+  position: absolute;
+  top: 12em;
+  left: 25%;
+  right: 25%;
+  background: #fefefe;
+  border: 2px solid orange;
 }
 
-.news-item h3 {
-  font-size: large;
-  color: red;
-  font-weight: bold; 
+div.news-item {
+}
+
+.news-item .subheading {
+  background: orange;
+  padding: 0 0 0 0.5em;
+  margin: 0;
 }
 
 .news-item p {
-  font: italic normal 1.4em georgia, sans-serif;
-  color: green;
+  padding: 0.5em;
+  margin: 0;
+}
+
+div#linkList {
+  float: right;
+  background: #fefefe;
+  width: 20%;
+  border: solid blue;
+  border-width: 2px 0 2px 2px;
+}
+
+#linkList .subheading {
+  background: blue;
+  color: #fff;
+  padding: 0 0 0 0.5em;
+  margin: 0;
+}
+
+#linkList p {
+  padding: 0.5em;
+  margin: 0;
+}
+
+div#linkList2 {
+  clear: right;
+  float: right;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  background: #fefefe;
+  border: solid red;
+  border-width: 2px 0 2px 2px;
+  margin-top: 1em;
+}
+
+#linkList2 .subheading {
+  background: red;
+  color: #fff;
+  padding: 0 0 0 0.5em;
+  margin: 0;
+}
+
+#linkList2 p {
+  padding: 0.5em;
+  margin: 0;
+}
+
+h1.unnumbered , h2.unnumberedsec, h3.unnumberedsubsec {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  margin: 0 0 1em 0;
+}
+
+/* This table should go, since it does not contain tabular data.
+ *
+ * It should be an unordered list, cf. div#tocframe.
+ */
+table.menu {
+  border-collapse: collapse;
+  width: 50%;
+  border: solid #000;
+  border-width: 0 0 0 2px;
+  margin: 1em 0 0 1em;
+}
+
+table.menu td {
+  padding: 0;
+  margin: 0;
+}
+
+table.menu a {
+  display: block;
+  float: left;
+  padding: 0.25em 0.5em;
+  border: solid #fdfdfd;
+  border-width: 2px 2px 2px 0;
+  margin: 0;
+}
+
+table.menu a:hover {
+  background: #eee;
+  border: solid #bbb;
+  border-width: 2px 2px 2px 0;
+}
+
+.verbatim {
+  margin: 10px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.float-right {
+  float: right;
 }
 
 .warning {
-  background-color: #FF0000;
-  font-weight: bold;
-  border: 2px solid black;
+  background: #eef;
+  padding: 0;
+  border: 2px solid green;
+  margin: 0.2em 1em;
 }
 
+.warning p {
+  padding: 0.5em;
+  margin: 0;
+}
 
