@@ -619,11 +619,11 @@ sub generate_ly_toc_entries($$$)
     }
     # if no child nodes were generated, e.g. for the index, where expanded pages
     # are ignored, don't generate a list at all...
-#    if (@child_result) {
-#      push (@result, "\n$ind<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
-#      push (@result, @child_result);
-#      push (@result, "$ind</ul>\n");
-#    }
+    if (@child_result) {
+      push (@result, "\n$ind<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+      push (@result, @child_result);
+      push (@result, "$ind</ul>\n");
+    }
   }
   push (@result, "$ind</li>\n");
   return @result;
@@ -649,8 +649,8 @@ sub lilypond_generate_page_toc_body($)
     return () if not defined($current_element);
     # Create the toc entries recursively
 #FIXME
-    my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
-#    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+#    my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
     my $children = $current_element->{'section_childs'};
 # FIXME: generate toc
     foreach ( @$children ) {
@@ -658,8 +658,8 @@ sub lilypond_generate_page_toc_body($)
     }
     push (@toc_entries, "</ul>\n");
 #FIXME
-#    push (@toc_entries, "</div>\n");
-    push (@toc_entries, "\n");
+    push (@toc_entries, "</div>\n");
+#    push (@toc_entries, "\n");
     return @toc_entries;
 }
 
@@ -702,34 +702,16 @@ sub lilypond_print_toc_div ($$)
 #                                   ) . "</h4>\n";
 
 
-    ## FIXME: make this generate from the file properly
-#    my $foo = "<table width=100%><tr>
-#<td>Home</td>
-#<td>[Introduction]</td>
-#<td>Download</td>
-#<td>Documentation</td>
-##<td>Development</td>
-#<td>About</td>
-#</tr></table>
-#
-#<table width=100%><tr>
-#<td>Features</td>
-#<td>Examples</td>
-#<td>[Crash Course]</td>
-#</tr></table>
-#";
-#	print $fh $foo;
-
     foreach my $line (@lines) {
       print $fh $line;
     }
 
 # FIXME: do second layer
-    print $fh "<br>\n";
-    print $fh "<ul class=\"toc\">\n";
-    print $fh "<li>FIXME Insert second-layer TOC frame here</li>\n";
-    print $fh "</ul>\n";
-    print $fh "</div>";
+#    print $fh "<br>\n";
+#    print $fh "<ul class=\"toc\">\n";
+#    print $fh "<li>FIXME Insert second-layer TOC frame here</li>\n";
+#    print $fh "</ul>\n";
+#    print $fh "</div>";
 
     print $fh "</div>\n\n";
   }
