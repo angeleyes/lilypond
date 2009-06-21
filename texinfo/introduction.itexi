@@ -35,7 +35,7 @@ later reference.
 
 @subsubheading Excellent classical engraving
 
-@image-float{flat-design,right}
+@image-float{flat-design.png,right}
 
 All style settings, font designs and algorithms have been inspired
 by the finest hand-engraved music. LilyPond output has that same
@@ -62,7 +62,7 @@ other parts.
 
 @subsubheading Mix music and text
 
-@image-float{lilypond-book,right}
+@image-float{lilypond-book.png,right}
 
 Put fragments of music into texts with without cutting and pasting
 pictures. Integrate music into LaTeX or HTML seamlessly, or add
