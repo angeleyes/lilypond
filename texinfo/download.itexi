@@ -179,12 +179,13 @@ acknowledged.
 @node Source
 @unnumberedsec Source
 
-We @strong{do not} recommend that you attempt to build LilyPond
-yourself; almost all user needs are better met with the pre-built
-version.  If you have a particular need which requires compiling,
-please see @@ref@{FIXME development-install@}.
+@warning{We @strong{do not} recommend that you attempt to build
+LilyPond yourself; almost all user needs are better met with the
+pre-built version.  If you have a particular need which requires
+compiling, please see @@ref@{FIXME development-install@}.}
 
-lilypond-x.y.z-source.tar.bz2
+@uref{http://download.linuxaudio.org/lilypond/sources/v2.12/lilypond-2.12.2.tar.gz,
+lilypond-2.12.2-source.tar.bz2}
 
 
 @node Other versions
