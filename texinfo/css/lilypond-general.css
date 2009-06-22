@@ -205,26 +205,26 @@ div#linkList {
   margin: 0;
 }
 
-div#linkList2 {
-  clear: right;
-  float: right;
+div#language {
+  clear: bottom;
+  float: bottom;
   bottom: 0;
   right: 0;
-  width: 20%;
+  /* width: 20%; */
   background: #fefefe;
   border: solid red;
   border-width: 2px 0 2px 2px;
   margin-top: 1em;
 }
 
-#linkList2 .subheading {
+#language .subheading {
   background: red;
   color: #fff;
   padding: 0 0 0 0.5em;
   margin: 0;
 }
 
-#linkList2 p {
+#language p {
   padding: 0.5em;
   margin: 0;
 }

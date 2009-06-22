@@ -756,6 +756,13 @@ sub print_lilypond_page_foot($)
   my $fh = shift;
   my $program_string = &$program_string();
 #   print $fh "<p><font size='-1'>$program_string</font><br>$PRE_BODY_CLOSE</p>\n";
+  # GOP tweaks:
+  print $fh "<div id=\"language\">\n";
+  print $fh "<h2>Other languages</h2>\n";
+  print $fh "<p><a href=\"\">Deutsch</a>, Español, Français, Magyar.</p>\n";
+  print $fh "<p>About automatic language selection.</p>\n";
+  print $fh "</div>\n";
+
   print $fh "<!-- FOOTER -->\n\n";
   print $fh "<!-- end div#main here -->\n</div>\n\n";
 
