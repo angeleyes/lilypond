@@ -80,7 +80,7 @@ po-replace: po-update
 	$(LANG_LOOP)
 endif
 
-EXT = .jpeg .ly .pdf .png .xml
+EXT = .ico .jpeg .ly .pdf .png .xml
 SOURCE_HTML = $(shell find site -name '*.html')
 SOURCE_IHTML = $(shell find site -name '*.ihtml')
 HTML = $(shell find $(SITE) -name '*.html')
