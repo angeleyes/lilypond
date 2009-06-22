@@ -3,15 +3,27 @@
 @node Introduction
 @unnumbered Introduction
 
-LilyPond is a
-...blah blah
+The inspiration for LilyPond came when two musicians became
+annoyed annoyed with the bland and boring look of computer-printed
+sheet music.  All musicians prefer reading beautiful music, so why
+couldn't programmers write software to produce better printed
+parts?
 
-@warning{I don't know what to do with these top-level sections.}
+LilyPond just does that: it prints music in the best traditions of
+classical engraving with minimum fuss.  Don't waste time on tuning
+spacing, moving around symbols, or shaping slurs.  Impress friends
+and colleagues with sharp sheet music! 
+
+This software is written and maintained by a community of
+enthusiasts.  It is published under the
+@uref{http://www.gnu.org/copyleft/gpl.html, GNU General Public
+License}, giving everybody the freedom to fix, modify, and extend
+the program.
 
 @menu
-* Features::                    
-* Examples::                    
-* Crash course::                
+* Features:: What can LilyPond do?
+* Examples:: I want to see some music!
+* Crash course:: How can I write music with LilyPond?
 @end menu
 
 
@@ -19,8 +31,8 @@ LilyPond is a
 @unnumberedsec Features
 
 @warning{hoping to delegate this.  Desired: an enthusiastic
-attempt to sway people towards trying lilypond.  The warnings come
-in Crash Course, not here.}
+attempt to sway people towards trying lilypond.  The warnings
+about writing music as text come in Crash Course, not here.}
 
 @subheading Why switch to LilyPond?
 
@@ -214,6 +226,6 @@ Some editing environments include syntax highlighting, automatic
 command completion, and pre-made templates.  Other programs
 actually provide a GUI which allows direct manipulation of a
 graphical score.  For more information, see our documentation
-about @@ref@{alternate editing environments@}.
+about @@ref@{FIXME alternate editing environments@}.
 
 
