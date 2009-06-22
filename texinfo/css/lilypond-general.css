@@ -5,6 +5,7 @@ html {
 }
 
 body {
+  width: 100%;
   font-size: 95%;
   line-height: 1.5;
   background: #fdfdfd;
@@ -26,7 +27,10 @@ div#tocframe {
   top: 0;
   left: 0;
   width: 100%;
-  margin: 0 0 1em 0;
+  background: #ceffae;
+  font-size: 85%;
+  padding: 0;
+  margin: 0;
 }
 
 #tocframe ul.toc {
@@ -36,21 +40,20 @@ div#tocframe {
 }
 
 #tocframe li {
-  float: left;
-  width: 16.666%;
-  text-align: center;
+  display: inline;
   padding: 0;
   margin: 0;
 }
 
 #tocframe li a {
-  width: 100%;
+  float: left;
+  width: 15%;
   height: 1.5em;
-  display: block;
+  text-align: center;
   text-decoration: none;
   font-weight: bold;
   background: #ceffae;
-  padding: 0.5em 0;
+  padding: 0.5em 0.83%;
   margin: 0;
 }
 
@@ -73,26 +76,26 @@ div#tocframe {
 
 #tocframe .toc .toc {
   position: absolute;
-  top: 2.95em;
+  top: 2.75em;
   left: 0;
-  font-size: 85%;
+  font-size: 90%;
+  line-height: 1.75;
   padding: 0;
-  margin: 0 0 1em 0;
+  margin: 0;
 }
 
 #tocframe .toc .toc li {
-  float: left;
-  width: auto;
   background: #bdee9d;
+  display: inline;
   padding: 0;
   margin: 0;
 }
 
 #tocframe .toc .toc li a {
+  float: left;
   width: auto;
-  display: block;
   font-weight: normal;
-  padding: 0 1em;
+  padding: 0.25em 1em;
   margin: 0;
 }
 
@@ -120,15 +123,12 @@ div#main {
 }
 
 div#pageHeader {
-  position: absolute;
-  top: 0;
-  left: 25%;
-  right: 25%;
   height: 10em;
-  background: #fff url(double-lily-modified.png) no-repeat top
-left;
+  width: 75%;
+  background: #fff url(double-lily-modified.png) no-repeat top left;
   text-align: center;
   border: 1px solid #ddd;
+  margin: 0 auto 1.4em;
 }
 
 #pageHeader .heading {
@@ -143,7 +143,9 @@ left;
 }
 
 div#quickSummary {
-  float: left;
+  position: absolute;
+  top: 13em;
+  left: 0;
   width: 20%;
   background: #fefefe;
   border: solid purple;
@@ -163,12 +165,13 @@ div#quickSummary {
 }
 
 div#news {
-  position: absolute;
-  top: 12em;
-  left: 25%;
-  right: 25%;
+  width: 50%;
+  min-width: 20em;
   background: #fefefe;
+  text-align: center;
+  padding: 0;
   border: 2px solid orange;
+  margin: 1.4em auto 0;
 }
 
 div.news-item {
@@ -176,17 +179,22 @@ div.news-item {
 
 .news-item .subheading {
   background: orange;
+  text-align: left;
   padding: 0 0 0 0.5em;
   margin: 0;
 }
 
 .news-item p {
+  text-align: left;
   padding: 0.5em;
   margin: 0;
 }
 
 div#linkList {
-  float: right;
+  position: absolute;
+  top: 13em;
+  right: 0;
+  width: 20%;
   background: #fefefe;
   width: 20%;
   border: solid blue;
@@ -206,27 +214,28 @@ div#linkList {
 }
 
 div#language {
-  clear: bottom;
-  float: bottom;
+  clear: both;
   bottom: 0;
-  right: 0;
-  /* width: 20%; */
   background: #fefefe;
-  border: solid red;
-  border-width: 2px 0 2px 2px;
-  margin-top: 1em;
+  text-indent: 0.5em;
+  padding: 0 0 0.5em;
+  margin-top: 3em;
 }
 
-#language .subheading {
-  background: red;
-  color: #fff;
-  padding: 0 0 0 0.5em;
-  margin: 0;
+#language h2 {
+  background: #ddd;
+  font-size: 1.2em;
+  padding: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #000;
+  margin: 0 0 0.25em 0;
 }
 
 #language p {
-  padding: 0.5em;
-  margin: 0;
+  font-size: 1em;
+  padding: 0;
+  border-left: 2px solid #000;
+  margin: 0 0 0 0.5em;
 }
 
 h1.unnumbered , h2.unnumberedsec, h3.unnumberedsubsec {
@@ -234,7 +243,7 @@ h1.unnumbered , h2.unnumberedsec, h3.unnumberedsubsec {
   height: 0;
   overflow: hidden;
   text-indent: -999em;
-  margin: 0 0 1em 0;
+  margin: 0 0 0.75em 0;
 }
 
 /* This table should go, since it does not contain tabular data.
