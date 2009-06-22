@@ -103,7 +103,7 @@ acknowledged.
 
 @warning{Due to changes in MacOS X 10.5 Leopard, the menus in the
 LilyPond Application no longer function.  For information about
-how to use lilypond in 10.5, see @@ref@{something@}.}
+how to use lilypond in 10.5, see @@ref@{FIXME something@}.}
 
 @subsubheading Generic Packages
 
@@ -182,7 +182,7 @@ acknowledged.
 We @strong{do not} recommend that you attempt to build LilyPond
 yourself; almost all user needs are better met with the pre-built
 version.  If you have a particular need which requires compiling,
-please see @@ref@{development-install@}.
+please see @@ref@{FIXME development-install@}.
 
 lilypond-x.y.z-source.tar.bz2
 
@@ -192,5 +192,9 @@ lilypond-x.y.z-source.tar.bz2
 
 If you consider working software to be overrated, you are welcome
 to try our @ref{Unstable download}.
+
+For an extensive listing of all versions, see our
+@uref{http://download.linuxaudio.org/lilypond/binaries/, download
+site}.
 
 
