@@ -30,7 +30,7 @@ the program.
 @node Features
 @unnumberedsec Features
 
-@warning{hoping to delegate this.  Desired: an enthusiastic
+@help{hoping to delegate this.  Desired: an enthusiastic
 attempt to sway people towards trying lilypond.  The warnings
 about writing music as text come in Crash Course, not here.}
 
@@ -119,7 +119,7 @@ http://lilypond.org/web/switch/tour
 @node Examples
 @unnumberedsec Examples
 
-@warning{hoping to delegate this.  Desired: 5-8 really great
+@help{hoping to delegate this.  Desired: 5-8 really great
 examples, showing really distinct uses.  i.e. not just 5 Beethoven
 samples.  Maybe 1 gregorian, 1 late romantic, 1 20th century
 academic, 1 pop/lead sheet, ...?   Also show different languages,

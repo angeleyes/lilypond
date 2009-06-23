@@ -347,3 +347,14 @@ table.menu a:hover {
   display: none;
 }
 
+.help {
+  background: #ff7777;
+  text-color: white;
+  text: white;
+  border: 5px dotted green;
+  width: 75%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+

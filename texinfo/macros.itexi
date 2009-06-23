@@ -6,6 +6,14 @@ c -*- coding: us-ascii; mode: texinfo; -*-
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
+@macro help{TEXT}
+@html
+<div class="help">
+<strong>Help wanted:</strong> \TEXT\
+</div>
+@end html
+@end macro
+
 @macro div-id {ID}
 @html
 <div id="\ID\">

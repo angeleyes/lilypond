@@ -82,10 +82,11 @@ be useful for others would better be posted to one of the mailing lists.
 @node Automatic engraving essay
 @unnumberedsec Automatic engraving essay
 
-@warning{this section came directly from LM 1, with all @@lilypond
-turned into @@verbatim so it would compile.  -gp}
+@help{this section came directly from LM 1, with all @@lilypond
+turned into @@verbatim so it would compile.  Hoping to delegate.
+-gp}
 
-@warning{combine with
+@help{combine with
 http://lilypond.org/web/about/automated-engraving/ }
 
 This section covers the overall goals and architecture of
