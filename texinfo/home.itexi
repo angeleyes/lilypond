@@ -7,7 +7,6 @@
 @heading LilyPond
 
 ... music notation for everyone
-
 @div-end
 
 
@@ -16,13 +15,11 @@
 
 LilyPond is an open-source music engraving program, devoted to
 producing the highest-quality sheet music possible.
-
 @div-end
 
 
 @div-id{news}
 @include news.itexi
-
 @div-end
 
 
@@ -32,6 +29,5 @@ producing the highest-quality sheet music possible.
 @ref{Download, Download 2.12.3}.
 
 @ref{Documentation,Docs 2.12.3}.
-
 @div-end
 

@@ -27,6 +27,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 @end macro
 
 @macro div-end
+@c keep the space for proper nesting of </p>
+
 @html
 </div>
 @end html
@@ -41,6 +43,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 @end macro
 
 @macro news-end
+@c keep the space for proper nesting of </p>
+
 @html
 </div>
 @end html
