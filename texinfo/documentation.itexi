@@ -17,7 +17,8 @@ Documentation for LilyPond 2.12.2.
 a @qq{must-read} gentle introduction to LilyPond.
 
 @item @ref{Music Glossary}:
-for users unfamiliar with English musical terms.
+explains musical terms and gives translations for users unfamiliar
+with English musical terms.
 
 @item @ref{FAQ}:
 links to the answers of Frequently Asked Questions.
@@ -32,14 +33,15 @@ links to the answers of Frequently Asked Questions.
 @itemize
 
 @item @ref{Notation Reference}:
-all input notation is explained here, but it assumes that you have
-already read the Learning Manual.
+the main portion of the documentation; provides detailed
+information about creating notation.
 
 @item @ref{Snippet List}:
 short tricks, tips, and examples.
 
 @item @ref{Application Usage}:
-how to run programs installed with lilypond.
+discusses the actual programs and operating system-specific
+issues.
 
 @end itemize
 
@@ -55,7 +57,8 @@ how to run programs installed with lilypond.
 updates since the last major version.
 
 @item @ref{Internals Reference}:
-definitions for tweaking.
+information about LilyPond's internal structures, which is
+required for constructing tweaks.
 
 @end itemize
 
@@ -64,7 +67,6 @@ definitions for tweaking.
 
 @div-class{hide}
 @menu
-* About the documentation::     
 * Learning Manual::             
 * Music Glossary::              
 * Notation Reference::          
@@ -73,44 +75,15 @@ definitions for tweaking.
 * Internals Reference::         
 * Changes::                     
 * FAQ::                         
+* Other documentation::         
 * Documentation other versions::  
 @end menu
 
 @div-end
 
 
-@node About the documentation
-@unnumberedsec About the documentation
-
-This section explains the different portions of the documentation.
-
-(maybe merge with the toplevel pre-menu text)
-
-@ignore
-
-@cindex Learning Manual
-@cindex Music Glossary
-@cindex Notation Reference
-@cindex Application Usage
-@cindex Snippet List
-@cindex Internals Reference
-
-@c leave these lines wrapping around.  It's a limitation of texi2html
-@menu
-* About the Learning Manual::   this manual introduces LilyPond, giving in-depth explanations of how to create notation.
-* About the Music Glossary::    this manual explains musical terms and gives translations of terms in other languages.
-* About the Notation Reference::  this manual is the main portion of the documentation.  It provides detailed information about creating notation.  This book assumes that the reader knows basic material covered in the Learning Manual and is familiar with the English musical terms presented in the Musical Glossary.
-* About the Application Usage::  this discusses the actual programs and operating system-specific issues.
-* About the Snippet List::      this is a collection of short LilyPond examples.
-* About the Internals Reference::  this document gives reference information about LilyPond's internal structures, which is required for constructing tweaks.
-* Other documentation::         there are a few other portions of the documentation, such as News items and the mailist archives.
-@end menu
-
-
-@node About the Learning Manual
-@unnumberedsubsec About the Learning Manual
-
-@cindex Learning Manual
+@node Learning Manual
+@unnumberedsec Learning Manual
 
 This book explains how to begin learning LilyPond, as well as
 explaining some key concepts in easy terms.  You should read these
@@ -118,9 +91,9 @@ chapters in a linear fashion.
 
 There is a paragraph @strong{See also} at the end of each section,
 which contains cross-references to other sections: you should not
-follow these cross-references at first reading; when you have read all
-of the Learning Manual, you may want to read some sections again and
-follow cross-references for further reading.
+follow these cross-references at first reading; when you have read
+all of the Learning Manual, you may want to read some sections
+again and follow cross-references for further reading.
 
 @itemize
 
@@ -165,15 +138,8 @@ all.
 @end itemize
 
 
-@node About the Music Glossary
-@unnumberedsubsec About the Music Glossary
-
-@cindex Music Glossary
-@cindex idiom
-@cindex jargon
-@cindex terminology
-@cindex foreign languages
-@cindex language
+@node Music Glossary
+@unnumberedsec Music Glossary
 
 @rglosnamed{Top,Music glossary}
 this explains musical terms, and includes translations to various
@@ -182,17 +148,15 @@ terminology (especially if you are a non-native English speaker),
 it is highly advisable to consult the glossary.
 
 
-@node About the Notation Reference
-@unnumberedsubsec About the Notation Reference
-
-@cindex Notation Reference
-@cindex appendices
-@cindex reference charts
-@cindex charts, reference
+@node Notation Reference
+@unnumberedsec Notation Reference
 
 This book explains all the LilyPond commands which produce
-notation.  It assumes that readers are familiar with the concepts
-in the Learning Manual.
+notation.
+
+@warning{The Notation Reference assumes that the reader knows
+basic material covered in the Learning Manual and is familiar with
+the English musical terms presented in the Musical Glossary.}
 
 @itemize
 
@@ -259,11 +223,8 @@ a complete index.
 @end itemize
 
 
-@node About the Application Usage
-@unnumberedsubsec About the Application Usage
-
-@cindex Application Usage
-@cindex integrating LilyPond with other programs
+@node Application Usage
+@unnumberedsec Application Usage
 
 This book explains how to execute the programs and how to integrate
 LilyPond notation with other programs.
@@ -301,13 +262,8 @@ formats to the @code{.ly} format.
 @end itemize
 
 
-@node About the Snippet List
-@unnumberedsubsec About the Snippet List
-
-@cindex snippets
-@cindex LSR
-@cindex Snippet List
-@cindex LilyPond Snippet Repository
+@node Snippet List
+@unnumberedsec Snippet List
 
 @rlsrnamed{Top,LilyPond Snippet List}: this shows a
 selected set of LilyPond snippets from the
@@ -324,10 +280,8 @@ The list of snippets for each subsection of the Notation Reference are
 also linked from the @strong{See also} portion.
 
 
-@node About the Internals Reference
-@unnumberedsubsec About the Internals Reference
-
-@cindex Internals Reference
+@node Internals Reference
+@unnumberedsec Internals Reference
 
 @rinternalsnamed{Top,Internals Reference}: this is a set
 of heavily cross linked HTML pages which document the nitty-gritty
@@ -345,28 +299,33 @@ generated documentation.  In the HTML document, these subsections
 have clickable links.
 
 
+@node Changes
+@unnumberedsec Changes
+
+previous-named "NEWS" doc.
+
+this is a summary of important changes
+and new features in LilyPond since the previous version.
+
+
+@node FAQ
+@unnumberedsec FAQ
+
+maybe some data from
+http://lilypond.org/web/about/faq
+but not much.  Don't repeat the intro, and mostly use links to
+other parts of the docs.  PROTIP: if your faq answers anything
+directly, then it means that the rest of your docs suck.
+
+
+
 @node Other documentation
-@unnumberedsubsec Other documentation
+@unnumberedsec Other documentation
 
 There are a number of other sources of information which may be
 very valuable.
 
 @itemize
-
-@item
-@ifhtml
-@ifset bigpage
-@uref{../topdocs/NEWS.html,News}:
-@end ifset
-@ifclear bigpage
-@uref{../../topdocs/NEWS.html,News}:
-@end ifclear
-@end ifhtml
-@ifnothtml
-News:
-@end ifnothtml
-this is a summary of important changes
-and new features in LilyPond since the previous version.
 
 @item @uref{http://lists.gnu.org/archive/html/lilypond-user/, The
 lilypond-user mailist archives}: this is a collection of previous
@@ -399,46 +358,7 @@ are usually found in the directory @file{/usr/@/share/@/lilypond/}.
 
 @end itemize
 
-@end ignore
 
-
-@node Learning Manual
-@unnumberedsec Learning Manual
-
-
-@node Music Glossary
-@unnumberedsec Music Glossary
-
-
-@node Notation Reference
-@unnumberedsec Notation Reference
-
-
-@node Application Usage
-@unnumberedsec Application Usage
-
-
-@node Snippet List
-@unnumberedsec Snippet List
-
-
-
-@node Internals Reference
-@unnumberedsec Internals Reference
-
-
-@node Changes
-@unnumberedsec Changes
-
-
-@node FAQ
-@unnumberedsec FAQ
-
-maybe some data from
-http://lilypond.org/web/about/faq
-but not much.  Don't repeat the intro, and mostly use links to
-other parts of the docs.  PROTIP: if your faq answers anything
-directly, then it means that the rest of your docs suck.
 
 
 

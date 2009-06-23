@@ -306,14 +306,14 @@ table.menu a:hover {
 
 .docs-beginner {
   float: left;
-  width: 45%;
+  width: 48%;
   border: 1pt solid black;
   background-color: #CCCC00;
 }
 
 .docs-normal {
   float: right;
-  width: 45%;
+  width: 48%;
   border: 1pt solid black;
   background-color: #00CCCC;
 }
