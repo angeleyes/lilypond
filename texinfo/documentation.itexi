@@ -3,7 +3,7 @@
 @node Documentation
 @unnumbered Documentation 
 
-These is all for the latest stable.
+Documentation for LilyPond 2.12.2.
 
 @menu
 * About the documentation::     
@@ -13,8 +13,9 @@ These is all for the latest stable.
 * Application Usage::           
 * Snippet List::                
 * Internals Reference::         
-* Changes::                        
+* Changes::                     
 * FAQ::                         
+* Documetation other versions::  
 @end menu
 
 
@@ -34,8 +35,7 @@ This section explains the different portions of the documentation.
 @cindex Snippet List
 @cindex Internals Reference
 
-@c leave these lines wrapping around.  It's some texinfo 4.12 thing. -gp
-@c This is actually a limitation of texi2html. -jm
+@c leave these lines wrapping around.  It's a limitation of texi2html
 @menu
 * About the Learning Manual::   this manual introduces LilyPond, giving in-depth explanations of how to create notation.
 * About the Music Glossary::    this manual explains musical terms and gives translations of terms in other languages.
@@ -338,8 +338,8 @@ example @file{scm/@/lily@/.scm}, or @file{ly/@/engraver@/-init@/.ly},
 are usually found in the directory @file{/usr/@/share/@/lilypond/}.
 
 @end itemize
-@end ignore
 
+@end ignore
 
 
 @node Learning Manual
@@ -379,6 +379,11 @@ http://lilypond.org/web/about/faq
 but not much.  Don't repeat the intro, and mostly use links to
 other parts of the docs.  PROTIP: if your faq answers anything
 directly, then it means that the rest of your docs suck.
+
+
+
+@node Documetation other versions
+@unnumberedsec Documentation other versions
 
 
 

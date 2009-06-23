@@ -3,7 +3,7 @@
 @node Home
 @unnumbered Home 
 
-@div-pageHeader
+@div-id{pageHeader}
 @heading LilyPond
 
 ... music notation for everyone
@@ -11,7 +11,7 @@
 @div-end
 
 
-@div-quickSummary
+@div-id{quickSummary}
 @subheading Fargle Blag
 
 LilyPond is an open-source music engraving program, devoted to
@@ -20,14 +20,14 @@ producing the highest-quality sheet music possible.
 @div-end
 
 
-@div-news
+@div-id{news}
 @include news.itexi
 
 @div-end
 
 
-@div-linkList
-@subheading Quick links
+@div-id{latestVersion}
+@subheading Latest Version
 
 @ref{Download, Download 2.12.3}.
 

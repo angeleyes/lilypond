@@ -190,7 +190,7 @@ div.news-item {
   margin: 0;
 }
 
-div#linkList {
+div#latestVersion {
   position: absolute;
   top: 13em;
   right: 0;
@@ -201,14 +201,14 @@ div#linkList {
   border-width: 2px 0 2px 2px;
 }
 
-#linkList .subheading {
+#latestVersion .subheading {
   background: blue;
   color: #fff;
   padding: 0 0 0 0.5em;
   margin: 0;
 }
 
-#linkList p {
+#latesetVersion p {
   padding: 0.5em;
   margin: 0;
 }
