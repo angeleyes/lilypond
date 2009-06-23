@@ -11,10 +11,15 @@
 
 
 @div-id{quickSummary}
-@subheading Fargle Blag
+@subheading What is LilyPond?
 
 LilyPond is an open-source music engraving program, devoted to
-producing the highest-quality sheet music possible.
+producing the highest-quality sheet music possible.  We bring the
+aesthetics of traditionally engraved music to computer printouts.
+
+@div-class{float-right}
+Read more in our @ref{Introduction}!
+@div-end
 @div-end
 
 
@@ -24,10 +29,19 @@ producing the highest-quality sheet music possible.
 
 
 @div-id{latestVersion}
-@subheading Latest Version
+@subheading Latest Versions
+
+@subsubheading Stable
 
 @ref{Download, Download 2.12.3}.
 
-@ref{Documentation,Docs 2.12.3}.
+@ref{Documentation, Docs 2.12.3}.
+
+@subsubheading Unstable
+
+@ref{Unstable download, Download 2.13.2}.
+
+@ref{Unstable documentation, Docs 2.13.2}.
+
 @div-end
 

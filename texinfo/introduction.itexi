@@ -3,6 +3,8 @@
 @node Introduction
 @unnumbered Introduction
 
+@image-float{flat-design.png,right}
+
 The inspiration for LilyPond came when two musicians became
 annoyed annoyed with the bland and boring look of computer-printed
 sheet music.  All musicians prefer reading beautiful music, so why
