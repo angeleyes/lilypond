@@ -147,7 +147,7 @@ div#quickSummary {
   position: absolute;
   top: 13em;
   left: 0;
-  width: 20%;
+  width: 78%;
   background: #fefefe;
   border: solid purple;
   border-width: 2px 2px 2px 0;
@@ -166,7 +166,15 @@ div#quickSummary {
 }
 
 div#news {
-  width: 50%;
+/* FIXME -gp  */
+/* using "absolute" makes the language selection happen in the
+ * middle of the page, but "inline" doesn't move it lower enough.
+ meh; this is your problem, Patrick.  :P  */
+  position:absolute;
+  top:23em;
+  left:5em;
+
+  width: 68%;
   min-width: 20em;
   background: #fefefe;
   text-align: center;
@@ -200,6 +208,7 @@ div#latestVersion {
   width: 20%;
   border: solid blue;
   border-width: 2px 0 2px 2px;
+  font-size: 90%;
 }
 
 #latestVersion .subheading {
