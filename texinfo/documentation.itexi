@@ -3,8 +3,49 @@
 @node Documentation
 @unnumbered Documentation 
 
+@div-class{box-center}
 Documentation for LilyPond 2.12.2.
 
+@div-end
+
+@div-class{box-left}
+@subheading Beginning users
+
+@ref{Learning Manual}: a @qq{must-read} gentle introduction to
+LilyPond.
+
+@ref{Music Glossary}: for non-English users unfamiliar with
+English musical terms.
+
+@ref{FAQ}: links to the answers of Frequently Asked Questions.
+
+@div-end
+
+@div-class{box-right}
+@subheading Normal users
+
+@ref{Notation Reference}: all input notation is explained here,
+but it assumes that you have already read the Learning Manual.
+
+@ref{Snippet List}: short tricks, tips, and examples.
+
+@ref{Application Usage}: how to run programs installed with
+lilypond.
+
+@ref{Changes}: updates since the last major version.
+
+@div-end
+
+
+@div-class{box-center}
+@subheading Advanced users
+
+@ref{Internals Reference}: definitions for tweaking.
+
+@div-end
+
+
+@div-class{hide}
 @menu
 * About the documentation::     
 * Learning Manual::             
@@ -17,6 +58,8 @@ Documentation for LilyPond 2.12.2.
 * FAQ::                         
 * Documetation other versions::  
 @end menu
+
+@div-end
 
 
 @node About the documentation

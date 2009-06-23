@@ -296,6 +296,25 @@ table.menu a:hover {
   float: right;
 }
 
+.box-left {
+  float: left;
+  width: 45%;
+  border: 1pt solid black;
+}
+
+.box-center {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  border: 1pt solid black;
+}
+
+.box-right {
+  float: right;
+  width: 45%;
+  border: 1pt solid black;
+}
+
 .warning {
   background: #eef;
   padding: 0;
@@ -306,5 +325,10 @@ table.menu a:hover {
 .warning p {
   padding: 0.5em;
   margin: 0;
+}
+
+/* replace this with proper hiding */
+.hide table {
+  display: none;
 }
 
