@@ -47,7 +47,7 @@ div#tocframe {
 
 #tocframe li a {
   float: left;
-  width: 15%;
+  width: 12%;
   height: 1.5em;
   text-align: center;
   text-decoration: none;
@@ -305,24 +305,29 @@ table.menu a:hover {
 }
 
 .docs-beginner {
-  float: left;
-  width: 48%;
-  border: 1pt solid black;
-  background-color: #CCCC00;
+/* float: left;
+ width: 48%;
+*/
+ border: 1pt solid black;
+ background-color: #ffff99;
 }
 
 .docs-normal {
-  float: right;
+  float: left;
   width: 48%;
   border: 1pt solid black;
-  background-color: #00CCCC;
+  background-color: #ccffee;
 }
 
 .docs-advanced {
+/*
   display: block;
   margin: 0 auto;
+*/
+  float: right;
+  width: 48%;
   border: 1pt solid black;
-  background-color: #CC00CC;
+  background-color: #ffddff;
 }
 
 .warning {

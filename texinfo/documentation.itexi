@@ -9,7 +9,7 @@ Documentation for LilyPond 2.12.2.
 @div-end
 
 @div-class{docs-beginner}
-@subheading Beginning users
+@subheading Introduction
 
 @itemize
 
@@ -20,15 +20,12 @@ a @qq{must-read} gentle introduction to LilyPond.
 explains musical terms and gives translations for users unfamiliar
 with English musical terms.
 
-@item @ref{FAQ}:
-links to the answers of Frequently Asked Questions.
-
 @end itemize
 
 @div-end
 
 @div-class{docs-normal}
-@subheading Normal users
+@subheading Regular use
 
 @itemize
 
@@ -49,16 +46,19 @@ issues.
 
 
 @div-class{docs-advanced}
-@subheading Advanced users
+@subheading Infrequent Use
 
 @itemize
 
-@item @ref{Changes}:
-updates since the last major version.
+@item @ref{FAQ}:
+links to the answers of Frequently Asked Questions.
 
 @item @ref{Internals Reference}:
 information about LilyPond's internal structures, which is
 required for constructing tweaks.
+
+@item @ref{Changes}:
+updates since the last major version.
 
 @end itemize
 
