@@ -3,44 +3,61 @@
 @node Documentation
 @unnumbered Documentation 
 
-@div-class{box-center}
+@div-class{docs-version}
 Documentation for LilyPond 2.12.2.
 
 @div-end
 
-@div-class{box-left}
+@div-class{docs-beginner}
 @subheading Beginning users
 
-@ref{Learning Manual}: a @qq{must-read} gentle introduction to
-LilyPond.
+@itemize
 
-@ref{Music Glossary}: for non-English users unfamiliar with
-English musical terms.
+@item @ref{Learning Manual}:
+a @qq{must-read} gentle introduction to LilyPond.
 
-@ref{FAQ}: links to the answers of Frequently Asked Questions.
+@item @ref{Music Glossary}:
+for users unfamiliar with English musical terms.
+
+@item @ref{FAQ}:
+links to the answers of Frequently Asked Questions.
+
+@end itemize
 
 @div-end
 
-@div-class{box-right}
+@div-class{docs-normal}
 @subheading Normal users
 
-@ref{Notation Reference}: all input notation is explained here,
-but it assumes that you have already read the Learning Manual.
+@itemize
 
-@ref{Snippet List}: short tricks, tips, and examples.
+@item @ref{Notation Reference}:
+all input notation is explained here, but it assumes that you have
+already read the Learning Manual.
 
-@ref{Application Usage}: how to run programs installed with
-lilypond.
+@item @ref{Snippet List}:
+short tricks, tips, and examples.
 
-@ref{Changes}: updates since the last major version.
+@item @ref{Application Usage}:
+how to run programs installed with lilypond.
+
+@end itemize
 
 @div-end
 
 
-@div-class{box-center}
+@div-class{docs-advanced}
 @subheading Advanced users
 
-@ref{Internals Reference}: definitions for tweaking.
+@itemize
+
+@item @ref{Changes}:
+updates since the last major version.
+
+@item @ref{Internals Reference}:
+definitions for tweaking.
+
+@end itemize
 
 @div-end
 
@@ -56,7 +73,7 @@ lilypond.
 * Internals Reference::         
 * Changes::                     
 * FAQ::                         
-* Documetation other versions::  
+* Documentation other versions::  
 @end menu
 
 @div-end
@@ -425,8 +442,29 @@ directly, then it means that the rest of your docs suck.
 
 
 
-@node Documetation other versions
-@unnumberedsec Documentation other versions
+@c node name vs. section name: we want to re-use this name
+@c in downloads and docs.  -gp
+@node Documentation other versions
+@unnumberedsec Other versions
 
+Documentation for our development version can be found in
+@ref{Unstable documentation}.
+
+Documentation for previous stable versions:
+
+@itemize
+
+@item @uref{http://lilypond.org/doc/v2.12/Documentation/,
+LilyPond 2.12 Documentation}
+
+@item @uref{http://lilypond.org/doc/v2.10/Documentation/,
+LilyPond 2.10 Documentation}
+
+@item @uref{http://lilypond.org/doc/v2.8/Documentation/,
+LilyPond 2.8 Documentation}
+
+@item FIXME etc.
+
+@end itemize
 
 

@@ -296,23 +296,33 @@ table.menu a:hover {
   float: right;
 }
 
-.box-left {
-  float: left;
-  width: 45%;
-  border: 1pt solid black;
-}
-
-.box-center {
+.docs-version {
   text-align: center;
   display: block;
   margin: 0 auto;
   border: 1pt solid black;
+  background-color: #DDDDDD;
 }
 
-.box-right {
+.docs-beginner {
+  float: left;
+  width: 45%;
+  border: 1pt solid black;
+  background-color: #CCCC00;
+}
+
+.docs-normal {
   float: right;
   width: 45%;
   border: 1pt solid black;
+  background-color: #00CCCC;
+}
+
+.docs-advanced {
+  display: block;
+  margin: 0 auto;
+  border: 1pt solid black;
+  background-color: #CC00CC;
 }
 
 .warning {

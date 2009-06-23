@@ -188,8 +188,10 @@ compiling, please see @@ref@{FIXME development-install@}.}
 lilypond-2.12.2-source.tar.bz2}
 
 
+@c node name vs. section name: we want to re-use this name
+@c in downloads and docs.  -gp
 @node Download other versions
-@unnumberedsec Download other versions
+@unnumberedsec Other versions
 
 If you consider working software to be overrated, you are welcome
 to try our @ref{Unstable download}.
