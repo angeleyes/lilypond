@@ -9,7 +9,9 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 @macro help{TEXT}
 @html
 <div class="help">
-<strong>Help wanted:</strong> \TEXT\
+<strong>
+  <span style="text-decoration:blink">Help wanted:</span>
+</strong> \TEXT\
 </div>
 @end html
 @end macro
@@ -80,6 +82,16 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 @end ifnothtml
 @end macro
 
+@macro image-id{ID, IMAGE-FILE, ALT}
+@html
+<div id="\ID\">
+  <img src="\IMAGE-FILE\" alt="\ALT\">
+</div>
+@end html
+@ifnothtml
+@image{IMAGE-FILE}
+@end ifnothtml
+@end macro
 
 
 @c @include version.itexi

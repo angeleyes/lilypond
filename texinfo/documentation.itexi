@@ -4,11 +4,11 @@
 @unnumbered Documentation 
 
 @div-class{docs-version}
-Documentation for LilyPond 2.12.2.
+@heading Documentation for LilyPond 2.12.2.
 
 @div-end
 
-@div-class{docs-beginner}
+@div-class{docs-intro}
 @subheading Introduction
 
 @itemize
@@ -24,7 +24,7 @@ with English musical terms.
 
 @div-end
 
-@div-class{docs-normal}
+@div-class{docs-regular}
 @subheading Regular use
 
 @itemize
@@ -45,7 +45,7 @@ issues.
 @div-end
 
 
-@div-class{docs-advanced}
+@div-class{docs-infrequent}
 @subheading Infrequent Use
 
 @itemize

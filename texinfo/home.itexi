@@ -10,6 +10,10 @@
 @div-end
 
 
+@div-id{content}
+
+@image-id{lilylogo,double-lily-modified.png,LilyPond logo}
+
 @div-id{quickSummary}
 @subheading What is LilyPond?
 
@@ -17,7 +21,7 @@ LilyPond is an open-source music engraving program, devoted to
 producing the highest-quality sheet music possible.  We bring the
 aesthetics of traditionally engraved music to computer printouts.
 
-@div-class{float-right}
+@div-class{align-right}
 Read more in our @ref{Introduction}!
 @div-end
 @div-end
@@ -44,4 +48,4 @@ Read more in our @ref{Introduction}!
 @ref{Unstable documentation, Docs 2.13.2}.
 
 @div-end
-
+@div-end

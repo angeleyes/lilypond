@@ -8,7 +8,7 @@ body {
   width: 100%;
   font-size: 95%;
   line-height: 1.5;
-  background: #fdfdfd;
+  background: #fff;
   padding: 0;
   margin: 0;
   text-align: justify;
@@ -22,6 +22,10 @@ p, h1, h2, h3, h4, h5 {
   margin: 1em 10px;
 }
 
+li {
+  margin-right: 1em;
+}
+
 /* Divs */
 div#tocframe {
   position: absolute;
@@ -32,6 +36,10 @@ div#tocframe {
   font-size: 85%;
   padding: 0;
   margin: 0;
+}
+
+#tocframe a {
+  color: #000;
 }
 
 #tocframe ul.toc {
@@ -51,7 +59,6 @@ div#tocframe {
   width: 15%;
   height: 1.5em;
   text-align: center;
-  text-decoration: none;
   font-weight: bold;
   background: #ceffae;
   padding: 0.5em 0.83%;
@@ -60,6 +67,7 @@ div#tocframe {
 
 #tocframe li a:hover {
   background: #a6d178;
+  text-decoration: none;
 }
 
 #tocframe li.toc_current {
@@ -71,16 +79,17 @@ div#tocframe {
 
 #tocframe li.toc_current a:hover {
   background: #a6d178;
+  text-decoration: none;
 }
 
 /* second level toc (unnumberedsec) */
 
 #tocframe .toc .toc {
   position: absolute;
-  top: 2.75em;
+  top: 2.6em;
   left: 0;
-  font-size: 90%;
-  line-height: 1.75;
+  font-size: 95%;
+  line-height: 1.5;
   padding: 0;
   margin: 0;
 }
@@ -95,6 +104,7 @@ div#tocframe {
 #tocframe .toc .toc li a {
   float: left;
   width: auto;
+  text-decoration: none;
   font-weight: normal;
   padding: 0.25em 1em;
   margin: 0;
@@ -111,52 +121,68 @@ div#tocframe {
 
 div#main {
   position: absolute;
-  /* FIXME: Move to correct position when ready */
-  top: 4em;
+  /* this value may need to be adjusted */
+  top: 6em;
   left: 0;
   width: 100%;
 }
 
+/* FIXME: does not work in IE<=6 */
 #main > a:first-child {
   position: absolute;
-  /* FIXME: Test in other browsers besides Firefox */
   top: -10em;
 }
 
 div#pageHeader {
+  width: 65%;
   height: 10em;
-  width: 75%;
-  background: #fff url(double-lily-modified.png) no-repeat top left;
   text-align: center;
-  border: 1px solid #ddd;
+  border: solid #ddd;
+  border-width: 1px 0 1px 1px;
   margin: 0 auto 1.4em;
 }
 
 #pageHeader .heading {
+  position: relative;
+  right: 11%;
   font-size: 4em;
   padding: 0;
   margin: 0;
 }
 
 #pageHeader p {
+  position: relative;
+  right: 11%;
   padding: 0;
   margin: 0;
 }
 
-div#quickSummary {
+div#content {
+  position: relative;
+  width: 85%;
+  margin: 0 auto;
+}
+
+div#lilylogo {
   position: absolute;
-  top: 13em;
-  left: 0;
-  width: 78%;
+  top: -11.35em;
+  right: 0;
+  z-index: -100;
+}
+
+div#quickSummary {
+  text-align: left;
   background: #fefefe;
   border: solid purple;
-  border-width: 2px 2px 2px 0;
+  border-width: 1px 1px 0 0;
+  margin: 1.4em 13em 0 0;
 }
 
 #quickSummary .subheading {
-  background: purple;
-  color: #fff;
-  padding: 0 0 0 0.5em;
+  background: #fdf;
+  padding: 0 0.5em;
+  border: solid purple;
+  border-width: 0 0 1px 1px;
   margin: 0;
 }
 
@@ -166,30 +192,19 @@ div#quickSummary {
 }
 
 div#news {
-/* FIXME -gp  */
-/* using "absolute" makes the language selection happen in the
- * middle of the page, but "inline" doesn't move it lower enough.
- meh; this is your problem, Patrick.  :P  */
-  position:absolute;
-  top:23em;
-  left:5em;
-
-  width: 68%;
-  min-width: 20em;
   background: #fefefe;
-  text-align: center;
   padding: 0;
-  border: 2px solid orange;
-  margin: 1.4em auto 0;
+  margin: 0 13em 1em 0;
 }
 
 div.news-item {
 }
 
 .news-item .subheading {
-  background: orange;
   text-align: left;
   padding: 0 0 0 0.5em;
+  border: solid orange;
+  border-width: 1px 0 0 1px;
   margin: 0;
 }
 
@@ -201,25 +216,32 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: 13em;
+  top: -1.5em;
   right: 0;
-  width: 20%;
+  width: 12em;
+  text-align: center;
   background: #fefefe;
-  width: 20%;
   border: solid blue;
-  border-width: 2px 0 2px 2px;
-  font-size: 90%;
+  border-width: 1px;
 }
 
 #latestVersion .subheading {
+  text-align: center;
   background: blue;
   color: #fff;
-  padding: 0 0 0 0.5em;
+  padding: 0 0.5em;
   margin: 0;
 }
 
-#latesetVersion p {
-  padding: 0.5em;
+#latestVersion .subsubheading {
+  background: #cfe;
+  padding: 0.25em 0.25em;
+  margin: 0 0 0.25em 0;
+}
+
+#latestVersion p {
+  font-size: 90%;
+  padding: 0 0.5em 0.5em;
   margin: 0;
 }
 
@@ -253,39 +275,19 @@ h1.unnumbered , h2.unnumberedsec, h3.unnumberedsubsec {
   height: 0;
   overflow: hidden;
   text-indent: -999em;
-  margin: 0 0 0.75em 0;
-}
-
-/* This table should go, since it does not contain tabular data.
- *
- * It should be an unordered list, cf. div#tocframe.
- */
-table.menu {
-  border-collapse: collapse;
-  width: 50%;
-  border: solid #000;
-  border-width: 0 0 0 2px;
-  margin: 1em 0 0 1em;
-}
-
-table.menu td {
   padding: 0;
   margin: 0;
 }
 
-table.menu a {
-  display: block;
-  float: left;
-  padding: 0.25em 0.5em;
-  border: solid #fdfdfd;
-  border-width: 2px 2px 2px 0;
-  margin: 0;
+table {
+  text-align: left;
+  padding: 0 0 0 0.5em;
+  border-left: 3px solid green;
+  margin: 1em 0 0 1em;
 }
 
-table.menu a:hover {
-  background: #eee;
-  border: solid #bbb;
-  border-width: 2px 2px 2px 0;
+table td {
+  padding: 0.4em 0;
 }
 
 .verbatim {
@@ -306,42 +308,96 @@ table.menu a:hover {
   float: right;
 }
 
+.float-left img,
+.float-right img {
+  background: #fff;
+  padding: 1em;
+  border: 1px solid #bbb;
+  margin: 0.1em 1em;
+}
+
+.align-right {
+  text-align: right;
+}
+
 .docs-version {
   text-align: center;
-  display: block;
+  width: 75%;
   margin: 0 auto;
-  border: 1pt solid black;
-  background-color: #DDDDDD;
 }
 
-.docs-beginner {
-/* float: left;
- width: 48%;
-*/
- border: 1pt solid black;
- background-color: #ffff99;
+.docs-version h2 {
+  padding: 0.25em 0;
+  margin: 0;
 }
 
-.docs-normal {
+.docs-intro {
   float: left;
-  width: 48%;
-  border: 1pt solid black;
-  background-color: #ccffee;
+  background: #ff9;
+  border: 1px solid #000;
+  width: 32%;
+  margin: 1em 0 3em 2%;
 }
 
-.docs-advanced {
-/*
-  display: block;
-  margin: 0 auto;
-*/
+.docs-intro h3 {
+  background: #cc6;
+  border-bottom: 1px solid #000;
+}
+
+.docs-regular {
+  position: absolute;
+  left: 36%;
+  right: 36%;
+  background: #cfe;
+  border: 1px solid #000;
+  margin: 1em 0 3em;
+}
+
+.docs-regular h3 {
+  background: #adc;
+  border-bottom: 1px solid #000;
+}
+
+.docs-infrequent {
   float: right;
-  width: 48%;
-  border: 1pt solid black;
-  background-color: #ffddff;
+  background: #fdf;
+  border: 1px solid #000;
+  width: 32%;
+  margin: 1em 2% 6em 0;
+}
+
+.docs-infrequent h3 {
+  background: #dbd;
+  border-bottom: 1px solid #000;
+}
+
+.docs-intro h3,
+.docs-regular h3,
+.docs-infrequent h3 {
+  font-size: 110%;
+  padding: 0 0.5em;
+  margin: 0;
+}
+
+.docs-intro ul,
+.docs-regular ul,
+.docs-infrequent ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1em 0.6em 0;
+}
+
+.docs-intro li,
+.docs-regular li,
+.docs-infrequent li {
+  text-align: left;
+  padding: 0;
+  margin: 0 0 0.5em 0;
 }
 
 .warning {
   background: #eef;
+  text-align: left;
   padding: 0;
   border: 2px solid green;
   margin: 0.2em 1em;
@@ -352,19 +408,20 @@ table.menu a:hover {
   margin: 0;
 }
 
-/* replace this with proper hiding */
-.hide table {
-  display: none;
+.hide table, .hide table * {
+  position: absolute;
+  text-indent: -999em;
+  height: 0;
+  overflow: hidden;
 }
 
 .help {
   background: #ff7777;
-  text-color: white;
-  text: white;
-  border: 5px dotted green;
-  width: 75%;
+  color: black;
   text-align: center;
-  display: block;
-  margin: 0 auto;
+  font-weight: bold;
+  width: 75%;
+  padding: 1em;
+  border: 10px dotted green;
+  margin: 1em auto;
 }
-
