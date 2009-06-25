@@ -5,8 +5,7 @@
 
 
 @menu
-* Community::                   
-* Automatic engraving essay::   
+* Essay::   
 * Comparisons::                 
 * Press::                       
 * Testimonials::                
@@ -15,72 +14,8 @@
 @end menu
 
 
-@node Community
-@unnumberedsec Community
-
-@subsubheading LilyPond Report
-
-The easiest way to keep touch is by reading our community
-newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
-
-
-@subsubheading Mailing Lists
-
-Most discussion takes place on our mailing lists:
-
-@multitable {mailing-list-name@@gnu.org} {long long long explanation of mailing list} {archives} {info} {post}
-
-@item
-@uref{mailto:lilypond-user@@gnu.org, lilypond-user@@gnu.org}
-@tab The main list for discussion and help
-@tab @uref{http://mail.gnu.org/archive/html/lilypond-user/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/lilypond-user, info}
-@tab @uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general, post}
-
-@item
-info-lilypond@@gnu.org
-@tab (low-volume) Notification of new releases
-@tab @uref{http://mail.gnu.org/archive/html/info-lilypond/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/info-lilypond, info}
-
-@item
-@uref{mailto:lilypond-devel@@gnu.org, lilypond-devel@@gnu.org}
-@tab Discussion about development and contributors.
-@tab @uref{http://mail.gnu.org/archive/html/lilypond-devel/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/lilypond-devel, info}
-@tab
-@uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.development, post}
-
-@item
-@uref{mailto:bug-lilypond@@gnu.org, bug-lilypond@@gnu.org}
-@tab Discussion about bugs (before posting, read our guidelines for @ref{Bug reports}).
-@tab @uref{http://mail.gnu.org/archive/html/bug-lilypond/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/bug-lilypond, info}
-@tab @uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs, post}
-
-@end multitable
-
-
-@subsubheading IRC
-
-Some level of support is provided on our IRC channel,
-
-@example
-@uref{irc://irc.freenode.net/lilypond, #lilypond@@irc.freenode.net}
-@end example
-
-This channel has no public archive, so any question that may
-be useful for others would better be posted to one of the mailing lists. 
-
-
-@subsubheading Other languages
-
-- list mailists / forums where non-English discussion occurs.
-
-
-
-@node Automatic engraving essay
-@unnumberedsec Automatic engraving essay
+@node Essay
+@unnumberedsec Essay
 
 @help{this section came directly from LM 1, with all @@lilypond
 turned into @@verbatim so it would compile.  Hoping to delegate.

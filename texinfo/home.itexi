@@ -33,19 +33,21 @@ Read more in our @ref{Introduction}!
 
 
 @div-id{latestVersion}
-@subheading Latest Versions
+@subheading Quick links
+
+@c Contact our @ref{Community}
 
 @subsubheading Stable
 
-@ref{Download, Download 2.12.3}.
+@ref{Download, Download 2.12.3}
 
-@ref{Documentation, Docs 2.12.3}.
+@ref{Documentation, Docs 2.12.3}
 
 @subsubheading Unstable
 
-@ref{Unstable download, Download 2.13.2}.
+@ref{Unstable download, Download 2.13.2}
 
-@ref{Unstable documentation, Docs 2.13.2}.
+@ref{Unstable documentation, Docs 2.13.2}
 
 @div-end
 @div-end

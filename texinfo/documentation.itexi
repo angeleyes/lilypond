@@ -1,7 +1,7 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of lilypond-general.tely
 @node Documentation
-@unnumbered Documentation 
+@unnumbered Documentation
 
 @div-class{docs-version}
 @heading Documentation for LilyPond 2.12.2.

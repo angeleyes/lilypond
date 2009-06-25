@@ -1,7 +1,7 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
 
 @node Development
-@unnumbered Development 
+@unnumbered Development
 
 LilyPond is a community-driven project; we always have more
 feature requests and bug reports than we have developers.
@@ -13,8 +13,7 @@ feature requests and bug reports than we have developers.
 * Unstable download::           
 * Unstable documentation::      
 * Contributors' Guide::         
-* Translations::                
-* Regression tests::            
+* Regressions::            
 @end menu
 
 
@@ -106,14 +105,14 @@ emails for all activity on the bug tracker.
 
 
 @node Unstable download
-@unnumberedsec Unstable download
+@unnumberedsec Download
 
 ... list all 2.13 downloads (no split-page or individual warnings
 here)
 
 
 @node Unstable documentation
-@unnumberedsec Unstable documentation
+@unnumberedsec Documentation
 
 link to 2.13 stuff, no intros.  (or maybe duplicate the stable doc
 page)
@@ -126,30 +125,9 @@ page)
 
 
 
-@node Translations
-@unnumberedsec Translations
 
-move into CG.
-
-@menu
-* Translation status::          
-* Translation guidelines::      
-@end menu
-
-
-@node Translation status
-@unnumberedsubsec Translation status
-
-
-@node Translation guidelines
-@unnumberedsubsec Translation guidelines
-
-link to CG x.y
-
-
-
-@node Regression tests
-@unnumberedsec Regression tests
+@node Regressions
+@unnumberedsec Regressions
 
 Keep here; don't put in CG.
 

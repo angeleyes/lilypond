@@ -123,6 +123,7 @@ of this and other documentation.
 * Documentation::    RTFM.
 * Development::      Giving back to the community.
 * About::            Other info.
+* Community::        Contact other users.
 @end menu
 @end ifnottex
 
@@ -135,6 +136,7 @@ of this and other documentation.
 @include documentation.itexi
 @include development.itexi
 @include about.itexi
+@include community.itexi
 
 @bye
 
