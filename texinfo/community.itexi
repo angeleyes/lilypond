@@ -8,12 +8,11 @@
 
 @menu
 * Contact::                     
-* Help wanted!::
+* Minimal examples::            
 * Bug reports::                 
 * Development::
 * Press::                       
 * Acknowledgements::            
-* Dedication::                  
 @end menu
 
 
@@ -83,9 +82,8 @@ be useful for others would better be posted to one of the mailing lists.
 - list mailists / forums where non-English discussion occurs.
 
 
-@node Help wanted!
-@unnumberedsec Help wanted!
-
+@node Minimal examples
+@unnumberedsec Minimal examples
 
 
 @node Bug reports
@@ -168,6 +166,10 @@ better, if you are suscribed to bug-lilypond, you will receive
 emails for all activity on the bug tracker. 
 
 
+
+@node Development
+@unnumberedsec Development
+
 @lowersections
 @include development.itexi
 @raisesections
@@ -188,11 +190,7 @@ http://lilypond.org/web/about/thanks
 
 Documentation/topdocs/AUTHORS.texi
 
-
-@node Dedication
-@unnumberedsec Dedication
-
-taken from:
+and maybe:
 http://lilypond.org/web/switch/
 
 

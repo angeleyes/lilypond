@@ -1,13 +1,12 @@
 @c -*- coding: us-ascii; mode: texinfo; -*-
-
-@node Development
-@unnumbered Development
+@c This file is part of community.itexi
 
 LilyPond is a community-driven project; we always have more
 feature requests and bug reports than we have developers.
 
 
 @menu
+* Help wanted!::
 * Unstable download::           
 * Unstable documentation::      
 * Contributors' Guide::         
@@ -15,7 +14,10 @@ feature requests and bug reports than we have developers.
 @end menu
 
 
+@node Help wanted!
+@unnumberedsec Help wanted!
 
+blah
 
 
 @node Unstable download
