@@ -356,17 +356,19 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 @macro rglos{TEXT}
 @vindex \TEXT\
-@ref{\TEXT\,,,music-glossary,Music Glossary}
+FIXME
+@c @ref{\TEXT\,,,music-glossary,Music Glossary}
 @end macro
 
 @macro rglosnamed{TEXT,DISPLAY}
 @vindex \TEXT\
-@ref{\TEXT\,,\DISPLAY\,music-glossary,Music Glossary}
+@c @ref{\TEXT\,,\DISPLAY\,music-glossary,Music Glossary}
 @end macro
 
 @macro rlearning{TEXT}
 @vindex \TEXT\
-@ref{\TEXT\,,,lilypond-learning,Learning Manual}
+FIXME
+@c @ref{\TEXT\,,,lilypond-learning,Learning Manual}
 @end macro
 
 @macro rlearningnamed{TEXT,DISPLAY}
@@ -376,7 +378,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 @macro ruser{TEXT}
 @vindex \TEXT\
-@ref{\TEXT\,,,lilypond,Notation Reference}
+FIXME
+@c @ref{\TEXT\,,,lilypond,Notation Reference}
 @end macro
 
 @macro rusernamed{TEXT,DISPLAY}
@@ -386,7 +389,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 @macro rprogram{TEXT}
 @vindex \TEXT\
-@ref{\TEXT\,,,lilypond-program,Application Usage}
+FIXME
+@c @ref{\TEXT\,,,lilypond-program,Application Usage}
 @end macro
 
 @macro rprogramnamed{TEXT,DISPLAY}
@@ -404,7 +408,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 @macro rinternals{TEXT}
 @vindex \TEXT\
-@ref{\TEXT\,,,lilypond-internals,Internals Reference}
+FIXME
+@c @ref{\TEXT\,,,lilypond-internals,Internals Reference}
 @end macro
 
 @macro rinternalsnamed{TEXT,DISPLAY}
