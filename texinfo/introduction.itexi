@@ -25,9 +25,10 @@ the program.
 @menu
 * Features::                    What can LilyPond do?
 * Examples::                    I want to see some music!
-* Testimonials::                
+* Testimonials::                What do people say about it?
 * Crash course::                How can I write music with LilyPond?
 @end menu
+
 
 
 @node Features
@@ -118,6 +119,11 @@ http://lilypond.org/web/about/features
 http://lilypond.org/web/switch/tour
 
 
+@subsubheading Where now?
+
+Still not convinced?  Look at some neat @ref{Examples}.  If you've
+already decided to try LilyPond, read our @ref{Crash course}.
+
 
 @node Examples
 @unnumberedsec Examples
@@ -133,17 +139,28 @@ at it -- go ahead and be wild in the input files.  :)}
 Final resting place of the current input/*.ly ghetto.
 
 
+@subsubheading Where now?
+
+Still not convinced?  Read some of our users' @ref{Testimonials}.
+If you've already decided to try LilyPond, read our @ref{Crash
+course}.
+
+
 @node Testimonials
 @unnumberedsec Testimonials
 
-http://lilypond.org/web/switch/testimonials
+@help{verbatim from http://lilypond.org/web/switch/testimonials}
 
+
+@subsubheading Where now?
+
+Read our @ref{Crash course}.
 
 
 @node Crash course
 @unnumberedsec Crash course
 
-@subheading @qq{Compiling} Music
+@subsubheading @qq{Compiling} Music
 
 @image-clickable{nereid-shot-small.png, (click to enlarge),
 nereid-shot.png, right}
@@ -162,7 +179,7 @@ People accustomed to graphical user interfaces might need to learn
 a new way of working, but the results are definitely worth it!
 
 
-@subheading It's as simple as A B C
+@subsubheading It's as simple as A B C
 
 Notes are encoded with letters and numbers.  Special commands are
 entered with backslashes.
@@ -180,7 +197,7 @@ accidentals.
 
 
 
-@subheading Pop music
+@subsubheading Pop music
 
 Put chords and lyrics together to get a lead sheet:
 
@@ -189,7 +206,7 @@ Put chords and lyrics together to get a lead sheet:
 
 
 
-@subheading Orchestral parts
+@subsubheading Orchestral parts
 
 The input file contains the notes of piece.  Score and parts can
 be made from a single input file.  So, changing a note always
@@ -213,7 +230,7 @@ pitch):
 @image-float{example-score.png,center}
 
 
-@subheading Beginner Documentation
+@subsubheading Beginner Documentation
 
 We realize that many users find this way of entering music a bit
 odd.  For this reason, we have written extensive documentation to
@@ -224,7 +241,7 @@ New users occasionally believe that LilyPond is not working
 correctly, when in fact it is working precisely as designed.
 
 
-@subheading Easier editing environments
+@subsubheading Easier editing environments
 
 LilyPond is primarily concerned with producing top-quality
 engraved sheet music; creating a Graphical User Interface (GUI)
@@ -238,4 +255,7 @@ graphical score.  For more information, see our documentation
 about @@ref@{FIXME alternate editing environments@}.
 
 
+@subsubheading Where now?
+
+You are now read to @ref{Download, Download LilyPond}.
 
