@@ -15,8 +15,8 @@ editing program.  Before downloading LilyPond, please read the
 * Unix::                        @image{linux-logo} @image{freebsd-logo}
 * MacOS X::                     @image{macosx-logo}
 * Windows::                     @image{windows-logo}
-* Source::                      for packagers
-* Download other versions::     old and unstable development versions
+* Source::                      (for packagers)
+* Download other versions::     (old and unstable development versions)
 @end menu
 
 

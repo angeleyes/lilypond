@@ -6,7 +6,6 @@
 
 @menu
 * Essay::   
-* Comparisons::                 
 * Press::                       
 * Testimonials::                
 * Acknowledgements::            
@@ -841,23 +840,12 @@ maybe move into About, or Essay?  probably Essay.
 
 
 
-@node Comparisons
-@unnumberedsec Comparisons
-
-(maybe)  scans comparing lilypond with sibelius, finale, etc.
-
-
 
 @node Press
 @unnumberedsec Press
 
 http://lilypond.org/web/about/pubs
 
-
-@node Testimonials
-@unnumberedsec Testimonials
-
-http://lilypond.org/web/switch/testimonials
 
 
 @node Acknowledgements

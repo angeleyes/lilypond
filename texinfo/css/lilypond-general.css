@@ -33,7 +33,7 @@ div#tocframe {
   left: 0;
   width: 100%;
   background: #ceffae;
-  font-size: 75%;
+  font-size: 85%;
   padding: 0;
   margin: 0;
 }
@@ -56,7 +56,7 @@ div#tocframe {
 
 #tocframe li a {
   float: left;
-  width: 12.6%;
+  width: 18%;
   height: 1.5em;
   text-align: center;
   font-weight: bold;

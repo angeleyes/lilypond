@@ -121,8 +121,6 @@ of this and other documentation.
 * Introduction::     Start here to creating sheet music.
 * Download::         Get LilyPond.
 * Documentation::    RTFM.
-* Development::      Giving back to the community.
-* About::            Other info.
 * Community::        Contact other users.
 @end menu
 @end ifnottex
@@ -134,8 +132,8 @@ of this and other documentation.
 @include introduction.itexi
 @include download.itexi
 @include documentation.itexi
-@include development.itexi
-@include about.itexi
+@c @include development.itexi
+@c @include about.itexi
 @include community.itexi
 
 @bye

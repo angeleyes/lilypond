@@ -5,16 +5,12 @@
 
 @warning{fill space}
 
-a
-
-a
-
-a
-
-a
 
 @menu
-* Mail lists::                   
+* Mail lists::                  
+* Help wanted!::                
+* Bug reports::                 
+* Development::
 @end menu
 
 
@@ -81,5 +77,93 @@ be useful for others would better be posted to one of the mailing lists.
 - list mailists / forums where non-English discussion occurs.
 
 
+@node Help wanted!
+@unnumberedsec Help wanted!
 
+
+
+
+@node Bug reports
+@unnumberedsec Bug reports
+
+If you have input that results in a crash or an erroneous output,
+then that is a bug.  There is a list of current bugs on our google
+bug tracker,
+
+@example
+@uref{http://code.google.com/p/lilypond/issues/list}
+@end example
+
+If you have discovered a bug which is not listed, please help us
+by sending an input file which demonstrates the problem to the
+bug-lilypond list.  Unfortunately there is a strict @qq{no
+top-posting} check on gmane; to avoid this, add
+
+@example
+> I'm not top posting.
+@end example
+
+@noindent
+(you must include the @code{>} ) to the top of your bug report.
+
+Please @strong{DO NOT} add bug reports directly to the bug
+tracker.  Once an issue has been added to the tracker, feel free
+to add more information to that report.
+
+When creating a file, please:
+
+@itemize
+
+@item
+Include the \version number.
+
+@item
+Create an example which is as small as possible.  Most bugs can be
+duplicated in less than ten lines of LilyPond code.  Unfortunately
+we do not have the resources to debug large examples.  Almost
+every bug can be reproduced with four notes or less.
+
+@item
+Bugs about spacing or page layout might require many bars of
+music, but other bugs can probably be reproduced using only a
+single measure.
+
+@item
+Avoid using complicated notes, keys, or time signatures, unless
+the bug is about the behavior of those items.
+
+@item
+Do not use @code{\override} or @code{\set} commands unless the bug
+is about those particular commands.
+
+@item
+If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
+your example. 
+
+@end itemize
+
+Here is an example of a good bug report:
+
+@example
+%% the octavation command doesn't do anything.
+
+\version "2.10.0"
+\paper@{ ragged-right=##t @}
+\relative c''' @{
+  c1
+  #(set-octavation 1)
+  c1
+@}
+@end example
+
+Once your bug has been accepted to the bug tracker, you may mark
+the bug so that you automatically receive emails when any activity
+on the bug occurs. This requires you have a google account. Even
+better, if you are suscribed to bug-lilypond, you will receive
+emails for all activity on the bug tracker. 
+
+
+@lowersections
+@include development.itexi
+@raisesections
 

@@ -23,9 +23,10 @@ License}, giving everybody the freedom to fix, modify, and extend
 the program.
 
 @menu
-* Features:: What can LilyPond do?
-* Examples:: I want to see some music!
-* Crash course:: How can I write music with LilyPond?
+* Features::                    What can LilyPond do?
+* Examples::                    I want to see some music!
+* Testimonials::                
+* Crash course::                How can I write music with LilyPond?
 @end menu
 
 
@@ -130,6 +131,12 @@ if they click on the link, but we're not encouraging them to look
 at it -- go ahead and be wild in the input files.  :)}
 
 Final resting place of the current input/*.ly ghetto.
+
+
+@node Testimonials
+@unnumberedsec Testimonials
+
+http://lilypond.org/web/switch/testimonials
 
 
 

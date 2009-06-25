@@ -1,10 +1,10 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of lilypond-general.tely
 @node Documentation
-@unnumbered Documentation
+@unnumbered Manuals
 
 @div-class{docs-version}
-@heading Documentation for LilyPond 2.12.2.
+@heading Documentation for LilyPond 2.12.2
 
 @div-end
 
@@ -19,6 +19,12 @@ a @qq{must-read} gentle introduction to LilyPond.
 @item @ref{Music Glossary}:
 explains musical terms and gives translations for users unfamiliar
 with English musical terms.
+
+@item @ref{Essay}:
+@emph{(optional reading)}
+background information about the engraving process and the
+aesthetics of 19th century music engraving.
+
 
 @end itemize
 
@@ -69,6 +75,7 @@ updates since the last major version.
 @menu
 * Learning Manual::             
 * Music Glossary::              
+* Essay::                       
 * Notation Reference::          
 * Application Usage::           
 * Snippet List::                
@@ -146,6 +153,12 @@ this explains musical terms, and includes translations to various
 languages.  If you are not familiar with music notation or music
 terminology (especially if you are a non-native English speaker),
 it is highly advisable to consult the glossary.
+
+
+@node Essay
+@unnumberedsec Essay
+
+blah
 
 
 @node Notation Reference
