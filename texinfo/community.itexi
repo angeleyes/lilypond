@@ -7,15 +7,18 @@
 
 
 @menu
-* Mail lists::                  
-* Help wanted!::                
+* Contact::                     
+* Help wanted!::
 * Bug reports::                 
 * Development::
+* Press::                       
+* Acknowledgements::            
+* Dedication::                  
 @end menu
 
 
-@node Mail lists
-@unnumberedsec Mail lists
+@node Contact
+@unnumberedsec Contact
 
 @subsubheading LilyPond Report
 
@@ -24,6 +27,9 @@ newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 
 
 @subsubheading Mailing Lists
+
+@warning{only keep -user and -info here, or separate those from
+the rest.}
 
 Most discussion takes place on our mailing lists:
 
@@ -79,7 +85,6 @@ be useful for others would better be posted to one of the mailing lists.
 
 @node Help wanted!
 @unnumberedsec Help wanted!
-
 
 
 
@@ -166,4 +171,29 @@ emails for all activity on the bug tracker.
 @lowersections
 @include development.itexi
 @raisesections
+
+
+@node Press
+@unnumberedsec Press
+
+http://lilypond.org/web/about/pubs
+
+
+@node Acknowledgements
+@unnumberedsec Acknowledgements
+
+combo of:
+
+http://lilypond.org/web/about/thanks
+
+Documentation/topdocs/AUTHORS.texi
+
+
+@node Dedication
+@unnumberedsec Dedication
+
+taken from:
+http://lilypond.org/web/switch/
+
+
 

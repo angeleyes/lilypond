@@ -1,8 +1,13 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of lilypond-general.tely
 @node Home
-@unnumbered @image{foo}
-@c @unnumbered Home 
+@ifhtml
+@c @unnumbered @image{foo}
+@unnumbered Home
+@end ifhtml
+@ifnothtml
+@unnumbered Home
+@end ifnothtml
 
 @div-id{pageHeader}
 @heading LilyPond

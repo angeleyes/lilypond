@@ -841,27 +841,5 @@ maybe move into About, or Essay?  probably Essay.
 
 
 
-@node Press
-@unnumberedsec Press
-
-http://lilypond.org/web/about/pubs
-
-
-
-@node Acknowledgements
-@unnumberedsec Acknowledgements
-
-combo of:
-
-http://lilypond.org/web/about/thanks
-
-Documentation/topdocs/AUTHORS.texi
-
-
-@node Dedication
-@unnumberedsec Dedication
-
-taken from:
-http://lilypond.org/web/switch/
 
 

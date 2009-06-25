@@ -59,12 +59,12 @@ issues.
 @item @ref{FAQ}:
 links to the answers of Frequently Asked Questions.
 
+@item @ref{Changes}:
+updates since the last major version.
+
 @item @ref{Internals Reference}:
 information about LilyPond's internal structures, which is
 required for constructing tweaks.
-
-@item @ref{Changes}:
-updates since the last major version.
 
 @end itemize
 
@@ -79,9 +79,9 @@ updates since the last major version.
 * Notation Reference::          
 * Application Usage::           
 * Snippet List::                
-* Internals Reference::         
-* Changes::                     
 * FAQ::                         
+* Changes::                     
+* Internals Reference::         
 * Other documentation::         
 * Documentation other versions::  
 @end menu
@@ -293,6 +293,26 @@ The list of snippets for each subsection of the Notation Reference are
 also linked from the @strong{See also} portion.
 
 
+@node FAQ
+@unnumberedsec FAQ
+
+maybe some data from
+http://lilypond.org/web/about/faq
+but not much.  Don't repeat the intro, and mostly use links to
+other parts of the docs.  PROTIP: if your faq answers anything
+directly, then it means that the rest of your docs suck.
+
+
+@node Changes
+@unnumberedsec Changes
+
+previous-named "NEWS" doc.
+
+this is a summary of important changes
+and new features in LilyPond since the previous version.
+
+
+
 @node Internals Reference
 @unnumberedsec Internals Reference
 
@@ -312,28 +332,11 @@ generated documentation.  In the HTML document, these subsections
 have clickable links.
 
 
-@node Changes
-@unnumberedsec Changes
-
-previous-named "NEWS" doc.
-
-this is a summary of important changes
-and new features in LilyPond since the previous version.
-
-
-@node FAQ
-@unnumberedsec FAQ
-
-maybe some data from
-http://lilypond.org/web/about/faq
-but not much.  Don't repeat the intro, and mostly use links to
-other parts of the docs.  PROTIP: if your faq answers anything
-directly, then it means that the rest of your docs suck.
-
-
 
 @node Other documentation
 @unnumberedsec Other documentation
+
+@warning{to be deleted}
 
 There are a number of other sources of information which may be
 very valuable.
