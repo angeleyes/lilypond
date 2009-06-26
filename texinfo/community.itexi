@@ -202,7 +202,7 @@ emails for all activity on the bug tracker.
 @node Press
 @unnumberedsec Press
 
-http://lilypond.org/web/about/pubs
+@help{verbatim from http://lilypond.org/web/about/pubs}
 
 
 @node Acknowledgements
