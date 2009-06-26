@@ -81,6 +81,7 @@ be useful for others would better be posted to one of the mailing lists.
 @node News
 @unnumberedsec News
 
+@c FIXME: I don't know I should re-use a doc- div like this. -gp
 @div-class{docs-intro}
 @subsubheading LilyPond Report
 
@@ -106,8 +107,48 @@ newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 @node Minimal examples
 @unnumberedsec Minimal examples
 
-@help{explanation of minimal examples, quite possibly taken from
-Bug reports}.
+A minimal example is an example for which nothing else can be
+removed.  These are very useful when asking for help or reporting
+bugs -- the simpler the example is, the quicker potential helpers
+can understand it and help you.
+
+In addition, creating a minimal example forces you to understand
+what is happening.  Many false problem reports can be avoided by
+attempting to create a minimal example; if you cannot replicate a
+@qq{bug} in a minimal example, then the problem was probably an
+insufficient understanding of LilyPond, not an actual bug!
+
+When creating a minimal example, please:
+
+@itemize
+
+@item
+Include the \version number.
+
+@item
+Create an example which is as small as possible.  Most problems
+can be duplicated in less than ten lines of LilyPond code.
+
+@item
+Bugs about spacing or page layout might require many bars of
+music, but other bugs can probably be reproduced using only a
+single measure.
+
+@item
+Avoid using complicated notes, keys, or time signatures, unless
+the bug is about the behavior of those items.
+
+@item
+Do not use @code{\override} or @code{\set} commands unless the bug
+is about those particular commands.
+
+@item
+If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
+your example. 
+
+@end itemize
+
+
 
 
 @node Bug reports
@@ -137,37 +178,10 @@ Please @strong{DO NOT} add bug reports directly to the bug
 tracker.  Once an issue has been added to the tracker, feel free
 to add more information to that report.
 
-When creating a file, please:
-
-@itemize
-
-@item
-Include the \version number.
-
-@item
-Create an example which is as small as possible.  Most bugs can be
-duplicated in less than ten lines of LilyPond code.  Unfortunately
-we do not have the resources to debug large examples.  Almost
-every bug can be reproduced with four notes or less.
-
-@item
-Bugs about spacing or page layout might require many bars of
-music, but other bugs can probably be reproduced using only a
-single measure.
-
-@item
-Avoid using complicated notes, keys, or time signatures, unless
-the bug is about the behavior of those items.
-
-@item
-Do not use @code{\override} or @code{\set} commands unless the bug
-is about those particular commands.
-
-@item
-If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
-your example. 
-
-@end itemize
+We only accept bug reports in the form of @ref{Minimal examples}.
+We have very limited resources to deal with bug reports, so any
+non-minimal example will be rejected.  Almost every bug can be
+demonstrated in four notes or less!
 
 Here is an example of a good bug report:
 
@@ -185,7 +199,7 @@ Here is an example of a good bug report:
 
 Once your bug has been accepted to the bug tracker, you may mark
 the bug so that you automatically receive emails when any activity
-on the bug occurs. This requires you have a google account. Even
+on the bug occurs.  This requires you have a google account.  Even
 better, if you are suscribed to bug-lilypond, you will receive
 emails for all activity on the bug tracker. 
 

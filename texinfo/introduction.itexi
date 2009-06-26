@@ -38,6 +38,9 @@ the program.
 attempt to sway people towards trying lilypond.  The warnings
 about writing music as text come in Crash Course, not here.}
 
+@c TRANSLATORS: so far it's mostly from
+@c http://lilypond.org/web/switch/advantages
+
 @subheading Why switch to LilyPond?
 
 @subsubheading Text-based input
@@ -161,6 +164,9 @@ Read our @ref{Crash course}.
 
 @node Crash course
 @unnumberedsec Crash course
+
+@c TRANSLATORS: so far it's mostly from
+@c http://lilypond.org/web/switch/howto
 
 @subsubheading @qq{Compiling} Music
 
