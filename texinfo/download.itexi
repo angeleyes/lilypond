@@ -11,6 +11,9 @@ more similar to a programming language than a graphical score
 editing program.  Before downloading LilyPond, please read the
 @ref{Crash course}.}
 
+@help{we need to check these logos; the freebsd one needs to
+change to the bowling ball.  :( }
+
 @menu
 * Unix::                        @image{linux-logo} @image{freebsd-logo}
 * MacOS X::                     @image{macosx-logo}
@@ -27,6 +30,11 @@ Many thanks to @uref{http://www.vt.edu/, Virgina Tech} and
 our bandwidth.
 
 @image{VTlogo_ITF} @image{lao_banner_06_on_white_demo}
+
+@smallspace
+
+All logos and product images are copyright and trademark
+acknowledged. 
 
 
 @node Unix
