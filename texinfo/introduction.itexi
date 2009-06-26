@@ -152,9 +152,120 @@ course}.
 @node Testimonials
 @unnumberedsec Testimonials
 
-@help{verbatim from http://lilypond.org/web/switch/testimonials ;
-just copy the text and add texinfo formatting.  GDP-trained
-people, I'm looking at you.  :)}
+@subheading Testimonials
+
+@c TODO: another iffy re-use of a predefined class.  -gp
+@div-class{testimonial-item}
+@subsubheading @uref{http://nyphil.org/meet/orchestra/index.cfm?page=profile&personNum=7, Carter Brey}, Principal Cellist, New York Philharmonic
+
+@image-float{carter-brey.jpg, right}
+
+@qq{... I've written a couple of encore pieces for solo cello
+which I've printed with LilyPond and which I'm going to submit to
+Schirmer for publication. I'll bet their engraved version wouldn't
+look half as sharp as mine!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading @uref{http://icem-www.folkwang-hochschule.de/~finnendahl/, Orm Finnendahl}, professor of Composition, Musikhochschule Freiburg
+
+@image-float{orm-finnendahl.jpg, left}
+
+@qq{Although I don't know [LilyPond] very well yet, I'm *very*
+impressed. I used the program to input a motet of Josquin Desprez
+in mensural notation and there's no doubt that lilypond outscores
+all other notation programs easily concerning speed, ease of use
+and look!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Darius Blasband, composer (Brussels, Belgium)
+
+@image-float{darius-blasband.jpg, right}
+
+@qq{[..after the first orchestra rehearsal] I got numerous
+compliments about the quality of the scores. Even more
+importantly, while Lilypond provides numerous hacks to improve the
+way its scores look, what the orchestra got from me is basically
+the raw, untouched output.}
+
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Kieren MacMillan, composer (Toronto, Canada)
+
+@qq{thanks and kudos to the development team for their incredible
+work. I've never seen anything approaching the output that I get
+from Lilypond -- I'm totally confident that my music publishing
+needs will be fulfilled beyond my expectations using this great
+application. [..] basically untweaked Lilypond output [..] looks
+better than most recent "professional" publications I've compared
+it to (q.v., just about any Warner Bros. score, and even many of
+the most recent by "the old houses"). [..]}
+
+@qq{Beat that, Finale/Sibelius/Igor/whatever!!!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Chris Cannam, lead programmer of the @uref{http://www.rosegardenmusic.com/, RoseGarden} project.
+
+@qq{Lilypond is obviously the zillion-ton gorilla [of great music
+typesetting].}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading David Bobroff, Bass Trombone, Iceland Symphony Orchestra
+
+@qq{I think Lilypond is great [..] The more I learn about LilyPond
+the more I like it!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Vaylor Trucks, Electric guitar player (Yes, related to)
+
+@qq{I am super impressed with LilyPond [..]}
+
+@qq{THIS IS THE BEST PROGRAM EVER!!!}
+
+@qq{Thank you all SO MUCH for your hard work and dedication!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Nicolas Sceaux, Mutopia contributor
+
+@qq{I had a kind of hate-passion relationship with it. Passion
+because the first score I saw was so amazing! The description of
+LilyPond lies about its beautifulness, it is too modest! [..] as
+LilyPond is getting always better, and as I look closer how things
+are done in scheme, I have less and less frustrations. Anyway,
+what I mean is: thank you for providing LilyPond, it is really
+good.}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Werner Lemberg, Conductor at the Theatre in Koblenz, Germany and distinguished GNU Hacker.
+
+@qq{Anyway, LilyPond does an amazingly good job!}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Paul Davis, developer of JACK and Ardour.
+
+@qq{I think [LilyPond is] an incredible program, and it produces
+wonderful, wonderful output. when i read an interview about it
+last year, i was raving to several friends of mine about its
+potential.}
+@div-end
+
 
 
 @subsubheading Where now?
