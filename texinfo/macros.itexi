@@ -173,12 +173,7 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 
 @macro smallspace
-@html
-<hr size="1">
-@end html
-@ifnothtml
 @sp 1
-@end ifnothtml
 @end macro
 
 
