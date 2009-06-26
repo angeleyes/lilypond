@@ -1,8 +1,8 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of news.texi
 
-
-@c To print a comma in the text, use "\,"
+@c when you add a new item, consider moving the lowest item(s)
+@c into news-old.itexi.
 
 @news-item
 @subheading New Website!  13 June 2009

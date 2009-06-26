@@ -149,7 +149,9 @@ course}.
 @node Testimonials
 @unnumberedsec Testimonials
 
-@help{verbatim from http://lilypond.org/web/switch/testimonials}
+@help{verbatim from http://lilypond.org/web/switch/testimonials ;
+just copy the text and add texinfo formatting.  GDP-trained
+people, I'm looking at you.  :)}
 
 
 @subsubheading Where now?

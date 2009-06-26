@@ -34,7 +34,7 @@ Read more in our @ref{Introduction}!
 
 
 @div-id{news}
-@include news.itexi
+@include news-front.itexi
 @div-end
 
 

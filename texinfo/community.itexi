@@ -8,9 +8,10 @@
 
 @menu
 * Contact::                     
+* News::                        
 * Minimal examples::            
 * Bug reports::                 
-* Development::
+* Development::                 
 * Press::                       
 * Acknowledgements::            
 @end menu
@@ -18,11 +19,6 @@
 
 @node Contact
 @unnumberedsec Contact
-
-@subsubheading LilyPond Report
-
-The easiest way to keep touch is by reading our community
-newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 
 
 @subsubheading Mailing Lists
@@ -82,8 +78,36 @@ be useful for others would better be posted to one of the mailing lists.
 - list mailists / forums where non-English discussion occurs.
 
 
+@node News
+@unnumberedsec News
+
+@div-class{docs-intro}
+@subsubheading LilyPond Report
+
+The easiest way to keep touch is by reading our community
+newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
+@div-end
+
+@subsubheading Official news
+
+@include news-front.itexi
+
+@menu
+* Old official news::
+@end menu
+
+
+@node Old official news
+@unnumberedsubsec Old official news
+
+@include news-old.itexi
+
+
 @node Minimal examples
 @unnumberedsec Minimal examples
+
+@help{explanation of minimal examples, quite possibly taken from
+Bug reports}.
 
 
 @node Bug reports
