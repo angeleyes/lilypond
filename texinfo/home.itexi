@@ -41,7 +41,7 @@ Read more in our @ref{Introduction}!
 @div-id{latestVersion}
 @subheading Quick links
 
-@c Contact our @ref{Community}
+@c TODO: javascript to detect OS and suggest download?
 
 @subsubheading Stable
 

@@ -26,6 +26,8 @@
 @warning{only keep -user and -info here, or separate those from
 the rest.}
 
+@c TODO add a "subscribe to lilypond-user" on this page.
+
 Most discussion takes place on our mailing lists:
 
 @multitable {mailing-list-name@@gnu.org} {long long long explanation of mailing list} {archives} {info} {post}
