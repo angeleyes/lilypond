@@ -11,9 +11,10 @@
 * News::                        
 * Minimal examples::            
 * Bug reports::                 
+* Help wanted!::
 * Development::                 
 * Press::                       
-* Acknowledgements::            
+* Thanks::            
 @end menu
 
 
@@ -206,6 +207,11 @@ better, if you are suscribed to bug-lilypond, you will receive
 emails for all activity on the bug tracker. 
 
 
+@node Help wanted!
+@unnumberedsec Help wanted!
+
+Blah.
+
 
 @node Development
 @unnumberedsec Development
@@ -300,8 +306,8 @@ FIXME write CG intro + links.
 @help{verbatim from http://lilypond.org/web/about/pubs}
 
 
-@node Acknowledgements
-@unnumberedsec Acknowledgements
+@node Thanks
+@unnumberedsec Thanks 
 
 combo of:
 
