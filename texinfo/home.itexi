@@ -9,14 +9,12 @@
 @unnumbered Home
 @end ifnothtml
 
+
 @div-id{pageHeader}
 @heading LilyPond
 
 ... music notation for everyone
 @div-end
-
-
-@div-id{content}
 
 @image-id{lilylogo,double-lily-modified.png,LilyPond logo}
 
@@ -55,5 +53,4 @@ Read more in our @ref{Introduction}!
 
 @ref{Development, Docs 2.13.2}
 
-@div-end
 @div-end

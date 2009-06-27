@@ -82,20 +82,23 @@ be useful for others would better be posted to one of the mailing lists.
 
 
 @node News
+@div-class{hide}
 @unnumberedsec News
+@div-end
 
-@c FIXME: I don't know I should re-use a doc- div like this. -gp
-@div-class{docs-intro}
-@subsubheading LilyPond Report
+@div-class{column-left}
+@subheading LilyPond Report
 
 The easiest way to keep touch is by reading our community
 newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
-@div-end
 
-@subsubheading Official news
+@subheading Official news
 
 @include news-front.itexi
 
+@div-end
+
+@div-class{column-right}
 @menu
 * Old official news::           
 @end menu
@@ -105,6 +108,8 @@ newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 @unnumberedsubsec Old official news
 
 @include news-old.itexi
+
+@div-end
 
 
 @node Minimal examples
@@ -214,11 +219,13 @@ Blah.
 
 
 @node Development
+@div-class{hide}
 @unnumberedsec Development
+@div-end
 
 
-@div-class{docs-version}
-@subheading Development materials for LilyPond 2.13.3
+@div-class{heading-center}
+@heading Development materials for LilyPond 2.13.3
 
 @warning{These are @emph{unstable development} versions.  If you
 have the slighest doubt about how to use or install LilyPond, we
@@ -227,7 +234,7 @@ urge you to use the stable @ref{Download}, and read the stable
 
 @div-end
 
-@div-class{docs-intro}
+@div-class{column-left}
 @subheading Download
 
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.13.3-1.linux-x86.sh,
@@ -260,7 +267,7 @@ lilypond-2.13.3-1.mingw-exe}
 @div-end
 
 
-@div-class{docs-regular}
+@div-class{column-right}
 @subheading Manuals
 
 LM:
@@ -289,13 +296,10 @@ FAQ-link  (? maybe?)
 Changes-link
 IR-link
 
-@div-end
-
-
-@div-class{docs-infrequent}
 @subheading Contributors' Guide
 
 FIXME write CG intro + links.
+
 @div-end
 
 

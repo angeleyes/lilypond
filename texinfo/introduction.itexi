@@ -152,13 +152,9 @@ course}.
 @node Testimonials
 @unnumberedsec Testimonials
 
-@subheading Testimonials
-
-@c TODO: another iffy re-use of a predefined class.  -gp
 @div-class{testimonial-item}
-@subsubheading @uref{http://nyphil.org/meet/orchestra/index.cfm?page=profile&personNum=7, Carter Brey}, Principal Cellist, New York Philharmonic
-
 @image-float{carter-brey.jpg, right}
+@subsubheading @uref{http://nyphil.org/meet/orchestra/index.cfm?page=profile&personNum=7, Carter Brey}, Principal Cellist, New York Philharmonic
 
 @qq{... I've written a couple of encore pieces for solo cello
 which I've printed with LilyPond and which I'm going to submit to
@@ -168,9 +164,8 @@ look half as sharp as mine!}
 
 
 @div-class{testimonial-item}
-@subsubheading @uref{http://icem-www.folkwang-hochschule.de/~finnendahl/, Orm Finnendahl}, professor of Composition, Musikhochschule Freiburg
-
 @image-float{orm-finnendahl.jpg, left}
+@subsubheading @uref{http://icem-www.folkwang-hochschule.de/~finnendahl/, Orm Finnendahl}, professor of Composition, Musikhochschule Freiburg
 
 @qq{Although I don't know [LilyPond] very well yet, I'm *very*
 impressed. I used the program to input a motet of Josquin Desprez
@@ -181,9 +176,8 @@ and look!}
 
 
 @div-class{testimonial-item}
-@subsubheading Darius Blasband, composer (Brussels, Belgium)
-
 @image-float{darius-blasband.jpg, right}
+@subsubheading Darius Blasband, composer (Brussels, Belgium)
 
 @qq{[..after the first orchestra rehearsal] I got numerous
 compliments about the quality of the scores. Even more
@@ -344,6 +338,8 @@ condensed multi rests):
 
 The same variable is used in the full score (here in concert
 pitch):
+
+@help{This example is too wide for small resolutions.}
 
 @image-float{annotate-example-score.png,center}
 @image-float{example-score.png,center}

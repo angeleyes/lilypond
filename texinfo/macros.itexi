@@ -58,8 +58,8 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 @macro image-clickable{IMAGE-FILE, MORE-TEXT, CLICK-FILE, POSITION}
 @html
 <div class="float-\POSITION\">
-  <a href=\CLICK-FILE\>
-    <img src=\IMAGE-FILE\ alt="\IMAGE-FILE\">
+  <a class="clickable" href="\CLICK-FILE\">
+    <img src="\IMAGE-FILE\" alt="\IMAGE-FILE\">
   </a>
   <p style="text-align: center">
     \MORE-TEXT\
@@ -73,9 +73,7 @@ c -*- coding: us-ascii; mode: texinfo; -*-
 
 @macro image-float{IMAGE-FILE, POSITION}
 @html
-<div class="float-\POSITION\">
-  <img src=\IMAGE-FILE\ alt="\IMAGE-FILE\">
-</div>
+<img class="float-\POSITION\" src="\IMAGE-FILE\" alt="\IMAGE-FILE\">
 @end html
 @ifnothtml
 @image{IMAGE-FILE}

@@ -3,12 +3,12 @@
 @node Documentation
 @unnumbered Manuals
 
-@div-class{docs-version}
+@div-class{heading-center}
 @heading Documentation for LilyPond 2.12.2
 
 @div-end
 
-@div-class{docs-intro}
+@div-class{column-center}
 @subheading Introduction
 
 @itemize
@@ -30,7 +30,7 @@ aesthetics of 19th century music engraving.
 
 @div-end
 
-@div-class{docs-regular}
+@div-class{column-left}
 @subheading Regular use
 
 @itemize
@@ -51,7 +51,7 @@ issues.
 @div-end
 
 
-@div-class{docs-infrequent}
+@div-class{column-right}
 @subheading Infrequent Use
 
 @itemize
