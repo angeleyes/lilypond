@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-22 22:49+0200\n"
-"PO-Revision-Date: 2008-12-13 13:45+0100\n"
+"PO-Revision-Date: 2009-06-27 15:42+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lolyfan-AT-wanadoo-DOT-fr>\n"
 "Language-Team: Français <lilypond-user-fr@gnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -242,9 +242,9 @@ msgstr "Équipe de développement de LilyPond"
 #: site/install/install-2.10.ihtml:99 site/install/install-2.10.ihtml:117
 #: site/install/install-2.10.ihtml:135 site/install/install-2.12.ihtml:97
 #: site/install/install-2.12.ihtml:115
-#, fuzzy, c-format
+#, c-format
 msgid "Included <a href='%s'>with distribution</a>"
-msgstr "Télécharger <a href='%s'>le script d'installation</a>"
+msgstr "Inclus dans la <a href='%s'>distribution</a>"
 
 #: site/install/install-2.10.ihtml:156 site/install/install-2.10.ihtml:232
 #: site/install/install-2.8.ihtml:53 site/install/install-2.12.ihtml:133
@@ -307,15 +307,16 @@ msgid ""
 "A text-based program, not graphical.  For more information, see <a href='%"
 "s'>the LilyPond help page</a>."
 msgstr ""
+"Un programme en mode texte, sans interface graphique. \n"
+"Pour plus d'information, consultez la <a href='%s'>page d'aide de LilyPond</a>."
 
 #: site/install/install-2.13.ihtml:287 site/install/install-2.13.ihtml:268
 #: site/install/install-2.13.ihtml:244 site/install/install-2.13.ihtml:224
 #: site/install/install-2.13.ihtml:200 site/install/install-2.13.ihtml:155
 #: site/install/install-2.13.ihtml:128 site/install/install-2.13.ihtml:93
 #: site/install/install-2.13.ihtml:67 site/install/install-2.13.ihtml:42
-#, fuzzy
 msgid "LilyPond"
-msgstr "Pourquoi utiliser LilyPond ?"
+msgstr "LilyPond"
 
 #~ msgid "Options"
 #~ msgstr "Modalités"
