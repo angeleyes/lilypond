@@ -86,30 +86,29 @@ be useful for others would better be posted to one of the mailing lists.
 @unnumberedsec News
 @div-end
 
-@div-class{column-left}
+@div-class{column-right}
 @subheading LilyPond Report
 
 The easiest way to keep touch is by reading our community
 newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
+@div-end
 
+@c @div-class{column-left}
 @subheading Official news
 
 @include news-front.itexi
-
-@div-end
-
-@div-class{column-right}
-@menu
-* Old official news::           
-@end menu
+@c @div-end
 
 
-@node Old official news
-@unnumberedsubsec Old official news
+@c @node Old official news
+@c @unnumberedsubsec Old official news
+
+@c @div-class{column-center}
+@c @subheading Old official news
 
 @include news-old.itexi
+@c @div-end
 
-@div-end
 
 
 @node Minimal examples
