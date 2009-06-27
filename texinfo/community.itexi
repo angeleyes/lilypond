@@ -186,10 +186,10 @@ Please @strong{DO NOT} add bug reports directly to the bug
 tracker.  Once an issue has been added to the tracker, feel free
 to add more information to that report.
 
-We only accept bug reports in the form of @ref{Minimal examples}.
-We have very limited resources to deal with bug reports, so any
-non-minimal example will be rejected.  Almost every bug can be
-demonstrated in four notes or less!
+@warning{We only accept bug reports in the form of @ref{Minimal
+examples}.  We have very limited resources to deal with bug
+reports, so any non-minimal example will be rejected.  Almost
+every bug can be demonstrated in four notes or less!}
 
 Here is an example of a good bug report:
 
