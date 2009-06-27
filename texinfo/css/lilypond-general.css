@@ -22,18 +22,32 @@ p, h1, h2, h3, h4, h5 {
   margin: 1em 10px;
 }
 
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
 li {
   margin-right: 1em;
 }
 
-/* Divs */
+/* Table of Contents */
+
+/* first level toc (unnumbered) */
 div#tocframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   background: #ceffae;
-  font-size: 85%;
+  font-size: 90%;
   padding: 0;
   margin: 0;
 }
@@ -54,14 +68,28 @@ div#tocframe {
   margin: 0;
 }
 
+/* search box */
+#tocframe li form {
+  display: inline;
+  line-height: 2.5;
+  padding: 0 0 0 2%;
+  margin: 0;
+}
+
+#tocframe li form input {
+  display: inline;
+  width: 14%;
+  padding: 0;
+  margin: 0;
+}
+
 #tocframe li a {
   float: left;
   width: 14%;
-  height: 1.5em;
+  line-height: 2.5;
   text-align: center;
   font-weight: bold;
-  background: #ceffae;
-  padding: 0.5em 0.83%;
+  padding: 0;
   margin: 0;
 }
 
@@ -70,11 +98,9 @@ div#tocframe {
   text-decoration: none;
 }
 
-#tocframe li.toc_current {
-}
-
 #tocframe li.toc_current a {
   background: #bdee9d;
+  text-decoration: none;
 }
 
 #tocframe li.toc_current a:hover {
@@ -86,16 +112,14 @@ div#tocframe {
 
 #tocframe .toc .toc {
   position: absolute;
-  top: 2.6em;
+  top: 2.75em;
   left: 0;
-  font-size: 95%;
-  line-height: 1.5;
+  font-size: 90%;
   padding: 0;
   margin: 0;
 }
 
 #tocframe .toc .toc li {
-  background: #bdee9d;
   display: inline;
   padding: 0;
   margin: 0;
@@ -104,27 +128,67 @@ div#tocframe {
 #tocframe .toc .toc li a {
   float: left;
   width: auto;
+  background: #ceffae;
+  line-height: 2;
   text-decoration: none;
   font-weight: normal;
-  padding: 0.25em 1em;
+  padding: 0 0.75em;
   margin: 0;
+}
+
+#tocframe .toc .toc li.toc_current a {
+  background: #bdee9d;
+}
+
+#tocframe .toc .toc li a:hover,
+#tocframe .toc .toc li.toc_current a:hover {
+  background: #a6d178;
 }
 
 /* third level toc (unnumberedsubsec) */
 
 #tocframe .toc .toc .toc {
   position: absolute;
-  height: 0;
-  overflow: hidden;
-  text-indent: -999em;
+  top: 2em;
+  left: 0;
+  font-size: 100%;
 }
 
+#tocframe .toc .toc .toc li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+#tocframe .toc .toc .toc li a {
+  float: left;
+  width: auto;
+  background: #ceffae;
+  text-decoration: none;
+  font-weight: normal;
+  padding: 0 0.75em;
+  margin: 0;
+}
+
+#tocframe .toc .toc .toc li a:hover,
+#tocframe .toc .toc .toc li.toc_current a:hover {
+  background: #a6d178;
+}
+
+#tocframe .toc .toc .toc li.toc_current a {
+  background: #bdee9d;
+}
+
+/* Divs */
 div#main {
-  position: absolute;
+  position: relative;
   /* this value may need to be adjusted */
   top: 6em;
   left: 0;
-  width: 100%;
+  width: 92%;
+  min-width: 34em;
+  max-width: 70em;
+  margin: 0 auto 10em;
 }
 
 /* FIXME: does not work in IE<=6 */
@@ -134,45 +198,35 @@ div#main {
 }
 
 div#pageHeader {
-  width: 65%;
+  width: 100%;
   height: 10em;
-  text-align: center;
   border: solid #ddd;
-  border-width: 1px 0 1px 1px;
-  margin: 0 auto 1.4em;
+  border-width: 0;
+  margin: 0 0 1.4em 0;
 }
 
 #pageHeader .heading {
-  position: relative;
-  right: 11%;
   font-size: 4em;
+  text-align: left;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 215px;
 }
 
 #pageHeader p {
-  position: relative;
-  right: 11%;
+  text-align: left;
   padding: 0;
-  margin: 0;
-}
-
-div#content {
-  position: relative;
-  width: 85%;
-  margin: 0 auto;
+  margin: 0 0 0 215px;
 }
 
 div#lilylogo {
   position: absolute;
-  top: -11.35em;
-  right: 0;
-  z-index: -100;
+  top: 0;
+  left: 0;
 }
 
 div#quickSummary {
   text-align: left;
-  background: #fefefe;
+  background: #fff;
   border: solid purple;
   border-width: 1px 1px 0 0;
   margin: 1.4em 13em 0 0;
@@ -192,7 +246,7 @@ div#quickSummary {
 }
 
 div#news {
-  background: #fefefe;
+  background: #fff;
   padding: 0;
   margin: 0 13em 1em 0;
 }
@@ -200,8 +254,9 @@ div#news {
 div.news-item {
 }
 
-.news-item .subheading {
+.news-item .subsubheading {
   text-align: left;
+  background: transparent;
   padding: 0 0 0 0.5em;
   border: solid orange;
   border-width: 1px 0 0 1px;
@@ -209,14 +264,20 @@ div.news-item {
 }
 
 .testimonial-item {
-  border: solid yellow;
-  border-width: 1px 1 1 1px;
-  margin: 1em;
+  clear: both;
+  border: solid orange;
+  border-width: 1px 1px 0 1px;
+  margin: 2em 0;
 }
 
 .testimonial-item .subsubheading {
   text-align: left;
   padding: 0 0 0 0.5em;
+}
+
+.testimonial-item img.float-left,
+.testimonial-item img.float-right {
+  margin: 1em 1em 2em;
 }
 
 .news-item p {
@@ -227,13 +288,12 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: -1.5em;
+  top: 9.5em;
   right: 0;
   width: 12em;
   text-align: center;
-  background: #fefefe;
-  border: solid blue;
-  border-width: 1px;
+  background: #fff;
+  border: 1px solid blue;
 }
 
 #latestVersion .subheading {
@@ -241,12 +301,13 @@ div#latestVersion {
   background: blue;
   color: #fff;
   padding: 0 0.5em;
+  border-bottom: 1px solid blue;
   margin: 0;
 }
 
 #latestVersion .subsubheading {
   background: #cfe;
-  padding: 0.25em 0.25em;
+  padding: 0.18em 0.25em;
   margin: 0 0 0.25em 0;
 }
 
@@ -281,7 +342,7 @@ div#language {
   margin: 0 0 0 0.5em;
 }
 
-h1.unnumbered , h2.unnumberedsec, h3.unnumberedsubsec {
+h1.unnumbered {
   position: relative;
   height: 0;
   overflow: hidden;
@@ -298,7 +359,11 @@ table {
 }
 
 table td {
-  padding: 0.4em 0;
+  padding: 0.4em;
+}
+
+table a {
+  text-align: left;
 }
 
 .verbatim {
@@ -319,88 +384,97 @@ table td {
   float: right;
 }
 
-.float-left img,
-.float-right img {
+img.float-left,
+img.float-right {
   background: #fff;
   padding: 1em;
   border: 1px solid #bbb;
   margin: 0.1em 1em;
 }
 
+div.float-left a.clickable,
+div.float-center a.clickable,
+div.float-right a.clickable {
+  text-decoration: overline;
+  margin-left: 1em;
+}
+
+.clear-both {
+  clear: both;
+}
+
 .align-right {
   text-align: right;
 }
 
-.docs-version {
+.heading-center {
   text-align: center;
   width: 75%;
   margin: 0 auto;
 }
 
-.docs-version h2 {
+.heading-center h2 {
   padding: 0.25em 0;
   margin: 0;
 }
 
-.docs-intro {
+.column-center {
+  clear: both;
   float: left;
-  background: #ff9;
-  border: 1px solid #000;
-  width: 32%;
-  margin: 1em 0 3em 2%;
+  width: 100%;
+  text-align: center;
+  margin: 1em 0 0;
 }
 
-.docs-intro h3 {
-  background: #cc6;
-  border-bottom: 1px solid #000;
-}
-
-.docs-regular {
-  position: absolute;
-  left: 36%;
-  right: 36%;
-  background: #cfe;
-  border: 1px solid #000;
-  margin: 1em 0 3em;
-}
-
-.docs-regular h3 {
-  background: #adc;
-  border-bottom: 1px solid #000;
-}
-
-.docs-infrequent {
-  float: right;
+.column-center h3 {
   background: #fdf;
-  border: 1px solid #000;
-  width: 32%;
-  margin: 1em 2% 6em 0;
+  text-align: left;
 }
 
-.docs-infrequent h3 {
-  background: #dbd;
-  border-bottom: 1px solid #000;
+.column-left {
+  clear: both;
+  float: left;
+  width: 49%;
+  margin: 1em 0 12em;
 }
 
-.docs-intro h3,
-.docs-regular h3,
-.docs-infrequent h3 {
+.column-left h3 {
+  background: #cfe;
+}
+
+.column-right {
+  float: right;
+  width: 49%;
+  margin: 1em 0 12em;
+}
+
+.column-right h3 {
+  background: #ff9;
+  border: solid #000;
+  border-width: 1px 0 0 1px;
+}
+
+.column-center h3,
+.column-left h3,
+.column-right h3 {
   font-size: 110%;
   padding: 0 0.5em;
-  margin: 0;
+  border: solid #000;
+  border-width: 1px 0 0 1px;
+  margin: 1em 0;
 }
 
-.docs-intro ul,
-.docs-regular ul,
-.docs-infrequent ul {
+.column-center ul,
+.column-left ul,
+.column-right ul {
   list-style-type: none;
   padding: 0;
   margin: 1em 0.6em 0;
 }
 
-.docs-intro li,
-.docs-regular li,
-.docs-infrequent li {
+.column-center li,
+.column-left li,
+.column-right li {
   text-align: left;
   padding: 0;
   margin: 0 0 0.5em 0;
@@ -411,7 +485,7 @@ table td {
   text-align: left;
   padding: 0;
   border: 2px solid green;
-  margin: 0.2em 1em;
+  margin: 1em;
 }
 
 .warning p {
@@ -419,8 +493,8 @@ table td {
   margin: 0;
 }
 
-.hide table, .hide table * {
-  position: absolute;
+.hide {
+  position: relative;
   text-indent: -999em;
   height: 0;
   overflow: hidden;
