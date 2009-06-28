@@ -8,7 +8,7 @@
 
 @div-end
 
-@div-class{column-center}
+@div-class{column-center-top}
 @subheading Introduction
 
 @itemize
@@ -30,7 +30,7 @@ aesthetics of 19th century music engraving.
 
 @div-end
 
-@div-class{column-left}
+@div-class{column-left-bottom}
 @subheading Regular use
 
 @itemize
@@ -51,7 +51,7 @@ issues.
 @div-end
 
 
-@div-class{column-right}
+@div-class{column-right-bottom}
 @subheading Infrequent Use
 
 @itemize

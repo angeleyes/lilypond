@@ -86,14 +86,14 @@ be useful for others would better be posted to one of the mailing lists.
 @unnumberedsec News
 @div-end
 
-@div-class{column-right}
+@div-class{column-right-top}
 @subheading LilyPond Report
 
 The easiest way to keep touch is by reading our community
 newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 @div-end
 
-@c @div-class{column-left}
+@c @div-class{float-left}
 @subheading Official news
 
 @include news-front.itexi
@@ -233,7 +233,7 @@ urge you to use the stable @ref{Download}, and read the stable
 
 @div-end
 
-@div-class{column-left}
+@div-class{column-left-top}
 @subheading Download
 
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.13.3-1.linux-x86.sh,
@@ -266,7 +266,7 @@ lilypond-2.13.3-1.mingw-exe}
 @div-end
 
 
-@div-class{column-right}
+@div-class{column-right-top}
 @subheading Manuals
 
 LM:
@@ -295,6 +295,9 @@ FAQ-link  (? maybe?)
 Changes-link
 IR-link
 
+@div-end
+
+@div-class{column-center-bottom}
 @subheading Contributors' Guide
 
 FIXME write CG intro + links.
