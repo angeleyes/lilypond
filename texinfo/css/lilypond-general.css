@@ -47,7 +47,7 @@ div#tocframe {
   left: 0;
   width: 100%;
   background: #ceffae;
-  font-size: 90%;
+  font-size: 95%;
   padding: 0;
   margin: 0;
 }
@@ -78,14 +78,14 @@ div#tocframe {
 
 #tocframe li form input {
   display: inline;
-  width: 14%;
+  width: 15%;
   padding: 0;
   margin: 0;
 }
 
 #tocframe li a {
   float: left;
-  width: 14%;
+  width: 16%;
   line-height: 2.5;
   text-align: center;
   font-weight: bold;
@@ -261,6 +261,7 @@ div.news-item {
   border: solid orange;
   border-width: 1px 0 0 1px;
   margin: 0;
+  overflow: hidden;
 }
 
 .testimonial-item {
@@ -323,7 +324,7 @@ div#language {
   background: #fefefe;
   text-indent: 0.5em;
   padding: 0 0 0.5em;
-  margin-top: 3em;
+  margin-top: 7em;
 }
 
 #language h2 {
@@ -418,66 +419,116 @@ div.float-right a.clickable {
   margin: 0;
 }
 
-.column-center {
-  clear: both;
+/* Columns */
+
+.column-center-top {
   float: left;
   width: 100%;
   text-align: center;
   margin: 1em 0 0;
 }
 
-.column-center h3 {
+.column-center-bottom {
+  clear: both;
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin: 1em 0 9em;
+}
+
+.column-center-top h3,
+.column-center-bottom h3 {
   background: #fdf;
   text-align: left;
 }
 
-.column-left {
-  clear: both;
+.column-left-top {
   float: left;
   width: 49%;
-  margin: 1em 0 12em;
-}
-
-.column-left h3 {
-  background: #cfe;
-}
-
-.column-right {
-  float: right;
-  width: 49%;
-  margin: 1em 0 12em;
-}
-
-.column-right h3 {
-  background: #ff9;
-  border: solid #000;
-  border-width: 1px 0 0 1px;
-}
-
-.column-center h3,
-.column-left h3,
-.column-right h3 {
-  font-size: 110%;
-  padding: 0 0.5em;
-  border: solid #000;
-  border-width: 1px 0 0 1px;
   margin: 1em 0;
 }
 
-.column-center ul,
-.column-left ul,
-.column-right ul {
+.column-left-bottom {
+  clear: both;
+  float: left;
+  width: 49%;
+  margin: 1em 0 9em;
+}
+
+.column-left-top h3,
+.column-left-bottom h3 {
+  background: #cfe;
+}
+
+.column-right-top {
+  float: right;
+  width: 49%;
+  margin: 1em 0;
+}
+
+.column-right-bottom {
+  float: right;
+  width: 49%;
+  margin: 1em 0 9em;
+}
+
+.column-right-top h3,
+.column-right-bottom h3 {
+  background: #ff9;
+}
+
+.column-center-top,
+.column-center-bottom,
+.column-left-top,
+.column-left-bottom,
+.column-right-top,
+.column-right-bottom {
+  background: #f5fffa;
+  border: 1px solid #000;
+}
+
+.column-center-top h3,
+.column-center-bottom h3,
+.column-left-top h3,
+.column-left-bottom h3,
+.column-right-top h3,
+.column-right-bottom h3 {
+  font-size: 110%;
+  padding: 0 0.5em;
+  border: solid #000;
+  border-width: 0 0 1px 0;
+  margin: 0;
+}
+
+.column-center-top ul,
+.column-center-bottom ul,
+.column-left-top ul,
+.column-left-bottom ul,
+.column-right-top ul,
+.column-right-bottom ul {
   list-style-type: none;
   padding: 0;
   margin: 1em 0.6em 0;
 }
 
-.column-center li,
-.column-left li,
-.column-right li {
+.column-center-top li,
+.column-center-bottom li,
+.column-left-top li,
+.column-left-bottom li,
+.column-right-top li,
+.column-right-bottom li {
   text-align: left;
   padding: 0;
   margin: 0 0 0.5em 0;
+}
+
+.column-center-top p,
+.column-center-bottom p,
+.column-left-top p,
+.column-left-bottom p,
+.column-right-top p,
+.column-right-bottom p {
+  text-align: left;
 }
 
 .warning {
