@@ -8,19 +8,18 @@
 
 @menu
 * Contact::                     
-* News::                        
-* Minimal examples::            
+* News::
+* Tiny examples::               
 * Bug reports::                 
-* Help wanted!::
-* Development::                 
+* Help wanted!::                
+* Development::
 * Press::                       
-* Thanks::            
+* Thanks::                      
 @end menu
 
 
 @node Contact
 @unnumberedsec Contact
-
 
 @subsubheading Mailing Lists
 
@@ -111,21 +110,42 @@ newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 
 
 
-@node Minimal examples
-@unnumberedsec Minimal examples
+@node Tiny examples
+@unnumberedsec Tiny examples
 
-A minimal example is an example for which nothing else can be
-removed.  These are very useful when asking for help or reporting
-bugs -- the simpler the example is, the quicker potential helpers
-can understand it and help you.
+@div-class{column-center-top}
+A tiny example (also called @qq{minimal} example) is an example
+form which nothing can be removed.
+@div-end
 
-In addition, creating a minimal example forces you to understand
-what is happening.  Many false problem reports can be avoided by
-attempting to create a minimal example; if you cannot replicate a
-@qq{bug} in a minimal example, then the problem was probably an
+@div-class{column-left-top}
+@subheading Why create tiny examples?
+
+@itemize
+
+@item
+The simpler the example is, the quicker potential helpers can
+understand it and help you.
+
+@item
+A simple example demonstrates that you have put effort towards
+solving the problem yourself.  When people send huge portions of
+input, it looks like they don't care how if we help them or not.
+
+@item
+Creating a tiny example forces you to understand what is
+happening.  Many false problem reports can be avoided by
+attempting to create a tiny example; if you cannot replicate a
+@qq{bug} in a tiny example, then the problem was probably an
 insufficient understanding of LilyPond, not an actual bug!
 
-When creating a minimal example, please:
+@end itemize
+
+@div-end
+
+
+@div-class{column-right-top}
+@subheading How to create tiny examples
 
 @itemize
 
@@ -133,13 +153,15 @@ When creating a minimal example, please:
 Include the \version number.
 
 @item
-Create an example which is as small as possible.  Most problems
-can be duplicated in less than ten lines of LilyPond code.
+Make it small!  Examples about spacing or page layout might
+require many bars of music, but most issues can be reproduced
+using only a single measure.
 
 @item
-Bugs about spacing or page layout might require many bars of
-music, but other bugs can probably be reproduced using only a
-single measure.
+When trying to create an example, try commenting out (@code{%} or
+@code{%@{ @dots{} %@}}) sections of your file.  If you can comment
+something while still demonstrating the main idea, then remove
+the commented-material!
 
 @item
 Avoid using complicated notes, keys, or time signatures, unless
@@ -154,6 +176,8 @@ If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
 your example. 
 
 @end itemize
+
+@div-end
 
 
 
@@ -185,7 +209,7 @@ Please @strong{DO NOT} add bug reports directly to the bug
 tracker.  Once an issue has been added to the tracker, feel free
 to add more information to that report.
 
-@warning{We only accept bug reports in the form of @ref{Minimal
+@warning{We only accept bug reports in the form of @ref{Tiny
 examples}.  We have very limited resources to deal with bug
 reports, so any non-minimal example will be rejected.  Almost
 every bug can be demonstrated in four notes or less!}
