@@ -18,24 +18,20 @@ hr {
   display: none;
 }
 
-p, h1, h2, h3, h4, h5 {
+p {
+  margin: 0.5em;
+}
+
+h1, h2, h3, h4, h5 {
   margin: 1em 10px;
-}
-
-h2 {
-  font-size: 1.4em;
-}
-
-h3 {
-  font-size: 1.2em;
-}
-
-h4 {
-  font-size: 1.1em;
 }
 
 li {
   margin-right: 1em;
+}
+
+a img {
+  border: 0;
 }
 
 /* Table of Contents */
@@ -62,6 +58,25 @@ div#tocframe {
   margin: 0;
 }
 
+#tocframe > ul:first-child > li:first-child a {
+  text-indent: -999em;
+  background: #ceffae url(lily-home.png) no-repeat 50% 50%;
+}
+
+#tocframe > ul:first-child > li:first-child a:hover {
+  background: #bdee9d url(lily-home.png) no-repeat 50% 50%;
+}
+
+#tocframe > ul:first-child > li:first-child.toc_current a {
+  text-indent: -999em;
+  background: #acdd8c url(lily-home.png) no-repeat 50% 50%;
+}
+
+#tocframe > ul:first-child > li:first-child.toc_current a:hover {
+  text-indent: -999em;
+  background: #acdd8c url(lily-home.png) no-repeat 50% 50%;
+}
+
 #tocframe li {
   display: inline;
   padding: 0;
@@ -70,23 +85,26 @@ div#tocframe {
 
 /* search box */
 #tocframe li form {
-  display: inline;
-  line-height: 2.5;
-  padding: 0 0 0 2%;
+  float: left;
+  width: 17%;
+  height: 1.5em;
+  padding: 0.6em 1.1%;
   margin: 0;
 }
 
 #tocframe li form input {
   display: inline;
-  width: 15%;
-  padding: 0;
-  margin: 0;
+  width: 100%;
+  font-size: 95%;
+  padding: 0.2em;
+  border: 1px solid #acdd8c;
+  margin: auto 0;
 }
 
 #tocframe li a {
   float: left;
   width: 16%;
-  line-height: 2.5;
+  line-height: 3;
   text-align: center;
   font-weight: bold;
   padding: 0;
@@ -94,17 +112,13 @@ div#tocframe {
 }
 
 #tocframe li a:hover {
-  background: #a6d178;
-  text-decoration: none;
-}
-
-#tocframe li.toc_current a {
   background: #bdee9d;
   text-decoration: none;
 }
 
+#tocframe li.toc_current a,
 #tocframe li.toc_current a:hover {
-  background: #a6d178;
+  background: #acdd8c;
   text-decoration: none;
 }
 
@@ -112,7 +126,7 @@ div#tocframe {
 
 #tocframe .toc .toc {
   position: absolute;
-  top: 2.75em;
+  top: 3.3em;
   left: 0;
   font-size: 90%;
   padding: 0;
@@ -131,9 +145,22 @@ div#tocframe {
   background: #ceffae;
   line-height: 2;
   text-decoration: none;
+  text-indent: 0;
   font-weight: normal;
   padding: 0 0.75em;
   margin: 0;
+}
+
+#tocframe .toc .toc li.toc_current a {
+  background: #acdd8c;
+}
+
+#tocframe .toc .toc li.toc_current a:hover {
+  background: #acdd8c;
+}
+
+#tocframe .toc .toc li a:hover {
+  background: #bdee9d;
 }
 
 /* colored second-level TOC items */
@@ -158,14 +185,40 @@ div#tocframe {
 #tocframe .toc .toc li.colorDefault a {
 }
 
-#tocframe .toc .toc li.toc_current a {
-  background:#aaa;
-/*  background: #bdee9d; */
+#tocframe .toc .toc li.color1 a:hover {
+  background:#ece;
 }
 
-#tocframe .toc .toc li a:hover,
-#tocframe .toc .toc li.toc_current a:hover {
-  background: #a6d178;
+#tocframe .toc .toc li.color2 a:hover {
+  background:#bed;
+}
+
+#tocframe .toc .toc li.color3 a:hover {
+  background:#ee8;
+}
+
+#tocframe .toc .toc li.color1.toc_current a {
+  background:#dbd;
+}
+
+#tocframe .toc .toc li.color1.toc_current a:hover {
+  background:#dbd;
+}
+
+#tocframe .toc .toc li.color2.toc_current a {
+  background:#adc;
+}
+
+#tocframe .toc .toc li.color2.toc_current a:hover {
+  background:#adc;
+}
+
+#tocframe .toc .toc li.color3.toc_current a {
+  background:#dd7;
+}
+
+#tocframe .toc .toc li.color3.toc_current a:hover {
+  background:#dd7;
 }
 
 /* third level toc (unnumberedsubsec) */
@@ -188,30 +241,34 @@ div#tocframe {
   width: auto;
   background: #ceffae;
   text-decoration: none;
+  text-indent: 0;
   font-weight: normal;
   padding: 0 0.75em;
   margin: 0;
 }
 
-#tocframe .toc .toc .toc li a:hover,
-#tocframe .toc .toc .toc li.toc_current a:hover {
-  background: #a6d178;
+#tocframe .toc .toc .toc li a:hover {
+  background: #bdee9d;
 }
 
 #tocframe .toc .toc .toc li.toc_current a {
-  background: #bdee9d;
+  background: #acdd8c;
+}
+
+#tocframe .toc .toc .toc li.toc_current a:hover {
+  background: #acdd8c;
 }
 
 /* Divs */
 div#main {
   position: relative;
   /* this value may need to be adjusted */
-  top: 6em;
+  top: 7.7em;
   left: 0;
   width: 92%;
   min-width: 34em;
   max-width: 70em;
-  margin: 0 auto 10em;
+  margin: 0 auto 11.7em;
 }
 
 /* FIXME: does not work in IE<=6 */
@@ -290,7 +347,7 @@ div.news-item {
 .testimonial-item {
   clear: both;
   border: solid orange;
-  border-width: 1px 1px 0 1px;
+  border-width: 1px 0 0 1px;
   margin: 2em 0;
 }
 
@@ -302,6 +359,10 @@ div.news-item {
 .testimonial-item img.float-left,
 .testimonial-item img.float-right {
   margin: 1em 1em 2em;
+}
+
+.testimonial-item p {
+  padding: 0 0.5em;
 }
 
 .news-item p {
@@ -350,9 +411,8 @@ div#language {
   margin-top: 7em;
 }
 
-#language h2 {
+#language h3 {
   background: #ddd;
-  font-size: 1.2em;
   padding: 0;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #000;
@@ -360,13 +420,12 @@ div#language {
 }
 
 #language p {
-  font-size: 1em;
   padding: 0;
   border-left: 2px solid #000;
   margin: 0 0 0 0.5em;
 }
 
-h1.unnumbered {
+h1.unnumbered, h2.unnumberedsec, h3.unnumberedsubsec {
   position: relative;
   height: 0;
   overflow: hidden;
@@ -413,7 +472,7 @@ img.float-right {
   background: #fff;
   padding: 1em;
   border: 1px solid #bbb;
-  margin: 0.1em 1em;
+  margin: 0.5em;
 }
 
 div.float-left a.clickable,
@@ -456,7 +515,7 @@ div.float-right a.clickable {
   float: left;
   width: 100%;
   text-align: center;
-  margin: 1em 0 9em;
+  margin: 1em 0 10.7em;
 }
 
 /* color1 */
@@ -476,7 +535,7 @@ div.float-right a.clickable {
   clear: both;
   float: left;
   width: 49%;
-  margin: 1em 0 9em;
+  margin: 1em 0 10.7em;
 }
 
 /* color2 */
@@ -494,7 +553,7 @@ div.float-right a.clickable {
 .column-right-bottom {
   float: right;
   width: 49%;
-  margin: 1em 0 9em;
+  margin: 1em 0 10.7em;
 }
 
 /* color3 */
@@ -510,7 +569,8 @@ div.float-right a.clickable {
 .column-right-top,
 .column-right-bottom {
   background: #f5fffa;
-  border: 1px solid #000;
+  border: solid #000;
+  border-width: 0 1px 1px 1px;
 }
 
 .column-center-top h3,
@@ -519,11 +579,20 @@ div.float-right a.clickable {
 .column-left-bottom h3,
 .column-right-top h3,
 .column-right-bottom h3 {
-  font-size: 110%;
   padding: 0 0.5em;
   border: solid #000;
-  border-width: 0 0 1px 0;
+  border-width: 1px 0;
   margin: 0;
+}
+
+.column-center-top h4,
+.column-center-bottom h4,
+.column-left-top h4,
+.column-left-bottom h4,
+.column-right-top h4,
+.column-right-bottom h4 {
+  padding: 0.5em 0.5em 0;
+  margin: 0 0 0.5em 0;
 }
 
 .column-center-top ul,
@@ -534,13 +603,7 @@ div.float-right a.clickable {
 .column-right-bottom ul {
   list-style-type: none;
   padding: 0;
-  margin: 1em 0.6em 0;
-}
-
-.keep-bullets ul {
-  list-style-type: disc;
-  padding: 0;
-  margin: 1em 3em;
+  margin: 0.5em 0;
 }
 
 .column-center-top li,
@@ -550,7 +613,7 @@ div.float-right a.clickable {
 .column-right-top li,
 .column-right-bottom li {
   text-align: left;
-  padding: 0;
+  padding: 0 0.5em 0;
   margin: 0 0 0.5em 0;
 }
 
@@ -561,6 +624,16 @@ div.float-right a.clickable {
 .column-right-top p,
 .column-right-bottom p {
   text-align: left;
+}
+
+.keep-bullets ul {
+  list-style-type: disc;
+  padding: 0;
+  margin: 0.5em 1.5em;
+}
+
+.keep-bullets li {
+  padding: 0;
 }
 
 .warning {
@@ -584,7 +657,7 @@ div.float-right a.clickable {
 }
 
 .help {
-  background: #ff7777;
+  background: #f77;
   color: black;
   text-align: center;
   font-weight: bold;
@@ -595,7 +668,7 @@ div.float-right a.clickable {
 }
 
 .legal {
-  font-size:x-small;
+  font-size: 0.6em;
 }
 
 /* used on Introduction->Freedom page */
