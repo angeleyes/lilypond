@@ -1,7 +1,7 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of lilypond-general.tely
 @node Introduction
-@unnumbered Advertizing
+@unnumbered Explore
 
 @image-float{flat-design.png,right}
 
@@ -221,7 +221,7 @@ the more I like it!}
 
 
 @div-class{testimonial-item}
-@subsubheading Vaylor Trucks, Electric guitar player (Yes, related to)
+@subsubheading Vaylor Trucks, Electric guitar player (Yes, @uref{http://www.allmanbrothersband.com/modules.php?op=modload&name=userpage&file=content&page_id=12, related to})
 
 @qq{I am super impressed with LilyPond [..]}
 
@@ -232,7 +232,7 @@ the more I like it!}
 
 
 @div-class{testimonial-item}
-@subsubheading Nicolas Sceaux, Mutopia contributor
+@subsubheading @uref{http://nicolas.sceaux.free.fr/, Nicolas Sceaux}, @uref{http://www.mutopiaproject.org/, Mutopia} contributor
 
 @qq{I had a kind of hate-passion relationship with it. Passion
 because the first score I saw was so amazing! The description of
@@ -245,14 +245,14 @@ good.}
 
 
 @div-class{testimonial-item}
-@subsubheading Werner Lemberg, Conductor at the Theatre in Koblenz, Germany and distinguished GNU Hacker.
+@subsubheading @uref{http://www.troff.org/whoswho.html#werner, Werner Lemberg}, Conductor at the Theatre in Koblenz, Germany and distinguished GNU Hacker.
 
 @qq{Anyway, LilyPond does an amazingly good job!}
 @div-end
 
 
 @div-class{testimonial-item}
-@subsubheading Paul Davis, developer of JACK and Ardour.
+@subsubheading Paul Davis, developer of @uref{http://jackaudio.org/, JACK} and @uref{http://www.ardour.org/, Ardour}.
 
 @qq{I think [LilyPond is] an incredible program, and it produces
 wonderful, wonderful output. when i read an interview about it
