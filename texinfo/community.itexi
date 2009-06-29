@@ -114,13 +114,16 @@ newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
 @unnumberedsec Tiny examples
 
 @div-class{column-center-top}
+@subheading What are they?
+
 A tiny example (also called @qq{minimal} example) is an example
-form which nothing can be removed.
+from which nothing can be removed.
 @div-end
 
 @div-class{column-left-top}
-@subheading Why create tiny examples?
+@subheading Why create them?
 
+@div-class{keep-bullets}
 @itemize
 
 @item
@@ -140,13 +143,15 @@ attempting to create a tiny example; if you cannot replicate a
 insufficient understanding of LilyPond, not an actual bug!
 
 @end itemize
+@div-end
 
 @div-end
 
 
 @div-class{column-right-top}
-@subheading How to create tiny examples
+@subheading How do I create them?
 
+@div-class{keep-bullets}
 @itemize
 
 @item
@@ -176,6 +181,7 @@ If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
 your example. 
 
 @end itemize
+@div-end
 
 @div-end
 

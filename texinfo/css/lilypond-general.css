@@ -511,6 +511,12 @@ div.float-right a.clickable {
   margin: 1em 0.6em 0;
 }
 
+.keep-bullets ul {
+  list-style-type: disc;
+  padding: 0;
+  margin: 1em 3em;
+}
+
 .column-center-top li,
 .column-center-bottom li,
 .column-left-top li,
