@@ -304,6 +304,8 @@ contained staves are connected vertically."
 instrument names at the start of each system."
 
   \consists "Instrument_name_engraver"
+  \consists "Staff_grouper_engraver"
+  \override StaffGrouper #'between-staff-spacing #'stretchability = #5
   
   instrumentName = #'()
   shortInstrumentName = #'()
