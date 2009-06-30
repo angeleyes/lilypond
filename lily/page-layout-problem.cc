@@ -166,7 +166,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
 	    }
 
 	  Spring spring (0.5, 0.0);
-	  SCM spec = elts[i-1]->get_property ("next-staff-spacing");
+	  SCM spec = elts[last_spaceable_staff]->get_property ("next-staff-spacing");
 	  alter_spring_from_spacing_spec (spec, &spring);
 
 	  springs_.push_back (spring);
