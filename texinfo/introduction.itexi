@@ -3,6 +3,9 @@
 @node Introduction
 @unnumbered Explore
 
+@div-class{column-center-top}
+@subheading Our Goal
+
 @image-float{flat-design.png,right}
 
 The inspiration for LilyPond came when two musicians became
@@ -20,14 +23,48 @@ Impress friends and colleagues with sharp sheet music!
 by a community of enthusiasts.  It is published under the
 @uref{http://www.gnu.org/copyleft/gpl.html, GNU General Public
 License}, giving everybody the freedom to fix, modify, and extend
-the program.
+the program.  Creating beautiful music should not require hundreds
+of dollars of software!
+@div-end
 
+@div-class{column-left-bottom}
+@subheading Why use LilyPond?
+
+@itemize
+
+@item
+@ref{Features}: What can LilyPond do?
+
+@item
+@ref{Examples}: I want to see some music!
+
+@item
+@ref{Testimonials}: What do people say about it?
+
+@end itemize
+@div-end
+
+@div-class{column-right-bottom}
+@subheading Why not use LilyPond?
+
+@itemize
+
+@item
+@ref{Crash course}: You write music as @emph{text}?!
+
+@end itemize
+@div-end
+
+
+
+@div-class{hide}
 @menu
 * Features::                    What can LilyPond do?
 * Examples::                    I want to see some music!
 * Testimonials::                What do people say about it?
 * Crash course::                How can I write music with LilyPond?
 @end menu
+@div-end
 
 
 
