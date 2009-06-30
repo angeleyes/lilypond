@@ -120,7 +120,7 @@ A tiny example (also called @qq{minimal} example) is an example
 from which nothing can be removed.
 @div-end
 
-@div-class{column-left-top}
+@div-class{column-left-bottom}
 @subheading Why create them?
 
 @div-class{keep-bullets}
@@ -148,7 +148,7 @@ insufficient understanding of LilyPond, not an actual bug!
 @div-end
 
 
-@div-class{column-right-top}
+@div-class{column-right-bottom}
 @subheading How do I create them?
 
 @div-class{keep-bullets}

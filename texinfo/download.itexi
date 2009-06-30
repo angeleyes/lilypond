@@ -71,7 +71,24 @@ our bandwidth.
 All logos and product images are copyright and trademark
 acknowledged. 
 
-@help{add the more exact text required}
+@image{linux-logo} was created by
+@uref{mailto:lewing@@isc.tamu.edu, lewing@@isc.tamu.edu} with
+@uref{http://www.isc.tamu.edu/~lewing/gimp/, the Gnu Image
+Manipulation Program}.
+
+@image{freebsd-logo} is a registered trademark of
+@uref{http://www.freebsd.org/, The FreeBSD Foundation}.
+
+@help{can we find a replacement image for OSX in the same way as
+the replacement windows icon?}
+
+@image{macosx-logo} and @qq{MacOS} are registered trademarks of
+Apple Inc., registered in the U.S. and other countries.
+
+@image{windows-logo} is a not a registered trademarked, but was
+created by @uref{http://en.wikipedia.org/wiki/User:Rohitbd,
+Rohitbd} and placed under the GNU Free Documentation License
+version 1.2.
 
 @div-end
 
