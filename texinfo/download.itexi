@@ -8,14 +8,55 @@ more similar to a programming language than a graphical score
 editing program.  Before downloading LilyPond, please read the
 @ref{Crash course}.}
 
-@menu
-* Unix::                        @image{linux-logo} @image{freebsd-logo}
-* MacOS X::                     @image{macosx-logo}
-* Windows::                     @image{windows-logo}
-* Source::                      (for packagers)
-* Download other versions::     (old and unstable development versions)
-@end menu
+@div-class{column-left-top}
+@subheading For users
 
+@itemize
+
+@item
+@ref{Unix, @image{linux-logo} @image{freebsd-logo} Unix (Linux and FreeBSD)}
+
+@item
+@ref{MacOS X, @image{macosx-logo} MacOS X}
+
+@item
+@ref{Windows, @image{windows-logo} Microsoft Windows}
+
+@end itemize
+
+@div-end
+
+@div-class{column-right-top}
+@subheading For developers
+
+@itemize
+
+@item
+@ref{Source} (for packagers)
+
+@item
+@ref{Download other versions, Other versions} (old and unstable
+development versions)
+
+@end itemize
+@div-end
+
+
+
+
+
+@div-class{hide}
+@menu
+* Unix::                        
+* MacOS X::                     
+* Windows::                     
+* Source::                      
+* Download other versions::     
+@end menu
+@div-end
+
+
+@div-class{column-center-bottom}
 
 @subheading Sponsors
 
@@ -25,10 +66,14 @@ our bandwidth.
 
 @image{VTlogo_ITF} @image{lao_banner_06_on_white_demo}
 
-@smallspace
+@subheading Legalese
 
 All logos and product images are copyright and trademark
 acknowledged. 
+
+@help{add the more exact text required}
+
+@div-end
 
 
 @node Unix
