@@ -3,23 +3,81 @@
 @node Community
 @unnumbered Community
 
-@warning{fill space}
+
+@div-class{column-center-top}
+@subheading Interacting with the community
+
+@itemize
+
+@item
+@ref{Contact}: get help, discuss, and keep in touch!
+
+@item
+@ref{Tiny examples}: these are @emph{highly} recommended when
+discussing LilyPond.
+
+@item
+@ref{Bug reports}: something went wrong.
+
+@end itemize
+@div-end
+
+@div-class{column-left-bottom}
+@subheading Making LilyPond better
+
+@itemize
+
+@item
+@ref{Help wanted!}: your assistance is requested.
+
+@item
+@ref{Development}: information for contributors.
+
+@end itemize
+@div-end
+
+@div-class{column-right-bottom}
+@subheading Miscellaneous
+
+@itemize
+
+@item
+@ref{Publications}: what we wrote, and have had written about us.
+
+@item
+@ref{News}: an archive.
+
+@item
+@ref{Thanks}: the people who made LilyPond what it is today.
+
+@end itemize
+@div-end
 
 
+@div-class{hide}
 @menu
 * Contact::                     
-* News::
 * Tiny examples::               
 * Bug reports::                 
 * Help wanted!::                
 * Development::
 * Publications::                       
+* News::
 * Thanks::                      
 @end menu
+@div-end
 
 
 @node Contact
 @unnumberedsec Contact
+
+@div-class{column-right-top}
+@subheading LilyPond Report
+
+The easiest way to keep touch is by reading our community
+newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
+@div-end
+
 
 @subsubheading Mailing Lists
 
@@ -80,35 +138,6 @@ be useful for others would better be posted to one of the mailing lists.
 - list mailists / forums where non-English discussion occurs.
 
 
-@node News
-@div-class{hide}
-@unnumberedsec News
-@div-end
-
-@div-class{column-right-top}
-@subheading LilyPond Report
-
-The easiest way to keep touch is by reading our community
-newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
-@div-end
-
-@c @div-class{float-left}
-@subheading Official news
-
-@include news-front.itexi
-@c @div-end
-
-
-@c @node Old official news
-@c @unnumberedsubsec Old official news
-
-@c @div-class{column-center}
-@c @subheading Old official news
-
-@include news-old.itexi
-@c @div-end
-
-
 
 @node Tiny examples
 @unnumberedsec Tiny examples
@@ -163,10 +192,10 @@ require many bars of music, but most issues can be reproduced
 using only a single measure.
 
 @item
-When trying to create an example, try commenting out (@code{%} or
-@code{%@{ @dots{} %@}}) sections of your file.  If you can comment
-something while still demonstrating the main idea, then remove
-the commented-material!
+When trying to create an example, try commenting out @w{(@code{%}
+or @code{%@{ @dots{} %@}})} sections of your file.  If you can
+comment something while still demonstrating the main idea, then
+remove the commented-material!
 
 @item
 Avoid using complicated notes, keys, or time signatures, unless
@@ -175,10 +204,6 @@ the bug is about the behavior of those items.
 @item
 Do not use @code{\override} or @code{\set} commands unless the bug
 is about those particular commands.
-
-@item
-If possible, use @code{\paper@{ ragged-right=##t @}} at the top of
-your example. 
 
 @end itemize
 @div-end
@@ -455,6 +480,29 @@ issue CMS06.
 @div-end
 @end itemize
 @div-end
+
+
+@node News
+@div-class{hide}
+@unnumberedsec News
+@div-end
+
+@c @div-class{float-left}
+@subheading Official news
+
+@include news-front.itexi
+@c @div-end
+
+
+@c @node Old official news
+@c @unnumberedsubsec Old official news
+
+@c @div-class{column-center}
+@c @subheading Old official news
+
+@include news-old.itexi
+@c @div-end
+
 
 
 

@@ -50,7 +50,7 @@ of dollars of software!
 @itemize
 
 @item
-@ref{Crash course}: You write music as @emph{text}?!
+@ref{Text input}: You write music as @emph{text}?!
 
 @end itemize
 @div-end
@@ -62,7 +62,7 @@ of dollars of software!
 * Features::                    What can LilyPond do?
 * Examples::                    I want to see some music!
 * Testimonials::                What do people say about it?
-* Crash course::                How can I write music with LilyPond?
+* Text input::                How can I write music with LilyPond?
 @end menu
 @div-end
 
@@ -162,7 +162,8 @@ http://lilypond.org/web/switch/tour
 @subsubheading Where now?
 
 Still not convinced?  Look at some neat @ref{Examples}.  If you've
-already decided to try LilyPond, read our @ref{Crash course}.
+already decided to try LilyPond, first read about our
+@ref{Text input}.
 
 
 @node Examples
@@ -182,8 +183,8 @@ Final resting place of the current input/*.ly ghetto.
 @subsubheading Where now?
 
 Still not convinced?  Read some of our users' @ref{Testimonials}.
-If you've already decided to try LilyPond, read our @ref{Crash
-course}.
+If you've already decided to try LilyPond, first read about our
+@ref{Text input}.
 
 
 @node Testimonials
@@ -301,11 +302,11 @@ potential.}
 
 @subsubheading Where now?
 
-Read our @ref{Crash course}.
+Read about our @ref{Text input}.
 
 
-@node Crash course
-@unnumberedsec Crash course
+@node Text input
+@unnumberedsec Text input
 
 @c TRANSLATORS: so far it's mostly from
 @c http://lilypond.org/web/switch/howto
@@ -315,7 +316,7 @@ Read our @ref{Crash course}.
 @image-clickable{nereid-shot-small.png, (click to enlarge),
 nereid-shot.png, right}
 
-LilyPond is a @emph{batch} system: it is run on a text file
+LilyPond is a @emph{compiled} system: it is run on a text file
 containing the notes.  The resulting output is viewed on-screen or
 printed.  In some ways, LilyPond is more similar to a programming
 language than graphical score editing software.
@@ -327,6 +328,11 @@ by LilyPond, which produces beautifully engraved sheet music.
 
 People accustomed to graphical user interfaces might need to learn
 a new way of working, but the results are definitely worth it!
+
+@warning{We present a quick overview of our text input -- it's not
+as complicated as it sounds!  Don't worry about understanding
+every detail in these examples; our beginner documentation covers
+everything at a much more gradual pace.}
 
 
 @subsubheading It's as simple as A B C

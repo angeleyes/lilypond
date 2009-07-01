@@ -5,8 +5,8 @@
 
 @warning{LilyPond is a @strong{text-based} music engraver; it is
 more similar to a programming language than a graphical score
-editing program.  Before downloading LilyPond, please read the
-@ref{Crash course}.}
+editing program.  Before downloading LilyPond, please read about
+our @ref{Text input}.}
 
 @div-class{column-left-top}
 @subheading For users

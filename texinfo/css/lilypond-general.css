@@ -567,3 +567,29 @@ div.float-right a.clickable {
   border: 10px dotted green;
   margin: 1em auto;
 }
+
+#tocframe .toc .toc li.color1 a {
+  text-decoration: none;
+  background:red;
+  background-color:red;
+/*  color:red;*/
+/*  text-color:red;*/
+}
+
+#tocframe .toc .toc li.color2 a {
+  text-decoration: none;
+  background:blue;
+  background-color:blue;
+/*  color:red;*/
+/*  text-color:red;*/
+}
+
+#tocframe .toc .toc li.color3 a {
+  text-decoration: none;
+  background:yellow;
+  background-color:yellow;
+/*  color:red;*/
+/*  text-color:red;*/
+}
+
+
