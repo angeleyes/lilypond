@@ -358,8 +358,8 @@ Put chords and lyrics together to get a lead sheet:
 
 @help{change the lyrics.  svg available}
 
-@image-float{annotate-example-lead.png,center}
-@image-float{example-lead.png,center}
+@image-float{text-input-pop-annotate.png,center}
+@image-float{text-input-pop-output.png,center}
 
 
 
@@ -370,21 +370,21 @@ be made from a single input file.  So, changing a note always
 affects both parts and score.  To share the notes, the music is
 assigned to a variable:
 
-@image-float{annotate-example-parts.png,center}
+@image-float{text-input-parts-both-annotate.png,center}
 
 
 This variable is then used in a single part (here transposed, with
 condensed multi rests):
 
-@image-float{annotate-example-single-part.png,center}
-@image-float{example-single-part.png,center}
+@image-float{text-input-parts-single-annotate.png,center}
+@image-float{text-input-parts-single-output.png,center}
 
 
 The same variable is used in the full score (here in concert
 pitch):
 
-@image-float{annotate-example-score.png,center}
-@image-float{example-score.png,center}
+@image-float{text-input-score-annotate.png,center}
+@image-float{text-input-score-output.png,center}
 
 
 @subsubheading Beginner Documentation
