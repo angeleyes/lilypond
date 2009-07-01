@@ -136,8 +136,26 @@ div#tocframe {
   margin: 0;
 }
 
+/* colored second-level TOC items */
+#tocframe .toc .toc li.color1 a {
+  text-decoration: none;
+  background:#fdf;
+}
+
+#tocframe .toc .toc li.color2 a {
+  text-decoration: none;
+  background:#cfe;
+}
+
+#tocframe .toc .toc li.color3 a {
+  text-decoration: none;
+  background:#ff9;
+}
+
+
 #tocframe .toc .toc li.toc_current a {
-  background: #bdee9d;
+  background:#aaa;
+/*  background: #bdee9d; */
 }
 
 #tocframe .toc .toc li a:hover,
@@ -436,6 +454,7 @@ div.float-right a.clickable {
   margin: 1em 0 9em;
 }
 
+/* color1 */
 .column-center-top h3,
 .column-center-bottom h3 {
   background: #fdf;
@@ -455,6 +474,7 @@ div.float-right a.clickable {
   margin: 1em 0 9em;
 }
 
+/* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
   background: #cfe;
@@ -472,6 +492,7 @@ div.float-right a.clickable {
   margin: 1em 0 9em;
 }
 
+/* color3 */
 .column-right-top h3,
 .column-right-bottom h3 {
   background: #ff9;
@@ -567,29 +588,4 @@ div.float-right a.clickable {
   border: 10px dotted green;
   margin: 1em auto;
 }
-
-#tocframe .toc .toc li.color1 a {
-  text-decoration: none;
-  background:red;
-  background-color:red;
-/*  color:red;*/
-/*  text-color:red;*/
-}
-
-#tocframe .toc .toc li.color2 a {
-  text-decoration: none;
-  background:blue;
-  background-color:blue;
-/*  color:red;*/
-/*  text-color:red;*/
-}
-
-#tocframe .toc .toc li.color3 a {
-  text-decoration: none;
-  background:yellow;
-  background-color:yellow;
-/*  color:red;*/
-/*  text-color:red;*/
-}
-
 
