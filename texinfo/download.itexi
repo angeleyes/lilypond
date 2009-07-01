@@ -98,7 +98,38 @@ this Wikipedia Commons page}.
 @node Unix
 @unnumberedsec Unix
 
-@subsubheading Distribution-specific Packages
+
+@div-class{column-left-top}
+@subheading Generic Packages
+
+@itemize
+
+@item
+@uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.12.2-1.linux-x86.sh,
+Linux x86} (if in doubt, use this)
+
+@item
+@uref{http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.12.2-1.linux-64.sh,
+Linux 64-bit}
+
+@item
+@uref{http://download.linuxaudio.org/lilypond/binaries/linux-ppc/lilypond-2.12.2-1.linux-ppc.sh,
+Linux PPC}
+
+@item
+@uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
+FreeBSD i386}
+
+@item
+@uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
+FreeBSD amd64}
+
+@end itemize
+
+@div-end
+
+@div-class{column-right-top}
+@subheading Distribution-specific Packages
 
 Many distributions include LilyPond in their normal package
 system.  These versions are easier to install and uninstall than
@@ -107,41 +138,12 @@ to a newer version, please uninstall the official version from
 your system using the normal package manager for your distrution.
 See your distribution's documentation about how to use their
 package manager.
+@div-end
 
 
-@subsubheading Generic Packages
+@div-class{column-center-bottom}
 
-@multitable {lilypond-x.yy.z-a.longname-foo.bar} {long long long long long explanation of names}
-
-@item
-@uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.12.2-1.linux-x86.sh,
-lilypond-2.12.2-1.linux-x86.sh}
-@tab For most CPUs (if in doubt, use this).
-
-@item
-@uref{http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.12.2-1.linux-64.sh,
-lilypond-2.12.2-1.linux-64.sh}
-@tab For 64-bit CPUs with 64-bit OS.
-
-@item
-@uref{http://download.linuxaudio.org/lilypond/binaries/linux-ppc/lilypond-2.12.2-1.linux-ppc.sh,
-lilypond-2.12.2-1.linux-ppc.sh}
-@tab For PPC CPUs (such as the G3 and G4).
-
-@item
-@uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
-lilypond-2.12.2-1.freebsd-x86.sh}
-@tab For i386 CPUs.
-
-@item
-@uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
-lilypond-2.12.2-1.freebsd-64.sh}
-@tab For AMD64 CPUs.
-
-@end multitable
-
-
-@subsubheading Install
+@subheading Install
 
 In the shell, type:
 
@@ -159,10 +161,14 @@ In the shell, type:
 uninstall-lilypond
 @end example
 
-@smallspace
+@subheading Legalese
 
+@div-class{legal}
 All logos and product images are copyright and trademark
-acknowledged. 
+acknowledged.
+
+@div-end
+@div-end
 
 @node MacOS X
 @unnumberedsec MacOS X

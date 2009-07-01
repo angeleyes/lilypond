@@ -603,7 +603,9 @@ sub generate_ly_toc_entries($$$)
   my $level = $element->{'toc_level'};
   my $is_parent_of_current = $element->{'id'} && $element_path->{$element->{'id'}};
   my $ind = '  ' x $level;
-  my $this_css_class = $is_parent_of_current ? " class=\"toc_current\"" : "";
+  # GDP hack: leave this open for color
+  my $this_css_class = " class=\"";
+  $this_css_class .= $is_parent_of_current ? " toc_current" : "";
 
   # GDP tweak: if the node name is in the color_X list
   # TODO: use a hash, load from file?
@@ -626,21 +628,25 @@ sub generate_ly_toc_entries($$$)
         "Publications", "News", "Thanks"
         );
 
+  my $addColor = " colorDefault";
   foreach $color (@color_1) {
     if ($element->{'text'} eq $color) {
-      $this_css_class .= " class=\"color1\"";
+      $addColor = " color1";
     }
   }
   foreach $color (@color_2) {
     if ($element->{'text'} eq $color) {
-      $this_css_class .= " class=\"color2\"";
+      $addColor = " color2";
     }
   }
   foreach $color (@color_3) {
     if ($element->{'text'} eq $color) {
-      $this_css_class .= " class=\"color3\"";
+      $addColor = " color3";
     }
   }
+
+  $this_css_class .= $addColor . "\"";
+
 
 
 

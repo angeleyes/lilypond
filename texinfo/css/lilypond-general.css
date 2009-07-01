@@ -152,6 +152,9 @@ div#tocframe {
   background:#ff9;
 }
 
+/* having this useless style makes the perl init file easier */
+#tocframe .toc .toc li.colorDefault a {
+}
 
 #tocframe .toc .toc li.toc_current a {
   background:#aaa;
