@@ -340,22 +340,23 @@ everything at a much more gradual pace.}
 Notes are encoded with letters and numbers.  Special commands are
 entered with backslashes.
 
-@image-float{annotate-example-1.png,center}
-@image-float{example-1.png,center}
+@image-float{text-input-1-annotate.png,center}
+@image-float{text-input-1-output.png,center}
 
 Alterations are made with different names: add @code{-is} for
 sharp, and @code{-es} for flat (these are Dutch note names, other
 languages are available).  LilyPond figures out where to put
 accidentals.
 
-@image-float{annotate-example-2.png,center}
-@image-float{example-2.png,center}
-
+@image-float{text-input-2-annotate.png,center}
+@image-float{text-input-2-output.png,center}
 
 
 @subsubheading Pop music
 
 Put chords and lyrics together to get a lead sheet:
+
+@help{change the lyrics.  svg available}
 
 @image-float{annotate-example-lead.png,center}
 @image-float{example-lead.png,center}
@@ -382,8 +383,6 @@ condensed multi rests):
 The same variable is used in the full score (here in concert
 pitch):
 
-@help{This example is too wide for small resolutions.}
-
 @image-float{annotate-example-score.png,center}
 @image-float{example-score.png,center}
 
@@ -397,6 +396,8 @@ help new users, beginning with the @ref{Learning Manual}.
 Please read the Learning Manual before complaining about bugs!
 New users occasionally believe that LilyPond is not working
 correctly, when in fact it is working precisely as designed.
+
+@help{any suggestions for a picture here?}
 
 
 @subsubheading Easier editing environments
