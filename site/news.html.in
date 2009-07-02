@@ -32,6 +32,26 @@
     on one day.
 
     !-->
+  <dt>
+    <b>LilyPond 2.13.3</b> -
+    <em>July 2, 2009</em>
+  </dt>
+  <dd>
+This unstable release contains working menus in OSX 10.5; many
+thanks to Christian Hitz for fixing this long-standing problem!
+This release also contains numerous other bugfixes and features
+such as ties with variable thickness, partially dashed slurs, and
+eyeglasses.
+<br>
+We are planning another 2.12 release in the next week or two,
+which will include the menu fixes for OSX 10.5.  Normal users may
+wish to wait for this release rather than using an unstable
+release.
+
+<br>
+    <a href="@DOC@v2.13/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.13">Download</a>.
+  </dd>
 
   <dt>
     <b>A LilyPond weboldala magyarul</b> -
