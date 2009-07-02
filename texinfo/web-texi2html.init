@@ -624,7 +624,7 @@ sub generate_ly_toc_entries($$$)
 	);
   my @color_3 = (
         "Text input",
-	"Source",
+	"Source", "Download other versions",
         "FAQ", "Changes", "Internals Reference",
         "Publications", "Old news"
         );

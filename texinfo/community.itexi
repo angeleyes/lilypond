@@ -160,10 +160,11 @@ guidelines for @ref{Bug reports}.}
 @unnumberedsec Tiny examples
 
 @div-class{column-center-top}
-@subheading What are they?
+@subheading What are @qq{Tiny examples}?
 
-A tiny example (also called @qq{minimal} example) is an example
-from which nothing can be removed.
+A tiny example is an example from which nothing can be removed.
+
+These used to be called @qq{minimal examples}.
 @div-end
 
 @div-class{column-left-bottom}
@@ -541,24 +542,8 @@ issue CMS06.
 @node Old news
 @unnumberedsec Old news
 
-@c @div-class{float-left}
-@subheading Official news
-
 @include news-front.itexi
-@c @div-end
-
-
-@c @node Old official news
-@c @unnumberedsubsec Old official news
-
-@c @div-class{column-center}
-@c @subheading Old official news
 
 @include news-old.itexi
-@c @div-end
-
-
-
-
 
 

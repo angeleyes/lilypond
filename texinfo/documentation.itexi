@@ -382,10 +382,8 @@ are usually found in the directory @file{/usr/@/share/@/lilypond/}.
 
 
 
-@c node name vs. section name: we want to re-use this name
-@c in downloads and docs.  -gp
 @node Documentation other versions
-@unnumberedsec Other versions
+@unnumberedsec Documentation other versions
 
 Documentation for our development version can be found in
 @ref{Development}.

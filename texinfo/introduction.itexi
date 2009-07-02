@@ -1,7 +1,7 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of lilypond-general.tely
 @node Introduction
-@unnumbered Explore
+@unnumbered Introduction
 
 @div-class{column-center-top}
 @subheading Our Goal
@@ -432,7 +432,7 @@ Read about our @ref{Text input}.
 @c TRANSLATORS: so far it's mostly from
 @c http://lilypond.org/web/switch/howto
 
-@subsubheading @qq{Compiling} Music
+@subheading @qq{Compiling} Music
 
 @image-clickable{nereid-shot-small.png, (click to enlarge),
 nereid-shot.png, right}
@@ -538,6 +538,15 @@ about @@ref@{FIXME alternate editing environments@}.
 @div-class{column-center-bottom}
 @subheading Where now?
 
-You are now read to @ref{Download, Download LilyPond}.
+You are now ready to @ref{Download, Download LilyPond}.
+
+Still not convinced?  Many composers, musicians, and conductors
+have learned how to write music in our input format.  Experienced
+users even report that they can enter a full score in LilyPond
+faster than with a piano keyboard or mouse+GUI!  Perhaps you would
+like to review the @ref{Features}, @ref{Examples}, or
+@ref{Freedom} that LilyPond provides, or read more users'
+@ref{Testimonials}.
+
 @div-end
 
