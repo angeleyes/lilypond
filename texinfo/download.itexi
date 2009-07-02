@@ -14,13 +14,13 @@ our @ref{Text input}.}
 @itemize
 
 @item
-@ref{Unix, @image{linux-logo} @image{freebsd-logo} Unix (Linux and FreeBSD)}
+@ref{Unix, @image{logo-linux} @image{freebsd-logo} Unix (Linux and FreeBSD)}
 
 @item
-@ref{MacOS X, @image{macosx-logo} MacOS X}
+@ref{MacOS X, @image{logo-macosx} MacOS X}
 
 @item
-@ref{Windows, @image{windows-logo} Microsoft Windows}
+@ref{Windows, @image{logo-windows} Microsoft Windows}
 
 @end itemize
 
@@ -105,22 +105,27 @@ this Wikipedia Commons page}.
 @itemize
 
 @item
+@image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.12.2-1.linux-x86.sh,
 Linux x86} (if in doubt, use this)
 
 @item
+@image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.12.2-1.linux-64.sh,
 Linux 64-bit}
 
 @item
+@image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-ppc/lilypond-2.12.2-1.linux-ppc.sh,
 Linux PPC}
 
 @item
+@image{freebsd-logo}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
 FreeBSD i386}
 
 @item
+@image{freebsd-logo}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
 FreeBSD amd64}
 
@@ -138,6 +143,15 @@ to a newer version, please uninstall the official version from
 your system using the normal package manager for your distrution.
 See your distribution's documentation about how to use their
 package manager.
+
+@itemize
+
+@item
+blah
+@c @image{logo-redhat}
+
+@end itemize
+
 @div-end
 
 

@@ -233,11 +233,11 @@ to extend software can be highly valuable to serious composers,
 companies, and academics.
 
 @item
-Safety: if a commercial company goes bankrupt, what happens to any
-electronic music which depends on their products?  This is not a
-concern with LilyPond; even if the entire development team quits
-(extremely unlikely), the program will still be legally available
-for copying, modifications, and distribution.
+Future safety: if a commercial company goes bankrupt, what happens
+to any electronic music which depends on their products?  This is
+not a concern with LilyPond; even if the entire development team
+quits (extremely unlikely), the program will still be legally
+available for copying, modifications, and distribution.
 
 
 @end itemize
@@ -247,7 +247,9 @@ for copying, modifications, and distribution.
 @div-end
 
 
+@c @div-class{column-left-top}
 @div-class{column-center-top}
+
 @div-class{color3}
 @div-class{keep-bullets}
 @subheading Why do LilyPond developers @qq{give away} for work for free?
@@ -278,6 +280,13 @@ movement has created many great software projects, such as
 @uref{http://www.wesnoth.org/, Battle for Wesnoth}.  Having
 benefitted from these projects, some developers want to @qq{give
 back} to the community.
+
+@item
+Work experience: contributing to open-source projects is a great
+way to practice programming, documentation writing, or design.
+This experience has helped some developers gain job offers or
+scholarships.
+
 
 @end itemize
 
