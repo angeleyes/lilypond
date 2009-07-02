@@ -208,7 +208,7 @@ of dollars of software!
 
 @div-class{color2}
 @div-class{keep-bullets}
-@subheading What are the benefits to me?
+@subheading What are the benefits to users?
 
 @itemize
 
@@ -249,14 +249,39 @@ for copying, modifications, and distribution.
 
 @div-class{column-center-top}
 @div-class{color3}
-@subheading Why do you @qq{give away} for work for free?
+@div-class{keep-bullets}
+@subheading Why do LilyPond developers @qq{give away} for work for free?
+
+Most of us view LilyPond development as a hobby or voluteer work.
+So this question is really asking @qq{why do people volunteer}?
 
 @itemize
 
 @item
+Fun: working towards a goal can be enjoyable, especially when you
+work as a team!
+
+@item
+Shared goals: we all want beautiful sheet music, but few people
+have the expertis (and nobody has the time!), to create a program
+which can handle all situations.  By working together -- one
+person improves the automatic beaming code, another person
+improves the shape of slurs, and a third person writes
+documentation explaining how to use these features -- we can
+achieve our goal with only a fraction of the individual effort.
+
+@item
+@qq{Gift culture}: the Free Software (or @qq{Open Source})
+movement has created many great software projects, such as
+@uref{http://kernel.org/, GNU/Linux},
+@uref{http://www.getfirefox.com/, Mozilla Firefox}, and
+@uref{http://www.wesnoth.org/, Battle for Wesnoth}.  Having
+benefitted from these projects, some developers want to @qq{give
+back} to the community.
 
 @end itemize
 
+@div-end
 @div-end
 @div-end
 
