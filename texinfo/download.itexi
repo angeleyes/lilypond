@@ -98,77 +98,56 @@ this Wikipedia Commons page}.
 @node Unix
 @unnumberedsec Unix
 
+@div-class{column-center-top}
+@subheading Generic Packages or Distribution-Specific Packages?
+
+Many distributions include LilyPond in their normal package
+system.  These versions are easier to install and uninstall than
+the generic packages, but they may be older.  If you wish to use
+our generic packages, please uninstall the official version from
+your system using the normal package manager for your distrution.
+See your distribution's documentation about how to use their
+package manager.
+
+@div-end
+
 
 @div-class{column-left-top}
 @subheading Generic Packages
+
+@subsubheading Download
 
 @itemize
 
 @item
 @image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.12.2-1.linux-x86.sh,
-Linux x86} (if in doubt, use this)
+Linux x86: LilyPond 2.12.2} (if in doubt, use this)
 
 @item
 @image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.12.2-1.linux-64.sh,
-Linux 64-bit}
+Linux 64-bit: LilyPond 2.12.2}
 
 @item
 @image{logo-linux}
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-ppc/lilypond-2.12.2-1.linux-ppc.sh,
-Linux PPC}
+Linux PPC: LilyPond 2.12.2}
 
 @item
 @image{freebsd-logo}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
-FreeBSD i386}
+FreeBSD i386: LilyPond 2.12.2}
 
 @item
 @image{freebsd-logo}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
-FreeBSD amd64}
+FreeBSD amd64: LilyPond 2.12.2}
 
 @end itemize
 
-@div-end
 
-@div-class{column-right-top}
-@subheading Distribution-specific Packages
-
-Many distributions include LilyPond in their normal package
-system.  These versions are easier to install and uninstall than
-the version below, but they may be older.  If you wish to upgrade
-to a newer version, please uninstall the official version from
-your system using the normal package manager for your distrution.
-See your distribution's documentation about how to use their
-package manager.
-
-@itemize
-
-@item
-@image{logo-fedora}
-
-@item
-@image{logo-ubuntu}
-
-@item
-@image{logo-slackware}
-
-@item
-@image{logo-debian}
-
-@item
-@image{logo-suse}
-
-@end itemize
-
-@div-end
-
-
-@div-class{column-center-bottom}
-
-@subheading Install
+@subsubheading Install
 
 In the shell, type:
 
@@ -176,7 +155,6 @@ In the shell, type:
 cd PATH-TO-DOWNLOAD-DIRECTORY
 sh lilypond-X.Y.Z-EXAMPLE.sh
 @end example
-
 
 @subsubheading Uninstall
 
@@ -186,11 +164,56 @@ In the shell, type:
 uninstall-lilypond
 @end example
 
+@div-end
+
+
+@div-class{column-right-top}
+@subheading Distribution-specific Packages
+
+Please use your distribution's package manager to install or
+upgrade to these versions.
+
+@itemize
+
+@item
+@image{logo-fedora}
+@uref{https://admin.fedoraproject.org/pkgdb/packages/name/lilypond,
+Fedora: LilyPond 2.12.0}
+
+@item
+@image{logo-ubuntu}
+@uref{https://launchpad.net/ubuntu/+source/lilypond,
+Ubuntu: LilyPond 2.12.1}
+
+@item
+@image{logo-slackware}
+@uref{http://www.johannes-schoepfer.de/lilypond/,
+Slackware: LilyPond 2.12.1}
+
+@item
+@image{logo-debian}
+@uref{http://packages.debian.org/search?keywords=lilypond,
+Debian: LilyPond 2.10.33}
+
+@item
+@image{logo-suse}
+@uref{http://opensuse.org/?fixme=urg-no-lilypond-package-page,
+openSUSE: LilyPond 2.10.33}
+
+@end itemize
+
+@div-end
+
+
+@div-class{column-center-bottom}
+
 @subheading Legalese
 
 @div-class{legal}
 All logos and product images are copyright and trademark
 acknowledged.
+
+FIXME: insert relevant lines from the front Download page.
 
 @div-end
 @div-end
