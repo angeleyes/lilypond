@@ -72,29 +72,13 @@ our bandwidth.
 All logos and product images are copyright and trademark
 acknowledged. 
 
-Tux the Linux Penguin was created by
-@uref{mailto:lewing@@isc.tamu.edu, lewing@@isc.tamu.edu} with
-@uref{http://www.isc.tamu.edu/~lewing/gimp/, the Gnu Image
-Manipulation Program}.
+@logoLegalLinux
 
-The FreeBSD logo is a registered trademark of
-@uref{http://www.freebsd.org/, The FreeBSD Foundation}.
+@logoLegalFreeBSD
 
-The @qq{X image} is not a registered trademark.  It was created by
-@uref{http://en.wikipedia.org/wiki/User:Nihonjoe, Nihonjoe} and
-@uref{http://en.wikipedia.org/wiki/User:CyberSkull, CyberSkull}, and
-placed under the GNU Free Documentation License version 1.2 or later.
-We found the image on
-@uref{http://commons.wikimedia.org/wiki/File:Mac_OS_X_Userbox_X.png,
-this Wikipedia Commons page}.
+@logoLegalMacOSX
 
-The @qq{four colored rectangles image} is not a registered
-trademark.  It was created by
-@uref{http://en.wikipedia.org/wiki/User:Rohitbd, Rohitbd} and
-placed under the GNU Free Documentation License version 1.2.  We
-found the image on
-@uref{http://commons.wikimedia.org/wiki/Category:Microsoft_Windows_logos,
-this Wikipedia Commons page}.
+@logoLegalWindows
 
 @div-end
 @div-end
@@ -217,7 +201,9 @@ openSUSE: LilyPond 2.10.33}
 All logos and product images are copyright and trademark
 acknowledged.
 
-FIXME: insert relevant lines from the front Download page.
+@logoLegalLinux
+
+@logoLegalFreeBSD
 
 @div-end
 @div-end
@@ -280,7 +266,7 @@ something.
 All logos and product images are copyright and trademark
 acknowledged.
 
-FIXME: insert relevant lines from the front Download page.
+@logoLegalMacOSX
 
 @div-end
 @div-end
@@ -335,7 +321,7 @@ instructions.}
 All logos and product images are copyright and trademark
 acknowledged.
 
-FIXME: insert relevant lines from the front Download page.
+@logoLegalWindows
 
 @div-end
 @div-end
