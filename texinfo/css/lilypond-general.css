@@ -152,6 +152,8 @@ div#tocframe {
   background:#ff9;
 }
 
+
+
 /* having this useless style makes the perl init file easier */
 #tocframe .toc .toc li.colorDefault a {
 }
@@ -595,4 +597,14 @@ div.float-right a.clickable {
 .legal {
   font-size:x-small;
 }
+
+/* used on Freedom page */
+.color2 h3 {
+  background:#cfe;
+}
+
+.color3 h3 {
+  background:#ff9;
+}
+
 

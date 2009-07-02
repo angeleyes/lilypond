@@ -609,6 +609,7 @@ sub generate_ly_toc_entries($$$)
 
   # GDP tweak: if the node name is in the color_X list
   # TODO: use a hash, load from file?
+  # FIXME: load from file, to allow for translations!
 # HORRIBLE HACK
   my @color_1 = (
 
@@ -616,7 +617,7 @@ sub generate_ly_toc_entries($$$)
         "Contact", "Tiny examples", "Bug reports"
 	);
   my @color_2 = (
-        "Features", "Examples", "Testimonials",
+        "Features", "Examples", "Freedom", "Testimonials",
 	"Unix", "MacOS X", "Windows",
         "Notation Reference", "Application Usage", "Snippet List",
         "Help wanted!", "Development"
