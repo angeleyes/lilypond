@@ -206,7 +206,6 @@ openSUSE: LilyPond 2.10.33}
 
 
 @div-class{column-center-bottom}
-
 @subheading Legalese
 
 @div-class{legal}
@@ -218,82 +217,124 @@ FIXME: insert relevant lines from the front Download page.
 @div-end
 @div-end
 
+
 @node MacOS X
 @unnumberedsec MacOS X
 
-@warning{Due to changes in MacOS X 10.5 Leopard, the menus in the
-LilyPond Application no longer function.  For information about
-how to use lilypond in 10.5, see @@ref@{FIXME something@}.}
+@div-class{column-left-top}
+@subheading Packages
 
-@subsubheading Generic Packages
+@subsubheading Download
 
-@multitable {lilypond-x.yy.z-a.longname-foo.bar} {long long long long long explanation of names}
+@itemize
 
 @item
+@image{logo-macosx}
 @uref{
 http://download.linuxaudio.org/lilypond/binaries/darwin-x86/lilypond-2.12.2-1.darwin-x86.tar.bz2,
 lilypond-2.12.2-1.darwin-x86.tar.bz2}
-@tab For Intel chips (if in doubt, use this).
+For Intel chips (if in doubt, use this).
 
 @item
+@image{logo-macosx}
 @uref{
 http://download.linuxaudio.org/lilypond/binaries/darwin-x86/lilypond-2.12.2-1.darwin-ppc.tar.bz2,
 lilypond-2.12.2-1.darwin-ppc.tar.bz2}
-@tab For G3 and G4 CPUs (old Apple computers).
+For G3 and G4 CPUs (old Apple computers).
 
-@end multitable
+@end itemize
 
 @subsubheading Install
 
 Double-click the downloaded file, then drag it to wherever you
 want.
 
-@subsubheading Additional setup
-
-... link to AU 2.1, if we keep the AU.  Else put it here.  Or
-something.
-
-
 @subsubheading Uninstall
 
 Delete the LilyPond.app folder.
 
+@div-end
 
-@smallspace
 
+@div-class{column-right-top}
+@subheading Running on the command-line
+
+@warning{If you are happy with the GUI, then please ignore these
+instructions.}
+
+... link to AU 2.1, if we keep the AU.  Else put it here.  Or
+something.
+
+@div-end
+
+
+@div-class{column-center-bottom}
+@subheading Legalese
+
+@div-class{legal}
 All logos and product images are copyright and trademark
-acknowledged. 
+acknowledged.
+
+FIXME: insert relevant lines from the front Download page.
+
+@div-end
+@div-end
+
 
 
 @node Windows
 @unnumberedsec Windows
 
-@subsubheading Generic Packages
+@div-class{column-left-top}
+@subheading Packages
 
+@subsubheading Download
 
-@multitable {lilypond-x.yy.z-a.longname-foo.bar} {long long long long long explanation of names}
+@itemize
 
 @item
+@image{logo-windows}
 @uref{
 http://download.linuxaudio.org/lilypond/binaries/mingw/lilypond-2.12.2-1.mingw.exe,
 lilypond-2.12.2-1.mingw-exe}
-@tab For Windows ME, NT, 2000, XP, and Vista.
+For Windows ME, NT, 2000, XP, and Vista.
 
-@end multitable
-
+@end itemize
 
 @subsubheading Install
 
-blah
+@help{don't know}
 
 @subsubheading Uninstall
 
-blah
+@help{don't know}
 
-@smallspace
+@div-end
 
+
+@div-class{column-right-top}
+@subheading Running on the command-line
+
+@warning{If you are happy with the GUI, then please ignore these
+instructions.}
+
+@help{don't know}
+
+@div-end
+
+
+@div-class{column-center-bottom}
+@subheading Legalese
+
+@div-class{legal}
 All logos and product images are copyright and trademark
-acknowledged. 
+acknowledged.
+
+FIXME: insert relevant lines from the front Download page.
+
+@div-end
+@div-end
+
 
 
 @node Source
@@ -301,11 +342,23 @@ acknowledged.
 
 @warning{We @strong{do not} recommend that you attempt to build
 LilyPond yourself; almost all user needs are better met with the
-pre-built version.  If you have a particular need which requires
-compiling, please see @@ref@{FIXME development-install@}.}
+pre-built version.}
+
+@div-class{column-left-bottom}
+@subheading Source tarball
 
 @uref{http://download.linuxaudio.org/lilypond/sources/v2.12/lilypond-2.12.2.tar.gz,
 lilypond-2.12.2-source.tar.bz2}
+
+@div-end
+
+@div-class{column-right-bottom}
+@subheading Compiling instructions
+
+Instructions are listed in @@ref@{FIXME development-install@}.
+
+@div-end
+
 
 
 @c node name vs. section name: we want to re-use this name
