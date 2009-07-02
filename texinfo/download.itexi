@@ -147,8 +147,19 @@ package manager.
 @itemize
 
 @item
-blah
-@c @image{logo-redhat}
+@image{logo-fedora}
+
+@item
+@image{logo-ubuntu}
+
+@item
+@image{logo-slackware}
+
+@item
+@image{logo-debian}
+
+@item
+@image{logo-suse}
 
 @end itemize
 
