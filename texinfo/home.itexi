@@ -33,6 +33,11 @@ Read more in our @ref{Introduction}!
 
 @div-id{news}
 @include news-front.itexi
+
+@div-class{float-right}
+(@ref{Old news})
+@div-end
+
 @div-end
 
 

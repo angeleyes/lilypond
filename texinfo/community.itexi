@@ -28,10 +28,13 @@ discussing LilyPond.
 @itemize
 
 @item
-@ref{Help wanted!}: your assistance is requested.
+@ref{Help us}: your assistance is requested.
 
 @item
-@ref{Development}: information for contributors.
+@ref{Development}: for contributors and testers.
+
+@item
+@ref{Authors}: the people who made LilyPond what it is today.
 
 @end itemize
 @div-end
@@ -45,10 +48,7 @@ discussing LilyPond.
 @ref{Publications}: what we wrote, and have had written about us.
 
 @item
-@ref{News}: an archive.
-
-@item
-@ref{Thanks}: the people who made LilyPond what it is today.
+@ref{Old news}: an archive.
 
 @end itemize
 @div-end
@@ -59,11 +59,11 @@ discussing LilyPond.
 * Contact::                     
 * Tiny examples::               
 * Bug reports::                 
-* Help wanted!::                
+* Help us::                
 * Development::
+* Authors::                      
 * Publications::                       
-* News::
-* Thanks::                      
+* Old news::
 @end menu
 @div-end
 
@@ -71,54 +71,26 @@ discussing LilyPond.
 @node Contact
 @unnumberedsec Contact
 
-@div-class{column-right-top}
-@subheading LilyPond Report
 
-The easiest way to keep touch is by reading our community
-newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
-@div-end
+@div-class{column-left-bottom}
+@subheading User Discussions and Help
 
+@subsubheading User mailist
 
-@subsubheading Mailing Lists
+The main place for users to discuss and help each other is the
+@uref{http://mail.gnu.org/mailman/listinfo/lilypond-user,
+lilypond-user@@gnu.org} mailist.  To see what this mailist is
+like, read the
+@uref{http://mail.gnu.org/archive/html/lilypond-user/,
+lilypond-user archives}.
 
-@warning{only keep -user and -info here, or separate those from
-the rest.}
+You may easily post messages to the mailist with the
+@uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general,
+lilypond.general gmane interface}.
 
-@c TODO add a "subscribe to lilypond-user" on this page.
+@warning{When asking questions, please use @ref{Tiny examples}!}
 
-Most discussion takes place on our mailing lists:
-
-@multitable {mailing-list-name@@gnu.org} {long long long explanation of mailing list} {archives} {info} {post}
-
-@item
-@uref{mailto:lilypond-user@@gnu.org, lilypond-user@@gnu.org}
-@tab The main list for discussion and help
-@tab @uref{http://mail.gnu.org/archive/html/lilypond-user/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/lilypond-user, info}
-@tab @uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.general, post}
-
-@item
-info-lilypond@@gnu.org
-@tab (low-volume) Notification of new releases
-@tab @uref{http://mail.gnu.org/archive/html/info-lilypond/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/info-lilypond, info}
-
-@item
-@uref{mailto:lilypond-devel@@gnu.org, lilypond-devel@@gnu.org}
-@tab Discussion about development and contributors.
-@tab @uref{http://mail.gnu.org/archive/html/lilypond-devel/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/lilypond-devel, info}
-@tab
-@uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.development, post}
-
-@item
-@uref{mailto:bug-lilypond@@gnu.org, bug-lilypond@@gnu.org}
-@tab Discussion about bugs (before posting, read our guidelines for @ref{Bug reports}).
-@tab @uref{http://mail.gnu.org/archive/html/bug-lilypond/, archives}
-@tab @uref{http://mail.gnu.org/mailman/listinfo/bug-lilypond, info}
-@tab @uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs, post}
-
-@end multitable
+@help{we could add a "subscribe to -user" box here?}
 
 
 @subsubheading IRC
@@ -135,7 +107,52 @@ be useful for others would better be posted to one of the mailing lists.
 
 @subsubheading Other languages
 
-- list mailists / forums where non-English discussion occurs.
+@help{send mailists or forums where non-English discussion occurs.}
+
+@div-end
+
+
+@div-class{column-right-top}
+@subheading Stay Informed
+
+@subsubheading LilyPond Report
+
+The easiest way to keep touch is by reading our community
+newsletter, the @uref{http://news.lilynet.net/, LilyPond Report}.
+
+@subsubheading Releases mailing list
+
+@uref{http://mail.gnu.org/mailman/listinfo/info-lilypond,
+info-lilypond@@gnu.org}
+is a low-volume, read-only list which receives notifications of
+new releases.  To see what the mailist is like, browse the
+@uref{http://mail.gnu.org/archive/html/info-lilypond/,
+info-lilypond archive}.
+
+@div-end
+
+
+@div-class{column-right-bottom}
+@subheading Developer Discussion
+
+Most developer discussion takes place on
+@uref{http://mail.gnu.org/mailman/listinfo/lilypond-devel,
+lilypond-devel@@gnu.org}.  Patches should be sent here.  You can
+browse the @uref{http://mail.gnu.org/archive/html/lilypond-devel/,
+lilypond-devel archives}, or send a message directly with the
+@uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.development,
+lilypond.development gmane interface}.
+
+Bug-specific discussion takes place on the
+@uref{http://mail.gnu.org/mailman/listinfo/bug-lilypond,
+bug-lilypond@@gnu.org}.  You can browse the
+@uref{http://mail.gnu.org/archive/html/bug-lilypond/, bug-lilypond
+archives}.
+
+@warning{Before sending a message to the bug list, please read our
+guidelines for @ref{Bug reports}.}
+
+@div-end
 
 
 
@@ -216,6 +233,8 @@ is about those particular commands.
 @node Bug reports
 @unnumberedsec Bug reports
 
+@uref{http://post.gmane.org/post.php?group=gmane.comp.gnu.lilypond.bugs, post}
+
 If you have input that results in a crash or an erroneous output,
 then that is a bug.  There is a list of current bugs on our google
 bug tracker,
@@ -266,16 +285,14 @@ better, if you are suscribed to bug-lilypond, you will receive
 emails for all activity on the bug tracker. 
 
 
-@node Help wanted!
-@unnumberedsec Help wanted!
+@node Help us
+@unnumberedsec Help us
 
 Blah.
 
 
 @node Development
-@div-class{hide}
 @unnumberedsec Development
-@div-end
 
 
 @div-class{heading-center}
@@ -288,7 +305,7 @@ urge you to use the stable @ref{Download}, and read the stable
 
 @div-end
 
-@div-class{column-left-top}
+@div-class{column-left-bottom}
 @subheading Download
 
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.13.3-1.linux-x86.sh,
@@ -318,10 +335,7 @@ lilypond-2.13.3-1.darwin-ppc.tar.bz2}
 http://download.linuxaudio.org/lilypond/binaries/mingw/lilypond-2.13.3-1.mingw.exe,
 lilypond-2.13.3-1.mingw-exe}
 
-@div-end
 
-
-@div-class{column-right-top}
 @subheading Manuals
 
 LM:
@@ -352,12 +366,28 @@ IR-link
 
 @div-end
 
-@div-class{column-center-bottom}
+
+@div-class{column-right-bottom}
 @subheading Contributors' Guide
 
 FIXME write CG intro + links.
 
 @div-end
+
+
+
+@node Authors
+@unnumberedsec Authors 
+
+combo of:
+
+http://lilypond.org/web/about/thanks
+
+Documentation/topdocs/AUTHORS.texi
+
+and maybe:
+http://lilypond.org/web/switch/
+
 
 
 
@@ -482,10 +512,8 @@ issue CMS06.
 @div-end
 
 
-@node News
-@div-class{hide}
-@unnumberedsec News
-@div-end
+@node Old news
+@unnumberedsec Old news
 
 @c @div-class{float-left}
 @subheading Official news
@@ -505,19 +533,6 @@ issue CMS06.
 
 
 
-
-
-@node Thanks
-@unnumberedsec Thanks 
-
-combo of:
-
-http://lilypond.org/web/about/thanks
-
-Documentation/topdocs/AUTHORS.texi
-
-and maybe:
-http://lilypond.org/web/switch/
 
 
 

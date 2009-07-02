@@ -620,13 +620,13 @@ sub generate_ly_toc_entries($$$)
         "Features", "Examples", "Freedom", "Testimonials",
 	"Unix", "MacOS X", "Windows",
         "Notation Reference", "Application Usage", "Snippet List",
-        "Help wanted!", "Development"
+        "Help us", "Development", "Authors"
 	);
   my @color_3 = (
         "Text input",
 	"Source",
         "FAQ", "Changes", "Internals Reference",
-        "Publications", "News", "Thanks"
+        "Publications", "News"
         );
 
   my $addColor = " colorDefault";
