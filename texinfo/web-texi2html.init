@@ -626,7 +626,7 @@ sub generate_ly_toc_entries($$$)
         "Text input",
 	"Source",
         "FAQ", "Changes", "Internals Reference",
-        "Publications", "News"
+        "Publications", "Old news"
         );
 
   my $addColor = " colorDefault";
