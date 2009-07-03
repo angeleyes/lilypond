@@ -813,6 +813,7 @@ sub print_lilypond_page_foot($)
   print $fh "<!-- end div#main here -->\n</div>\n\n";
 
   print $fh "<!-- FOOTER -->\n\n";
+  print $fh "<div id=\"footer\">\n";
   print $fh "<div id=\"language\">\n";
   print $fh "<h3>Other languages</h3>\n";
   print $fh "<p><a href=\"\">Deutsch</a>, Español, Français, Magyar.</p>\n";
@@ -820,15 +821,17 @@ sub print_lilypond_page_foot($)
   print $fh "</div>\n";
 
   print $fh "<div id=\"verifier_texinfo\">\n";
+  print $fh "<h3>Validation</h3>\n";
   print $fh "<a href=\"http://validator.w3.org/check?uri=referer\">\n";
   print $fh "<img src=\"http://www.w3.org/Icons/valid-html401\"\n";
   print $fh "     alt=\"Valid HTML 4.01 Transitional\"\n";
   print $fh "     height=\"31\" width=\"88\"></a>\n";
-  print $fh "Web pages created with";
+  print $fh "<p>Web pages created with";
   print $fh " <a href=\"http://www.gnu.org/software/texinfo/\">";
   print $fh " GNU Texinfo</a>\n";
   print $fh " and <a href=\"http://www.nongnu.org/texi2html/\">";
-  print $fh " texi2html</a>\n";
+  print $fh " texi2html</a>.</p>\n";
+  print $fh "</div>";
   print $fh "</div>";
 
   # Print the TOC frame and reset the TOC:
