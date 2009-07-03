@@ -166,59 +166,57 @@ div#tocframe {
 /* colored second-level TOC items */
 #tocframe .toc .toc li.color1 a {
   text-decoration: none;
-  background:#fdf;
+  background: #fdf;
 }
 
 #tocframe .toc .toc li.color2 a {
   text-decoration: none;
-  background:#cfe;
+  background: #cfe;
 }
 
 #tocframe .toc .toc li.color3 a {
   text-decoration: none;
-  background:#ff9;
+  background: #ff9;
 }
-
-
 
 /* having this useless style makes the perl init file easier */
 #tocframe .toc .toc li.colorDefault a {
 }
 
 #tocframe .toc .toc li.color1 a:hover {
-  background:#ece;
+  background: #ece;
 }
 
 #tocframe .toc .toc li.color2 a:hover {
-  background:#bed;
+  background: #bed;
 }
 
 #tocframe .toc .toc li.color3 a:hover {
-  background:#ee8;
+  background: #ee8;
 }
 
 #tocframe .toc .toc li.color1.toc_current a {
-  background:#dbd;
+  background: #dbd;
 }
 
 #tocframe .toc .toc li.color1.toc_current a:hover {
-  background:#dbd;
+  background: #dbd;
 }
 
 #tocframe .toc .toc li.color2.toc_current a {
-  background:#adc;
+  background: #adc;
 }
 
 #tocframe .toc .toc li.color2.toc_current a:hover {
-  background:#adc;
+  background: #adc;
 }
 
 #tocframe .toc .toc li.color3.toc_current a {
-  background:#dd7;
+  background: #dd7;
 }
 
 #tocframe .toc .toc li.color3.toc_current a:hover {
-  background:#dd7;
+  background: #dd7;
 }
 
 /* third level toc (unnumberedsubsec) */
@@ -402,13 +400,21 @@ div#latestVersion {
   margin: 0;
 }
 
-div#language {
+div#footer {
   clear: both;
-  bottom: 0;
-  background: #fefefe;
-  text-indent: 0.5em;
-  padding: 0 0 0.5em;
+  position: relative;
+  width: 100%;
   margin-top: 7em;
+}
+
+div#language {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 50%;
+  width: 50%;
+  text-indent: 0.5em;
+  padding: 0;
 }
 
 #language h3 {
@@ -423,6 +429,35 @@ div#language {
   padding: 0;
   border-left: 2px solid #000;
   margin: 0 0 0 0.5em;
+}
+
+#verifier_texinfo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 50%;
+}
+
+#verifier_texinfo h3 {
+  text-indent: -9999em;
+  background: #ddd;
+  padding: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #000;
+  margin: 0 0 0.25em 0;
+}
+
+#verifier_texinfo img {
+  float: right;
+  margin: 0 0.5em 0 0;
+}
+
+#verifier_texinfo p {
+  clear: right;
+  text-align: right;
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0 0.5em;
 }
 
 h1.unnumbered, h2.unnumberedsec, h3.unnumberedsubsec {
@@ -472,7 +507,7 @@ img.float-right {
   background: #fff;
   padding: 1em;
   border: 1px solid #bbb;
-  margin: 0.5em;
+  margin: 0.1em 0.5em;
 }
 
 div.float-left a.clickable,
@@ -626,6 +661,21 @@ div.float-right a.clickable {
   text-align: left;
 }
 
+.column-center-top img.float-left,
+.column-center-top img.float-right,
+.column-center-bottom img.float-left,
+.column-center-bottom img.float-right,
+.column-left-top img.float-left,
+.column-left-top img.float-right,
+.column-left-bottom img.float-left,
+.column-left-bottom img.float-right,
+.column-right-top img.float-left,
+.column-right-top img.float-right,
+.column-right-bottom img.float-left,
+.column-right-bottom img.float-right {
+  margin: 0.5em;
+}
+
 .keep-bullets ul {
   list-style-type: disc;
   padding: 0;
@@ -673,11 +723,9 @@ div.float-right a.clickable {
 
 /* used on Introduction->Freedom page */
 .color2 h3 {
-  background:#cfe;
+  background: #cfe;
 }
 
 .color3 h3 {
-  background:#ff9;
+  background: #ff9;
 }
-
-
