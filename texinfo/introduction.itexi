@@ -179,6 +179,19 @@ at it -- go ahead and be wild in the input files.  :)}
 
 Final resting place of the current input/*.ly ghetto.
 
+Guidelines: give me png files.  Optionally, two png files per
+lilypond output.  Maximum width of 600 pixels for the "small"
+(i.e. visible on this page) pictures, and no limit on the
+"click-to-enlarge" pictures.  A few sentences about each example
+might be nice, but you don't need a lot.  "Create beautiful
+transcriptions of Gregorian chants.  See the rectangularness of
+the neumes, and the flexibility of the caesura placement". (no, I
+don't remember much from first-year music history)
+
+Oh, we'll want the .ly files as well, but only for internal use
+(re-creating the pngs with later versions of lilypond).  Only
+pretty pictures on this page.  :)
+
 
 @div-class{column-center-bottom}
 @subheading Where now?

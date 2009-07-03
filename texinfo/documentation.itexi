@@ -13,6 +13,10 @@
 
 @itemize
 
+@item @ref{Text input}:
+if you haven't read this yet, do so now!  LilyPond requires you to
+write music as text.
+
 @item @ref{Learning Manual}:
 a @qq{must-read} gentle introduction to LilyPond.
 
@@ -310,9 +314,6 @@ This is explained in @@ref@{FIXME AU x.y@}.
 
 This is explained in @@ref@{FIXME LM or AU x.y@}.
 
-@subheading (maybe) Where is the graphical canvas and menus?
-
-This is explained in @ref{Text input}.
 
 
 @subheading other
