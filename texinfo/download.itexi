@@ -14,7 +14,9 @@ our @ref{Text input}.}
 @itemize
 
 @item
-@ref{Unix, @image{logo-linux} @image{logo-freebsd} Unix (Linux and FreeBSD)}
+@c TODO: duplicate to avoid underlined refs in HTML?  icky.
+@ref{Unix, @image{logo-linux} @image{logo-freebsd}}
+@ref{Unix, Unix (Linux and FreeBSD)}
 
 @item
 @ref{MacOS X, @image{logo-macosx} MacOS X}
