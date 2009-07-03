@@ -14,7 +14,7 @@ our @ref{Text input}.}
 @itemize
 
 @item
-@ref{Unix, @image{logo-linux} @image{freebsd-logo} Unix (Linux and FreeBSD)}
+@ref{Unix, @image{logo-linux} @image{logo-freebsd} Unix (Linux and FreeBSD)}
 
 @item
 @ref{MacOS X, @image{logo-macosx} MacOS X}
@@ -124,12 +124,12 @@ Linux 64-bit: LilyPond 2.12.2}
 Linux PPC: LilyPond 2.12.2}
 
 @item
-@image{freebsd-logo}
+@image{logo-freebsd}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-x86/lilypond-2.12.2-1.freebsd-x86.sh,
 FreeBSD i386: LilyPond 2.12.2}
 
 @item
-@image{freebsd-logo}
+@image{logo-freebsd}
 @uref{http://download.linuxaudio.org/lilypond/binaries/freebsd-64/lilypond-2.12.2-1.freebsd-64.sh,
 FreeBSD amd64: LilyPond 2.12.2}
 
