@@ -300,6 +300,23 @@ also linked from the @strong{See also} portion.
 @node FAQ
 @unnumberedsec FAQ
 
+@warning{to be moved into the actual Documentation/ in master)}
+
+@subheading Why do you change the syntax?
+
+This is explained in @@ref@{FIXME AU x.y@}.
+
+@subheading Something isn't working!  How do I fix it?
+
+This is explained in @@ref@{FIXME LM or AU x.y@}.
+
+@subheading (maybe) Where is the graphical canvas and menus?
+
+This is explained in @ref{Text input}.
+
+
+@subheading other
+
 maybe some data from
 http://lilypond.org/web/about/faq
 but not much.  Don't repeat the intro, and mostly use links to

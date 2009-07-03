@@ -315,7 +315,28 @@ account.
 @node Help us
 @unnumberedsec Help us
 
-Blah.
+@subheading This document
+
+@subsubheading High priority / blocks release
+
+- Features page.
+
+- Examples page.  You don't even need to write texinfo; just
+  create/gather a few neat .ly files!
+
+- python: automatically insert latest version numbers into these
+  pages.  Script already exists for the old website, but might
+  (or might not!) require tweaking.
+
+- translation infrastructure.
+
+@subsubheading Low priority / may never
+
+- perl: web-texi2html.pl needs be to un-hacked; I did things
+  really messily.  Possibly even merge/share functions with
+  the doc init.pl file?
+
+- somebody to implement/work on a media=handheld CSS sheet
 
 
 @node Development
