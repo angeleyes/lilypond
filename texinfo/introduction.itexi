@@ -20,7 +20,7 @@ time on tuning spacing, moving around symbols, or shaping slurs.
 Impress friends and colleagues with sharp sheet music! 
 @div-end
 
-@div-class{column-left-bottom}
+@div-class{column-left-top}
 @subheading Why use LilyPond?
 
 @itemize
@@ -34,13 +34,24 @@ Impress friends and colleagues with sharp sheet music!
 @item
 @ref{Freedom}: LilyPond is Free Software.
 
+@end itemize
+@div-end
+
+@div-class{column-right-top}
+@subheading Who uses it?
+
+@itemize
+
+@item
+@ref{Productions}: Real-life use of LilyPond.
+
 @item
 @ref{Testimonials}: What do people say?
 
 @end itemize
 @div-end
 
-@div-class{column-right-bottom}
+@div-class{column-center-bottom}
 @subheading Why not use LilyPond?
 
 @itemize
@@ -58,8 +69,9 @@ Impress friends and colleagues with sharp sheet music!
 * Features::                    What can LilyPond do?
 * Examples::                    I want to see some music!
 * Freedom::                     Freedom and the GPL.
+* Productions::                 Real-life use of LilyPond.
 * Testimonials::                What do people say about it?
-* Text input::                  How can I write music with LilyPond?
+* Text input::                  You write music as text?!
 @end menu
 @div-end
 
@@ -320,6 +332,36 @@ If you've already decided to try LilyPond, first read about our
 @div-end
 
 
+@node Productions
+@unnumberedsec Productions
+
+@help{somebody to organize+write this section}
+
+@div-class{column-left-top}
+@subheading Concerts
+
+- Valentine's opera
+
+- Nicolas' Armide opera
+
+@div-end
+
+
+@div-class{column-right-top}
+@subheading Published sheet music
+
+- blah?
+
+@div-end
+
+
+@div-class{column-center-bottom}
+@subheading Where now?
+
+Read about our @ref{Text input}.
+@div-end
+
+
 @node Testimonials
 @unnumberedsec Testimonials
 
@@ -435,8 +477,12 @@ potential.}
 @div-class{column-center-bottom}
 @subheading Where now?
 
-Read about our @ref{Text input}.
+FIXME
+Still not convinced?  Look at some neat @ref{Examples}.  If you've
+already decided to try LilyPond, first read about our
+@ref{Text input}.
 @div-end
+
 
 
 @node Text input

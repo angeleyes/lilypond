@@ -628,16 +628,19 @@ sub generate_ly_toc_entries($$$)
         "Contact", "Tiny examples", "Bug reports"
 	);
   my @color_2 = (
-        "Features", "Examples", "Freedom", "Testimonials",
+        "Features", "Examples", "Freedom",
 	"Unix", "MacOS X", "Windows",
         "Notation Reference", "Application Usage", "Snippet List",
         "Help us", "Development", "Authors"
 	);
   my @color_3 = (
-        "Text input",
+        "Productions", "Testimonials",
 	"Source", "Download other versions",
         "FAQ", "Changes", "Internals Reference",
         "Publications", "Old news"
+        );
+  my @color_4 = (
+        "Text input"
         );
 
   my $addColor = " colorDefault";
@@ -654,6 +657,11 @@ sub generate_ly_toc_entries($$$)
   foreach $color (@color_3) {
     if ($element->{'text'} eq $color) {
       $addColor = " color3";
+    }
+  }
+  foreach $color (@color_4) {
+    if ($element->{'text'} eq $color) {
+      $addColor = " color4";
     }
   }
 

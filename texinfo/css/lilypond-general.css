@@ -179,6 +179,11 @@ div#tocframe {
   background: #ff9;
 }
 
+#tocframe .toc .toc li.color4 a {
+  text-decoration: none;
+  background: #fdf;
+}
+
 /* having this useless style makes the perl init file easier */
 #tocframe .toc .toc li.colorDefault a {
 }
@@ -194,6 +199,11 @@ div#tocframe {
 #tocframe .toc .toc li.color3 a:hover {
   background: #ee8;
 }
+
+#tocframe .toc .toc li.color4 a:hover {
+  background: #ece;
+}
+
 
 #tocframe .toc .toc li.color1.toc_current a {
   background: #dbd;
@@ -217,6 +227,14 @@ div#tocframe {
 
 #tocframe .toc .toc li.color3.toc_current a:hover {
   background: #dd7;
+}
+
+#tocframe .toc .toc li.color4.toc_current a {
+  background: #dbd;
+}
+
+#tocframe .toc .toc li.color4.toc_current a:hover {
+  background: #dbd;
 }
 
 /* third level toc (unnumberedsubsec) */
