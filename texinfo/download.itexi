@@ -296,11 +296,52 @@ For Windows ME, NT, 2000, XP, and Vista.
 
 @subsubheading Install
 
-@help{don't know}
+@enumerate
+
+@item
+Locate the downloaded file and double-click on it to start the
+installer. You will be presented a window titled @qq{Open File -
+Security Warning}, click on Run to continue.
+
+@item
+You will be presented the License Agreement, read if desired, and
+click on the Next button.
+
+@item
+Preferably leave the destination folder to the default, else
+browse to choose a different location, and click on the Next
+button.
+
+@item
+Next is the Installation Options window, leave the three options
+checked, as you will want to have all of these installed. Click
+on the Next button.
+
+@item
+Installation now commences, wait a minute or less for installation
+to complete. There is a Show Details button that when clicked on
+will show all the files installed and where, nothing you
+necessarily need to look at. Click on the Finish button.
+
+@item
+Lilypond is now installed.
+
+@end enumerate
 
 @subsubheading Uninstall
 
-@help{don't know}
+There are two uninstallation routes -
+
+@enumerate
+
+@item
+Choose Uninstall from the Lilypond menu from the start menu
+
+@item
+Open your Install/Uninstall Applications on the Control Panel,
+scroll down to Lilypond and click on the Uninstall buttom.
+
+@end enumerate
 
 @div-end
 
