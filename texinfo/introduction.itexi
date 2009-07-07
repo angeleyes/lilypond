@@ -181,28 +181,46 @@ already decided to try LilyPond, first read about our
 @node Examples
 @unnumberedsec Examples
 
-@help{hoping to delegate this.  Desired: 5-8 really great
-examples, showing really distinct uses.  i.e. not just 5 Beethoven
-samples.  Maybe 1 gregorian, 1 late romantic, 1 20th century
-academic, 1 pop/lead sheet, ...?   Also show different languages,
-mixture of ensembles, etc.  The lilypond input will be available
-if they click on the link, but we're not encouraging them to look
-at it -- go ahead and be wild in the input files.  :)}
+Lilypond is a powerful and flexible tool for engraving tasks of
+all kinds, whether you are working on a virtuoso piano work of
+the 19th century...
 
-Final resting place of the current input/*.ly ghetto.
+@image-clickable{liszt-wagner-small.png, (click to enlarge),
+liszt-wagner.png, center}
 
-Guidelines: give me png files.  Optionally, two png files per
-lilypond output.  Maximum width of 600 pixels for the "small"
-(i.e. visible on this page) pictures, and no limit on the
-"click-to-enlarge" pictures.  A few sentences about each example
-might be nice, but you don't need a lot.  "Create beautiful
-transcriptions of Gregorian chants.  See the rectangularness of
-the neumes, and the flexibility of the caesura placement". (no, I
-don't remember much from first-year music history)
+something more modern...
 
-Oh, we'll want the .ly files as well, but only for internal use
-(re-creating the pngs with later versions of lilypond).  Only
-pretty pictures on this page.  :)
+@image-clickable{modern-small.png, (click to enlarge),
+modern.png, center}
+
+a guitar score with tablature...
+
+@image-clickable{bach-tab-example-small.png, (click to enlarge),
+bach-tab-example.png, center}
+
+a bit of Schenkerian analysis...
+
+@image-float{bach-schenker.png,center}
+
+a medieval motet with voices notated in different meters..
+
+@image-clickable{aucun-snippet-small.png, (click to enlarge),
+aucun-snippet.png, center}
+
+a theory exercise...
+
+@image-float{theory-exercise.png,center}
+
+a lead sheet for a pop song...
+
+@image-clickable{chart-small.png, (click to enlarge),
+chart.png, center}
+
+or a full orchestral score.
+
+@image-float{orchestral-small.png,center}
+
+@c Final resting place of the current input/*.ly ghetto.
 
 
 @div-class{column-center-bottom}
