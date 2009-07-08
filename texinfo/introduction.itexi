@@ -184,6 +184,7 @@ already decided to try LilyPond, first read about our
 Lilypond is a powerful and flexible tool for engraving tasks of
 all kinds. Please browse our gallery of examples and be inspired!
 
+@ignore
 Here is a passage from Franz Liszt's solo piano transcription
 of the Overture to Wagner's @emph{Tannhäuser}. The spacing
 in this example was all performed by Lilypond's formatting
@@ -193,9 +194,16 @@ perfectly around all three staves.
 
 @image-clickable{liszt-wagner-small.png, (click to enlarge),
 liszt-wagner.png, center}
+@end ignore
 
-Lilypond also supports various types of ancient notation. Here
-is a piece of Gregorian chant.
+Here is a difficult passage from @emph{Goyescas: Coloquio en la
+Reja}, by Enrique Granados.
+
+@image-clickable{granados-small.png, (click to enlarge),
+granados.png, center}
+
+Lilypond also supports various types of ancient notation, such
+as this passage of Gregorian chant.
 
 @image-clickable{ancient-headword-small.png, (click to enlarge),
 ancient-headword.png, center}
