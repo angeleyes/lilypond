@@ -13,10 +13,6 @@
 
 @itemize
 
-@item @ref{Text input}:
-if you haven't read this yet, do so now!  LilyPond requires you to
-write music as text.
-
 @item @ref{Learning Manual}:
 a @qq{must-read} gentle introduction to LilyPond.
 
@@ -306,15 +302,38 @@ also linked from the @strong{See also} portion.
 
 @warning{to be moved into the actual Documentation/ in master)}
 
-@subheading Why do you change the syntax?
 
-This is explained in @@ref@{FIXME AU x.y@}.
+@subheading Where are the graphical canvas, menus, and toolbars?
+
+LilyPond requires you to write music as text.  Please read about
+our @ref{Text input}.
+
+
+@subheading There's a lot of documentation!  Do I need to read it?
+
+You need to read the @ref{Learning Manual}.  As for the rest of
+documentation, you only need to read the sections which discuss
+the notation that you wish to create.
+
+
+@subheading That's still a lot of reading!  Is it worth it?
+
+Please decide for yourself; the reasons why you might want to use
+LilyPond are given in the @ref{Introduction}.
+
 
 @subheading Something isn't working!  How do I fix it?
 
 This is explained in @@ref@{FIXME LM or AU x.y@}.
 
 
+@subheading Why do you change the syntax?
+
+This is explained in @@ref@{FIXME AU x.y@}.
+
+
+
+@smallspace
 
 @subheading other
 
