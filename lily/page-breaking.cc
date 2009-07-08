@@ -157,7 +157,6 @@ Page_breaking::Page_breaking (Paper_book *pb, Break_predicate is_break)
   system_count_ = 0;
   ragged_ = to_boolean (pb->paper_->c_variable ("ragged-bottom"));
   ragged_last_ = to_boolean (pb->paper_->c_variable ("ragged-last-bottom"));
-  page_top_space_ = robust_scm2double (pb->paper_->c_variable ("page-top-space"), 0);
   systems_per_page_ = max (0, robust_scm2int (pb->paper_->c_variable ("systems-per-page"), 0));
   max_systems_per_page_ = max (0, robust_scm2int (pb->paper_->c_variable ("max-systems-per-page"), 0));
   min_systems_per_page_ = max (0, robust_scm2int (pb->paper_->c_variable ("min-systems-per-page"), 0));
@@ -209,12 +208,6 @@ int
 Page_breaking::min_systems_per_page () const
 {
   return min_systems_per_page_;
-}
-
-Real
-Page_breaking::page_top_space () const
-{
-  return page_top_space_;
 }
 
 vsize
@@ -358,7 +351,7 @@ Page_breaking::page_height (int page_num, bool last) const
   calc_height = scm_variable_ref (calc_height);
 
   SCM height = scm_apply_1 (calc_height, page, SCM_EOL);
-  return scm_to_double (height) - page_top_space_;
+  return scm_to_double (height);
 }
 
 SCM
@@ -376,11 +369,9 @@ Page_breaking::breakpoint_property (vsize breakpoint, char const *str)
 SCM
 Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last)
 {
-  // Find the correct layout for the systems.
-  // FIXME: add page_top_space_ to the height if the first system is a title.
-  Real height = page_height (page_num, last);
-  Page_layout_problem layout (book_, systems);
-  SCM configuration = scm_is_pair (systems) ? layout.solution (height, ragged) : SCM_EOL;
+  SCM dummy_page = make_page (page_num, last);
+  Page_layout_problem layout (book_, dummy_page, systems);
+  SCM configuration = scm_is_pair (systems) ? layout.solution (ragged) : SCM_EOL;
 
   // Create a stencil for each system.
   SCM paper_systems = SCM_EOL;
@@ -394,13 +385,6 @@ Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bo
 	}
 
       paper_systems = scm_cons (paper_system, paper_systems);
-    }
-
-  // Add a space at the top of the page, if the first system is not a title.
-  if (scm_is_pair (systems) && unsmob_grob (scm_car (systems)))
-    {
-      for (SCM c = configuration; scm_is_pair (c); c = scm_cdr (c))
-	*SCM_CARLOC (c) = scm_from_double (scm_to_double (scm_car (c)) + page_top_space_);
     }
 
   // Create the page and draw it.
@@ -804,10 +788,12 @@ Page_breaking::min_page_count (vsize configuration, vsize first_page_num)
 
   cache_line_details (configuration);
 
+  // FIXME: take first-system-spacing and last-system-spacing into account when working
+  // out the printable size.
   // If the first line on a page has titles, allow them some extra space.
-  if (cached_line_details_.size ()
-      && cached_line_details_[0].compressed_nontitle_lines_count_ < cached_line_details_[0].compressed_lines_count_)
-    cur_page_height += page_top_space ();
+  //  if (cached_line_details_.size ()
+  //      && cached_line_details_[0].compressed_nontitle_lines_count_ < cached_line_details_[0].compressed_lines_count_)
+  //    cur_page_height += page_top_space ();
 
   for (vsize i = 0; i < cached_line_details_.size (); i++)
     {
@@ -828,8 +814,9 @@ Page_breaking::min_page_count (vsize configuration, vsize first_page_num)
 	  cur_spring_height = cached_line_details_[i].space_;
 	  cur_page_height = page_height (first_page_num + ret, false);
 
-	  if (cached_line_details_[i].compressed_nontitle_lines_count_ < cached_line_details_[i].compressed_lines_count_)
-	    cur_page_height += page_top_space ();
+	  // FIXME:
+	  //	  if (cached_line_details_[i].compressed_nontitle_lines_count_ < cached_line_details_[i].compressed_lines_count_)
+	  //	    cur_page_height += page_top_space ();
 	  ret++;
 	}
       else
@@ -1003,7 +990,7 @@ Page_breaking::space_systems_with_fixed_number_per_page (vsize configuration,
 							 vsize first_page_num)
 {
   Page_spacing_result res;
-  Page_spacing space (page_height (first_page_num, false), page_top_space_);
+  Page_spacing space (page_height (first_page_num, false), 0); // FIXME: page_top_space_);
   vsize line = 0;
   vsize page = 0;
   vsize page_first_line = 0;
@@ -1056,7 +1043,7 @@ Page_breaking::pack_systems_on_least_pages (vsize configuration, vsize first_pag
   Page_spacing_result res;
   vsize page = 0;
   vsize page_first_line = 0;
-  Page_spacing space (page_height (first_page_num, false), page_top_space_);
+  Page_spacing space (page_height (first_page_num, false), 0); // FIXME: page_top_space_);
 
   cache_line_details (configuration);
   for (vsize line = 0; line < cached_line_details_.size (); line++)
@@ -1158,7 +1145,7 @@ Page_breaking::finalize_spacing_result (vsize configuration, Page_spacing_result
 Page_spacing_result
 Page_breaking::space_systems_on_1_page (vector<Line_details> const &lines, Real page_height, bool ragged)
 {
-  Page_spacing space (page_height, page_top_space_);
+  Page_spacing space (page_height, 0); // FIXME: page_top_space_);
   Page_spacing_result ret;
   int line_count = 0;
 
@@ -1214,8 +1201,8 @@ Page_breaking::space_systems_on_2_pages (vsize configuration, vsize first_page_n
   vector<int> page1_status;
   vector<int> page2_status;
 
-  Page_spacing page1 (page1_height, page_top_space_);
-  Page_spacing page2 (page2_height, page_top_space_);
+  Page_spacing page1 (page1_height, 0); // FIXME: page_top_space_);
+  Page_spacing page2 (page2_height, 0); // FIXME: page_top_space_);
   int page1_line_count = 0;
   int page2_line_count = 0;
 

@@ -194,7 +194,8 @@ Page_spacer::calc_subproblem (vsize page, vsize line)
 {
   bool last = line == lines_.size () - 1;
   Page_spacing space (breaker_->page_height (page + first_page_num_, last),
-		      breaker_->page_top_space ());
+		      0);
+  // FIXME: breaker_->page_top_space ());
   Page_spacing_node &cur = state_.at (line, page);
   bool ragged = ragged_ || (ragged_last_ && last);
   int line_count = 0;

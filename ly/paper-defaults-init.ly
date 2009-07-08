@@ -42,18 +42,13 @@
 	))
     
     %% Note: these are not scaled; they are in staff-spaces.
-    between-system-spacing = #'((space . 11) (minimum-distance . 8) (padding . 1))
+    between-system-spacing = #'((space . 12) (minimum-distance . 8) (padding . 1))
     after-title-spacing = #'((space . 2) (padding . 0.5))
     before-title-spacing = #'((space . 5) (padding . 0.5))
     between-title-spacing = #'((space . 1) (padding . 0.5))
+    first-system-spacing = #'((space . 1) (padding . 0) (min-distance . 0))
+    first-system-title-spacing = #'((space . 1) (padding . 1) (min-distance . 0))
 
-    %%
-    %% Small staves are aligned so they come out on the same place on
-    %% across different pages.
-    %%
-    page-top-space = #(* 12 mm)
-
-    
     ragged-bottom = ##f
 
     %%

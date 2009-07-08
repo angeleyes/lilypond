@@ -177,9 +177,7 @@
 			 (ly:stencil-translate-axis
 			  (annotate-y-interval layout
 					      "page-top-space"
-					      (cons
-					       (- (min 0 (* dir sep))
-						  (ly:output-def-lookup layout 'page-top-space))
+					      (cons 0
 					       (min 0 (* dir sep)))
 					      #t)
 			  (+ 7 (interval-center (ly:stencil-extent head-stencil X))) X)
@@ -274,7 +272,7 @@
 					    (ly:stencil-translate stencil
 								  (cons
 								   (+ system-xoffset x)
-								   (- 0 head-height y (prop 'top-margin)))
+								   (- 0 y (prop 'top-margin)))
 								  
 								  )))))
        (add-system
