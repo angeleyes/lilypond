@@ -19,13 +19,21 @@
 #include "skyline-pair.hh"
 #include "system.hh"
 
-Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
+Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM page_scm, SCM systems)
   : bottom_skyline_ (DOWN)
 {
+  Prob *page = unsmob_prob (page_scm);
+  Stencil *head = unsmob_stencil (page->get_property ("head-stencil"));
+  Stencil *foot = unsmob_stencil (page->get_property ("foot-stencil"));
+
+  header_height_ = head ? head->extent (Y_AXIS).length () : 0;
+  footer_height_ = foot ? foot->extent (Y_AXIS).length () : 0;
+  page_height_ = robust_scm2double (page->get_property ("paper-height"), 100);
+
   // Initially, bottom_skyline_ represents the top of the page. Make
   // it solid, so that the top of the first system will be forced
   // below the top of the printable area.
-  bottom_skyline_.set_minimum_height (0);
+  bottom_skyline_.set_minimum_height (-header_height_);
 
   SCM between_system_spacing = SCM_EOL;
   SCM after_title_spacing = SCM_EOL;
@@ -45,8 +53,16 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
       after_title_spacing = paper->c_variable ("after-title-spacing");
       before_title_spacing = paper->c_variable ("before-title-spacing");
       between_title_spacing = paper->c_variable ("between-title-spacing");
-      first_system_spacing = paper->c_variable ("first-system-spacing");
       last_system_spacing = paper->c_variable ("last-system-spacing");
+      first_system_spacing = paper->c_variable ("first-system-spacing");
+      if (scm_is_pair (systems) && unsmob_prob (scm_car (systems)))
+	first_system_spacing = paper->c_variable ("first-system-title-spacing");
+
+      // Note: the page height here does _not_ reserve space for headers and
+      // footers. This is because we want to anchor the first-system-spacing
+      // spring at the _top_ of the header.
+      page_height_ -= robust_scm2double (paper->c_variable ("top-margin"), 0)
+	+ robust_scm2double (paper->c_variable ("bottom-margin"), 0);
     }
   bool last_system_was_title = false;
 
@@ -94,8 +110,20 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM systems)
   Real last_padding = 0;
   alter_spring_from_spacing_spec (last_system_spacing, &last_spring);
   read_spacing_spec (last_system_spacing, &last_padding, ly_symbol2scm ("padding"));
-  last_spring.ensure_min_distance (last_padding - bottom_skyline_.max_height ());
+  last_spring.ensure_min_distance (last_padding - bottom_skyline_.max_height () + footer_height_);
   springs_.push_back (last_spring);
+}
+
+void
+Page_layout_problem::set_header_height (Real height)
+{
+  header_height_ = height;
+}
+
+void
+Page_layout_problem::set_footer_height (Real height)
+{
+  footer_height_ = height;
 }
 
 Grob*
@@ -217,7 +245,7 @@ Page_layout_problem::append_prob (Prob *prob, Spring const& spring, Real padding
 }
 
 void
-Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
+Page_layout_problem::solve_rod_spring_problem (bool ragged)
 {
   Simple_spacer spacer;
 
@@ -244,10 +272,8 @@ Page_layout_problem::solve_rod_spring_problem (Real page_height, bool ragged)
 	}
     }
 
-  spacer.solve (page_height - bottom_padding + last_staff_iv[DOWN] - first_staff_iv[UP], ragged);
+  spacer.solve (page_height_ - bottom_padding, ragged);
   solution_ = spacer.spring_positions ();
-
-  // TODO (maybe): if it doesn't fit, try again without padding.
 }
 
 // The solution_ vector stores the position of every live VerticalAxisGroup
@@ -473,9 +499,9 @@ Page_layout_problem::distribute_loose_lines (Grob *line_before, Real before_offs
 }
 
 SCM
-Page_layout_problem::solution (Real page_height, bool ragged)
+Page_layout_problem::solution (bool ragged)
 {
-  solve_rod_spring_problem (page_height, ragged);
+  solve_rod_spring_problem (ragged);
   return find_system_offsets ();
 }
 

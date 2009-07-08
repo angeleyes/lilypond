@@ -581,7 +581,7 @@ of this staff and the center of the next staff;
 present between this staff and the next staff;
 @item @var{stretchability} -- the ease with which the stretchable
 space increases when the system to which this staff belongs is stretched.
-If this is zero, the distance to the next staff will be fixed at either
+If this is zero, the distance to the next staff will be fixed either at
 @var{space} or at @var{padding} plus the minimum distance to ensure
 there is no overlap, whichever is larger;
 @item @var{minimum-distance} -- the minimum distance to place between

@@ -393,7 +393,7 @@ Constrained_breaking::initialize ()
 			  || isnan (extent[RIGHT]))
 	    ? Interval (0, 0) : extent;
 	  line.padding_ = padding;
-	  line.space_ = space;
+	  line.space_ = space; // FIXME, line.space_ is really like stretchable padding.
 	  line.inverse_hooke_ = extent.length () + space;
 	}
     }

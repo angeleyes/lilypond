@@ -16,9 +16,11 @@
 class Page_layout_problem
 {
 public:
-  Page_layout_problem (Paper_book*, SCM systems);
+  Page_layout_problem (Paper_book*, SCM page, SCM systems);
 
-  SCM solution (Real page_height, bool ragged);
+  SCM solution (bool ragged);
+  void set_header_height (Real);
+  void set_footer_height (Real);
   static bool read_spacing_spec (SCM spec, Real* dest, SCM sym);
   static bool is_spaceable (Grob *g);
 
@@ -26,7 +28,7 @@ protected:
   void append_system (System*, Spring const&, Real padding);
   void append_prob (Prob*, Spring const&, Real padding);
 
-  void solve_rod_spring_problem (Real page_height, bool ragged);
+  void solve_rod_spring_problem (bool ragged);
   SCM find_system_offsets ();
   void distribute_loose_lines (Grob*, Real, vector<Grob*> const&, vector<Real> const&, Grob*, Real);
 
@@ -64,6 +66,9 @@ protected:
   vector<Element> elements_;
   vector<Real> solution_;
   Skyline bottom_skyline_;
+  Real page_height_;
+  Real header_height_;
+  Real footer_height_;
 };
 
 #endif /* PAGE_LAYOUT_HH */

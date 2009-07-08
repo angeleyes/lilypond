@@ -105,7 +105,6 @@ public:
   int max_systems_per_page () const;
   int min_systems_per_page () const;
   Real page_height (int page_number, bool last) const;
-  Real page_top_space () const;
   vsize system_count () const;
   Real line_count_penalty (int line_count) const;
   int line_count_status (int line_count) const;
@@ -162,7 +161,6 @@ private:
   int systems_per_page_;
   int max_systems_per_page_;
   int min_systems_per_page_;
-  Real page_top_space_;
   vsize system_count_;
 
   vector<Line_division> current_configurations_;

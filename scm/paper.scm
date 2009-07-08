@@ -19,7 +19,6 @@
 		    line-thickness
 		    line-width
 		    mm
-		    page-top-space
 		    paper-height
 		    paper-width
 		    pt
