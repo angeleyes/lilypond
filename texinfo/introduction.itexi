@@ -197,7 +197,7 @@ liszt-wagner.png, center}
 @end ignore
 
 @news-item
-@subsubheading @emph{Jesu, meine Freude}, by J.S. Bach
+@subsubheading Classical Music
 This organ work by J.S. Bach is a fairly typical engraving project
 in Lilypond.
 
@@ -206,17 +206,18 @@ excerpt), bach-bwv610.png, center}
 @news-end
 
 @news-item
-@subsubheading @emph{Goyescas: Coloquio en la Reja}, by Enrique Granados.
+@subsubheading Complex Notation
 
-This example shows some of the more advanced features of typesetting,
-including kneed beams, cross-staff stems, and voice-follow lines.
+This example from a @emph{Goyescas} by Enrique Granados shows some
+of the more advanced features of typesetting, including kneed
+beams, cross-staff stems, and voice-follow lines.
 
 @image-clickable{granados.preview.png, (click to enlarge),
 granados.png, center}
 @news-end
 
 @news-item
-@subsubheading Gregorian Chant
+@subsubheading Early Music
 Lilypond also supports various types of ancient notation, such
 as this passage of Gregorian chant.
 
@@ -255,8 +256,6 @@ bach-tab-example.png, center}
 Standard output can be modified heavily. Here someone has created
 an impressive Schenkerian analysis.
 
-@help{we need the source for this!}
-
 @image-clickable{bach-schenker.preview.png, (click to enlarge),
 bach-schenker.png, center}
 @news-end
@@ -284,8 +283,7 @@ Here is an example of a simple counterpoint exercise.
 theory.png, center}
 @news-end
 
-@help NEED BETTER POP EXAMPLE!! Also a better theory example would
-be nice.
+@help NEED BETTER POP EXAMPLE!! Also a better theory example would be nice.
 
 @news-item
 @subsubheading Popular Music

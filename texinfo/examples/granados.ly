@@ -6,6 +6,10 @@
 % Goyescas, "Coloquio en la Reja."              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\paper {
+  ragged-right = ##f
+  system-count = 1
+}
 
 csh = \change Staff = "high" 
 csm = \change Staff = "middle"
