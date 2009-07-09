@@ -1,4 +1,6 @@
 \version "2.12.0"
+\include "example-header.ily"
+
 
 \header {
  mutopiatitle = "Jesu, meine Freude"
@@ -29,8 +31,6 @@ global = {
    \time 4/4
    #(set-accidental-style 'default)
 }
-
-#(set-default-paper-size "a4" 'landscape)
 
 halsup = {
   \stemUp

@@ -1,4 +1,5 @@
 \version "2.12.0"
+\include "example-header.ily"
 
 %%********************************************************%
 % An override beam position definition using two numbers %

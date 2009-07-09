@@ -1,12 +1,5 @@
 \version "2.12.0"
-
-\paper {
-  ragged-right = ##f
-}
-
-\layout {
-%  indent = 0.5\cm
-}
+\include "example-header.ily"
 
 #(ly:set-option 'point-and-click #f)
 

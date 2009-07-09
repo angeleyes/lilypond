@@ -1,18 +1,7 @@
 \version "2.12.0"
+\include "example-header.ily"
 
 #(set-global-staff-size 15)
-\paper{
-  ragged-right=##t
-  line-width=17\cm
-  indent=0\cm
-}
-
-\layout {
-  \context { \Score
-    \override PaperColumn #'keep-inside-line = ##t
-    \override NonMusicalPaperColumn #'keep-inside-line = ##t
-  }
-}
 
 \include "gregorian.ly" 
 

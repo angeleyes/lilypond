@@ -1,15 +1,8 @@
+\version "2.12.0"
+\include "example-header.ily"
+
 % parody of modern-style piece, loosely modeled after some Schoenberg
 % piano piece. Set res to 104 dpi to get 599 pixels wide
-
-\version "2.12.0"
-
-\paper {
-  ragged-right = ##t
-}
-
-\layout {
-  indent = 0.0\cm
-}
 
 #(ly:set-option 'point-and-click #f)
 

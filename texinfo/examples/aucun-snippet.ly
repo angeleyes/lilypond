@@ -1,18 +1,13 @@
+\version "2.12.0"
+\include "example-header.ily"
+
 % Aucun ont trouvé, from Montpellier Codex
 % 
 % Put brackets in where the original has ligatures, using
 % "Analysis Brackets," and adjust the "bracket-flare" property
 % to make the ends vertical instead of slanted.
 
-\version "2.12.1"
-
-
-\paper {
-  %#(set-paper-size "letter")
-	line-width = \paper-width - 30
-	horizontal-shift = 3
-	indent = 2.5\cm
-}
+#(set-global-staff-size 15)
 
 %%%%%%%%%%% INCIPIT DEFS %%%%%%%%%%
 

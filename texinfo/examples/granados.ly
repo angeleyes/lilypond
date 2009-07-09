@@ -1,9 +1,11 @@
+\version "2.12.0"
+\include "example-header.ily"
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is a brief passage from Enrique Granados %
 % Goyescas, "Coloquio en la Reja."              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\version "2.12.0"
 
 csh = \change Staff = "high" 
 csm = \change Staff = "middle"
@@ -11,16 +13,6 @@ csl = \change Staff = "low"
 
 crmolto = \markup { \italic \large "cresc. molto" }
 appassmolto = \markup { \italic \large "appassionato molto" }
-
-\paper {
-  ragged-right = ##f
-  system-count = 1
-  #(set-paper-size "letter" 'landscape)
-}
-
-\layout {
-  indent = 0.0\cm
-}
 
 #(ly:set-option 'point-and-click #f)
 

@@ -1,6 +1,8 @@
+\version "2.11.62"
+\include "example-header.ily"
+
 % Example of Tab Polyphony from Bach Lute Suite in E Minor
 
-\version "2.11.62"
 
 
 %#(define (fret-letter-tablature-format string tuning pitch)

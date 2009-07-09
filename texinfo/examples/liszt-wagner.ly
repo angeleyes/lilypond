@@ -1,22 +1,15 @@
+\version "2.12.0"
+\include "example-header.ily"
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is a brief passage from Franz Liszt's %
 % transcription for solo piano of Wagner's   %
 % Overture to Tannhäuser.                    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\version "2.12.0"
-
 csu = \change Staff = "high" 
 csd = \change Staff = "middle"
 sempreff = \markup { \italic "sempre" \dynamic "ff" }
-
-\paper {
-  ragged-right = ##f
-}
-
-\layout {
-  indent = 0.0\cm
-}
 
 #(ly:set-option 'point-and-click #f)
 
