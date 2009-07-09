@@ -164,7 +164,7 @@ pedal = {
 \score {
    \new PianoStaff
       { \set PianoStaff.instrumentName = \markup { \large \center-column {
-          "a" "" "2 Clav." "" "e"  ""  "Pedale." } \hspace #1.3 }
+          "a" "" "2 Clav." "" "e"  ""  "Pedale." } \hspace #0.5 }
       <<
          \context Staff = right
          {

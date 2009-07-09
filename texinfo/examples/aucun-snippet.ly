@@ -1,6 +1,11 @@
 \version "2.12.0"
 \include "example-header.ily"
 
+\paper {
+%  line-width=158\mm  % produces 624 pixels
+  line-width = 143\mm  % reserve 15mm for incipit
+}
+
 % Aucun ont trouvé, from Montpellier Codex
 % 
 % Put brackets in where the original has ligatures, using
@@ -31,7 +36,7 @@ incipitTriplum = \markup{
 		s1.
     }
 	  \layout {
-		indent = 1\cm
+		%indent = 1\cm
 		  \context {\Voice
 			  \remove Ligature_bracket_engraver
 			  \consists Mensural_ligature_engraver
@@ -39,7 +44,7 @@ incipitTriplum = \markup{
 		  \context {\Staff
 		    \remove "Time_signature_engraver"
 		  }
-		  line-width=4.5\cm 
+		 line-width=5\mm
 	  }
 	}
 }
@@ -52,7 +57,7 @@ incipitMotetus = \markup{
 		s1.
 		}
 	  \layout {
-			indent = 1\cm
+		%	indent = 1\cm
 		  \context {\Voice
 			  \remove Ligature_bracket_engraver
 			  \consists Mensural_ligature_engraver
@@ -60,7 +65,7 @@ incipitMotetus = \markup{
 		  \context {\Staff
 		    \remove "Time_signature_engraver"
 		  }
-		  line-width=4.5\cm 
+		 line-width=5\mm
 	  }
 	}
 }
@@ -73,7 +78,7 @@ incipitTenor = \markup{
 		s1.*2
     }
     \layout {
-		indent = 1\cm
+		%indent = 1\cm
 		\context {\Voice
 			\remove Ligature_bracket_engraver
 			\consists Mensural_ligature_engraver
@@ -81,7 +86,7 @@ incipitTenor = \markup{
 		\context {\Staff
 		  \remove "Time_signature_engraver"
 		}
-		line-width=4.5\cm 
+		 line-width=5\mm
 }
 }
 }
@@ -106,7 +111,7 @@ incipitBassus = \markup{
 			  \remove Ligature_bracket_engraver
 			  \consists Mensural_ligature_engraver
 		  }
-		line-width=4.5\cm 
+		 line-width=5\mm
     }
   }
 }
