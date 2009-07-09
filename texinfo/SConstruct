@@ -1,0 +1,28 @@
+
+# get user environment
+import os
+env = Environment(ENV = os.environ)
+
+#
+outdir = "out"
+if not os.path.exists(outdir):
+	os.mkdir(outdir)
+
+imagesdir="images"
+examplesdir="examples"
+#
+texi2html_command = 'texi2html -I=%s -I=%s --output=%s --init-file=web-texi2html.init --split=section ' % (imagesdir, examplesdir, outdir)
+
+#
+texiBuild = Builder(action = texi2html_command + ' $SOURCE ')
+env.Append(BUILDERS = {'texiBuild' : texiBuild})
+
+
+env.texiBuild('out/lilypnod-general.html', 'lilypond-general.texi')
+
+import shutil, glob
+for dir in ('images', 'examples', 'css'):
+	tocopy = glob.glob(dir+"/*")
+	for file in tocopy:
+		shutil.copy(file, outdir)
+
