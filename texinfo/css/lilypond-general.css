@@ -289,10 +289,7 @@ div#main {
    * will cause scrollbars to appear for content
    * that is wider than the width of this div
    */
-/*     shouldn't be necessary unless there's underlying problems.
- *     -gp
   overflow: auto;
-*/
 }
 
 /* FIXME: does not work in IE<=6 */
