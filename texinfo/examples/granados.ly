@@ -5,6 +5,7 @@
 % This is a brief passage from Enrique Granados %
 % Goyescas, "Coloquio en la Reja."              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#(set-global-staff-size 14)
 
 \paper {
   ragged-right = ##f
@@ -22,7 +23,6 @@ appassmolto = \markup { \italic \large "appassionato molto" }
 
 global = {
   \time 3/4
-  #(set-global-staff-size 20)
   \set fontSize = #1
   \override Beam #'thickness = #0.5
 }
