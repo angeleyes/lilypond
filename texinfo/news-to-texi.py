@@ -11,14 +11,18 @@ old = re.sub ('\n*<br>\s*\n*', r'@*\n', old)
 #old = re.sub ('(?ms)<code>(.*?)</code>', r'@code{\1}', old)
 #old = re.sub ('(?ms)<em>(.*?)</em>', r'@emph{\1}', old)
 old = re.sub ('(?ms)<blockquote>(.*?)</blockquote>', r'@quote{\1}', old)
-old = re.sub ('(?ms)<tt>(.*?)</tt>', r'@tt{\1}', old)
+old = re.sub ('(?ms)<tt>(.*?)</tt>', r'@code{\1}', old)
 old = re.sub ('(?ms)<ul>', r'@itemize', old)
 old = re.sub ('(?ms)</ul>', r'@end itemize', old)
-old = re.sub ('(?ms)<li>(.*?)</li>', r'@item{\1}', old)
+old = re.sub ('(?ms)<li>(.*?)</li>', r'@item\n\1\n', old)
 old = re.sub ('\n*\s*<p>\s*\n*', r'\n', old)
 old = re.sub ('\n*\s*</p>\s*\n*', r'\n', old)
 old = re.sub ('\n*\s*<!--\s*\n*(.*?)\s*\n*!?-->', r'@ignore\n\1\n@end ignore', old)
 old = re.sub ('(?ms)</?font\s*.*?>', '', old)
+
+# FIXME: fix this, once we have the substitution stuff done
+#  more such rules are needed
+old = re.sub ('@DOC@', r'@@DOC@@', old)
 
 dl = re.search ('(?ms)<dl>(.*?)</dl>', old).group (1)
 items = re.findall ('(?ms)^\s*<dt>.*?</dd>', dl)
@@ -43,9 +47,9 @@ for i in items:
     body = re.sub ('(?ms)<code>(.*?)</code>', r'@code{\1}', body)
     body = re.sub ('(?ms)<em>(.*?)</em>', r'@emph{\1}', body)
     body = re.sub ('(?ms)<b>(.*?)</b>', r'@strong{\1}', body)
-    body = re.sub ('(?ms)<pre>(.*?)</pre>', r'@verbatim{\1}', body)
+    body = re.sub ('(?ms)<pre>(.*?)</pre>', r'@verbatim\n\1\n@end verbatim', body)
 
-    item =  '\n@news-item\n@subheading %(header)s\n\n%(body)s\n@news-end\n' % locals ()
+    item =  '\n@news-item\n@subheading %(header)s\n%(body)s\n@news-end\n' % locals ()
     header = '<empty>'
     print item
     texi += item
