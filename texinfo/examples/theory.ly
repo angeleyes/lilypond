@@ -31,7 +31,7 @@ bassFigures = \figuremode {
   s1*2 | s4 <6> <6 4> <7> | s1
 }
 
-\markup { "Exercise 3: Write 8th notes against the cantus firmus." }
+\markup { "Exercise 3: Write 8th notes against the given bass line." }
 
 \score {
   \new PianoStaff <<

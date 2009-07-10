@@ -441,6 +441,26 @@ If you've already decided to try LilyPond, first read about our
 @node Productions
 @unnumberedsec Productions
 
+@news-item
+@subsubheading Commercial publishing
+
+@qq{I've been using LilyPond exclusively for my fledgling music
+publishing business. Virtually without exception, every composer
+has been blown away by the quality of the engraving when presented
+with the proofs of their music about to be published. I deserve
+some of the credit for this -- I spend a lot of time tweaking
+output, especially ties (mainly in chords) -- but LilyPond gives
+me an excellent starting point, a very intuitive interface, and
+the ability to modify absolutely anything if I want to take the
+time. I'm convinced that no commercial product can come close.}
+
+-Chris
+
+Chris Snyder,
+@uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
+
+@news-end
+
 @help{somebody to organize+write this section}
 
 @div-class{column-left-top}
@@ -528,6 +548,18 @@ the most recent by "the old houses"). [..]}
 
 @qq{Lilypond is obviously the zillion-ton gorilla [of great music
 typesetting].}
+@div-end
+
+
+@div-class{testimonial-item}
+@subsubheading Chris Snyder, @uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
+
+@qq{The way that music is entered for LilyPond causes me to think in a
+more musical way - there have been times when I've been stumped as
+to how to tell Lily to engrave something, only to realize that
+even if I did get it exactly as the composer wanted, the music
+would be confusing to read.  LilyPond makes it much easier for me
+to work in my dual editor+engraver role.}
 @div-end
 
 
