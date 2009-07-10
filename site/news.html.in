@@ -880,7 +880,7 @@ This release fixes several popular bugs, among others: MIDI files
 </dd>
 
 
-<dt><b>LilyPond 2.11.9 and 2.10.9 available</b> - <em>January 3, 2007</em>
+<dt><b>LilyPond 2.11.9 and 2.10.9 available</b> - <em>January 3, 2007</em> </dt>
 
 <dd>
 This release has a couple of bugfixes, and &mdash;in 2.11.9&mdash
@@ -888,8 +888,9 @@ further improvements in the regression test suite (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_9&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="@DOC@v2.11/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.11">Download</a>)
+</dd>
 
-<dt><b>LilyPond 2.11.8 and 2.10.8 available</b> - <em>January 3, 2007</em>
+<dt><b>LilyPond 2.11.8 and 2.10.8 available</b> - <em>January 3, 2007</em></dt>
 
 <dd>
 New! Improved! With even more bugfixes!  (<a
@@ -901,19 +902,19 @@ href="install/#2.11">Download</a>)
 
 
 
-<dt><b><tt>lilypond.org</tt> auf deutsch</b> - <em>31. Dezember 2006</em>
+<dt><b><tt>lilypond.org</tt> auf deutsch</b> - <em>31. Dezember 2006</em></dt>
 
 <dd>
 Die LilyPond-Webseiten sind jetzt auch auf deutsch &uuml;bersetzt!
 </dd>
 
-<dt><b><tt>lilypond.org</tt> en español</b> - <em>December 29, 2006</em>
+<dt><b><tt>lilypond.org</tt> en español</b> - <em>December 29, 2006</em></dt>
 
 <dd>
 ¡Ya está disponible la versión en español del sitio web de LilyPond!
 </dd>
 
-<dt><b>LilyPond 2.11.7 and 2.10.7 available</b> - <em>January 1, 2007</em>
+<dt><b>LilyPond 2.11.7 and 2.10.7 available</b> - <em>January 1, 2007</em></dt>
 
 <dd>
 New! Improved! With even more bugfixes!  (<a
@@ -923,7 +924,7 @@ href="install/#2.11">Download</a>)
 
 </dd>
       
-<dt><b>LilyPond 2.11.6 available</b> - <em>December 30, 2006</em>
+<dt><b>LilyPond 2.11.6 available</b> - <em>December 30, 2006</em></dt>
 
 <dd>
 This release supports arbitrary fractional alterations, allowing 
@@ -936,17 +937,17 @@ href="install/#2.11">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.10.6 available</b> - <em>December 30, 2006</em>
+<dt><b>LilyPond 2.10.6 available</b> - <em>December 30, 2006</em></dt>
 <dd>
 New! Improved! With even more bugfixes!
 (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_6&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.10">Download</a>)
+</dd>
 
 
-
-<dt><b>LilyPond 2.11.5 available</b> - <em>December 24, 2006</em>
+<dt><b>LilyPond 2.11.5 available</b> - <em>December 24, 2006</em></dt>
 
 <dd>
 These releases complete the translation infrastructure for
@@ -958,7 +959,7 @@ href="install/#2.11">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.10.5 available</b> - <em>December 24, 2006</em>
+<dt><b>LilyPond 2.10.5 available</b> - <em>December 24, 2006</em></dt>
 <dd>
 New! Improved! With even more bugfixes!
 (<a
@@ -969,7 +970,7 @@ href="install/#2.10">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.11.4 available</b> - <em>December 21, 2006</em>
+<dt><b>LilyPond 2.11.4 available</b> - <em>December 21, 2006</em></dt>
 
 <dd>
 The vertical spacing improvements that were introduced in 2.11.0 now work
@@ -981,7 +982,7 @@ href="install/#2.11">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.11.3 available</b> - <em>December 19, 2006</em>
+<dt><b>LilyPond 2.11.3 available</b> - <em>December 19, 2006</em></dt>
 
 <dd>
 This release has <a
@@ -993,7 +994,7 @@ href="install/#2.11">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.10.3 available</b> - <em>December 19, 2006</em>
+<dt><b>LilyPond 2.10.3 available</b> - <em>December 19, 2006</em></dt>
 
 <dd>
 This release fixes several bugs.
@@ -1004,7 +1005,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_3&colspec
 </dd>
 
 
-<dt><b>LinuxPPC binaries available!</b> - <em>December 19, 2006</em>
+<dt><b>LinuxPPC binaries available!</b> - <em>December 19, 2006</em></dt>
 
 <dd>
 From now on, our GUB binary builds include support for Linux/PPC.  (<a
@@ -1013,7 +1014,7 @@ href="install/#2.10">Download</a>)
 
       
 <dt><b>Traduction du tutoriel en fran&ccedil;ais</b> -
-<em>December 13, 2006</em>
+<em>December 13, 2006</em></dt>
 
 <dd>
 Fruit du travail d'une &eacute;quipe de traducteurs, le tutoriel en
@@ -1025,7 +1026,7 @@ href="@DOC@v2.11/Documentation/user/lilypond/Tutorial.fr.html">Version
 
 </dd>
 
-<dt><b>LilyPond 2.11.2 available</b> - <em>December 12, 2006</em>
+<dt><b>LilyPond 2.11.2 available</b> - <em>December 12, 2006</em></dt>
 
 <dd>
 This release supports glissandi and harmonics in tablature.  (<a
@@ -1035,14 +1036,14 @@ href="install/#2.11">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.10.2 available</b> - <em>December 12, 2006</em> <dd>
+<dt><b>LilyPond 2.10.2 available</b> - <em>December 12, 2006</em> </dt><dd>
 A new stable release of LilyPond is available.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a href="install/#2.10">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.11.1 available</b> - <em>December 4, 2006</em>
+<dt><b>LilyPond 2.11.1 available</b> - <em>December 4, 2006</em></dt>
 
 <dd>
 This release has improved support for horizontal spacing.  (<a
@@ -1054,14 +1055,14 @@ href="install/#2.11">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.10.1 available</b> - <em>December 3, 2006</em> <dd>
+<dt><b>LilyPond 2.10.1 available</b> - <em>December 3, 2006</em></dt><dd>
 A new stable release of LilyPond is available.  (<a
 href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">Bugfixes</a>,
 <a
 href="install/#2.10">Download</a>)
+</dd>
 
-
-<dt><b>LilyPond 2.11.0 available</b> - <em>November 27, 2006</em>
+<dt><b>LilyPond 2.11.0 available</b> - <em>November 27, 2006</em></dt>
 
 <dd>
 This release has improved support for vertical spacing.  (<a
@@ -1070,7 +1071,7 @@ href="install/#2.11">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.10.0 available</b> - <em>November 11, 2006</em> <dd>
+<dt><b>LilyPond 2.10.0 available</b> - <em>November 11, 2006</em></dt><dd>
 A new stable release of LilyPond is available.  (<a
 href="announce-v2.10.html">Announcement</a>, <a
 href="@DOC@v2.10/Documentation/topdocs/NEWS.html">Changes</a>, <a
@@ -1078,7 +1079,7 @@ href="install/#2.10">Download</a>)
 
 </dd>
 
-<dt><b>GIT repository online</b> - <em>November 11, 2006</em> <dd>
+<dt><b>GIT repository online</b> - <em>November 11, 2006</em></dt><dd>
  LilyPond development has moved over its source code to <a
  href="http://git.or.cz">GIT</a>, the fast version control
  system. Check out our repository at <a
@@ -1086,7 +1087,7 @@ href="install/#2.10">Download</a>)
  </dd>
 
 
-<dt><b>LilyPond 2.9.29 available</b> - <em>November 5, 2006</em>
+<dt><b>LilyPond 2.9.29 available</b> - <em>November 5, 2006</em></dt>
 
 <dd>
 This release has many more bugfixes.  (<a
@@ -1095,7 +1096,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_29&colspec
 
 </dd>
 
-<dt><b>LilyPond 2.9.28 available</b> - <em>November 3, 2006</em>
+<dt><b>LilyPond 2.9.28 available</b> - <em>November 3, 2006</em></dt>
 
 <dd>
 This release has many more bugfixes.  (<a
@@ -1105,7 +1106,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_28&colspec
 </dd>
 
 
-<dt><b>LilyPond 2.9.27 available</b> - <em>October 28, 2006</em>
+<dt><b>LilyPond 2.9.27 available</b> - <em>October 28, 2006</em></dt>
 
 <dd>
 This release has a new <tt>FretBoards</tt> context, and some further
@@ -1118,7 +1119,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_27&colspec
 
 
 
-<dt><b>Music streams thesis available</b> - <em>October 21, 2006</em>
+<dt><b>Music streams thesis available</b> - <em>October 21, 2006</em></dt>
 
 <dd>
 The last months, Erik Sandberg has been overhauling the internals of
@@ -1131,7 +1132,7 @@ href="@IMAGES@thesis-erik-sandberg.pdf">download PDF 750k</a>)
 
 
 
-<dt><b>LilyPond 2.9.26 available</b> - <em>October 20, 2006</em>
+<dt><b>LilyPond 2.9.26 available</b> - <em>October 20, 2006</em></dt>
 
 <dd>
 This release has further bugfixes.   (<a
@@ -1139,7 +1140,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_26&colspec
 <a href="install/#2.9">Download</a>)
 </dd>
 
-<dt><b>LilyPond 2.9.25 available</b> - <em>October 18, 2006</em>
+<dt><b>LilyPond 2.9.25 available</b> - <em>October 18, 2006</em></dt>
 
 <dd>
 This release has more bugfixes; from now on, binaries are also
@@ -1150,7 +1151,7 @@ href="http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_25&colspec
 
 
 
-<dt><b>LilyPond 2.9.24 available</b> - <em>October 15, 2006</em>
+<dt><b>LilyPond 2.9.24 available</b> - <em>October 15, 2006</em></dt>
 
 <dd>
 This release has support for right hand guitar fingerings, and offers
@@ -1164,7 +1165,7 @@ href="install/#2.9">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.9.23 available</b> - <em>October 12, 2006</em>
+<dt><b>LilyPond 2.9.23 available</b> - <em>October 12, 2006</em></dt>
 
 <dd>
 This release cuts fragments of EPS directly from your finished score,
@@ -1178,7 +1179,7 @@ href="install/#2.9">Download</a>)
 
  
 
-<dt><b>LilyPond 2.9.22 available</b> - <em>October 9, 2006</em>
+<dt><b>LilyPond 2.9.22 available</b> - <em>October 9, 2006</em></dt>
 
 <dd>
 Test this release candidate for LilyPond 2.10!  (<a
@@ -1186,21 +1187,21 @@ href="install/#2.9">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.9.21 available</b> - <em>October 4, 2006</em>
+<dt><b>LilyPond 2.9.21 available</b> - <em>October 4, 2006</em></dt>
 
 <dd>
 Test this release candidate for LilyPond 2.10!  (<a
 href="install/#2.9">Download</a>)
 </dd>
 
-<dt><b>LilyPond 2.9.20 available</b> - <em>October 3, 2006</em>
+<dt><b>LilyPond 2.9.20 available</b> - <em>October 3, 2006</em></dt>
 
 <dd>
 Test this release candidate for LilyPond 2.10!  (<a
 href="install/#2.9">Download</a>)
 </dd>
       
-<dt><b>LilyPond 2.9.17 available</b> - <em>September 2, 2006</em>
+<dt><b>LilyPond 2.9.17 available</b> - <em>September 2, 2006</em></dt>
 
 <dd>
 This release fixes many bugs. Among others, MacOS X QuickTime now
@@ -1210,7 +1211,7 @@ This release fixes many bugs. Among others, MacOS X QuickTime now
 
 
  
-<dt><b>LilyPond 2.9.16 available</b> - <em>August 25, 2006</em>
+<dt><b>LilyPond 2.9.16 available</b> - <em>August 25, 2006</em></dt>
 
 <dd>
 In this release, chords may be partially tied and lyric extenders have
@@ -1220,7 +1221,7 @@ href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.9">Download</a>)
 </dd>
 
-<dt><b>LilyPond 2.9.15 available</b> - <em>August 20, 2006</em>
+<dt><b>LilyPond 2.9.15 available</b> - <em>August 20, 2006</em></dt>
 
 <dd>
 This releases fixes many bugs in the 2.9.14 release.  (<a
@@ -1229,14 +1230,14 @@ href="install/#2.8">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.8.6 available</b> - <em>August 8, 2006</em> <dd>
+<dt><b>LilyPond 2.8.6 available</b> - <em>August 8, 2006</em></dt><dd>
 This release contains a few minor bugfixes; the source tarball is also
 available.  (<a href="install/#2.8">Download</a>)
 
 </dd>
 
 
-<dt><b>LilyPond 2.9.14 available</b> - <em>August 4, 2006</em>
+<dt><b>LilyPond 2.9.14 available</b> - <em>August 4, 2006</em></dt>
 
 <dd>
 This release supports instrument name changes, dotted barlines and
@@ -1256,7 +1257,7 @@ href="install/#2.9">Download</a>)
 
 
 
-<dt><b>LilyPond 2.9.13 available</b> - <em>July 23, 2006</em>
+<dt><b>LilyPond 2.9.13 available</b> - <em>July 23, 2006</em></dt>
 
 <dd>
 This release supports doits and falls, and more tuning options for
@@ -1269,7 +1270,7 @@ href="install/#2.9">Download</a>)
 
 
 
-<dt><b>LilyPond 2.9.12 available</b> - <em>July 18, 2006</em>
+<dt><b>LilyPond 2.9.12 available</b> - <em>July 18, 2006</em></dt>
 
 <dd>
 This release supports pdftex for lilypond-book, and uses PdfTeX for
@@ -1280,7 +1281,7 @@ href="install/#2.9">Download</a>)
 
 </dd>
 
-<dt><b>LilyPond 2.9.11 available</b> - <em>July 12, 2006</em>
+<dt><b>LilyPond 2.9.11 available</b> - <em>July 12, 2006</em></dt>
 
 
 <dd>
@@ -1294,7 +1295,7 @@ href="install/#2.9">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.9.10 available</b> - <em>June 15, 2006</em>
+<dt><b>LilyPond 2.9.10 available</b> - <em>June 15, 2006</em></dt>
 <dd>
 This releases fixes a couple of  bugs in 2.9.9. 
 (<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
@@ -1302,7 +1303,7 @@ This releases fixes a couple of  bugs in 2.9.9.
 </dd>
 
 
-<dt><b>LilyPond 2.9.9 available</b> - <em>June 15, 2006</em>
+<dt><b>LilyPond 2.9.9 available</b> - <em>June 15, 2006</em></dt>
 <dd>
 This releases fixes many bugs in 2.9.8 and earlier. 
 (<a href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>,
@@ -1310,7 +1311,7 @@ This releases fixes many bugs in 2.9.8 and earlier.
 </dd>
 
 
-<dt><b>LilyPond 2.9.8 available</b> - <em>June 6, 2006</em>
+<dt><b>LilyPond 2.9.8 available</b> - <em>June 6, 2006</em></dt>
 
 <dd>
 2.9.8 has support for different spacing sections within a single
@@ -1319,7 +1320,7 @@ score, and better infrastructure for automated regression testing.
 <a href="install/#2.9">Download</a>)
 </dd>
 
-<dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em>
+<dt><b>LilyPond 2.8.4 available</b> - <em>June 4, 2006</em></dt>
 
 <dd>
 2.8.4 fixes some minor bugs, and includes a backport of the
@@ -1328,7 +1329,7 @@ infrastructure for automated regression testing.
 </dd>
 
 
-<dt><b>First test results available</b> - <em>June 4, 2006</em>
+<dt><b>First test results available</b> - <em>June 4, 2006</em></dt>
 
 <dd>
 After a week of frantic tweaking, the first automated testing results
@@ -1339,7 +1340,7 @@ glory</a> what features are broken in the development release
  </dd>
 
 
-<dt><b>LilyPond 2.9.7 available</b> - <em>May 30, 2006</em>
+<dt><b>LilyPond 2.9.7 available</b> - <em>May 30, 2006</em></dt>
 
 <dd> 2.9.7 has improvements in the formatting for figured bass, and
 includes a new framework for detecting bugs earlier, which will make
@@ -1349,7 +1350,7 @@ href="install/#2.9">Download</a>) </dd>
 </dd>
 
 
-<dt><b>LilyPond 2.9.6 available</b> - <em>May 24, 2006</em> <dd> This
+<dt><b>LilyPond 2.9.6 available</b> - <em>May 24, 2006</em></dt><dd> This
 release has new features in beam formatting: beams may now be put on
 single stems, and obey the <tt>beatGrouping</tt> property.  MusicXML
 converter.  (<a
@@ -1357,7 +1358,7 @@ href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.9">Download</a>) </dd>
 
 
-<dt><b>New essay pages!</b> - <em>May 22, 2006</em>
+<dt><b>New essay pages!</b> - <em>May 22, 2006</em></dt>
 <dd>
 
 The <em>Automated Engraving</em> essay has been updated with material
@@ -1370,7 +1371,7 @@ esthetics</a>. Happy reading!
 
 </dd>
 
-<dt><b>LilyPond 2.9.5 available</b> - <em>May 17, 2006</em>
+<dt><b>LilyPond 2.9.5 available</b> - <em>May 17, 2006</em></dt>
 <dd>
 This release supports object rotation, hairpins with circled tips,
 hairpins that run to barlines before notes and improvements in the
@@ -1380,7 +1381,7 @@ href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.9">Download</a>)
 </dd>
 
-<dt><b>LilyPond 2.9.4 available</b> - <em>May 12, 2006</em>
+<dt><b>LilyPond 2.9.4 available</b> - <em>May 12, 2006</em></dt>
 <dd>
 
 This release has support for feathered beaming, and note head styles in
@@ -1392,7 +1393,7 @@ href="install/#2.9">Download</a>)
 </dd>
 
 
-<dt><b>LilyPond 2.8.2 available</b> - <em>May 12, 2006</em>
+<dt><b>LilyPond 2.8.2 available</b> - <em>May 12, 2006</em></dt>
 
 <dd>
 This release has fixes for minor bugs and compilation issues.
@@ -1408,7 +1409,7 @@ and some cleanups of the PostScript output, courtesy David Feuer. (<a
 href="@DOC@v2.9/Documentation/topdocs/NEWS.html">Changes</a>, <a
 href="install/#2.9">Download</a>) </dd>
 
-<dt><b>FISL7.0 slides available</b> - <em>April 22, 2006</em>
+<dt><b>FISL7.0 slides available</b> - <em>April 22, 2006</em></dt>
 
 <dd> The slides for Han-Wen's talk at <a
 href="http://fisl.softwarelivre.org">FISL 7</a> are now online. (<a
@@ -1718,17 +1719,17 @@ This release has the following new features:
 <ul>
   <li> Ties in chords are also formatted using score based
 formatting. This reduces the number of collisions for ties in chords
-(feature sponsored by Steve Doonan).
+(feature sponsored by Steve Doonan).</li>
   <li>With the \tweak music function, layout objects that are directly
 connected to input may be tuned easily (feature sponsored by Sean Reed
-and Bertalan Fodor).
+and Bertalan Fodor).</li>
   <li> Generic music functions may now also be used on
 articulations and chord elements (feature sponsored by Sean Reed and
-Bertalan Fodor).
+Bertalan Fodor).</li>
   <li> Better support for MusicXML, more options for spacing Lyrics;
 it is now possible to separately specify minimum distances for normal
 and hyphenated syllables (features sponsored by Mark van den Borre and
-Bertalan Fodor.
+Bertalan Fodor.</li>
 </ul>
 (<a
 href="@DOC@v2.7/Documentation/topdocs/NEWS.html">Changes</a>,
@@ -2460,7 +2461,7 @@ href="install/#2.5">here</a>!
 	  This new stable version has support for page-layout,
 	  completely rewritten slur formatting and many other
 	  improvements. Read about them  in the <a
-	  href.="@DOC@v2.4/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
+	  href="@DOC@v2.4/Documentation/topdocs/out-www/NEWS.html">NEWS</a>
 	  file. Download from <a href="install/">here</a>.
 <p> Enjoy!
 	   
@@ -2885,7 +2886,7 @@ points.  This release is <em>experimental</em>; expect things to break!
 More info in the <a
 href="@DOC@v2.3/Documentation/topdocs/out-www/NEWS.html">release
 notes</a>.  Download <a href="install/#2.3">here</a>.
-
+    </dd>
 
       <dt>April 8, 2004</dt> <dd>A French article on the new LilyPond
       release appeared on <a
