@@ -7,8 +7,8 @@ exampledir = examples/
 all: $(outdir)
 	texi2html -I=$(imagedir) -I=$(exampledir) --output=$(outdir) --init-file=web-texi2html.init --split=section lilypond-general.texi
 	cp css/* out/
-	cp $(imagedir)/* out/
 	cp $(exampledir)/*.png out/
+	cp $(imagedir)/* out/
 
 generate-examples:
 	cd examples && make;

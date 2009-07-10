@@ -201,7 +201,7 @@ liszt-wagner.png, center}
 This organ work by J.S. Bach is a fairly typical engraving project
 in Lilypond.
 
-@image-clickable{bach-bwv610.preview.png, (click for longer
+@image-clickable{bach-bwv610-small.png, (click for longer
 excerpt), bach-bwv610.png, center}
 @news-end
 
@@ -212,7 +212,7 @@ This example from a @emph{Goyescas} by Enrique Granados shows some
 of the more advanced features of typesetting, including kneed
 beams, cross-staff stems, and voice-follow lines.
 
-@image-clickable{granados.preview.png, (click to enlarge),
+@image-clickable{granados-small.png, (click to enlarge),
 granados.png, center}
 @news-end
 
@@ -231,7 +231,7 @@ Contemporary composers find Lilypond well-suited to displaying
 unusual notation. Here is an excerpt from Trevor Bača's
 @emph{Čáry}, for unaccompanied bass flute.
 
-@image-clickable{cary.preview.png, (click to enlarge),
+@image-clickable{cary-small.png, (click to enlarge),
 cary.png, center}
 @news-end
 
@@ -304,7 +304,7 @@ Lilypond is excellent for large projects like operas or works for
 full symphony orchestra, as well. Score, parts, piano reductions,
 and conductors' scores can be produced from the same source files.
 
-@image-clickable{orchestral.preview.png, (click to enlarge),
+@image-clickable{orchestral-small.png, (click to enlarge),
 orchestral.png, center}
 @news-end
 
