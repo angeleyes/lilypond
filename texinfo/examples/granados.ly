@@ -5,10 +5,11 @@
 % This is a brief passage from Enrique Granados %
 % Goyescas, "Coloquio en la Reja."              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#(set-global-staff-size 14)
+#(set-global-staff-size 18)
 
 \paper {
   ragged-right = ##f
+  #(set-paper-size "letter" 'landscape)
   system-count = 1
 }
 

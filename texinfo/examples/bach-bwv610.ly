@@ -1,11 +1,12 @@
 \version "2.12.0"
-\include "example-header.ily"
+%\include "example-header.ily"
 
 
 \header {
  mutopiatitle = "Jesu, meine Freude"
  mutopiacomposer = "BachJS"
- mutopiaopus = "BWV 610"
+ poet = "BWV 610"
+ %mutopiaopus = "BWV 610"
  mutopiainstrument = "Organ"
  date = ""
  source = "Bach-Album, Ernst H. Wolfram (editor), 6787, C. F. Peters, Leipzig"
@@ -17,7 +18,7 @@
 
  title = "Jesu, meine Freude"
  composer = "Johann Sebastian Bach"
- opus="BWV 610"
+ %opus="BWV 610"
 
  footer = "Mutopia-2006/03/27-706"
  tagline = \markup { \override #'(box-padding . 1.0) \override #'(baseline-skip . 2.7) \box \center-column { \small \line { Sheet music from \with-url #"http://www.MutopiaProject.org" \line { \teeny www. \hspace #-1.0 MutopiaProject \hspace #-1.0 \teeny .org \hspace #0.5 } • \hspace #0.5 \italic Free to download, with the \italic freedom to distribute, modify and perform. } \line { \small \line { Typeset using \with-url #"http://www.LilyPond.org" \line { \teeny www. \hspace #-1.0 LilyPond \hspace #-1.0 \teeny .org } by \maintainer \hspace #-1.0 . \hspace #0.5 Reference: \footer } } \line { \teeny \line { This sheet music has been placed in the public domain by the typesetter, for details see: \hspace #-0.5 \with-url #"http://creativecommons.org/licenses/publicdomain" http://creativecommons.org/licenses/publicdomain } } } }
@@ -181,6 +182,7 @@ pedal = {
    \layout{}
 }
 
+%{
 \score {
    \new PianoStaff {
       \unfoldRepeats {
@@ -221,4 +223,4 @@ pedal = {
     }%}
 
 
-}
+}%}

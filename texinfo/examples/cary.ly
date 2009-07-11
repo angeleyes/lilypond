@@ -1,5 +1,6 @@
 \version "2.12.0"
-\include "example-header.ily"
+% the example header file caused the head to be chopped off
+%\include "example-header.ily"
 
 
 \header {
