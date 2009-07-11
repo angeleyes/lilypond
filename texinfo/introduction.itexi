@@ -202,7 +202,7 @@ This organ work by J.S. Bach is a fairly typical engraving project
 in Lilypond.
 
 @image-clickable{bach-bwv610-small.png, (click for longer
-excerpt), bach-bwv610.png, center}
+excerpt), bach-bwv610.preview.png, center}
 @news-end
 
 @news-item
@@ -213,7 +213,7 @@ of the more advanced features of typesetting, including kneed
 beams, cross-staff stems, and voice-follow lines.
 
 @image-clickable{granados-small.png, (click to enlarge),
-granados.png, center}
+granados.preview.png, center}
 @news-end
 
 @news-item
@@ -221,8 +221,8 @@ granados.png, center}
 Lilypond also supports various types of ancient notation, such
 as this passage of Gregorian chant.
 
-@image-clickable{ancient-headword.preview.png, (click to enlarge),
-ancient-headword.png, center}
+@image-clickable{ancient-headword-small.png, (click to enlarge),
+ancient-headword.preview.png, center}
 @news-end
 
 @news-item
@@ -232,11 +232,9 @@ unusual notation. Here is an excerpt from Trevor Bača's
 @emph{Čáry}, for unaccompanied bass flute.
 
 @image-clickable{cary-small.png, (click to enlarge),
-cary.png, center}
+cary.preview.png, center}
 @news-end
 
-@c @image-clickable{modern-small.png, (click to enlarge),
-@c modern.png, center}
 
 @help NEED BETTER TABLATURE EXAMPLE!!
 
@@ -247,8 +245,8 @@ suit any instrument that reads from tablature. Here is a passage
 from a Bach Lute Suite, with tablature generated automatically
 from the notes entered for the traditional staff.
 
-@image-clickable{bach-tab-example.preview.png, (click to enlarge),
-bach-tab-example.png, center}
+@image-clickable{bach-tab-example-small.png, (click to enlarge),
+bach-tab-example.preview.png, center}
 @news-end
 
 @news-item
@@ -256,8 +254,8 @@ bach-tab-example.png, center}
 Standard output can be modified heavily. Here someone has created
 an impressive Schenkerian analysis.
 
-@image-clickable{bach-schenker.preview.png, (click to enlarge),
-bach-schenker.png, center}
+@image-clickable{bach-schenker-small.png, (click to enlarge),
+bach-schenker.preview.png, center}
 @news-end
 
 @news-item
@@ -270,8 +268,8 @@ Lilypond handles this most elegantly. Note also the incipits with
 Vaticana style clefs, the slashed stems indicating plicated notes,
 and the ligature braces above certain groups of notes.
 
-@image-clickable{aucun-snippet.preview.png, (click to enlarge),
-aucun-snippet.png, center}
+@image-clickable{aucun-snippet-small.png, (click to enlarge),
+aucun-snippet.preview.png, center}
 @news-end
 
 @news-item
@@ -279,8 +277,8 @@ aucun-snippet.png, center}
 Lilypond is perfectly suited for educational purposes as well.
 Here is an example of a simple counterpoint exercise.
 
-@image-clickable{theory.preview.png, (click to enlarge),
-theory.png, center}
+@image-clickable{theory-small.png, (click to enlarge),
+theory.preview.png, center}
 @news-end
 
 @help NEED BETTER POP EXAMPLE!! Also a better theory example would be nice.
@@ -292,8 +290,8 @@ chord names, and fretboards. In this example you see some of the
 predefined fretboard diagrams, but these can be heavily customized
 to suit nearly any situation.
 
-@image-clickable{chart.preview.png, (click to enlarge),
-chart.png, center}
+@image-clickable{chart-small.png, (click to enlarge),
+chart.preview.png, center}
 @news-end
 
 @help NEED DIFFERENT ORCHESTRAL OR OPERA EXAMPLE?!
