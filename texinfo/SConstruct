@@ -1,28 +1,26 @@
-
-# get user environment
+# -*-python-*-
 import os
-env = Environment(ENV = os.environ)
 
-#
-outdir = "out"
-if not os.path.exists(outdir):
-	os.mkdir(outdir)
+texi_includes = ['examples', 'images']
+subdirs = texi_includes + ['css']
 
-imagesdir="images"
-examplesdir="examples"
-#
-texi2html_command = 'texi2html -I=%s -I=%s --output=%s --init-file=web-texi2html.init --split=section ' % (imagesdir, examplesdir, outdir)
+# importing whole of os.environ is a very bad idea
+env = Environment (ENV = os.environ,
+                   OUT = 'out',
+                   TEXINFO_PATH = texi_includes)
+Export ('env')
+SConscript ('builders.py')
 
-#
-texiBuild = Builder(action = texi2html_command + ' $SOURCE ')
-env.Append(BUILDERS = {'texiBuild' : texiBuild})
+env.texiBuild ('$OUT/lilypnod-general.html', 'lilypond-general.texi')
 
-
-env.texiBuild('out/lilypnod-general.html', 'lilypond-general.texi')
-
-import shutil, glob
-for dir in ('images', 'examples', 'css'):
-	tocopy = glob.glob(dir+"/*")
-	for file in tocopy:
-		shutil.copy(file, outdir)
-
+# FIXME: cannot do this simple, as images and examples contain
+# duplicate files
+UGLY_DUPLICATE_FILES_HACK = True
+if not UGLY_DUPLICATE_FILES_HACK:
+   [env.Install (env['OUT'], Glob (dir + '/*')) for dir in subdirs]
+else:
+    file_names = []
+    for dir in subdirs:
+        files = [f for f in Glob (dir + '/*') if f.name not in file_names]
+	file_names += [f.name for f in files]
+	env.Install (env['OUT'], files)
