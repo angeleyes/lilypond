@@ -1,26 +1,16 @@
 # -*-python-*-
 import os
+from site_init import *
 
 texi_includes = ['examples', 'images']
 subdirs = texi_includes + ['css']
 
 # importing whole of os.environ is a very bad idea
-env = Environment (ENV = os.environ,
-                   OUT = 'out',
-                   TEXINFO_PATH = texi_includes)
-Export ('env')
-SConscript ('builders.py')
+env = Environment (tools=['default', add_texi2html_builder],
+                   ENV=os.environ,
+                   OUT='out',
+                   TEXINFO_PATH=texi_includes)
 
+# The actual build rules
 env.texiBuild ('$OUT/lilypnod-general.html', 'lilypond-general.texi')
-
-# FIXME: cannot do this simple, as images and examples contain
-# duplicate files
-UGLY_DUPLICATE_FILES_HACK = True
-if not UGLY_DUPLICATE_FILES_HACK:
-   [env.Install (env['OUT'], Glob (dir + '/*')) for dir in subdirs]
-else:
-    file_names = []
-    for dir in subdirs:
-        files = [f for f in Glob (dir + '/*') if f.name not in file_names]
-	file_names += [f.name for f in files]
-	env.Install (env['OUT'], files)
+[env.Install (env['OUT'], Glob (dir + '/*')) for dir in subdirs]
