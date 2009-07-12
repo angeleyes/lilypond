@@ -236,6 +236,24 @@ cary.preview.png, center}
 @news-end
 
 
+@news-item
+@subsubheading Efficient, flexible creation of performance materials
+Various performance materials can be created from the same source
+code. This is an excerpt of @uref{http://nicolas.sceaux.free.fr/,
+Nicolas Sceaux's} engraving of Handel's @emph{Giulio Cesare}, in
+full score, piano-vocal reduction, and a violin part.
+
+@image-clickable{sesto-small.png, (click to enlarge),
+sesto.preview.png, center}
+
+@image-clickable{sesto-1-small.png, (click to enlarge),
+sesto-1.preview.png, center}
+
+@image-clickable{sesto-2-small.png, (click to enlarge),
+sesto-2.preview.png, center}
+
+@news-end
+
 @help NEED BETTER TABLATURE EXAMPLE!!
 
 @news-item
