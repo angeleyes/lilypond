@@ -457,34 +457,27 @@ If you've already decided to try LilyPond, first read about our
 @node Productions
 @unnumberedsec Productions
 
-@news-item
-@subsubheading Commercial publishing
-
-@qq{I've been using LilyPond exclusively for my fledgling music
-publishing business. Virtually without exception, every composer
-has been blown away by the quality of the engraving when presented
-with the proofs of their music about to be published. I deserve
-some of the credit for this -- I spend a lot of time tweaking
-output, especially ties (mainly in chords) -- but LilyPond gives
-me an excellent starting point, a very intuitive interface, and
-the ability to modify absolutely anything if I want to take the
-time. I'm convinced that no commercial product can come close.}
-
--Chris
-
-Chris Snyder,
-@uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
-
-@news-end
-
 @help{somebody to organize+write this section}
 
 @div-class{column-left-top}
 @subheading Concerts
 
-- Valentine's opera
+Lilypond engravings have been used for performances around the world.
+Some highlights:
 
-- Nicolas' Armide opera
+@emph{Affaire Étrangère}, an opera by Valentin Villenave, with
+libretto by Lewis Trondheim, premiered February 1, 2009, by
+@uref{http://www.orchestre-montpellier.com/, L'Opéra Montpellier}.
+
+@uref{http://www.mercurybaroque.org/02/02109.aspx, Mercury Baroque}'s
+performance of Lully's @emph{Armide}, May 15-16, 2009, in Houston,
+Texas (engraving by @uref{http://nicolas.sceaux.free.fr/,
+Nicolas Sceaux}).
+
+Instrumental excerpts from Rameau's @emph{Hippolyte et Aricie} at
+St. James's Church in Manhattan, May 8, 2009, by Frederick Renz
+and his ensemble @uref{http://www.earlymusicny.org/, Early Music
+New York} (engraving by Nicolas Sceaux).
 
 @div-end
 
@@ -492,7 +485,7 @@ Chris Snyder,
 @div-class{column-right-top}
 @subheading Published sheet music
 
-- blah?
+@uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
 
 @div-end
 
@@ -578,6 +571,15 @@ would be confusing to read.  LilyPond makes it much easier for me
 to work in my dual editor+engraver role.}
 @div-end
 
+@qq{I've been using LilyPond exclusively for my fledgling music
+publishing business. Virtually without exception, every composer
+has been blown away by the quality of the engraving when presented
+with the proofs of their music about to be published. I deserve
+some of the credit for this -- I spend a lot of time tweaking
+output, especially ties (mainly in chords) -- but LilyPond gives
+me an excellent starting point, a very intuitive interface, and
+the ability to modify absolutely anything if I want to take the
+time. I'm convinced that no commercial product can come close.}
 
 @div-class{testimonial-item}
 @subsubheading David Bobroff, Bass Trombone, Iceland Symphony Orchestra
