@@ -4,7 +4,7 @@
 %%%
 %%% Nicolas Sceaux <nicolas.sceaux@free.fr>
 
-\version "2.13.4"
+\version "2.12.2"
 \header {
   title = "Giulio Cesare in Egitto"
   subtitle = "Sesto: Svegliatevi nel core, furie d'un alma offesa (excerpt)"

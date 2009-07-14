@@ -16,14 +16,13 @@ clean:
 	rm -rf $(mytmp)
 
 SCALE=`for PREVIEWFILE in *preview.png ; \
-  do STEM=$$(basename "$$PREVIEWFILE" .preview.png) &&  \
+	do STEM=$$(basename "$$PREVIEWFILE" .preview.png) && \
 	pngtopnm $$PREVIEWFILE > $$STEM.pnm && \
 	pnmscale -w=600 $$STEM.pnm > $$STEM-small.pnm && \
-	pnmtopng $$STEM-small.pnm > $$STEM-small.png ; \
-	done`
+	pnmtopng $$STEM-small.pnm > $$STEM-small.png && \
+	mv "$$PREVIEWFILE" $$STEM.png ; done`
 
 previews:
 	$(SCALE)
 	rm *.pnm
-	rm *.preview.png
 

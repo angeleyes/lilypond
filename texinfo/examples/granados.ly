@@ -26,6 +26,7 @@ global = {
   \time 3/4
   \set fontSize = #1
   \override Beam #'thickness = #0.5
+  \override NoteColumn #'ignore-collision = ##t
 }
 
 upperVoiceOne = \relative c'' {
