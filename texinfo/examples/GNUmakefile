@@ -25,3 +25,5 @@ SCALE=`for PREVIEWFILE in *preview.png ; \
 previews:
 	$(SCALE)
 	rm *.pnm
+	rm *.preview.png
+
