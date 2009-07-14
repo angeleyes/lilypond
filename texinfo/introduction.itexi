@@ -465,19 +465,28 @@ If you've already decided to try LilyPond, first read about our
 Lilypond engravings have been used for performances around the world.
 Some highlights:
 
+@div-class{keep-bullets}
+@itemize
+
+@item
 @emph{Affaire Étrangère}, an opera by Valentin Villenave, with
 libretto by Lewis Trondheim, premiered February 1, 2009, by
 @uref{http://www.orchestre-montpellier.com/, L'Opéra Montpellier}.
 
+@item
 @uref{http://www.mercurybaroque.org/02/02109.aspx, Mercury Baroque}'s
 performance of Lully's @emph{Armide}, May 15-16, 2009, in Houston,
 Texas (engraving by @uref{http://nicolas.sceaux.free.fr/,
 Nicolas Sceaux}).
 
+@item
 Instrumental excerpts from Rameau's @emph{Hippolyte et Aricie} at
 St. James's Church in Manhattan, May 8, 2009, by Frederick Renz
 and his ensemble @uref{http://www.earlymusicny.org/, Early Music
 New York} (engraving by Nicolas Sceaux).
+
+@end itemize
+@div-end
 
 @div-end
 
@@ -485,7 +494,14 @@ New York} (engraving by Nicolas Sceaux).
 @div-class{column-right-top}
 @subheading Published sheet music
 
+@div-class{keep-bullets}
+@itemize
+
+@item
 @uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
+
+@end itemize
+@div-end
 
 @div-end
 
