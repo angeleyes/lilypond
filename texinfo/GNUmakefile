@@ -11,6 +11,7 @@ all: $(outdir)
 	cp $(imagedir)/*.png out/
 	cp $(imagedir)/*.jpg out/
 	mv $(outdir)/lilypond-general.html $(outdir)/index.html
+	cp ../lilypond.org.htaccess $(outdir)/.htaccess
 
 generate-examples:
 	cd examples && make;
