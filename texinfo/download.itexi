@@ -44,21 +44,12 @@ versions)
 @div-end
 
 
-
-
-
-@div-class{hide}
-@menu
-* Unix::                        
-* MacOS X::                     
-* Windows::                     
-* Source::                      
-* Download other versions::     
-@end menu
-@div-end
-
-
 @div-class{column-center-bottom}
+
+@subheading Software License
+
+LilyPond is published under the @ref{GPL, GNU General Public
+License}.
 
 @subheading Sponsors
 
@@ -83,6 +74,17 @@ acknowledged.
 @logoLegalWindows
 
 @div-end
+@div-end
+
+@div-class{hide}
+@menu
+* Unix::                        
+* MacOS X::                     
+* Windows::                     
+* Source::                      
+* Download other versions::     
+* GPL::
+@end menu
 @div-end
 
 
@@ -489,5 +491,26 @@ For an extensive listing of all versions, see our
 site}.
 
 @div-end
+
+
+@node GPL
+@unnumberedsec GPL
+
+@div-class{column-center-top}
+@subheading Software license
+
+GNU LilyPond is published under the GNU General Public License.
+An introduction to this license, and our reasons for choosing it,
+is given in @ref{Freedom}.
+
+@div-end
+
+@div-class{column-center-bottom}
+@subheading GNU General Public License version 2
+
+@include gpl-2.0.texi
+
+@div-end
+
 
 

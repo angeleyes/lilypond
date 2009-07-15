@@ -344,10 +344,10 @@ read about our @ref{Text input}.
 
 @uref{http://www.gnu.org/, GNU} LilyPond is written and maintained
 by a community of enthusiasts.  It is published under the
-@uref{http://www.gnu.org/copyleft/gpl.html, GNU General Public
-License}, giving everybody the freedom to fix, modify, and extend
-the program.  Creating beautiful music should not require hundreds
-of dollars of software!
+@ref{GPL, GNU General Public License}, giving everybody the
+freedom to fix, modify, and extend the program.  Creating
+beautiful music should not require hundreds of dollars of
+software!
 @div-end
 
 @c @div-class{column-left-top}

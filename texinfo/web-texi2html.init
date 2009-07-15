@@ -519,7 +519,8 @@ sub generate_ly_toc_entries($$$)
         "Publications", "Old news"
         );
   my @color_4 = (
-        "Text input"
+        "Text input",
+        "GPL"
         );
 
   my $addColor = " colorDefault";
