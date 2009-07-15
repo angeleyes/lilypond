@@ -257,6 +257,9 @@ Delete the LilyPond.app folder.
 @warning{If you are happy with the GUI, then please ignore these
 instructions.}
 
+FIXME: once 2.12.4 is out, delete a bunch of this -- IIRC we now
+*do* provide Python, so this stuff gets much easier.
+
 @subsubheading Using Python scripts on MacOS 10.3 or 10.4
 
 LilyPond binaries for MacOS X do not provide Python, but Python 2.4 or
