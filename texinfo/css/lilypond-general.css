@@ -742,3 +742,14 @@ div.float-right a.clickable {
 .color3 h3 {
   background: #ff9;
 }
+
+/* kill title, probably best done in the init file, though */
+h1.settitle {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  padding: 0;
+  margin: 0;
+}
+
