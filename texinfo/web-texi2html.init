@@ -603,9 +603,13 @@ sub lilypond_generate_page_toc_body($)
     my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
 #    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
 
-# FIXME: add link to main page.
-    push (@toc_entries, "<li><a href=\"index.html\">Main</a></li>\n");
-
+# FIXME: add link to main page, really hackily.
+    if ($element->{'sectionup'}) {
+        # it's not the top element
+        push (@toc_entries, "<li><a href=\"index.html\">Main</a></li>\n");
+    } else {
+        push (@toc_entries, "<li class=\"toc_current\"><a href=\"index.html\">Main</a></li>\n");
+    }
 
     my $children = $current_element->{'section_childs'};
 # FIXME: generate toc
