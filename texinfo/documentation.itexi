@@ -30,7 +30,7 @@ aesthetics of 19th century music engraving.
 
 @div-end
 
-@div-class{column-left-bottom}
+@div-class{column-left-top}
 @subheading Regular use
 
 @itemize
@@ -51,7 +51,7 @@ issues.
 @div-end
 
 
-@div-class{column-right-bottom}
+@div-class{column-right-top}
 @subheading Infrequent Use
 
 @itemize
@@ -71,6 +71,19 @@ required for constructing tweaks.
 @div-end
 
 
+@div-class{column-center-bottom}
+@subheading Other versions
+
+@itemize
+
+@item @ref{Documentation other versions}: manuals for older
+versions of LilyPond.
+
+@end itemize
+
+@div-end
+
+
 @div-class{hide}
 @menu
 * Learning Manual::             
@@ -82,7 +95,6 @@ required for constructing tweaks.
 * FAQ::                         
 * Changes::                     
 * Internals Reference::         
-* Other documentation::         
 * Documentation other versions::  
 @end menu
 
@@ -332,18 +344,6 @@ This is explained in @@ref@{FIXME LM or AU x.y@}.
 This is explained in @@ref@{FIXME AU x.y@}.
 
 
-
-@smallspace
-
-@subheading other
-
-maybe some data from
-http://lilypond.org/web/about/faq
-but not much.  Don't repeat the intro, and mostly use links to
-other parts of the docs.  PROTIP: if your faq answers anything
-directly, then it means that the rest of your docs suck.
-
-
 @node Changes
 @unnumberedsec Changes
 
@@ -371,49 +371,6 @@ them are described in this document.  Each section of the Notation
 Reference has a @b{See also} subsection, which refers to the
 generated documentation.  In the HTML document, these subsections
 have clickable links.
-
-
-
-@node Other documentation
-@unnumberedsec Other documentation
-
-@warning{to be deleted}
-
-There are a number of other sources of information which may be
-very valuable.
-
-@itemize
-
-@item @uref{http://lists.gnu.org/archive/html/lilypond-user/, The
-lilypond-user mailist archives}: this is a collection of previous
-emails sent to the user list.  Many questions have been asked
-multiple times; there is a very good chance that if you have a
-question, the answer might be found in these archives.
-
-@item @uref{http://lists.gnu.org/archive/html/lilypond-devel/, The
-lilypond-devel mailist archives}: this is a collection of previous
-emails sent to the developer's list.  The discussion here is more
-technical; if you have an advanced question about lilypond
-internals, the answer might be in these archives.
-
-@item Embedded music fragments: in all HTML documents that have
-music fragments embedded, the exact LilyPond input that was used
-to produce that image can be viewed by clicking the image.
-
-@item Init files: the location of the documentation files that are
-mentioned here can vary from system to system.  On occasion, this
-manual refers to initialization and example files.  Throughout this
-manual, we refer to input files relative to the top-directory of the
-source archive.  For example, @file{input/@/lsr/@/dirname/@/bla@/.ly}
-may refer to the file
-@file{lilypond@/2.x.y/@/input/@/lsr/@/dirname/@/bla@/.ly}.  On binary
-packages for the UNIX platform, the documentation and examples can
-typically be found somewhere below
-@file{/usr/@/share/@/doc/@/lilypond/}.  Initialization files, for
-example @file{scm/@/lily@/.scm}, or @file{ly/@/engraver@/-init@/.ly},
-are usually found in the directory @file{/usr/@/share/@/lilypond/}.
-
-@end itemize
 
 
 

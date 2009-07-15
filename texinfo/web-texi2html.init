@@ -520,7 +520,8 @@ sub generate_ly_toc_entries($$$)
         );
   my @color_4 = (
         "Text input",
-        "GPL"
+        "GPL",
+        "Documentation other versions"
         );
 
   my $addColor = " colorDefault";
