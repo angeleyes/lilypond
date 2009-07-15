@@ -17,7 +17,7 @@ parts?
 This software just does that: it prints music in the best
 traditions of classical engraving with minimum fuss.  Don't waste
 time on tuning spacing, moving around symbols, or shaping slurs.
-Impress friends and colleagues with sharp sheet music! 
+Impress friends and colleagues with sharp sheet music!
 @div-end
 
 @div-class{column-left-top}
@@ -95,7 +95,7 @@ LilyPond takes ASCII input, which you can produce in your favorite
 text editor, quickly and comfortably. No more futzing with the
 mouse. The input contains all the information, so there is no need
 to remember complex command sequences. Simply save an input for
-later reference. 
+later reference.
 
 
 @subsubheading Excellent classical engraving
@@ -113,7 +113,7 @@ Don't waste time with tweaking the output; LilyPond gets the
 formatting correct right from the start. It determines spacing by
 itself, and breaks lines and pages to provide a tight and uniform
 layout. Clashes between lyrics, notes, and chords are resolved and
-slurs and beams are sloped, automatically! 
+slurs and beams are sloped, automatically!
 
 
 @subsubheading Even better than part extraction!
@@ -160,7 +160,7 @@ LilyPond runs on all popular platforms: Linux, MacOS X, and
 Windows. LilyPond comes with a 300 page user manual and over 400
 example files. There is an active user community answering
 questions on the Lilypond user mailing list, while the development
-team makes sure that problems are solved quickly. 
+team makes sure that problems are solved quickly.
 
 
 http://lilypond.org/web/about/features
@@ -457,7 +457,7 @@ If you've already decided to try LilyPond, first read about our
 @node Productions
 @unnumberedsec Productions
 
-@help{somebody to organize+write this section}
+@help{more references to publishers who use lilypond}
 
 @div-class{column-left-top}
 @subheading Concerts
@@ -498,8 +498,9 @@ New York} (engraving by Nicolas Sceaux).
 @itemize
 
 @item
-@uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
-
+@uref{http://www.adoromusicpub.com/, Adoro Music Publishing},
+high-quality scores of sacred music, available for immediate
+download or in traditional paper format.
 @end itemize
 @div-end
 
