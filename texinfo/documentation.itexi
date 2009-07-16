@@ -72,11 +72,13 @@ required for constructing tweaks.
 
 
 @div-class{column-center-bottom}
-@subheading Other versions
+@subheading Other material
 
 @itemize
 
-@item @ref{Documentation other versions}: manuals for older
+@item @ref{Translation status}: shows 
+
+@item @ref{Manuals other versions}: manuals for older
 versions of LilyPond.
 
 @end itemize
@@ -95,7 +97,8 @@ versions of LilyPond.
 * FAQ::                         
 * Changes::                     
 * Internals Reference::         
-* Documentation other versions::  
+* Translation status::
+* Manuals other versions::  
 @end menu
 
 @div-end
@@ -374,10 +377,14 @@ have clickable links.
 
 
 
+@node Translation status
+@unnumberedsec Translation status
+
+blah
 
 
-@node Documentation other versions
-@unnumberedsec Documentation other versions
+@node Manuals other versions
+@unnumberedsec Manuals other versions
 
 Documentation for our development version can be found in
 @ref{Development}.
