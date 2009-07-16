@@ -20,5 +20,5 @@ $(outdir):
 	mkdir -p $@
 
 clean:
-	rm -rf out-www/
+	rm -rf $(outdir)
 
