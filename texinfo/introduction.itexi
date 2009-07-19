@@ -9,7 +9,7 @@
 @image-float{flat-design.png,right}
 
 The inspiration for LilyPond came when two musicians became
-annoyed annoyed with the bland and boring look of computer-printed
+annoyed with the bland and boring look of computer-printed
 sheet music.  All musicians prefer reading beautiful music, so why
 couldn't programmers write software to produce better printed
 parts?
@@ -129,7 +129,7 @@ other parts.
 
 @image-float{lilypond-book.png,right}
 
-Put fragments of music into texts with without cutting and pasting
+Put fragments of music into texts without cutting and pasting
 pictures. Integrate music into LaTeX or HTML seamlessly, or add
 music to OpenOffice.org with ooolilypond.
 
@@ -399,9 +399,9 @@ available for copying, modifications, and distribution.
 
 @div-class{color3}
 @div-class{keep-bullets}
-@subheading Why do LilyPond developers @qq{give away} for work for free?
+@subheading Why do LilyPond developers @qq{give away} their work for free?
 
-Most of us view LilyPond development as a hobby or voluteer work.
+Most of us view LilyPond development as a hobby or volunteer work.
 So this question is really asking @qq{why do people volunteer}?
 
 @itemize
@@ -412,7 +412,7 @@ work as a team!
 
 @item
 Shared goals: we all want beautiful sheet music, but few people
-have the expertis (and nobody has the time!), to create a program
+have the expertise (and nobody has the time!), to create a program
 which can handle all situations.  By working together -- one
 person improves the automatic beaming code, another person
 improves the shape of slurs, and a third person writes
@@ -581,7 +581,7 @@ typesetting].}
 @subsubheading Chris Snyder, @uref{http://www.adoromusicpub.com/, Adoro Music Publishing}
 
 @qq{The way that music is entered for LilyPond causes me to think in a
-more musical way - there have been times when I've been stumped as
+more musical way -- there have been times when I've been stumped as
 to how to tell Lily to engrave something, only to realize that
 even if I did get it exactly as the composer wanted, the music
 would be confusing to read.  LilyPond makes it much easier for me
