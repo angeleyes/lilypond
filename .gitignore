@@ -15,3 +15,4 @@ scripts/*.pyc
 site/top-news.ihtml
 site/lilypond-rss-feed.xml
 site/old-news.html
+.DS_Store
