@@ -98,7 +98,7 @@ Many distributions include LilyPond in their normal package
 system.  These versions are easier to install and uninstall than
 the generic packages, but they may be older.  If you wish to use
 our generic packages, please uninstall the official version from
-your system using the normal package manager for your distrution.
+your system using the normal package manager for your distribution.
 See your distribution's documentation about how to use their
 package manager.
 

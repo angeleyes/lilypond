@@ -332,7 +332,7 @@ account.
 
 @subsubheading Low priority / may never
 
-- perl: web-texi2html.pl needs be to un-hacked; I did things
+- perl: web-texi2html.pl needs to be un-hacked; I did things
   really messily.  Possibly even merge/share functions with
   the doc init.pl file?
 
