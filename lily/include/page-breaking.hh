@@ -110,6 +110,8 @@ public:
   int line_count_status (int line_count) const;
   bool too_many_lines (int line_count) const;
   bool too_few_lines (int line_count) const;
+  Real min_whitespace_at_top_of_page (Line_details const&) const;
+  Real min_whitespace_at_bottom_of_page (Line_details const&) const;
 
 protected:
   Paper_book *book_;
