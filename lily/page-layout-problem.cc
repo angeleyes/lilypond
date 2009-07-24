@@ -23,12 +23,19 @@ Page_layout_problem::Page_layout_problem (Paper_book *pb, SCM page_scm, SCM syst
   : bottom_skyline_ (DOWN)
 {
   Prob *page = unsmob_prob (page_scm);
-  Stencil *head = unsmob_stencil (page->get_property ("head-stencil"));
-  Stencil *foot = unsmob_stencil (page->get_property ("foot-stencil"));
+  header_height_ = 0;
+  footer_height_ = 0;
+  page_height_ = 100;
 
-  header_height_ = head ? head->extent (Y_AXIS).length () : 0;
-  footer_height_ = foot ? foot->extent (Y_AXIS).length () : 0;
-  page_height_ = robust_scm2double (page->get_property ("paper-height"), 100);
+  if (page)
+    {
+      Stencil *head = unsmob_stencil (page->get_property ("head-stencil"));
+      Stencil *foot = unsmob_stencil (page->get_property ("foot-stencil"));
+
+      header_height_ = head ? head->extent (Y_AXIS).length () : 0;
+      footer_height_ = foot ? foot->extent (Y_AXIS).length () : 0;
+      page_height_ = robust_scm2double (page->get_property ("paper-height"), 100);
+    }
 
   // Initially, bottom_skyline_ represents the top of the page. Make
   // it solid, so that the top of the first system will be forced
