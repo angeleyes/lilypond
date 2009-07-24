@@ -293,6 +293,7 @@ contained staves are connected vertically."
   \defaultchild "Staff"
   \accepts "Staff"
   \accepts "FiguredBass"
+  \accepts "Dynamics"
 }
 
 \context{
@@ -341,6 +342,31 @@ side, grouping the staves together.  The bar lines of the contained
 staves are connected vertically.  @code{StaffGroup} only consists of
 a collection of staves, with a bracket in front and spanning bar lines."
 }
+
+\context {
+  \type "Engraver_group"
+  \name Dynamics
+  \alias Voice
+  \consists "Output_property_engraver"
+  \consists "Piano_pedal_engraver"
+  \consists "Script_engraver"
+  \consists "New_dynamic_engraver"
+  \consists "Dynamic_align_engraver"
+  \consists "Text_engraver"
+  \consists "Skip_event_swallow_translator"
+  \consists "Axis_group_engraver"
+
+  pedalSustainStrings = #'("Ped." "*Ped." "*")
+  pedalUnaCordaStrings = #'("una corda" "" "tre corde")
+  \override VerticalAxisGroup #'staff-affinity = #CENTER
+  \override DynamicLineSpanner #'Y-offset = #0
+  \override TextScript #'font-size = #2
+  \override TextScript #'font-shape = #'italic
+
+  \description "Holds a single line of dynamics, which will be
+centered between the staves surrounding this context."
+}
+
 
 \context{
   \type "Engraver_group"
