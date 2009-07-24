@@ -25,7 +25,6 @@ struct Axis_group_interface
   DECLARE_SCHEME_CALLBACK (pure_height, (SCM smob, SCM start, SCM end));
   DECLARE_SCHEME_CALLBACK (calc_skylines, (SCM smob));
   DECLARE_SCHEME_CALLBACK (combine_skylines, (SCM smob));
-  DECLARE_SCHEME_CALLBACK (calc_max_stretch, (SCM smob));
   DECLARE_SCHEME_CALLBACK (print, (SCM smob));
   DECLARE_SCHEME_CALLBACK (adjacent_pure_heights, (SCM));
   DECLARE_SCHEME_CALLBACK (calc_next_staff_spacing, (SCM));

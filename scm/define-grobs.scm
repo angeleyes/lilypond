@@ -1798,7 +1798,6 @@
     (System
      . (
 	(axes . (,X ,Y))
-	(max-stretch . ,ly:axis-group-interface::calc-max-stretch)
 	(vertical-skylines . ,ly:axis-group-interface::calc-skylines)
 	(X-extent . ,ly:axis-group-interface::width)
 	(Y-extent . ,ly:axis-group-interface::height)
@@ -2181,7 +2180,6 @@
 	(adjacent-pure-heights . ,ly:axis-group-interface::adjacent-pure-heights)
 	(axes . (,Y))
 	(default-next-staff-spacing . ((space . 9) (minimum-distance . 8)))
-	(max-stretch . ,ly:axis-group-interface::calc-max-stretch)
 	(next-staff-spacing . ,ly:axis-group-interface::calc-next-staff-spacing)
 	(stencil . ,ly:axis-group-interface::print)
 	(vertical-skylines . ,ly:hara-kiri-group-spanner::calc-skylines)
