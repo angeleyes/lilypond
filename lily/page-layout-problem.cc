@@ -164,16 +164,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
 
   Real minimum_distance = up_skyline.distance (bottom_skyline_) + padding;
 
-  // If the previous system is a title, then distances should be measured
-  // relative to the top of this system, not the refpoint of its first
-  // staff.
   Spring spring_copy = spring;
-  if (elements_.size () && elements_.back ().prob)
-    {
-      Real shift = -minimum_offsets[0];
-      spring_copy.set_distance (spring_copy.distance () + shift);
-      minimum_distance += shift;
-    }
   spring_copy.ensure_min_distance (minimum_distance);
   springs_.push_back (spring_copy);
 
