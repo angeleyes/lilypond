@@ -4,7 +4,7 @@
 @unnumbered Community
 
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading Interacting with the community
 
 @itemize
@@ -20,9 +20,9 @@ discussing LilyPond.
 @ref{Bug reports}: something went wrong.
 
 @end itemize
-@div-end
+@divEnd
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Making LilyPond better
 
 @itemize
@@ -37,9 +37,9 @@ discussing LilyPond.
 @ref{Authors}: the people who made LilyPond what it is today.
 
 @end itemize
-@div-end
+@divEnd
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading Miscellaneous
 
 @itemize
@@ -51,10 +51,10 @@ discussing LilyPond.
 @ref{Old news}: an archive.
 
 @end itemize
-@div-end
+@divEnd
 
 
-@div-class{hide}
+@divClass{hide}
 @menu
 * Contact::                     
 * Tiny examples::               
@@ -65,14 +65,14 @@ discussing LilyPond.
 * Publications::                       
 * Old news::
 @end menu
-@div-end
+@divEnd
 
 
 @node Contact
 @unnumberedsec Contact
 
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading User Discussions and Help
 
 @subsubheading User mailist
@@ -109,10 +109,10 @@ be useful for others would better be posted to one of the mailing lists.
 
 @help{send mailists or forums where non-English discussion occurs.}
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading Stay Informed
 
 @subsubheading LilyPond Report
@@ -129,10 +129,10 @@ new releases.  To see what the mailist is like, browse the
 @uref{http://mail.gnu.org/archive/html/info-lilypond/,
 info-lilypond archive}.
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading Developer Discussion
 
 Most developer discussion takes place on
@@ -152,25 +152,25 @@ archives}.
 @warning{Before sending a message to the bug list, please read our
 guidelines for @ref{Bug reports}.}
 
-@div-end
+@divEnd
 
 
 
 @node Tiny examples
 @unnumberedsec Tiny examples
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading What are @qq{Tiny examples}?
 
 A tiny example is an example from which nothing can be removed.
 
 These used to be called @qq{minimal examples}.
-@div-end
+@divEnd
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Why create them?
 
-@div-class{keep-bullets}
+@divClass{keep-bullets}
 @itemize
 
 @item
@@ -190,15 +190,15 @@ attempting to create a tiny example; if you cannot replicate a
 insufficient understanding of LilyPond, not an actual bug!
 
 @end itemize
-@div-end
+@divEnd
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading How do I create them?
 
-@div-class{keep-bullets}
+@divClass{keep-bullets}
 @itemize
 
 @item
@@ -224,9 +224,9 @@ Do not use @code{\override} or @code{\set} commands unless the bug
 is about those particular commands.
 
 @end itemize
-@div-end
+@divEnd
 
-@div-end
+@divEnd
 
 
 
@@ -234,7 +234,7 @@ is about those particular commands.
 @node Bug reports
 @unnumberedsec Bug reports
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading Step 1: Known bugs
 
 If you have input that results in a crash or an erroneous output,
@@ -249,10 +249,10 @@ bug tracker,
 bug tracker.  Once an issue has been added to the tracker, feel
 free to add more information to that report.}
 
-@div-end
+@divEnd
 
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Step 2: Creating a bug report
 
 If you have discovered a bug which is not listed, please help us
@@ -278,9 +278,9 @@ Here is an example of a good bug report:
 @}
 @end example
 
-@div-end
+@divEnd
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading Step 3: Sending a bug report
 
 Once you have verified that the issue is not already known and
@@ -309,7 +309,7 @@ number is.
 You may mark the bug so that you automatically receive emails when
 any activity on the bug occurs.  This requires you have a google
 account.
-@div-end
+@divEnd
 
 
 @node Help us
@@ -343,7 +343,7 @@ account.
 @unnumberedsec Development
 
 
-@div-class{heading-center}
+@divClass{heading-center}
 @heading Development materials for LilyPond 2.13.3
 
 @warning{These are @emph{unstable development} versions.  If you
@@ -351,9 +351,9 @@ have the slighest doubt about how to use or install LilyPond, we
 urge you to use the stable @ref{Download}, and read the stable
 @ref{Documentation}.}
 
-@div-end
+@divEnd
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Download
 
 @uref{http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.13.3-1.linux-x86.sh,
@@ -412,15 +412,15 @@ FAQ-link  (? maybe?)
 Changes-link
 IR-link
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading Contributors' Guide
 
 FIXME write CG intro + links.
 
-@div-end
+@divEnd
 
 
 
@@ -442,11 +442,11 @@ http://lilypond.org/web/switch/
 @node Publications
 @unnumberedsec Publications
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 
 @subheading What we wrote
 
-@div-class{keep-bullets}
+@divClass{keep-bullets}
 @itemize
 
 @item
@@ -470,15 +470,15 @@ PDF 750k})
 
 @end itemize
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 
 @subheading What others wrote
 
-@div-class{keep-bullets}
+@divClass{keep-bullets}
 @itemize
 
 @item
@@ -558,8 +558,8 @@ issue CMS06.
 
 @end itemize
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
 @node Old news

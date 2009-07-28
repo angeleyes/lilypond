@@ -8,7 +8,7 @@ more similar to a programming language than a graphical score
 editing program.  Before downloading LilyPond, please read about
 our @ref{Text input}.}
 
-@div-class{column-left-top}
+@divClass{column-left-top}
 @subheading For users
 
 @itemize
@@ -26,9 +26,9 @@ our @ref{Text input}.}
 
 @end itemize
 
-@div-end
+@divEnd
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading For developers
 
 @itemize
@@ -41,10 +41,10 @@ our @ref{Text input}.}
 versions)
 
 @end itemize
-@div-end
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 
 @subheading Software License
 
@@ -61,7 +61,7 @@ our bandwidth.
 
 @subheading Legalese
 
-@div-class{legal}
+@divClass{legal}
 All logos and product images are copyright and trademark
 acknowledged. 
 
@@ -73,10 +73,10 @@ acknowledged.
 
 @logoLegalWindows
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
-@div-class{hide}
+@divClass{hide}
 @menu
 * Unix::                        
 * MacOS X::                     
@@ -85,13 +85,13 @@ acknowledged.
 * Download other versions::     
 * GPL::
 @end menu
-@div-end
+@divEnd
 
 
 @node Unix
 @unnumberedsec Unix
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading Generic Packages or Distribution-Specific Packages?
 
 Many distributions include LilyPond in their normal package
@@ -102,10 +102,10 @@ your system using the normal package manager for your distribution.
 See your distribution's documentation about how to use their
 package manager.
 
-@div-end
+@divEnd
 
 
-@div-class{column-left-top}
+@divClass{column-left-top}
 @subheading Generic Packages
 
 @subsubheading Download
@@ -157,10 +157,10 @@ In the shell, type:
 uninstall-lilypond
 @end example
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading Distribution-specific Packages
 
 Please use your distribution's package manager to install or
@@ -195,13 +195,13 @@ openSUSE: LilyPond 2.10.33}
 
 @end itemize
 
-@div-end
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 @subheading Legalese
 
-@div-class{legal}
+@divClass{legal}
 All logos and product images are copyright and trademark
 acknowledged.
 
@@ -209,14 +209,14 @@ acknowledged.
 
 @logoLegalFreeBSD
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
 @node MacOS X
 @unnumberedsec MacOS X
 
-@div-class{column-left-top}
+@divClass{column-left-top}
 @subheading Packages
 
 @subsubheading Download
@@ -248,10 +248,10 @@ want.
 
 Delete the LilyPond.app folder.
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading Running on the command-line
 
 @warning{If you are happy with the GUI, then please ignore these
@@ -336,27 +336,27 @@ Note that @var{path/to} will generally be @code{/Applications/}.
 
 
 
-@div-end
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 @subheading Legalese
 
-@div-class{legal}
+@divClass{legal}
 All logos and product images are copyright and trademark
 acknowledged.
 
 @logoLegalMacOSX
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
 
 @node Windows
 @unnumberedsec Windows
 
-@div-class{column-left-top}
+@divClass{column-left-top}
 @subheading Packages
 
 @subsubheading Download
@@ -421,10 +421,10 @@ scroll down to Lilypond and click on the Uninstall buttom.
 
 @end enumerate
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading Running on the command-line
 
 @warning{If you are happy with the GUI, then please ignore these
@@ -432,20 +432,20 @@ instructions.}
 
 @help{don't know}
 
-@div-end
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 @subheading Legalese
 
-@div-class{legal}
+@divClass{legal}
 All logos and product images are copyright and trademark
 acknowledged.
 
 @logoLegalWindows
 
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
 
@@ -456,20 +456,20 @@ acknowledged.
 LilyPond yourself; almost all user needs are better met with the
 pre-built version.}
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Source tarball
 
 @uref{http://download.linuxaudio.org/lilypond/sources/v2.12/lilypond-2.12.2.tar.gz,
 lilypond-2.12.2-source.tar.bz2}
 
-@div-end
+@divEnd
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading Compiling instructions
 
 Instructions are listed in @@ref@{FIXME development-install@}.
 
-@div-end
+@divEnd
 
 
 
@@ -478,42 +478,42 @@ Instructions are listed in @@ref@{FIXME development-install@}.
 @node Download other versions
 @unnumberedsec Download other versions
 
-@div-class{column-left-bottom}
+@divClass{column-left-bottom}
 @subheading Latest development version
 
 If you consider working software to be overrated, you are welcome
 to try our latest unstable version in @ref{Development}.
 
-@div-end
+@divEnd
 
-@div-class{column-right-bottom}
+@divClass{column-right-bottom}
 @subheading All versions
 
 For an extensive listing of all versions, see our
 @uref{http://download.linuxaudio.org/lilypond/binaries/, download
 site}.
 
-@div-end
+@divEnd
 
 
 @node GPL
 @unnumberedsec GPL
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading Software license
 
 GNU LilyPond is published under the GNU General Public License.
 An introduction to this license, and our reasons for choosing it,
 is given in @ref{Freedom}.
 
-@div-end
+@divEnd
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 @subheading GNU General Public License version 2
 
 @include gpl-2.0.texi
 
-@div-end
+@divEnd
 
 
 

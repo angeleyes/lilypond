@@ -4,15 +4,15 @@
 @c when you add a new item, consider moving the lowest item(s)
 @c into news-old.itexi.
 
-@news-item
+@newsItem
 @subsubheading New Website!  13 June 2009
 
 As you can see, we have a new website design.  Many thanks to
 texi2html and CSS for being so flexible!
-@news-end
+@newsEnd
 
 
-@news-item
+@newsItem
 @subsubheading Hungarian translation!  22 May 2009
 
 Elkészült a lilypond.org nagy részének magyar fordítása a LilyPond
@@ -22,16 +22,16 @@ a magyar felhasználók számára a teljes weboldal és dokumentáció
 lefordítása révén. A teljes dokumentáció lefordításához
 közreműködőket keresünk. Ha részt vennél a honosításban, küldj egy
 e-mailt a harmathdenes AT gmail.com címre!
-@news-end
+@newsEnd
 
 
-@news-item
+@newsItem
 @subsubheading LilyPond Report #15.  18 May 2009
 
 The @emph{LilyPond Report} is a short, informal opinion column
 about the LilyPond project: its team, its world, its community.
 Read it @uref{http://news.lilynet.net/The-LilyPond-Report-15,
 here}!
-@news-end
+@newsEnd
 
 

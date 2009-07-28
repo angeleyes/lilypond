@@ -16,19 +16,19 @@
 @end html
 @end macro
 
-@macro div-id {ID}
+@macro divId {ID}
 @html
 <div id="\ID\">
 @end html
 @end macro
 
-@macro div-class {CLASS}
+@macro divClass {CLASS}
 @html
 <div class="\CLASS\">
 @end html
 @end macro
 
-@macro div-end
+@macro divEnd
 @c keep the space for proper nesting of </p>
 
 @html
@@ -38,13 +38,13 @@
 
 
 @c not strictly necessary, but it makes things easier for updating news
-@macro news-item
+@macro newsItem
 @html
 <div class="news-item">
 @end html
 @end macro
 
-@macro news-end
+@macro newsEnd
 @c keep the space for proper nesting of </p>
 
 @html
@@ -55,7 +55,7 @@
 
 
 
-@macro image-clickable{IMAGE-FILE, MORE-TEXT, CLICK-FILE, POSITION}
+@macro imageClickable{IMAGE-FILE, MORE-TEXT, CLICK-FILE, POSITION}
 @html
 <div class="float-\POSITION\">
   <a class="clickable" href="\CLICK-FILE\">
@@ -67,27 +67,30 @@
 </div>
 @end html
 @ifnothtml
-@image{IMAGE-FILE}
+FIXME: broken image
+@c @image{\IMAGE-FILE\}
 @end ifnothtml
 @end macro
 
-@macro image-float{IMAGE-FILE, POSITION}
+@macro imageFloat{IMAGE-FILE, POSITION}
 @html
 <img class="float-\POSITION\" src="\IMAGE-FILE\" alt="\IMAGE-FILE\">
 @end html
 @ifnothtml
-@image{IMAGE-FILE}
+FIXME: broken image
+@c @image{\IMAGE-FILE\}
 @end ifnothtml
 @end macro
 
-@macro image-id{ID, IMAGE-FILE, ALT}
+@macro imageId{ID, IMAGE-FILE, ALT}
 @html
 <div id="\ID\">
   <img src="\IMAGE-FILE\" alt="\ALT\">
 </div>
 @end html
 @ifnothtml
-@image{IMAGE-FILE}
+FIXME: broken image
+@c @image{\IMAGE-FILE\}
 @end ifnothtml
 @end macro
 

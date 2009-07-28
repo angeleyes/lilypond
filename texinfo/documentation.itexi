@@ -3,12 +3,12 @@
 @node Documentation
 @unnumbered Manuals
 
-@div-class{heading-center}
+@divClass{heading-center}
 @heading Documentation for LilyPond 2.12.2
 
-@div-end
+@divEnd
 
-@div-class{column-center-top}
+@divClass{column-center-top}
 @subheading Introduction
 
 @itemize
@@ -28,9 +28,9 @@ aesthetics of 19th century music engraving.
 
 @end itemize
 
-@div-end
+@divEnd
 
-@div-class{column-left-top}
+@divClass{column-left-top}
 @subheading Regular use
 
 @itemize
@@ -48,10 +48,10 @@ issues.
 
 @end itemize
 
-@div-end
+@divEnd
 
 
-@div-class{column-right-top}
+@divClass{column-right-top}
 @subheading Infrequent Use
 
 @itemize
@@ -68,10 +68,10 @@ required for constructing tweaks.
 
 @end itemize
 
-@div-end
+@divEnd
 
 
-@div-class{column-center-bottom}
+@divClass{column-center-bottom}
 @subheading Other material
 
 @itemize
@@ -83,10 +83,10 @@ versions of LilyPond.
 
 @end itemize
 
-@div-end
+@divEnd
 
 
-@div-class{hide}
+@divClass{hide}
 @menu
 * Learning Manual::             
 * Music Glossary::              
@@ -101,7 +101,7 @@ versions of LilyPond.
 * Manuals other versions::  
 @end menu
 
-@div-end
+@divEnd
 
 
 @c TRANSLATORS: most of the text in this file came from

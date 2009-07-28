@@ -10,38 +10,38 @@
 @end ifnothtml
 
 
-@div-id{pageHeader}
+@divId{pageHeader}
 @heading LilyPond
 
 ... music notation for everyone
-@div-end
+@divEnd
 
-@image-id{lilylogo,double-lily-modified2.png,LilyPond logo}
+@imageId{lilylogo,double-lily-modified2.png,LilyPond logo}
 
-@div-id{quickSummary}
+@divId{quickSummary}
 @subheading What is LilyPond?
 
 LilyPond is an open-source music engraving program, devoted to
 producing the highest-quality sheet music possible.  We bring the
 aesthetics of traditionally engraved music to computer printouts.
 
-@div-class{align-right}
+@divClass{align-right}
 Read more in our @ref{Introduction}!
-@div-end
-@div-end
+@divEnd
+@divEnd
 
 
-@div-id{news}
+@divId{news}
 @include news-front.itexi
 
-@div-class{float-right}
+@divClass{float-right}
 (@ref{Old news})
-@div-end
+@divEnd
 
-@div-end
+@divEnd
 
 
-@div-id{latestVersion}
+@divId{latestVersion}
 @subheading Quick links
 
 @c TODO: javascript to detect OS and suggest download?
@@ -58,4 +58,4 @@ Read more in our @ref{Introduction}!
 
 @ref{Development, Docs 2.13.2}
 
-@div-end
+@divEnd
