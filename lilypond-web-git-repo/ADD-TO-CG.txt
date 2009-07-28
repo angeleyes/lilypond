@@ -1,0 +1,7 @@
+To update the website,
+
+1.  Run update-imported.sh.  THIS WILL KILL EVERYTHING IN imported/ !
+
+2.  (optional) rebuild examples with "make examples"
+
+
