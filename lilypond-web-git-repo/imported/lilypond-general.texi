@@ -1,0 +1,205 @@
+@c -*- coding: utf-8; mode: texinfo; -*-
+@ignore
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+@end ignore
+
+@c not happy in texi2html??!  -gp
+@c \input texinfo
+@setfilename newweb.info
+@settitle GNU LilyPond New Website
+@documentencoding UTF-8
+@documentlanguage en
+
+@include macros.itexi
+
+
+@c dunno what's necessary for good info+pdf docs.  -gp
+@c ************************************* CUT ***************
+@c @afourpaper
+
+
+@c  Keep this here, since it pertains to the direntry below.
+@ignore
+Distributions will want to install lilypond.info in postinstall, doing:
+
+    install-info --info-dir=/usr/share/info out[-www]/lilypond.info
+
+  * Prepend GNU for dir, must be unique.
+
+  * Do not list the `lilypond' node at toplevel, so that `info lilypond'
+    goes to Top.
+
+  * List all commands in direntry.
+
+@c  * lilypond: (lilypond/lilypond)Running LilyPond.      Invoking the
+@c    LilyPond  program.
+@end ignore
+
+@c FIXME: hack, again uncertain about what's actually needed. -gp
+@node Top
+@top GNU LilyPond --- Website
+@ignore
+
+@ifnottex
+@c @node Top
+@c @top GNU LilyPond --- New Website
+@chapheading The music typesetter
+@c HJJ: Info needs `@top', which is a synonym for `@unnumbered' in TeX.
+@end ifnottex
+
+
+@ifhtml
+@ifclear bigpage
+This document is also available as a
+@uref{source/Documentation/user/lilypond.pdf,PDF} and as
+@uref{source/Documentation/user/lilypond-big-page.html,one big page}.
+@end ifclear
+@ifset bigpage
+This document is also available as a
+@uref{source/Documentation/user/lilypond.pdf,PDF} and as a
+@uref{source/Documentation/user/lilypond/index.html,HTML indexed multiple pages}.
+@end ifset
+@end ifhtml
+
+
+@finalout
+
+@titlepage
+@title LilyPond
+@subtitle The music typesetter
+@titlefont{New Website}
+@author The LilyPond development team
+
+Copyright @copyright{} 1999--2008 by the authors
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
+@end quotation
+
+@vskip 20pt
+
+For LilyPond version 
+@end titlepage
+
+@copying
+Copyright @copyright{} 1999--2008 by the authors
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
+@end quotation
+@end copying
+
+@ifnottex
+This file documents GNU LilyPond.
+
+Copyright 1999--2008 by the authors
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled ``GNU
+Free Documentation License''.
+@end quotation
+@end ifnottex
+
+@ifnottex
+For more information about how this fits with the other
+
+@cindex web site
+@cindex URL
+
+More information can be found at
+@uref{http://@/www@/.lilypond@/.org/}.  The website contains on-line copies
+of this and other documentation.
+
+@end ignore
+
+@c ************************************* CUT END ***************
+
+
+@div-id{pageHeader}
+@heading LilyPond
+
+... music notation for everyone
+@div-end
+
+@image-id{lilylogo,double-lily-modified2.png,LilyPond logo}
+
+@div-id{quickSummary}
+@subheading What is LilyPond?
+
+LilyPond is an open-source music engraving program, devoted to
+producing the highest-quality sheet music possible.  We bring the
+aesthetics of traditionally engraved music to computer printouts.
+
+@div-class{align-right}
+Read more in our @ref{Introduction}!
+@div-end
+@div-end
+
+
+@div-id{news}
+@include news-front.itexi
+
+@div-class{float-right}
+(@ref{Old news})
+@div-end
+
+@div-end
+
+
+@div-id{latestVersion}
+@subheading Quick links
+
+@c TODO: javascript to detect OS and suggest download?
+
+@subsubheading Stable
+
+@ref{Download, Download 2.12.3}
+
+@ref{Documentation, Docs 2.12.3}
+
+@subsubheading Unstable
+
+@ref{Development, Download 2.13.2}
+
+@ref{Development, Docs 2.13.2}
+
+@div-end
+
+
+@div-class{hide}
+@menu
+* Introduction::     Start here to creating sheet music.
+* Download::         Get LilyPond.
+* Documentation::    RTFM.
+* Community::        Contact other users.
+@end menu
+@div-end
+@c @end ifnottex
+
+@contents
+
+
+@include introduction.itexi
+@include download.itexi
+@include documentation.itexi
+@include community.itexi
+
+@bye
+
