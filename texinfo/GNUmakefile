@@ -14,7 +14,7 @@ all: $(outdir)
 	cp ../lilypond.org.htaccess $(outdir)/.htaccess
 
 generate-examples:
-	cd examples && make;
+	cd examples && make DEST=.
 
 $(outdir):
 	mkdir -p $@
