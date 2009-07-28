@@ -12,7 +12,7 @@ all: $(outdir)
 	mv $(outdir)/lilypond-general.html $(outdir)/index.html
 	cp lilypond.org.htaccess $(outdir)/.htaccess
 
-generate-examples:
+examples:
 	cd imported/examples && make DEST=../../generated-examples
 
 $(outdir):

@@ -1,7 +1,31 @@
-To update the website,
+Things you can do in this "web repo":
 
-1.  Run update-imported.sh.  THIS WILL KILL EVERYTHING IN imported/ !
 
-2.  (optional) rebuild examples with "make examples"
+UPDATE TEXINFO SOURCE
+
+1.  Run scripts/update-imported.sh.  THIS WILL KILL EVERYTHING IN
+  imported/ !
+  never, never edit anything inside imported/.  Edit
+  those files in master instead!
+
+2.  Check git-diff -- are all those changes good?
+
+3.  If the changes are good, then commit them.
+
+
+REBUILD EXAMPLES
+
+1.  (optional, very infrequent) rebuild examples with "make examples"
+
+2.  Check the output carefully -- do all the Examples still look good?
+
+3.  If yes, commit them.  If no, investigate when the regression.
+
+
+FIX SCRIPTS
+
+1. scripts/ is the only sub-directory you should manually modify;
+  it contains the "get changes from master" script, the "write
+  version numbers + links + etc" script, and ...?
 
 
