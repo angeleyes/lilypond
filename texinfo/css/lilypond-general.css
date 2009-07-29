@@ -5,12 +5,13 @@ html {
 }
 
 body {
-  width: 100%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  top: 5%;
   font-size: 95%;
   line-height: 1.5;
-  background: url(background-image.png) no-repeat top left;
-  padding: 0;
-  margin: 0;
+  background: url(background-image.png) no-repeat 0 0;
   text-align: justify;
 }
 
@@ -40,12 +41,16 @@ a img {
 div#tocframe {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5%;
+  right: 0%;
   width: 100%;
-  background: #ceffae;
+  background: #acdd8c;
+//  background: #ffffff;
   font-size: 95%;
   padding: 0;
+//  padding-top: 20px;
   margin: 0;
+  margin-top: 0;
 }
 
 #tocframe a {
@@ -60,21 +65,35 @@ div#tocframe {
 
 #tocframe > ul:first-child > li:first-child a {
   text-indent: -999em;
-  background: #ceffae url(lily-home.png) no-repeat 50% 50%;
+  background: #9ccc7c url(lily-home.png) no-repeat 50% 50%;
+  width: 5%;
+  // css3 no go yet?
+  border-bottom-left-radius: 30px;
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-radius-bottomleft: 7px;
 }
 
 #tocframe > ul:first-child > li:first-child a:hover {
   background: #bdee9d url(lily-home.png) no-repeat 50% 50%;
+  width: 5%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a {
   text-indent: -999em;
-  background: #acdd8c url(lily-home.png) no-repeat 50% 50%;
+  background: #8cbc6c url(lily-home.png) no-repeat 50% 50%;
+  width: 5%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a:hover {
   text-indent: -999em;
   background: #acdd8c url(lily-home.png) no-repeat 50% 50%;
+  width: 5%;
+}
+
+#tocframe > ul:first-child > li:last-child {
+  width: 5%;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-radius-bottomright: 7px;
 }
 
 #tocframe li {
@@ -88,27 +107,35 @@ div#tocframe {
   float: left;
   width: 17%;
   height: 1.5em;
-  padding: 0.6em 1.1%;
+  padding: 0.25em 0.8%;
   margin: 0;
+  background: #9ccc7c;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-radius-bottomright: 7px;
 }
 
 #tocframe li form input {
   display: inline;
-  width: 100%;
+  width: 95%;
   font-size: 95%;
-  padding: 0.2em;
+  padding: 0.1em;
   border: 1px solid #acdd8c;
   margin: auto 0;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -webkit-border-radius-topright: 20px;
+  -webkit-border-radius-bottomright: 20px;
 }
 
 #tocframe li a {
   float: left;
   width: 16%;
-  line-height: 3;
+  line-height: 2;
   text-align: center;
   font-weight: bold;
   padding: 0;
   margin: 0;
+  background: #9ccc7c;
 }
 
 #tocframe li a:hover {
@@ -118,7 +145,7 @@ div#tocframe {
 
 #tocframe li.toc_current a,
 #tocframe li.toc_current a:hover {
-  background: #acdd8c;
+  background: #8cbc6c;
   text-decoration: none;
 }
 
@@ -127,7 +154,7 @@ div#tocframe {
 #tocframe .toc .toc {
   position: absolute;
   top: 3.3em;
-  left: 0;
+  left: 5%;
   font-size: 90%;
   padding: 0;
   margin: 0;
@@ -137,6 +164,20 @@ div#tocframe {
   display: inline;
   padding: 0;
   margin: 0;
+}
+
+#tocframe .toc .toc li:first-child a {
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-radius-topleft: 7px;
+  -webkit-border-radius-bottomleft: 7px;
+}
+
+#tocframe .toc .toc li:last-child a {
+  -moz-border-radius-topright: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-radius-topright: 7px;
+  -webkit-border-radius-bottomright: 7px;
 }
 
 #tocframe .toc .toc li a {
@@ -151,8 +192,9 @@ div#tocframe {
   margin: 0;
 }
 
+
 #tocframe .toc .toc li.toc_current a {
-  background: #acdd8c;
+  background: #8cbc6c;
 }
 
 #tocframe .toc .toc li.toc_current a:hover {
@@ -166,22 +208,22 @@ div#tocframe {
 /* colored second-level TOC items */
 #tocframe .toc .toc li.color1 a {
   text-decoration: none;
-  background: #fdf;
+  background: #9ccc7c;
 }
 
 #tocframe .toc .toc li.color2 a {
   text-decoration: none;
-  background: #cfe;
+  background: #acdd8c;
 }
 
 #tocframe .toc .toc li.color3 a {
   text-decoration: none;
-  background: #ff9;
+  background: #ceffae;
 }
 
 #tocframe .toc .toc li.color4 a {
   text-decoration: none;
-  background: #fd9;/*fdf*/
+  background: #eeffce;
 }
 
 /* having this useless style makes the perl init file easier */
@@ -242,7 +284,7 @@ div#tocframe {
 #tocframe .toc .toc .toc {
   position: absolute;
   top: 2em;
-  left: 0;
+  left: 5%;
   font-size: 100%;
 }
 
@@ -280,7 +322,7 @@ div#main {
   position: relative;
   /* this value may need to be adjusted */
   top: 7.7em;
-  left: 0;
+  left: 2%;
   width: 92%;
   min-width: 34em;
   max-width: 70em;
@@ -424,7 +466,7 @@ div#footer {
 div#language {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5%;
   right: 50%;
   width: 50%;
   text-indent: 0.5em;
@@ -566,7 +608,7 @@ div.float-right a.clickable {
 /* color1 */
 .column-center-top h3,
 .column-center-bottom h3 {
-  background: #fdf;
+  background: #9ccc7c;
   text-align: left;
 }
 
@@ -586,7 +628,7 @@ div.float-right a.clickable {
 /* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
-  background: #cfe;
+  background: #acdd8c;
 }
 
 .column-right-top {
@@ -604,7 +646,7 @@ div.float-right a.clickable {
 /* color3 */
 .column-right-top h3,
 .column-right-bottom h3 {
-  background: #ff9;
+  background: #ceffae;
 }
 
 .column-center-top,
@@ -736,11 +778,11 @@ div.float-right a.clickable {
 
 /* used on Introduction->Freedom page */
 .color2 h3 {
-  background: #cfe;
+  background: #acdd8c;
 }
 
 .color3 h3 {
-  background: #ff9;
+  background: #ceffae;
 }
 
 /* kill title, probably best done in the init file, though */
