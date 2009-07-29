@@ -5,7 +5,7 @@
 @c into news-old.itexi.
 
 @newsItem
-@subsubheading New Website!  13 June 2009
+@subsubheading New Website!  @emph{13 June 2009}
 
 As you can see, we have a new website design.  Many thanks to
 texi2html and CSS for being so flexible!
@@ -13,7 +13,7 @@ texi2html and CSS for being so flexible!
 
 
 @newsItem
-@subsubheading Hungarian translation!  22 May 2009
+@subsubheading Hungarian translation!  @emph{22 May 2009}
 
 Elkészült a lilypond.org nagy részének magyar fordítása a LilyPond
 honosítási projekt első lépéseként. A projekt célja a LilyPond
@@ -26,7 +26,7 @@ e-mailt a harmathdenes AT gmail.com címre!
 
 
 @newsItem
-@subsubheading LilyPond Report #15.  18 May 2009
+@subsubheading LilyPond Report #15.  @emph{18 May 2009}
 
 The @emph{LilyPond Report} is a short, informal opinion column
 about the LilyPond project: its team, its world, its community.
