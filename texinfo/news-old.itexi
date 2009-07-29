@@ -389,10 +389,9 @@ dynamics engravers.  Support for slur-shaped arpeggios has been added.
 A RSS feed is now available on lilypond.org.  It contains all
 news announced on the web site start page: releases, LilyPond
 report, new translations of the site and publications.
-@uref{http://lilypond.org/web/lilypond-rss-feed.xml,Feed
-URL}.
-The mailing list @uref{http://mail.gnu.org/mailman/listinfo/info-lilypond,info-lilypond}
-is still used to announce releases and special events.
+@uref{http://lilypond.org/web/lilypond-rss-feed.xml,Feed URL}.
+The info mailing list (see @ref{Contact}) is still used to
+announce releases and special events.
 
 @newsEnd
 
