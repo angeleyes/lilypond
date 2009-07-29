@@ -1,9 +1,9 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
-@c This file is part of news.texi
+@c This file is part of community.itexi
 
-@c FIXME: when a new stable comes out, change the
-@c  @ref{Download} => @ref{Download other versions}
-@c  @ref{Development} => @ref{Download}
+@c FIXME: add to CG: when a new stable comes out, change the
+@c   @ref{Download} => @ref{Download other versions}
+@c   @ref{Development} => @ref{Download}
 
 
 @newsItem
