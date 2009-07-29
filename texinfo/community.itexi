@@ -321,9 +321,6 @@ account.
 
 - Features page.
 
-- Examples page.  You don't even need to write texinfo; just
-  create/gather a few neat .ly files!
-
 - python: automatically insert latest version numbers into these
   pages.  Script already exists for the old website, but might
   (or might not!) require tweaking.
