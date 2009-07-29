@@ -5,14 +5,19 @@ html {
 }
 
 body {
-  left: 5%;
-  right: 5%;
-  width: 90%;
-  top: 5%;
+  position: absolute;
+  top: 0;
+  left: 3%;
+  right: 3%;
+  width: 94%;
+  min-width: 34em;
+  max-width: 70em;
   font-size: 95%;
   line-height: 1.5;
   background: url(background-image.png) no-repeat 0 0;
   text-align: justify;
+  padding: 0;
+  margin: 0 auto;
 }
 
 hr {
@@ -41,16 +46,18 @@ a img {
 div#tocframe {
   position: absolute;
   top: 0;
-  left: 5%;
-  right: 0%;
-  width: 100%;
-  background: #acdd8c;
-//  background: #ffffff;
-  font-size: 95%;
+  left: 0;
+  right: 0;
+  background: #9ccc7c;
+  max-width: 70em;
+  font-size: 100%;
+  line-height: 1;
   padding: 0;
-//  padding-top: 20px;
+  -moz-border-radius-bottomleft: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-left-radius: 7px;
+  -webkit-border-bottom-right-radius: 7px;
   margin: 0;
-  margin-top: 0;
 }
 
 #tocframe a {
@@ -66,34 +73,34 @@ div#tocframe {
 #tocframe > ul:first-child > li:first-child a {
   text-indent: -999em;
   background: #9ccc7c url(lily-home.png) no-repeat 50% 50%;
-  width: 5%;
-  // css3 no go yet?
+  width: 9%;
+  /* css3 no go yet? */
   border-bottom-left-radius: 30px;
   -moz-border-radius-bottomleft: 7px;
-  -webkit-border-radius-bottomleft: 7px;
+  -webkit-border-bottom-left-radius: 7px;
 }
 
 #tocframe > ul:first-child > li:first-child a:hover {
   background: #bdee9d url(lily-home.png) no-repeat 50% 50%;
-  width: 5%;
+  width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a {
   text-indent: -999em;
   background: #8cbc6c url(lily-home.png) no-repeat 50% 50%;
-  width: 5%;
+  width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a:hover {
   text-indent: -999em;
   background: #acdd8c url(lily-home.png) no-repeat 50% 50%;
-  width: 5%;
+  width: 9%;
 }
 
 #tocframe > ul:first-child > li:last-child {
-  width: 5%;
+  width: 9%;
   -moz-border-radius-bottomright: 7px;
-  -webkit-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
 }
 
 #tocframe li {
@@ -106,34 +113,32 @@ div#tocframe {
 #tocframe li form {
   float: left;
   width: 17%;
-  height: 1.5em;
+  background: #9ccc7c;
+  font-size: 100%;
   padding: 0.25em 0.8%;
   margin: 0;
-  background: #9ccc7c;
-  -moz-border-radius-bottomright: 7px;
-  -webkit-border-radius-bottomright: 7px;
 }
 
 #tocframe li form input {
-  display: inline;
+  display: block;
+  float: left;
   width: 95%;
-  font-size: 95%;
+  font-size: 100%;
   padding: 0.1em;
-  border: 1px solid #acdd8c;
-  margin: auto 0;
+  border: 0;
+  margin: 0;
   -moz-border-radius-topright: 20px;
   -moz-border-radius-bottomright: 20px;
-  -webkit-border-radius-topright: 20px;
-  -webkit-border-radius-bottomright: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
 }
 
 #tocframe li a {
   float: left;
-  width: 16%;
-  line-height: 2;
+  width: 18%;
   text-align: center;
   font-weight: bold;
-  padding: 0;
+  padding: 0.5em 0;
   margin: 0;
   background: #9ccc7c;
 }
@@ -155,7 +160,8 @@ div#tocframe {
   position: absolute;
   top: 3.3em;
   left: 5%;
-  font-size: 90%;
+  right: 5%;
+  font-size: 85%;
   padding: 0;
   margin: 0;
 }
@@ -169,15 +175,15 @@ div#tocframe {
 #tocframe .toc .toc li:first-child a {
   -moz-border-radius-topleft: 7px;
   -moz-border-radius-bottomleft: 7px;
-  -webkit-border-radius-topleft: 7px;
-  -webkit-border-radius-bottomleft: 7px;
+  -webkit-border-top-left-radius: 7px;
+  -webkit-border-bottom-left-radius: 7px;
 }
 
 #tocframe .toc .toc li:last-child a {
   -moz-border-radius-topright: 7px;
   -moz-border-radius-bottomright: 7px;
-  -webkit-border-radius-topright: 7px;
-  -webkit-border-radius-bottomright: 7px;
+  -webkit-border-top-right-radius: 7px;
+  -webkit-border-bottom-right-radius: 7px;
 }
 
 #tocframe .toc .toc li a {
@@ -322,9 +328,12 @@ div#main {
   position: relative;
   /* this value may need to be adjusted */
   top: 7.7em;
-  left: 2%;
-  width: 92%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  /*
   min-width: 34em;
+  */
   max-width: 70em;
   margin: 0 auto 11.7em;
   /* Necessary to stretch over floated content;
@@ -466,7 +475,7 @@ div#footer {
 div#language {
   position: absolute;
   top: 0;
-  left: 5%;
+  left: 0;
   right: 50%;
   width: 50%;
   text-indent: 0.5em;
