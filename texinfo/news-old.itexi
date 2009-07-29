@@ -1,6 +1,10 @@
 @c -*- coding: utf-8; mode: texinfo; -*-
 @c This file is part of news.texi
 
+@c FIXME: when a new stable comes out, change the
+@c  @ref{Download} => @ref{Download other versions}
+@c  @ref{Development} => @ref{Download}
+
 
 @newsItem
 @subsubheading LilyPond 2.13.3.  @emph{July 2, 2009}
@@ -14,8 +18,8 @@ We are planning another 2.12 release in the next week or two,
 which will include the menu fixes for OSX 10.5.  Normal users may
 wish to wait for this release rather than using an unstable
 release.@*
-@uref{@@DOC@@v2.13/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.13,Download}.
+@ref{Changes},
+@ref{Development}.
 
 @newsEnd
 
@@ -73,8 +77,8 @@ now 2.12.2, and the next development version has begun with
 A new stable release of LilyPond is available.
 @*
 @uref{announce-v2.12,Announcement},
-@uref{@@DOC@@v2.12/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.12,Download}.
+@ref{Changes},
+@ref{Download}.
 
 @newsEnd
 
@@ -92,8 +96,8 @@ This is hopefully the last Release Candidate before stable release 2.12,
 so you are welcome to test this release if you can to report new
 issues.@*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_65&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -108,8 +112,8 @@ documentation manuals are now fully translated in Spanish, thanks
 to Francisco Vila.  The font cache problem in Windows binaries
 which used to cause excessive slowness should be fixed.
 @*
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -119,7 +123,7 @@ which used to cause excessive slowness should be fixed.
 
 LilyPond 2.11.63 is available. This release has lots of updates to the
 documentation and translations.
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -134,7 +138,7 @@ to Spanish and German documentation translations, and the
 stylesheet for HTML documentation has been improved.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_62&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -147,8 +151,8 @@ documentation translations, and a new automatic accidentals style
 (teaching) has been added.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_61&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -159,7 +163,7 @@ documentation translations, and a new automatic accidentals style
 LilyPond 2.11.60 has been released. A new style of double repeat
 bar line has been added, and @code{printallheaders} variable in
 score block has been renamed to @code{print-all-headers}.
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -171,7 +175,7 @@ Release 2.11.59 is out. LilyPond now uses 64 bit integers for
 rational numbers, which allows typesetting more complex polymetric
 music.  This release also has updates to German and Spanish
 translations of the documentation.
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -190,8 +194,8 @@ for creating stem flags in a new style has been contributed by
 Reinhold Kainhofer, and a few bugs have been fixed.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_58&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -203,8 +207,8 @@ LilyPond 2.11.57 is out.  This release adds support for harp pedal
 diagrams, contributed by Reinhold Kainhofer, and some changes in
 markup command names have been made.
 @*
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -218,8 +222,8 @@ are now available from the documentation start page.  Two
 predefined commands @code{\pointAndClickOn},
 @code{\pointAndClickOff} have also been added.
 @*
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.11,Download}.
+@ref{Changes},
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -230,7 +234,7 @@ predefined commands @code{\pointAndClickOn},
 LilyPond 2.11.55 is out.  This release fixes several bugs, and for octavation brackets
 @code{set-octavation} has been replaced by a more user-friendly command, @code{\ottava}.  
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_55&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -242,7 +246,7 @@ LilyPond 2.11.54 is out.  This release fixes a bug in tie formatting
 following a line break, and changes the behavior of @code{short-indent}
 so that short instrument names are no longer indented in the margin.
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_54&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -253,7 +257,7 @@ so that short instrument names are no longer indented in the margin.
 LilyPond 2.11.53 is out.  This release fixes a lot of bugs.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_53&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -263,10 +267,9 @@ LilyPond 2.11.53 is out.  This release fixes a lot of bugs.
 
 Release 2.11.52 fixes wrong offset of a bar number when it follows
 a breath mark, and syntax changes made in recent development
-releases are now fully listed on the News page.
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,News page},
+releases are now fully listed on the News page.  @ref{Changes},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_52&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -279,7 +282,7 @@ predefined command names.  Fret diagrams formatting has been
 improved by Carl Sorensen, it is now controlled
 by @code{fret-diagram-details} property.
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_51&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -291,7 +294,7 @@ Release 2.11.50 adds support for metronome marks with text, and
 backslashed numbers for figured bass, contributed by
 Reinhold Kainhofer.
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_50&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -320,7 +323,7 @@ Follow @uref{http://valentin.villenave.info/The-LilyPond-Report-12,this link} to
 LilyPond 2.11.49 is out.  It fixes a number of bugs, including bugs in beams formatting.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_49&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -333,7 +336,7 @@ LilyPond 2.11.48 is out.  This release fixes a few bugs, and
 to @code{\scaleDurations}.
 @*
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_48&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -363,7 +366,7 @@ LilyPond now allows all text context properties to be markups,
 except in @code{\lyricmode}.  This release also fixes
 regression tests maintenance for developers.
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_47&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -373,9 +376,9 @@ regression tests maintenance for developers.
 
 Release 2.11.46 fixes a lot of bugs and includes a rewrite of
 dynamics engravers.  Support for slur-shaped arpeggios has been added.
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
+@ref{Changes},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_46&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -413,9 +416,9 @@ performance, a bugfix about included files, and more flexibility
 for preprocessing documents with LaTeX variants. Support for
 enclosing text in a rounded box has been contributed by Valentin
 Villenave.
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes},
+@ref{Changes},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_45&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -426,7 +429,7 @@ Villenave.
 Release 2.11.44 is available. Support for figured bass and chord
 names has been added to the MusicXML
 converter. @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_44&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -446,7 +449,7 @@ Release 2.11.43 has been available since March 27. It fixes a
 couple of formatting bugs, and the font cache problem with
 MS-Windows binaries which caused excessive slowness has been
 fixed. @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_43&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -455,7 +458,7 @@ fixed. @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_1
 @subsubheading LilyPond 2.11.42 available.  @emph{March 9, 2008}
 
 Release 2.11.42 is out. It fixes some formatting and spacing bugs. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_42&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -480,7 +483,7 @@ the articles}.
 Release 2.11.41 is available. It has a few bugfixes, updated
 program messages in French, German, Spanish and Vietnamese, and
 updates to the MusicXML converter. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_41&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -489,7 +492,7 @@ updates to the MusicXML converter. (@uref{http://code.google.com/p/lilypond/issu
 @subsubheading LilyPond 2.11.37 available.  @emph{January 3, 2008}
 
 Release 2.11.37 is available. It has a few bugfixes, and
-documentation changes. (@uref{install/#2.11,Download})
+documentation changes. (@ref{Download other versions})
 
 @newsEnd
 
@@ -499,7 +502,7 @@ documentation changes. (@uref{install/#2.11,Download})
 
 Release 2.11.36 is now available. It has many bugfixes, updates
 for MusicXML import, and it includes major documentation changes from
-Grand Documentation Project. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_36&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @uref{install/#2.11,Download})
+Grand Documentation Project. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_36&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -510,7 +513,7 @@ Grand Documentation Project. (@uref{http://code.google.com/p/lilypond/issues/lis
 Release 2.11.33 is now available.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_33&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.10}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_33&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Download other versions})
 
 @newsEnd
 
@@ -519,7 +522,7 @@ Release 2.11.33 is now available.
 @subsubheading LilyPond 2.11.32 available.  @emph{September 2, 2007}
 
 Release 2.11.32 is now available.
-(@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_32&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @uref{install/#2.11,Download})
+(@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_32&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -529,7 +532,7 @@ Release 2.11.32 is now available.
 
 Release 2.11.31 is now available. It has more bugfixes, updates
 for MusicXML import and lots of updates for the translations.
-(@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_31&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @uref{install/#2.11,Download})
+(@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_31&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -539,7 +542,7 @@ for MusicXML import and lots of updates for the translations.
 
 Release 2.11.30 is now available. It has various bugfixes among
 others in the new spacing code, MusicXML import and lots of updates
-for the translations.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_30&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @uref{install/#2.11,Download})
+for the translations.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_30&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -552,7 +555,7 @@ Release 2.11.29 is now available. 2.10.29 has a few small fixes.
 and lots of updates for the translations.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_29&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.10}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_29&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Download other versions})
 
 @newsEnd
 
@@ -574,7 +577,7 @@ Release 2.11.28 has several updates to the manual and its
 translations,  an plethora of bugfixes and a complete cleanup of the
 spacing engine code. 
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_28&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Download other versions})
 
 @newsEnd
 
@@ -585,7 +588,7 @@ spacing engine code.
 Release 2.11.26 supports page markers, eg. for use in
 tables-of-contents.  In addition, it fixes a number of bugs. Enjoy!
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_26&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Download other versions})
 
 @newsEnd
 
@@ -597,7 +600,7 @@ Release 2.11.25 has support for toplevel page breaking commands,
 and page breaking as a whole has been sped up significantly. Enjoy!
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_25&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.11}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_25&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.10}, @uref{install/#2.11,Download})
+2.10}, @ref{Download other versions})
 
 @newsEnd
 
@@ -606,7 +609,7 @@ and page breaking as a whole has been sped up significantly. Enjoy!
 @subsubheading LilyPond 2.10.23 and 2.11.23 available - @emph{May 1, 2007}
 This has lots of bugfixes.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.11}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_23&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.10}, @uref{install/#2.11,Download})
+2.10}, @ref{Download other versions})
 
 @newsEnd
 
@@ -616,8 +619,8 @@ This has lots of bugfixes.  (@uref{http://code.google.com/p/lilypond/issues/list
 Die Kapitel 1-5 (der Abschnitt für Anf&auml;nger) des 
 LilyPond-Benutzerhandbuchs
 sind auf deutsch &uuml;bersetzt &mdash; sie sind erh&auml;ltlich f&uuml;r
-die @uref{@@DOC@@v2.11/Documentation/user/lilypond/index.de.html,Version
-2.11} online und @uref{install/#2.11,integriert in das Installationspaket}.
+die @ref{Changes}
+online und @ref{Download other versions}.
 
 @newsEnd
 
@@ -625,8 +628,7 @@ die @uref{@@DOC@@v2.11/Documentation/user/lilypond/index.de.html,Version
 @newsItem
 @subsubheading LilyPond 2.11.22 available - @emph{April 10, 2007}
 This release has updates of the dot collision code.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_22&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -635,8 +637,7 @@ This release has updates of the dot collision code.  (@uref{http://code.google.c
 @subsubheading LilyPond 2.11.21 available - @emph{March 24, 2007}
 This release has some documentation updates.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_21&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -656,8 +657,7 @@ This release fixes many bugs.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.11},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_20&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.10}, 
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+2.10}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -668,8 +668,7 @@ This release fixes many bugs.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_11_19&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.11},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_10_19&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.10}, 
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+2.10}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -678,8 +677,7 @@ This release fixes many bugs.
 @subsubheading LilyPond 2.11.18 available - @emph{February 12, 2007}
 This release fixes still more bugs, and included
 singing support through festival contributed by Milan Zamazal. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_18&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11}, @uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes
-2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -688,8 +686,8 @@ singing support through festival contributed by Milan Zamazal. (@uref{http://cod
 @subsubheading LilyPond  2.11.17 available - @emph{February 9, 2007}
 This release fixes still more bugs.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_17&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
-2.11},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+2.11}, @ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -701,7 +699,8 @@ This release fixes many bugs.
 2.11},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_16&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.10}, 
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -714,7 +713,7 @@ head and the slashed mirrored flat.  (@uref{http://code.google.com/p/lilypond/is
 2.11},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_15&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes
 2.10}, 
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -724,7 +723,7 @@ head and the slashed mirrored flat.  (@uref{http://code.google.com/p/lilypond/is
 This release has a rewrite of the line-spanner code, responsible for
 among other glissandi and text-crescendos, making them more flexible.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_14&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes 2.11}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -734,7 +733,7 @@ among other glissandi and text-crescendos, making them more flexible.
 This release fixes a few minor but irritating bugs. In addition, the
 2.11 release has updates of the tutorial.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_13&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -744,7 +743,7 @@ This release fixes a few minor but irritating bugs. In addition, the
 This release fixes lots of bugs. In particular, the tie formatting has
 been further improved, and memory usage has been improved enormously.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_12&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -753,14 +752,14 @@ been further improved, and memory usage has been improved enormously.
 @subsubheading LilyPond 2.10.12 available - @emph{January 17, 2007}
 This release mirrors 2.11.12. Notably, it has the same memory
 usage improvements.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_12&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download}) 
+@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.10.11 available - @emph{January 12, 2007}
 This release mostly has the same fixes as 2.11.11.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_11&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -770,7 +769,7 @@ This release mostly has the same fixes as 2.11.11.  (@uref{http://code.google.co
 This release has further fixes for popular bugs. Timing of the MIDI
 output won't get confused by tuplets and grace notes anymore. Some fat
 has also been trimmed of the skyline code performance.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_11&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -782,7 +781,7 @@ code coverage. This brought to light several problems that were
 fixed.  Notably, 2.11.10 fixes lots of regressions in optical
 correction spacing and MIDI dynamics.  Also, this version is 20 to 50
 % faster than previous 2.11 releases. (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -792,7 +791,7 @@ correction spacing and MIDI dynamics.  Also, this version is 20 to 50
 This release fixes several popular bugs, among others: MIDI files
 that go silent after (de)crescendi, and tuplets problems with quoting
 and part-combining (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_10&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -801,7 +800,7 @@ and part-combining (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=
 @subsubheading LilyPond 2.11.9 and 2.10.9 available - @emph{January 3, 2007} 
 This release has a couple of bugfixes, and &mdash;in 2.11.9&mdash
 further improvements in the regression test suite (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_9&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -809,7 +808,7 @@ further improvements in the regression test suite (@uref{http://code.google.com/
 @newsItem
 @subsubheading LilyPond 2.11.8 and 2.10.8 available - @emph{January 3, 2007}
 New! Improved! With even more bugfixes!  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_8&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -831,7 +830,7 @@ Die LilyPond-Webseiten sind jetzt auch auf deutsch &uuml;bersetzt!
 @newsItem
 @subsubheading LilyPond 2.11.7 and 2.10.7 available - @emph{January 1, 2007}
 New! Improved! With even more bugfixes!  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_7&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -841,7 +840,7 @@ New! Improved! With even more bugfixes!  (@uref{http://code.google.com/p/lilypon
 This release supports arbitrary fractional alterations, allowing 
 music with different microtonal conventions to be typeset. 
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_6&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -850,7 +849,7 @@ music with different microtonal conventions to be typeset.
 @subsubheading LilyPond 2.10.6 available - @emph{December 30, 2006}
 New! Improved! With even more bugfixes!
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_6&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -860,7 +859,7 @@ New! Improved! With even more bugfixes!
 These releases complete the translation infrastructure for
 Documentation. 
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_5&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -869,7 +868,7 @@ Documentation.
 @subsubheading LilyPond 2.10.5 available - @emph{December 24, 2006}
 New! Improved! With even more bugfixes!
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_5&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -878,7 +877,7 @@ New! Improved! With even more bugfixes!
 @subsubheading LilyPond 2.11.4 available - @emph{December 21, 2006}
 The vertical spacing improvements that were introduced in 2.11.0 now work
 within a system as well as between systems.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_4&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -887,7 +886,7 @@ within a system as well as between systems.  (@uref{http://code.google.com/p/lil
 @subsubheading LilyPond 2.11.3 available - @emph{December 19, 2006}
 This release has @uref{http://lilypond.org/doc/v2.11/compare-v2.10.3/index.html,graphical
 test results} and several website build improvements.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_3&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -896,14 +895,14 @@ test results} and several website build improvements.  (@uref{http://code.google
 @subsubheading LilyPond 2.10.3 available - @emph{December 19, 2006}
 This release fixes several bugs.
 (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_3&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.11,Download})
+@ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LinuxPPC binaries available! - @emph{December 19, 2006}
-From now on, our GUB binary builds include support for Linux/PPC.  (@uref{install/#2.10,Download})
+From now on, our GUB binary builds include support for Linux/PPC.  (@ref{Download other versions})
 
 @newsEnd
 
@@ -921,7 +920,7 @@ fran&ccedil;ais est maintenant disponible en ligne. @uref{@@DOC@@v2.10/Documenta
 @newsItem
 @subsubheading LilyPond 2.11.2 available - @emph{December 12, 2006}
 This release supports glissandi and harmonics in tablature.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -929,7 +928,7 @@ This release supports glissandi and harmonics in tablature.  (@uref{http://code.
 @newsItem
 @subsubheading LilyPond 2.10.2 available - @emph{December 12, 2006} 
 A new stable release of LilyPond is available.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_2&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.10,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -937,7 +936,7 @@ A new stable release of LilyPond is available.  (@uref{http://code.google.com/p/
 @newsItem
 @subsubheading LilyPond 2.11.1 available - @emph{December 4, 2006}
 This release has improved support for horizontal spacing.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_11_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -945,21 +944,21 @@ This release has improved support for horizontal spacing.  (@uref{http://code.go
 @newsItem
 @subsubheading LilyPond 2.10.1 available - @emph{December 3, 2006}
 A new stable release of LilyPond is available.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_10_1&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.10,Download})
+@ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.11.0 available - @emph{November 27, 2006}
-This release has improved support for vertical spacing.  (@uref{@@DOC@@v2.11/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.11,Download})
+This release has improved support for vertical spacing.  (@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.10.0 available - @emph{November 11, 2006}
-A new stable release of LilyPond is available.  (@uref{announce-v2.10.html,Announcement}, @uref{@@DOC@@v2.10/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.10,Download})
+A new stable release of LilyPond is available.  (@uref{announce-v2.10.html,Announcement}, @ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -975,7 +974,7 @@ system. Check out our repository at @uref{http://git.sv.gnu.org/gitweb/?p=lilypo
 @newsItem
 @subsubheading LilyPond 2.9.29 available - @emph{November 5, 2006}
 This release has many more bugfixes.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_29&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -983,7 +982,7 @@ This release has many more bugfixes.  (@uref{http://code.google.com/p/lilypond/i
 @newsItem
 @subsubheading LilyPond 2.9.28 available - @emph{November 3, 2006}
 This release has many more bugfixes.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_28&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -991,8 +990,8 @@ This release has many more bugfixes.  (@uref{http://code.google.com/p/lilypond/i
 @newsItem
 @subsubheading LilyPond 2.9.27 available - @emph{October 28, 2006}
 This release has a new @code{FretBoards} context, and some further
-bugfixes.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_27&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+bugfixes.  (@ref{Changes}, @uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_27&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1011,7 +1010,7 @@ the thesis is now available from lilypond.org
 @newsItem
 @subsubheading LilyPond 2.9.26 available - @emph{October 20, 2006}
 This release has further bugfixes.   (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_26&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1020,7 +1019,7 @@ This release has further bugfixes.   (@uref{http://code.google.com/p/lilypond/is
 @subsubheading LilyPond 2.9.25 available - @emph{October 18, 2006}
 This release has more bugfixes; from now on, binaries are also
 available for x86/64.  (@uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed_2_9_25&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1028,9 +1027,9 @@ available for x86/64.  (@uref{http://code.google.com/p/lilypond/issues/list?can=
 @newsItem
 @subsubheading LilyPond 2.9.24 available - @emph{October 15, 2006}
 This release has support for right hand guitar fingerings, and offers
-some bugfixes.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes},
+some bugfixes.  (@ref{Changes},
 @uref{http://code.google.com/p/lilypond/issues/list?can=1&q=fixed2924&colspec=ID+Type+Status+Priority+Milestone+Owner+Summary,Bugfixes},
-@uref{install/#2.9,Download})
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1038,28 +1037,28 @@ some bugfixes.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes},
 @newsItem
 @subsubheading LilyPond 2.9.23 available - @emph{October 12, 2006}
 This release cuts fragments of EPS directly from your finished score,
-and makes it easier to insert ties into lyrics. (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+and makes it easier to insert ties into lyrics. (@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.9.22 available - @emph{October 9, 2006}
-Test this release candidate for LilyPond 2.10!  (@uref{install/#2.9,Download})
+Test this release candidate for LilyPond 2.10!  (@ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.9.21 available - @emph{October 4, 2006}
-Test this release candidate for LilyPond 2.10!  (@uref{install/#2.9,Download})
+Test this release candidate for LilyPond 2.10!  (@ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.9.20 available - @emph{October 3, 2006}
-Test this release candidate for LilyPond 2.10!  (@uref{install/#2.9,Download})
+Test this release candidate for LilyPond 2.10!  (@ref{Download other versions})
 
 @newsEnd
 
@@ -1067,7 +1066,7 @@ Test this release candidate for LilyPond 2.10!  (@uref{install/#2.9,Download})
 @newsItem
 @subsubheading LilyPond 2.9.17 available - @emph{September 2, 2006}
 This release fixes many bugs. Among others, MacOS X QuickTime now
-honors tempo changes are in the MIDI output.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download}) 
+honors tempo changes are in the MIDI output.  (@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
@@ -1075,14 +1074,14 @@ honors tempo changes are in the MIDI output.  (@uref{@@DOC@@v2.9/Documentation/t
 @subsubheading LilyPond 2.9.16 available - @emph{August 25, 2006}
 In this release, chords may be partially tied and lyric extenders have
 tunable padding. Moreover, many bugs were fixed
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+(@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.9.15 available - @emph{August 20, 2006}
-This releases fixes many bugs in the 2.9.14 release.  (@uref{install/#2.8,Download})
+This releases fixes many bugs in the 2.9.14 release.  (@ref{Download other versions})
 
 @newsEnd
 
@@ -1090,7 +1089,7 @@ This releases fixes many bugs in the 2.9.14 release.  (@uref{install/#2.8,Downlo
 @newsItem
 @subsubheading LilyPond 2.8.6 available - @emph{August 8, 2006}
 This release contains a few minor bugfixes; the source tarball is also
-available.  (@uref{install/#2.8,Download})
+available.  (@ref{Download other versions})
 
 @newsEnd
 
@@ -1100,7 +1099,7 @@ available.  (@uref{install/#2.8,Download})
 This release supports instrument name changes, dotted barlines and
 better spacing for floating grace notes. In addition, it contains
 ongoing work by Erik Sandberg to extend the interpretation phase with
-stream support.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+stream support.  (@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1108,7 +1107,7 @@ stream support.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @u
 @newsItem
 @subsubheading LilyPond 2.9.13 available - @emph{July 23, 2006}
 This release supports doits and falls, and more tuning options for
-grace note spacing and tuplet brackets.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+grace note spacing and tuplet brackets.  (@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1117,7 +1116,7 @@ grace note spacing and tuplet brackets.  (@uref{@@DOC@@v2.9/Documentation/topdoc
 @subsubheading LilyPond 2.9.12 available - @emph{July 18, 2006}
 This release supports pdftex for lilypond-book, and uses PdfTeX for
 generating manuals, so page numbers and references are now clickable.
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+(@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1126,7 +1125,7 @@ generating manuals, so page numbers and references are now clickable.
 @subsubheading LilyPond 2.9.11 available - @emph{July 12, 2006}
 This release wraps improvements of the last two weeks.  As a new
 feature, it supports tunable tuplet number formatting for nested
-tuplets.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+tuplets.  (@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1134,8 +1133,8 @@ tuplets.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{ins
 @newsItem
 @subsubheading LilyPond 2.9.10 available - @emph{June 15, 2006}
 This releases fixes a couple of  bugs in 2.9.9. 
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.9,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1143,8 +1142,8 @@ This releases fixes a couple of  bugs in 2.9.9.
 @newsItem
 @subsubheading LilyPond 2.9.9 available - @emph{June 15, 2006}
 This releases fixes many bugs in 2.9.8 and earlier. 
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.9,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1153,8 +1152,8 @@ This releases fixes many bugs in 2.9.8 and earlier.
 @subsubheading LilyPond 2.9.8 available - @emph{June 6, 2006}
 2.9.8 has support for different spacing sections within a single
 score, and better infrastructure for automated regression testing.
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.9,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1163,7 +1162,7 @@ score, and better infrastructure for automated regression testing.
 @subsubheading LilyPond 2.8.4 available - @emph{June 4, 2006}
 2.8.4 fixes some minor bugs, and includes a backport of the
 infrastructure for automated regression testing.
-(@uref{install/#2.8,Download})
+(@ref{Download other versions})
 
 @newsEnd
 
@@ -1190,7 +1189,7 @@ the development releases even better
 This
 release has new features in beam formatting: beams may now be put on
 single stems, and obey the @code{beatGrouping} property.  MusicXML
-converter.  (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download}) 
+converter.  (@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
@@ -1210,7 +1209,7 @@ esthetics}. Happy reading!
 This release supports object rotation, hairpins with circled tips,
 hairpins that run to barlines before notes and improvements in the
 MusicXML converter.
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+(@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1220,7 +1219,7 @@ MusicXML converter.
 This release has support for feathered beaming, and note head styles in
 the markup @code{\note} command. In addition, it has a lot of updates
 of the manual and a clean up of the spring spacer. 
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download})
+(@ref{Changes}, @ref{Download other versions})
 
 @newsEnd
 
@@ -1228,7 +1227,7 @@ of the manual and a clean up of the spring spacer.
 @newsItem
 @subsubheading LilyPond 2.8.2 available - @emph{May 12, 2006}
 This release has fixes for minor bugs and compilation issues.
-(@uref{install/#2.8,Download}) 
+(@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1238,7 +1237,7 @@ This new release has lots of updates of the manual, courtesy Graham
 and the contributors of the mailing. It handles formatting for ties in
 arpegiated chords better (feature sponsored by
 Steve Doonan), it has al niente hairpins, courtesy of Erlend Aasland,
-and some cleanups of the PostScript output, courtesy David Feuer. (@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download}) 
+and some cleanups of the PostScript output, courtesy David Feuer. (@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
@@ -1254,7 +1253,7 @@ The slides for Han-Wen's talk at
 @newsItem
 @subsubheading LilyPond 2.8.1 is out! - @emph{April 3, 2006}
 Important bugfixes include CJK font handling and a Darwin/x86 port.
-(@uref{@@DOC@@v2.8/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.8,Download}) 
+(@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
@@ -1262,29 +1261,29 @@ Important bugfixes include CJK font handling and a Darwin/x86 port.
 @subsubheading LilyPond 2.9.1 is out! - @emph{April 3, 2006}
 It's mostly a bugfix release, and it's almoste the same as 2.8.1. This
 release mainly fixes problems with CJK font loading.
-(@uref{@@DOC@@v2.9/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.9,Download}) 
+(@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond on MacOS X/Intel - @emph{March 31, 2006}
 LilyPond now also runs on Intel based macs, offering a 400%
-speedup over the emulated PowerPC binaries.  (@uref{install/#2.8,Download}) 
+speedup over the emulated PowerPC binaries.  (@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.8.0 is out! - @emph{March 22, 2006}
 Version 2.8 is here! Read the @uref{announce-v2.8.html,release
-announcement}.  (@uref{@@DOC@@v2.8/Documentation/topdocs/NEWS.html,Changes}, @uref{install/#2.8,Download}) 
+announcement}.  (@ref{Changes}, @ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.7.39 is out - @emph{March 17, 2006}
 This release has even more bug fixes. Please test before 2.8 is
-released. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+released. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1296,8 +1295,8 @@ so report any bugs that you might find. New attractions include:
 lilypond postscript files now work with GSView, cut & pasting lily
 code from PDF files should now work, and spacing fixes for
 multi-measure rests.
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1305,8 +1304,8 @@ multi-measure rests.
 @newsItem
 @subsubheading LilyPond 2.7.37 is out - @emph{March 4, 2006}
 This release has more bug fixes. Please help us by testing it!
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1318,8 +1317,8 @@ and polishes to the documentation.  It also contains support for
 creating ties that are only on their right side connected to note
 heads, which is handy for repeats (feature sponsored by Steve Doonan).
 The documentation suite can now be downloaded as a separate tarball
-from lilypond.org. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+from lilypond.org. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1329,8 +1328,8 @@ from lilypond.org. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 This release has lots of bugs fixes. The plan is to release 2.8 at the
 end of this month, so bug reports are @strong{very} welcome. By
 definition a bug is release critical if it wasn't present in version
-2.6. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+2.6. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1341,8 +1340,8 @@ This release has a bunch of bugfixes, and new features. Newly created
 contexts may also be named with @code{\new Voice =
 "alto"}. Thicknesses of tie and slurs may be tuned separately for
 the endings and the middle
-part. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+part. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1358,8 +1357,8 @@ parenthesized, for example,
 }
 @end verbatim
 
-This feature was sponsored by Ramana Kumar. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+This feature was sponsored by Ramana Kumar. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1379,8 +1378,8 @@ This release contains some syntax changes: words inside the \paper and
 
 Furthermore, in this release, we have dropped some legacy code from
 our library. Now, lily uses standard C++ strings and the STL
-vector. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+vector. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1393,8 +1392,8 @@ ly:class-name::function-name in Scheme instead of
 Class_name::function_name. We are now using C++ vectors and strings
 instead of our own. The Linux/FreeBSD builds now include wrappers for
 Python scripts too, so you can run convert-ly and midi2ly.
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1403,8 +1402,8 @@ Python scripts too, so you can run convert-ly and midi2ly.
 @subsubheading LilyPond 2.7.30 is out - @emph{January 30, 2006}
 This release has a few bug fixes, like the solfa note head shape and
 collisions, the \epsfile command, and in getting No. ligature in
-normal words. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+normal words. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1418,8 +1417,8 @@ and Nicolas Sceaux), a linebreaking configuration can now be saved as
 a `.ly' file automatically. This allows vertical alignments to be
 stretched to fit pages in a second formatting run (feature sponsored
 by Trevor Baca and Nicolas
-Sceaux). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Sceaux). (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1429,8 +1428,8 @@ Sceaux). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 This release contains numerous small fixes that were already in our
 GUB binaries. In addition, it has further polish for formatting of
 tied chords. Theses improvements were sponsored by Steve
-Doonan. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Doonan. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1440,7 +1439,7 @@ Doonan. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 
 The fourth release of our Grand Unified Binary for 2.7.27 is
 available.  This release uses Pango 1.11.1, which has support for
-ligatures and kerning. Enjoy!  (@uref{http://lilypond.org/web/install/#2.7,Download})
+ligatures and kerning. Enjoy!  (@ref{Download other versions})
 
 @newsEnd
 
@@ -1449,9 +1448,8 @@ ligatures and kerning. Enjoy!  (@uref{http://lilypond.org/web/install/#2.7,Downl
 @subsubheading LilyPond 2.7.27, release 3 - @emph{January 12, 2006}
 The third release of our Grand Unified Binaries is available.  This
 release fixes external font-support, the decompression flag for
-Linux. Also, we have support for
-@strong{FreeBSD} as well!  Jump to the @uref{http://lilypond.org/web/install/#2.7,download section} to
-get them!
+Linux. Also, we have support for @strong{FreeBSD} as well!  Jump
+to the @ref{Download other versions} get them!
 
 @newsEnd
 
@@ -1475,8 +1473,8 @@ Windows}.
 @subsubheading LilyPond 2.7.27 is out - @emph{January 7, 2006}
 This release allows you to switch staff lines on and off individually
 (feature sponsored by Andrea
-Valle). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Valle). (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1501,7 +1499,7 @@ This article is now available @uref{http://www.linuxjournal.com/article/8583,on-
 @subsubheading New binaries for LilyPond 2.7.26 - @emph{January 4, 2006}
 The Development team has been working around the clock to improve
 to fix the first wave bugs reported by you.  The new results for MacOS
-and Windows are up on the @uref{install/,installation}
+and Windows are up on the @ref{Download other versions}
 page. Let us know how you fare!
 
 @newsEnd
@@ -1517,8 +1515,8 @@ environment: we have completely revamped it, which means that binaries
 for all platforms (including MacOS, Windows, Linux/x86, but probably
 FreeBSD too) will be more quickly available for download.
 A happy 2006 from the LilyPond Development Team!
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1528,8 +1526,8 @@ A happy 2006 from the LilyPond Development Team!
 This release has various bugfixes. Also, stems on the center line now
 have their directions interpolated to minimize the number of direction
 changes (feature sponsored by Basil Crow and Mike
-Rolish). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Rolish). (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1543,8 +1541,8 @@ implemented as separate grobs, TupletBracket and TupletNumber (rewrite
 sponsored by Trent Johnston), string arguments for music functions may
 be specified without # marks. This allows syntactical constructs (like
 \clef and \bar) to be expressed in generic music
-functions. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+functions. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1571,8 +1569,8 @@ it is now possible to separately specify minimum distances for normal
 and hyphenated syllables (features sponsored by Mark van den Borre and
 Bertalan Fodor.
 @end itemize
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1584,8 +1582,8 @@ beams and editorial accidentals. It also has more options for spacing
 Lyrics; it is now possible to separately specify minimum distances for
 normal and hyphenated syllables. These features were sponsored by Mark
 van den Borre and Bertalan
-Fodor. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Fodor. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1607,8 +1605,8 @@ TrueType font are now kerned. Using the TeX no longer requires linking
 or dynamically opening the kpathsea library, making the backend more
 easily usable on various systems (feature sponsored by Christian Ebert
 of Black Trash
-Productions). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Productions). (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1616,7 +1614,7 @@ Productions). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 @newsItem
 @subsubheading LilyPond 2.6.5 is out - @emph{December 1, 2005}
 This release updates the bugreporting address and reorganizes the
-documentation tree. (@uref{install/#2.6,Download}) 
+documentation tree. (@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1626,8 +1624,8 @@ This version contains a few bugfixes, and now allows the type of
 brackets in system start bracket hierarchies to be specified. Also,
 the horizontal alignment of rehearsal marks may be changed: marks can
 be put on key signatures, clefs, time signatures,
-etc. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+etc. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1638,8 +1636,8 @@ brace. It also adds "square" line bracket (feature sponsored by Trevor
 Baca). It also has refactored routines for tie formatting. This will
 make it easier to get better tie formatting for chords (feature
 sponsored by Steve Doonan). It also has a few bug
-fixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+fixes. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1648,16 +1646,16 @@ fixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 This version has refactored routines for tie formatting. This will
 make it easier to get better tie formatting for chords (feature
 sponsored by Steve Doonan). It also has a few bug
-fixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+fixes. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.7.16 is out - @emph{November 11, 2005}
 This release fixes a large number of bugs. Please upgrade before
-reporting bugs in the 2.7 series. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+reporting bugs in the 2.7 series. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1667,8 +1665,8 @@ This release has another massive cleanup of the backend.  Each grob
 property may also be a "grob closure". This means that it is possible
 to combine functions. Calculation of extent and offset of grob is now
 controlled via the `X-extent', `Y-extent', `X-offset' and `Y-offset'
-properties. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+properties. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1683,8 +1681,8 @@ that compute said property, i.e.
 (if (> (random 10) 5) UP DOWN))
 
 @end verbatim
-will set  a random direction for beams. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+will set  a random direction for beams. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1696,16 +1694,16 @@ been made switchable with the figuredBassCenterContinuations
 property. For each grob, a subproperty in `callbacks' property defines
 the procedure which computes it. This is major internal cleanup, which
 also provides advanced tweakability for power
-users. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+users. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.6.4 is out - @emph{October 11, 2005}
 This release fixes a few minor problems with the stable
-series. (@uref{@@DOC@@v2.6/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.6,Download}) 
+series. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1718,8 +1716,8 @@ support for continuation lines and tuning of figures, brackets, and
 alignments (feature sponsored by Trent Johnston); vertical alignments
 of staves can now be tuned easily for individual systems (feature
 sponsored by Nicolas
-Sceaux). (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+Sceaux). (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1730,8 +1728,8 @@ individually (feature sponsored by Trevor Baca and Nicolas
 Sceaux). The slope of a stem-tremolo may be set manually (feature
 sponsored by Sven Axelsson). There are a number of cleanups in the
 handling and representation of systems, among other features and bug
-fixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+fixes. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1740,16 +1738,16 @@ fixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 This version adds proper support for "laissez vibrer ties", just enter
 \laissezVibrer after a chord. This feature was sponsored by Henrik
 Frisk. It also has a couple of minor
-bugfixes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+bugfixes. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.7.9 is out - @emph{September 5, 2005}
 This is mainly a bugfix
-release. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+release. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1767,8 +1765,8 @@ la gravure musicale}.
 @subsubheading LilyPond 2.7.8 is out - @emph{August 29, 2005}
 This release has support for right-to-left text formatting in markup
 commands (sponsored by Aaron Mehl). In addition, it fixes a great
-number of bugs, among others, support for writing MIDI files.  (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+number of bugs, among others, support for writing MIDI files.  (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1788,8 +1786,8 @@ LilyPond's first appearance in mainstream printed press.
 This release has a rewriting of tie formatting which was sponsored by
 Bertalan Fodor, Jay Hamilton, Kieren MacMillan, Steve Doonan, Trevor
 Baca, and Vicente Solsona
-Dell&aacute;. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+Dell&aacute;. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1799,8 +1797,8 @@ Dell&aacute;. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 This release adds support for numbered percent repeats, a feature
 sponsored by Yoshinobu Ishizaki. It also has bugfixes for clashes
 between slurs and symbols, like fingers dynamic
-signs. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+signs. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1809,8 +1807,8 @@ signs. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 @subsubheading LilyPond 2.7.5 is out - @emph{August 16, 2005}
 Lily 2.7.5 has a large number of bugfixes, among others, in slur
 formatting, spacing, rest collisions and tuplet bracket
-formatting. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+formatting. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1819,15 +1817,15 @@ formatting. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 @subsubheading LilyPond 2.7.4 is out - @emph{August 7, 2005}
 LilyPond 2.7.4 has support for proportional notation, where the space
 for a note is proportional to the time it
-takes. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+takes. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.6.3 is out - @emph{August 4, 2005}
 This release fixes a memory corruption bug that was triggered by
-\override'ing Beam settings. (@uref{install/#2.7,Download})
+\override'ing Beam settings. (@ref{Download other versions})
 
 @newsEnd
 
@@ -1838,8 +1836,8 @@ This release has a few bugfixes, among them: the autopackage will run
 in more platforms, LilyPond will be much quicker for large
 lilypond-book documents, and the up and down Fa note heads for shaped
 heads have been
-swapped. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+swapped. (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1848,8 +1846,8 @@ swapped. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
 LilyPond 2.7.3 has improvements in performance which should result in
 faster operations (15 to 20 percent). It also contains the new
 "\displayLilyMusic" function.
-(@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+(@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1857,8 +1855,8 @@ faster operations (15 to 20 percent). It also contains the new
 @subsubheading LilyPond 2.7.2 is out - @emph{July 21, 2005}
 LilyPond 2.7.2 has support for suggested accidentals for musica
 ficta notation, easy entry for lyric melismata and improvements for
-quicker entry of scores.  (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download}) 
+quicker entry of scores.  (@ref{Changes},
+@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1870,8 +1868,7 @@ installs in a snap on Windows, MacOS X, and any version of Linux (x86).
 @strong{Get up and running in minutes!} Pango text formatting lets you
 print @strong{Unicode } lyrics in your favorite script and font.  Create
 @strong{SVG} files, and edit them in Inkscape.
-(@uref{announce-v2.6.html,Announcement}, @uref{@@DOC@@v2.6/Documentation/THANKS.html,Thank
-Yous}, @uref{install/#2.6,Download}, @uref{@@DOC@@v2.6/Documentation/topdocs/NEWS.html,Changes})
+(@uref{announce-v2.6.html,Announcement}, @ref{Download other versions}, @ref{Changes})
 
 @newsEnd
 
@@ -1880,15 +1877,15 @@ Yous}, @uref{install/#2.6,Download}, @uref{@@DOC@@v2.6/Documentation/topdocs/NEW
 @subsubheading LilyPond 2.7.1 is out - @emph{July 20, 2005}
 LilyPond 2.7.1 has no user-visible changes. However, due to
 restructuring @qq{under the hood}, this version will be 10 to
-20 % faster.  (@uref{install/#2.7,Download}) 
+20 % faster.  (@ref{Download other versions}) 
 @newsEnd
 
 
 @newsItem
 @subsubheading LilyPond 2.6.1 is out - @emph{July 11, 2005}
 This version fixes a few minor bugs found in
-2.6.0, and also works on DOS-based Windows versions.  (@uref{@@DOC@@v2.6/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.6,Download})
+2.6.0, and also works on DOS-based Windows versions.  (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1896,8 +1893,8 @@ This version fixes a few minor bugs found in
 @newsItem
 @subsubheading LilyPond 2.7 is out - @emph{July 9, 2005}
 LilyPond 2.7.0 is out. It has support for paragraph text and
-pitched trill notation. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Changes},
-@uref{install/#2.7,Download})
+pitched trill notation. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -1907,7 +1904,7 @@ pitched trill notation. (@uref{@@DOC@@v2.7/Documentation/topdocs/NEWS.html,Chang
 LilyPond 2.5.32 is now available for download (binaries for Fedora +
 MacOS only). It has a few very minor bugfixes, and a rewrite of the
 TTF embedding code, which should be a lot more robust now.
-(@uref{install/#2.5,Download})
+(@ref{Download other versions})
 
 @newsEnd
 
@@ -1926,7 +1923,7 @@ pages encore non traduites. Bon surf !
 2.5.31 is now available for both Windows and MacOS X. The Windows
 version should now work with embedding TTF fonts, and the MacOS X has
 better help functionality.
-(@uref{install/#2.5,Download})
+(@ref{Download other versions})
 
 @newsEnd
 
@@ -1936,7 +1933,7 @@ better help functionality.
 This release has a few bugfixes. In the MacOS X version, ClickEdit has
 been renamed to LilyPond, and you can now upgrade your files and
 compile them directly from
-LilyPond. (@uref{install/#2.5,Download})
+LilyPond. (@ref{Download other versions})
 
 @newsEnd
 
@@ -1944,7 +1941,7 @@ LilyPond. (@uref{install/#2.5,Download})
 @newsItem
 @subsubheading 2.5.30 released - @emph{June 10, 2005}
 This is (hopefully) the last Release Candidate before 2.6. Give it a
-good shake to find those last bugs! (@uref{install/#2.5,Download})
+good shake to find those last bugs! (@ref{Download other versions})
 
 @newsEnd
 
@@ -1953,7 +1950,7 @@ good shake to find those last bugs! (@uref{install/#2.5,Download})
 @subsubheading 2.5.29 released - @emph{June 7, 2005}
 In this release the documentation also has pictures. In addition, the
 Mac version can also read native mac fonts (.dfonts and fonts in
-resource forks). (@uref{install/#2.5,Download})
+resource forks). (@ref{Download other versions})
 
 @newsEnd
 
@@ -1963,7 +1960,7 @@ resource forks). (@uref{install/#2.5,Download})
 It has a big bunch of minor bugfixes.  This is another release
 candidate for version 2.6, which should be released within the next 2
 weeks. Please send a bug report if you find a critical problem with this
-release. (@uref{install/#2.5,Download})
+release. (@ref{Download other versions})
 
 @newsEnd
 
@@ -1971,7 +1968,7 @@ release. (@uref{install/#2.5,Download})
 @newsItem
 @subsubheading Windows and MacOS installers available - @emph{May 26, 2005}
 There are now a native, standalone installers for Windows and
-MacOS.  They also support PDF point & click. (@uref{install/#2.5,Download}) 
+MacOS.  They also support PDF point & click. (@ref{Download other versions}) 
 @newsEnd
 
 
@@ -1985,7 +1982,7 @@ This release has a couple of small bugfixes.
 @newsItem
 @subsubheading 2.5.25 released - @emph{May 20, 2005}
 This release has many small bugfixes and updates to the
-documentation. (@uref{install/#2.5,Download})
+documentation. (@ref{Download other versions})
 
 @newsEnd
 
@@ -1995,7 +1992,7 @@ documentation. (@uref{install/#2.5,Download})
 2.5.24 fixes a bunch of bugs; in particular, chord symbols (such as
 slashed o) should now work on all platforms. This release has a new
 feature: it is now possible to make staves appear in a different order
-from the order that they were defined. (@uref{install/#2.5,Download})
+from the order that they were defined. (@ref{Download other versions})
 
 @newsEnd
 
@@ -2006,8 +2003,8 @@ This release has a couple of small bugfixes, and a new feature. It is
 now possible to start and stop the StaffSymbol, during a piece of
 music, by doing \stopStaff \startStaff. This can be used to produce
 Ossia
-staves. (@uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,Changes},
-@uref{install/#2.5,Download})
+staves. (@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -2018,7 +2015,7 @@ staves. (@uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,Changes},
 release. The most visible improvement is in the PDF : this release
 will produce smaller PDF files, with symbols that look better on
 screen.
-(@uref{install/#2.5,Download})
+(@ref{Download other versions})
 
 @newsEnd
 
@@ -2029,8 +2026,8 @@ screen.
 lines", bar like vertical line, which are aligned with the notes. The
 auto-beam engraver was rewritten, so it also works with irregular time
 signatures like 5/8.
-(@uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,Changes},
-@uref{install/#2.5,Download})
+(@ref{Changes},
+@ref{Download other versions})
 
 @newsEnd
 
@@ -2041,8 +2038,8 @@ LilyPond 2.5.20 has lots of bugfixes, in particular, MIDI files of
 multi-movement pieces don't overwrite each other.  Version 2.5.20 also
 supports putting arrows on lines, such as glissandi.
 More details are in the 
-the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file, or go straight to @uref{install/#2.5,downloading LilyPond 2.5.20}.
+the @ref{Changes}
+file, or go straight to @ref{Download other versions}.
 
 @newsEnd
 
@@ -2053,8 +2050,8 @@ LilyPond 2.5.19 was released. The command `\epsfile' allows inclusion
 of EPS graphics into markup texts and the music function
 `\musicDisplay' will display a music expression as indented
 Scheme code. Take a look at
-the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file and @uref{install/#2.5,Download LilyPond 2.5.19}.
+the @ref{Changes}
+file and @ref{Download other versions}.
 
 @newsEnd
 
@@ -2063,7 +2060,7 @@ file and @uref{install/#2.5,Download LilyPond 2.5.19}.
 @subsubheading April 6, 2005
 2.5.18 is a bugfix release. It has many small cleanups in the
 web-based documentation, and many small cleanups all over the
-place. @uref{install/#2.5,Download LilyPond 2.5.18}.
+place. @ref{Download other versions}
 
 @newsEnd
 
@@ -2072,8 +2069,7 @@ place. @uref{install/#2.5,Download LilyPond 2.5.18}.
 @subsubheading March 31, 2005
 2.5.17 is out. This release features many small bugfixes. In addition,
 it has support for string number notation for guitar. This feature was
-sponsored by Gunther Strube. @uref{install/#2.5,Download
-LilyPond 2.5.17}.
+sponsored by Gunther Strube. @ref{Download other versions}
 
 @newsEnd
 
@@ -2081,7 +2077,8 @@ LilyPond 2.5.17}.
 @newsItem
 @subsubheading March 20, 2005
 LilyPond 2.5.16 is out. This release fixes a few minor but irritating
-errors. A Fedora Core 3 binary is also available. Download @uref{install/#2.5,here}!
+errors. A Fedora Core 3 binary is also available. @ref{Download
+other versions}
 
 @newsEnd
 
@@ -2091,8 +2088,8 @@ errors. A Fedora Core 3 binary is also available. Download @uref{install/#2.5,he
 LilyPond 2.5.15 is out. This release has clean ups in the SVG output,
 and now uses the LilyPond number font for time signatures.  It is
 now possible to add text before and after music. This can be used to
-add verses after a music. Take a look at the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file and download @uref{install/#2.5,here}!
+add verses after a music. Take a look at the @ref{Changes}
+file and @ref{Download other versions}!
 
 @newsEnd
 
@@ -2104,8 +2101,8 @@ to build LilyPond either without the Kpathsea TeX library or with the
 Kpathsea dynamically loaded, but only for the -btex backend.  This
 means that packages do not have to depend on TeX anymore. With this,
 the Windows download size will go down significantly. Take a look at
-the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file and download @uref{install/#2.5,here}!
+the @ref{Changes}
+file and download @ref{Download other versions}!
 
 @newsEnd
 
@@ -2113,7 +2110,8 @@ file and download @uref{install/#2.5,here}!
 @newsItem
 @subsubheading March 7, 2005
 LilyPond 2.4.5 is out. This release backports the tieWaitForNote
-feature and has support for tetex-3.0. Download @uref{install/#2.4,here}!
+feature and has support for tetex-3.0. @ref{Download other
+versions}
 
 @newsEnd
 
@@ -2132,8 +2130,8 @@ own risk.
 @subsubheading February 28, 2005
 LilyPond 2.5.13 is out. This release has Point and click support for
 PDF output. You can read more about it @uref{http://lilypond.org/doc/v2.5/Documentation/user/out-www/lilypond/Point-and-click.html,here}.
-Take a look at the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file and download @uref{install/#2.5,here}!
+Take a look at the @ref{Changes}
+file and download @ref{Download other versions}!
 
 @newsEnd
 
@@ -2153,8 +2151,8 @@ LilyPond 2.5.12 is out. The big news is that this release supports
 TrueType fonts. This means that it is now possible to use @strong{all}
 fonts available via FontConfig. Also, arpeggios may be written out
 using ties and individual objects may have colors!  Take a look at
-the @uref{@@DOC@@v2.5/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file and download @uref{install/#2.5,here}!
+the @ref{Changes}
+file and @ref{Download other versions}!
 
 @newsEnd
 
@@ -2162,9 +2160,9 @@ file and download @uref{install/#2.5,here}!
 @newsItem
 @subsubheading February 4, 2005
 LilyPond 2.5.11 is out.  In this
-release, foreign character sets are now @uref{@@DOC@@v2.5/Documentation/user/out-www/lilypond/Text-encoding,supported
-in lilypond-book too} and it is possible to put @uref{@@DOC@@v2.5/input/regression/out-www/collated-files.html#system-separator.ly,
-dividers between systems.} Download @uref{install/#2.5,here}!
+release, foreign character sets are now supported in lilypond-book
+too, and it is possible to put system separators between systems.
+@ref{Download other versions}!
 
 @newsEnd
 
@@ -2173,14 +2171,16 @@ dividers between systems.} Download @uref{install/#2.5,here}!
 @subsubheading January 31, 2005
 LilyPond 2.5.10 is out. This release
 sports as new EPS backend, based on the PS backend. This backend is
-used in the new and improved lilypond-book script. Download @uref{install/#2.5,here}!  
+used in the new and improved lilypond-book script.
+@ref{Download other versions}
 @newsEnd
 
 
 @newsItem
 @subsubheading January 26, 2005
 LilyPond 2.5.9 is out. This release fixes a couple of annoying
-bugs in the direct PS output for piano braces.  Download @uref{install/#2.5,here}!
+bugs in the direct PS output for piano braces.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2193,7 +2193,7 @@ accuracy of error reporting has been improved.
 See the 
 @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3065&content-type=text/vnd.viewcvs-markup,
 change log
-} and download @uref{install/#2.5,now}!
+} and @ref{Download other versions}!
 
 @newsEnd
 
@@ -2205,7 +2205,9 @@ Pango integration for the PS backend. The default font is
 Century Schoolbook from the PS font suite.  It also has
 small updates to the tablature settings by Erlend Aasland,
 assorted manual updates by Graham, and an overhaul of the
-font code by Werner. Download it @uref{install/#2.5,here} and check out the changes in
+font code by Werner. 
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3048&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2221,8 +2223,9 @@ not produced. The PS backend is now completely switched over
 to Pango/FontConfig: for -f ps, LilyPond only accepts UTF8
 input, all text fonts are loaded through Pango, the TeX
 backend now offloads all metric computations to LaTeX, the
-SVG and GNOME backends are broken, most probably. Download
-it @uref{install/#2.5,here} and check out the
+SVG and GNOME backends are broken, most probably.
+@ref{Download other versions}
+and check out the
 changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.3013&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2233,8 +2236,9 @@ changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond
 LilyPond 2.5.5 is out. It is the first one to link against
 FontConfig and Pango, although it is only available in the "-f
 ps" output. The default output format has been changed back TeX
-while we stabilize the Pango/FontConfig integration. Download
-it @uref{install/#2.5,here} and check out the changes in
+while we stabilize the Pango/FontConfig integration.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev= 1.3000&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2246,8 +2250,9 @@ LilyPond 2.5.4 is out. This release has some major
 brainsurgery in the font handling. As of now, LilyPond loads
 the music fonts in OpenType font format using FreeType.
 This has made a lot of things simpler, including font
-handling for the GNOME backend and SVG backend. Download
-it @uref{install/#2.5,here} and check out the
+handling for the GNOME backend and SVG backend.
+@ref{Download other versions}
+and check out the
 changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2974&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2263,7 +2268,9 @@ on a single note. In markups, expressions stacked with
 breaks that cause long texts to stick outside of the page
 staff. Grace notes following a main note, used to be entered
 by letting the grace notes follow a skip in a parallel
-expression. Download it @uref{install/#2.5,here} and
+expression.
+@ref{Download other versions}
+and
 check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2908&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2275,7 +2282,9 @@ LilyPond 2.5.2 was released. It has several goodies,
 including solfa-notation (shaped noteheads), and an easier
 mechanism for customizing title, footer and header
 layout. Don't forget to rebuild the fonts, as they have been
-changed to accomodate the solfa-notation. Download it @uref{install/#2.5,here} and check out the changes in
+changed to accomodate the solfa-notation.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2898&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2291,7 +2300,9 @@ remain in the place (ie. start at the same time-wise and be
 part of the same context). Further attractions are: the
 gnome backend now also draws beams and slurs, updates to the
 SVG backend, support for the lmodern font set for TeX,
-various bugfixes. Download it @uref{install/#2.5,here} and check out the changes in
+various bugfixes.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2881&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2314,7 +2325,8 @@ In addition, Jan hacked together some highly experimental
 code where you can use the mouse to drag and drop objects in
 the -f gnome backend. These tweaks can be saved and are
 applied to the PS and TeX output as well.
-Download it @uref{install/#2.5,here} and check out
+@ref{Download other versions}
+and check out
 the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2837&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2324,7 +2336,7 @@ the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lily
 @subsubheading November 11, 2004
 LilyPond 2.4.2 is out. This release fixes a number of security
 problems with --safe, and adds a lot of polishing fixes.
-Download it @uref{install/#2.4,here}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2332,7 +2344,9 @@ Download it @uref{install/#2.4,here}.
 @newsItem
 @subsubheading November 4, 2004
 LilyPond 2.4.1 is out. This release includes a number of small
-fixes that were made to 2.4.0 last week. Download it @uref{install/#2.4,here} and check out the changes in
+fixes that were made to 2.4.0 last week.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2780.2&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2343,9 +2357,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 LilyPond 2.4.0 was just @uref{announce-v2.4.html,released!}
 This new stable version has support for page-layout,
 completely rewritten slur formatting and many other
-improvements. Read about them  in the @uref{@@DOC@@v2.4/Documentation/topdocs/out-www/NEWS.html,NEWS}
-file. Download from @uref{install/,here}.
-Enjoy!
+improvements. Read about them in the @ref{Changes}
+file.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2354,7 +2368,9 @@ Enjoy!
 @subsubheading October 29, 2004
 LilyPond 2.3.26 is out. This is another 2.4 release
 candidate. This release fixes a number of minor bugs, and
-some problems with the conversion scripts. Download it @uref{install/#2.3,here} and check out the changes in
+some problems with the conversion scripts.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2773&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2365,7 +2381,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 2.3.25 is the final release candidate for Lilypond 2.4.
 Werner has been overhauling the TeX macros and
 lilypond-book. In addition, this release contains an
-important fix for raggedbottom page-layout. Download it @uref{install/#2.3,here} and check out the changes in
+important fix for raggedbottom page-layout.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2765&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2375,7 +2393,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 @subsubheading October 27, 2004
 LilyPond 2.3.24 is a further polished 2.4 release candidate.
 This release has more improvements by Werner for the TeX
-backend, and a bunch of other small fixes. Download it @uref{install/#2.3,here} and check out the changes in
+backend, and a bunch of other small fixes.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2752&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2385,7 +2405,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 @subsubheading October 24, 2004
 LilyPond 2.3.23 has bugfixes in the documentation, lilypond-book and
 --preview output. This release can be considered as a release
-candidate for LilyPond 2.4.Download it @uref{install/#2.3,here} and check out the changes in
+candidate for LilyPond 2.4.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2742&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2396,7 +2418,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 LilyPond 2.3.22 fixes a bunch more bugs, to make 2.4 a really
 stable release.  In addition, it renames the \paper@{@} block to
 \layout@{@}.  The \bookpaper@{@} block is now called
-\paper@{@}.Download it @uref{install/#2.3,here} and
+\paper@{@}.
+@ref{Download other versions}
+and
 check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2709&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2407,7 +2431,9 @@ check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*chec
 LilyPond 2.3.21 is out. It is a serious release candidate for
 the next stable release LilyPond. This version has a cleanup
 and some small formatting improvements of the slur
-code. Download it @uref{install/#2.3,here} and check
+code.
+@ref{Download other versions}
+and check
 out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2692&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2419,7 +2445,9 @@ LilyPond 2.3.20 was released. It fixes the biggest problems
 with encoding and the TeX backend. As a result, latin1
 characters (like the german SS) show up correctly in the
 output once again. Also it has the usual bugfixes and updates
-in the documentation. Download it @uref{install/#2.3,here} and check out the changes in
+in the documentation.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2674&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2437,8 +2465,9 @@ just a friendly chat. Registration is not required to attend.
 
 @newsItem
 @subsubheading September 26, 2004
-LilyPond 2.3.19 is out. It's mainly a bugfix release. Download
-it @uref{install/#2.3,here} and check out the changes
+LilyPond 2.3.19 is out. It's mainly a bugfix release.
+@ref{Download other versions}
+and check out the changes
 in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2652&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2452,7 +2481,9 @@ changing commands (`\chords', `\lyrics', etc.)  have been
 renamed to `\chordmode', `\lyricmode', etc. The command
 `\chords' is an abbreviation for \new ChordNames \chordmode
 ...  `\drums', `\lyrics', `\chords', `\figures' function
-similarly. Download it @uref{install/#2.3,here} and check out the changes in
+similarly.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2614&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2471,7 +2502,9 @@ can be filed at bug-lilypond@@gnu.org
 In this case, a bug is defined as something that the current 2.3 does
 worse than the latest 2.2 release.  We want to be sure that no output
 will get uglier by upgrading to 3.0, so that once 3.0 is out, nothing
-will hold users back in switching. Download it @uref{install/#2.3,here} and check out the changes in
+will hold users back in switching.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2562&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2484,7 +2517,9 @@ the new vertical spacing engine, has lots of documentation
 updates, and has support for landscape output in the direct
 postscript output. Also, the types of events quoted with
 `\quote' can now be tuned with `quotedEventTypes'. By default,
-only notes and rests end up in quotes. Download it @uref{install/#2.3,here} and check out the changes in
+only notes and rests end up in quotes.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2553&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2497,7 +2532,9 @@ LilyPond will try to keep staves at the same distances across a
 page, but it will stretch distances to prevent collisions; key
 signature cancellations are now printed before the bar line;
 different voices that all use "\quote" can now refer to each
-other. Download it @uref{install/#2.3,here} and check out
+other.
+@ref{Download other versions}
+and check out
 the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2534&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2526,7 +2563,9 @@ inside-slur to #f. It is no longer necessary to instantiate
 "up" and "down" staves separately when using
 \autochange. Jurgen Reuter refreshed the logic around
 mensural flags, so they are adjusted for staff lines once
-again.  Download it @uref{install/#2.3,here} and
+again.
+@ref{Download other versions}
+and
 check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2520&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2535,7 +2574,9 @@ check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*chec
 @newsItem
 @subsubheading August 24, 2004
 LilyPond 2.2.6 fixes a few minor issues, among others, the
-disappearing metronome mark. Download it @uref{install/#2.2,here} and check out the changes in
+disappearing metronome mark.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.33&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2546,7 +2587,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 LilyPond 2.3.12 is out. This release has a lot of fixes and
 a new feature: there is now support for putting two slurs on
 chords, both above and below. This is switched on with the
-`doubleSlurs' property. Download it @uref{install/#2.3,here} and check out the changes in
+`doubleSlurs' property.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2489&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2555,7 +2598,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 @newsItem
 @subsubheading August 3, 2004
 LilyPond 2.3.11 is out. This release basically is 2.3.10 with a few
-annoying bugs fixed. Download it @uref{install/#2.3,here} and check out
+annoying bugs fixed.
+@ref{Download other versions}
+and check out
 the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2449&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2577,7 +2622,9 @@ started and stopped with \startTrillSpan and \stopTrillSpan
 There is a new markup command `\postscript' that takes a string
 that is dumped as verbatim PostScript
 @end itemize
-Download it @uref{install/#2.3,here} and check out
+
+@ref{Download other versions}
+and check out
 the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2435&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2595,7 +2642,8 @@ This release also fixes a bunch of small errors.  I now consider
 LilyPond feature complete for a 3.0 release.  Next on the TODO list is
 updating the manual, and after that's done we can release 3.0. The
 projected date for this to happen is in about a month.
-Download it @uref{install/#2.3,here} and check out
+@ref{Download other versions}
+and check out
 the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2416&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2607,7 +2655,8 @@ Lilypond 2.3.8 fixes a few minor bugs in the new slur code,
 and has rewritten support for ledger lines. Now, in tight
 situations, ledger lines will be shortened so they stay
 separate.  This also required a cleanup of the Ambitus
-implementation. Download it @uref{install/#2.3,here}
+implementation.
+@ref{Download other versions}
 and check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2395&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2623,7 +2672,9 @@ combinations for begin and end points is then tried out.
 Slurs will now also take into account collisions with staff
 lines, scripts (like staccato and accent) and accidentals. In
 the LilyPond emacs mode, the `|' will now display the current
-beat within the measure. Download it @uref{install/#2.3,here} and check out the changes in
+beat within the measure.
+@ref{Download other versions}
+and check out the changes in
 the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2383&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2632,7 +2683,9 @@ the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/C
 @newsItem
 @subsubheading July 15, 2004
 LilyPond 2.2.5 was released. It has a few bug fixes from
-2.3.x. Download it @uref{install/#2.2,here} and check
+2.3.x.
+@ref{Download other versions}
+and check
 out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.28&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2651,8 +2704,9 @@ Journal}.
 LilyPond 2.3.6 was released.  This release has more updates
 for the Fret diagram code (thanks, Carl!), fixes a bunch of
 bugs, including a serious one that trashed a lot of beam
-formatting, and was also present in the 2.2 series. Download
-it @uref{install/#2.3,here} and check out the changes
+formatting, and was also present in the 2.2 series.
+@ref{Download other versions}
+and check out the changes
 in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2306&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2661,7 +2715,9 @@ in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypon
 @newsItem
 @subsubheading July 5, 2004
 LilyPond 2.2.4 was released. It is mainly a bug fix
-release. Download it @uref{install/#2.2,here} and
+release.
+@ref{Download other versions}
+and
 check out the changes in the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.23&content-type=text/vnd.viewcvs-markup,ChangeLog}.
 
 @newsEnd
@@ -2676,7 +2732,8 @@ scm/output-gnome.scm and try to run
 buildscripts/guile-gnome.sh to see what the fuss is all about.
 Carl Sorensen also provided us with more patches to the
 fret-diagram output. Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2293&content-type=text/vnd.viewcvs-markup,ChangeLog}
-and download @uref{install/#2.3,here}.
+and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2684,7 +2741,8 @@ and download @uref{install/#2.3,here}.
 @newsItem
 @subsubheading June 20, 2004
 LilyPond 2.2.3 has a turkish translation and fixes a few minor
-bugs that were reported over the past month. Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.16&content-type=text/vnd.viewcvs-markup,ChangeLog} for a full description and download it @uref{install/#2.2,here}.
+bugs that were reported over the past month. Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.16&content-type=text/vnd.viewcvs-markup,ChangeLog} for a full description and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2694,8 +2752,8 @@ bugs that were reported over the past month. Check out the @uref{http://savannah
 LilyPond 2.3.4 further improves the output backends. As a
 result, manual page-breaks, multiple output formats and putting
 @code{\score} into markups now works.  Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2242&content-type=text/vnd.viewcvs-markup,ChangeLog}
-and download @uref{install/#2.3,here}.
-
+and
+@ref{Download other versions}.
 @newsEnd
 
 
@@ -2704,7 +2762,8 @@ and download @uref{install/#2.3,here}.
 LilyPond 2.3.3 has many internal changes relating to the output
 backend (PostScript) and page-layout. In addition, it contains a few
 bugfixes for recently reported problems.  Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2207&content-type=text/vnd.viewcvs-markup,ChangeLog}
-and download @uref{install/#2.3,here}.
+and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2713,7 +2772,8 @@ and download @uref{install/#2.3,here}.
 @subsubheading May 31, 2004
 LilyPond 2.2.2 is out.  It has a number of small bugfixes, so upgrade
 if any of these errors concern you.  Check out the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/lilypond/lilypond/ChangeLog?rev=1.2000.2.9,ChangeLog}
-or head straight to the @uref{install/#2.2,download section}.
+or head straight to the
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2722,8 +2782,8 @@ or head straight to the @uref{install/#2.2,download section}.
 @subsubheading May 26, 2004
 LilyPond 2.3.2 is out. This release has a lot of internal
 changes relating to page layout, but also sports experimental
-fret-diagram code.  Check out the @uref{@@DOC@@v2.3/Documentation/topdocs/out-www/NEWS.html,release
-notes} or head straight to the @uref{install/#2.3,download section}.
+fret-diagram code.  Check out the @ref{Changes} or head straight to the
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2731,9 +2791,8 @@ notes} or head straight to the @uref{install/#2.3,download section}.
 @newsItem
 @subsubheading May 9, 2004
 LilyPond 2.3.1 is out. This release has many new and cool
-features. Check out the @uref{@@DOC@@v2.3/Documentation/topdocs/out-www/NEWS.html,release
-notes} or head straight to the  
-@uref{install/#2.3,download section}.
+features. Check out the @ref{Changes} or head straight to the  
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2754,7 +2813,7 @@ Documentation. Of course, any other help is also welcome!
 @newsItem
 @subsubheading May 3, 2004
 LilyPond 2.2.1 has been released. It fixes a handful of bugs.
-Download @uref{install/#2.2,here}.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2774,8 +2833,8 @@ LilyPond 2.3.0 is the first release
 in the 2.3 cycle.  The focus for 2.3 is page layout, so
 instrumentalists can force parts to have page breaks at sane turning
 points.  This release is @emph{experimental}; expect things to break!
-More info in the @uref{@@DOC@@v2.3/Documentation/topdocs/out-www/NEWS.html,release
-notes}.  Download @uref{install/#2.3,here}.
+More info in the @ref{Changes}.  
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2792,8 +2851,7 @@ release appeared on @uref{http://linuxfr.org/2004/04/08/15968.html,linuxfr.org}.
 @subsubheading April 8, 2004
 Binaries for LilyPond 2.2.0 are available for
 MacOS X, Slackware, Mandrake and Debian Woody.
-Download 
-@uref{install/#2.2,here}.
+@ref{Download other versions}
 @newsEnd
 
 
@@ -2801,9 +2859,11 @@ Download
 @subsubheading April 1, 2004
 LilyPond 2.2.0 is out!  This new stable version has
 completely revamped support for for orchestral score
-formatting, cue notes, font size management, lyric
-formatting, drum notation/playback and document
-integration. Read about it in the @uref{announce-v2.2.html,announcement} or skip to the @uref{install/#2.2,download} directly.
+formatting, cue notes, font size management, lyric formatting,
+drum notation/playback and document integration. Read about it in
+the @uref{announce-v2.2.html,announcement} or skip to the
+@ref{Download other versions}.
+
 @newsEnd
 
 
@@ -2813,7 +2873,8 @@ LilyPond 2.1.37 has build fixes for Cygwin and SUSE,
 bugfixes for part-combining and chord tremolos and even more
 documentation polish.  This should be the final release
 candidate; expect only regression bugs to be fixed before
-2.2.  Download @uref{install/,here}.
+2.2.  
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2821,7 +2882,8 @@ candidate; expect only regression bugs to be fixed before
 @newsItem
 @subsubheading March 30, 2004
 LilyPond 2.1.36 has many fixes in
-the user manual. Download @uref{install/,here}.
+the user manual. 
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2831,17 +2893,16 @@ the user manual. Download @uref{install/,here}.
 LilyPond 2.1..35 fixes a slew of
 bugs, and has the @code{raggedlast} option, which causes
 paragraph like line breaking for scores. More info in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}.  Download @uref{install/,here}.
+@ref{Changes}.  
+@ref{Download other versions}
 
 @newsEnd
 
 
 @newsItem
 @subsubheading March 22, 2004
-LilyPond 2.1.34 fixes minor bugs, and has
-@uref{@@DOC@@v2.1/Documentation/user/out-www/lilypond/Changing-defaults.html,more
-rewriting}. Download @uref{install/,here}.
+LilyPond 2.1.34 fixes minor bugs, and has more rewriting.
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2850,19 +2911,18 @@ rewriting}. Download @uref{install/,here}.
 @subsubheading March 21, 2004
 LilyPond 2.1.33 fixes a serious bug, and a few other
 irritations.
-@uref{install/,Upgrade} if you get random symbols
-misplaced in the output.
+@ref{Download other versions}
 
 @newsEnd
 
 
 @newsItem
 @subsubheading March 20, 2004
-LilyPond 2.1.32 has
-@uref{@@DOC@@v2.1/Documentation/user/out-www/lilypond/Interpretation-contexts.html,more
-rewriting} in the user manual. There is also an experimental
+LilyPond 2.1.32 has more rewriting
+in the user manual. There is also an experimental
 implementation of optimal page breaking (Postscript backend
-only).  Download @uref{install/#2.1,here}.  
+only).
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2873,8 +2933,8 @@ LilyPond 2.1.31 is out.  It has fixes the alignment of bass
 figures and spurious dynamic warnings in MIDI. New
 attractions include rewritten font-selection routines.  See
 the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2905,8 +2965,8 @@ authors of LilyPond.
 LilyPond 2.1.30 has editorial fixes for the manual, and
 experimental support for page layout in the PostScript
 backend.  See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2925,8 +2985,8 @@ experimental support for producing titles with
 In LilyPond 2.1.28 Scheme property functions may be used
 argument to @code{set!}.  In addition, parts of the manual
 have been proofread and corrected in this release.  See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2936,8 +2996,8 @@ notes} and download @uref{install/#2.1,here}.
 LilyPond 2.1.27 takes into account instrument transpositions
 when quoting other voices. This release also fixes a number
 of lyrics related bugs. See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and
+@ref{Download other versions}.
 
 @newsEnd
 
@@ -2947,8 +3007,8 @@ notes} and download @uref{install/#2.1,here}.
 LilyPond 2.1.26 has a new, experimental feature for quoting
 other voices in instrumental parts. This can be used to
 produce cue notes.  More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2956,8 +3016,8 @@ notes}. Download @uref{install/#2.1,here}.
 @newsItem
 @subsubheading February 18, 2004
 LilyPond 2.1.25 fixes many bugs, and changes the conventions
-for altering accidental rules. Upgrade from @uref{install/#2.1,here} if you experience problems
-with earlier releases.
+for altering accidental rules.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2971,8 +3031,8 @@ contexts. Further 2.1.23, which was not announced here,
 fixes a few bugs caused by the change of @code{\property}
 syntax and has updates in the Program Reference document.
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2982,8 +3042,8 @@ notes}. Download @uref{install/#2.1,here}.
 LilyPond 2.1.22 has a
 simplification of the @code{\property} syntax: it is
 shorter and more consistent now.  More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -2994,8 +3054,8 @@ In LilyPond 2.1.21, output
 tweaks can be done at multiple levels of the context
 hierarchy.  In addition, it has a bunch of bugfixes,
 improvements in the documentation.  More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3007,8 +3067,8 @@ output for drums.  It also sports a completely rewritten
 lilypond-book script, which is cleaner, shorter, and faster.
 It also has a large number of bugfixes.
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3021,8 +3081,8 @@ long-standing cleanups: the removal of @code{Thread} (all
 functionality is now moved into @code{Voice}) and Lyrics
 (functionality moved to @code{LyricsVoice})  context.
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3033,8 +3093,8 @@ LilyPond 2.1.18 is out. This
 release has the new part-combiner installed by default, and a
 similar implementation of @code{autochange}.  More information
 in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3045,8 +3105,7 @@ LilyPond 2.1.17 is out. It adds texts
 (solo, a due) for the part combiner. It also reinstates the
 @code{--safe} option which prevents havoc by Scheme exploits.  More
 information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
 
 @newsEnd
 
@@ -3059,8 +3118,8 @@ has been tested successfully on larger pieces. In the near future,
 expect more part-combining eye-candy.
 More information in
 the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3071,8 +3130,7 @@ LilyPond 2.1.15 further improves the part-combiner, and fixes many
 bugs, among others in pedal brackets and finger positioning.
 More information in
 the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3085,8 +3143,7 @@ use part-combining, please consider giving it a test-run. In addition
 many bugs relating to mixed staff sizes have been fixed.
 More information in
 the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3107,7 +3164,7 @@ LilyPond 2.1.13  fixes a small but
 nasty bug in side-positioning placement, and some bugs in
 tuplet, tie and accidental formatting. This release contains
 rudimentary work on a new part-combiner.
-Download @uref{install/#2.1,here}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3117,8 +3174,7 @@ Download @uref{install/#2.1,here}.
 LilyPond 2.1.12 fixes many bugs
 and improves formatting of ottava brackets.  More information in
 the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3137,11 +3193,9 @@ available for Windows!  For downloading, go
 In 2.1.11, the mechanism for
 setting staff size and page is much simplified. In addition
 there are improvements in the notehead shape, and there is
-balloon help! (
-@uref{@@DOC@@v2.1/input/regression/out-www/collated-files.html#balloon.ly,tadaa!}).
+balloon help!
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3151,8 +3205,7 @@ notes}. Download @uref{install/#2.1,here}.
 LilyPond 2.1.10 has a load of
 bugfixes and a shorter syntax for octave checks. More
 information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3163,8 +3216,7 @@ LilyPond 2.1.9 has a new mechanism
 for adding lyrics to melodies. It is now possible to have
 different melismatic variations for each stanza.  More
 information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3178,8 +3230,7 @@ the appearance of spanning objects like @code{StaffSymbol} and
 modified with @code{\remove} and @code{\consists} for
 individual music expressions.
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes}. Download @uref{install/#2.1,here}.
+@ref{Changes}. @ref{Download other versions}
 
 @newsEnd
 
@@ -3188,7 +3239,7 @@ notes}. Download @uref{install/#2.1,here}.
 @subsubheading January 7, 2004
 An update to the stable branch,
 version 2.0.2, was released today. It contains a couple of
-minor bugfixes.  Download @uref{install/#2.0,here}.
+minor bugfixes.  @ref{Download other versions}
 
 @newsEnd
 
@@ -3199,8 +3250,7 @@ LilyPond 2.1.7 continues to
 improve the layout of the Schubert test piece; this release
 focuses on dot placement and multi measure rests centering.
 More information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3222,8 +3272,7 @@ in LilyPond 2.1.5, the lyric
 alignment is completely revamped, and now matches my Edition
 Peters version of the Schubert song S&auml;ngers Morgen.  More
 information in the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3233,8 +3282,7 @@ notes} and download @uref{install/#2.1,here}.
 LilyPond 2.1.4 is released. Font shapes and linethickness
 are now truly different for different staff sizes, thus lending
 an engraved look to scores printed in smaller type too. See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3246,8 +3294,7 @@ Interpreting and formatting is now done while parsing the
 file. This allows for Scheme manipulation of music, and could
 be used to implement experimental MusicXML output (volunteers
 to implement this are welcome!)  See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3258,8 +3305,7 @@ LilyPond 2.1.2 released. This
 release has a new mechanism for setting font sizes, which
 combines different font design sizes and continuous font
 scaling. See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3269,8 +3315,7 @@ notes} and download @uref{install/#2.1,here}.
 LilyPond 2.1.1 released. This
 release wraps together all the small fixes made during
 Han-Wen's absence. See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release
-notes} and download @uref{install/#2.1,here}.
+@ref{Changes} and download @uref{install/#2.1,here}.
 
 @newsEnd
 
@@ -3278,7 +3323,7 @@ notes} and download @uref{install/#2.1,here}.
 @newsItem
 @subsubheading October 11, 2003
 LilyPond 2.1.0 released. See the
-@uref{@@DOC@@v2.1/Documentation/topdocs/out-www/NEWS.html,release notes} and
+@ref{Changes} and
 download @uref{install/#2.1,here}.
 
 @newsEnd
@@ -3305,9 +3350,9 @@ thanks to Ricardo Hoffman.
 
 @newsItem
 @subsubheading October 5, 2003
-LilyPond 2.0.1 binaries are available for Macos X.
-Download @uref{install/macos.html,here}.  Thanks to
+LilyPond 2.0.1 binaries are available for Macos X, many thanks to
 Matthias Neeracher.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3315,8 +3360,8 @@ Matthias Neeracher.
 @newsItem
 @subsubheading October 4, 2003
 LilyPond 2.0.1 binaries are available for Windows (Cygwin
-version 1.5).  Download
-@uref{install/cygwin.html,here}.  Thanks to Bertalan
+version 1.5).  
+@ref{Download other versions}.  Thanks to Bertalan
 Fodor, our new Cygwin maintainer!
 
 @newsEnd
@@ -3326,9 +3371,7 @@ Fodor, our new Cygwin maintainer!
 @subsubheading September 29, 2003
 LilyPond 2.0.1 is released. It
 contains minor bugfixes.
-See the
-@uref{@@DOC@@v2.0/Documentation/out-www/ChangeLog.txt,
-ChangeLog}
+See the @ref{Changes}
 or download @uref{install/#2.0,here} directly.
 
 @newsEnd
@@ -3359,7 +3402,7 @@ now much easier and more efficient. Read the announcement
 @subsubheading September 24, 2003
 LilyPond 1.9.10 is released. This is
 the final LilyPond 2.0 release candidate. Check
-the @uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,release notes} and
+the @ref{Changes} and
 download @uref{install/,here}.
 
 @newsEnd
@@ -3369,7 +3412,7 @@ download @uref{install/,here}.
 @subsubheading September 23, 2003
 LilyPond 1.9.9 is released. This is
 the second LilyPond 2.0 prerelease. Check
-the @uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,release notes} and
+the @ref{Changes} and
 download @uref{install/,here}.
 
 @newsEnd
@@ -3379,7 +3422,7 @@ download @uref{install/,here}.
 @subsubheading September 19, 2003
 LilyPond 1.9.8 is released. This is
 the first LilyPond 2.0 prerelease. Check
-the @uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,release notes} and
+the @ref{Changes} and
 download @uref{install/,here}.
 
 @newsEnd
@@ -3389,7 +3432,7 @@ download @uref{install/,here}.
 @subsubheading September 17, 2003
 LilyPond 1.9.7 is released. LilyPond
 now has support for quarter tone accidentals!
-Download @uref{install/,here}.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3397,7 +3440,8 @@ Download @uref{install/,here}.
 @newsItem
 @subsubheading September 16, 2003
 LilyPond 1.9.6 is released.
-It has a lot of minor fixes and updates. Download @uref{install/,here}.
+It has a lot of minor fixes and updates.
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3407,7 +3451,8 @@ It has a lot of minor fixes and updates. Download @uref{install/,here}.
 LilyPond 1.9.5 is released.
 With this release, the 1.9 branch is feature
 complete. After some stabilization and documentation work, 2.0
-will be available in a few weeks. Download @uref{install/,here}.
+will be available in a few weeks. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3415,7 +3460,8 @@ will be available in a few weeks. Download @uref{install/,here}.
 @newsItem
 @subsubheading September 9, 2003
 LilyPond 1.8.2 is released. This
-release fixes a couple of minor bugs. Download @uref{install/,here}.
+release fixes a couple of minor bugs. 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3423,7 +3469,8 @@ release fixes a couple of minor bugs. Download @uref{install/,here}.
 @newsItem
 @subsubheading September 7, 2003
 LilyPond 1.8 binaries are available
-for Windows (Cygwin version 1.5). Download @uref{install/,here}.
+for Windows (Cygwin version 1.5). 
+@ref{Download other versions}
 
 @newsEnd
 
@@ -3451,8 +3498,7 @@ available. Get them @uref{install/,here}.
 LilyPond 1.9.3 is released.  This
 release supports tagging for music version control, and has better
 fingering placement flexibility.  Read the
-@uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,
-release notes} and get it @uref{download#1.9,here}.
+@ref{Changes} and get it @uref{download#1.9,here}.
 
 @newsEnd
 
@@ -3460,8 +3506,7 @@ release notes} and get it @uref{download#1.9,here}.
 @newsItem
 @subsubheading August 28, 2003
 LilyPond 1.9.2 is released. Read the
-@uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,
-release notes} and get it
+@ref{Changes} and get it
 @uref{download#1.9,here}.
 
 @newsEnd
@@ -3470,8 +3515,7 @@ release notes} and get it
 @newsItem
 @subsubheading August 26, 2003
 LilyPond 1.9.1 is released. Read the
-@uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,
-release notes} and get it
+@ref{Changes} and get it
 @uref{download#1.9,here}.
 
 @newsEnd
@@ -3480,8 +3524,7 @@ release notes} and get it
 @newsItem
 @subsubheading August 25, 2003
 The  LilyPond 1.9 development release is available. Read the
-@uref{@@DOC@@v1.9/Documentation/topdocs/out-www/NEWS.html,
-release notes} and get it
+@ref{Changes} and get it
 @uref{download#1.9,here}.
 
 @newsEnd
@@ -3498,7 +3541,7 @@ Mandrake 9.1 RPMS available, get them
 @newsItem
 @subsubheading August 21, 2003
 LilyPond 1.8.1 was released. Get it @uref{install/,here}, or
-read the @uref{http://savannah.gnu.org/cgi-bin/viewcvs/lilypond/lilypond/ChangeLog?rev=1.1258.2.1&only_with_tag=lilypond_1_8&content-type=text/vnd.viewcvs-markup,ChangeLog}.
+read the @ref{Changes}.
 
 @newsEnd
 
@@ -3515,8 +3558,7 @@ Download @uref{http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html
 @newsItem
 @subsubheading August 7, 2003
 LilyPond 1.8 is released.  Read
-@uref{@@DOC@@v1.8/Documentation/topdocs/out-www/NEWS.html,the
-release notes} and get it @uref{install/,here}.
+@ref{Changes} and get it @uref{install/,here}.
 
 @newsEnd
 
