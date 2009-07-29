@@ -32,6 +32,26 @@
     on one day.
 
     !-->
+
+  <dt>
+    <b>New LilyPondTool release</b> -
+    <em>July 28, 2009</em>
+  </dt>
+  <dd>
+  The latest version of <a href="http://lilypondtool.organum.hu">
+  LilyPondTool</a>, developed by Bertalan Fodor, has been released
+  to the jEdit plugin repository.  Now it supports Virtual Piano
+  and MIDI input, and a dockable PDF viewer with advanced
+  point-and-click support. To get it, in
+  <a href="http://www.jedit.org/index.php?page=download">
+  JEdit 4.3pre16 or later</a> (development version), go to
+  <em>Plugins > Plugin Manager</em> and choose <em>LilyPondTool</em>
+  from the <em>Install</em> tab. For more information check
+  <a href="http://lilypondtool.organum.hu">
+  http://lilypondtool.organum.hu</a>.
+  </dd>
+  
+  
   <dt>
     <b>LilyPond 2.13.3</b> -
     <em>July 2, 2009</em>
