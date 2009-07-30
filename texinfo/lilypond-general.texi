@@ -187,7 +187,7 @@ Read more in our @ref{Introduction}!
 @menu
 * Introduction::     Start here to creating sheet music.
 * Download::         Get LilyPond.
-* Manuals::          RTFM.
+* Manuals::          Read The Fine Manuals (RTFM).
 * Community::        Contact other users.
 @end menu
 @divEnd
