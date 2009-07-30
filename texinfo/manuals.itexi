@@ -79,8 +79,11 @@ required for constructing tweaks.
 @item @ref{Translation status}:
 for non-English readers.
 
-@item @ref{Manuals other versions}:
-manuals for older versions of LilyPond.
+@item @ref{Old manuals}:
+manuals for older versions.
+
+@item @ref{Development}:
+manuals for the unstable version.
 
 @item @ref{GNU FDL}:
 these manuals are published under the GNU Free Documentation
@@ -103,7 +106,7 @@ License.
 * Changes::                     
 * Internals Reference::         
 * Translation status::          
-* Manuals other versions::      
+* Old manuals::      
 * GNU FDL::                     
 @end menu
 
@@ -389,11 +392,8 @@ have clickable links.
 blah
 
 
-@node Manuals other versions
-@unnumberedsec Manuals other versions
-
-Documentation for our development version can be found in
-@ref{Development}.
+@node Old manuals
+@unnumberedsec Old manuals
 
 Documentation for previous stable versions:
 

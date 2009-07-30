@@ -521,7 +521,7 @@ sub generate_ly_toc_entries($$$)
   my @color_4 = (
         "Text input",
         "GPL",
-        "Translation status", "Manuals other versions", "GNU FDL"
+        "Translation status", "Old manuals", "GNU FDL"
         );
 
   my $addColor = " colorDefault";
