@@ -324,8 +324,6 @@ and conductors' scores can be produced from the same source files.
 orchestral.png, center}
 @newsEnd
 
-@c Final resting place of the current input/*.ly ghetto.
-
 
 @divClass{column-center-bottom}
 @subheading Where now?
@@ -351,6 +349,7 @@ software!
 @divEnd
 
 
+@c @divClass{column-left-top}
 @divClass{color2}
 @divClass{keep-bullets}
 @subheading What are the benefits to users?
@@ -391,6 +390,7 @@ available for copying, modifications, and distribution.
 @divEnd
 
 
+@c @divClass{column-right-top}
 @divClass{color3}
 @divClass{keep-bullets}
 @subheading Why do LilyPond developers @qq{give away} their work for free?
@@ -438,9 +438,9 @@ scholarships.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Still not convinced?  Read some of our users' @ref{Testimonials}.
-If you've already decided to try LilyPond, first read about our
-@ref{Text input}.
+Still not convinced?  Read about some of our users'
+@ref{Productions} and sheet music.  If you've already decided to
+try LilyPond, first read about our @ref{Text input}.
 @divEnd
 
 
@@ -500,7 +500,9 @@ download or in traditional paper format.
 @divClass{column-center-bottom}
 @subheading Where now?
 
-Read about our @ref{Text input}.
+Still not convinced?  Read some of our users' @ref{Testimonials}.
+If you've already decided to try LilyPond, first read about our
+@ref{Text input}.
 @divEnd
 
 
@@ -640,10 +642,7 @@ potential.}
 @divClass{column-center-bottom}
 @subheading Where now?
 
-FIXME
-Still not convinced?  Look at some neat @ref{Examples}.  If you've
-already decided to try LilyPond, first read about our
-@ref{Text input}.
+Read about our @ref{Text input}.
 @divEnd
 
 
@@ -767,8 +766,7 @@ have learned how to write music in our input format.  Experienced
 users even report that they can enter a full score in LilyPond
 faster than with a piano keyboard or mouse+GUI!  Perhaps you would
 like to review the @ref{Features}, @ref{Examples}, or
-@ref{Freedom} that LilyPond provides, or read more users'
-@ref{Testimonials}.
-
+@ref{Freedom} that LilyPond provides, or read about users'
+@ref{Productions} and @ref{Testimonials}.
 @divEnd
 

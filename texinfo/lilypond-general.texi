@@ -172,13 +172,13 @@ Read more in our @ref{Introduction}!
 
 @ref{Download, Download 2.12.3}
 
-@ref{Documentation, Docs 2.12.3}
+@ref{Manuals, Manuals 2.12.3}
 
 @subsubheading Unstable
 
 @ref{Development, Download 2.13.2}
 
-@ref{Development, Docs 2.13.2}
+@ref{Development, Manuals 2.13.2}
 
 @divEnd
 
@@ -187,7 +187,7 @@ Read more in our @ref{Introduction}!
 @menu
 * Introduction::     Start here to creating sheet music.
 * Download::         Get LilyPond.
-* Documentation::    RTFM.
+* Manuals::          RTFM.
 * Community::        Contact other users.
 @end menu
 @divEnd
@@ -198,7 +198,7 @@ Read more in our @ref{Introduction}!
 
 @include introduction.itexi
 @include download.itexi
-@include documentation.itexi
+@include manuals.itexi
 @include community.itexi
 
 @bye

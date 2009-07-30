@@ -19,10 +19,12 @@ our @ref{Text input}.}
 @ref{Unix, Unix (Linux and FreeBSD)}
 
 @item
-@ref{MacOS X, @image{logo-macosx} MacOS X}
+@ref{MacOS X, @image{logo-macosx}}
+@ref{MacOS X, MacOS X}
 
 @item
-@ref{Windows, @image{logo-windows} Microsoft Windows}
+@ref{Windows, @image{logo-windows}}
+@ref{Windows, Microsoft Windows}
 
 @end itemize
 
