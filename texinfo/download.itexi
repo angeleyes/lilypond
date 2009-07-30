@@ -36,11 +36,15 @@ our @ref{Text input}.}
 @itemize
 
 @item
-@ref{Source} (for packagers)
+@ref{Source}:
+for packagers
 
 @item
-@ref{Download other versions} (old and unstable development
-versions)
+@ref{Old downloads}:
+old versions
+
+@item @ref{Development}:
+unstable downloads
 
 @end itemize
 @divEnd
@@ -89,7 +93,7 @@ acknowledged.
 * MacOS X::                     
 * Windows::                     
 * Source::                      
-* Download other versions::     
+* Old downloads::     
 * GPL::                         
 @end menu
 @divEnd
@@ -479,24 +483,13 @@ Instructions are listed in @@ref@{FIXME development-install@}.
 @divEnd
 
 
+@node Old downloads
+@unnumberedsec Old downloads
 
-@c node name vs. section name: we want to re-use this name
-@c in downloads and docs.  -gp
-@node Download other versions
-@unnumberedsec Download other versions
-
-@divClass{column-left-bottom}
-@subheading Latest development version
-
-If you consider working software to be overrated, you are welcome
-to try our latest unstable version in @ref{Development}.
-
-@divEnd
-
-@divClass{column-right-bottom}
+@divClass{column-center-top}
 @subheading All versions
 
-For an extensive listing of all versions, see our
+For an extensive listing of all versions (old and new), see our
 @uref{http://download.linuxaudio.org/lilypond/binaries/, download
 site}.
 
