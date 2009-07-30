@@ -153,6 +153,9 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
       sys->programming_error ("no VerticalAlignment in system: can't do vertical spacing");
       return;
     }
+  if (to_boolean (align->internal_get_property_data (ly_symbol2scm ("positioning-done"))))
+    align->programming_error ("positioning-done was called before page-layout-problem got to work");
+  align->set_property ("positioning-done", SCM_BOOL_T);
 
   extract_grob_set (align, "elements", elts);
   vector<Real> minimum_offsets = Align_interface::get_minimum_translations (align, elts, Y_AXIS,

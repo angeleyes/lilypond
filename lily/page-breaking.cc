@@ -369,12 +369,16 @@ Page_breaking::breakpoint_property (vsize breakpoint, char const *str)
 }
 
 SCM
-Page_breaking::stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last)
+Page_breaking::get_page_configuration (SCM systems, int page_num, bool ragged, bool last)
 {
   SCM dummy_page = make_page (page_num, last);
   Page_layout_problem layout (book_, dummy_page, systems);
-  SCM configuration = scm_is_pair (systems) ? layout.solution (ragged) : SCM_EOL;
+  return scm_is_pair (systems) ? layout.solution (ragged) : SCM_EOL;
+}
 
+SCM
+Page_breaking::draw_page (SCM systems, SCM configuration, int page_num, bool last)
+{
   // Create a stencil for each system.
   SCM paper_systems = SCM_EOL;
   for (SCM s = scm_reverse (systems); scm_is_pair (s); s = scm_cdr (s))
@@ -413,14 +417,35 @@ Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
   if (label_page_table == SCM_UNDEFINED)
     label_page_table = SCM_EOL;
 
+  // Build a list of (systems . configuration) pairs. Note that we lay out
+  // the staves and find the configurations before drawing anything. Some
+  // grobs (like tuplet brackets) look at their neighbours while drawing
+  // themselves. If this happens before the neighbouring staves have
+  // been laid out, bad side-effects could happen (in particular,
+  // Align_interface::align_to_ideal_distances might be called).
+  SCM systems_and_configs = SCM_EOL;
+
   for (vsize i = 0; i < lines_per_page.size (); i++)
     {
       int page_num = i + first_page_number;
       bool bookpart_last_page = (i == lines_per_page.size () - 1);
-      bool rag = ragged () || ( bookpart_last_page && ragged_last ());
+      bool rag = ragged () || (bookpart_last_page && ragged_last ());
       SCM line_count = scm_from_int (lines_per_page[i]);
       SCM lines = scm_list_head (systems, line_count);
-      SCM page = stretch_and_draw_page (lines, page_num, rag, bookpart_last_page);
+      SCM config = get_page_configuration (lines, page_num, rag, bookpart_last_page);
+
+      systems_and_configs = scm_cons (scm_cons (lines, config), systems_and_configs);
+      systems = scm_list_tail (systems, line_count);
+    }
+
+  // Now it's safe to make the pages.
+  int page_num = first_page_number + lines_per_page.size () - 1;
+  for (SCM s = systems_and_configs; scm_is_pair (s); s = scm_cdr (s))
+    {
+      SCM lines = scm_caar (s);
+      SCM config = scm_cdar (s);
+      bool bookpart_last_page = (s == systems_and_configs);
+      SCM page = draw_page (lines, config, page_num, bookpart_last_page);
 
       /* collect labels */
       SCM page_num_scm = scm_from_int (page_num);
@@ -441,10 +466,9 @@ Page_breaking::make_pages (vector<vsize> lines_per_page, SCM systems)
 	}
 
       ret = scm_cons (page, ret);
-      systems = scm_list_tail (systems, line_count);
+      --page_num;
     }
   book_->top_paper ()->set_variable (ly_symbol2scm ("label-page-table"), label_page_table);
-  ret = scm_reverse (ret);
   return ret;
 }
 

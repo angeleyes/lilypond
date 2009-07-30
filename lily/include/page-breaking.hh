@@ -196,6 +196,7 @@ private:
   void create_system_list ();
   void find_chunks_and_breaks (Break_predicate);
   SCM make_page (int page_num, bool last) const;
-  SCM stretch_and_draw_page (SCM systems, int page_num, bool ragged, bool last);
+  SCM get_page_configuration (SCM systems, int page_num, bool ragged, bool last);
+  SCM draw_page (SCM systems, SCM config, int page_num, bool last);
 };
 #endif /* PAGE_BREAKING_HH */
