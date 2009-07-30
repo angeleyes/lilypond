@@ -13,10 +13,15 @@
 
 @itemize
 
+@item @ref{Text input}:
+LilyPond is a @strong{text-based} music engraver.  If you are not
+familiar with this concept, please read this now!
+
 @item @ref{Learning Manual}:
 a @qq{must-read} gentle introduction to LilyPond.
 
 @item @ref{Music Glossary}:
+@emph{(optional reading)}
 explains musical terms and gives translations for users unfamiliar
 with English musical terms.
 
