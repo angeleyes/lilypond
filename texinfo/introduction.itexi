@@ -342,8 +342,8 @@ read about our @ref{Text input}.
 
 @uref{http://www.gnu.org/, GNU} LilyPond is written and maintained
 by a community of enthusiasts.  It is published under the
-@ref{GPL, GNU General Public License} and the @ref{GNU FDL, GNU
-Free Documentation License}, giving everybody the freedom to fix,
+@ref{GPL, GNU General Public License} and the @ref{FDL, GNU Free
+Documentation License}, giving everybody the freedom to fix,
 modify, and extend the program.  Creating beautiful music should
 not require hundreds of dollars of software!
 @divEnd
@@ -733,7 +733,7 @@ pitch):
 
 We realize that many users find this way of entering music a bit
 odd.  For this reason, we have written extensive documentation to
-help new users, beginning with the @ref{Learning Manual}.
+help new users, beginning with @ref{Learning}.
 
 Please read the Learning Manual before complaining about bugs!
 New users occasionally believe that LilyPond is not working

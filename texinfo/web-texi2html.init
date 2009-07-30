@@ -503,25 +503,25 @@ sub generate_ly_toc_entries($$$)
 # HORRIBLE HACK
   my @color_1 = (
 
-        "Learning Manual", "Music Glossary", "Essay",
+        "Learning", "Glossary", "Essay",
         "Contact", "Tiny examples", "Bug reports"
 	);
   my @color_2 = (
         "Features", "Examples", "Freedom",
 	"Unix", "MacOS X", "Windows",
-        "Notation Reference", "Application Usage", "Snippet List",
+        "Notation", "Usage", "Snippets",
         "Help us", "Development", "Authors"
 	);
   my @color_3 = (
         "Productions", "Testimonials",
 	"Source", "Old downloads",
-        "FAQ", "Changes", "Internals Reference",
+        "FAQ", "Changes", "Internals",
         "Publications", "Old news"
         );
   my @color_4 = (
         "Text input",
         "GPL",
-        "Translation status", "Old manuals", "GNU FDL"
+        "Translations", "Old manuals", "FDL"
         );
 
   my $addColor = " colorDefault";

@@ -343,7 +343,7 @@ export PATH=$PATH:~/bin
 @noindent
 This file should end with a blank line.
 
-Note that @var{path/to} will generally be @code{/Applications/}.
+Note that @var{path/to} will generally be @code{/Usages/}.
 
 
 

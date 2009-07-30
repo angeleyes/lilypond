@@ -17,10 +17,10 @@
 LilyPond is a @strong{text-based} music engraver.  If you are not
 familiar with this concept, please read this now!
 
-@item @ref{Learning Manual}:
+@item @ref{Learning}:
 a @qq{must-read} gentle introduction to LilyPond.
 
-@item @ref{Music Glossary}:
+@item @ref{Glossary}:
 @emph{(optional reading)}
 explains musical terms and gives translations for users unfamiliar
 with English musical terms.
@@ -40,14 +40,14 @@ aesthetics of 19th century music engraving.
 
 @itemize
 
-@item @ref{Notation Reference}:
+@item @ref{Notation}:
 the main portion of the documentation; provides detailed
 information about creating notation.
 
-@item @ref{Snippet List}:
+@item @ref{Snippets}:
 short tricks, tips, and examples.
 
-@item @ref{Application Usage}:
+@item @ref{Usage}:
 discusses the actual programs and operating system-specific
 issues.
 
@@ -67,7 +67,7 @@ links to the answers of Frequently Asked Questions.
 @item @ref{Changes}:
 updates since the last major version.
 
-@item @ref{Internals Reference}:
+@item @ref{Internals}:
 information about LilyPond's internal structures, which is
 required for constructing tweaks.
 
@@ -81,7 +81,7 @@ required for constructing tweaks.
 
 @itemize
 
-@item @ref{Translation status}:
+@item @ref{Translations}:
 for non-English readers.
 
 @item @ref{Old manuals}:
@@ -90,7 +90,7 @@ manuals for older versions.
 @item @ref{Development}:
 manuals for the unstable version.
 
-@item @ref{GNU FDL}:
+@item @ref{FDL}:
 these manuals are published under the GNU Free Documentation
 License.
 
@@ -101,18 +101,18 @@ License.
 
 @divClass{hide}
 @menu
-* Learning Manual::             Learning.
-* Music Glossary::              Glossary.
+* Learning::             Learning.
+* Glossary::              Glossary.
 * Essay::                       Essay.       
-* Notation Reference::          Reference.
-* Application Usage::           Usage.
-* Snippet List::                Snippets.
+* Notation::          Reference.
+* Usage::           Usage.
+* Snippets::                Snippets.
 * FAQ::                         FAQ.
 * Changes::                     NEWS.
-* Internals Reference::         Internals.
-* Translation status::          Translation.
+* Internals::         Internals.
+* Translations::          Translation.
 * Old manuals::                 Old.
-* GNU FDL::                     Licence.
+* FDL::                     Licence.
 @end menu
 
 @divEnd
@@ -122,8 +122,8 @@ License.
 @c LM 1.1 About the documentation  (before this section was
 @c removed in July 2009).
 
-@node Learning Manual
-@unnumberedsec Learning Manual
+@node Learning
+@unnumberedsec Learning
 
 This book explains how to begin learning LilyPond, as well as
 explaining some key concepts in easy terms.  You should read these
@@ -132,7 +132,7 @@ chapters in a linear fashion.
 There is a paragraph @strong{See also} at the end of each section,
 which contains cross-references to other sections: you should not
 follow these cross-references at first reading; when you have read
-all of the Learning Manual, you may want to read some sections
+all of the Learning, you may want to read some sections
 again and follow cross-references for further reading.
 
 @itemize
@@ -158,7 +158,7 @@ undertaking large projects!
 
 @end itemize
 
-The Learning Manual also contains appendices which are not part of the
+The Learning also contains appendices which are not part of the
 recommended linear reading.  They may be useful for later
 viewing:
 
@@ -178,8 +178,8 @@ all.
 @end itemize
 
 
-@node Music Glossary
-@unnumberedsec Music Glossary
+@node Glossary
+@unnumberedsec Glossary
 
 @rglosnamed{Top,Music glossary}
 this explains musical terms, and includes translations to various
@@ -194,14 +194,14 @@ it is highly advisable to consult the glossary.
 blah
 
 
-@node Notation Reference
-@unnumberedsec Notation Reference
+@node Notation
+@unnumberedsec Notation
 
 This book explains all the LilyPond commands which produce
 notation.
 
-@warning{The Notation Reference assumes that the reader knows
-basic material covered in the Learning Manual and is familiar with
+@warning{The Notation assumes that the reader knows
+basic material covered in the Learning and is familiar with
 the English musical terms presented in the Musical Glossary.}
 
 @itemize
@@ -239,7 +239,7 @@ explains how to create music functions with scheme.
 
 @end itemize
 
-The Notation Reference also contains appendices with useful
+The Notation also contains appendices with useful
 reference charts.
 
 @itemize
@@ -269,8 +269,8 @@ a complete index.
 @end itemize
 
 
-@node Application Usage
-@unnumberedsec Application Usage
+@node Usage
+@unnumberedsec Usage
 
 This book explains how to execute the programs and how to integrate
 LilyPond notation with other programs.
@@ -308,10 +308,10 @@ formats to the @code{.ly} format.
 @end itemize
 
 
-@node Snippet List
-@unnumberedsec Snippet List
+@node Snippets
+@unnumberedsec Snippets
 
-@rlsrnamed{Top,LilyPond Snippet List}: this shows a
+@rlsrnamed{Top,LilyPond Snippets}: this shows a
 selected set of LilyPond snippets from the
 @uref{http://lsr@/.dsi@/.unimi@/.it,LilyPond Snippet Repository}
 (LSR).  All the snippets are in the public domain.
@@ -322,7 +322,7 @@ demonstrates new features of a development version must be added
 separately.  These are stored in @file{input/new/} in the LilyPond
 source tree.
 
-The list of snippets for each subsection of the Notation Reference are
+The list of snippets for each subsection of the Notation are
 also linked from the @strong{See also} portion.
 
 
@@ -340,7 +340,7 @@ our @ref{Text input}.
 
 @subheading There's a lot of documentation!  Do I need to read it?
 
-You need to read the @ref{Learning Manual}.  As for the rest of
+You need to read the @ref{Learning}.  As for the rest of
 documentation, you only need to read the sections which discuss
 the notation that you wish to create.
 
@@ -371,10 +371,10 @@ and new features in LilyPond since the previous version.
 
 
 
-@node Internals Reference
-@unnumberedsec Internals Reference
+@node Internals
+@unnumberedsec Internals
 
-@rinternalsnamed{Top,Internals Reference}: this is a set
+@rinternalsnamed{Top,Internals}: this is a set
 of heavily cross linked HTML pages which document the nitty-gritty
 details of each and every LilyPond class, object, and function.
 It is produced directly from the formatting definitions in the
@@ -391,8 +391,8 @@ have clickable links.
 
 
 
-@node Translation status
-@unnumberedsec Translation status
+@node Translations
+@unnumberedsec Translations
 
 blah
 
@@ -418,8 +418,8 @@ LilyPond 2.8 Documentation}
 @end itemize
 
 
-@node GNU FDL
-@unnumberedsec GNU FDL
+@node FDL
+@unnumberedsec FDL
 
 @divClass{column-center-top}
 @subheading Documentation license
