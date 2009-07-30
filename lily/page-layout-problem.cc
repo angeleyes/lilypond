@@ -176,7 +176,7 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
   // If the user has specified the offsets of the individual staves, fix the
   // springs at the given distances. Otherwise, use stretchable springs.
   SCM details = get_details (elements_.back ());
-  SCM manual_dists = details_get_property (details, "alignment-distances");
+  SCM manual_dists = ly_assoc_get (ly_symbol2scm ("alignment-distances"), details, SCM_EOL);
   vsize last_spaceable_staff = 0;
   bool first_live_element = true;
   for (vsize i = 0; i < elts.size (); ++i)
@@ -205,8 +205,8 @@ Page_layout_problem::append_system (System *sys, Spring const& spring, Real padd
 		{
 		  Real dy = scm_to_double (scm_car (manual_dists));
 
-		  springs_.back ().set_distance (-dy);
-		  springs_.back ().set_min_distance (-dy);
+		  springs_.back ().set_distance (dy);
+		  springs_.back ().set_min_distance (dy);
 		  springs_.back ().set_inverse_stretch_strength (0);
 		}
 	      manual_dists = scm_cdr (manual_dists);
@@ -266,7 +266,10 @@ Page_layout_problem::solve_rod_spring_problem (bool ragged)
       else if (elements_.back ().staves.size ())
 	{
 	  SCM details = get_details (elements_.back ());
-	  bottom_padding = robust_scm2double (details_get_property (details, "bottom-space"), 0.0);
+	  bottom_padding = robust_scm2double (ly_assoc_get (ly_symbol2scm ("bottom-space"),
+							    details,
+							    SCM_BOOL_F),
+					      0.0);
 	}
     }
 
@@ -581,16 +584,14 @@ Page_layout_problem::get_details (Element const& elt)
   if (elt.staves.empty ())
     return SCM_EOL;
 
-  System *sys = elt.staves.back ()->get_system ();
-  Grob *left_bound = sys->get_bound (LEFT);
-  return left_bound->get_property ("line-break-system-details");
+  return get_details (elt.staves.back ()->get_system ());
 }
 
 SCM
-Page_layout_problem::details_get_property (SCM details, const char* property)
+Page_layout_problem::get_details (Grob *g)
 {
-  SCM handle = scm_assoc (ly_symbol2scm (property), details);
-  return scm_is_pair (handle) ? scm_cdr (handle) : SCM_BOOL_F;
+  Grob *left_bound = dynamic_cast<Spanner*> (g)->get_bound (LEFT);
+  return left_bound->get_property ("line-break-system-details");
 }
 
 bool

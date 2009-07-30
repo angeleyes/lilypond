@@ -141,20 +141,27 @@ Align_interface::get_minimum_translations (Grob *me,
   
   Direction stacking_dir = robust_scm2dir (me->get_property ("stacking-dir"),
 					   DOWN);
-
   vector<Grob*> elems (all_grobs); // writable copy
   vector<Skyline_pair> skylines;
 
   get_skylines (me, &elems, a, pure, start, end, &skylines);
 
+  SCM forced_distances = ly_assoc_get (ly_symbol2scm ("alignment-distances"),
+				       Page_layout_problem::get_details (me),
+				       SCM_EOL);
+
   Real where = 0;
-  Real padding = robust_scm2double (me->get_property ("padding"), 0.0);
+  Real default_padding = robust_scm2double (me->get_property ("padding"), 0.0);
   vector<Real> translates;
   Skyline down_skyline (stacking_dir);
-  SCM last_element_details = SCM_EOL;
+  SCM last_spaceable_element_details = SCM_EOL;
+  Real last_spaceable_element_pos = 0;
+  bool found_spaceable_element = false;
   for (vsize j = 0; j < elems.size (); j++)
     {
       Real dy = 0;
+      Real padding = default_padding;
+
       if (j == 0)
 	dy = skylines[j][-stacking_dir].max_height ();
       else
@@ -166,17 +173,40 @@ Align_interface::get_minimum_translations (Grob *me,
       if (isinf (dy)) /* if the skyline is empty, maybe max_height is infinity_f */
 	dy = 0.0;
 
-      Real min_distance = 0;
-      Page_layout_problem::read_spacing_spec (last_element_details, &padding, ly_symbol2scm ("padding"));
-      if (Page_layout_problem::read_spacing_spec (last_element_details,
-						  &min_distance,
-						  ly_symbol2scm ("minimum-distance")))
-	dy = max (dy, min_distance);
+      if (Page_layout_problem::is_spaceable (elems[j]))
+	{
+	  Real min_distance = 0;
+	  Page_layout_problem::read_spacing_spec (last_spaceable_element_details,
+						  &padding,
+						  ly_symbol2scm ("padding"));
+	  if (Page_layout_problem::read_spacing_spec (last_spaceable_element_details,
+						      &min_distance,
+						      ly_symbol2scm ("minimum-distance")))
+	    dy = max (dy, min_distance + stacking_dir*(last_spaceable_element_pos - where));
+
+	  if (found_spaceable_element && scm_is_pair (forced_distances))
+	    {
+	      SCM forced_dist = scm_car (forced_distances);
+	      forced_distances = scm_cdr (forced_distances);
+
+	      if (scm_is_number (forced_dist))
+		dy = scm_to_double (forced_dist) + stacking_dir * (last_spaceable_element_pos - where);
+	    }
+	  last_spaceable_element_details = elems[j]->get_property ("next-staff-padding");
+	  found_spaceable_element = true;
+	}
+      else
+	{
+	  // TODO: provide support for min-distance and padding for non-spaceable elements also.
+	}
 
       dy = max (0.0, dy + padding);
       down_skyline.raise (-stacking_dir * dy);
       where += stacking_dir * dy;
       translates.push_back (where);
+
+      if (Page_layout_problem::is_spaceable (elems[j]))
+	last_spaceable_element_pos = where;
     }
 
   // So far, we've computed the translates for all the non-empty elements.

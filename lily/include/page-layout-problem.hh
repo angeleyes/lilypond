@@ -23,6 +23,7 @@ public:
   void set_footer_height (Real);
   static bool read_spacing_spec (SCM spec, Real* dest, SCM sym);
   static bool is_spaceable (Grob *g);
+  static SCM get_details (Grob *g);
 
 protected:
   void append_system (System*, Spring const&, Real padding);
