@@ -1,0 +1,78 @@
+--- /home/janneke/texi2html/bin/texi2html.orig	2009-07-29 22:57:52.251368008 +0200
++++ /home/janneke/texi2html/bin/texi2html	2009-07-30 11:17:28.731367970 +0200
+@@ -14399,11 +14399,12 @@ sub merge_element_before_anything($)
+ }
+ 
+ # find menu_prev, menu_up... for a node in menu
+-sub menu_entry_texi($$$)
++sub menu_entry_texi($$$$)
+ {
+     my $node = shift;
+     my $state = shift;
+     my $line_nr = shift;
++    my $text = shift;
+     my $node_menu_ref = {};
+     if (exists($nodes{$node}))
+     {
+@@ -14415,6 +14416,8 @@ sub menu_entry_texi($$$)
+         $node_menu_ref->{'texi'} = $node;
+         $node_menu_ref->{'external_node'} = 1 if ($node =~ /^\(.+\)/);
+     }
++    $node_menu_ref->{'text'} = $text;
++    $nodes{$node}->{'text'} = $text;
+     return if ($state->{'detailmenu'});
+     if ($state->{'node_ref'})
+     {
+@@ -16066,9 +16069,11 @@ sub do_section_names($$)
+ {
+     my $number = shift;
+     my $section = shift;
+-    #$section->{'name'} = substitute_line($section->{'texi'});
++    my $node = $nodes{$section->{'texi'}};
++    my $text = substitute_line ($node->{'text'});
+     my $texi = &$Texi2HTML::Config::heading_texi($section->{'tag'}, $section->{'texi'}, $section->{'number'});
+-    $section->{'text'} = substitute_line($texi);
++    $text = substitute_line($texi) if ! $text || length $texi < length $text;
++    $section->{'text'} = substitute_line($text);
+     $section->{'text_nonumber'} = substitute_line($section->{'texi'});
+     # backward compatibility
+     $section->{'name'} = $section->{'text_nonumber'};
+@@ -16091,7 +16096,7 @@ sub do_names()
+     {
+         my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
+            $nodes{$node}->{'texi'}, undef);
+-        $nodes{$node}->{'text'} = substitute_line ($texi, {'code_style' => 1});
++#        $nodes{$node}->{'text'} = substitute_line ($texi, {'code_style' => 1});
+         $nodes{$node}->{'text_nonumber'} = $nodes{$node}->{'text'};
+         # backward compatibility -> maybe used to have the name without code_style ?
+         $nodes{$node}->{'name'} = substitute_line($texi);
+@@ -20537,18 +20542,26 @@ sub scan_structure($$$$;$)
+         # new menu entry
+             my $menu_line = $cline;
+             my $node;
+-            if ($cline =~ /^\*\s+($NODERE)::/)
++            my $text;
++            if ($cline =~ /^\*\s+($NODERE)::\s*(.+)\s*\./)
++            {
++                $node = $1;
++                $text = $2;
++                $text = $node if ! $text;
++            }
++            elsif ($cline =~ /^\*\s+($NODERE)::/)
+             {
+                 $node = $1;
++                $text = $1;
+             }
+             elsif ($cline =~ /^\*\s+([^:]+):\s*([^\t,\n]*?)([\t,\n]|\.\s)/)
+             {
+-                #$name = $1;
++                $text = $2;
+                 $node = $2;
+             }
+             if ($node)
+             {
+-                menu_entry_texi(normalise_node($node), $state, $line_nr);
++                menu_entry_texi(normalise_node($node), $state, $line_nr, $text);
+             }
+         }
+     }

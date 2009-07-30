@@ -101,18 +101,18 @@ License.
 
 @divClass{hide}
 @menu
-* Learning Manual::             
-* Music Glossary::              
-* Essay::                       
-* Notation Reference::          
-* Application Usage::           
-* Snippet List::                
-* FAQ::                         
-* Changes::                     
-* Internals Reference::         
-* Translation status::          
-* Old manuals::      
-* GNU FDL::                     
+* Learning Manual::             Learning.
+* Music Glossary::              Glossary.
+* Essay::                       Essay.       
+* Notation Reference::          Reference.
+* Application Usage::           Usage.
+* Snippet List::                Snippets.
+* FAQ::                         FAQ.
+* Changes::                     NEWS.
+* Internals Reference::         Internals.
+* Translation status::          Translation.
+* Old manuals::                 Old.
+* GNU FDL::                     Licence.
 @end menu
 
 @divEnd
