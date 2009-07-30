@@ -81,8 +81,8 @@ required for constructing tweaks.
 
 @itemize
 
-@item @ref{Translations}:
-for non-English readers.
+@item @ref{Translated}:
+translation status for non-English readers.
 
 @item @ref{Old}:
 manuals for older versions.
@@ -110,7 +110,7 @@ License.
 * FAQ::                         FAQ.
 * Changes::                     NEWS.
 * Internals::         Internals.
-* Translations::          Translation.
+* Translated::          Translation.
 * Old::                 Old.
 * FDL::                     Licence.
 @end menu
@@ -391,8 +391,8 @@ have clickable links.
 
 
 
-@node Translations
-@unnumberedsec Translations
+@node Translated
+@unnumberedsec Translated
 
 blah
 
