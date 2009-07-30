@@ -380,14 +380,30 @@ div#cmws {
 }
 
 div#quickSummary {
+/*
   text-align: left;
   margin: 1.4em 13em 0 0;
   padding-top: 5em;
+*/
+  text-align: left;
+  position: absolute;
+  top: 6.5em;
+  right: 0;
+  width: 16em;
+  border-left: 1px solid #5b7f64;
+  background: #fff url(web-clef-g-eight-alpha.png) no-repeat 0 0;
 }
 
 #quickSummary .subheading {
+/*
   padding: 0 0.5em;
   border-bottom: 10px solid #5b7f64;
+  margin: 0;
+*/
+  background: #5b7f64;
+  color: #fff;
+  text-align: center;
+  padding: 0 0.5em;
   margin: 0;
 }
 
@@ -398,7 +414,7 @@ div#quickSummary {
 
 div#news {
   padding: 0;
-  margin: 0 13em 1em 0;
+  margin: 0 16em 1em 0;
 }
 
 div.news-item {
@@ -440,7 +456,7 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: 9.5em;
+  top: 27em;
   right: 0;
   width: 12em;
   text-align: center;
