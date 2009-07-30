@@ -361,6 +361,13 @@ div#pageHeader {
   margin: 0 0 0 215px;
 }
 
+#pageHeader span {
+  text-align: left;
+  padding: 0;
+  font-size: 1.8em;
+  margin: 0 0 0 215px;
+}
+
 #pageHeader p {
   text-align: left;
   padding: 0;
@@ -376,7 +383,7 @@ div#lilylogo {
 div#cmws {
   position: absolute;
   top: 0;
-  left: 50%;
+  right: 10%;
 }
 
 div#quickSummary {
@@ -440,7 +447,7 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: 9.5em;
+  top: 15em;
   right: 0;
   width: 12em;
   text-align: center;
