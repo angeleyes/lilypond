@@ -315,6 +315,9 @@ account.
 @node Help us
 @unnumberedsec Help us
 
+FIXME: before going live, rewrite this to apply to lilypond
+generally.  Right now it's (deliberately) website-specific.
+
 @subheading This document
 
 @subsubheading High priority / blocks release
@@ -334,6 +337,10 @@ account.
   the doc init.pl file?
 
 - somebody to implement/work on a media=handheld CSS sheet
+
+- remove the attributes from the <body> tag.  In general, clean up
+  the HTML produced by texi2html
+
 
 
 @node Development
