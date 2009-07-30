@@ -600,21 +600,15 @@ div.float-right a.clickable {
   float: left;
   width: 99.5%;
   text-align: center;
+  border: 1px solid #8bbb6b;
   margin: 1em auto;
-}
-
-.column-center-bottom {
-  clear: both;
-  float: left;
-  width: 99.5%;
-  text-align: center;
-  margin: 1em auto 0;
 }
 
 /* color1 */
 .column-center-top h3 {
   background: #9ccc7c;
   text-align: left;
+  border-bottom: 1px solid #8bbb6b;
 }
 
 .column-left-top {
@@ -630,10 +624,16 @@ div.float-right a.clickable {
   margin: 0;
 }
 
+.column-left-top,
+.column-left-bottom {
+  border: 1px solid #aabe70;
+}
+
 /* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
   background: #bbcf81;
+  border-bottom: 1px solid #aabe70;
 }
 
 .column-right-top {
@@ -648,16 +648,32 @@ div.float-right a.clickable {
   margin: 0;
 }
 
+.column-right-top,
+.column-right-bottom {
+  border: 1px solid #cac175;
+}
+
 /* color3 */
 .column-right-top h3,
 .column-right-bottom h3 {
   background: #dbd286;
+  border-bottom: 1px solid #cac175;
+}
+
+.column-center-bottom {
+  clear: both;
+  float: left;
+  width: 99.5%;
+  text-align: center;
+  border: 1px solid #e9c47b;
+  margin: 1em auto 0;
 }
 
 /* color4 */
 .column-center-bottom h3 {
   background: #fad58c;
   text-align: left;
+  border-bottom: 1px solid #e9c47b;
 }
 
 .column-center-top,
@@ -667,8 +683,6 @@ div.float-right a.clickable {
 .column-right-top,
 .column-right-bottom {
   background: #f5fffa;
-  border: solid #000;
-  border-width: 0 1px 1px 1px;
 }
 
 .column-center-top h3,
@@ -678,8 +692,6 @@ div.float-right a.clickable {
 .column-right-top h3,
 .column-right-bottom h3 {
   padding: 0 0.5em;
-  border: solid #000;
-  border-width: 1px 0;
   margin: 0;
 }
 
