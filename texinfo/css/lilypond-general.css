@@ -15,7 +15,7 @@ body {
   max-width: 70em;
   font-size: 95%;
   line-height: 1.5;
-  background: url(background-image.png) no-repeat 0 0;
+  background: #fff url(background-image.png) no-repeat 0 0;
   text-align: justify;
   padding: 0;
   margin: 0 auto;
