@@ -621,7 +621,7 @@ div.float-right a.clickable {
   clear: both;
   float: left;
   width: 49%;
-  margin: 0;
+  margin: 1em 0;
 }
 
 .column-left-top,
@@ -645,7 +645,7 @@ div.float-right a.clickable {
 .column-right-bottom {
   float: right;
   width: 49%;
-  margin: 0;
+  margin: 1em 0;
 }
 
 .column-right-top,
@@ -662,7 +662,6 @@ div.float-right a.clickable {
 
 .column-center-bottom {
   clear: both;
-  float: left;
   width: 99.5%;
   text-align: center;
   border: 1px solid #e9c47b;
@@ -758,7 +757,7 @@ div.color2,
 div.color3,
 div.color4 {
   clear: both;
-  float: left;
+  width: 99.5%;
   background: #f5fffa;
   margin: 1em auto;
 }
