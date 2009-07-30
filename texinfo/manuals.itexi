@@ -76,10 +76,15 @@ required for constructing tweaks.
 
 @itemize
 
-@item @ref{Translation status}: shows 
+@item @ref{Translation status}:
+for non-English readers.
 
-@item @ref{Manuals other versions}: manuals for older
-versions of LilyPond.
+@item @ref{Manuals other versions}:
+manuals for older versions of LilyPond.
+
+@item @ref{GNU FDL}:
+these manuals are published under the GNU Free Documentation
+License.
 
 @end itemize
 
@@ -99,6 +104,7 @@ versions of LilyPond.
 * Internals Reference::         
 * Translation status::          
 * Manuals other versions::      
+* GNU FDL::                     
 @end menu
 
 @divEnd
@@ -405,5 +411,25 @@ LilyPond 2.8 Documentation}
 @item FIXME etc.
 
 @end itemize
+
+
+@node GNU FDL
+@unnumberedsec GNU FDL
+
+@divClass{column-center-top}
+@subheading Documentation license
+
+The documentation for GNU LilyPond is published under the GNU Free
+Documentation License.  An introduction to this license, and our
+reasons for choosing it, is given in @ref{Freedom}.
+
+@divEnd
+
+@divClass{column-center-bottom}
+@subheading GNU Free Documentation License 1.1
+
+@include fdl-1.1.texi
+
+@divEnd
 
 
