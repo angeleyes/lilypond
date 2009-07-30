@@ -612,8 +612,7 @@ div.float-right a.clickable {
 }
 
 /* color1 */
-.column-center-top h3,
-.column-center-bottom h3 {
+.column-center-top h3 {
   background: #9ccc7c;
   text-align: left;
 }
@@ -653,6 +652,12 @@ div.float-right a.clickable {
 .column-right-top h3,
 .column-right-bottom h3 {
   background: #ceffae;
+}
+
+/* color4 */
+.column-center-bottom h3 {
+  background: #c9bf86;
+  text-align: left;
 }
 
 .column-center-top,
