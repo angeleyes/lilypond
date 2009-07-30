@@ -54,7 +54,6 @@ License}.
 
 
 @divClass{color1}
-@divClass{column-center-bottom}
 
 @subheading Sponsors
 
@@ -80,7 +79,7 @@ acknowledged.
 
 @divEnd
 @divEnd
-@divEnd
+
 
 @divClass{hide}
 @menu

@@ -350,8 +350,6 @@ beautiful music should not require hundreds of dollars of
 software!
 @divEnd
 
-@c @divClass{column-left-top}
-@divClass{column-center-top}
 
 @divClass{color2}
 @divClass{keep-bullets}
@@ -391,11 +389,7 @@ available for copying, modifications, and distribution.
 
 @divEnd
 @divEnd
-@divEnd
 
-
-@c @divClass{column-left-top}
-@divClass{column-center-top}
 
 @divClass{color3}
 @divClass{keep-bullets}
@@ -439,10 +433,6 @@ scholarships.
 
 @divEnd
 @divEnd
-@divEnd
-
-
-
 
 
 @divClass{column-center-bottom}
