@@ -799,14 +799,63 @@ div.float-right a.clickable {
   font-size: 0.6em;
 }
 
-/* used on Introduction->Freedom page */
-.color2 h3 {
-  background: #bbcf81;
+/* Centered divs by color */
+
+div.color1,
+div.color2,
+div.color3,
+div.color4 {
+  clear: both;
+  float: left;
+  background: #f5fffa;
+  margin: 1em auto;
 }
 
-.color3 h3 {
-  background: #dbd286;
+div.color1 h3,
+div.color2 h3,
+div.color3 h3,
+div.color4 h3 {
+  padding: 0 0.5em;
+  margin: 0;
 }
+
+div.color1 {
+  border: 1px solid #8bbb6b;
+  margin: 1em auto;
+}
+
+div.color1 h3 {
+  background: #9ccc7c;
+  border-bottom: 1px solid #8bbb6b;
+}
+
+div.color2 {
+  border: 1px solid #aabe70;
+}
+
+div.color2 h3 {
+  background: #bbcf81;
+  border-bottom: 1px solid #aabe70;
+}
+
+div.color3 {
+  border: 1px solid #cac175;
+}
+
+div.color3 h3 {
+  background: #dbd286;
+  border-bottom: 1px solid #cac175;
+}
+
+div.color4 {
+  border: 1px solid #e9c47b;
+}
+
+div.color4 h3 {
+  background: #fad58c;
+  border-bottom: 1px solid #e9c47b;
+}
+
 
 /* kill title, probably best done in the init file, though */
 h1.settitle {
