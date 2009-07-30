@@ -529,6 +529,7 @@ Page_layout_problem::build_system_skyline (vector<Grob*> const& staves,
 
   assert (staves.size () == minimum_translations.size ());
   Real first_translation = minimum_translations[0];
+  Real last_dy = 0;
 
   for (vsize i = 0; i < staves.size (); ++i)
     {
@@ -543,13 +544,15 @@ Page_layout_problem::build_system_skyline (vector<Grob*> const& staves,
 
 	  down->raise (-dy);
 	  down->merge ((*sky)[DOWN]);
+	  down->raise (dy);
 
-	  // The last time through, leave the down skyline at a position
-	  // relative to the bottom staff.
-	  if (i < staves.size () - 1)
-	    down->raise (dy);
+	  last_dy = dy;
 	}
     }
+
+  // Leave the down skyline at a position
+  // relative to the bottom staff.
+  down->raise (-last_dy);
 }
 
 Interval
