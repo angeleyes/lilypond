@@ -84,7 +84,7 @@ required for constructing tweaks.
 @item @ref{Translations}:
 for non-English readers.
 
-@item @ref{Old manuals}:
+@item @ref{Old}:
 manuals for older versions.
 
 @item @ref{Development}:
@@ -111,7 +111,7 @@ License.
 * Changes::                     NEWS.
 * Internals::         Internals.
 * Translations::          Translation.
-* Old manuals::                 Old.
+* Old::                 Old.
 * FDL::                     Licence.
 @end menu
 
@@ -397,8 +397,8 @@ have clickable links.
 blah
 
 
-@node Old manuals
-@unnumberedsec Old manuals
+@node Old
+@unnumberedsec Old
 
 Documentation for previous stable versions:
 
