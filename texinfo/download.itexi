@@ -50,6 +50,11 @@ versions)
 
 LilyPond is published under the @ref{GPL, GNU General Public
 License}.
+@divEnd
+
+
+@divClass{color1}
+@divClass{column-center-bottom}
 
 @subheading Sponsors
 
@@ -73,6 +78,7 @@ acknowledged.
 
 @logoLegalWindows
 
+@divEnd
 @divEnd
 @divEnd
 
