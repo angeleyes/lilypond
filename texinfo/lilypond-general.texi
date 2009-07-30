@@ -133,12 +133,8 @@ of this and other documentation.
 
 
 @divId{pageHeader}
-@heading LilyPond 
-@html
-<span>
-free music notation software
-</span>
-@end html
+@heading LilyPond
+
 ... music notation for everyone
 @divEnd
 
