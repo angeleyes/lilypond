@@ -1,4 +1,5 @@
 /* Generic elements */
+
 html {
   padding: 0;
   margin: 0;
@@ -219,17 +220,17 @@ div#tocframe {
 
 #tocframe .toc .toc li.color2 a {
   text-decoration: none;
-  background: #acdd8c;
+  background: #bbcf81;
 }
 
 #tocframe .toc .toc li.color3 a {
   text-decoration: none;
-  background: #ceffae;
+  background: #dbd286;
 }
 
 #tocframe .toc .toc li.color4 a {
   text-decoration: none;
-  background: #eeffce;
+  background: #fad58c;
 }
 
 /* having this useless style makes the perl init file easier */
@@ -237,52 +238,51 @@ div#tocframe {
 }
 
 #tocframe .toc .toc li.color1 a:hover {
-  background: #ece;
+  background: #addd8d;
 }
 
 #tocframe .toc .toc li.color2 a:hover {
-  background: #bed;
+  background: #ccdf92;
 }
 
 #tocframe .toc .toc li.color3 a:hover {
-  background: #ee8;
+  background: #ece297;
 }
 
 #tocframe .toc .toc li.color4 a:hover {
-  background: #ec8;/*ece*/
+  background: #fbe69d;
 }
 
-
 #tocframe .toc .toc li.color1.toc_current a {
-  background: #dbd;
+  background: #beee9e;
 }
 
 #tocframe .toc .toc li.color1.toc_current a:hover {
-  background: #dbd;
+  background: #beee9e;
 }
 
 #tocframe .toc .toc li.color2.toc_current a {
-  background: #adc;
+  background: #ddefa3;
 }
 
 #tocframe .toc .toc li.color2.toc_current a:hover {
-  background: #adc;
+  background: #ddefa3;
 }
 
 #tocframe .toc .toc li.color3.toc_current a {
-  background: #dd7;
+  background: #fdf4a8;
 }
 
 #tocframe .toc .toc li.color3.toc_current a:hover {
-  background: #dd7;
+  background: #fdf4a8;
 }
 
 #tocframe .toc .toc li.color4.toc_current a {
-  background: #db7;/*dbd*/
+  background: #fcf7ae;
 }
 
 #tocframe .toc .toc li.color4.toc_current a:hover {
-  background: #ca6;/*dbd*/
+  background: #fcf7ae;
 }
 
 /* third level toc (unnumberedsubsec) */
@@ -633,7 +633,7 @@ div.float-right a.clickable {
 /* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
-  background: #acdd8c;
+  background: #bbcf81;
 }
 
 .column-right-top {
@@ -651,12 +651,12 @@ div.float-right a.clickable {
 /* color3 */
 .column-right-top h3,
 .column-right-bottom h3 {
-  background: #ceffae;
+  background: #dbd286;
 }
 
 /* color4 */
 .column-center-bottom h3 {
-  background: #c9bf86;
+  background: #fad58c;
   text-align: left;
 }
 
@@ -789,11 +789,11 @@ div.float-right a.clickable {
 
 /* used on Introduction->Freedom page */
 .color2 h3 {
-  background: #acdd8c;
+  background: #bbcf81;
 }
 
 .color3 h3 {
-  background: #ceffae;
+  background: #dbd286;
 }
 
 /* kill title, probably best done in the init file, though */
