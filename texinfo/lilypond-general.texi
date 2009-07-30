@@ -139,7 +139,8 @@ of this and other documentation.
 @divEnd
 
 @imageId{lilylogo,double-lily-modified2.png,LilyPond logo}
-@imageId{cmws,web-snippet-alpha.png,Catchy Musical Web Snippet}
+@c @im ageId{cmws,web-snippet-alpha.png,Catchy Musical Web Snippet}
+@imageId{cmws,web-clef-g-eight-alpha.png,Catchy Musical Web Snippet}
 
 @divId{quickSummary}
 @subheading What is LilyPond?
