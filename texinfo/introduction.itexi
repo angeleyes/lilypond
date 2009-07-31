@@ -578,7 +578,6 @@ to how to tell Lily to engrave something, only to realize that
 even if I did get it exactly as the composer wanted, the music
 would be confusing to read.  LilyPond makes it much easier for me
 to work in my dual editor+engraver role.}
-@divEnd
 
 @qq{I've been using LilyPond exclusively for my fledgling music
 publishing business. Virtually without exception, every composer
@@ -589,6 +588,8 @@ output, especially ties (mainly in chords) -- but LilyPond gives
 me an excellent starting point, a very intuitive interface, and
 the ability to modify absolutely anything if I want to take the
 time. I'm convinced that no commercial product can come close.}
+@divEnd
+
 
 @divClass{testimonial-item}
 @subsubheading David Bobroff, Bass Trombone, Iceland Symphony Orchestra
