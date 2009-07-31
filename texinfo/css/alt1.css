@@ -329,7 +329,7 @@ div#tocframe {
 div#main {
   position: relative;
   /* this value may need to be adjusted */
-  top: 7.7em;
+  top: 6.0em;
   left: 0;
   right: 0;
   width: 100%;
@@ -357,6 +357,7 @@ div#pageHeader {
 }
 
 #pageHeader .heading {
+  top: 3em;
   font-size: 4em;
   text-align: left;
   padding: 0;
@@ -372,7 +373,7 @@ div#pageHeader {
 div#lilylogo {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 4em;
 }
 
 div#cmws {
@@ -389,7 +390,7 @@ div#quickSummary {
 */
   text-align: left;
   position: absolute;
-  top: 6.5em;
+  top: 11em;
   right: 0;
   width: 16em;
   border-left: 1px solid #5b7f64;
@@ -458,7 +459,7 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: 27em;
+  top: 32em;
   right: 0;
   width: 12em;
   text-align: center;
