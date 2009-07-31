@@ -139,7 +139,7 @@ of this and other documentation.
 @divEnd
 
 @c @imageId{cmws,web-clef-g-eight-alpha.png,Catchy Musical Web Snippet}
-@c @imageId{lilylogo,double-lily-modified2.png,LilyPond logo}
+@imageId{lilylogo,double-lily-modified2.png,LilyPond logo}
 @c @im ageId{cmws,web-snippet-alpha.png,Catchy Musical Web Snippet}
 
 @divId{quickSummary}

@@ -1,3 +1,5 @@
+/* this is Graham Percival's experimental CSS */
+
 /* Generic elements */
 
 html {
@@ -391,7 +393,7 @@ div#quickSummary {
   right: 0;
   width: 16em;
   border-left: 1px solid #5b7f64;
-  background: #fff url(web-clef-g-eight-alpha.png) no-repeat 0 0;
+  background: #eef;
 }
 
 #quickSummary .subheading {
