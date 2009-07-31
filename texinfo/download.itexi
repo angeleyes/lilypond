@@ -3,6 +3,11 @@
 @node Download
 @unnumbered Download
 
+@divClass{heading-center}
+@heading Downloads for LilyPond 2.12.2
+
+@divEnd
+
 @warning{LilyPond is a @strong{text-based} music engraver; it is
 more similar to a programming language than a graphical score
 editing program.  Before downloading LilyPond, please read about
@@ -44,7 +49,7 @@ for packagers
 old versions
 
 @item @ref{Development}:
-unstable downloads
+latest unstable version
 
 @end itemize
 @divEnd
@@ -472,6 +477,10 @@ pre-built version.}
 
 @uref{http://download.linuxaudio.org/lilypond/sources/v2.12/lilypond-2.12.2.tar.gz,
 lilypond-2.12.2-source.tar.bz2}
+
+For an extensive listing of all versions (old and new), see our
+@uref{http://download.linuxaudio.org/lilypond/binaries/, download
+site}.
 
 @divEnd
 
