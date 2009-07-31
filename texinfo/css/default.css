@@ -516,7 +516,9 @@ div#language {
 }
 
 #verifier_texinfo img {
+/*
   float: right;
+*/
   padding: 0;
   margin: 0 0.5em 0 0;
 }

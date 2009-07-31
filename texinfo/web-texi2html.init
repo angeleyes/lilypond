@@ -732,10 +732,12 @@ sub print_lilypond_page_foot($)
 
   print $fh "<div id=\"verifier_texinfo\">\n";
   print $fh "<h3>Validation</h3>\n";
+  print $fh "<p>Thanks to <a href=\"http://www.webdev.nl/\">webdev.nl</a>";
+  print $fh " for hosting <code>lilypond.org</code>.\n";
   print $fh "<a href=\"http://validator.w3.org/check?uri=referer\">\n";
   print $fh "<img src=\"http://www.w3.org/Icons/valid-html401\"\n";
   print $fh "     alt=\"Valid HTML 4.01 Transitional\"\n";
-  print $fh "     height=\"31\" width=\"88\"></a>\n";
+  print $fh "     height=\"31\" width=\"88\"></a></p>\n";
   print $fh "<p>Web pages created with";
   print $fh " <a href=\"http://www.gnu.org/software/texinfo/\">";
   print $fh " GNU Texinfo</a>\n";
