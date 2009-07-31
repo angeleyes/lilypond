@@ -11,7 +11,7 @@ body {
   left: 1%;
   right: 1%;
   width: 98%;
-  min-width: 34em;
+  min-width: 42em;
   max-width: 70em;
   font-size: 95%;
   line-height: 1.5;
@@ -444,7 +444,7 @@ div.news-item {
 
 div#latestVersion {
   position: absolute;
-  top: 11.5em;
+  top: 12.4em;
   right: 0;
   width: 12em;
   text-align: center;
