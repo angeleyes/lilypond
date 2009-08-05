@@ -107,6 +107,7 @@ $Texi2HTML::Config::DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Tran
 @Texi2HTML::Config::CSS_REFS      = (
     {FILENAME => "default.css", TITLE => "Default style"},
     {FILENAME => "alt1.css", TITLE => "Alternate style 1"},
+    {FILENAME => "alt2.css", TITLE => "Alternate style 2"},
 );
 
 # GOP tweak: We don't have alternate stylesheets right now
