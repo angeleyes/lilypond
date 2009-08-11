@@ -445,8 +445,6 @@ try LilyPond, first read about our @ref{Text input}.
 @node Productions
 @unnumberedsec Productions
 
-@help{more references to publishers who use lilypond}
-
 @divClass{column-left-top}
 @subheading Concerts
 
@@ -486,10 +484,24 @@ New York} (engraving by Nicolas Sceaux).
 @itemize
 
 @item
+@uref{http://www.mutopiaproject.org/index.html, Mutopia Project},
+over 1500 pieces of classical sheet music for free download, and
+the main showcase of LilyPond scores.
+
+@item
 @uref{http://www.adoromusicpub.com/, Adoro Music Publishing},
 high-quality scores of sacred music, available for immediate
 download or in traditional paper format.
+
+@item
+@uref{http://theshadylanepublishing.com/, The Shady Lady
+Publishing},
+a @qq{micro musical publishing house} whose goal is to promote a
+new form of musical economy closer to the musicians and music
+lovers.
+
 @end itemize
+
 @divEnd
 
 @divEnd
