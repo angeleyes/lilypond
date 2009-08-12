@@ -6,6 +6,11 @@
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
+@c TEMPORARY FIXME FIXME REMOVE WHEN ADDING TO MASTER
+@macro version
+2.13.5
+@end macro
+
 @c not happy in texi2html??!  -gp
 @c \input texinfo
 @setfilename general.info
@@ -15,82 +20,21 @@
 
 @include macros.itexi
 
-
-@c dunno what's necessary for good info+pdf docs.  -gp
-@c ************************************* CUT ***************
-@c @afourpaper
+@afourpaper
 
 
-@c  Keep this here, since it pertains to the direntry below.
+@c don't remove this comment.
 @ignore
-Distributions will want to install lilypond.info in postinstall, doing:
-
-    install-info --info-dir=/usr/share/info out[-www]/lilypond.info
-
-  * Prepend GNU for dir, must be unique.
-
-  * Do not list the `lilypond' node at toplevel, so that `info lilypond'
-    goes to Top.
-
-  * List all commands in direntry.
-
-@c  * lilypond: (lilypond/lilypond)Running LilyPond.      Invoking the
-@c    LilyPond  program.
+@omfcreator Graham Percival and Patrick McCarty
+@omfdescription General info about the LilyPond music engraving system
+@omftype program usage
+@omfcategory Applications|Publishing
+@omflanguage English
 @end ignore
 
-@c FIXME: hack, again uncertain about what's actually needed. -gp
-@node Top
-@top GNU LilyPond --- Website
-@ignore
-
-@ifnottex
-@c @node Top
-@c @top GNU LilyPond --- New Website
-@chapheading The music typesetter
-@c HJJ: Info needs `@top', which is a synonym for `@unnumbered' in TeX.
-@end ifnottex
-
-
-@ifhtml
-@ifclear bigpage
-This document is also available as a
-@uref{source/Documentation/user/lilypond.pdf,PDF} and as
-@uref{source/Documentation/user/lilypond-big-page.html,one big page}.
-@end ifclear
-@ifset bigpage
-This document is also available as a
-@uref{source/Documentation/user/lilypond.pdf,PDF} and as a
-@uref{source/Documentation/user/lilypond/index.html,HTML indexed multiple pages}.
-@end ifset
-@end ifhtml
-
-
-@finalout
-
-@titlepage
-@title LilyPond
-@subtitle The music typesetter
-@titlefont{New Website}
-@author The LilyPond development team
-
-Copyright @copyright{} 1999--2008 by the authors
-
-@quotation
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.1
-or any later version published by the Free Software Foundation;
-with no Invariant Sections.
-A copy of the license is included in the section entitled ``GNU
-Free Documentation License''.
-@end quotation
-
-@vskip 20pt
-
-For LilyPond version 
-@end titlepage
 
 @copying
-Copyright @copyright{} 1999--2008 by the authors
+Copyright @copyright{} 2009 by the authors.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -102,34 +46,40 @@ Free Documentation License''.
 @end quotation
 @end copying
 
+
+@c TITLE PAGE
 @ifnottex
-This file documents GNU LilyPond.
-
-Copyright 1999--2008 by the authors
-
-@quotation
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.1
-or any later version published by the Free Software Foundation;
-with no Invariant Sections.
-A copy of the license is included in the section entitled ``GNU
-Free Documentation License''.
-@end quotation
+@node Top
+@c hack for texi2html, bleh -gp
+@ifhtml
+@top
+@end ifhtml
+@ifnothtml
+@top LilyPond... music notation for everyone
+@end ifnothtml
 @end ifnottex
 
-@ifnottex
-For more information about how this fits with the other
+@c hack for texi2html, bleh -gp
+@ifnothtml
+@finalout
 
-@cindex web site
-@cindex URL
+@titlepage
+@title LilyPond
+@subtitle The music typesetter
+@titlefont{General Information}
+@author The LilyPond development team
 
-More information can be found at
-@uref{http://@/www@/.lilypond@/.org/}.  The website contains on-line copies
-of this and other documentation.
+@vskip 0pt plus 1filll
+@c @vskip 20pt
 
-@end ignore
+@insertcopying{}
 
-@c ************************************* CUT END ***************
+For LilyPond version @version{}
+@end titlepage
+@end ifnothtml  @c end hack for texi2html
+
+
+@c ************************************* WEBSITE START ***************
 
 
 @divId{pageHeader}
@@ -188,6 +138,8 @@ Read more in our @ref{Introduction}!
 @divEnd
 
 
+@ifnottex
+
 @divClass{hide}
 @menu
 * Introduction::     Start here to creating sheet music.
@@ -196,7 +148,8 @@ Read more in our @ref{Introduction}!
 * Community::        Contact other users.
 @end menu
 @divEnd
-@c @end ifnottex
+
+@end ifnottex
 
 @contents
 
