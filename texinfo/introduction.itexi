@@ -82,14 +82,14 @@ Impress friends and colleagues with sharp sheet music!
 
 @help{hoping to delegate this.  Desired: an enthusiastic
 attempt to sway people towards trying lilypond.  The warnings
-about writing music as text come in Crash Course, not here.  Maybe
-draw inspiration from
-http://lilypond.org/web/about/features
-and
-http://lilypond.org/web/switch/tour
-and
-http://lilypond.org/web/switch/advantages
-}
+about writing music as text come in Crash Course, not here.}
+
+Maybe draw inspiration from
+@uref{http://lilypond.org/web/about/features} and
+@uref{http://lilypond.org/web/switch/tour} and
+@uref{http://lilypond.org/web/switch/advantages}
+
+
 
 @subheading Why switch to LilyPond?
 
