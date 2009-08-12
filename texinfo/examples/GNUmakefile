@@ -10,7 +10,7 @@ images:
 	cp *.ly $(mytmp)
 	cp *.ily $(mytmp)
 	cd $(mytmp) && for f in *\.ly; do cd $(mytmp) && $(lilypond_command_preview) $$f; done;
-	cp $(mytmp)/*.png $(DEST)
+	cp $(mytmp)/*.png .
 
 clean:
 	rm -rf $(mytmp)
@@ -23,5 +23,5 @@ SCALE=`for PREVIEWFILE in *preview.png ; \
 	mv "$$PREVIEWFILE" $$STEM.png ; done`
 
 previews:
-	cd $(DEST) && $(SCALE) && rm *.pnm
+	$(SCALE) && rm *.pnm
 
