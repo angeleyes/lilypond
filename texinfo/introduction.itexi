@@ -108,9 +108,9 @@ strong, balanced and elegant look as the best-engraved classical
 scores
 
 
-@subsubheading No fiddling
+@subsubheading Less fiddling
 
-Don't waste time with tweaking the output; LilyPond gets the
+Spend less time with tweaking the output; LilyPond gets the
 formatting correct right from the start.  It determines spacing by
 itself, and breaks lines and pages to provide a tight and uniform
 layout.  Clashes between lyrics, notes, and chords are resolved
@@ -199,8 +199,8 @@ liszt-wagner.png, center}
 This organ work by J.S. Bach is a fairly typical engraving project
 in Lilypond.
 
-@imageClickable{bach-bwv610-small.png, (click for longer
-excerpt), bach-bwv610.png, center}
+@imageClickable{bach-bwv610-small.png, (click to enlarge),
+bach-bwv610.png, center}
 @newsEnd
 
 @newsItem
@@ -494,7 +494,7 @@ high-quality scores of sacred music, available for immediate
 download or in traditional paper format.
 
 @item
-@uref{http://theshadylanepublishing.com/, The Shady Lady
+@uref{http://theshadylanepublishing.com/, The Shady Lane
 Publishing},
 a @qq{micro musical publishing house} whose goal is to promote a
 new form of musical economy closer to the musicians and music
