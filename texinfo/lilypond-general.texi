@@ -8,8 +8,8 @@
 
 @c not happy in texi2html??!  -gp
 @c \input texinfo
-@setfilename newweb.info
-@settitle GNU LilyPond New Website
+@setfilename general.info
+@settitle LilyPond... music notation for everyone
 @documentencoding UTF-8
 @documentlanguage en
 
