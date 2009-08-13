@@ -96,11 +96,12 @@ For LilyPond version @version{}
 @subheading What is LilyPond?
 
 LilyPond is an open-source music engraving program, devoted to
-producing the highest-quality sheet music possible.  We bring the
-aesthetics of traditionally engraved music to computer printouts.
+producing the highest-quality sheet music possible.  This free
+software brings the aesthetics of traditionally engraved music to
+computer printouts.
 
-LilyPond is Free Software and part of the
-@uref{http://@/www@/.gnu@/.org/, GNU} project.
+@c LilyPond is Free Software and part of the
+@c @uref{http://@/www@/.gnu@/.org/, GNU} project.
 
 @divClass{align-right}
 Read more in our @ref{Introduction}!
