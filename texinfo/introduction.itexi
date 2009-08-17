@@ -446,13 +446,35 @@ scholarships.
 Still not convinced?  Read about some of our users'
 @ref{Productions} and sheet music.  If you've already decided to
 try LilyPond, first read about our @ref{Text input}.
+
+FIXME: rewrite for Background.
 @divEnd
 
 
 @node Background
 @unnumberedsec Background
 
-blah
+@divClass{column-center-top}
+@subheading Background essay
+
+We have an extensive essay describing computational aesthetics:
+the art of creating beauty with a computer.  FIXME blah blah.
+
+FIXME: simplify the verbosity below.
+
+If you just want a quick introduction to LilyPond, the essay might
+be too much material to read.  If you would like to read it now,
+please progress to @ref{Essay}.
+
+@divEnd
+
+@divClass{column-center-bottom}
+@subheading Where now?
+
+Still not convinced?  Read about some of our users'
+@ref{Productions} and sheet music.  If you've already decided to
+try LilyPond, first read about our @ref{Text input}.
+@divEnd
 
 
 @node Productions
