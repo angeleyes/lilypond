@@ -35,7 +35,7 @@ Impress friends and colleagues with sharp sheet music!
 @ref{Freedom}: LilyPond is Free Software.
 
 @item
-@ref{Essay}: Our approach to computational aesthetics.
+@ref{Background}: Our computational aesthetics.
 
 @end itemize
 @divEnd
@@ -62,9 +62,11 @@ Impress friends and colleagues with sharp sheet music!
 @item
 @ref{Text input}: You write music as @emph{text}?!
 
+@item
+@ref{Alternate input}: Other ways of working with LilyPond.
+
 @end itemize
 @divEnd
-
 
 
 @divClass{hide}
@@ -72,9 +74,11 @@ Impress friends and colleagues with sharp sheet music!
 * Features::                    What can LilyPond do?
 * Examples::                    I want to see some music!
 * Freedom::                     Freedom and the GPL.
+* Background::                  Computational aesthetics.
 * Productions::                 Real-life use of LilyPond.
 * Testimonials::                What do people say about it?
 * Text input::                  You write music as text?!
+* Alternate input::             Other ways of working with LilyPond.
 @end menu
 @divEnd
 
@@ -445,6 +449,12 @@ try LilyPond, first read about our @ref{Text input}.
 @divEnd
 
 
+@node Background
+@unnumberedsec Background
+
+blah
+
+
 @node Productions
 @unnumberedsec Productions
 
@@ -785,4 +795,71 @@ like to review the @ref{Features}, @ref{Examples}, or
 approach to the computational aesthetics of classical engraving is
 explained in our @ref{Essay}.
 @divEnd
+
+
+@node Alternate input
+@unnumberedsec Alternate input
+
+@divClass{column-center-top}
+@subheading Graphical environment: Denemo
+
+@image{logo-linux}
+
+FIXME: insert text and a graphic
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Mixed environment: LilyPondTool
+
+@image{logo-linux}
+@image{logo-freebsd}
+@image{logo-macosx}
+@image{logo-windows}
+
+
+FIXME: insert text and a graphic
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Text environment: Emacs and Vim
+
+@image{logo-linux}
+@image{logo-freebsd}
+@image{logo-macosx}
+@image{logo-windows}
+
+FIXME: insert text and a graphic
+
+@divEnd
+
+@divClass{column-center-top}
+@subheading Other
+
+FIXME: insert text and a graphic(s)
+
+@divEnd
+
+@divClass{column-center-bottom}
+@subheading Legalese
+
+@divClass{legal}
+All logos and product images are copyright and trademark
+acknowledged.
+
+@logoLegalLinux
+
+@logoLegalFreeBSD
+
+@logoLegalMacOSX
+
+@logoLegalWindows
+
+@divEnd
+
+@divEnd
+
+
+
 

@@ -505,7 +505,7 @@ sub generate_ly_toc_entries($$$)
         "Contact", "Tiny examples", "Bug reports"
 	);
   my @color_2 = (
-        "Features", "Examples", "Freedom",
+        "Features", "Examples", "Freedom", "Background",
 	"Unix", "MacOS X", "Windows",
         "Notation", "Usage", "Snippets",
         "Help us", "Development", "Authors"
@@ -517,7 +517,7 @@ sub generate_ly_toc_entries($$$)
         "Publications", "Old news"
         );
   my @color_4 = (
-        "Text input",
+        "Text input", "Alternate input",
         "GPL",
         "Translated", "Old", "FDL"
         );
