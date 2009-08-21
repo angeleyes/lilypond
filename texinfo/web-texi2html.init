@@ -105,11 +105,10 @@ sub ly_get_string () {
 $Texi2HTML::Config::DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">';
 
 @Texi2HTML::Config::CSS_REFS      = (
-    {FILENAME => "default.css", TITLE => "Default style"},
+    {FILENAME => "lilypond-web.css", TITLE => "Default style"},
 );
 
 @Texi2HTML::Config::ALT_CSS_REFS      = (
-    {FILENAME => "alt1.css", TITLE => "Alternate style 1"},
     {FILENAME => "alt2.css", TITLE => "Alternate style 2"},
 );
 
