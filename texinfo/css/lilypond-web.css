@@ -73,6 +73,9 @@ div#tocframe {
 
 #tocframe > ul:first-child > li:first-child a {
   text-indent: -999em;
+  /* only css3 */
+  /*background:  url(nav-bg.jpg) top left repeat-x,
+url(../pictures/lily-home.jpg) no-repeat 50% 50%, #582007;*/
   background: url(../pictures/lily-home-nav-bg.png) no-repeat 50% 50%;
   width: 9%;
   /* css3 no go yet? */
@@ -114,7 +117,7 @@ div#tocframe {
 #tocframe li form {
   float: left;
   width: 17%;
-  background: url(nav-bg.jpg);
+  background: url(../pictures/nav-bg.jpg);
   font-size: 100%;
   padding: 0.5em 0.8%;
   margin: 0;
@@ -135,8 +138,12 @@ div#tocframe {
 }
 
 #tocframe li form input[type="hidden"] {
-  visibility: hidden;
-  background: #f00;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  padding: 0;
+  margin: 0;
 }
 
 #tocframe li a {
@@ -144,19 +151,19 @@ div#tocframe {
   width: 18%;
   text-align: center;
   font-weight: bold;
-  padding: 0.85em 0;
+  padding: 0.71em 0;
   margin: 0;
-  background: url(nav-bg.jpg);
+  background: url(../pictures/nav-bg.jpg);
 }
 
 #tocframe li a:hover {
-  background: url(nav-hover.jpg);
+  background: url(../pictures/nav-hover.jpg);
   text-decoration: underline;
 }
 
 #tocframe li.toc_current a,
 #tocframe li.toc_current a:hover {
-  background: url(nav-active.jpg);
+  background: url(../pictures/nav-active.jpg);
   color:#000;
   text-decoration: underline;
 }
@@ -407,7 +414,7 @@ div#quickSummary {
 }
 
 div.separator {
-  background: transparent url(../pictures/squiggle.jpg) 40% 60% no-repeat;
+  background: transparent url(../pictures/squiggle.jpg) no-repeat 40% 60%;
   height: 36px;
   clear: both;
   padding: 10px;
