@@ -4,7 +4,7 @@ html {
   padding: 0;
   margin: 0;
 }
-   
+
 body {
   position: absolute;
   top: 0;
@@ -20,7 +20,7 @@ body {
   padding: 0;
   margin: 0 auto;
 }
-   
+
 hr {
   display: none;
 }
@@ -233,7 +233,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 
 
 #tocframe .toc .toc li.toc_current a {
-  background: #8cbc6c; 
+  background: #8cbc6c;
    /*background: url(../pictures/nav-active-3.png) repeat-x top left; */
     color: #000;
 }
@@ -246,7 +246,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe .toc .toc li a:hover {
   background: #bdee9d;
 }
-   
+
 
 /* colored second-level TOC items */
 #tocframe .toc .toc li.color1 a {
@@ -290,7 +290,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   background: #9ccc7c;
   background: url(../pictures/nav-hover-3_2nd.png) repeat-x top left;
 }
-   
+
 /*#tocframe .toc .toc li.colorDefault.toc_current a {
   text-decoration: none;
   background: #9ccc7c;
@@ -322,7 +322,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   background: #fbe69d;
   background: url(../pictures/color4-hover-3.png) repeat-x top left;
 }
-   
+
 /*#tocframe .toc .toc li.colorDefault.toc_current a {
   background: #beee9e;
   background: url(../pictures/nav-active-3.png) repeat-x top left;
@@ -367,7 +367,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   background: #fcf7ae;
   background: url(../pictures/color4-active-3.png) repeat-x top left;
 }
-   
+
 /* third level toc (unnumberedsubsec) */
 #tocframe .toc .toc .toc {
   position: absolute;
@@ -404,24 +404,24 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe .toc .toc .toc li.toc_current a:hover {
   background: #acdd8c;
 }
-   
+
 /* Divs */
 div#main {
-  position: relative;   
+  position: relative;
   /* this value may need to be adjusted */
   top: 7.7em;
   left: 0;
   right: 0;
   width: 100%;
   max-width: 70em;
-  margin: 0 auto 11.7em;   
+  margin: 0 auto 11.7em;
   /* Necessary to stretch over floated content;
    * will cause scrollbars to appear for content
    * that is wider than the width of this div
-   */   
+   */
   overflow: auto;
 }
-   
+
 /* FIXME: does not work in IE<=6 */
 #main > a:first-child {
   position: absolute;
@@ -473,7 +473,7 @@ div#quickSummary {
   background: #fff url(../pictures/summary-gradient.png) repeat-y 0 0;
   color: #fff;
   padding: 0 0.5em;
-   
+
   /* border-bottom: 10px solid #5b7f64; */
   margin: 0;
 }
@@ -607,7 +607,7 @@ div#language {
   margin: 0 0 0.25em 0;
 }
 
-#verifier_texinfo img { 
+#verifier_texinfo img {
 /*
   float: right;
 */
@@ -699,7 +699,7 @@ div.float-right a.clickable {
   padding: 0.25em 0;
   margin: 0;
 }
-   
+
 /* Columns */
 .column-center-top {
   float: left;
@@ -733,7 +733,7 @@ div.float-right a.clickable {
 .column-left-bottom {
   border: 1px solid #aabe70;
 }
-   
+
 /* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
@@ -772,7 +772,7 @@ div.float-right a.clickable {
   border: 1px solid #e9c47b;
   margin: 1em auto 0;
 }
-   
+
 /* color4 */
 .column-center-bottom h3 {
   background: #fad58c url(../pictures/color4-bg-3.png) repeat-x top left;
@@ -854,7 +854,7 @@ div.float-right a.clickable {
 .column-right-bottom img.float-right {
   margin: 0.5em;
 }
-   
+
 /* Centered divs by color */
 div.color1,
 div.color2,
@@ -925,7 +925,7 @@ div.color4 h3 {
   background: #eef;
   text-align: left;
   padding: 0;
-  border: 1px solid green;   
+  border: 1px solid green;
   /* Experimental rounded corners */
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -954,7 +954,7 @@ div.color4 h3 {
   border: 10px dotted green;
   margin: 1em auto;
 }
-   
+
 .legal {
   font-size: 0.6em;
 }
