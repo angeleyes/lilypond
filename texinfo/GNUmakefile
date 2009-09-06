@@ -7,6 +7,8 @@ exampledir = examples/
 all: $(outdir)
 	texi2html -I=$(imagedir) -I=$(exampledir) --output=$(outdir) --init-file=web-texi2html.init --split=node --node-files lilypond-general.texi
 	cp css/* $(outdir)
+### special temporary thingie
+	cp css/alt4.css $(outdir)/lilypond-web.css
 #	cp $(exampledir)/*.png $(outdir)
 #	cp $(imagedir)/*.png $(outdir)
 #	cp $(imagedir)/*.jpg $(outdir)
