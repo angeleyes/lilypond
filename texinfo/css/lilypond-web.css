@@ -4,7 +4,7 @@ html {
   padding: 0;
   margin: 0;
 }
-
+   
 body {
   position: absolute;
   top: 0;
@@ -20,7 +20,7 @@ body {
   padding: 0;
   margin: 0 auto;
 }
-
+   
 hr {
   display: none;
 }
@@ -41,15 +41,32 @@ a img {
   border: 0;
 }
 
-/* Table of Contents */
+/*hyperlinks*/
+/* no dotted line around clicked tabs */
+a:focus {
+    outline: none;
+}
 
+a:link {
+    color:#00B945;/*#00E359;*//*#00DE56;*/
+}
+
+a:visited {
+    color:#5B2C26;
+}
+
+a:hover {
+    color:#006919;
+}
+
+/* Table of Contents */
 /* first level toc (unnumbered) */
 div#tocframe {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  background: url(../pictures/nav-bg.png) repeat-x top left;
+  background: #6aec7c url(../pictures/nav-bg-3.png) repeat-x top left;
   max-width: 70em;
   font-size: 100%;
   line-height: 1;
@@ -62,7 +79,8 @@ div#tocframe {
 }
 
 #tocframe a {
-  color: #000;
+  color: #fff;
+    text-decoration: none;
 }
 
 #tocframe ul.toc {
@@ -73,31 +91,32 @@ div#tocframe {
 
 #tocframe > ul:first-child > li:first-child a {
   text-indent: -999em;
-  /* only css3 */
+    /* only css3 */
   /*background:  url(nav-bg.png) top left repeat-x,
 url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
-  background: url(../pictures/lily-home-nav-bg.png) no-repeat 50% 50%;
+  background: #6aec7c url(../pictures/lily-home-nav-bg-3.png) no-repeat 50% 50%;
   width: 9%;
-  /* css3 no go yet? */
+     /* css3 no go yet? */
   border-bottom-left-radius: 30px;
   -moz-border-radius-bottomleft: 7px;
   -webkit-border-bottom-left-radius: 7px;
 }
 
+
 #tocframe > ul:first-child > li:first-child a:hover {
-  background: url(../pictures/lily-home-nav-hover.png) no-repeat 50% 50%;
+  background: #6aec7c url(../pictures/lily-home-nav-hover-3.png) no-repeat 50% 50%;
   width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a {
   text-indent: -999em;
-  background: url(../pictures/lily-home-nav-active.png) no-repeat 50% 50%;
+  background: url(../pictures/lily-home-nav-active-3.png) no-repeat 50% 50%;
   width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a:hover {
   text-indent: -999em;
-  background: url(../pictures/lily-home-nav-active.png) no-repeat 50% 50%;
+  background: url(../pictures/lily-home-nav-active-3.png) no-repeat 50% 50%;
   width: 9%;
 }
 
@@ -117,7 +136,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe li form {
   float: left;
   width: 17%;
-  background: url(../pictures/nav-bg.png);
+  background: #6aec7c url(../pictures/nav-bg-3.png);
   font-size: 100%;
   padding: 0.5em 0.8%;
   margin: 0;
@@ -153,23 +172,22 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   font-weight: bold;
   padding: 0.71em 0;
   margin: 0;
-  background: url(../pictures/nav-bg.png);
+  background: #6aec7c url(../pictures/nav-bg-3.png);
 }
 
 #tocframe li a:hover {
-  background: url(../pictures/nav-hover.png);
+  background: url(../pictures/nav-hover-3.png);
   text-decoration: underline;
 }
 
 #tocframe li.toc_current a,
 #tocframe li.toc_current a:hover {
-  background: url(../pictures/nav-active.png);
-  color:#000;
-  text-decoration: underline;
+  background: url(../pictures/nav-active-3.png);
+  color:#fff;
+  text-decoration: none;
 }
 
 /* second level toc (unnumberedsec) */
-
 #tocframe .toc .toc {
   position: absolute;
   top: 3.8em;
@@ -205,6 +223,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   width: auto;
   background: #ceffae;
   line-height: 2;
+    color: #000;
   text-decoration: none;
   text-indent: 0;
   font-weight: normal;
@@ -214,45 +233,75 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 
 
 #tocframe .toc .toc li.toc_current a {
-  background: #8cbc6c;
+  background: #8cbc6c; 
+   /*background: url(../pictures/nav-active-3.png) repeat-x top left; */
+    color: #000;
 }
 
 #tocframe .toc .toc li.toc_current a:hover {
   background: #acdd8c;
+      /*    background: url(../pictures/nav-hover-3.png) repeat-x top left;*/
 }
 
 #tocframe .toc .toc li a:hover {
   background: #bdee9d;
 }
+   
 
 /* colored second-level TOC items */
 #tocframe .toc .toc li.color1 a {
   text-decoration: none;
   background: #9ccc7c;
-  background: url(../pictures/color1-bg.png) repeat-x top left;
+  background: url(../pictures/color1-bg-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color2 a {
   text-decoration: none;
   background: #bbcf81;
-  background: url(../pictures/color2-bg.png) repeat-x top left;
+  background: url(../pictures/color2-bg-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color3 a {
   text-decoration: none;
   background: #dbd286;
-  background: url(../pictures/color3-bg.png) repeat-x top left;
+  background: url(../pictures/color3-bg-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color4 a {
   text-decoration: none;
   background: #fad58c;
-  background: url(../pictures/color4-bg.png) repeat-x top left;
+  background: url(../pictures/color4-bg-3.png) repeat-x top left;
 }
 
 /* having this useless style makes the perl init file easier */
+/*#tocframe .toc .toc li.colorDefault a {
+}*/
+
 #tocframe .toc .toc li.colorDefault a {
+    color:#fff;
+  text-decoration: none;
+  background: #9ccc7c;
+  background: url(../pictures/nav-bg-3_2nd.png) repeat-x top left;
 }
+
+#tocframe .toc .toc li.colorDefault a:hover {
+    color:#fff;
+  text-decoration: underline;
+  background: #9ccc7c;
+  background: url(../pictures/nav-hover-3_2nd.png) repeat-x top left;
+}
+   
+/*#tocframe .toc .toc li.colorDefault.toc_current a {
+  text-decoration: none;
+  background: #9ccc7c;
+  background: url(../pictures/nav-active-3_2nd.png) repeat-x top left;
+}*/
+
+/*#tocframe .toc .toc li.colorDefault a:active {
+  text-decoration: none;
+  background: #9ccc7c;
+  background: url(../pictures/nav-active-3.png) repeat-x top left;
+}*/
 
 #tocframe .toc .toc li.color1 a:hover {
   background: #addd8d;
@@ -271,51 +320,55 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 
 #tocframe .toc .toc li.color4 a:hover {
   background: #fbe69d;
-  background: url(../pictures/color4-hover.png) repeat-x top left;
+  background: url(../pictures/color4-hover-3.png) repeat-x top left;
 }
+   
+/*#tocframe .toc .toc li.colorDefault.toc_current a {
+  background: #beee9e;
+  background: url(../pictures/nav-active-3.png) repeat-x top left;
+}*/
 
 #tocframe .toc .toc li.color1.toc_current a {
   background: #beee9e;
-  background: url(../pictures/color1-active.png) repeat-x top left;
+  background: url(../pictures/color1-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color1.toc_current a:hover {
   background: #beee9e;
-  background: url(../pictures/color1-active.png) repeat-x top left;
+  background: url(../pictures/color1-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color2.toc_current a {
   background: #ddefa3;
-  background: url(../pictures/color2-active.png) repeat-x top left;
+  background: url(../pictures/color2-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color2.toc_current a:hover {
   background: #ddefa3;
-  background: url(../pictures/color2-active.png) repeat-x top left;
+  background: url(../pictures/color2-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color3.toc_current a {
   background: #fdf4a8;
-  background: url(../pictures/color3-active.png) repeat-x top left;
+  background: url(../pictures/color3-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color3.toc_current a:hover {
   background: #fdf4a8;
-  background: url(../pictures/color3-active.png) repeat-x top left;
+  background: url(../pictures/color3-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color4.toc_current a {
   background: #fcf7ae;
-  background: url(../pictures/color4-active.png) repeat-x top left;
+  background: url(../pictures/color4-active-3.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.color4.toc_current a:hover {
   background: #fcf7ae;
-  background: url(../pictures/color4-active.png) repeat-x top left;
+  background: url(../pictures/color4-active-3.png) repeat-x top left;
 }
-
+   
 /* third level toc (unnumberedsubsec) */
-
 #tocframe .toc .toc .toc {
   position: absolute;
   top: 2em;
@@ -351,24 +404,24 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe .toc .toc .toc li.toc_current a:hover {
   background: #acdd8c;
 }
-
+   
 /* Divs */
 div#main {
-  position: relative;
+  position: relative;   
   /* this value may need to be adjusted */
   top: 7.7em;
   left: 0;
   right: 0;
   width: 100%;
   max-width: 70em;
-  margin: 0 auto 11.7em;
+  margin: 0 auto 11.7em;   
   /* Necessary to stretch over floated content;
    * will cause scrollbars to appear for content
    * that is wider than the width of this div
-   */
+   */   
   overflow: auto;
 }
-
+   
 /* FIXME: does not work in IE<=6 */
 #main > a:first-child {
   position: absolute;
@@ -420,6 +473,7 @@ div#quickSummary {
   background: #fff url(../pictures/summary-gradient.png) repeat-y 0 0;
   color: #fff;
   padding: 0 0.5em;
+   
   /* border-bottom: 10px solid #5b7f64; */
   margin: 0;
 }
@@ -537,8 +591,9 @@ div#language {
   margin: 0.25em 0 0 0;
 }
 
+
 #verifier_texinfo {
-  position: absolute;
+  position: relative;
   bottom: 0;
   right: 0;
   left: 50%;
@@ -552,7 +607,7 @@ div#language {
   margin: 0 0 0.25em 0;
 }
 
-#verifier_texinfo img {
+#verifier_texinfo img { 
 /*
   float: right;
 */
@@ -567,6 +622,7 @@ div#language {
   padding: 0;
   margin: 0 0.5em;
 }
+
 
 h1.unnumbered, h2.unnumberedsec, h3.unnumberedsubsec {
   position: relative;
@@ -643,9 +699,8 @@ div.float-right a.clickable {
   padding: 0.25em 0;
   margin: 0;
 }
-
+   
 /* Columns */
-
 .column-center-top {
   float: left;
   width: 99.5%;
@@ -656,7 +711,7 @@ div.float-right a.clickable {
 
 /* color1 */
 .column-center-top h3 {
-  background: #9ccc7c;
+  background: #9ccc7c url(../pictures/color1-bg-3.png) repeat-x top left;
   text-align: left;
   border-bottom: 1px solid #8bbb6b;
 }
@@ -678,11 +733,11 @@ div.float-right a.clickable {
 .column-left-bottom {
   border: 1px solid #aabe70;
 }
-
+   
 /* color2 */
 .column-left-top h3,
 .column-left-bottom h3 {
-  background: #bbcf81;
+  background: #bbcf81 url(../pictures/color2-bg-3.png) repeat-x top left;
   border-bottom: 1px solid #aabe70;
 }
 
@@ -706,7 +761,7 @@ div.float-right a.clickable {
 /* color3 */
 .column-right-top h3,
 .column-right-bottom h3 {
-  background: #dbd286;
+  background: #dbd286 url(../pictures/color3-bg-3.png) repeat-x top left;
   border-bottom: 1px solid #cac175;
 }
 
@@ -717,10 +772,10 @@ div.float-right a.clickable {
   border: 1px solid #e9c47b;
   margin: 1em auto 0;
 }
-
+   
 /* color4 */
 .column-center-bottom h3 {
-  background: #fad58c;
+  background: #fad58c url(../pictures/color4-bg-3.png) repeat-x top left;
   text-align: left;
   border-bottom: 1px solid #e9c47b;
 }
@@ -799,9 +854,8 @@ div.float-right a.clickable {
 .column-right-bottom img.float-right {
   margin: 0.5em;
 }
-
+   
 /* Centered divs by color */
-
 div.color1,
 div.color2,
 div.color3,
@@ -871,7 +925,7 @@ div.color4 h3 {
   background: #eef;
   text-align: left;
   padding: 0;
-  border: 1px solid green;
+  border: 1px solid green;   
   /* Experimental rounded corners */
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -900,7 +954,7 @@ div.color4 h3 {
   border: 10px dotted green;
   margin: 1em auto;
 }
-
+   
 .legal {
   font-size: 0.6em;
 }
@@ -915,4 +969,3 @@ h1.settitle {
   padding: 0;
   margin: 0;
 }
-
