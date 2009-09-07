@@ -278,17 +278,17 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 }*/
 
 #tocframe .toc .toc li.colorDefault a {
-    color:#fff;
+    color:#000;
   text-decoration: none;
   background: #9ccc7c;
-  background: url(../pictures/nav-bg-3_2nd.png) repeat-x top left;
+  background: url(../pictures/nav-bg-4_2nd.png) repeat-x top left;
 }
 
 #tocframe .toc .toc li.colorDefault a:hover {
     color:#fff;
   text-decoration: underline;
   background: #9ccc7c;
-  background: url(../pictures/nav-hover-3_2nd.png) repeat-x top left;
+  background: url(../pictures/nav-bg-3_2nd.png) repeat-x top left;
 }
 
 /*#tocframe .toc .toc li.colorDefault.toc_current a {
