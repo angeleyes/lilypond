@@ -66,7 +66,7 @@ div#tocframe {
   top: 0;
   left: 0;
   right: 0;
-  background: #6aec7c url(../pictures/nav-bg-3.png) repeat-x top left;
+  background: #6aec7c url(../pictures/nav-bg-3_1st.png) repeat-x top left;
   max-width: 70em;
   font-size: 100%;
   line-height: 1;
@@ -94,7 +94,7 @@ div#tocframe {
     /* only css3 */
   /*background:  url(nav-bg.png) top left repeat-x,
 url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
-  background: #6aec7c url(../pictures/lily-home-nav-bg-3.png) no-repeat 50% 50%;
+  background: #6aec7c url(../pictures/lily-home-nav-bg-3a.png) no-repeat 50% 50%;
   width: 9%;
      /* css3 no go yet? */
   border-bottom-left-radius: 30px;
@@ -104,19 +104,19 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 
 
 #tocframe > ul:first-child > li:first-child a:hover {
-  background: #6aec7c url(../pictures/lily-home-nav-hover-3.png) no-repeat 50% 50%;
+  background: #6aec7c url(../pictures/lily-home-nav-hover-3a.png) no-repeat 50% 50%;
   width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a {
   text-indent: -999em;
-  background: url(../pictures/lily-home-nav-active-3.png) no-repeat 50% 50%;
+  background: url(../pictures/lily-home-nav-active-3a.png) no-repeat 50% 50%;
   width: 9%;
 }
 
 #tocframe > ul:first-child > li:first-child.toc_current a:hover {
   text-indent: -999em;
-  background: url(../pictures/lily-home-nav-active-3.png) no-repeat 50% 50%;
+  background: url(../pictures/lily-home-nav-active-3a.png) no-repeat 50% 50%;
   width: 9%;
 }
 
@@ -136,9 +136,10 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe li form {
   float: left;
   width: 17%;
-  background: #6aec7c url(../pictures/nav-bg-3.png);
+  background: #6aec7c url(../pictures/nav-bg-3_1st.png);
   font-size: 100%;
-  padding: 0.5em 0.8%;
+  /*padding: 0.5em 0.8%;*/
+    padding: 0.45em 0.8%;
   margin: 0;
 }
 
@@ -170,13 +171,14 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
   width: 18%;
   text-align: center;
   font-weight: bold;
-  padding: 0.71em 0;
+  padding: 0.68em 0;
+
   margin: 0;
   background: #6aec7c url(../pictures/nav-bg-3.png);
 }
 
 #tocframe li a:hover {
-  background: url(../pictures/nav-hover-3.png);
+  background: url(../pictures/nav-hover-3-alt.png);
   text-decoration: underline;
 }
 
