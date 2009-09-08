@@ -66,7 +66,7 @@ div#tocframe {
   top: 0;
   left: 0;
   right: 0;
-  background: #6aec7c url(../pictures/nav-bg-3_1st.png) repeat-x top left;
+  background: #6aec7c url(../pictures/nav-bg-3.png) repeat-x top left;
   max-width: 70em;
   font-size: 100%;
   line-height: 1;
@@ -136,7 +136,7 @@ url(../pictures/lily-home.png) no-repeat 50% 50%, #582007;*/
 #tocframe li form {
   float: left;
   width: 17%;
-  background: #6aec7c url(../pictures/nav-bg-3_1st.png);
+  background: #6aec7c url(../pictures/nav-bg-3.png);
   font-size: 100%;
   /*padding: 0.5em 0.8%;*/
     padding: 0.45em 0.8%;
