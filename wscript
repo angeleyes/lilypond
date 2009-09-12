@@ -21,7 +21,7 @@ def configure(conf):
            filecheck(os.path.join(blddir,'config.make)) and \
            Popen(["tail", "-1", os.path.join(blddir,'config.log')).communicate()[0] == \
               'configure: exit 0':
-        env_lilypond_binary = "$(configure-builddir)/out/bin/lilypond --relocate"
+            env_lilypond_binary = "$(configure-builddir)/out/bin/lilypond --relocate"
     else:
         env_lilypond_binary = conf.check_program('lilypond', var='LILYPOND_BINARY')
     conf.env.append_value('LILYPOND_BINARY', env_lilypond_binary)
