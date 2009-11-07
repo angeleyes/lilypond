@@ -6,35 +6,26 @@ import os
 import sys
 
 import pproc
-import Options
-
-try:
-    srcdir = Options.options.srcdir
-except:
-    pass
-try:
-    blddir = Options.options.blddir
-except:
-    pass
 
 custom_modules_dir = os.path.join (srcdir, 'build', 'waf')
 sys.path.append (custom_modules_dir)
 custom_waf_tools_dir = os.path.join (custom_modules_dir, 'waf-tools')
 
-import custom_configure
-custom_configure.outdir = os.path.join (blddir, 'conf')
-
-from configobj import ConfigObj
-
-config = ConfigObj('VERSION')
-APPNAME = config['PACKAGE_NAME']
-VERSION = (config['MAJOR_VERSION'] + '.' +
-           config['MINOR_VERSION'] + '.' +
-           config['PATCH_LEVEL'])
 
 def configure(conf):
-    conf.env['top-src-dir'] = srcdir
-    conf.env['top-build-dir'] = blddir
+    import custom_configure
+    custom_configure.outdir = os.path.join (conf.blddir, 'conf')
+
+    from configobj import ConfigObj
+
+    config = ConfigObj('VERSION')
+    APPNAME = config['PACKAGE_NAME']
+    VERSION = (config['MAJOR_VERSION'] + '.' +
+               config['MINOR_VERSION'] + '.' +
+               config['PATCH_LEVEL'])
+
+    conf.env['top-src-dir'] = conf.srcdir
+    conf.env['top-build-dir'] = conf.blddir
 
     conf.check_tool ('texinfo', tooldir=custom_waf_tools_dir)
     conf.find_program_with_version ('makeinfo', '4.11')
