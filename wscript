@@ -22,7 +22,7 @@ sys.path.append (custom_modules_dir)
 custom_waf_tools_dir = os.path.join (custom_modules_dir, 'waf-tools')
 
 import custom_configure
-custom_configure.outdir = 'out/conf'
+custom_configure.outdir = os.path.join (blddir, 'conf')
 
 from configobj import ConfigObj
 
