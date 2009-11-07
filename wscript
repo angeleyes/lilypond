@@ -17,7 +17,7 @@ try:
 except:
     pass
 
-custom_modules_dir = os.path.join (srcdir, 'python', 'auxiliar')
+custom_modules_dir = os.path.join (srcdir, 'build', 'waf')
 sys.path.append (custom_modules_dir)
 custom_waf_tools_dir = os.path.join (custom_modules_dir, 'waf-tools')
 
