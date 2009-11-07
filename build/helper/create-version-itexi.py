@@ -4,8 +4,7 @@
 import sys
 import os
 
-#print "create-version-itexi.py"
-
+VERSION=""
 VERSION_STABLE = ""
 VERSION_DEVEL = ""
 
@@ -17,11 +16,21 @@ topDir = os.path.abspath( topDir )
 version_file_path = os.path.join(topDir, "VERSION")
 
 version_contents = open(version_file_path).readlines()
+major = 0
+minor = 0
+patch = 0
 for line in version_contents:
+        if (line[0:13] == 'MAJOR_VERSION'):
+                major = line[14:-1]
+        if (line[0:13] == 'MINOR_VERSION'):
+                minor = line[14:-1]
+        if (line[0:11] == 'PATCH_LEVEL'):
+                patch = line[12:-1]
 	if (line[0:14] == 'VERSION_STABLE'):
 		VERSION_STABLE = line[15:-1]
 	if (line[0:13] == 'VERSION_DEVEL'):
 		VERSION_DEVEL = line[14:-1]
+VERSION = str(major)+'.'+str(minor)+'.'+str(patch)
 
 def make_macro(name, string):
 	print "@macro", name
@@ -71,6 +80,7 @@ def make_all_downloads(macroName, version):
 		"mingw.exe", version, "1", "Windows")
 
 
+make_macro("version", VERSION)
 make_macro("versionStable", VERSION_STABLE)
 make_macro("versionDevel", VERSION_DEVEL)
 
