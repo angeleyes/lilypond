@@ -31,5 +31,6 @@ def configure(conf):
     conf.check_tool ('lilypond')
 
 def build(bld):
-    pass
+    bld.add_subdirs('Documentation')
+
 

@@ -1,0 +1,20 @@
+import TaskGen
+
+TaskGen.declare_chain(
+    name = 'texi2pdf',
+    after = 'version.itexi',
+    rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}',
+    ext_in = '.texi',
+    ext_out = '.pdf',
+    reentrant = 0,
+)
+
+def build(bld):
+    bld.new_task_gen(
+         target = 'version.itexi',
+         rule = 'python ' + bld.env['top-src-dir'] + '/build/helper/create-version-itexi.py > ${TGT}',
+    )
+
+    bld.new_task_gen(source='contributor.texi')
+
+
