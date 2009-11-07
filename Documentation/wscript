@@ -1,13 +1,12 @@
 import TaskGen
 
-TaskGen.declare_chain(
-    name = 'texi2pdf',
-    after = 'version.itexi',
-    rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}',
-    ext_in = '.texi',
-    ext_out = '.pdf',
-    reentrant = 0,
-)
+tely = []
+lilypond_book = ''
+
+texi = ['contributor.texi']
+texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
+texi2html_rule = 'texi2html -I default/Documentation/ -o ${TGT} ${SRC}'
+
 
 def build(bld):
     bld.new_task_gen(
@@ -15,6 +14,21 @@ def build(bld):
          rule = 'python ' + bld.env['top-src-dir'] + '/build/helper/create-version-itexi.py > ${TGT}',
     )
 
-    bld.new_task_gen(source='contributor.texi')
+    # convert tely -> texi
+
+
+    # texi -> pdf, html
+    for src in texi:
+        base_target = src.split('.')[0]
+        bld.new_task_gen (after = 'version.itexi',
+            source = src,
+            target = base_target + '.pdf',
+            rule = texi2pdf_rule
+        )
+        bld.new_task_gen (after = 'version.itexi',
+            source = src,
+            target = base_target + '.html',
+            rule = texi2html_rule
+        )
 
 
