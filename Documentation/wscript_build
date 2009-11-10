@@ -1,39 +1,65 @@
 import TaskGen
+# TODO: make this os-independent with os.path.join() ?
+import os.path
 
-tely = []
-lilypond_book = ''
+# reminders:
+#    bld.srcnode.abspath()  <- top source dir
+#    bld.srcnode.abspath(bld.env)  <-build root including variant dir
+#    ${TGT}                 <- dir/of/target/file.ext
+#    ${TGT[0].dir(env)}     <- dir/of/target/
 
-texi = ['contributor.texi']
-texi2pdf_rule = 'texi2pdf -I ./ -I default/Documentation/ -o ${TGT} ${SRC}'
-texi2html_rule = 'texi2html -I ./ -I default/Documentation/ -o ${TGT} ${SRC}'
+doc_dir = os.path.join( bld.srcnode.abspath(), 'Documentation')
 
+tely = ['changes']
+texi = ['contributor']
+
+lilypond_book_rule = 'lilypond-book -I %(doc_dir)s -o ${TGT[0].dir(env)} ${SRC}' % locals()
+
+texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
+texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_dir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
+
+texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
+texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
+
+#doc_output = os.path.join( bld.srcnode.abspath(bld.env), 'Documentation/out/')
+
+
+print bld.srcnode.abspath(bld.env)
 
 ### First group: basic setup
 bld.add_group()
-bld.new_task_gen(
+bld.new_task_gen (
     name = 'create_version',
-    rule = 'python ' + bld.env['top-src-dir'] + '/build/helper/create-version-itexi.py > version.itexi',
+    target = 'version.itexi',
+    rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT}',
 )
-
 
 ### convert tely -> texi
 bld.add_group()
+for src in tely:
+    bld.new_task_gen (
+        source = src + '.tely',
+        target = src + '.texi',
+        rule = lilypond_book_rule
+    )
+    texi.append(src)
 
 
 ### texi -> pdf, html
 bld.add_group()
 for src in texi:
-    base_target = src.split('.')[0]
+#    bld.new_task_gen (
+#        source = src + '.texi',
+#        target = src + '.pdf',
+#        rule = texi2pdf_rule
+#    )
     bld.new_task_gen (
-        source = src,
-        target = base_target + '.pdf',
-        rule = texi2pdf_rule
+        name = "html output",
+        source = src + '.texi',
+        target = src + '/index.html',
+        rule = texi2html_rule_normal + "; cp %(doc_dir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
-    bld.new_task_gen (
-        source = src,
-        target = base_target + '.html',
-        rule = texi2html_rule
-    )
+
 
 
 
