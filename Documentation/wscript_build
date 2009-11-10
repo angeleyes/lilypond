@@ -8,24 +8,31 @@ import os.path
 #    ${TGT}                 <- dir/of/target/file.ext
 #    ${TGT[0].dir(env)}     <- dir/of/target/
 
-doc_dir = os.path.join( bld.srcnode.abspath(), 'Documentation')
+doc_srcdir = os.path.join( bld.srcnode.abspath(), 'Documentation')
+doc_blddir = bld.srcnode.abspath(bld.env)
 
-tely = ['changes']
+tely = ['changes', 'extending', 'essay']
+#tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
+#tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
 texi = ['contributor']
 texi_web = ['general']
 
-lilypond_book_rule = 'lilypond-book -I %(doc_dir)s -o ${TGT[0].dir(env)} ${SRC}' % locals()
+lilypond_book_includes = "-I default/Documentation/ \
+	-I %(doc_srcdir)s \
+	-I %(doc_srcdir)s/included/ \
+	-I %(doc_srcdir)s/snippets/ \
+	" % locals()
+
+lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(doc_blddir)s/ ${SRC}' % locals()
 
 texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
-texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_dir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
-texi2html_flags_web = texi2html_flags + '--init-file=%(doc_dir)s/web-texi2html.init --prefix=index --split=section --node-files ' % locals()
+texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_srcdir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
+texi2html_flags_web = texi2html_flags + '--init-file=%(doc_srcdir)s/web-texi2html.init --prefix=index --split=section --node-files ' % locals()
 
 texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
 texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
 # SRC_DIR is a stupid hack for search-box.html
-texi2html_rule_web = 'SRC_DIR=%(doc_dir)s texi2html %(texi2html_flags_web)s ${SRC}' % locals()
-
-#doc_output = os.path.join( bld.srcnode.abspath(bld.env), 'Documentation/out/')
+texi2html_rule_web = 'SRC_DIR=%(doc_srcdir)s texi2html %(texi2html_flags_web)s ${SRC}' % locals()
 
 
 print bld.srcnode.abspath(bld.env)
@@ -61,7 +68,7 @@ for src in texi:
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_normal + "; cp %(doc_dir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
 
 for src in texi_web:
@@ -69,7 +76,7 @@ for src in texi_web:
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_web + "; cp %(doc_dir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
 
 
