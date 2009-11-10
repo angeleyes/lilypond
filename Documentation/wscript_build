@@ -1,0 +1,39 @@
+import TaskGen
+
+tely = []
+lilypond_book = ''
+
+texi = ['contributor.texi']
+texi2pdf_rule = 'texi2pdf -I ./ -I default/Documentation/ -o ${TGT} ${SRC}'
+texi2html_rule = 'texi2html -I ./ -I default/Documentation/ -o ${TGT} ${SRC}'
+
+
+### First group: basic setup
+bld.add_group()
+bld.new_task_gen(
+    name = 'create_version',
+    rule = 'python ' + bld.env['top-src-dir'] + '/build/helper/create-version-itexi.py > version.itexi',
+)
+
+
+### convert tely -> texi
+bld.add_group()
+
+
+### texi -> pdf, html
+bld.add_group()
+for src in texi:
+    base_target = src.split('.')[0]
+    bld.new_task_gen (
+        source = src,
+        target = base_target + '.pdf',
+        rule = texi2pdf_rule
+    )
+    bld.new_task_gen (
+        source = src,
+        target = base_target + '.html',
+        rule = texi2html_rule
+    )
+
+
+
