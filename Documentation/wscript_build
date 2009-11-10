@@ -2,6 +2,12 @@ import TaskGen
 # TODO: make this os-independent with os.path.join() ?
 import os.path
 
+# hack for waf's dislike of non-source-tree directories
+bld.path.ensure_dir_node_from_path(['music-glossary'])
+#glossary_index = os.path.join('music-glossary', 'index.html')
+bld.new_task_gen(target='music-glossary/index.html',rule='touch ${TGT}')
+
+
 # reminders:
 #    bld.srcnode.abspath()  <- top source dir
 #    bld.srcnode.abspath(bld.env)  <-build root including variant dir
@@ -9,7 +15,7 @@ import os.path
 #    ${TGT[0].dir(env)}     <- dir/of/target/
 
 doc_srcdir = os.path.join( bld.srcnode.abspath(), 'Documentation')
-doc_blddir = bld.srcnode.abspath(bld.env)
+doc_blddir = os.path.join( bld.srcnode.abspath(bld.env), 'Documentation')
 
 tely = ['music-glossary']
 #tely = ['music-glossary', 'usage']
@@ -37,9 +43,7 @@ texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
 texi2html_rule_web = 'SRC_DIR=%(doc_srcdir)s texi2html %(texi2html_flags_web)s ${SRC}' % locals()
 
 
-print bld.srcnode.abspath(bld.env)
-
-### First group: basic setup
+### 1st group: basic setup
 bld.add_group()
 bld.new_task_gen (
     name = 'create_version',
@@ -47,7 +51,7 @@ bld.new_task_gen (
     rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT}',
 )
 
-### convert tely -> texi
+### 2nd group: tely -> texi
 bld.add_group()
 for src in tely:
     bld.new_task_gen (
@@ -66,13 +70,13 @@ for src in texi:
 #        target = src + '.pdf',
 #        rule = texi2pdf_rule
 #    )
-    foo=bld.new_task_gen (
+
+    bld.new_task_gen (
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
         rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
-    print foo.target
 
 #for src in texi_web:
 #    bld.new_task_gen (
