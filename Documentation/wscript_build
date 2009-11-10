@@ -12,14 +12,18 @@ doc_dir = os.path.join( bld.srcnode.abspath(), 'Documentation')
 
 tely = ['changes']
 texi = ['contributor']
+texi_web = ['general']
 
 lilypond_book_rule = 'lilypond-book -I %(doc_dir)s -o ${TGT[0].dir(env)} ${SRC}' % locals()
 
 texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
 texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_dir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
+texi2html_flags_web = texi2html_flags + '--init-file=%(doc_dir)s/web-texi2html.init --prefix=index --split=section --node-files ' % locals()
 
 texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
 texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
+# SRC_DIR is a stupid hack for search-box.html
+texi2html_rule_web = 'SRC_DIR=%(doc_dir)s texi2html %(texi2html_flags_web)s ${SRC}' % locals()
 
 #doc_output = os.path.join( bld.srcnode.abspath(bld.env), 'Documentation/out/')
 
@@ -60,6 +64,12 @@ for src in texi:
         rule = texi2html_rule_normal + "; cp %(doc_dir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
 
-
+for src in texi_web:
+    bld.new_task_gen (
+        name = "html output",
+        source = src + '.texi',
+        target = src + '/index.html',
+        rule = texi2html_rule_web + "; cp %(doc_dir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+    )
 
 
