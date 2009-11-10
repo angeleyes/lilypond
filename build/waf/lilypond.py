@@ -3,19 +3,19 @@
 import os
 import pproc
 
-def check_file_from_autoconf (path, env):
-    return (os.path.isfile (os.path.join (env['top-build-dir'], path)) or
-            os.path.isfile (os.path.join (env['top-src-dir'], path)))
+def check_file_from_autoconf (path, conf):
+    return (os.path.isfile (os.path.join (conf.blddir, path)) or
+            os.path.isfile (os.path.join (conf.srcdir, path)))
 
 def find_lilypond (conf):
     conf.check_message_1 ('Checking for LilyPond binary')
     env_lilypond_binary = os.getenv ('LILYPOND_EXTERNAL_BINARY')
     if not env_lilypond_binary or not os.access (env_lilypond_binary, os.R_OK | os.X_OK):
-        if (check_file_from_autoconf ('GNUmakefile', conf.env) and
-            check_file_from_autoconf ('config.make', conf.env)):
-            config_log_path = os.path.join (conf.env['top-src-dir'], 'config.log')
+        if (check_file_from_autoconf ('GNUmakefile', conf) and
+            check_file_from_autoconf ('config.make', conf)):
+            config_log_path = os.path.join (conf.srcdir, 'config.log')
             config_log_path = (os.path.isfile (config_log_path) and config_log_path or
-                               os.path.join (conf.env['top-build-dir'], 'config.log'))
+                               os.path.join (conf.srcdir, 'config.log'))
             config_log_last_line = pproc.Popen(['tail', '-1', config_log_path],
                                     stdout=pproc.PIPE).communicate()[0]
             if config_log_last_line.startswith ('configure: exit 0'):

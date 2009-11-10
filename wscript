@@ -21,9 +21,6 @@ def configure(conf):
                config['MINOR_VERSION'] + '.' +
                config['PATCH_LEVEL'])
 
-    conf.env['top-src-dir'] = conf.srcdir
-    conf.env['top-build-dir'] = conf.blddir
-
     conf.check_tool ('texinfo')
     conf.find_program_with_version ('makeinfo', '4.11')
     conf.find_program_with_version (['texi2html', 'texi2html.pl'], '1.82')
