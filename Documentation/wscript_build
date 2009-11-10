@@ -11,7 +11,9 @@ import os.path
 doc_srcdir = os.path.join( bld.srcnode.abspath(), 'Documentation')
 doc_blddir = bld.srcnode.abspath(bld.env)
 
-tely = ['changes', 'extending', 'essay']
+tely = ['music-glossary']
+#tely = ['music-glossary', 'usage']
+#tely = ['changes', 'extending', 'essay']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
 texi = ['contributor']
@@ -23,7 +25,7 @@ lilypond_book_includes = "-I default/Documentation/ \
 	-I %(doc_srcdir)s/snippets/ \
 	" % locals()
 
-lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(doc_blddir)s/ ${SRC}' % locals()
+lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(doc_blddir)s/lybook/ ${SRC}' % locals()
 
 texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
 texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_srcdir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
@@ -64,19 +66,20 @@ for src in texi:
 #        target = src + '.pdf',
 #        rule = texi2pdf_rule
 #    )
-    bld.new_task_gen (
+    foo=bld.new_task_gen (
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
         rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
+    print foo.target
 
-for src in texi_web:
-    bld.new_task_gen (
-        name = "html output",
-        source = src + '.texi',
-        target = src + '/index.html',
-        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
-    )
+#for src in texi_web:
+#    bld.new_task_gen (
+#        name = "html output",
+#        source = src + '.texi',
+#        target = src + '/index.html',
+#        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+#    )
 
 
