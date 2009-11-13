@@ -24,6 +24,7 @@ RedirectMatch ^/doc//*development/*(.*)$ /doc/v2.13/$1
 RedirectMatch ^/doc//*stable/*(.*)$ /doc/v2.12/$1
 RedirectMatch ^/doc//*([^v].*)$ /doc/v2.12/$1
 RedirectMatch ^(/Documentation.*)$ /doc/v2.12$1
+RedirectMatch ^/index$ /
 
 # fix root calculation: no double slashes
 # RedirectMatch ^(.*/)/+(.*)$ $1$2
