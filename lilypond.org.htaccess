@@ -1,30 +1,14 @@
+RewriteEngine On
 
 # Deny following of symlinks by robots.
 # HTTrack is a known offender.
 # better yet, to redirect this to page that tells adminstrator
 # about brokenness
-
-RewriteEngine On
 RewriteCond %{HTTP_USER_AGENT} httrack [NC]
 RewriteRule ^.*/source/.*$ /please-respect-robots.txt.html [L]
 
-# No recursively deep source links
-RedirectMatch ^(.*/source/).*/source/(.*)$ $1$2
-
-# Help deep linkers with stale urls before out-www transition
-RedirectMatch ^(/doc/(v2.[67]|latest).*)/out-www(.*)$ $1$3
-
-# Help broken case-insensitive browsers?
-#RedirectMatch ^(.*/)(authors|news)(.[.a-z]*html)$ $1$2$3
-
-## UGH breaks documentation binary platform
-#RedirectMatch ^(.*/)(documentation)(/.*)$ $1Documentation$3
-#RedirectMatch ^(.*/)(authors)(.[.a-z]*html)$ $1AUTHORS$3?warning=your-browser-is-broken [L,QSA]
-RedirectMatch ^(.+/)(authors)(.[.a-z]*html)?$ $1AUTHORS$3
-RedirectMatch ^(.+/)(news)(.[.a-z]*html)?$ $1NEWS$3
-
 # Permanent top level entry points -- ./doc
-RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary
+RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary/index
 RedirectMatch ^/tutorial /doc/Documentation/user/lilypond-learning/Tutorial
 RedirectMatch ^/documentation /doc
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
@@ -32,26 +16,7 @@ RedirectMatch ^/wiki	http://wiki.lilynet.net
 RedirectMatch ^/authors /doc/Documentation/topdocs/AUTHORS
 RedirectMatch ^/news    /doc/Documentation/topdocs/NEWS
 
-# Permanent top level entry points -- ./web
-RedirectMatch ^/pdflink$ /web/switch/advantages.html
-RedirectMatch ^/$ /web
-RedirectMatch ^/mingit.* /git/binaries/mingw/
-RedirectMatch ^/index /web
-RedirectMatch ^/stable /web
-RedirectMatch ^/development /web
-RedirectMatch ^(/devel.*)$ /web/$1
-RedirectMatch ^(/search.*)$ /web$1
-RedirectMatch ^(/switch.*)$ /web$1
-RedirectMatch ^(/install.*)$ /web$1
-
-# catch renamed download dir
-RedirectMatch ^/web/download(.*)$ /web/install$1
-RedirectMatch ^/web/doawnload(.*)$ /web/install$1
-
-# catch renamed sources dir
-RedirectMatch ^/download/(v[0-9][.][0-9].*)$ /download/sources/$1
-
-# default doc dir
+#old# default doc dir
 RedirectMatch ^/doc/*$ /doc/v2.12
 # make attempt at `latest' symlink avoid ^v catch-all doc fix rule below
 RedirectMatch ^/doc//*latest/*(.*)$ /doc/v2.13/$1
@@ -61,7 +26,60 @@ RedirectMatch ^/doc//*([^v].*)$ /doc/v2.12/$1
 RedirectMatch ^(/Documentation.*)$ /doc/v2.12$1
 
 # fix root calculation: no double slashes
-RedirectMatch ^(.*/)/+(.*)$ $1$2
+# RedirectMatch ^(.*/)/+(.*)$ $1$2
+
+###########################################
+
+## Rewrite all non-existing files at toplevel to the /web/ dir, so our
+## internal structure for rsync doesn't have to be changed.
+## This works for the current/old site as well as the new one.
+
+RewriteEngine on
+RewriteBase /
+
+SetEnvIf REQUEST_URI .* WEB=/web
+## To switch over to the new site, we do not even need to put it in /web
+## we could do
+# SetEnvIf REQUEST_URI .* WEB=/doc/v2.13/Documentation
+
+# Rewrite empty to /web
+RewriteCond %{REQUEST_URI} ^/*$
+RewriteRule ^(/*)$ %{ENV:WEB}/ [QSA,L]
+
+# css Request without directory part
+RewriteCond %{REQUEST_URI} ^/?[^/]+[.]css$
+# ...that does not match match an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+# ...and does not match an existing directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# ...prefix with web
+RewriteRule ^(.+)$ %{ENV:WEB}/$1 [QSA,L]
+
+# Request without trailing slash
+RewriteCond %{REQUEST_URI} !.*/$
+# ...that would access a directory in /web
+RewriteCond %{DOCUMENT_ROOT}%{ENV:WEB}%{REQUEST_URI} -d
+# ...and does not start with /web
+RewriteCond %{REQUEST_URI} !^%{ENV:WEB}
+RewriteCond %{REQUEST_URI} !^/web
+# ...and does not start with /doc
+RewriteCond %{REQUEST_URI} !^/doc
+# ...add trailing slash for [menu] and to avoid /web/ in browser url
+RewriteRule ^(.+)$ http://%{HTTP_HOST}/$1/ [R,QSA,L]
+
+# Request that does not start with /web
+RewriteCond %{REQUEST_URI} !^/web
+RewriteCond %{REQUEST_URI} !^%{ENV:WEB}
+# ...and does not start with /doc
+RewriteCond %{REQUEST_URI} !^/doc
+# ...and does not match match an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+# ...and does not match an existing directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# ..prefix with /web
+RewriteRule ^(.+)$ %{ENV:WEB}/$1 [QSA,L]
+
+###########################################
 
 # latin1 version copied to web and doc/2.x
 AddDefaultCharset utf-8
