@@ -6,18 +6,19 @@ import os.path
 node = bld.path.ensure_dir_node_from_path(['music-glossary'])
 bld.rescan(node)
 
-#glossary_index = os.path.join('music-glossary', 'index.html')
-bld.new_task_gen(target='music-glossary/index.html',rule='touch ${TGT}')
-
-
 # reminders:
 #    bld.srcnode.abspath()  <- top source dir
-#    bld.srcnode.abspath(bld.env)  <-build root including variant dir
+#    bld.srcnode.abspath(bld.env)  <- build root including variant dir
+#
+#    bld.path.abspath()     <- current source dir
+#    bld.path.abspath(bld.env)     <- build dir
+#
 #    ${TGT}                 <- dir/of/target/file.ext
 #    ${TGT[0].dir(env)}     <- dir/of/target/
 
-doc_srcdir = os.path.join( bld.srcnode.abspath(), 'Documentation')
-doc_blddir = os.path.join( bld.srcnode.abspath(bld.env), 'Documentation')
+doc_srcdir = bld.path.abspath()
+doc_blddir = bld.path.abspath(bld.env)
+top_blddir = bld.srcnode.abspath(bld.env)  # topdir including variant
 
 tely = ['music-glossary']
 #tely = ['music-glossary', 'usage']
@@ -33,7 +34,7 @@ lilypond_book_includes = "-I default/Documentation/ \
 	-I %(doc_srcdir)s/snippets/ \
 	" % locals()
 
-lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(doc_blddir)s/lybook/ ${SRC}' % locals()
+lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(top_blddir)s/lybook/ ${SRC}' % locals()
 
 texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
 texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_srcdir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
@@ -80,12 +81,12 @@ for src in texi:
         rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
     )
 
-#for src in texi_web:
-#    bld.new_task_gen (
-#        name = "html output",
-#        source = src + '.texi',
-#        target = src + '/index.html',
-#        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
-#    )
+for src in texi_web:
+    bld.new_task_gen (
+        name = "html output",
+        source = src + '.texi',
+        target = src + '/index.html',
+        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+    )
 
 
