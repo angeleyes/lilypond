@@ -17,7 +17,7 @@
 @warning{LilyPond is a @strong{text-based} music engraver; it is
 more similar to a programming language than a graphical score
 editing program.  Before downloading LilyPond, please read about
-our @ref{text input}.}
+our @ref{Text input}.}
 
 @divClass{column-left-top}
 @subheading For users
@@ -26,9 +26,9 @@ our @ref{text input}.}
 
 @item
 @c TODO: duplicate to avoid underlined refs in HTML?  icky.
-@ref{UNIX, @sourceimage{logo-linux,,,}
+@ref{Unix, @sourceimage{logo-linux,,,}
 @sourceimage{logo-freebsd,,,}}
-@ref{UNIX, Unix (Linux and FreeBSD)}
+@ref{Unix, Unix (Linux and FreeBSD)}
 
 @item
 @ref{MacOS X, @sourceimage{logo-macosx,,,}}
@@ -48,14 +48,14 @@ our @ref{text input}.}
 @itemize
 
 @item
-@ref{source}:
+@ref{Source}:
 for packagers
 
 @item
-@ref{old downloads}:
+@ref{Old downloads}:
 old versions
 
-@item @ref{development}:
+@item @ref{Development}:
 latest unstable version
 
 @end itemize
@@ -530,7 +530,7 @@ site}.
 
 GNU LilyPond is published under the GNU General Public License.
 An introduction to this license, and our reasons for choosing it,
-is given in @ref{freedom}.
+is given in @ref{Freedom}.
 
 @divEnd
 
