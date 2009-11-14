@@ -6,7 +6,7 @@
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
-@node manuals
+@node Manuals
 @unnumbered Manuals
 
 @divClass{heading-center}
@@ -113,18 +113,18 @@ License.
 
 @divClass{hide}
 @menu
-* learning::             Learning.
-* glossary::              Glossary.
-* essay::                       Essay.       
-* notation::          Reference.
-* usage::           Usage.
-* snippets::                Snippets.
+* Learning::             Learning.
+* Glossary::              Glossary.
+* Essay::                       Essay.       
+* Notation::          Reference.
+* Usage::           Usage.
+* Snippets::                Snippets.
 * FAQ::                         FAQ.
-* changes::                     NEWS.
-* extend::         Programming.
-* internals::         Internals.
-* translated::          Translation.
-* all::                 All manuals.
+* Changes::                     NEWS.
+* Extend::         Programming.
+* Internals::         Internals.
+* Translated::          Translation.
+* All::                 All manuals.
 * FDL::                     Licence.
 @end menu
 
@@ -135,7 +135,7 @@ License.
 @c LM 1.1 About the documentation  (before this section was
 @c removed in July 2009).
 
-@node learning
+@node Learning
 @unnumberedsec Learning
 
 @divClass{column-left-top}
@@ -188,7 +188,7 @@ download as a PDF file.
 @divEnd
 
 
-@node glossary
+@node Glossary
 @unnumberedsec Glossary
 
 @divClass{column-left-top}
@@ -236,7 +236,7 @@ download as a PDF file.
 @divEnd
 
 
-@node essay
+@node Essay
 @unnumberedsec Essay
 
 @divClass{column-left-top}
@@ -286,7 +286,7 @@ download as a PDF file.
 @divEnd
 
 
-@node notation
+@node Notation
 @unnumberedsec Notation
 
 @divClass{column-left-top}
@@ -336,7 +336,7 @@ download as a PDF file.
 @divEnd
 
 
-@node usage
+@node Usage
 @unnumberedsec Usage
 
 @divClass{column-left-top}
@@ -383,7 +383,7 @@ download as a PDF file.
 @divEnd
 
 
-@node snippets
+@node Snippets
 @unnumberedsec Snippets
 
 @divClass{column-left-top}
@@ -479,7 +479,7 @@ This is explained in @rprogram{Why does the syntax change?}.
 @divEnd
 
 
-@node changes
+@node Changes
 @unnumberedsec Changes
 
 @divClass{column-left-top}
@@ -525,7 +525,7 @@ download as a PDF file.
 @divEnd
 
 
-@node extend
+@node Extend
 @unnumberedsec Extend
 
 @divClass{column-left-top}
@@ -570,7 +570,7 @@ download as a PDF file.
 @divEnd
 
 
-@node internals
+@node Internals
 @unnumberedsec Internals
 
 @divClass{column-left-top}
@@ -628,7 +628,7 @@ download as a PDF file.
 
 
 
-@node translated
+@node Translated
 @unnumberedsec Translated
 
 @divClass{column-center-bottom}
@@ -641,7 +641,7 @@ TODO: clean up / prettify
 @divEnd
 
 
-@node all
+@node All
 @unnumberedsec All
 
 @divClass{heading-center}
