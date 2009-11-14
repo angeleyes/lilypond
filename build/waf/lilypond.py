@@ -19,7 +19,7 @@ def find_lilypond (conf):
             config_log_last_line = pproc.Popen(['tail', '-1', config_log_path],
                                     stdout=pproc.PIPE).communicate()[0]
             if config_log_last_line.startswith ('configure: exit 0'):
-                env_lilypond_binary = os.path.join (conf.env['top-build-dir'],
+                env_lilypond_binary = os.path.join (conf.blddir,
                                                     'bin', 'lilypond --relocate')
     if env_lilypond_binary:
         conf.env['LILYPOND_BINARY'] = env_lilypond_binary
