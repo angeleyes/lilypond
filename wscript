@@ -1,6 +1,6 @@
 # -*- mode: python; encoding: utf-8 -*-
 srcdir = '.'
-blddir = 'out'
+blddir = 'waf-out'
 
 import os
 import sys
