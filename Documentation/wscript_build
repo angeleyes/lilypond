@@ -3,7 +3,9 @@ import TaskGen
 import os.path
 
 # hack for waf's dislike of non-source-tree directories
-bld.path.ensure_dir_node_from_path(['music-glossary'])
+node = bld.path.ensure_dir_node_from_path(['music-glossary'])
+bld.rescan(node)
+
 #glossary_index = os.path.join('music-glossary', 'index.html')
 bld.new_task_gen(target='music-glossary/index.html',rule='touch ${TGT}')
 
