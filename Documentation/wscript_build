@@ -26,7 +26,7 @@ tely = ['music-glossary']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
 texi = ['contributor']
-texi_web = ['general']
+texi_web = ['web']
 
 lilypond_book_includes = "-I default/Documentation/ \
 	-I %(doc_srcdir)s \
