@@ -25,7 +25,8 @@ tely = []
 #tely = ['changes', 'extending', 'essay']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
-texi = ['contributor']
+#texi = ['contributor']
+texi = []
 texi_web = ['web']
 
 lilypond_book_includes = "-I default/Documentation/ \
@@ -38,7 +39,7 @@ lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(e
 
 texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} --split=node --node-files --init-file=%(doc_srcdir)s/lilypond-texi2html.init ' % locals()
 texi2html_flags_normal = texi2html_flags + '--prefix=index ' % locals()
-texi2html_flags_web = texi2html_flags + '--prefix=index -D web_manual ' % locals()
+texi2html_flags_web = texi2html_flags + '--prefix=index -D=webmanual ' % locals()
 
 texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
 texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
@@ -74,11 +75,12 @@ for src in texi:
 #        rule = texi2pdf_rule
 #    )
 
+    # FIXME: change -mccarty to lilypond.css
     bld.new_task_gen (
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/lilypond-mccarty.css ${TGT[0].dir(env)}" % locals()
     )
 
 for src in texi_web:
@@ -86,7 +88,7 @@ for src in texi_web:
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/*.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/lilypond-web.css ${TGT[0].dir(env)}" % locals()
     )
 
 

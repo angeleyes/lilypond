@@ -101,12 +101,38 @@ sub ly_get_string () {
 
 
 #############################################################################
+### FUNCTIONALITY FOR MAIN WEB PAGES
+#############################################################################
+
+my $web_manual = 0;
+sub lilypond_init_web_manual ()
+{
+  if (exists($main::value{'webmanual'}))
+  {
+    $web_manual = 1;
+  }
+  web_settings()
+}
+push @Texi2HTML::Config::command_handler_process, \&lilypond_init_web_manual;
+
+#############################################################################
 ###  SETTINGS FOR TEXI2HTML
 #############################################################################
 
-@Texi2HTML::Config::CSS_REFS      = (
-    {FILENAME => "lilypond-mccarty.css", TITLE => "Patrick McCarty's design"}
-);
+# Validation fix for texi2html<=1.82
+$Texi2HTML::Config::DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">';
+
+sub web_settings() {
+  if ($web_manual) {
+    @Texi2HTML::Config::CSS_REFS      = (
+      {FILENAME => "lilypond-web.css", TITLE => "Default style"}
+    );
+  } else {
+    @Texi2HTML::Config::CSS_REFS      = (
+      {FILENAME => "lilypond-mccarty.css", TITLE => "Patrick McCarty's design"}
+    );
+  }
+}
 @Texi2HTML::Config::ALT_CSS_REFS      = (
     {FILENAME => "lilypond.css", TITLE => "Andrew Hawryluk's design" },
     {FILENAME => "lilypond-blue.css", TITLE => "Kurt Kroon's blue design" },
@@ -116,9 +142,14 @@ $Texi2HTML::Config::USE_LINKS     = 1;
 $Texi2HTML::Config::USE_REL_REV   = 1;
 $Texi2HTML::Config::SPLIT_INDEX   = 0;
 $Texi2HTML::Config::SEPARATED_FOOTNOTES = 0; # Print footnotes on same page, not separated
+
+# FIXME: creates duplicate anchors, which causes Opera to barf;
+#       should be fixed in lilypond-texi2html.init too
+# Uhm, what about a bug report to Opera?  We need sane names here.
 if ($Texi2HTML::Config::SPLIT eq 'section') {
   $Texi2HTML::Config::element_file_name    = \&lilypond_element_file_name;
 }
+
 $Texi2HTML::Config::element_target_name  = \&lilypond_element_target_name;
 $default_print_element_header = $Texi2HTML::Config::print_element_header;
 $Texi2HTML::Config::print_element_header = \&lilypond_print_element_header;
@@ -295,6 +326,8 @@ sub lilypond_css_lines ($$)
     {
         $Texi2HTML::THISDOC{'CSS_LINES'} .= "<link rel=\"alternate stylesheet\" type=\"text/css\" href=\"$ref->{FILENAME}\" title=\"$ref->{TITLE}\">\n";
     }
+    # FIXME: the website doesn't use ie7-specific fixes; do the
+    # docs still need this?  -gp
     $Texi2HTML::THISDOC{'CSS_LINES'} .= "<!--[if lte IE 7]>\n<link href=\"lilypond-ie-fixes.css\" rel=\"stylesheet\" type=\"text/css\">\n<![endif]-->\n";
 }
 
@@ -652,7 +685,18 @@ sub lilypond_generate_page_toc_body($)
     }
     return () if not defined($current_element);
     # Create the toc entries recursively
-    my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+    if ($web_manual) {
+        my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+        # FIXME: add link to main page, really hackily.
+        if ($element->{'sectionup'}) {
+            # it's not the top element
+            push (@toc_entries, "<li><a href=\"index.html\">Main</a></li>\n");
+        } else {
+            push (@toc_entries, "<li class=\"toc_current\"><a href=\"index.html\">Main</a></li>\n");
+        }
+    } else {
+        my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+    }
     my $children = $current_element->{'section_childs'};
     foreach ( @$children ) {
       push (@toc_entries, generate_ly_toc_entries($_, \%parentelements, $page_toc_depth));
@@ -1081,21 +1125,6 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
     }
     return $open.'>'.$footnote_text.$text.'</p>';
 }
-
-
-#############################################################################
-### FUNCTIONALITY FOR MAIN WEB PAGES
-#############################################################################
-
-my $web_manual = 0;
-sub lilypond_init_web_manual ()
-{
-  if (exists($main::value{'web_manual'}))
-  {
-    $web_manual = 1;
-  }
-}
-push @Texi2HTML::Config::command_handler_process, \&lilypond_init_web_manual;
 
 
 #############################################################################
