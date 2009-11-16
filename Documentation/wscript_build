@@ -20,7 +20,7 @@ doc_srcdir = bld.path.abspath()
 doc_blddir = bld.path.abspath(bld.env)
 top_blddir = bld.srcnode.abspath(bld.env)  # topdir including variant
 
-tely = ['music-glossary']
+tely = []
 #tely = ['music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']

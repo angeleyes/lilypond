@@ -6,7 +6,7 @@
     version that you are working on.  See TRANSLATION for details.
 @end ignore
 
-@include general/basic-authors.itexi
+@include basic-authors.itexi
 
 @node Community
 @unnumbered Community
@@ -738,4 +738,5 @@ issue CMS06.
 @node Old news
 @unnumberedsec Old news
 
-@include general/news.itexi
+@include web/news.itexi
+
