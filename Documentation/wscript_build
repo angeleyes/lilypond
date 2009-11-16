@@ -28,8 +28,7 @@ tely = []
 #tely = ['changes', 'extending', 'essay']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
-#texi = ['contributor']
-texi = []
+texi = ['contributor']
 texi_web = ['web']
 
 lilypond_book_includes = "-I %(doc_blddir)s/ \
@@ -60,7 +59,7 @@ bld.new_task_gen (
     target = 'version.itexi',
     rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT}',
 )
-for src in texi_web:
+for src in tely+texi+texi_web:
     print xref_dir+src+'.xref'
     bld.new_task_gen (
         name = 'xref',

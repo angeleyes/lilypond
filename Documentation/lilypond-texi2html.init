@@ -144,7 +144,6 @@ $Texi2HTML::Config::SPLIT_INDEX   = 0;
 $Texi2HTML::Config::SEPARATED_FOOTNOTES = 0; # Print footnotes on same page, not separated
 
 # FIXME: creates duplicate anchors, which causes Opera to barf;
-#       should be fixed in lilypond-texi2html.init too
 # Uhm, what about a bug report to Opera?  We need sane names here.
 if ($Texi2HTML::Config::SPLIT eq 'section') {
   $Texi2HTML::Config::element_file_name    = \&lilypond_element_file_name;
@@ -638,15 +637,15 @@ sub generate_ly_toc_entries($$$)
   my $level = $element->{'toc_level'};
   my $is_parent_of_current = $element->{'id'} && $element_path->{$element->{'id'}};
   my $ind = '  ' x $level;
+  my $this_css_class;
   if ($web_manual) {
-    my $this_css_class = " class=\"";
-    $this_css_class .= $is_parent_of_current ? " toc_current" : "";
+    $this_css_class = " class=\"";
   } else {
-    my $this_css_class = $is_parent_of_current ? " class=\"toc_current\"" : "";
+    $this_css_class = "";
   }
+  $this_css_class .= $is_parent_of_current ? " toc_current" : "";
 # HORRIBLE HACK
   my @color_1 = (
-
         "Learning", "Glossary", "Essay",
         "Contact", "Tiny examples", "Bug reports"
 	);
@@ -711,12 +710,12 @@ sub generate_ly_toc_entries($$$)
     # if no child nodes were generated, e.g. for the index, where expanded pages
     # are ignored, don't generate a list at all...
     if (@child_result) {
+      push (@result, "\n$ind<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
       if ($web_manual) {
         push (@result, "$ind<li$this_css_class>" . &$anchor ($element->{'tocid'}, "$element->{'file'}#$element->{'target'}","(main)"));
       } else {
-        push (@result, "\n$ind<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+        push (@result, @child_result);
       }
-      push (@result, @child_result);
       push (@result, "$ind</ul>\n");
     }
   }
@@ -1227,7 +1226,10 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
 if ($Texi2HTML::Config::SPLIT eq 'section') {
   $Texi2HTML::Config::TOP_FILE = 'index.html';
 }
-push @Texi2HTML::Config::command_handler_process, \&lilypond_init_toc_depth;
+if ($web_node) {
+} else {
+  push @Texi2HTML::Config::command_handler_process, \&lilypond_init_toc_depth;
+}
 
 
 return 1;
