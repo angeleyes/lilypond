@@ -1,4 +1,4 @@
-#!@PYTHON@
+#!/usr/bin/env python
 # create-version-itexi.py
 
 import sys
