@@ -36,9 +36,9 @@ lilypond_book_includes = "-I default/Documentation/ \
 
 lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(top_blddir)s/lybook/ ${SRC}' % locals()
 
-texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} '
-texi2html_flags_normal = texi2html_flags + '--init-file=%(doc_srcdir)s/lilypond-texi2html.init --prefix=index --split=node --node-files ' % locals()
-texi2html_flags_web = texi2html_flags + '--init-file=%(doc_srcdir)s/web-texi2html.init --prefix=index --split=section --node-files ' % locals()
+texi2html_flags = '-I default/Documentation/ -o ${TGT[0].dir(env)} --split=node --node-files --init-file=%(doc_srcdir)s/lilypond-texi2html.init ' % locals()
+texi2html_flags_normal = texi2html_flags + '--prefix=index ' % locals()
+texi2html_flags_web = texi2html_flags + '--prefix=index -D web_manual ' % locals()
 
 texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
 texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()

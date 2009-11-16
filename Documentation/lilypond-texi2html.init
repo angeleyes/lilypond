@@ -576,6 +576,8 @@ sub lilypond_init_toc_depth ()
     $page_toc_depth = 1;
   }
 }
+
+
 # Set the TOC-depth (depending on a texinfo variable short_toc) in a 
 # command-handler, so we have them available when creating the pages
 push @Texi2HTML::Config::command_handler_process, \&lilypond_init_toc_depth;
@@ -1082,6 +1084,21 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
 
 
 #############################################################################
+### FUNCTIONALITY FOR MAIN WEB PAGES
+#############################################################################
+
+my $web_manual = 0;
+sub lilypond_init_web_manual ()
+{
+  if (exists($main::value{'web_manual'}))
+  {
+    $web_manual = 1;
+  }
+}
+push @Texi2HTML::Config::command_handler_process, \&lilypond_init_web_manual;
+
+
+#############################################################################
 ###  OTHER SETTINGS
 #############################################################################
 
@@ -1089,6 +1106,7 @@ sub makeinfo_like_paragraph ($$$$$$$$$$$$$)
 if ($Texi2HTML::Config::SPLIT eq 'section') {
   $Texi2HTML::Config::TOP_FILE = 'index.html';
 }
+push @Texi2HTML::Config::command_handler_process, \&lilypond_init_toc_depth;
 
 
 return 1;
