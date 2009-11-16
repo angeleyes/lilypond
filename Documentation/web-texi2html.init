@@ -324,15 +324,6 @@ sub lilypond_css_lines ($$)
 ###  SPLITTING BASED ON NUMBERED SECTIONS
 #############################################################################
 
-# FIXME: removed for GOP.
-
-# Uhm, yes: that's what I found.  It was gone.  No need to add that
-# in a comment, DIFF tells me that it's gone.
-
-# Comments can be used to tell *why* something has been removed -- as
-# it seems to me that we *need* this in order to get sane,
-# untranslated, html file names?  Putting it back for this reason.
-
 my $lastfilename;
 my $docnr = 0;
 my $node_to_filename_map = ();
