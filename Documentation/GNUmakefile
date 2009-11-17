@@ -10,7 +10,7 @@ depth = ..
 NAME = documentation
 LANGS = $(shell $(PYTHON) $(top-src-dir)/python/langdefs.py)
 MANUALS_SUBDIRS = usage automated-engraving contributor essay \
-  general learning notation extending
+  web learning notation extending
 SUBDIRS = $(MANUALS_SUBDIRS) snippets logo pictures misc po css topdocs \
   included $(LANGS)
 STEPMAKE_TEMPLATES = documentation texinfo tex omf
@@ -56,7 +56,7 @@ TEXI_FILES_FROM_TELY = $(outdir)/internals.texi
 
 PDF_FILES = $(TEXINFO_MANUALS:%=$(outdir)/%.pdf)
 
-TOPDIR_HTML_MANUALS = general
+TOPDIR_HTML_MANUALS = web
 UNSPLITTED_HTML_MANUALS =
 SPLITTED_HTML_MANUALS = $(foreach manual, $(TEXINFO_MANUALS),\
  $(if $(findstring $(manual), $(UNSPLITTED_HTML_MANUALS)),,$(manual)))
@@ -80,7 +80,7 @@ OUT_HTML_FILES += $(HTML_PAGE_NAMES:%=$(outdir)/%.html)
 MAIN_INFO_DOC = lilypond-notation
 INFO_DOCS = lilypond-usage lilypond-changes lilypond-contributor lilypond-internals \
  lilypond-essay lilypond-learning lilypond-notation music-glossary \
- lilypond-general lilypond-extending
+ lilypond-web lilypond-extending
 ifeq ($(out),www)
 INFO_DOCS += lilypond-snippets 
 endif
@@ -100,8 +100,8 @@ OUT_TXT_FILES = $(addprefix $(outdir)/, $(addsuffix .txt, $(README_TOP_FILES)))
 $(outdir)/index.html: TEXI2HTML_INIT = $(WEB_TEXI2HTML_INIT)
 $(outdir)/index.html: TEXI2HTML_SPLIT = $(WEB_TEXI2HTML_SPLIT)
 
-$(outdir)/index.html: $(outdir)/general.texi
-	$(TEXI2HTML) $(TEXI2HTML_SPLIT) $(TEXI2HTML_FLAGS) --output $(outdir)/ $(outdir)/general.texi
+$(outdir)/index.html: $(outdir)/web.texi
+	$(TEXI2HTML) $(TEXI2HTML_SPLIT) $(TEXI2HTML_FLAGS) --output $(outdir)/ $(outdir)/web.texi
 
 ###########
 ### Targets
@@ -145,8 +145,8 @@ ifeq ($(out),www)
 local-WWW-1: $(OUT_TEXINFO_MANUALS) $(PDF_FILES) info
 
 local-WWW-2: txt-to-html $(OUT_HTML_FILES) $(DEEP_HTML_FILES) $(source-links) $(OMF_FILES)
-	# fix links from other manuals to general
-	find $(outdir) -name "*.html" | xargs sed -i 's/..\/general\//..\//'
+	# fix links from other manuals to web
+	find $(outdir) -name "*.html" | xargs sed -i 's/..\/web\//..\//'
 	ls $(outdir)/*.html | xargs sed -i 's/<a href=\"..\//<a href=\"/'
 endif
 
@@ -170,11 +170,11 @@ $(outdir)/pictures:
 	$(MAKE) -C pictures WWW-1
 	ln -sf ../pictures/$(outdir) $@
 
-$(outdir)/general.texi: $(outdir)/examples
+$(outdir)/web.texi: $(outdir)/examples
 
 $(outdir)/examples:
-	$(MAKE) -C general/examples
-	ln -sf ../general/examples/$(outdir) $@
+	$(MAKE) -C web/examples
+	ln -sf ../web/examples/$(outdir) $@
 endif
 
 # Ugh, using '%' twice not possible
@@ -270,7 +270,7 @@ new-lang:
 	test -e po/$(ISOLANG).po || cp po/lilypond-doc.pot po/$(ISOLANG).po
 	@echo "***  Please add a language definition for $(ISOLANG) in python/langdefs.py  ***"
 
-TRANSLATION_DIRS = general texidocs
+TRANSLATION_DIRS = web texidocs
 TRANSLATION_FILES = $(shell git ls-files $(ISOLANG) | grep -v GNUmakefile)
 
 TELY_FILES = $(call src-wildcard,$(ISOLANG)/*.tely)
