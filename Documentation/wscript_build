@@ -15,10 +15,13 @@ import os.path
 doc_srcdir = bld.path.abspath()
 doc_blddir = bld.path.abspath(bld.env)
 top_blddir = bld.srcnode.abspath(bld.env)  # topdir including variant
+log_dir = bld.srcnode.abspath(bld.env) + 'log/'
 
+def log(name, type):
+    return (' > ' + log_dir + name + '-' + type + '.log')
 
-tely = []
-tely = ['music-glossary', 'usage']
+tely = ['usage']
+#tely = ['music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'usage']
 #tely = ['changes', 'extending', 'essay', 'learning', 'music-glossary', 'notation', 'snippets', 'usage']
@@ -34,42 +37,51 @@ lilypond_book_includes = "-I %(doc_blddir)s/ \
 xref_dir = doc_blddir + '/xrefs/'
 xref_rule = 'extract_texi_filenames.py %(lilypond_book_includes)s -o %(xref_dir)s ${SRC} ' % locals()
 
-lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(top_blddir)s/lybook/ ${SRC}' % locals()
+lilypond_book_rule = 'lilypond-book %(lilypond_book_includes)s -o ${TGT[0].dir(env)} --lily-output-dir=%(top_blddir)s/lybook/ ${SRC} ' % locals()
 
 texi2html_flags = '-I %(doc_blddir)s -I %(xref_dir)s -o ${TGT[0].dir(env)} --split=node --node-files --init-file=%(doc_srcdir)s/lilypond-texi2html.init ' % locals()
 texi2html_flags_normal = texi2html_flags + '--prefix=index ' % locals()
 texi2html_flags_web = texi2html_flags + '--prefix=index -D=webmanual ' % locals()
 
-texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC}'
-texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC}' % locals()
+texi2pdf_rule = 'texi2pdf -I default/Documentation/ -o ${TGT} ${SRC} '
+texi2html_rule_normal = 'texi2html %(texi2html_flags_normal)s ${SRC} ' % locals()
 # SRC_DIR is a stupid hack for search-box.html
-texi2html_rule_web = 'SRC_DIR=%(doc_srcdir)s texi2html %(texi2html_flags_web)s ${SRC}' % locals()
+texi2html_rule_web = 'SRC_DIR=%(doc_srcdir)s texi2html %(texi2html_flags_web)s ${SRC} ' % locals()
 
 
 ### 1st group: basic setup
 bld.add_group()
 bld.new_task_gen (
+    name = 'make log dir',
+    rule = 'mkdir -p %(log_dir)s/' % locals()
+)
+bld.new_task_gen (
     name = 'create_version',
     target = 'version.itexi',
-    rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT}',
+    rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT} '
 )
+
+
+bld.add_group()
 # hack for waf's dislike of non-source-tree directories
 node = bld.path.ensure_dir_node_from_path(['xrefs'])
 bld.rescan(node)
 
 for src in tely:
+    log_rule = log(src,'xref')
     bld.new_task_gen (
         name = 'xref',
         source = src + '.tely',
         target = 'xrefs/' + src + '.xref-map',
-        rule = 'python ' + bld.srcnode.abspath() + '/build/helper/' + xref_rule
+        rule = 'python ' + bld.srcnode.abspath() + '/build/helper/' + xref_rule + log_rule
     )
 for src in texi+texi_web:
+    log_rule = log(src,'xref')
     bld.new_task_gen (
         name = 'xref',
         source = src + '.texi',
         target = 'xrefs/' + src + '.xref-map',
-        rule = 'python ' + bld.srcnode.abspath() + '/build/helper/' + xref_rule
+        rule = 'python ' + bld.srcnode.abspath() + '/build/helper/' + xref_rule + log_rule
     )
 
 
@@ -78,11 +90,13 @@ for src in texi+texi_web:
 ### 2nd group: tely -> texi
 bld.add_group()
 for src in tely:
+    # special overwrite for stderr idioticy in python/lilylib.py
+    log_rule = ' 2> ' + log_dir + src+ '-' + 'lybook' + '.log'
     bld.new_task_gen (
         name = 'lilypond-book',
         source = src + '.tely',
         target = src + '.texi',
-        rule = lilypond_book_rule
+        rule = lilypond_book_rule + log_rule
     )
     texi.append(src)
 
@@ -94,26 +108,29 @@ for src in texi:
     node = bld.path.ensure_dir_node_from_path(['music-glossary'])
     bld.rescan(node)
 
+###    log_rule = ' > ' + log(src,'texi2pdf')
 #    bld.new_task_gen (
 #        source = src + '.texi',
 #        target = src + '.pdf',
-#        rule = texi2pdf_rule
+#        rule = texi2pdf_rule + log_rule
 #    )
 
+    log_rule = log(src,'texi2html')
     # FIXME: change -mccarty to lilypond.css
     bld.new_task_gen (
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_normal + "; cp %(doc_srcdir)s/css/lilypond-mccarty.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_normal + log_rule + "; cp %(doc_srcdir)s/css/lilypond-mccarty.css ${TGT[0].dir(env)}" % locals()
     )
 
 for src in texi_web:
+    log_rule = log(src,'texi2html')
     bld.new_task_gen (
         name = "html output",
         source = src + '.texi',
         target = src + '/index.html',
-        rule = texi2html_rule_web + "; cp %(doc_srcdir)s/css/lilypond-web.css ${TGT[0].dir(env)}" % locals()
+        rule = texi2html_rule_web + log_rule + "; cp %(doc_srcdir)s/css/lilypond-web.css ${TGT[0].dir(env)}" % locals()
     )
 
 
