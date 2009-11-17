@@ -739,11 +739,17 @@ sub lilypond_generate_page_toc_body($)
       $parentelements{$current_element->{'sectionup'}->{'id'}} = 1
               if ($current_element->{'sectionup'}->{'id'} ne '');
       $current_element = $current_element->{'sectionup'};
+      if ($web_manual) {
+        if (exists($main::value{'shallow_toc'})) {
+          last;
+        }
+      }
     }
     return () if not defined($current_element);
     # Create the toc entries recursively
+    my @toc_entries = "";
     if ($web_manual) {
-        my @toc_entries = ("<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+        push (@toc_entries, "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
         # FIXME: add link to main page, really hackily.
         if ($element->{'sectionup'}) {
             # it's not the top element
@@ -752,7 +758,8 @@ sub lilypond_generate_page_toc_body($)
             push (@toc_entries, "<li class=\"toc_current\"><a href=\"index.html\">Main</a></li>\n");
         }
     } else {
-        my @toc_entries = ("<div class=\"contents\">\n", "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
+        push (@toc_entries, "<div class=\"contents\">\n");
+        push (@toc_entries, "<ul$NO_BULLET_LIST_ATTRIBUTE>\n");
     }
     my $children = $current_element->{'section_childs'};
     foreach ( @$children ) {
