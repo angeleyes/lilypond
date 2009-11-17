@@ -2,12 +2,6 @@ import TaskGen
 # TODO: make this os-independent with os.path.join() ?
 import os.path
 
-# hack for waf's dislike of non-source-tree directories
-node = bld.path.ensure_dir_node_from_path(['music-glossary'])
-bld.rescan(node)
-node = bld.path.ensure_dir_node_from_path(['xrefs'])
-bld.rescan(node)
-
 # reminders:
 #    bld.srcnode.abspath()  <- top source dir
 #    bld.srcnode.abspath(bld.env)  <- build root including variant dir
@@ -59,8 +53,18 @@ bld.new_task_gen (
     target = 'version.itexi',
     rule = 'python ' + bld.srcnode.abspath() + '/build/helper/create-version-itexi.py > ${TGT}',
 )
-for src in tely+texi+texi_web:
-    print xref_dir+src+'.xref'
+# hack for waf's dislike of non-source-tree directories
+node = bld.path.ensure_dir_node_from_path(['xrefs'])
+bld.rescan(node)
+
+for src in tely:
+    bld.new_task_gen (
+        name = 'xref',
+        source = src + '.tely',
+        target = 'xrefs/' + src + '.xref-map',
+        rule = 'python ' + bld.srcnode.abspath() + '/build/helper/' + xref_rule
+    )
+for src in texi+texi_web:
     bld.new_task_gen (
         name = 'xref',
         source = src + '.texi',
@@ -75,16 +79,21 @@ for src in tely+texi+texi_web:
 bld.add_group()
 for src in tely:
     bld.new_task_gen (
+        name = 'lilypond-book',
         source = src + '.tely',
         target = src + '.texi',
         rule = lilypond_book_rule
     )
     texi.append(src)
 
-
 ### texi -> pdf, html
 bld.add_group()
 for src in texi:
+    # hack for waf's dislike of non-source-tree directories
+    bld.add_group()
+    node = bld.path.ensure_dir_node_from_path(['music-glossary'])
+    bld.rescan(node)
+
 #    bld.new_task_gen (
 #        source = src + '.texi',
 #        target = src + '.pdf',
