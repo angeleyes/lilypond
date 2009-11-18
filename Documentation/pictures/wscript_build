@@ -1,0 +1,21 @@
+log_dir = bld.srcnode.abspath(bld.env) + 'log/'
+def log(name, type):
+    return (' > ' + log_dir + name + '-' + type + '.log')
+
+#log_rule = log(src,'texi2html')
+
+import TaskGen
+
+TaskGen.declare_chain (
+    name = 'pictures png',
+    rule = 'ln -f ${SRC} ${TGT} ; echo ${TGT}; echo ${SRC}',
+    ext_in = '.png',
+    #ext_out = '.png',
+    reentrant=0,
+)
+
+
+bld.new_task_gen(source='summary-gradient.png')
+
+
+
