@@ -3,7 +3,7 @@
 # Do not publish non-polished or non-finished or outdated translations.
 LANGUAGES = de es fr nl ja hu
 
-.PHONY: add all clean default dist menuify out scripts site TAGS tree
+.PHONY: add all clean default dist format-page out scripts site TAGS tree
 .PHONY: $(LANGUAGES)
 .PHONY: check-translation diff new
 
@@ -20,7 +20,7 @@ LOCAL_HTML = $(shell find $(LANGUAGES) -name '*.html')
 NO_TRANSLATION = '/(announce-v2[.](0|2|4|6|8|10)[.])|/devel/|/donate|/old-|/older-|/search'
 FILES = GNUmakefile newweb.css \
  $(SITE_HTML) $(IHTML) $(LOCAL_HTML) $(NON_HTML) $(READMES) $(SCRIPTS)
-MAKE_LANGUAGE=	$(MAKE) LANG=$@ png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
+MAKE_LANGUAGE=	$(MAKE) LANG=$@ png format-page DOWNLOAD_URL="$(DOWNLOAD_URL)"
 
 outball = site.tar.gz
 
@@ -92,7 +92,7 @@ SVG = $(shell find site -name '*.svg')
 
 NEWS_FILES = site/top-news.ihtml site/old-news.html site/lilypond-rss-feed.xml
 
-all: scripts linktree menuify $(LANGUAGES) apache-1.3.x-fixup
+all: scripts linktree format-page $(LANGUAGES) apache-1.3.x-fixup
 
 PLATFORMS = linux-x86 linux-64 linux-ppc darwin-ppc darwin-x86 documentation freebsd-x86 freebsd-64 mingw cygwin
 
@@ -141,7 +141,7 @@ po/out/newweb.po: $(PY) $(SVG) $(IHTML)
 
 define LANGUAGE_template
 $(1):
-	$(MAKE) LANG=$(1) png menuify DOWNLOAD_URL="$(DOWNLOAD_URL)"
+	$(MAKE) LANG=$(1) png format-page DOWNLOAD_URL="$(DOWNLOAD_URL)"
 endef
 
 $(foreach lang,$(LANGUAGES),$(eval $(call LANGUAGE_template,$(lang))))
@@ -186,7 +186,7 @@ tree:
 	mkdir -p out/site
 	cd out/site && mkdir -p $(TREE)
 
-menuify: $(mo) $(NEWS_FILES)
+format-page: $(mo) $(NEWS_FILES) update-versions
 	LANG=$(LANG) $(PYTHON) $(SCRIPTDIR)/format-page.py --version-db lilypond.versions --verbose $(FMP_OPTIONS) --outdir=out $(HTML)
 
 $(NEWS_FILES): site/lilypond-rss-feed.xml.in site/news.html.in site/old-news.html.in
