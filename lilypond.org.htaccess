@@ -10,12 +10,15 @@ RewriteRule ^.*/source/.*$ /please-respect-robots.txt.html [L]
 # Permanent top level entry points -- ./doc
 RedirectMatch ^/music-glossary /doc/Documentation/user/music-glossary/index
 RedirectMatch ^/tutorial /doc/Documentation/user/lilypond-learning/Tutorial
-RedirectMatch ^/documentation /doc
+RedirectMatch ^/documentation/$ /doc
+# Possibly resurrect this with new web site
+# This breaks the documentation index with old site
+# RedirectMatch ^/documentation$ /doc
 RedirectMatch ^/bugs	http://code.google.com/p/lilypond/issues/list
 RedirectMatch ^/wiki	http://wiki.lilynet.net
 RedirectMatch ^/authors /doc/Documentation/topdocs/AUTHORS
 RedirectMatch ^/news    /doc/Documentation/topdocs/NEWS
-RedirectMatch ^/stable  /doc/stable
+RedirectMatch ^/stable    /doc/stable
 
 #old# default doc dir
 RedirectMatch ^/doc/*$ /doc/v2.12
@@ -64,16 +67,18 @@ RewriteCond %{DOCUMENT_ROOT}%{ENV:WEB}%{REQUEST_URI} -d
 # ...and does not start with /web
 RewriteCond %{REQUEST_URI} !^%{ENV:WEB}
 RewriteCond %{REQUEST_URI} !^/web
-# ...and does not start with /doc
-RewriteCond %{REQUEST_URI} !^/doc
+# ...and does not start with /doc$
+RewriteCond %{REQUEST_URI} !^/doc$
 # ...add trailing slash for [menu] and to avoid /web/ in browser url
 RewriteRule ^(.+)$ http://%{HTTP_HOST}/$1/ [R,QSA,L]
 
 # Request that does not start with /web
 RewriteCond %{REQUEST_URI} !^/web
 RewriteCond %{REQUEST_URI} !^%{ENV:WEB}
-# ...and does not start with /doc
-RewriteCond %{REQUEST_URI} !^/doc
+# ...and does not start with /doc/
+RewriteCond %{REQUEST_URI} !^/doc/
+# ...and is not /doc$
+RewriteCond %{REQUEST_URI} !^/doc$
 # ...and does not match match an existing file
 RewriteCond %{REQUEST_FILENAME} !-f
 # ...and does not match an existing directory
