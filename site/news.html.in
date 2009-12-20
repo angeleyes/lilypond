@@ -34,6 +34,40 @@
     !-->
 
   <dt>
+    <b>LilyPond 2.12.3 released!</b> -
+    <em>December 20, 2009</em>
+  </dt>
+  <dd>
+We are happy to announce the release of LilyPond 2.12.3.  This
+version contains the long-awaited fix for our GUI on MacOS X 10.5
+and 10.6.  In addition to the GUI fixes, this version contains
+dozens of <a href="http://code.google.com/p/lilypond/issues/list?can=1&amp;q=fixed_2_12_3&amp;colspec=ID+Type+Status+Priority+Milestone+Owner+Summary">bugfixes</a> backported from the unstable development
+version.
+<br>
+We recommend that all users upgrade to this version.  This is the
+last planned release in the 2.12 stable series; development now
+shifts towards the upcoming 2.14 series.
+<br><a href="@DOC@v2.12/Documentation/topdocs/NEWS.html">Changes</a>,
+    <a href="install/#2.12">Download</a>.
+  </dd>
+
+  <dt>
+    <b>LilyPond 2.13.9 released!</b> -
+    <em>December 12, 2009</em>
+  </dt>
+  <dd>
+LilyPond 2.13.9 is now out.  From 2.13.9 onwards, LilyPond is
+licensed under the GNU GPL v3+ for code, and the GNU FDL 1.3+ for
+documentation.  In addition to the usual round of bugfixes, this
+release adds a shortcut for repeated chords.
+<br>
+Please note that 2.13 is an <b>unstable development</b> branch;
+normal users should continue to use 2.12.
+<br><a href="@DOC@v2.13/Documentation/changes/">Changes</a>,
+    <a href="install/#2.13">Download</a>.
+  </dd>
+
+  <dt>
     <b>The LilyPond Report #16</b> -
     <em>September 6, 2009</em>
   </dt>
